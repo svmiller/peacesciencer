@@ -35,7 +35,7 @@ add_cow_majors <- function(data) {
     select(-styear, -endyear) %>%
     mutate(cowmaj = 1) -> major_years
 
-  cow_ddy %>% left_join(., major_years, by=c("ccode1"="ccode","year"="year")) %>%
+  data %>% left_join(., major_years, by=c("ccode1"="ccode","year"="year")) %>%
     rename(cowmaj1 = cowmaj) %>%
     left_join(., major_years, by=c("ccode2"="ccode","year"="year")) %>%
     rename(cowmaj2 = cowmaj) %>%
