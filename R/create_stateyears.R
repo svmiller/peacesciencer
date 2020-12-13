@@ -6,7 +6,8 @@
 #' data provided in the package.
 #'
 #' @return \code{create_stateyears()} takes state system membership data provided
-#' by either Correlates of War or Gleditsch-Ward and returns a simple coun
+#' by either Correlates of War or Gleditsch-Ward and returns a simple state-year
+#' data frame.
 #'
 #' @author Steven V. Miller
 #'
@@ -35,6 +36,11 @@
 #'
 #'
 create_stateyears <- function(system = "cow", mry = TRUE) {
+  require(dplyr)
+  require(magrittr)
+  require(dplyr)
+  require(tidyr)
+  require(lubridate)
   if (system == "cow") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1
@@ -53,7 +59,7 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
   } else if(system == "gw") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1
-      gw_states$endyear = ifelse(year(gw_states$enddate) == max(year(gw_states$enddate)), 2019, year(gw_states$enddate))
+      gw_states$endyear = ifelse(year(gw_states$enddate) == max(year(gw_states$enddate)), mry, year(gw_states$enddate))
     } else {
       gw_states$endyear <- year(gw_states$enddate)
     }

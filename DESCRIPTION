@@ -24,4 +24,7 @@ Imports:
     lubridate,
     magrittr,
     dplyr,
-    tibble
+    tibble,
+    geosphere,
+    countrycode,
+    tidyr
