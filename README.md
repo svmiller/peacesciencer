@@ -36,6 +36,7 @@ It also has the following data sets:
     of War state system members
   - `cow_ddy`: a full directed dyad-year data frame of Correlates of War
     state system members
+  - `cow_majors`: Correlates of War major powers data (version: 2016)
   - `cow_states`: Correlates of War state system membership data
     (version: 2016)
   - `gw_states`: Gleditsch-Ward independent state system data (version:
