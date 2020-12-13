@@ -23,9 +23,9 @@ installation).
 The package is very much a work in progress. Right now, it has the
 following functions:
 
-  - `make_stateyears()`: converts Correlates of War or Gleditsch-Ward
+  - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
-  - `make_dyadyears()`: converts Correlates of War or Gleditsch-Ward
+  - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
     state system membership data into dyad-year format.
 
 It also has the following data sets:
