@@ -27,4 +27,5 @@ Imports:
     tibble,
     geosphere,
     countrycode,
-    tidyr
+    tidyr,
+    stringr
