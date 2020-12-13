@@ -9,7 +9,7 @@ A data frame with 14 observations on the following 8 variables.
 \describe{
 \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
 \item{\code{styear}}{the start year as a major power}
-\item{\code{stmonth}}{the start montn as a major power}
+\item{\code{stmonth}}{the start month as a major power}
 \item{\code{stday}}{the start day as a major power}
 \item{\code{endyear}}{the end year as a major power}
 \item{\code{endmonth}}{the end month as a major power}
