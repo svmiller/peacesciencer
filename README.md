@@ -23,6 +23,8 @@ installation).
 The package is very much a work in progress. Right now, it has the
 following functions:
 
+  - `add_capital_distance()`: adds capital-to-capital distance (in
+    kilometers, “as the crow flies”) to dyad-year data.
   - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
   - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
@@ -30,6 +32,10 @@ following functions:
 
 It also has the following data sets:
 
+  - `capitals`: a list of capitals and capital transition for Correlates
+    of War state system members
+  - `cow_ddy`: a full directed dyad-year data frame of Correlates of War
+    state system members
   - `cow_states`: Correlates of War state system membership data
     (version: 2016)
   - `gw_states`: Gleditsch-Ward independent state system data (version:
