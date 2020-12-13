@@ -30,6 +30,7 @@ The package is very much a work in progress. Right now, it has the following fun
 It also has the following data sets:
 
 - `capitals`: a list of capitals and capital transitions for Correlates of War state system members
+- `cow_contdir`: Correlates of War Direct Contiguity Data (v. 3.2)
 - `cow_ddy`: a full directed dyad-year data frame of Correlates of War state system members
 - `cow_majors`: Correlates of War major powers data (version: 2016)
 - `cow_states`: Correlates of War state system membership data (version: 2016)

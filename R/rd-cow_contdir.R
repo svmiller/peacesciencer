@@ -1,0 +1,34 @@
+#' @importFrom tibble tibble
+NULL
+
+#' Correlates of War Direct Contiguity Data (v. 3.2)
+#'
+#' These contain an abbreviated version of the "master records" for the Correlates of War
+#' direct contiguity data. Data contain a few cosmetic changes to assist with some functions
+#' downstream from it.
+#'
+#' @format A data frame with 2025840 observations on the following 4 variables.
+#' \describe{
+#' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
+#' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
+#' \item{\code{conttype}}{a numeric vector for the contiguity relationship}
+#' \item{\code{begin}}{the year-month when this contiguity relationship begins (YYYYMM)}
+#' \item{\code{end}}{the year-month when this contiguity relationship ends (YYYYMM)}
+#' }
+#'
+#' @details The "master record" provided by the Correlates of War is "non-directed." I make
+#' these data "directed" for convenience.
+#'
+#' For clarity, the contiguity codes range from 1 to 5. 1 = direct land contiguity. 2 =
+#' separated by 12 miles of water or fewer (a la Stannis Baratheon). 3 = separated by
+#' 24 miles of water or fewer (but more than 12 miles). 4 = separated by 150 miles
+#' of water or fewer (but more than 24 miles). 5 = separated by 400 miles of water
+#' or fewer (but more than 150 miles). Cases of separation by more than 400 miles
+#' of water are not included in the master record (but are easily discerned based on
+#' complete dyad-year data).
+#'
+#' @references Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
+#' (2002). "The Correlates of War Project Direct Contiguity Data, Version 3." Conflict
+#' Management and Peace Science 19 (2):58-66.
+#'
+"cow_contdir"
