@@ -41,3 +41,4 @@ It also has the following data sets:
     (version: 2016)
   - `gw_states`: Gleditsch-Ward independent state system data (version:
     2017)
+  - `maoz_powers`: Zeev Maoz’ global/regional power data.
