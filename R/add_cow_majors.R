@@ -3,6 +3,7 @@
 #' @description \code{add_cow_majors()} allows you to add Correlates of War major power variables
 #' to a dyad-year data frame.
 #'
+#'
 #' @return \code{add_cow_majors()} takes a dyad-year data frame and adds two columns for whether
 #' the first state (i.e. \code{ccode1}) or the second state (i.e. \code{ccode2}) are major powers
 #' in the given year, according to the Correlates of War. 1 = is a major power. 0 = is not a major

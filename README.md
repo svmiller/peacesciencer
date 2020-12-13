@@ -33,6 +33,8 @@ following functions:
     state membership data into state-year format.
   - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
     state system membership data into dyad-year format.
+  - `filter_prd()`: filters dyad-year data frame to just “politically
+    relevant” dyads.
 
 It also has the following data sets:
 
