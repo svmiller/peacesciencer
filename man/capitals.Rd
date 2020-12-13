@@ -37,6 +37,9 @@ will note there was no war or dispute between, say, Portugal and Spain (or Portu
 during this time, but it does create some weirdness that would suggest a massive distance between two countries, like
 Portugal and Spain, that are otherwise land-contiguous.
 
+On Spain: the republican government moved the capital at the start of the civil war (in 1936) to Valencia. However, it
+abandoned this capital by 1937. I elect to not record this capital transition.
+
 The data also do some (I think) reasonable back-dating of capitals to coincide with states in transition without
 necessarily formal capitals by the first appearance in the state system membership data. These concern Lithuania,
 Kazakhstan, and the Philippines. Kaunas is the initial post-independence capital of Lithuania. Almaty is the initial
