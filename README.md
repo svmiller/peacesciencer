@@ -32,8 +32,8 @@ following functions:
 
 It also has the following data sets:
 
-  - `capitals`: a list of capitals and capital transition for Correlates
-    of War state system members
+  - `capitals`: a list of capitals and capital transitions for
+    Correlates of War state system members
   - `cow_ddy`: a full directed dyad-year data frame of Correlates of War
     state system members
   - `cow_majors`: Correlates of War major powers data (version: 2016)
