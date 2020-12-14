@@ -2,7 +2,7 @@
 % Please edit documentation in R/filter_prd.R
 \name{filter_prd}
 \alias{filter_prd}
-\title{Filer dyad-year data to include just politically relevant dyads}
+\title{Filter dyad-year data to include just politically relevant dyads}
 \usage{
 filter_prd(data)
 }

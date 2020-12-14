@@ -1,4 +1,4 @@
-#' Filer dyad-year data to include just politically relevant dyads
+#' Filter dyad-year data to include just politically relevant dyads
 #'
 #' @description \code{filter_prd()} filters a dyad-year data frame to just those that
 #' are "politically relevant." This is useful for discarding unnecessary (and unwanted)
