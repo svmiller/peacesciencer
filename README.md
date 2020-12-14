@@ -29,6 +29,8 @@ following functions:
     dyad-year or state-year data.
   - `add_cow_majors()`: adds Correlates of War major power information
     to dyad-year or state-year data.
+  - `add_democracy()`: adds estimates of democracy/levels of democracy
+    to dyad-year or state-year data.
   - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
   - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
@@ -40,6 +42,10 @@ It also has the following data sets:
 
   - `capitals`: a list of capitals and capital transitions for
     Correlates of War state system members
+  - `ccode_democracy`: Correlates of War state-year data with three
+    different estimates of democracy (Varieties of Democracy, Polity,
+    Xavier Marquez/Pemstein et al.’s “(Quick) Unified Democracy
+    Scores”).
   - `cow_contdir`: Correlates of War Direct Contiguity Data (v. 3.2)
   - `cow_ddy`: a full directed dyad-year data frame of Correlates of War
     state system members
