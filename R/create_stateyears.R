@@ -55,7 +55,10 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       unnest(c(year)) %>%
       arrange(ccode, year) %>%
       select(ccode, statenme, year) %>%
-      distinct(ccode, statenme, year)
+      distinct(ccode, statenme, year) -> data
+
+    attr(data, "class") = c(class(data), "state_year")
+    return(data)
   } else if(system == "gw") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1
@@ -70,7 +73,10 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       unnest(c(year)) %>%
       arrange(gwcode, year) %>%
       select(gwcode, statename, year)  %>%
-      distinct(gwcode, statename, year)
+      distinct(gwcode, statename, year)  -> data
+
+    attr(data, "class") = c(class(data), "state_year")
+    return(data)
 
   }
 }
