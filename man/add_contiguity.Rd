@@ -2,24 +2,27 @@
 % Please edit documentation in R/add_contiguity.R
 \name{add_contiguity}
 \alias{add_contiguity}
-\title{Add Correlates of War direct contiguity information to a dyad-year data frame}
+\title{Add Correlates of War direct contiguity information to a dyad-year or state-year data frame}
 \usage{
 add_contiguity(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed")}
+\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame}
 }
 \value{
 \code{add_contiguity()} takes a dyad-year data frame and adds information
 about the contiguity relationship based on the "master records" for the
-Correlates of War direct contiguity data (v. 3.2).
+Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year, the function
+returns the lowest contiguity type observed in the dyad-year (if contiguity is observed at all).
+If the data are state-year, the data return the total number of land and sea borders calculated
+from these master records.
 }
 \description{
 \code{add_contiguity()} allows you to add Correlates of War contiguity
-data to a dyad-year data frame.
+data to a dyad-year or state-year data frame.
 }
 \details{
-The contiguity codes range from 1 to 6. 1 = direct land contiguity. 2 =
+The contiguity codes in the dyad-year data range from 1 to 6. 1 = direct land contiguity. 2 =
 separated by 12 miles of water or fewer (a la Stannis Baratheon). 3 = separated by
 24 miles of water or fewer (but more than 12 miles). 4 = separated by 150 miles
 of water or fewer (but more than 24 miles). 5 = separated by 400 miles of water
@@ -35,6 +38,8 @@ duplicates in the returned output.
 
 library(magrittr)
 cow_ddy \%>\% add_contiguity()
+
+create_stateyear() \%>\% add_contiguity()
 
 
 }

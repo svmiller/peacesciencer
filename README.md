@@ -26,7 +26,7 @@ following functions:
   - `add_capital_distance()`: adds capital-to-capital distance (in
     kilometers, “as the crow flies”) to dyad-year or state-year data.
   - `add_contiguity()`: adds Correlates of War direct contiguity data to
-    dyad-year data.
+    dyad-year or state-year data.
   - `add_cow_majors()`: adds Correlates of War major power information
     to dyad-year or state-year data.
   - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
