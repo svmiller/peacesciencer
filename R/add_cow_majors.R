@@ -56,8 +56,7 @@ add_cow_majors <- function(data) {
       mutate(cowmaj = ifelse(is.na(cowmaj), 0, 1)) -> data
 
   } else  {
-      stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running
-           create_dyadyears() or create_stateyears() at the start of the pipe.")
+      stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
     }
 
   return(data)

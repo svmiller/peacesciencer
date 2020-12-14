@@ -2,16 +2,17 @@
 % Please edit documentation in R/add_capital_distance.R
 \name{add_capital_distance}
 \alias{add_capital_distance}
-\title{Add capital-to-capital distance to a dyad-year data frame}
+\title{Add capital-to-capital distance to a dyad-year or state-year data frame}
 \usage{
 add_capital_distance(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed")}
+\item{data}{a dyad-year data frame (either "directed" or "non-directed") or state-year data frame}
 }
 \value{
-\code{add_capital_distance()} takes a dyad-year data frame and adds the
-capital-to-capital distance between the first state and the second state. A minor
+\code{add_capital_distance()} takes a dyad-year or state-year data frame and adds the
+capital-to-capital distance between the first state and the second state (in dyad-year data) or the minimum
+capital-to-capital distance for a given state in a given year. A minor
 note about this function: cases of capital transition are recorded in the
 \code{capitals} data but, in the conversion to capital-years (and eventual
 merging into a dyad-year data frame), the Jan. 1 capital is used for calculating
@@ -19,15 +20,22 @@ distances.
 }
 \description{
 \code{add_capital_distance()} allows you to add capital-to-capital
-distance to a dyad-year data frame. The capitals are coded in the \code{capitals}
+distance to a dyad-year or state-year data frame. The capitals are coded in the \code{capitals}
 data frame, along with their latitudes and longitudes. The distance variable that
 emerges \code{capdist} is calculated using the "Vincenty" method (i.e. "as the crow
 flies") and is expressed in kilometers.
+}
+\details{
+The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
+\code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
+of the proverbial pipe.
 }
 \examples{
 
 library(magrittr)
 cow_ddy \%>\% add_capital_distance()
+
+create_stateyears() \%>\% add_capital_distance()
 
 
 }

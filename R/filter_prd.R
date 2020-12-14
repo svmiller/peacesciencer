@@ -41,6 +41,8 @@ filter_prd <- function(data) {
   require(tidyr)
   require(stringr)
 
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+
   data %>%
     mutate(prd = case_when(
       conttype <= 5 ~ 1,
@@ -49,5 +51,13 @@ filter_prd <- function(data) {
       TRUE ~ 0
     )) %>%
     filter(prd == 1) -> data
+
+  } else  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+
+    stop("filter_prd() only makes sense in the context of dyad-year data.")
+
+  } else {
+    stop("{peacesciencer} functions require attributes(data)$ps_data_type (either dyad-year or state-year for a given function). Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+  }
   return(data)
 }
