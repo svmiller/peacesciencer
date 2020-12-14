@@ -76,6 +76,8 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
       # And select just what we need.
       select(ccode1, ccode2, year) -> data
 
+    attr(data, "ps_data_type") = "dyad_year"
+
     if (directed == TRUE) {
 
     } else {
@@ -112,6 +114,8 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
         filter(year >= styear & year <= endyear) %>%
         # And select just what we need.
         select(gwcode1, gwcode2, year) -> data
+
+      attr(data, "ps_data_type") = "dyad_year"
 
       if (directed == TRUE) {
 

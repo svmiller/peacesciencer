@@ -57,6 +57,8 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       select(ccode, statenme, year) %>%
       distinct(ccode, statenme, year) -> data
 
+    attr(data, "ps_data_type") = "state_year"
+
     return(data)
 
   } else if(system == "gw") {
@@ -74,6 +76,8 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       arrange(gwcode, year) %>%
       select(gwcode, statename, year)  %>%
       distinct(gwcode, statename, year)  -> data
+
+    attr(data, "ps_data_type") = "state_year"
 
     return(data)
 
