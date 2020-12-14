@@ -5,7 +5,7 @@
 \alias{capitals}
 \title{A complete list of capitals and capital transitions for Correlates of War state system members}
 \format{
-A data frame with 2025840 observations on the following 4 variables.
+A data frame with 252 observations on the following 7 variables.
 \describe{
 \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
 \item{\code{statenme}}{a character vector for the state}
@@ -28,8 +28,14 @@ For convenience, the start year for most states is 1816. Samoa, for example, was
 in 1816. However, the functions that use the \code{capitals} data will not create observations for states
 that did not exist at a given point in time.
 
+The data should be current as of the end of 2019.
+
 Cases where a start year is not 1816 indicate a capital transition. For example, Brazil's capital moved from
-Rio de Janeiro to Brasilia (a planned capital) in 1960. Only 24 states in the data experienced a capital transition.
+Rio de Janeiro to Brasilia (a planned capital) in 1960. Only 25 states in the data experienced a capital transition.
+The most recent was Burundi in 2018. Indonesia, as of writing, is planning on a capital transition, but this has not
+been completed yet.
+
+Kazakhstan renamed its capital for the state leader in 2019. These data retain the name of Astana.
 
 The capitals data are not without some peculiarities. Prominently, Portugal transferred the Portuguese court from
 Lisbon to Rio de Janeiro from 1808 to 1821. *This is recorded in the data.* A knowledge of the inter-state conflict data
