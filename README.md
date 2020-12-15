@@ -63,3 +63,36 @@ It also has the following data sets:
   - `gw_states`: Gleditsch-Ward independent state system data (version:
     2017)
   - `maoz_powers`: Zeev Maoz’ global/regional power data.
+
+# Usage
+
+The workflow is going to look something like this.
+
+``` r
+library(tidyverse, quietly = TRUE)
+library(peacesciencer)
+
+create_dyadyears() %>%
+  add_gwcode_to_cow() %>%
+  add_contiguity() %>%
+  add_cow_majors() %>%
+  filter_prd() %>%
+  add_democracy()
+```
+
+    ## # A tibble: 246,314 x 15
+    ##    ccode1 ccode2  year gwcode1 gwcode2 conttype cowmaj1 cowmaj2   prd
+    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl> <dbl>
+    ##  1      2     20  1920       2      20        1       1       0     1
+    ##  2      2     20  1921       2      20        1       1       0     1
+    ##  3      2     20  1922       2      20        1       1       0     1
+    ##  4      2     20  1923       2      20        1       1       0     1
+    ##  5      2     20  1924       2      20        1       1       0     1
+    ##  6      2     20  1925       2      20        1       1       0     1
+    ##  7      2     20  1926       2      20        1       1       0     1
+    ##  8      2     20  1927       2      20        1       1       0     1
+    ##  9      2     20  1928       2      20        1       1       0     1
+    ## 10      2     20  1929       2      20        1       1       0     1
+    ## # … with 246,304 more rows, and 6 more variables: v2x_polyarchy1 <dbl>,
+    ## #   polity21 <dbl>, xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>,
+    ## #   xm_qudsest2 <dbl>

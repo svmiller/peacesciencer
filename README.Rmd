@@ -45,3 +45,21 @@ It also has the following data sets:
 - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward state system members
 - `gw_states`: Gleditsch-Ward independent state system data (version: 2017)
 - `maoz_powers`: Zeev Maoz' global/regional power data.
+
+# Usage
+
+The workflow is going to look something like this.
+
+```{r, cache=F, message=F}
+
+library(tidyverse, quietly = TRUE)
+library(peacesciencer)
+
+create_dyadyears() %>%
+  add_gwcode_to_cow() %>%
+  add_contiguity() %>%
+  add_cow_majors() %>%
+  filter_prd() %>%
+  add_democracy()
+
+```
