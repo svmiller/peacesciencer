@@ -24,7 +24,8 @@ library(peacesciencer)
 
 # The big enchilada: Serbia. GW have Serbia as 340 before and after Yugoslavia. Yugoslavia, for when it existed, is 345.
 # This stands at odds with the CoW interpretation (which I tend to favor): Yugoslavia had a Serbian center. Serbia preceded
-# Yugoslavia and should be understood as both predecessor and successor state.
+# Yugoslavia and should be understood as both predecessor state, successor state, and the center of gravity (if you will) of
+# Yugoslavia for when Yugoslavia was a thing.
 
 # GW don't have Sao Tome and Principe (403) and Seychelles (591)
 # CoW doesn't have Transvaal (563), Orange Free State (564)
