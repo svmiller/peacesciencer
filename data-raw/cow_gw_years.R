@@ -81,8 +81,24 @@ cow_gw_years %>% filter(!is.na(ccode)) %>% group_by(ccode,year) %>% filter(n() >
 
 # ^ There are still about 24 duplicate ccode-years. These are cases where the ccode appears twice but the gwcode just once.
 
+# Upon further review, there's going to be some weirdness for cases where the stateabbs differ because of a change or some other oddity.
+# Consider Yemen here. GW have one big ol' Yemen from 1918 to 2017 (stateabb: YEM). CoW has the two Yemens, which has YAR for the
+# predecessor (ccode: 678) and YEM for the successor state (ccode: 679). Let's manually fix this.
+
+# We'll do the same for Germany after 1990. Justification: we used state abbs to get started, but we really want some consistency in the codes.
+# We'll also manage duplicates in the functions that use the underlying data.
+
+cow_gw_years %>%
+  mutate(gwcode = case_when(
+    stateabb == "YAR" ~ 678,
+    stateabb == "GMY" & year >= 1990 ~ 260,
+    TRUE ~ gwcode
+  )) -> cow_gw_years
+
 # So, I think this is going to have to do. YOu can't group-by and slice/filter(max) because you'll omit cases where there's a gwcode
 # but no ccode. I'm just going to leave this as is. I think there's workable stuff in here, no matter.
+
+
 
 save(cow_gw_years, file="data/cow_gw_years.rda")
 
