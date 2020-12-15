@@ -54,6 +54,8 @@ It also has the following data sets:
   - `cow_majors`: Correlates of War major powers data (version: 2016)
   - `cow_states`: Correlates of War state system membership data
     (version: 2016)
+  - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward
+    state system members
   - `gw_states`: Gleditsch-Ward independent state system data (version:
     2017)
   - `maoz_powers`: Zeev Maoz’ global/regional power data.
