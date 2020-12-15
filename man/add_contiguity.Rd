@@ -37,6 +37,7 @@ duplicates in the returned output.
 \examples{
 
 library(magrittr)
+library(peacesciencer)
 cow_ddy \%>\% add_contiguity()
 
 create_stateyear() \%>\% add_contiguity()

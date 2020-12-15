@@ -26,8 +26,8 @@
 #'
 
 add_cow_alliance <- function(data) {
-  require(dplyr)
-  require(magrittr)
+  # require(dplyr)
+  # require(magrittr)
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
     cow_alliance %>%

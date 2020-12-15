@@ -26,14 +26,17 @@
 #' @examples
 #'
 #' library(magrittr)
+#' library(peacesciencer)
+#'
+#'
 #' cow_ddy %>% add_gwcode_to_cow()
 #'
 #' create_stateyears() %>% add_gwcode_to_cow()
 #'
 #'
 add_gwcode_to_cow <- function(data) {
-  require(dplyr)
-  require(magrittr)
+  # require(dplyr)
+  # require(magrittr)
 
   cow_gw_years %>%
     filter(!is.na(ccode)) %>%

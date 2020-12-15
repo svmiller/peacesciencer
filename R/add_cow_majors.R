@@ -24,6 +24,8 @@
 #' @examples
 #'
 #' library(magrittr)
+#' library(peacesciencer)
+#'
 #' cow_ddy %>% add_cow_majors()
 #'
 #'

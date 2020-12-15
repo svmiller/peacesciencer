@@ -29,4 +29,5 @@ Imports:
     geosphere,
     countrycode,
     tidyr,
-    stringr
+    stringr,
+    rlang

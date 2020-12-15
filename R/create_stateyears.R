@@ -25,6 +25,8 @@
 #' today. Use with some care.
 #'
 #' @examples
+#' library(peacesciencer)
+#'
 #' # CoW is default, will include years beyond 2016 (most recent CoW update)
 #' create_stateyears()
 #'
@@ -36,11 +38,11 @@
 #'
 #'
 create_stateyears <- function(system = "cow", mry = TRUE) {
-  require(dplyr)
-  require(magrittr)
-  require(dplyr)
-  require(tidyr)
-  require(lubridate)
+  # require(dplyr)
+  # require(magrittr)
+  # require(dplyr)
+  # require(tidyr)
+  # require(lubridate)
   if (system == "cow") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1

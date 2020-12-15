@@ -1,1 +1,11 @@
 exportPattern("^[[:alpha:]]+")
+
+import(dplyr)
+import(stringr)
+import(geosphere)
+import(stringr)
+import(lubridate)
+import(tidyr)
+
+importFrom(magrittr,"%>%")
+importFrom(rlang, .data)

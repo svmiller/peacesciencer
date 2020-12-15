@@ -25,23 +25,25 @@
 #' @examples
 #'
 #' library(magrittr)
+#' library(peacesciencer)
 #' cow_ddy %>% add_capital_distance()
 #'
 #' create_stateyears() %>% add_capital_distance()
 #'
-#'
+#' @importFrom rlang .data
+#' @importFrom rlang .env
 
 add_capital_distance <- function(data) {
-  require(dplyr)
-  require(magrittr)
-  require(dplyr)
-  require(tidyr)
-  require(lubridate)
-  require(geosphere)
+  # require(dplyr)
+  # require(magrittr)
+  # require(dplyr)
+  # require(tidyr)
+  # require(lubridate)
+  # require(geosphere)
   capitals %>% rowwise() %>%
-    mutate(year = list(seq(styear, endyear))) %>%
-    unnest(year) %>%
-    select(ccode, year, lat, lng) %>%
+    mutate(year = list(seq(.data$styear, .data$endyear))) %>%
+    unnest(.data$year) %>%
+    select(.data$ccode, .data$year, .data$lat, .data$lng) %>%
     # There will be duplicates for when the country moved.
     # Under those conditions, the first capital should be first. It's basically the Jan. 1 capital, if you will.
     group_by(ccode, year) %>% slice(1) %>% ungroup() -> capital_years

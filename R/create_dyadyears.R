@@ -44,11 +44,11 @@
 #'
 #'
 create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
-  require(dplyr)
-  require(magrittr)
-  require(dplyr)
-  require(tidyr)
-  require(lubridate)
+  # require(dplyr)
+  # require(magrittr)
+  # require(dplyr)
+  # require(tidyr)
+  # require(lubridate)
   if (system == "cow") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1

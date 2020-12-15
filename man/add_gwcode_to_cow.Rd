@@ -32,6 +32,9 @@ the output.
 \examples{
 
 library(magrittr)
+library(peacesciencer)
+
+
 cow_ddy \%>\% add_gwcode_to_cow()
 
 create_stateyears() \%>\% add_gwcode_to_cow()
