@@ -31,6 +31,8 @@ following functions:
     to dyad-year or state-year data.
   - `add_democracy()`: adds estimates of democracy/levels of democracy
     to dyad-year or state-year data.
+  - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
+    or state-year data with Correlates of War state codes.
   - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
   - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
