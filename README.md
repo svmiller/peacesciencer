@@ -27,6 +27,8 @@ following functions:
     kilometers, “as the crow flies”) to dyad-year or state-year data.
   - `add_contiguity()`: adds Correlates of War direct contiguity data to
     dyad-year or state-year data.
+  - `add_cow_alliance()`: adds Correlates of War major power information
+    to dyad-year data.
   - `add_cow_majors()`: adds Correlates of War major power information
     to dyad-year or state-year data.
   - `add_democracy()`: adds estimates of democracy/levels of democracy
@@ -71,28 +73,45 @@ The workflow is going to look something like this.
 ``` r
 library(tidyverse, quietly = TRUE)
 library(peacesciencer)
+library(tictoc)
 
+tic()
 create_dyadyears() %>%
+  # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
+  # Add contiguity information
   add_contiguity() %>%
+  # Add major power data
   add_cow_majors() %>%
-  filter_prd() %>%
-  add_democracy()
+  # Add democracy variables
+  add_democracy() %>%
+  # add alliance data from Correlates of War
+  add_cow_alliance() %>%
+  # you should probably filter to politically relevant dyads earlier than later...
+  # Or not, it's your time and computer processor...
+  filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 15
-    ##    ccode1 ccode2  year gwcode1 gwcode2 conttype cowmaj1 cowmaj2   prd
-    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl> <dbl>
-    ##  1      2     20  1920       2      20        1       1       0     1
-    ##  2      2     20  1921       2      20        1       1       0     1
-    ##  3      2     20  1922       2      20        1       1       0     1
-    ##  4      2     20  1923       2      20        1       1       0     1
-    ##  5      2     20  1924       2      20        1       1       0     1
-    ##  6      2     20  1925       2      20        1       1       0     1
-    ##  7      2     20  1926       2      20        1       1       0     1
-    ##  8      2     20  1927       2      20        1       1       0     1
-    ##  9      2     20  1928       2      20        1       1       0     1
-    ## 10      2     20  1929       2      20        1       1       0     1
-    ## # … with 246,304 more rows, and 6 more variables: v2x_polyarchy1 <dbl>,
-    ## #   polity21 <dbl>, xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>,
-    ## #   xm_qudsest2 <dbl>
+    ## # A tibble: 246,314 x 19
+    ##    ccode1 ccode2  year gwcode1 gwcode2 conttype cowmaj1 cowmaj2 v2x_polyarchy1
+    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>          <dbl>
+    ##  1      2     20  1920       2      20        1       1       0          0.446
+    ##  2      2     20  1921       2      20        1       1       0          0.509
+    ##  3      2     20  1922       2      20        1       1       0          0.51 
+    ##  4      2     20  1923       2      20        1       1       0          0.516
+    ##  5      2     20  1924       2      20        1       1       0          0.514
+    ##  6      2     20  1925       2      20        1       1       0          0.505
+    ##  7      2     20  1926       2      20        1       1       0          0.511
+    ##  8      2     20  1927       2      20        1       1       0          0.53 
+    ##  9      2     20  1928       2      20        1       1       0          0.533
+    ## 10      2     20  1929       2      20        1       1       0          0.549
+    ## # … with 246,304 more rows, and 10 more variables: polity21 <dbl>,
+    ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
+    ## #   defense <dbl>, neutrality <dbl>, nonaggression <dbl>, entente <dbl>,
+    ## #   prd <dbl>
+
+``` r
+toc()
+```
+
+    ## 10.728 sec elapsed
