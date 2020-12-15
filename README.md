@@ -48,6 +48,8 @@ It also has the following data sets:
     different estimates of democracy (Varieties of Democracy, Polity,
     Xavier Marquez/Pemstein et al.’s “(Quick) Unified Democracy
     Scores”).
+  - `cow_alliance`: directed dyad-year alliance formation data from the
+    Correlates of War
   - `cow_contdir`: Correlates of War Direct Contiguity Data (v. 3.2)
   - `cow_ddy`: a full directed dyad-year data frame of Correlates of War
     state system members
