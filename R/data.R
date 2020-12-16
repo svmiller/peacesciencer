@@ -355,11 +355,11 @@ NULL
 #'
 "maoz_powers"
 
-# Correlates of War National Military Capabilities Data
-
-# These are version 5.0 of the Correlates of War National Military Capabilities data. Data omit
-# the state abbreviation and version identifier for consideration.
-
+#'  Correlates of War National Military Capabilities Data
+#'
+#' These are version 5.0 of the Correlates of War National Military Capabilities data. Data omit
+#' the state abbreviation and version identifier for consideration.
+#'
 #' @format A data frame with 15171 observations on the following 9 variables.
 #' \describe{
 #' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}

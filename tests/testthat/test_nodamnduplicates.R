@@ -11,6 +11,7 @@ test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_gwcode_to_cow()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_mids()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_alliance()))
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_nmc()))
 
 })
 
@@ -21,4 +22,5 @@ test_that("State-year additions do not create duplicates", {
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_majors()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_democracy()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_gwcode_to_cow()))
+  expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_nmc()))
 })

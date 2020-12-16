@@ -1,5 +1,5 @@
 
-# `peacesciencer`: Various Tools and Data for Quantitative Peace Science
+# `peacesciencer`: Tools and Data for Quantitative Peace Science
 
 [![](https://www.r-pkg.org/badges/version/peacesciencer?color=green)](https://cran.r-project.org/package=peacesciencer)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/peacesciencer?color=green)](https://cran.r-project.org/package=peacesciencer)
@@ -52,6 +52,10 @@ following functions:
     to dyad-year or state-year data.
   - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
     or state-year data with Correlates of War state codes.
+  - `add_mids():` adds dyad-year information about ongoing MIDs and MID
+    onsets from the Gibler-Miller-Little data.
+  - `add_nmc()`: adds estimates of national material capabilities (from
+    Correlates of War) to dyad-year or state-year data.
   - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
   - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
@@ -75,8 +79,12 @@ It also has the following data sets:
   - `cow_gw_years`: a yearly data frame including information about
     Correlates of War and Gleditsch-Ward states.
   - `cow_majors`: Correlates of War major powers data (version: 2016)
+  - `cow_nmc`: Correlates of War National Material Capabilities data
+    (version 5.0)
   - `cow_states`: Correlates of War state system membership data
     (version: 2016)
+  - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the
+    Gibler-Miller-Little inter-state dispute data.
   - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward
     state system members
   - `gw_states`: Gleditsch-Ward independent state system data (version:
@@ -125,6 +133,8 @@ tic()
 create_dyadyears() %>%
   # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
+  # Add GML MIDs 
+  add_mids %>%
   # Add capital-to-capital distance
   add_capital_distance() %>%
   # Add contiguity information
@@ -133,6 +143,8 @@ create_dyadyears() %>%
   add_cow_majors() %>%
   # Add democracy variables
   add_democracy() %>%
+  # Add National Material Capabilities
+  add_nmc() %>%
   # add alliance data from Correlates of War
   add_cow_alliance() %>%
   # you should probably filter to politically relevant dyads earlier than later...
@@ -140,29 +152,39 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 2,025,840 x 20
-    ##    ccode1 ccode2  year gwcode1 gwcode2 capdist conttype cowmaj1 cowmaj2
-    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>
-    ##  1      2     20  1920       2      20    735.        1       1       0
-    ##  2      2     20  1921       2      20    735.        1       1       0
-    ##  3      2     20  1922       2      20    735.        1       1       0
-    ##  4      2     20  1923       2      20    735.        1       1       0
-    ##  5      2     20  1924       2      20    735.        1       1       0
-    ##  6      2     20  1925       2      20    735.        1       1       0
-    ##  7      2     20  1926       2      20    735.        1       1       0
-    ##  8      2     20  1927       2      20    735.        1       1       0
-    ##  9      2     20  1928       2      20    735.        1       1       0
-    ## 10      2     20  1929       2      20    735.        1       1       0
-    ## # … with 2,025,830 more rows, and 11 more variables: v2x_polyarchy1 <dbl>,
-    ## #   polity21 <dbl>, xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>,
-    ## #   xm_qudsest2 <dbl>, defense <dbl>, neutrality <dbl>, nonaggression <dbl>,
-    ## #   entente <dbl>, prd <dbl>
+    ## # A tibble: 2,025,840 x 70
+    ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
+    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
+    ##  1      2     20  1920       2      20      NA          0        0     NA     NA
+    ##  2      2     20  1921       2      20      NA          0        0     NA     NA
+    ##  3      2     20  1922       2      20      NA          0        0     NA     NA
+    ##  4      2     20  1923       2      20      NA          0        0     NA     NA
+    ##  5      2     20  1924       2      20      NA          0        0     NA     NA
+    ##  6      2     20  1925       2      20      NA          0        0     NA     NA
+    ##  7      2     20  1926       2      20      NA          0        0     NA     NA
+    ##  8      2     20  1927       2      20      NA          0        0     NA     NA
+    ##  9      2     20  1928       2      20      NA          0        0     NA     NA
+    ## 10      2     20  1929       2      20      NA          0        0     NA     NA
+    ## # … with 2,025,830 more rows, and 60 more variables: revstate1 <dbl>,
+    ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
+    ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
+    ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
+    ## #   hostlev2 <dbl>, orig1 <dbl>, orig2 <dbl>, hiact <dbl>, hostlev <dbl>,
+    ## #   mindur <dbl>, maxdur <dbl>, outcome <dbl>, settle <dbl>, fatality <dbl>,
+    ## #   fatalpre <dbl>, stmon <dbl>, endmon <dbl>, recip <dbl>, numa <dbl>,
+    ## #   numb <dbl>, ongo2010 <dbl>, version <chr>, capdist <dbl>, conttype <dbl>,
+    ## #   cowmaj1 <dbl>, cowmaj2 <dbl>, v2x_polyarchy1 <dbl>, polity21 <dbl>,
+    ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
+    ## #   milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>, tpop1 <dbl>,
+    ## #   upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>, irst2 <dbl>,
+    ## #   pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>, defense <dbl>,
+    ## #   neutrality <dbl>, nonaggression <dbl>, entente <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 15.376 sec elapsed
+    ## 22.261 sec elapsed
 
 ``` r
 # state-years now...
@@ -173,10 +195,11 @@ create_stateyears() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
-  add_democracy()
+  add_democracy() %>%
+  add_nmc()
 ```
 
-    ## # A tibble: 16,536 x 11
+    ## # A tibble: 16,536 x 18
     ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj v2x_polyarchy
     ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>         <dbl>
     ##  1     2 United …  1816      2      5742.     0     0      0         0.367
@@ -189,11 +212,12 @@ create_stateyears() %>%
     ##  8     2 United …  1823      2      5744.     0     0      0         0.345
     ##  9     2 United …  1824      2      5744.     0     0      0         0.345
     ## 10     2 United …  1825      2      5744.     0     0      0         0.341
-    ## # … with 16,526 more rows, and 2 more variables: polity2 <dbl>,
-    ## #   xm_qudsest <dbl>
+    ## # … with 16,526 more rows, and 9 more variables: polity2 <dbl>,
+    ## #   xm_qudsest <dbl>, milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>,
+    ## #   tpop <dbl>, upop <dbl>, cinc <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 3.714 sec elapsed
+    ## 3.31 sec elapsed

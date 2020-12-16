@@ -2,7 +2,7 @@
 output: github_document
 ---
 
-# `peacesciencer`: Various Tools and Data for Quantitative Peace Science
+# `peacesciencer`: Tools and Data for Quantitative Peace Science
 
 ```{r echo=FALSE, results="hide", message=FALSE}
 library("badger")
@@ -46,6 +46,8 @@ The package is very much a work in progress. Right now, it has the following fun
 - `add_cow_majors()`: adds Correlates of War major power information to dyad-year or state-year data.
 - `add_democracy()`: adds estimates of democracy/levels of democracy to dyad-year or state-year data.
 - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year or state-year data with Correlates of War state codes.
+- `add_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data.
+- `add_nmc()`: adds estimates of national material capabilities (from Correlates of War) to dyad-year or state-year data.
 - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward state membership data into state-year format.
 - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward state system membership data into dyad-year format.
 - `filter_prd()`: filters dyad-year data frame to just "politically relevant" dyads.
@@ -59,7 +61,9 @@ It also has the following data sets:
 - `cow_ddy`: a full directed dyad-year data frame of Correlates of War state system members
 - `cow_gw_years`: a yearly data frame including information about Correlates of War and Gleditsch-Ward states.
 - `cow_majors`: Correlates of War major powers data (version: 2016)
+- `cow_nmc`: Correlates of War National Material Capabilities data (version 5.0)
 - `cow_states`: Correlates of War state system membership data (version: 2016)
+- `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the Gibler-Miller-Little inter-state dispute data.
 - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward state system members
 - `gw_states`: Gleditsch-Ward independent state system data (version: 2017)
 - `maoz_powers`: Zeev Maoz' global/regional power data.
@@ -84,6 +88,8 @@ tic()
 create_dyadyears() %>%
   # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
+  # Add GML MIDs 
+  add_mids %>%
   # Add capital-to-capital distance
   add_capital_distance() %>%
   # Add contiguity information
@@ -92,6 +98,8 @@ create_dyadyears() %>%
   add_cow_majors() %>%
   # Add democracy variables
   add_democracy() %>%
+  # Add National Material Capabilities
+  add_nmc() %>%
   # add alliance data from Correlates of War
   add_cow_alliance() %>%
   # you should probably filter to politically relevant dyads earlier than later...
@@ -107,7 +115,8 @@ create_stateyears() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
-  add_democracy()
+  add_democracy() %>%
+  add_nmc()
 toc()
 
 ```
