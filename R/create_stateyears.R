@@ -38,11 +38,7 @@
 #'
 #'
 create_stateyears <- function(system = "cow", mry = TRUE) {
-  # require(dplyr)
-  # require(magrittr)
-  # require(dplyr)
-  # require(tidyr)
-  # require(lubridate)
+
   if (system == "cow") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1
