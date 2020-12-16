@@ -1,3 +1,5 @@
+globalVariables(c('.', 'capitals', 'cow_ddy'))
+
 #' Add capital-to-capital distance to a dyad-year or state-year data frame
 #'
 #' @description \code{add_capital_distance()} allows you to add capital-to-capital
@@ -32,55 +34,59 @@
 #'
 #' @importFrom rlang .data
 #' @importFrom rlang .env
+#'
+
+
+
 
 add_capital_distance <- function(data) {
-  # require(dplyr)
-  # require(magrittr)
-  # require(dplyr)
-  # require(tidyr)
-  # require(lubridate)
-  # require(geosphere)
+  # require dplyr)
+  # require magrittr)
+  # require dplyr)
+  # require tidyr)
+  # require lubridate)
+  # require geosphere)
   capitals %>% rowwise() %>%
     mutate(year = list(seq(.data$styear, .data$endyear))) %>%
     unnest(.data$year) %>%
     select(.data$ccode, .data$year, .data$lat, .data$lng) %>%
     # There will be duplicates for when the country moved.
     # Under those conditions, the first capital should be first. It's basically the Jan. 1 capital, if you will.
-    group_by(ccode, year) %>% slice(1) %>% ungroup() -> capital_years
+    group_by(.data$ccode, .data$year) %>% slice(1) %>% ungroup() -> capital_years
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
     data %>%
-      left_join(., capital_years %>% select(ccode, year, lat,lng), by=c("ccode1"="ccode","year"="year")) %>%
-      rename(lat1 = lat,
-             lng1 = lng) %>%
-      left_join(., capital_years %>% select(ccode, year, lat,lng), by=c("ccode2"="ccode","year"="year")) %>%
-      rename(lat2 = lat,
-             lng2 = lng) -> data
+      left_join(., capital_years %>% select(.data$ccode, .data$year, .data$lat, .data$lng), by=c("ccode1"="ccode","year"="year")) %>%
+      rename(lat1 = .data$lat,
+             lng1 = .data$lng) %>%
+      left_join(., capital_years %>% select(.data$ccode, .data$year, .data$lat, .data$lng), by=c("ccode2"="ccode","year"="year")) %>%
+      rename(lat2 = .data$lat,
+             lng2 = .data$lng) -> data
 
-    latlng1 <- data %>% select(lng1, lat1)
-    latlng2 <- data %>% select(lng2, lat2)
+    latlng1 <- data %>% select(.data$lng1, .data$lat1)
+    latlng2 <- data %>% select(.data$lng2, .data$lat2)
     data$capdist <- distVincentySphere(latlng1, latlng2) / 1000
-    data %>% select(-lat1, -lng1, -lat2, -lng2) -> data
+    data %>% select(-.data$lat1, -.data$lng1, -.data$lat2, -.data$lng2) -> data
 
   return(data)
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
     cow_ddy %>%
-      left_join(., capital_years %>% select(ccode, year, lat,lng), by=c("ccode1"="ccode","year"="year")) %>%
-      rename(lat1 = lat,
-             lng1 = lng) %>%
-      left_join(., capital_years %>% select(ccode, year, lat,lng), by=c("ccode2"="ccode","year"="year")) %>%
-      rename(lat2 = lat,
-             lng2 = lng) -> hold_this
+      left_join(., capital_years %>% select(.data$ccode, .data$year, .data$lat, .data$lng), by=c("ccode1"="ccode","year"="year")) %>%
+      rename(lat1 = .data$lat,
+             lng1 = .data$lng) %>%
+      left_join(., capital_years %>% select(.data$ccode, .data$year, .data$lat, .data$lng), by=c("ccode2"="ccode","year"="year")) %>%
+      rename(lat2 = .data$lat,
+             lng2 = .data$lng) -> hold_this
 
-    latlng1 <- hold_this %>% select(lng1, lat1)
-    latlng2 <- hold_this %>% select(lng2, lat2)
+    latlng1 <- hold_this %>% select(.data$lng1, .data$lat1)
+    latlng2 <- hold_this %>% select(.data$lng2, .data$lat2)
     hold_this$capdist <- distVincentySphere(latlng1, latlng2) / 1000
-    hold_this %>% select(-lat1, -lng1, -lat2, -lng2) -> hold_this
+    hold_this %>% select(-.data$lat1, -.data$lng1, -.data$lat2, -.data$lng2) -> hold_this
 
-    hold_this %>% group_by(ccode1, year) %>%
-      summarize(mincapdist = min(capdist)) %>% ungroup() %>%
-      rename(ccode = ccode1) %>%
+    hold_this %>% group_by(.data$ccode1, .data$year) %>%
+      summarize(mincapdist = min(.data$capdist)) %>% ungroup() %>%
+      rename(ccode = .data$ccode1) %>%
       left_join(data, .) -> data
 
     return(data)

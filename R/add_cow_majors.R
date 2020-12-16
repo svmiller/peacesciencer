@@ -28,34 +28,30 @@
 #'
 #' cow_ddy %>% add_cow_majors()
 #'
-#'
+#' @importFrom rlang .data
+#' @importFrom rlang .env
 
 add_cow_majors <- function(data) {
-  require(dplyr)
-  require(magrittr)
-  require(dplyr)
-  require(tidyr)
-  require(stringr)
 
   cow_majors %>%
-    select(ccode, styear, endyear) %>%
+    select(.data$ccode, .data$styear, .data$endyear) %>%
     rowwise() %>%
-    mutate(year = list(seq(styear, endyear))) %>% unnest(year) %>%
-    select(-styear, -endyear) %>%
+    mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(year) %>%
+    select(-.data$styear, -.data$endyear) %>%
     mutate(cowmaj = 1) -> major_years
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
   data %>% left_join(., major_years, by=c("ccode1"="ccode","year"="year")) %>%
-    rename(cowmaj1 = cowmaj) %>%
+    rename(cowmaj1 = .data$cowmaj) %>%
     left_join(., major_years, by=c("ccode2"="ccode","year"="year")) %>%
-    rename(cowmaj2 = cowmaj) %>%
+    rename(cowmaj2 = .data$cowmaj) %>%
     mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.), 0, .)) -> data
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
     data %>%
       left_join(., major_years) %>%
-      mutate(cowmaj = ifelse(is.na(cowmaj), 0, 1)) -> data
+      mutate(cowmaj = ifelse(is.na(.data$cowmaj), 0, 1)) -> data
 
   } else  {
       stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")

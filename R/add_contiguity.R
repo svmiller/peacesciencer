@@ -34,49 +34,49 @@
 #'
 #' library(magrittr)
 #' library(peacesciencer)
+#'
 #' cow_ddy %>% add_contiguity()
 #'
-#' create_stateyear() %>% add_contiguity()
+#' create_stateyears() %>% add_contiguity()
 #'
-#'
+#' @importFrom rlang .data
+#' @importFrom rlang .env
+
+
 add_contiguity <- function(data) {
-  # require(dplyr)
-  # require(magrittr)
-  # require(dplyr)
-  # require(tidyr)
-  # require(stringr)
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
   cow_contdir %>%
-    mutate(styear = as.numeric(str_sub(begin, 1, 4)),
-           endyear = as.numeric(str_sub(end, 1, 4))) %>%
+    mutate(styear = as.numeric(str_sub(.data$begin, 1, 4)),
+           endyear = as.numeric(str_sub(.data$end, 1, 4))) %>%
     rowwise() %>%
-    mutate(year = list(seq(styear, endyear))) %>%
-    unnest(year) %>%
-    select(ccode1:conttype, year) %>%
-    group_by(ccode1, ccode2, year) %>%
-    filter(conttype == min(conttype)) %>%
+    mutate(year = list(seq(.data$styear, .data$endyear))) %>%
+    unnest(.data$year) %>%
+    select(.data$ccode1, .data$ccode2, .data$conttype, .data$year) %>%
+    group_by(.data$ccode1, .data$ccode2, .data$year) %>%
+    filter(.data$conttype == min(.data$conttype)) %>%
     ungroup() -> contdir_years
 
   data %>%
     left_join(., contdir_years) %>%
-    mutate(conttype = ifelse(is.na(conttype), 6, conttype)) -> data
+    mutate(conttype = case_when(is.na(.data$conttype) ~ 0,
+                                TRUE ~ .data$conttype)) -> data
   return(data)
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
     cow_contdir %>%
-      mutate(styear = as.numeric(str_sub(begin, 1, 4)),
-             endyear = as.numeric(str_sub(end, 1, 4))) %>%
+      mutate(styear = as.numeric(str_sub(.data$begin, 1, 4)),
+             endyear = as.numeric(str_sub(.data$end, 1, 4))) %>%
       rowwise() %>%
-      mutate(year = list(seq(styear, endyear))) %>%
-      unnest(year) %>%
-      select(ccode1:conttype, year) %>%
-      mutate(land = ifelse(conttype == 1, 1, 0),
-             sea = ifelse(conttype > 1, 1, 0)) %>%
-      group_by(ccode1, year) %>%
-      summarize(land = sum(land),
-                sea = sum(sea)) %>%
-      rename(ccode  = ccode1) %>%
+      mutate(year = list(seq(.data$styear, .data$endyear))) %>%
+      unnest(.data$year) %>%
+      select(.data$ccode1, .data$ccode2, .data$conttype, .data$year) %>%
+      mutate(land = ifelse(.data$conttype == 1, 1, 0),
+             sea = ifelse(.data$conttype > 1, 1, 0)) %>%
+      group_by(.data$ccode1, .data$year) %>%
+      summarize(land = sum(.data$land),
+                sea = sum(.data$sea)) %>%
+      rename(ccode  = .data$ccode1) %>%
       left_join(data, .) %>%
       mutate_at(vars("land","sea"), ~ifelse(is.na(.), 0, .)) -> data
     return(data)

@@ -47,7 +47,7 @@ filter_prd <- function(data) {
       conttype > 5 & cowmaj2 == 1 ~ 1,
       TRUE ~ 0
     )) %>%
-    filter(prd == 1) -> data
+    filter(.data$prd == 1) -> data
 
   } else  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 

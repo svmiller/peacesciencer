@@ -38,22 +38,17 @@
 #'
 
 add_democracy <- function(data) {
-  # require(dplyr)
-  # require(magrittr)
-  # require(dplyr)
-  # require(tidyr)
-  # require(stringr)
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
     data %>% left_join(., ccode_democracy, by=c("ccode1"="ccode","year"="year")) %>%
-      rename(v2x_polyarchy1 = v2x_polyarchy,
-             polity21 = polity2,
-             xm_qudsest1 = xm_qudsest) %>%
+      rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+             polity21 = .data$polity2,
+             xm_qudsest1 = .data$xm_qudsest) %>%
       left_join(., ccode_democracy, by=c("ccode2"="ccode","year"="year")) %>%
-      rename(v2x_polyarchy2 = v2x_polyarchy,
-             polity22 = polity2,
-             xm_qudsest2 = xm_qudsest) -> data
+      rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+             polity22 = .data$polity2,
+             xm_qudsest2 = .data$xm_qudsest) -> data
 
 
 

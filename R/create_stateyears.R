@@ -49,11 +49,11 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
 
     cow_states %>%
       rowwise() %>%
-      mutate(year = list(seq(styear, endyear2))) %>%
+      mutate(year = list(seq(.data$styear, .data$endyear2))) %>%
       unnest(c(year)) %>%
-      arrange(ccode, year) %>%
-      select(ccode, statenme, year) %>%
-      distinct(ccode, statenme, year) -> data
+      arrange(.data$ccode, .data$year) %>%
+      select(.data$ccode, .data$statenme, .data$year) %>%
+      distinct(.data$ccode, .data$statenme, .data$year) -> data
 
     attr(data, "ps_data_type") = "state_year"
 
@@ -67,13 +67,13 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       gw_states$endyear <- year(gw_states$enddate)
     }
     gw_states %>%
-      mutate(styear = year(startdate)) %>%
+      mutate(styear = year(.data$startdate)) %>%
       rowwise() %>%
-      mutate(year = list(seq(styear, endyear))) %>%
+      mutate(year = list(seq(.data$styear, .data$endyear))) %>%
       unnest(c(year)) %>%
-      arrange(gwcode, year) %>%
-      select(gwcode, statename, year)  %>%
-      distinct(gwcode, statename, year)  -> data
+      arrange(.data$gwcode, .data$year) %>%
+      select(.data$gwcode, .data$statename, .data$year)  %>%
+      distinct(.data$gwcode, .data$statename, .data$year)  -> data
 
     attr(data, "ps_data_type") = "state_year"
 

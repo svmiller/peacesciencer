@@ -20,6 +20,23 @@ from scratch. Likewise, this R package will offer tools to approximate
 what EUGene did within the R environment (i.e. not requiring Windows for
 installation).
 
+# Installation
+
+You will ideally soon be able to install this on CRAN, as follows:
+
+``` r
+install.packages("peacesciencer")
+```
+
+Until then, you can install the development version of this package
+through the `devtools` package.
+
+``` r
+devtools::install_github("svmiller/stevetemplates")
+```
+
+# Usage
+
 The package is very much a work in progress. Right now, it has the
 following functions:
 
@@ -66,9 +83,38 @@ It also has the following data sets:
     2017)
   - `maoz_powers`: Zeev Maoz’ global/regional power data.
 
-# Usage
+The workflow is going to look something like this. This is a
+“tidy”-friendly approach to a data-generating process in
+quantitative peace science.
 
-The workflow is going to look something like this.
+First, start with one of two processes to create either dyad-year or
+state-year data. The dyad-year data are created with the
+`create_dyadyears()` function. It has a few optional parameters with
+hidden defaults. The user can specify what kind of state system
+(`system`) data they want to use—either Correlates of War (`"cow"`) or
+Gledtisch-Ward (`"gw"`), whether they want to extend the data to the
+most recently concluded calendar year (`mry`) (i.e. Correlates of War
+state system membership data are current as of Dec. 31, 2016 and the
+script can extend that to the end of 2019), and whether the user wants
+directed or non-directed dyad-year data (`directed`).
+
+The `create_stateyears()` works much the same way, though “directed” and
+“non-directed” make no sense in the state-year context. Both functions
+default to Correlates of War state system membership data to the most
+recently concluded calendar year.
+
+Thereafter, the user can specify what additional variables they want
+added to these dyad-year or state-year data. Do note: the additional
+functions lean primarily on Correlates of War state code identifiers.
+Indeed, the bulk of the quantitative peace science data ecosystem is
+built around the Correlates of War project. The variables the user wants
+are added in [a “pipe”](https://r4ds.had.co.nz/pipes.html) in a process
+like this. Do note that the user may want to break up the
+data-generating process into a few manageable “chunks” (e.g. first
+generating dyad-year data and saving to an object, adding to it piece by
+piece).
+
+All told, the process will look something like this.
 
 ``` r
 library(tidyverse, quietly = TRUE)
@@ -94,7 +140,7 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 20
+    ## # A tibble: 2,025,840 x 20
     ##    ccode1 ccode2  year gwcode1 gwcode2 capdist conttype cowmaj1 cowmaj2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>
     ##  1      2     20  1920       2      20    735.        1       1       0
@@ -107,7 +153,7 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20    735.        1       1       0
     ##  9      2     20  1928       2      20    735.        1       1       0
     ## 10      2     20  1929       2      20    735.        1       1       0
-    ## # … with 246,304 more rows, and 11 more variables: v2x_polyarchy1 <dbl>,
+    ## # … with 2,025,830 more rows, and 11 more variables: v2x_polyarchy1 <dbl>,
     ## #   polity21 <dbl>, xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>,
     ## #   xm_qudsest2 <dbl>, defense <dbl>, neutrality <dbl>, nonaggression <dbl>,
     ## #   entente <dbl>, prd <dbl>
@@ -116,7 +162,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 13.495 sec elapsed
+    ## 15.376 sec elapsed
 
 ``` r
 # state-years now...
@@ -150,4 +196,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 3.019 sec elapsed
+    ## 3.714 sec elapsed

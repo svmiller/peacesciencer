@@ -39,19 +39,19 @@ add_gwcode_to_cow <- function(data) {
   # require(magrittr)
 
   cow_gw_years %>%
-    filter(!is.na(ccode)) %>%
-    group_by(ccode,year) %>%
-    filter(gwcode == max(gwcode)) %>%
+    filter(!is.na(.data$ccode)) %>%
+    group_by(.data$ccode, .data$year) %>%
+    filter(.data$gwcode == max(.data$gwcode)) %>%
     ungroup() %>%
-    select(gwcode, ccode, year) -> hold_this
+    select(.data$gwcode, .data$ccode, .data$year) -> hold_this
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
     data %>%
       left_join(., hold_this, by=c("ccode1"="ccode","year"="year")) %>%
-      rename(gwcode1 = gwcode) %>%
+      rename(gwcode1 = .data$gwcode) %>%
       left_join(., hold_this, by=c("ccode2"="ccode","year"="year")) %>%
-      rename(gwcode2 = gwcode) -> data
+      rename(gwcode2 = .data$gwcode) -> data
 
 
 
