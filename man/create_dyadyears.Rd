@@ -43,10 +43,10 @@ create_dyadyears()
 create_dyadyears(system="gw")
 
 # Gleditsch-Ward, don't include most recent years
-create_stateyears(system="gw", mry=FALSE)
+create_dyadyears(system="gw", mry=FALSE)
 
 # Gleditsch-Ward, don't include most recent years, directed = FALSE
-create_stateyears(system="gw", mry=FALSE, directed = FALSE)
+create_dyadyears(system="gw", mry=FALSE, directed = FALSE)
 
 
 }

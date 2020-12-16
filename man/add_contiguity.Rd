@@ -38,10 +38,10 @@ duplicates in the returned output.
 
 library(magrittr)
 library(peacesciencer)
+
 cow_ddy \%>\% add_contiguity()
 
-create_stateyear() \%>\% add_contiguity()
-
+create_stateyears() \%>\% add_contiguity()
 
 }
 \references{
