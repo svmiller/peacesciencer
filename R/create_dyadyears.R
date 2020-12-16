@@ -30,6 +30,7 @@
 #' second observation is less than the country code for the first observation.
 #'
 #' @examples
+#' \dontrun{
 #' # CoW is default, will include years beyond 2016 (most recent CoW update)
 #' create_dyadyears()
 #'
@@ -41,7 +42,7 @@
 #'
 #' # Gleditsch-Ward, don't include most recent years, directed = FALSE
 #' create_dyadyears(system="gw", mry=FALSE, directed = FALSE)
-#'
+#' }
 #'
 create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
 

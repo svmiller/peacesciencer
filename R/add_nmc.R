@@ -26,11 +26,12 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(magrittr)
 #' cow_ddy %>% add_nmc()
 #'
 #' create_stateyears() %>% add_nmc()
-#'
+#' }
 #'
 add_nmc <- function(data) {
 

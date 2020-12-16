@@ -32,12 +32,14 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(magrittr)
 #' library(peacesciencer)
 #'
 #' cow_ddy %>% add_contiguity()
 #'
 #' create_stateyears() %>% add_contiguity()
+#' }
 #'
 #' @importFrom rlang .data
 #' @importFrom rlang .env

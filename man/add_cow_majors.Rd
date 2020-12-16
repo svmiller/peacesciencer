@@ -28,10 +28,12 @@ of the proverbial pipe.
 }
 \examples{
 
+\dontrun{
 library(magrittr)
 library(peacesciencer)
 
 cow_ddy \%>\% add_cow_majors()
+}
 
 }
 \references{

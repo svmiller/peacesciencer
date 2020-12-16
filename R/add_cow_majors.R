@@ -23,10 +23,12 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(magrittr)
 #' library(peacesciencer)
 #'
 #' cow_ddy %>% add_cow_majors()
+#' }
 #'
 #' @importFrom rlang .data
 #' @importFrom rlang .env

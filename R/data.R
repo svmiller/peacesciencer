@@ -73,7 +73,7 @@ NULL
 #'
 #' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime CHaracteristics and Transitions, 1800-2017." Center for Systemic Peace.
 #'
-#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). Available at SSRN: \url{http://ssrn.com/abstract=2753830}
+#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). \url{http://dx.doi.org/10.2139/ssrn.2753830}
 #'
 #' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type. Political Analysis 18 (4): 426-449.
 #'
@@ -213,7 +213,7 @@ NULL
 #'
 #' @format A data frame with 243 observations on the following 10 variables.
 #' \describe{
-#' \item{\code{stateabb}}{a character vector for the state abbrevation}
+#' \item{\code{stateabb}}{a character vector for the state abbreviation}
 #' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
 #' \item{\code{statenme}}{a character vector for the state name}
 #' \item{\code{styear}}{the start year in the system}

@@ -29,9 +29,10 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(magrittr)
 #' cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd()
-#'
+#' }
 #'
 
 filter_prd <- function(data) {

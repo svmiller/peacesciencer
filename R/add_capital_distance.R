@@ -26,11 +26,15 @@ globalVariables(c('.', 'capitals', 'cow_ddy'))
 #'
 #' @examples
 #'
+#'\dontrun{
 #' library(magrittr)
 #' library(peacesciencer)
+#'
 #' cow_ddy %>% add_capital_distance()
 #'
 #' create_stateyears() %>% add_capital_distance()
+#' }
+#'
 #'
 #' @importFrom rlang .data
 #' @importFrom rlang .env

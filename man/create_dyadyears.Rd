@@ -36,6 +36,7 @@ Gleditsch-Ward (\code{gw}) system membership data. The function leans on interna
 data provided in the package.
 }
 \examples{
+\dontrun{
 # CoW is default, will include years beyond 2016 (most recent CoW update)
 create_dyadyears()
 
@@ -47,7 +48,7 @@ create_dyadyears(system="gw", mry=FALSE)
 
 # Gleditsch-Ward, don't include most recent years, directed = FALSE
 create_dyadyears(system="gw", mry=FALSE, directed = FALSE)
-
+}
 
 }
 \references{

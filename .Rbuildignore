@@ -3,3 +3,4 @@
 ^data-raw$
 ^_dross$
 ^README\.Rmd$
+^cran-comments\.md$

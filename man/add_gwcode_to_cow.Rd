@@ -30,7 +30,7 @@ the \code{countrycode} package. Whether you use this function or the \code{count
 the output.
 }
 \examples{
-
+\dontrun{
 library(magrittr)
 library(peacesciencer)
 
@@ -38,7 +38,7 @@ library(peacesciencer)
 cow_ddy \%>\% add_gwcode_to_cow()
 
 create_stateyears() \%>\% add_gwcode_to_cow()
-
+}
 
 }
 \author{

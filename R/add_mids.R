@@ -33,12 +33,13 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(magrittr)
 #' cow_ddy %>% add_mids()
 #'
 #' # keep just the dispute number and Side A/B identifiers
 #' cow_ddy %>% add_mids(keep=c("dispnum","sidea1", "sidea2"))
-#'
+#' }
 #'
 
 

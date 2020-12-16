@@ -7,7 +7,7 @@
 \format{
 A data frame with 243 observations on the following 10 variables.
 \describe{
-\item{\code{stateabb}}{a character vector for the state abbrevation}
+\item{\code{stateabb}}{a character vector for the state abbreviation}
 \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
 \item{\code{statenme}}{a character vector for the state name}
 \item{\code{styear}}{the start year in the system}

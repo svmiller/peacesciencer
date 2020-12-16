@@ -36,12 +36,14 @@ duplicates in the returned output.
 }
 \examples{
 
+\dontrun{
 library(magrittr)
 library(peacesciencer)
 
 cow_ddy \%>\% add_contiguity()
 
 create_stateyears() \%>\% add_contiguity()
+}
 
 }
 \references{
