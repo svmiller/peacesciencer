@@ -79,6 +79,8 @@ tic()
 create_dyadyears() %>%
   # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
+  # Add capital-to-capital distance
+  add_capital_distance() %>%
   # Add contiguity information
   add_contiguity() %>%
   # Add major power data
@@ -92,26 +94,26 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 19
-    ##    ccode1 ccode2  year gwcode1 gwcode2 conttype cowmaj1 cowmaj2 v2x_polyarchy1
-    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>          <dbl>
-    ##  1      2     20  1920       2      20        1       1       0          0.446
-    ##  2      2     20  1921       2      20        1       1       0          0.509
-    ##  3      2     20  1922       2      20        1       1       0          0.51 
-    ##  4      2     20  1923       2      20        1       1       0          0.516
-    ##  5      2     20  1924       2      20        1       1       0          0.514
-    ##  6      2     20  1925       2      20        1       1       0          0.505
-    ##  7      2     20  1926       2      20        1       1       0          0.511
-    ##  8      2     20  1927       2      20        1       1       0          0.53 
-    ##  9      2     20  1928       2      20        1       1       0          0.533
-    ## 10      2     20  1929       2      20        1       1       0          0.549
-    ## # … with 246,304 more rows, and 10 more variables: polity21 <dbl>,
-    ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
-    ## #   defense <dbl>, neutrality <dbl>, nonaggression <dbl>, entente <dbl>,
-    ## #   prd <dbl>
+    ## # A tibble: 246,314 x 20
+    ##    ccode1 ccode2  year gwcode1 gwcode2 capdist conttype cowmaj1 cowmaj2
+    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>    <dbl>   <dbl>   <dbl>
+    ##  1      2     20  1920       2      20    735.        1       1       0
+    ##  2      2     20  1921       2      20    735.        1       1       0
+    ##  3      2     20  1922       2      20    735.        1       1       0
+    ##  4      2     20  1923       2      20    735.        1       1       0
+    ##  5      2     20  1924       2      20    735.        1       1       0
+    ##  6      2     20  1925       2      20    735.        1       1       0
+    ##  7      2     20  1926       2      20    735.        1       1       0
+    ##  8      2     20  1927       2      20    735.        1       1       0
+    ##  9      2     20  1928       2      20    735.        1       1       0
+    ## 10      2     20  1929       2      20    735.        1       1       0
+    ## # … with 246,304 more rows, and 11 more variables: v2x_polyarchy1 <dbl>,
+    ## #   polity21 <dbl>, xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>,
+    ## #   xm_qudsest2 <dbl>, defense <dbl>, neutrality <dbl>, nonaggression <dbl>,
+    ## #   entente <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 10.728 sec elapsed
+    ## 12.911 sec elapsed

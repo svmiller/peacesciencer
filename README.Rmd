@@ -61,6 +61,8 @@ tic()
 create_dyadyears() %>%
   # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
+  # Add capital-to-capital distance
+  add_capital_distance() %>%
   # Add contiguity information
   add_contiguity() %>%
   # Add major power data
