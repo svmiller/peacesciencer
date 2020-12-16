@@ -116,4 +116,38 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 12.911 sec elapsed
+    ## 13.772 sec elapsed
+
+``` r
+# state-years now...
+
+tic()
+create_stateyears() %>%
+  add_gwcode_to_cow() %>%
+  add_capital_distance() %>%
+  add_contiguity() %>%
+  add_cow_majors() %>%
+  add_democracy
+```
+
+    ## # A tibble: 16,536 x 11
+    ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj v2x_polyarchy
+    ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>         <dbl>
+    ##  1     2 United …  1816      2      5742.     0     0      0         0.367
+    ##  2     2 United …  1817      2      5742.     0     0      0         0.37 
+    ##  3     2 United …  1818      2      5742.     0     0      0         0.365
+    ##  4     2 United …  1819      2      5742.     0     0      0         0.362
+    ##  5     2 United …  1820      2      5742.     0     0      0         0.349
+    ##  6     2 United …  1821      2      5742.     0     0      0         0.336
+    ##  7     2 United …  1822      2      5744.     0     0      0         0.341
+    ##  8     2 United …  1823      2      5744.     0     0      0         0.345
+    ##  9     2 United …  1824      2      5744.     0     0      0         0.345
+    ## 10     2 United …  1825      2      5744.     0     0      0         0.341
+    ## # … with 16,526 more rows, and 2 more variables: polity2 <dbl>,
+    ## #   xm_qudsest <dbl>
+
+``` r
+toc()
+```
+
+    ## 2.869 sec elapsed

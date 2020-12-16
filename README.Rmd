@@ -76,4 +76,15 @@ create_dyadyears() %>%
   filter_prd()
 toc()
 
+# state-years now...
+
+tic()
+create_stateyears() %>%
+  add_gwcode_to_cow() %>%
+  add_capital_distance() %>%
+  add_contiguity() %>%
+  add_cow_majors() %>%
+  add_democracy
+toc()
+
 ```
