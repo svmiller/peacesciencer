@@ -116,7 +116,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 13.772 sec elapsed
+    ## 13.495 sec elapsed
 
 ``` r
 # state-years now...
@@ -127,7 +127,7 @@ create_stateyears() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
-  add_democracy
+  add_democracy()
 ```
 
     ## # A tibble: 16,536 x 11
@@ -150,4 +150,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 2.869 sec elapsed
+    ## 3.019 sec elapsed

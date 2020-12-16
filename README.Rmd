@@ -84,7 +84,7 @@ create_stateyears() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
-  add_democracy
+  add_democracy()
 toc()
 
 ```
