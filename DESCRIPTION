@@ -31,3 +31,5 @@ Imports:
     tidyr,
     stringr,
     rlang
+Suggests: 
+    testthat
