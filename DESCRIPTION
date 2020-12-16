@@ -11,10 +11,11 @@ Maintainer: Steve Miller <steven.v.miller@gmail.com>
 Description: These are useful tools and data sets for the study of quantitative 
     peace science. The goal for this package is to include tools and data sets
     for doing original research that mimics well what a user would have to previously
-    get from a software package like "EUGene" or "NewGene." Those software bundles
-    are useful the extent to which they encourage replications of long-standing
-    analyses by starting the data-generating process from scratch. However, a lot of
-    the functionality can be done relatively quickly in the R programming language.
+    get from a software package that may not be well-sourced or well-supported.
+    Those software bundles were useful the extent to which they encourage replications 
+    of long-standing analyses by starting the data-generating process from scratch. However, 
+    a lot of the functionality can be done relatively quickly and more transparently
+    in the R programming language.
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
