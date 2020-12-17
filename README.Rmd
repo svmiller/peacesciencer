@@ -33,7 +33,7 @@ install.packages("peacesciencer")
 Until then, you can install the development version of this package through the `devtools` package.
 
 ```r
-devtools::install_github("svmiller/stevetemplates")
+devtools::install_github("svmiller/peacesciencer")
 ```
 
 # Usage
@@ -89,7 +89,7 @@ create_dyadyears() %>%
   # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
   # Add GML MIDs 
-  add_mids %>%
+  add_mids() %>%
   # Add capital-to-capital distance
   add_capital_distance() %>%
   # Add contiguity information

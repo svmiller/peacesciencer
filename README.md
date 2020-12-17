@@ -32,7 +32,7 @@ Until then, you can install the development version of this package
 through the `devtools` package.
 
 ``` r
-devtools::install_github("svmiller/stevetemplates")
+devtools::install_github("svmiller/peacesciencer")
 ```
 
 # Usage
@@ -134,7 +134,7 @@ create_dyadyears() %>%
   # Add Gleditsch-Ward codes
   add_gwcode_to_cow() %>%
   # Add GML MIDs 
-  add_mids %>%
+  add_mids() %>%
   # Add capital-to-capital distance
   add_capital_distance() %>%
   # Add contiguity information
@@ -184,7 +184,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 22.261 sec elapsed
+    ## 23.915 sec elapsed
 
 ``` r
 # state-years now...
@@ -220,4 +220,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 3.31 sec elapsed
+    ## 3.983 sec elapsed
