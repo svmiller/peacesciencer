@@ -78,6 +78,10 @@ It also has the following data sets:
     state system members
   - `cow_gw_years`: a yearly data frame including information about
     Correlates of War and Gleditsch-Ward states.
+  - `cow_igo_ndy`: non-directed dyad-year data for Correlates of War
+    intergovernmental organizations data.
+  - `cow_igo_sy`: state-year data for Correlates of War
+    intergovernmental organizations data.
   - `cow_majors`: Correlates of War major powers data (version: 2016)
   - `cow_nmc`: Correlates of War National Material Capabilities data
     (version 5.0)
@@ -184,7 +188,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 23.915 sec elapsed
+    ## 23.697 sec elapsed
 
 ``` r
 # state-years now...
@@ -220,4 +224,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 3.983 sec elapsed
+    ## 3.209 sec elapsed

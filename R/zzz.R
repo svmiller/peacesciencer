@@ -6,5 +6,6 @@ if(getRversion() >= "2.15.1")
     # underlying data used for behind-the-scenes handsomeness
     c("capitals", "ccode_democracy", "cow_alliance", "cow_contdir",
       "cow_ddy", "cow_gw_years", "cow_majors", "cow_states",
-      "gml_dirdisp", "gw_ddy", "gw_states", "maoz_powers", "cow_nmc")
+      "gml_dirdisp", "gw_ddy", "gw_states", "maoz_powers", "cow_nmc",
+      "cow_igo_ndy")
   )
