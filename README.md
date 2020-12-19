@@ -44,8 +44,8 @@ following functions:
     kilometers, “as the crow flies”) to dyad-year or state-year data.
   - `add_contiguity()`: adds Correlates of War direct contiguity data to
     dyad-year or state-year data.
-  - `add_cow_alliance()`: adds Correlates of War major power information
-    to dyad-year data.
+  - `add_cow_alliance()`: adds Correlates of War major alliance
+    information to dyad-year data.
   - `add_cow_majors()`: adds Correlates of War major power information
     to dyad-year or state-year data.
   - `add_democracy()`: adds estimates of democracy/levels of democracy
@@ -188,7 +188,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 23.697 sec elapsed
+    ## 18.049 sec elapsed
 
 ``` r
 # state-years now...
@@ -224,4 +224,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 3.209 sec elapsed
+    ## 2.725 sec elapsed
