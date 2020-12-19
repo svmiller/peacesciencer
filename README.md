@@ -56,10 +56,12 @@ following functions:
     onsets from the Gibler-Miller-Little data.
   - `add_nmc()`: adds estimates of national material capabilities (from
     Correlates of War) to dyad-year or state-year data.
+  - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
+    state system membership data into dyad-year format
+  - `create_statedays()`: converts Correlates of War or Gleditsch-Ward
+    state membership data into state-day format..
   - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
-  - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
-    state system membership data into dyad-year format.
   - `filter_prd()`: filters dyad-year data frame to just “politically
     relevant” dyads.
 
@@ -188,7 +190,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 18.049 sec elapsed
+    ## 18.293 sec elapsed
 
 ``` r
 # state-years now...
@@ -224,4 +226,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 2.725 sec elapsed
+    ## 3.11 sec elapsed

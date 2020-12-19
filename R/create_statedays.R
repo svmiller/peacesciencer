@@ -1,12 +1,12 @@
-#' Create state-years from state system membership data
+#' Create state-days from state system membership data
 #'
-#' @description \code{create_stateyears()} allows you to generate state-year data from
+#' @description \code{create_statedays()} allows you to create state-day data from
 #' either the Correlates of War (\code{CoW}) state system membership data or the
 #' Gleditsch-Ward (\code{gw}) system membership data. The function leans on internal
 #' data provided in the package.
 #'
-#' @return \code{create_stateyears()} takes state system membership data provided
-#' by either Correlates of War or Gleditsch-Ward and returns a simple state-year
+#' @return \code{create_statedays()} takes state system membership data provided
+#' by either Correlates of War or Gleditsch-Ward and returns a simple state-day
 #' data frame.
 #'
 #' @author Steven V. Miller
@@ -30,17 +30,17 @@
 #' library(magrittr)
 #'
 #' # CoW is default, will include years beyond 2016 (most recent CoW update)
-#' create_stateyears()
+#' create_statedays()
 #'
 #' # Gleditsch-Ward, include most recent years
-#' create_stateyears(system="gw")
+#' create_statedays(system="gw")
 #'
 #' # Gleditsch-Ward, don't include most recent years
-#' create_stateyears(system="gw", mry=FALSE)
+#' create_statedays(system="gw", mry=FALSE)
 #' }
 #'
 #'
-create_stateyears <- function(system = "cow", mry = TRUE) {
+create_statedays <- function(system = "cow", mry = TRUE) {
 
   if (system == "cow") {
     if (mry == TRUE) {
@@ -51,34 +51,36 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
     }
 
     cow_states %>%
+      mutate(stdate = ymd(paste0(.data$styear,"/", .data$stmonth,"/", .data$stday)),
+             enddate = ymd(paste0(.data$endyear2, "/", .data$endmonth,"/",.data$endday))) %>%
       rowwise() %>%
-      mutate(year = list(seq(.data$styear, .data$endyear2))) %>%
-      unnest(c(year)) %>%
-      arrange(.data$ccode, .data$year) %>%
-      select(.data$ccode, .data$statenme, .data$year) %>%
-      distinct(.data$ccode, .data$statenme, .data$year) -> data
+      mutate(date = list(seq(.data$stdate, .data$enddate, by = '1 day'))) %>%
+      unnest(date) %>%
+      select(ccode, statenme, date) -> data
 
-    attr(data, "ps_data_type") = "state_year"
+    attr(data, "ps_data_type") = "state_day"
 
     return(data)
 
   } else if(system == "gw") {
     if (mry == TRUE) {
-      mry <- as.numeric(format(Sys.Date(), "%Y"))-1
-      gw_states$endyear = ifelse(year(gw_states$enddate) == max(year(gw_states$enddate)), mry, year(gw_states$enddate))
+      gw_states$enddate2 = if_else(year(gw_states$enddate) == max(year(gw_states$enddate)),
+                                  ymd(paste0(as.numeric(format(Sys.Date(), "%Y"))-1,"/12/31")),
+                                  gw_states$enddate)
     } else {
-      gw_states$endyear <- year(gw_states$enddate)
+      gw_states$enddate2 <- gw_states$enddate
     }
-    gw_states %>%
-      mutate(styear = year(.data$startdate)) %>%
-      rowwise() %>%
-      mutate(year = list(seq(.data$styear, .data$endyear))) %>%
-      unnest(c(year)) %>%
-      arrange(.data$gwcode, .data$year) %>%
-      select(.data$gwcode, .data$statename, .data$year)  %>%
-      distinct(.data$gwcode, .data$statename, .data$year)  -> data
 
-    attr(data, "ps_data_type") = "state_year"
+    gw_states %>%
+      mutate(enddate) %>%
+      rowwise() %>%
+      mutate(date = list(seq(.data$startdate, .data$enddate2, by = '1 day')))  %>%
+      unnest(c(date)) %>%
+      arrange(.data$gwcode, .data$date) %>%
+      select(.data$gwcode, .data$statename, .data$date)  %>%
+      distinct(.data$gwcode, .data$statename, .data$date)  -> data
+
+    attr(data, "ps_data_type") = "state_day"
 
     return(data)
 
