@@ -52,6 +52,8 @@ following functions:
     to dyad-year or state-year data.
   - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
     or state-year data with Correlates of War state codes.
+  - `add_igos()`: adds Correlates of War International Governmental
+    Organizations (IGOs) data to dyad-year or state-year data.
   - `add_mids():` adds dyad-year information about ongoing MIDs and MID
     onsets from the Gibler-Miller-Little data.
   - `add_nmc()`: adds estimates of national material capabilities (from
@@ -149,6 +151,8 @@ create_dyadyears() %>%
   add_cow_majors() %>%
   # Add democracy variables
   add_democracy() %>%
+  # Add IGOs data
+  add_igos() %>%
   # Add National Material Capabilities
   add_nmc() %>%
   # add alliance data from Correlates of War
@@ -158,7 +162,7 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 2,025,840 x 70
+    ## # A tibble: 2,025,840 x 71
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
     ##  1      2     20  1920       2      20      NA          0        0     NA     NA
@@ -171,7 +175,7 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20      NA          0        0     NA     NA
     ##  9      2     20  1928       2      20      NA          0        0     NA     NA
     ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 2,025,830 more rows, and 60 more variables: revstate1 <dbl>,
+    ## # … with 2,025,830 more rows, and 61 more variables: revstate1 <dbl>,
     ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
     ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
     ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
@@ -181,16 +185,17 @@ create_dyadyears() %>%
     ## #   numb <dbl>, ongo2010 <dbl>, version <chr>, capdist <dbl>, conttype <dbl>,
     ## #   cowmaj1 <dbl>, cowmaj2 <dbl>, v2x_polyarchy1 <dbl>, polity21 <dbl>,
     ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
-    ## #   milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>, tpop1 <dbl>,
-    ## #   upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>, irst2 <dbl>,
-    ## #   pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>, defense <dbl>,
-    ## #   neutrality <dbl>, nonaggression <dbl>, entente <dbl>, prd <dbl>
+    ## #   dyadigos <dbl>, milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>,
+    ## #   tpop1 <dbl>, upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>,
+    ## #   irst2 <dbl>, pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>,
+    ## #   defense <dbl>, neutrality <dbl>, nonaggression <dbl>, entente <dbl>,
+    ## #   prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 18.293 sec elapsed
+    ## 27.861 sec elapsed
 
 ``` r
 # state-years now...
@@ -202,10 +207,11 @@ create_stateyears() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
   add_democracy() %>%
+  add_igos() %>%
   add_nmc()
 ```
 
-    ## # A tibble: 16,536 x 18
+    ## # A tibble: 16,536 x 22
     ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj v2x_polyarchy
     ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>         <dbl>
     ##  1     2 United …  1816      2      5742.     0     0      0         0.367
@@ -218,12 +224,13 @@ create_stateyears() %>%
     ##  8     2 United …  1823      2      5744.     0     0      0         0.345
     ##  9     2 United …  1824      2      5744.     0     0      0         0.345
     ## 10     2 United …  1825      2      5744.     0     0      0         0.341
-    ## # … with 16,526 more rows, and 9 more variables: polity2 <dbl>,
-    ## #   xm_qudsest <dbl>, milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>,
-    ## #   tpop <dbl>, upop <dbl>, cinc <dbl>
+    ## # … with 16,526 more rows, and 13 more variables: polity2 <dbl>,
+    ## #   xm_qudsest <dbl>, sum_igo_full <dbl>, sum_igo_associate <dbl>,
+    ## #   sum_igo_observer <dbl>, sum_igo_anytype <dbl>, milex <dbl>, milper <dbl>,
+    ## #   irst <dbl>, pec <dbl>, tpop <dbl>, upop <dbl>, cinc <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 3.11 sec elapsed
+    ## 4.521 sec elapsed
