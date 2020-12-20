@@ -495,3 +495,38 @@ NULL
 #' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
 
 "cow_mindist"
+
+#' The Minimum Distance Between States in the Gleditsch-Ward System, 1946-2015
+#'
+#' These are non-directed dyad-year data for the minimum distance between states in the Gleditsch-Ward state system from
+#' 1946 to 2015. The data are generated from the \code{cshapes} package.
+#'
+#' @format A data frame with 868813 observations on the following 4 variables.
+#' \describe{
+#' \item{\code{gwode1}}{the Gleditsch-Ward state system code for the first state}
+#' \item{\code{gwode2}}{the Gleditsch-Ward state system code for the second state}
+#' \item{\code{year}}{the year}
+#' \item{\code{mindist}}{the minimum distance between states on Dec. 31 of the year, in kilometers}
+#' }
+#'
+#' @details The data are generated from the \code{cshapes} package. The package authors purport that the data
+#' are generated to be compatible with the Gleditsch-Ward system. I trust them on this; indeed, Gleditsch is one of the
+#' authors of the \code{cshapes} package. However, I'm not sure how exhaustive the coverage is. For example,
+#' Tibet is missing in these data and it should not be. I do not use Gleditsch-Ward codes for my own research, so my
+#' quality control here for functions using these data will be minimal. I can only confirm there are no duplicates in the
+#' data.
+#'
+#' Data are automatically generated (by default) as directed dyad-years. I elect to make them non-directed for space
+#' considerations. Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
+#' looks weird to see the code that does it.
+#'
+#' Most of the data I prove elsewhere in this package are to be understood as the data as they were at the *start* of
+#' the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
+#' function. However, the script that generates these data are set at Dec. 31 of the year and not Jan. 1. I do this for concerns
+#' of maximizing data coverage. If you wanted the same effect, just lag the data a year.
+#'
+#' @references
+#'
+#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
+
+"gw_mindist"

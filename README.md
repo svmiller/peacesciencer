@@ -97,6 +97,8 @@ It also has the following data sets:
     Gibler-Miller-Little inter-state dispute data.
   - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward
     state system members
+  - `gw_mindist`: the minimum distance between Gleditsch-Ward states, in
+    kilometers, in non-directed dyad-year format (1946-2015)
   - `gw_states`: Gleditsch-Ward independent state system data (version:
     2017)
   - `maoz_powers`: Zeev Maoz’ global/regional power data.
@@ -197,7 +199,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 20.36 sec elapsed
+    ## 22.435 sec elapsed
 
 ``` r
 # state-years now...
@@ -235,4 +237,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 3.033 sec elapsed
+    ## 2.758 sec elapsed
