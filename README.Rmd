@@ -65,6 +65,7 @@ It also has the following data sets:
 - `cow_igo_ndy`: non-directed dyad-year data for Correlates of War intergovernmental organizations data.
 - `cow_igo_sy`: state-year data for Correlates of War intergovernmental organizations data.
 - `cow_majors`: Correlates of War major powers data (version: 2016)
+- `cow_mindist`: the minimum distance between Correlates of War states, in kilometers, in non-directed dyad-year format (1946-2015)
 - `cow_nmc`: Correlates of War National Material Capabilities data (version 5.0)
 - `cow_states`: Correlates of War state system membership data (version: 2016)
 - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the Gibler-Miller-Little inter-state dispute data.

@@ -460,3 +460,38 @@ NULL
 #' Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.
 #'
 "cow_igo_sy"
+
+#' The Minimum Distance Between States in the Correlates of War System, 1946-2015
+#'
+#' These are non-directed dyad-year data for the minimum distance between states in the Correlates of War state system from
+#' 1946 to 2015. The data are generated from the \code{cshapes} package.
+#'
+#' @format A data frame with 817053 observations on the following 4 variables.
+#' \describe{
+#' \item{\code{ccode1}}{the Correlates of War state system code for the first state}
+#' \item{\code{ccode2}}{the Correlates of War state system code for the second state}
+#' \item{\code{year}}{the year}
+#' \item{\code{mindist}}{the minimum distance between states on Dec. 31 of the year, in kilometers}
+#' }
+#'
+#' @details The data are generated from the \code{cshapes} package. The package authors purport that the data
+#' are generated to be compatible with Correlates of War system codes, but a review I did several years ago for
+#' an unrelated project (published in 2017 in \emph{Conflict Management & Peace Science}, which you should cite for
+#' all your articles if you're reading this) suggested the output does not seem to perfectly meet that billing. These
+#' included oddball cases like Zanzibar, United Arab Republic, Comoros, East Germany, and a few others. I pre-process
+#' these as outlined in the associated file in the \code{data-raw} directory on the project's Github.
+#'
+#' Data are automatically generated (by default) as directed dyad-years. I elect to make them non-directed for space
+#' considerations. Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
+#' looks weird to see the code that does it.
+#'
+#' Most of the data I prove elsewhere in this package are to be understood as the data as they were at the *start* of
+#' the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
+#' function. However, the script that generates these data are set at Dec. 31 of the year and not Jan. 1. I do this for concerns
+#' of maximizing data coverage. If you wanted the same effect, just lag the data a year.
+#'
+#' @references
+#'
+#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
+
+"cow_mindist"
