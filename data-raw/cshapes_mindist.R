@@ -129,5 +129,10 @@ result %>% as_tibble() %>%
   dplyr::rename(gwcode1 = ccode1,
          gwcode2 = ccode2) -> gw_mindist
 
+# Let's make this non-directed for space considerations
+
+gw_mindist %>%
+  filter(gwcode2 > gwcode1)  -> gw_mindist
+
 save(gw_mindist, file="data/gw_mindist.rda")
 
