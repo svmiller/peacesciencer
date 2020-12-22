@@ -530,3 +530,26 @@ NULL
 #' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
 
 "gw_mindist"
+
+#' Correlates of War National Trade Data Set (v. 4.0)
+#'
+#' These are state-year-level data for national trade from the Correlates of War project.
+#'
+#'
+#' @format A data frame with 14410 on the following four variables.
+#' \describe{
+#' \item{\code{ccode}}{the Correlates of War state system code}
+#' \item{\code{year}}{the year}
+#' \item{\code{imports}}{total imports of the state in current million USD}
+#' \item{\code{exports}}{total exports of the state in current million USD}
+#' }
+#'
+#' @details The \code{data-raw} directory on the project's Github shows how the data were processed.
+#'
+#' @references
+#'
+#' Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Cdebook, Version 4.0. Online: \url{https://correlatesofwar.org}
+#'
+#' Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." \emph{Conflict Management and Peace Science}, 26(5): 471-491.
+#'
+"cow_trade_sy"
