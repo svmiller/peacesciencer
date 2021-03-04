@@ -23,6 +23,20 @@ saveRDS(cow_trade_ndy, file="data/cow_trade_ndy.rds")
 # save(cow_trade_ndy, file="data/cow_trade_ndy.rda")
 # ^ I tried...
 
+# I'mma try the DDY version now...
+
+cow_trade_ndy %>%
+  rename(ccode1 = ccode2,
+         ccode2 = ccode1,
+         flow1 = flow2,
+         flow2 = flow1,
+         smoothflow1 = smoothflow2,
+         smoothflow2 = smoothflow1) %>%
+  bind_rows(., cow_trade_ndy) ->cow_trade_ddy
+
+saveRDS(cow_trade_ddy, file="~/Dropbox/svmiller.github.io/R/peacesciencer/cow_trade_ddy.rds")
+
+
 
 cow_trade_sy <- read_csv("~/Dropbox/data/cow/trade/National_COW_4.0.csv") %>%
   # select just what we want

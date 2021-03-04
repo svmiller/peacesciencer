@@ -19,7 +19,9 @@ tribble(
   'politically relevant dyads', 'Weede, Erich. 1976. "Overwhelming preponderance as a pacifying condition among contiguous Asian dyads." Journal of Conflict Resolution 20: 395-411.',
   'politically relevant dyads', 'Lemke, Douglas and William Reed. 2001. "The Relevance of Politically Relevant Dyads." Journal of Conflict Resolution 45(1): 126-144.',
   'states (CoW)','Correlates of War Project. 2017. "State System Membership List, v2016." Online, https://correlatesofwar.org/data-sets/state-system-membership',
-  'states (GW)', 'Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" 25(4): 393--413'
+  'states (GW)', 'Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" 25(4): 393--413',
+  'trade', 'Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Cdebook, Version 4.0. Online: https://correlatesofwar.org',
+  'trade', 'Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." Conflict Management and Peace Science, 26(5): 471-491.'
 ) -> citations
 
 

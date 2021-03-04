@@ -44,6 +44,7 @@ The package is very much a work in progress. Right now, it has the following fun
 - `add_contiguity()`: adds Correlates of War direct contiguity data to dyad-year or state-year data.
 - `add_cow_alliance()`: adds Correlates of War major alliance information to dyad-year data.
 - `add_cow_majors()`: adds Correlates of War major power information to dyad-year or state-year data.
+- `add_cow_trade()`: adds Correlates of War trade data to dyad-year or state-year data.
 - `add_democracy()`: adds estimates of democracy/levels of democracy to dyad-year or state-year data.
 - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year or state-year data with Correlates of War state codes.
 - `add_igos()`: adds Correlates of War International Governmental Organizations (IGOs) data to dyad-year or state-year data.
@@ -68,6 +69,7 @@ It also has the following data sets:
 - `cow_mindist`: the minimum distance between Correlates of War states, in kilometers, in non-directed dyad-year format (1946-2015)
 - `cow_nmc`: Correlates of War National Material Capabilities data (version 5.0)
 - `cow_states`: Correlates of War state system membership data (version: 2016)
+- `cow_trade_sy`: Correlates of War state-year trade data (version 4.0)
 - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the Gibler-Miller-Little inter-state dispute data.
 - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward state system members
 - `gw_mindist`: the minimum distance between  Gleditsch-Ward states, in kilometers, in non-directed dyad-year format (1946-2015)
@@ -96,6 +98,8 @@ create_dyadyears() %>%
   add_gwcode_to_cow() %>%
   # Add GML MIDs 
   add_mids() %>%
+  # Add trade data
+  add_cow_trade() %>%
   # Add capital-to-capital distance
   add_capital_distance() %>%
   # Add contiguity information
@@ -123,6 +127,7 @@ create_stateyears() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
+  add_cow_trade() %>%
   add_democracy() %>%
   add_igos() %>%
   add_nmc()

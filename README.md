@@ -40,72 +40,76 @@ devtools::install_github("svmiller/peacesciencer")
 The package is very much a work in progress. Right now, it has the
 following functions:
 
-  - `add_capital_distance()`: adds capital-to-capital distance (in
+-   `add_capital_distance()`: adds capital-to-capital distance (in
     kilometers, “as the crow flies”) to dyad-year or state-year data.
-  - `add_contiguity()`: adds Correlates of War direct contiguity data to
+-   `add_contiguity()`: adds Correlates of War direct contiguity data to
     dyad-year or state-year data.
-  - `add_cow_alliance()`: adds Correlates of War major alliance
+-   `add_cow_alliance()`: adds Correlates of War major alliance
     information to dyad-year data.
-  - `add_cow_majors()`: adds Correlates of War major power information
+-   `add_cow_majors()`: adds Correlates of War major power information
     to dyad-year or state-year data.
-  - `add_democracy()`: adds estimates of democracy/levels of democracy
+-   `add_cow_trade()`: adds Correlates of War trade data to dyad-year or
+    state-year data.
+-   `add_democracy()`: adds estimates of democracy/levels of democracy
     to dyad-year or state-year data.
-  - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
+-   `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
     or state-year data with Correlates of War state codes.
-  - `add_igos()`: adds Correlates of War International Governmental
+-   `add_igos()`: adds Correlates of War International Governmental
     Organizations (IGOs) data to dyad-year or state-year data.
-  - `add_mids():` adds dyad-year information about ongoing MIDs and MID
+-   `add_mids():` adds dyad-year information about ongoing MIDs and MID
     onsets from the Gibler-Miller-Little data.
-  - `add_nmc()`: adds estimates of national material capabilities (from
+-   `add_nmc()`: adds estimates of national material capabilities (from
     Correlates of War) to dyad-year or state-year data.
-  - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
+-   `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
     state system membership data into dyad-year format
-  - `create_statedays()`: converts Correlates of War or Gleditsch-Ward
+-   `create_statedays()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-day format..
-  - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
+-   `create_stateyears()`: converts Correlates of War or Gleditsch-Ward
     state membership data into state-year format.
-  - `filter_prd()`: filters dyad-year data frame to just “politically
+-   `filter_prd()`: filters dyad-year data frame to just “politically
     relevant” dyads.
 
 It also has the following data sets:
 
-  - `capitals`: a list of capitals and capital transitions for
+-   `capitals`: a list of capitals and capital transitions for
     Correlates of War state system members
-  - `ccode_democracy`: Correlates of War state-year data with three
+-   `ccode_democracy`: Correlates of War state-year data with three
     different estimates of democracy (Varieties of Democracy, Polity,
     Xavier Marquez/Pemstein et al.’s “(Quick) Unified Democracy
     Scores”).
-  - `cow_alliance`: directed dyad-year alliance formation data from the
+-   `cow_alliance`: directed dyad-year alliance formation data from the
     Correlates of War
-  - `cow_contdir`: Correlates of War Direct Contiguity Data (v. 3.2)
-  - `cow_ddy`: a full directed dyad-year data frame of Correlates of War
+-   `cow_contdir`: Correlates of War Direct Contiguity Data (v. 3.2)
+-   `cow_ddy`: a full directed dyad-year data frame of Correlates of War
     state system members
-  - `cow_gw_years`: a yearly data frame including information about
+-   `cow_gw_years`: a yearly data frame including information about
     Correlates of War and Gleditsch-Ward states.
-  - `cow_igo_ndy`: non-directed dyad-year data for Correlates of War
+-   `cow_igo_ndy`: non-directed dyad-year data for Correlates of War
     intergovernmental organizations data.
-  - `cow_igo_sy`: state-year data for Correlates of War
+-   `cow_igo_sy`: state-year data for Correlates of War
     intergovernmental organizations data.
-  - `cow_majors`: Correlates of War major powers data (version: 2016)
-  - `cow_mindist`: the minimum distance between Correlates of War
+-   `cow_majors`: Correlates of War major powers data (version: 2016)
+-   `cow_mindist`: the minimum distance between Correlates of War
     states, in kilometers, in non-directed dyad-year format (1946-2015)
-  - `cow_nmc`: Correlates of War National Material Capabilities data
+-   `cow_nmc`: Correlates of War National Material Capabilities data
     (version 5.0)
-  - `cow_states`: Correlates of War state system membership data
+-   `cow_states`: Correlates of War state system membership data
     (version: 2016)
-  - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the
+-   `cow_trade_sy`: Correlates of War state-year trade data (version
+    4.0)
+-   `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the
     Gibler-Miller-Little inter-state dispute data.
-  - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward
+-   `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward
     state system members
-  - `gw_mindist`: the minimum distance between Gleditsch-Ward states, in
+-   `gw_mindist`: the minimum distance between Gleditsch-Ward states, in
     kilometers, in non-directed dyad-year format (1946-2015)
-  - `gw_states`: Gleditsch-Ward independent state system data (version:
-    2017)
-  - `maoz_powers`: Zeev Maoz’ global/regional power data.
+-   `gw_states`: Gleditsch-Ward independent state system data
+    (version: 2017)
+-   `maoz_powers`: Zeev Maoz’ global/regional power data.
 
 The workflow is going to look something like this. This is a
-“tidy”-friendly approach to a data-generating process in
-quantitative peace science.
+“tidy”-friendly approach to a data-generating process in quantitative
+peace science.
 
 First, start with one of two processes to create either dyad-year or
 state-year data. The dyad-year data are created with the
@@ -147,6 +151,8 @@ create_dyadyears() %>%
   add_gwcode_to_cow() %>%
   # Add GML MIDs 
   add_mids() %>%
+  # Add trade data
+  add_cow_trade() %>%
   # Add capital-to-capital distance
   add_capital_distance() %>%
   # Add contiguity information
@@ -166,7 +172,7 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 2,025,840 x 71
+    ## # A tibble: 2,063,670 x 75
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
     ##  1      2     20  1920       2      20      NA          0        0     NA     NA
@@ -179,14 +185,15 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20      NA          0        0     NA     NA
     ##  9      2     20  1928       2      20      NA          0        0     NA     NA
     ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 2,025,830 more rows, and 61 more variables: revstate1 <dbl>,
+    ## # … with 2,063,660 more rows, and 65 more variables: revstate1 <dbl>,
     ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
     ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
     ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
     ## #   hostlev2 <dbl>, orig1 <dbl>, orig2 <dbl>, hiact <dbl>, hostlev <dbl>,
     ## #   mindur <dbl>, maxdur <dbl>, outcome <dbl>, settle <dbl>, fatality <dbl>,
     ## #   fatalpre <dbl>, stmon <dbl>, endmon <dbl>, recip <dbl>, numa <dbl>,
-    ## #   numb <dbl>, ongo2010 <dbl>, version <chr>, capdist <dbl>, conttype <dbl>,
+    ## #   numb <dbl>, ongo2010 <dbl>, version <chr>, flow2 <dbl>, flow1 <dbl>,
+    ## #   smoothflow2 <dbl>, smoothflow1 <dbl>, capdist <dbl>, conttype <dbl>,
     ## #   cowmaj1 <dbl>, cowmaj2 <dbl>, v2x_polyarchy1 <dbl>, polity21 <dbl>,
     ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
     ## #   dyadigos <dbl>, milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>,
@@ -199,7 +206,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 22.435 sec elapsed
+    ## 31.857 sec elapsed
 
 ``` r
 # state-years now...
@@ -210,31 +217,33 @@ create_stateyears() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
+  add_cow_trade() %>%
   add_democracy() %>%
   add_igos() %>%
   add_nmc()
 ```
 
-    ## # A tibble: 16,536 x 22
-    ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj v2x_polyarchy
-    ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>         <dbl>
-    ##  1     2 United …  1816      2      5742.     0     0      0         0.367
-    ##  2     2 United …  1817      2      5742.     0     0      0         0.37 
-    ##  3     2 United …  1818      2      5742.     0     0      0         0.365
-    ##  4     2 United …  1819      2      5742.     0     0      0         0.362
-    ##  5     2 United …  1820      2      5742.     0     0      0         0.349
-    ##  6     2 United …  1821      2      5742.     0     0      0         0.336
-    ##  7     2 United …  1822      2      5744.     0     0      0         0.341
-    ##  8     2 United …  1823      2      5744.     0     0      0         0.345
-    ##  9     2 United …  1824      2      5744.     0     0      0         0.345
-    ## 10     2 United …  1825      2      5744.     0     0      0         0.341
-    ## # … with 16,526 more rows, and 13 more variables: polity2 <dbl>,
-    ## #   xm_qudsest <dbl>, sum_igo_full <dbl>, sum_igo_associate <dbl>,
-    ## #   sum_igo_observer <dbl>, sum_igo_anytype <dbl>, milex <dbl>, milper <dbl>,
-    ## #   irst <dbl>, pec <dbl>, tpop <dbl>, upop <dbl>, cinc <dbl>
+    ## # A tibble: 16,731 x 24
+    ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj imports exports
+    ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>   <dbl>   <dbl>
+    ##  1     2 United …  1816      2      5742.     0     0      0      NA      NA
+    ##  2     2 United …  1817      2      5742.     0     0      0      NA      NA
+    ##  3     2 United …  1818      2      5742.     0     0      0      NA      NA
+    ##  4     2 United …  1819      2      5742.     0     0      0      NA      NA
+    ##  5     2 United …  1820      2      5742.     0     0      0      NA      NA
+    ##  6     2 United …  1821      2      5742.     0     0      0      NA      NA
+    ##  7     2 United …  1822      2      5744.     0     0      0      NA      NA
+    ##  8     2 United …  1823      2      5744.     0     0      0      NA      NA
+    ##  9     2 United …  1824      2      5744.     0     0      0      NA      NA
+    ## 10     2 United …  1825      2      5744.     0     0      0      NA      NA
+    ## # … with 16,721 more rows, and 14 more variables: v2x_polyarchy <dbl>,
+    ## #   polity2 <dbl>, xm_qudsest <dbl>, sum_igo_full <dbl>,
+    ## #   sum_igo_associate <dbl>, sum_igo_observer <dbl>, sum_igo_anytype <dbl>,
+    ## #   milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>, tpop <dbl>, upop <dbl>,
+    ## #   cinc <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 2.758 sec elapsed
+    ## 2.977 sec elapsed
