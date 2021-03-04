@@ -6,7 +6,7 @@ peacesciencer 0.2.0
 - File compression for the data files.
 - Add Correlates of War intergovernmental organizations data.
 - Add function for adding Correlates of War intergovernmental organizations data.
-- Add Correlates of War trade data (state-year). No compression ultimately worked for dyad-year data.
+- Add Correlates of War trade data (state-year and dyad-year).
 - Add minimum distance data
 - Add citations data frame for assistance in properly citing things.
 - Add `create_statedays()` function.
