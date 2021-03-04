@@ -18,7 +18,7 @@ cow_trade_ndy <- read_csv("~/Dropbox/data/cow/trade/Dyadic_COW_4.0.csv") %>%
 
 saveRDS(cow_trade_ndy, file="data/cow_trade_ndy.rds")
 # ^ I'm going to move this.
-# http://svmiller.com/rda/peacesciencer/cow_trade_ndy.rds
+# http://svmiller.com/R/peacesciencer/cow_trade_ndy.rds
 
 # save(cow_trade_ndy, file="data/cow_trade_ndy.rda")
 # ^ I tried...
