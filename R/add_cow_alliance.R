@@ -41,7 +41,7 @@ add_cow_alliance <- function(data) {
     stop("Right now, there is only support for dyad-year data.")
 
   } else  {
-    stop("add_something() requires a data/tibble with attributes$ps_data_type of dyad_year. Try running create_dyadyears() at the start of the pipe.")
+    stop("add_cow_alliance() requires a data/tibble with attributes$ps_data_type of dyad_year. Try running create_dyadyears() at the start of the pipe.")
   }
 
   return(data)
