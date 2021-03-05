@@ -10,8 +10,6 @@ A manual inspection identified DOI links that needed to be fixed, which I've don
 
 `devtools::spell_check()` suggests several spelling errors. However, what I submit to CRAN includes only the false positives. Almost all of these false positives occur in the R Documentation files and concern proper nouns (e.g. data set authors) or peculiar terms that are unfamiliar in the R programming context (e.g. "dyad"). 
 
-`devtools::check_rhub()` suggested a few handshake errors for otherwise valid URLs that would render in a browser. These concerned source/detail URLs for the `LTPT` and `LTWT` documentation files. Rather than fight it, or try to belabor the point to CRAN, I elected to remove the URLs in lieu of text descriptions of these URLs. There are still two notes that emerge from this check. One is a possibly misspelled word in the DESCRIPTION entry ("workflow"). That is a false positive. The other is the size of the data directory, which I explained above should not be happening.
-
 ## Downstream dependencies
 
 There are no downstream dependencies to note.
