@@ -23,7 +23,10 @@ data to a dyad-year data frame
 \details{
 For the dyad-year data, there must be some kind of information loss in order to work within the
 limited space available to this package. This package loads a truncated version of the data
-from my website.
+from my website. It will also load these data every time you use the function for dyad-year data.
+This implies 1) you probably should not use this function unless you earnestly want these data, 2) this
+function won't work for you without an active internet connection, and 3) this will be one of the slowest
+functions in the entire package.
 }
 \examples{
 
