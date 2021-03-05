@@ -72,7 +72,7 @@ create_statedays <- function(system = "cow", mry = TRUE) {
     }
 
     gw_states %>%
-      mutate(enddate) %>%
+      mutate(.data$enddate) %>%
       rowwise() %>%
       mutate(date = list(seq(.data$startdate, .data$enddate2, by = '1 day')))  %>%
       unnest(c(date)) %>%

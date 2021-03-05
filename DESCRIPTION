@@ -26,11 +26,11 @@ Imports:
     lubridate,
     magrittr,
     dplyr,
-    tibble,
     geosphere,
-    countrycode,
     tidyr,
     stringr,
     rlang
 Suggests: 
+    countrycode,
+    tibble,
     testthat
