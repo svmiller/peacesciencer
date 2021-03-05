@@ -56,7 +56,7 @@ create_statedays <- function(system = "cow", mry = TRUE) {
       rowwise() %>%
       mutate(date = list(seq(.data$stdate, .data$enddate, by = '1 day'))) %>%
       unnest(date) %>%
-      select(ccode, statenme, date) -> data
+      select(.data$ccode, .data$statenme, .data$date) -> data
 
     attr(data, "ps_data_type") = "state_day"
 
