@@ -7,8 +7,8 @@
 \format{
 A data frame with 868813 observations on the following 4 variables.
 \describe{
-\item{\code{gwode1}}{the Gleditsch-Ward state system code for the first state}
-\item{\code{gwode2}}{the Gleditsch-Ward state system code for the second state}
+\item{\code{gwcode1}}{the Gleditsch-Ward state system code for the first state}
+\item{\code{gwcode2}}{the Gleditsch-Ward state system code for the second state}
 \item{\code{year}}{the year}
 \item{\code{mindist}}{the minimum distance between states on Dec. 31 of the year, in kilometers}
 }

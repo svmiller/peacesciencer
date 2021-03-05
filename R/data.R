@@ -73,7 +73,7 @@ NULL
 #'
 #' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime CHaracteristics and Transitions, 1800-2017." Center for Systemic Peace.
 #'
-#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). \url{http://dx.doi.org/10.2139/ssrn.2753830}
+#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). \doi{10.2139/ssrn.2753830}
 #'
 #' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type. Political Analysis 18 (4): 426-449.
 #'
@@ -503,8 +503,8 @@ NULL
 #'
 #' @format A data frame with 868813 observations on the following 4 variables.
 #' \describe{
-#' \item{\code{gwode1}}{the Gleditsch-Ward state system code for the first state}
-#' \item{\code{gwode2}}{the Gleditsch-Ward state system code for the second state}
+#' \item{\code{gwcode1}}{the Gleditsch-Ward state system code for the first state}
+#' \item{\code{gwcode2}}{the Gleditsch-Ward state system code for the second state}
 #' \item{\code{year}}{the year}
 #' \item{\code{mindist}}{the minimum distance between states on Dec. 31 of the year, in kilometers}
 #' }
