@@ -58,6 +58,8 @@ following functions:
     Organizations (IGOs) data to dyad-year or state-year data.
 -   `add_mids():` adds dyad-year information about ongoing MIDs and MID
     onsets from the Gibler-Miller-Little data.
+-   `add_minimum_distance()`: adds minimum distance (in kilometers) to
+    dyad-year or state-year data.
 -   `add_nmc()`: adds estimates of national material capabilities (from
     Correlates of War) to dyad-year or state-year data.
 -   `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
@@ -167,12 +169,14 @@ create_dyadyears() %>%
   add_nmc() %>%
   # add alliance data from Correlates of War
   add_cow_alliance() %>%
+  # add minimum distance
+  add_minimum_distance() %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
 ```
 
-    ## # A tibble: 2,063,670 x 75
+    ## # A tibble: 2,063,670 x 76
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
     ##  1      2     20  1920       2      20      NA          0        0     NA     NA
@@ -185,7 +189,7 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20      NA          0        0     NA     NA
     ##  9      2     20  1928       2      20      NA          0        0     NA     NA
     ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 2,063,660 more rows, and 65 more variables: revstate1 <dbl>,
+    ## # … with 2,063,660 more rows, and 66 more variables: revstate1 <dbl>,
     ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
     ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
     ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
@@ -200,13 +204,13 @@ create_dyadyears() %>%
     ## #   tpop1 <dbl>, upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>,
     ## #   irst2 <dbl>, pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>,
     ## #   defense <dbl>, neutrality <dbl>, nonaggression <dbl>, entente <dbl>,
-    ## #   prd <dbl>
+    ## #   mindist <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 31.857 sec elapsed
+    ## 35.925 sec elapsed
 
 ``` r
 # state-years now...
@@ -220,10 +224,11 @@ create_stateyears() %>%
   add_cow_trade() %>%
   add_democracy() %>%
   add_igos() %>%
+  add_minimum_distance() %>%
   add_nmc()
 ```
 
-    ## # A tibble: 16,731 x 24
+    ## # A tibble: 16,731 x 25
     ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj imports exports
     ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>   <dbl>   <dbl>
     ##  1     2 United …  1816      2      5742.     0     0      0      NA      NA
@@ -236,14 +241,14 @@ create_stateyears() %>%
     ##  8     2 United …  1823      2      5744.     0     0      0      NA      NA
     ##  9     2 United …  1824      2      5744.     0     0      0      NA      NA
     ## 10     2 United …  1825      2      5744.     0     0      0      NA      NA
-    ## # … with 16,721 more rows, and 14 more variables: v2x_polyarchy <dbl>,
+    ## # … with 16,721 more rows, and 15 more variables: v2x_polyarchy <dbl>,
     ## #   polity2 <dbl>, xm_qudsest <dbl>, sum_igo_full <dbl>,
     ## #   sum_igo_associate <dbl>, sum_igo_observer <dbl>, sum_igo_anytype <dbl>,
-    ## #   milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>, tpop <dbl>, upop <dbl>,
-    ## #   cinc <dbl>
+    ## #   minmindist <dbl>, milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>,
+    ## #   tpop <dbl>, upop <dbl>, cinc <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 2.977 sec elapsed
+    ## 3.479 sec elapsed
