@@ -44,12 +44,6 @@ globalVariables(c('.', 'capitals', 'cow_ddy'))
 
 
 add_capital_distance <- function(data) {
-  # require dplyr)
-  # require magrittr)
-  # require dplyr)
-  # require tidyr)
-  # require lubridate)
-  # require geosphere)
   capitals %>% rowwise() %>%
     mutate(year = list(seq(.data$styear, .data$endyear))) %>%
     unnest(.data$year) %>%
