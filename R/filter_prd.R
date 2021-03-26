@@ -36,19 +36,28 @@
 #'
 
 filter_prd <- function(data) {
-  # require(dplyr)
-  # require(magrittr)
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
+    if (!all(i <- c("ccode1", "ccode2", "conttype", "cowmaj1", "cowmaj2") %in% colnames(data))) {
+
+      stop("filter_prd() depends on add_contiguity() and add_cow_majors() in this application. Run those first before running this function. Both those functions depend on Correlates of War codes, so run the default create_dyadyears() at the top of the pipe.")
+
+
+    } else {
+
   data %>%
     mutate(prd = case_when(
-      conttype <= 5 ~ 1,
-      conttype > 5 & cowmaj1 == 1 ~ 1,
-      conttype > 5 & cowmaj2 == 1 ~ 1,
+      conttype >= 1 ~ 1,
+      conttype == 0 & cowmaj1 == 1 ~ 1,
+      conttype == 0 & cowmaj2 == 1 ~ 1,
       TRUE ~ 0
     )) %>%
     filter(.data$prd == 1) -> data
+
+      return(data)
+
+    }
 
   } else  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
