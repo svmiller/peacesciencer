@@ -4,6 +4,7 @@ peacesciencer 0.3.0 (in development)
 - Add `atop_alliance` (directed dyad-year) data
 - Add `add_atop_alliance()` function
 - Add `add_minimum_distance()` function
+- Add "stops" that force the correct merge on the correct system code. In most applications, this is Correlates of War codes.
 - File compression for data files (again)
 - Rename variables in `cow_alliance` to distinguish from ATOP equivalents.
 

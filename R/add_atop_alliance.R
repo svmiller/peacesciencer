@@ -30,9 +30,16 @@
 add_atop_alliance <- function(data) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
-    atop_alliance %>%
-      left_join(data, .) %>%
-      mutate_at(vars("atop_defense", "atop_offense", "atop_neutral", "atop_nonagg", "atop_consul"), ~ifelse(is.na(.), 0, .)) -> data
+    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+
+      stop("add_atop_alliance() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+
+
+    } else {
+      atop_alliance %>%
+        left_join(data, .) %>%
+        mutate_at(vars("atop_defense", "atop_offense", "atop_neutral", "atop_nonagg", "atop_consul"), ~ifelse(is.na(.), 0, .)) -> data
+    }
 
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
