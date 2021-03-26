@@ -27,13 +27,11 @@
 #' }
 
 add_cow_alliance <- function(data) {
-  # require(dplyr)
-  # require(magrittr)
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
     cow_alliance %>%
       left_join(data, .) %>%
-      mutate_at(vars("defense", "neutrality", "nonaggression", "entente"), ~ifelse(is.na(.), 0, .)) -> data
+      mutate_at(vars("cow_defense", "cow_neutral", "cow_nonagg", "cow_entente"), ~ifelse(is.na(.), 0, .)) -> data
 
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {

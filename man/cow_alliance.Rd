@@ -10,10 +10,10 @@ A data frame with 120784 observations on the following 7 variables.
 \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
 \item{\code{year}}{a numeric vector for the year}
-\item{\code{defense}}{a numeric vector that equals 1 if the alliance included a defense pledge}
-\item{\code{neutrality}}{a numeric vector that equals 1 if the alliance included a neutrality pledge}
-\item{\code{nonaggression}}{a numeric vector that equals 1 if the alliance included a non-aggression pledge}
-\item{\code{entente}}{a numeric vector that equals 1 if the alliance included a pledge to consult if a crisis occurred}
+\item{\code{cow_defense}}{a numeric vector that equals 1 if the alliance included a defense pledge}
+\item{\code{cow_neutral}}{a numeric vector that equals 1 if the alliance included a neutrality pledge}
+\item{\code{cow_nonagg}}{a numeric vector that equals 1 if the alliance included a non-aggression pledge}
+\item{\code{cow_entente}}{a numeric vector that equals 1 if the alliance included a pledge to consult if a crisis occurred}
 }
 }
 \usage{

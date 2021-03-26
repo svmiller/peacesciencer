@@ -90,10 +90,10 @@ NULL
 #' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 #' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
 #' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{defense}}{a numeric vector that equals 1 if the alliance included a defense pledge}
-#' \item{\code{neutrality}}{a numeric vector that equals 1 if the alliance included a neutrality pledge}
-#' \item{\code{nonaggression}}{a numeric vector that equals 1 if the alliance included a non-aggression pledge}
-#' \item{\code{entente}}{a numeric vector that equals 1 if the alliance included a pledge to consult if a crisis occurred}
+#' \item{\code{cow_defense}}{a numeric vector that equals 1 if the alliance included a defense pledge}
+#' \item{\code{cow_neutral}}{a numeric vector that equals 1 if the alliance included a neutrality pledge}
+#' \item{\code{cow_nonagg}}{a numeric vector that equals 1 if the alliance included a non-aggression pledge}
+#' \item{\code{cow_entente}}{a numeric vector that equals 1 if the alliance included a pledge to consult if a crisis occurred}
 #' }
 #'
 #' @details The directed dyad-year alliance data are for alliance initiations, not straight dyad-years, "per se." This suggests
@@ -553,3 +553,28 @@ NULL
 #' Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." \emph{Conflict Management and Peace Science}, 26(5): 471-491.
 #'
 "cow_trade_sy"
+
+#' Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.0)
+#'
+#' These are directed dyad-year-level data for alliance obligations and provisions from the ATOP project
+#'
+#'
+#' @format A data frame with 272,046 on the following eight variables.
+#' \describe{
+#' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
+#' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
+#' \item{\code{year}}{a numeric vector for the year}
+#' \item{\code{atop_defense}}{a numeric vector that equals 1 if there was an alliance observed with a defense pledge}
+#' \item{\code{atop_offense}}{a numeric vector that equals 1 if there was an alliance observed with a offense pledge}
+#' \item{\code{atop_neutral}}{a numeric vector that equals 1 if there was an alliance obeserved with a neutrality pledge}
+#' \item{\code{atop_nonagg}}{a numeric vector that equals 1 if there was an alliance obeserved with a non-aggression pledge}
+#' \item{\code{atop_consul}}{a numeric vector that equals 1 if there was an alliance obeserved with a consultation pledge}
+#' }
+#' @details The \code{data-raw} directory on the project's Github shows how the data were processed.
+#'
+#' @references
+#'
+#' Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and Andrew G. Long. 2002.
+#' Alliance Treaty Obligations and Provisions, 1815-1944. \emph{International Interactions} 28: 237-60.
+
+"atop_alliance"

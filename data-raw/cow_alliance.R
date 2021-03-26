@@ -13,5 +13,11 @@ cow_alliance %>%
   ungroup() %>%
   mutate_at(vars("defense","neutrality","nonaggression", "entente"), ~ifelse(. > 1, 1, .)) -> cow_alliance
 
+cow_alliance %>%
+  rename(cow_defense = defense,
+         cow_neutral = neutrality,
+         cow_nonagg = nonaggression,
+         cow_entente = entente) -> cow_alliance
+
 save(cow_alliance, file="data/cow_alliance.rda")
 
