@@ -66,7 +66,7 @@ add_cow_majors <- function(data) {
 
     if (!all(i <- c("ccode") %in% colnames(data))) {
 
-      stop("add_cow_majors() merges on two Correlates of War code (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+      stop("add_cow_majors() merges on the Correlates of War code (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
 
 
     } else {
