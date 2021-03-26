@@ -2,6 +2,8 @@ peacesciencer 0.3.0 (in development)
 ---------------------------------------------------------------------
 
 - Add `atop_alliance` (directed dyad-year) data
+- Add `archigos` data
+- Add `add_archigos()` function
 - Add `add_atop_alliance()` function
 - Add `add_minimum_distance()` function. For now, this has no default. You must specify "gw" or "cow".
 - Add "stops" that force the correct merge on the correct system code. In most applications, this is Correlates of War codes. 

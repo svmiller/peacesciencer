@@ -48,8 +48,8 @@ add_minimum_distance <- function(data, system) {
   if (system == "cow") {
     # Just to deal with all cases, we're going to create a directed version
     cow_mindist %>%
-      rename(ccode1 = ccode2,
-             ccode2 = ccode1) %>%
+      rename(ccode1 = .data$ccode2,
+             ccode2 = .data$ccode1) %>%
       bind_rows(cow_mindist, .) -> hold_cow
 
     data %>%
@@ -60,8 +60,8 @@ add_minimum_distance <- function(data, system) {
   } else if (system == "gw") {
 
     gw_mindist %>%
-      rename(gwcode1 = gwcode2,
-             gwcode2 = gwcode1) %>%
+      rename(gwcode1 = .data$gwcode2,
+             gwcode2 = .data$gwcode1) %>%
       bind_rows(gw_mindist, .) -> hold_gw
 
     data %>%
