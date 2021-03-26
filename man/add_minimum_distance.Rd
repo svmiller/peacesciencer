@@ -4,14 +4,13 @@
 \alias{add_minimum_distance}
 \title{Add minimum distance data to a dyad-year or state-year data frame}
 \usage{
-add_minimum_distance(data, system = "cow")
+add_minimum_distance(data, system)
 }
 \arguments{
 \item{data}{a dyad-year data frame (either "directed" or "non-directed") or state-year data frame}
 
 \item{system}{a character specifying whether the user wants Correlates of War
-state-years ("cow") or Gleditsch-Ward ("gw") state-years. Correlates of War is the
-default.}
+state-years ("cow") or Gleditsch-Ward ("gw") state-years.}
 }
 \value{
 \code{add_minimum_distance()} takes a dyad-year or state-year data frame and adds the

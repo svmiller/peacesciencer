@@ -18,8 +18,7 @@
 #'
 #' @param data a dyad-year data frame (either "directed" or "non-directed") or state-year data frame
 #' @param system a character specifying whether the user wants Correlates of War
-#' state-years ("cow") or Gleditsch-Ward ("gw") state-years. Correlates of War is the
-#' default.
+#' state-years ("cow") or Gleditsch-Ward ("gw") state-years.
 #'
 #' @references
 #'
@@ -42,7 +41,7 @@
 #' @importFrom rlang .data
 #' @importFrom rlang .env
 #'
-add_minimum_distance <- function(data, system = "cow") {
+add_minimum_distance <- function(data, system) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 

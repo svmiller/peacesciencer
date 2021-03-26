@@ -40,6 +40,7 @@ devtools::install_github("svmiller/peacesciencer")
 
 The package is very much a work in progress. Right now, it has the following functions:
 
+- `add_atop_alliance()`: adds ATOP alliance information to dyad-year data.
 - `add_capital_distance()`: adds capital-to-capital distance (in kilometers, "as the crow flies") to dyad-year or state-year data.
 - `add_contiguity()`: adds Correlates of War direct contiguity data to dyad-year or state-year data.
 - `add_cow_alliance()`: adds Correlates of War major alliance information to dyad-year data.
@@ -58,6 +59,7 @@ The package is very much a work in progress. Right now, it has the following fun
 
 It also has the following data sets:
 
+- `atop_alliance:` directed dyad-year alliance data from ATOP
 - `capitals`: a list of capitals and capital transitions for Correlates of War state system members
 - `ccode_democracy`: Correlates of War state-year data with three different estimates of democracy (Varieties of Democracy, Polity, Xavier Marquez/Pemstein et al.'s "(Quick) Unified Democracy Scores").
 - `cow_alliance`: directed dyad-year alliance formation data from the Correlates of War
@@ -115,8 +117,10 @@ create_dyadyears() %>%
   add_nmc() %>%
   # add alliance data from Correlates of War
   add_cow_alliance() %>%
-  # add minimum distance
-  add_minimum_distance() %>%
+  # add alliance data from ATOP
+  add_atop_alliance() %>%
+  # add minimum distance. No default, must specify "cow" or "gw"
+  add_minimum_distance(system = "cow") %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
@@ -133,7 +137,7 @@ create_stateyears() %>%
   add_cow_trade() %>%
   add_democracy() %>%
   add_igos() %>%
-  add_minimum_distance() %>%
+  add_minimum_distance(system = "cow") %>%
   add_nmc()
 toc()
 

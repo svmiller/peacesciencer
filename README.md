@@ -40,6 +40,8 @@ devtools::install_github("svmiller/peacesciencer")
 The package is very much a work in progress. Right now, it has the
 following functions:
 
+-   `add_atop_alliance()`: adds ATOP alliance information to dyad-year
+    data.
 -   `add_capital_distance()`: adds capital-to-capital distance (in
     kilometers, “as the crow flies”) to dyad-year or state-year data.
 -   `add_contiguity()`: adds Correlates of War direct contiguity data to
@@ -73,6 +75,7 @@ following functions:
 
 It also has the following data sets:
 
+-   `atop_alliance:` directed dyad-year alliance data from ATOP
 -   `capitals`: a list of capitals and capital transitions for
     Correlates of War state system members
 -   `ccode_democracy`: Correlates of War state-year data with three
@@ -169,14 +172,16 @@ create_dyadyears() %>%
   add_nmc() %>%
   # add alliance data from Correlates of War
   add_cow_alliance() %>%
-  # add minimum distance
-  add_minimum_distance() %>%
+  # add alliance data from ATOP
+  add_atop_alliance() %>%
+  # add minimum distance. No default, must specify "cow" or "gw"
+  add_minimum_distance(system = "cow") %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
 ```
 
-    ## # A tibble: 2,063,670 x 76
+    ## # A tibble: 246,314 x 81
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
     ##  1      2     20  1920       2      20      NA          0        0     NA     NA
@@ -189,7 +194,7 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20      NA          0        0     NA     NA
     ##  9      2     20  1928       2      20      NA          0        0     NA     NA
     ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 2,063,660 more rows, and 66 more variables: revstate1 <dbl>,
+    ## # … with 246,304 more rows, and 71 more variables: revstate1 <dbl>,
     ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
     ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
     ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
@@ -203,14 +208,15 @@ create_dyadyears() %>%
     ## #   dyadigos <dbl>, milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>,
     ## #   tpop1 <dbl>, upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>,
     ## #   irst2 <dbl>, pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>,
-    ## #   defense <dbl>, neutrality <dbl>, nonaggression <dbl>, entente <dbl>,
-    ## #   mindist <dbl>, prd <dbl>
+    ## #   cow_defense <dbl>, cow_neutral <dbl>, cow_nonagg <dbl>, cow_entente <dbl>,
+    ## #   atop_defense <dbl>, atop_offense <dbl>, atop_neutral <dbl>,
+    ## #   atop_nonagg <dbl>, atop_consul <dbl>, mindist <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 35.925 sec elapsed
+    ## 35.273 sec elapsed
 
 ``` r
 # state-years now...
@@ -224,7 +230,7 @@ create_stateyears() %>%
   add_cow_trade() %>%
   add_democracy() %>%
   add_igos() %>%
-  add_minimum_distance() %>%
+  add_minimum_distance(system = "cow") %>%
   add_nmc()
 ```
 
@@ -251,4 +257,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 3.479 sec elapsed
+    ## 3.418 sec elapsed
