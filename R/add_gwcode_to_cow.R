@@ -35,8 +35,6 @@
 #' }
 #'
 add_gwcode_to_cow <- function(data) {
-  # require(dplyr)
-  # require(magrittr)
 
   cow_gw_years %>%
     filter(!is.na(.data$ccode)) %>%
@@ -47,18 +45,40 @@ add_gwcode_to_cow <- function(data) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
+    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+
+      stop("add_gwcode_to_cow() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+
+
+    } else {
+
     data %>%
       left_join(., hold_this, by=c("ccode1"="ccode","year"="year")) %>%
       rename(gwcode1 = .data$gwcode) %>%
       left_join(., hold_this, by=c("ccode2"="ccode","year"="year")) %>%
       rename(gwcode2 = .data$gwcode) -> data
 
+    return(data)
+
+  }
+
 
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
+    if (!all(i <- c("ccode") %in% colnames(data))) {
+
+      stop("add_gwcode_to_cow() merges on the Correlates of War code, which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+
+
+    } else {
+
     data %>%
       left_join(., hold_this) -> data
+
+      return(data)
+
+    }
 
   } else  {
     stop("add_gwcode_to_cow() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")

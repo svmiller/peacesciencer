@@ -54,7 +54,7 @@ add_cow_trade <- function(data) {
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
-    if (!all(i <- c("ccode1") %in% colnames(data))) {
+    if (!all(i <- c("ccode") %in% colnames(data))) {
 
       stop("add_cow_trade() merges on the Correlates of War codes (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
 
