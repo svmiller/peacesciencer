@@ -79,10 +79,10 @@ add_minimum_distance <- function(data, system) {
     if (system == "cow") {
 
       cow_mindist %>%
-        group_by(ccode1, year) %>%
-        summarize(minmindist = min(mindist, na.rm = TRUE)) %>%
+        group_by(.data$ccode1, .data$year) %>%
+        summarize(minmindist = min(.data$mindist, na.rm = TRUE)) %>%
         ungroup()  %>%
-        rename(ccode = ccode1) %>%
+        rename(ccode = .data$ccode1) %>%
         left_join(data, .) -> data
 
       return(data)
@@ -90,10 +90,10 @@ add_minimum_distance <- function(data, system) {
     } else if (system == "gw") {
 
       gw_mindist %>%
-        group_by(gwcode1, year) %>%
-        summarize(minmindist = min(mindist, na.rm = TRUE)) %>%
+        group_by(.data$gwcode1, .data$year) %>%
+        summarize(minmindist = min(.data$mindist, na.rm = TRUE)) %>%
         ungroup()  %>%
-        rename(gwcode = gwcode1) %>%
+        rename(gwcode = .data$gwcode1) %>%
         left_join(data, .) -> data
 
       return(data)

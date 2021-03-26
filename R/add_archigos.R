@@ -53,7 +53,7 @@ add_archigos <- function(data) {
            dec31leadid = last(.data$leadid),
            leadertransition = ifelse(.data$jan1leadid != .data$dec31leadid, 1, 0),
            n_leaders = n_distinct(.data$leadid),
-           irregular = ifelse(leadertransition == 1 & any(.data$exit == "Irregular"), 1, 0)) %>%
+           irregular = ifelse(.data$leadertransition == 1 & any(.data$exit == "Irregular"), 1, 0)) %>%
     group_by(.data$ccode, .data$year) %>%
     select(.data$ccode, .data$year, .data$leadertransition, .data$irregular, .data$n_leaders, .data$jan1leadid, .data$dec31leadid) %>%
     group_by(.data$ccode, .data$year) %>%

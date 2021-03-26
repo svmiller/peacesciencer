@@ -40,6 +40,8 @@ devtools::install_github("svmiller/peacesciencer")
 The package is very much a work in progress. Right now, it has the
 following functions:
 
+-   `add_archigos()`: adds some summary variables from Archigos about
+    political leaders for state-year or dyad-year data.
 -   `add_atop_alliance()`: adds ATOP alliance information to dyad-year
     data.
 -   `add_capital_distance()`: adds capital-to-capital distance (in
@@ -75,6 +77,8 @@ following functions:
 
 It also has the following data sets:
 
+-   `archigos`: an abbreviated version of the Archigos data, used
+    internally
 -   `atop_alliance:` directed dyad-year alliance data from ATOP
 -   `capitals`: a list of capitals and capital transitions for
     Correlates of War state system members
@@ -176,12 +180,14 @@ create_dyadyears() %>%
   add_atop_alliance() %>%
   # add minimum distance. No default, must specify "cow" or "gw"
   add_minimum_distance(system = "cow") %>%
+  # add Archigos data
+  add_archigos() %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 81
+    ## # A tibble: 246,314 x 91
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
     ##  1      2     20  1920       2      20      NA          0        0     NA     NA
@@ -194,7 +200,7 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20      NA          0        0     NA     NA
     ##  9      2     20  1928       2      20      NA          0        0     NA     NA
     ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 246,304 more rows, and 71 more variables: revstate1 <dbl>,
+    ## # … with 246,304 more rows, and 81 more variables: revstate1 <dbl>,
     ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
     ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
     ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
@@ -210,13 +216,17 @@ create_dyadyears() %>%
     ## #   irst2 <dbl>, pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>,
     ## #   cow_defense <dbl>, cow_neutral <dbl>, cow_nonagg <dbl>, cow_entente <dbl>,
     ## #   atop_defense <dbl>, atop_offense <dbl>, atop_neutral <dbl>,
-    ## #   atop_nonagg <dbl>, atop_consul <dbl>, mindist <dbl>, prd <dbl>
+    ## #   atop_nonagg <dbl>, atop_consul <dbl>, mindist <dbl>,
+    ## #   leadertransition1 <dbl>, irregular1 <dbl>, n_leaders1 <int>,
+    ## #   jan1leadid1 <chr>, dec31leadid1 <chr>, leadertransition2 <dbl>,
+    ## #   irregular2 <dbl>, n_leaders2 <int>, jan1leadid2 <chr>, dec31leadid2 <chr>,
+    ## #   prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 35.273 sec elapsed
+    ## 44.505 sec elapsed
 
 ``` r
 # state-years now...
@@ -231,10 +241,11 @@ create_stateyears() %>%
   add_democracy() %>%
   add_igos() %>%
   add_minimum_distance(system = "cow") %>%
+  add_archigos() %>%
   add_nmc()
 ```
 
-    ## # A tibble: 16,731 x 25
+    ## # A tibble: 16,731 x 30
     ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj imports exports
     ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>   <dbl>   <dbl>
     ##  1     2 United …  1816      2      5742.     0     0      0      NA      NA
@@ -247,14 +258,15 @@ create_stateyears() %>%
     ##  8     2 United …  1823      2      5744.     0     0      0      NA      NA
     ##  9     2 United …  1824      2      5744.     0     0      0      NA      NA
     ## 10     2 United …  1825      2      5744.     0     0      0      NA      NA
-    ## # … with 16,721 more rows, and 15 more variables: v2x_polyarchy <dbl>,
+    ## # … with 16,721 more rows, and 20 more variables: v2x_polyarchy <dbl>,
     ## #   polity2 <dbl>, xm_qudsest <dbl>, sum_igo_full <dbl>,
     ## #   sum_igo_associate <dbl>, sum_igo_observer <dbl>, sum_igo_anytype <dbl>,
-    ## #   minmindist <dbl>, milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>,
-    ## #   tpop <dbl>, upop <dbl>, cinc <dbl>
+    ## #   minmindist <dbl>, leadertransition <dbl>, irregular <dbl>, n_leaders <int>,
+    ## #   jan1leadid <chr>, dec31leadid <chr>, milex <dbl>, milper <dbl>, irst <dbl>,
+    ## #   pec <dbl>, tpop <dbl>, upop <dbl>, cinc <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 3.418 sec elapsed
+    ## 8.601 sec elapsed
