@@ -66,6 +66,8 @@ following functions:
     dyad-year or state-year data.
 -   `add_nmc()`: adds estimates of national material capabilities (from
     Correlates of War) to dyad-year or state-year data.
+-   `add_sdp_gdp()`: adds estimates of (gross and surplus) domestic
+    product and population size to dyad-year or state-year data
 -   `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
     state system membership data into dyad-year format
 -   `create_statedays()`: converts Correlates of War or Gleditsch-Ward
@@ -102,6 +104,8 @@ It also has the following data sets:
     states, in kilometers, in non-directed dyad-year format (1946-2015)
 -   `cow_nmc`: Correlates of War National Material Capabilities data
     (version 5.0)
+-   `cow_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates
+    of War States
 -   `cow_states`: Correlates of War state system membership data
     (version: 2016)
 -   `cow_trade_sy`: Correlates of War state-year trade data (version
@@ -112,6 +116,8 @@ It also has the following data sets:
     state system members
 -   `gw_mindist`: the minimum distance between Gleditsch-Ward states, in
     kilometers, in non-directed dyad-year format (1946-2015)
+-   `gw_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of
+    War States
 -   `gw_states`: Gleditsch-Ward independent state system data
     (version: 2017)
 -   `maoz_powers`: Zeev Maoz’ global/regional power data.
@@ -182,12 +188,14 @@ create_dyadyears() %>%
   add_minimum_distance(system = "cow") %>%
   # add Archigos data
   add_archigos() %>%
+  # add gross and surplus GDP data
+  add_sdp_gdp(system = "cow") %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 91
+    ## # A tibble: 246,314 x 97
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
     ##  1      2     20  1920       2      20      NA          0        0     NA     NA
@@ -200,7 +208,7 @@ create_dyadyears() %>%
     ##  8      2     20  1927       2      20      NA          0        0     NA     NA
     ##  9      2     20  1928       2      20      NA          0        0     NA     NA
     ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 246,304 more rows, and 81 more variables: revstate1 <dbl>,
+    ## # … with 246,304 more rows, and 87 more variables: revstate1 <dbl>,
     ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
     ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
     ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
@@ -220,13 +228,14 @@ create_dyadyears() %>%
     ## #   leadertransition1 <dbl>, irregular1 <dbl>, n_leaders1 <int>,
     ## #   jan1leadid1 <chr>, dec31leadid1 <chr>, leadertransition2 <dbl>,
     ## #   irregular2 <dbl>, n_leaders2 <int>, jan1leadid2 <chr>, dec31leadid2 <chr>,
-    ## #   prd <dbl>
+    ## #   wbgdp2011est1 <dbl>, wbpopest1 <dbl>, sdpest1 <dbl>, wbgdp2011est2 <dbl>,
+    ## #   wbpopest2 <dbl>, sdpest2 <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 44.505 sec elapsed
+    ## 46.105 sec elapsed
 
 ``` r
 # state-years now...
@@ -242,10 +251,11 @@ create_stateyears() %>%
   add_igos() %>%
   add_minimum_distance(system = "cow") %>%
   add_archigos() %>%
-  add_nmc()
+  add_nmc() %>%
+  add_sdp_gdp(system = "cow") 
 ```
 
-    ## # A tibble: 16,731 x 30
+    ## # A tibble: 16,731 x 33
     ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj imports exports
     ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>   <dbl>   <dbl>
     ##  1     2 United …  1816      2      5742.     0     0      0      NA      NA
@@ -258,15 +268,16 @@ create_stateyears() %>%
     ##  8     2 United …  1823      2      5744.     0     0      0      NA      NA
     ##  9     2 United …  1824      2      5744.     0     0      0      NA      NA
     ## 10     2 United …  1825      2      5744.     0     0      0      NA      NA
-    ## # … with 16,721 more rows, and 20 more variables: v2x_polyarchy <dbl>,
+    ## # … with 16,721 more rows, and 23 more variables: v2x_polyarchy <dbl>,
     ## #   polity2 <dbl>, xm_qudsest <dbl>, sum_igo_full <dbl>,
     ## #   sum_igo_associate <dbl>, sum_igo_observer <dbl>, sum_igo_anytype <dbl>,
     ## #   minmindist <dbl>, leadertransition <dbl>, irregular <dbl>, n_leaders <int>,
     ## #   jan1leadid <chr>, dec31leadid <chr>, milex <dbl>, milper <dbl>, irst <dbl>,
-    ## #   pec <dbl>, tpop <dbl>, upop <dbl>, cinc <dbl>
+    ## #   pec <dbl>, tpop <dbl>, upop <dbl>, cinc <dbl>, wbgdp2011est <dbl>,
+    ## #   wbpopest <dbl>, sdpest <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 8.601 sec elapsed
+    ## 8.477 sec elapsed

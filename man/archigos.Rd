@@ -5,7 +5,7 @@
 \alias{archigos}
 \title{Archigos: A (Subset of a) Dataset on Political Leaders}
 \format{
-A data frame with 3409 on the following seven variables.
+A data frame with 3409 observations on the following seven variables.
 \describe{
 \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
 \item{\code{leadid}}{the unique leader identifier}

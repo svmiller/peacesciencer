@@ -536,7 +536,7 @@ NULL
 #' These are state-year-level data for national trade from the Correlates of War project.
 #'
 #'
-#' @format A data frame with 14410 on the following four variables.
+#' @format A data frame with 14410 observations on the following four variables.
 #' \describe{
 #' \item{\code{ccode}}{the Correlates of War state system code}
 #' \item{\code{year}}{the year}
@@ -559,7 +559,7 @@ NULL
 #' These are directed dyad-year-level data for alliance obligations and provisions from the ATOP project
 #'
 #'
-#' @format A data frame with 272,046 on the following eight variables.
+#' @format A data frame with 272,046 observations on the following eight variables.
 #' \describe{
 #' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 #' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
@@ -586,7 +586,7 @@ NULL
 #' based on these data.
 #'
 #'
-#' @format A data frame with 3409 on the following seven variables.
+#' @format A data frame with 3409 observations on the following seven variables.
 #' \describe{
 #' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
 #' \item{\code{leadid}}{the unique leader identifier}
@@ -605,3 +605,55 @@ NULL
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
 "archigos"
+
+
+#' (Surplus and Gross) Domestic Product for Correlates of War States
+#'
+#' These are state-year level data for surplus and gross domestic product for Correlates of War state system members. Data also
+#' include population estimates for per capita standardization.
+#'
+#'
+#' @format A data frame with 27753 observations on the following five variables.
+#' \describe{
+#' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
+#' \item{\code{year}}{a numeric vector for the year}
+#' \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
+#' \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
+#' }
+#' @details These were extracted from the actual replication files from \emph{International Studies Quarterly}. Because these
+#' data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
+#' (which Anders et al. published) and the Gleditsch-Ward version of these data (which appear to be the one the authors will more
+#' vigorously support going forward).
+#'
+#' @references
+#'
+#' Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)"
+#' \emph{International Studies Quarterly} 64(2): 392--405.
+
+"cow_sdp_gdp"
+
+
+#' (Surplus and Gross) Domestic Product for Gleditsch-Ward States
+#'
+#' These are state-year level data for surplus and gross domestic product for Correlates of War state system members. Data also
+#' include population estimates for per capita standardization.
+#'
+#'
+#' @format A data frame with 27387 observations on the following five variables.
+#' \describe{
+#' \item{\code{gwcode}}{a numeric vector for the Correlates of War state code}
+#' \item{\code{year}}{a numeric vector for the year}
+#' \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
+#' \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
+#' }
+#' @details These were provided by Anders on a separate Github repository for this project. Because these
+#' data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
+#' (which Anders et al. published) and the Gleditsch-Ward version of these data (which appear to be the one the authors will more
+#' vigorously support going forward).
+#'
+#' @references
+#'
+#' Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)"
+#' \emph{International Studies Quarterly} 64(2): 392--405.
+
+"gw_sdp_gdp"
