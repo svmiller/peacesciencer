@@ -40,10 +40,3 @@ ucdp_acd %>%
 ucdp_acd %>%
   filter(conflict_id == 11345) %>%
   data.frame
-
-
-ucdp_acd %>%
-  filter(!is.na(gwno_a) & is.na(gwno_b) & !is.na(gwno_b_2nd))
-  # filter(conflict_id == 412) %>%
-  select(conflict_id, gwno_a, gwno_a_2nd, gwno_b, gwno_b_2nd) %>%
-  mutate_at(vars("gwno_a", "gwno_a_2nd", "gwno_b", "gwno_b_2nd"), ~as.numeric(.))
