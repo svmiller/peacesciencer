@@ -5,7 +5,7 @@
 \alias{atop_alliance}
 \title{Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.0)}
 \format{
-A data frame with 272,046 on the following eight variables.
+A data frame with 272,046 observations on the following eight variables.
 \describe{
 \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}

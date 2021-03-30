@@ -4,10 +4,12 @@ peacesciencer 0.3.0 (in development)
 - Add `atop_alliance` (directed dyad-year) data
 - Add `archigos` data
 - Add `cow_sdp_gdp` and `gw_sdp_gdp` data
+- Add `ucdp_onsets` data
 - Add `add_archigos()` function
 - Add `add_atop_alliance()` function
 - Add `add_minimum_distance()` function. For now, this has no default. You must specify "gw" or "cow".
 - Add `add_sdp_gdp()` function. For now, this has no default. You must specify "gw" or "cow".
+- Add `add_ucdp_onset()` function.
 - Add "stops" that force the correct merge on the correct system code. In most applications, this is Correlates of War codes. 
 - File compression for data files (again)
 - Fixed bug in `filter_prd()`. Past versions of my code had treated non-contiguous dyads as 6s. Here, they're 0s. That created situations where I wasn't filtering anything at all with this function.

@@ -68,6 +68,7 @@ following functions:
     Correlates of War) to dyad-year or state-year data.
 -   `add_sdp_gdp()`: adds estimates of (gross and surplus) domestic
     product and population size to dyad-year or state-year data
+-   `add_ucdp_onsets()`: adds UCDP onsets to state-year data
 -   `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
     state system membership data into dyad-year format
 -   `create_statedays()`: converts Correlates of War or Gleditsch-Ward
@@ -121,6 +122,8 @@ It also has the following data sets:
 -   `gw_states`: Gleditsch-Ward independent state system data
     (version: 2017)
 -   `maoz_powers`: Zeev Maoz’ global/regional power data.
+-   `ucdp_onsets`: a state-year data set of UCDP armed conflict
+    onsets/episodes.
 
 The workflow is going to look something like this. This is a
 “tidy”-friendly approach to a data-generating process in quantitative
@@ -235,7 +238,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 46.105 sec elapsed
+    ## 48.613 sec elapsed
 
 ``` r
 # state-years now...
@@ -243,6 +246,7 @@ toc()
 tic()
 create_stateyears() %>%
   add_gwcode_to_cow() %>%
+  add_ucdp_onsets() %>%
   add_capital_distance() %>%
   add_contiguity() %>%
   add_cow_majors() %>%
@@ -255,29 +259,31 @@ create_stateyears() %>%
   add_sdp_gdp(system = "cow") 
 ```
 
-    ## # A tibble: 16,731 x 33
-    ##    ccode statenme  year gwcode mincapdist  land   sea cowmaj imports exports
-    ##    <dbl> <chr>    <dbl>  <dbl>      <dbl> <dbl> <dbl>  <dbl>   <dbl>   <dbl>
-    ##  1     2 United …  1816      2      5742.     0     0      0      NA      NA
-    ##  2     2 United …  1817      2      5742.     0     0      0      NA      NA
-    ##  3     2 United …  1818      2      5742.     0     0      0      NA      NA
-    ##  4     2 United …  1819      2      5742.     0     0      0      NA      NA
-    ##  5     2 United …  1820      2      5742.     0     0      0      NA      NA
-    ##  6     2 United …  1821      2      5742.     0     0      0      NA      NA
-    ##  7     2 United …  1822      2      5744.     0     0      0      NA      NA
-    ##  8     2 United …  1823      2      5744.     0     0      0      NA      NA
-    ##  9     2 United …  1824      2      5744.     0     0      0      NA      NA
-    ## 10     2 United …  1825      2      5744.     0     0      0      NA      NA
-    ## # … with 16,721 more rows, and 23 more variables: v2x_polyarchy <dbl>,
-    ## #   polity2 <dbl>, xm_qudsest <dbl>, sum_igo_full <dbl>,
-    ## #   sum_igo_associate <dbl>, sum_igo_observer <dbl>, sum_igo_anytype <dbl>,
-    ## #   minmindist <dbl>, leadertransition <dbl>, irregular <dbl>, n_leaders <int>,
-    ## #   jan1leadid <chr>, dec31leadid <chr>, milex <dbl>, milper <dbl>, irst <dbl>,
-    ## #   pec <dbl>, tpop <dbl>, upop <dbl>, cinc <dbl>, wbgdp2011est <dbl>,
-    ## #   wbpopest <dbl>, sdpest <dbl>
+    ## # A tibble: 16,731 x 39
+    ##    ccode statenme  year gwcode sumnewconf sumonset1 sumonset2 sumonset3
+    ##    <dbl> <chr>    <dbl>  <dbl>      <dbl>     <dbl>     <dbl>     <dbl>
+    ##  1     2 United …  1816      2          0         0         0         0
+    ##  2     2 United …  1817      2          0         0         0         0
+    ##  3     2 United …  1818      2          0         0         0         0
+    ##  4     2 United …  1819      2          0         0         0         0
+    ##  5     2 United …  1820      2          0         0         0         0
+    ##  6     2 United …  1821      2          0         0         0         0
+    ##  7     2 United …  1822      2          0         0         0         0
+    ##  8     2 United …  1823      2          0         0         0         0
+    ##  9     2 United …  1824      2          0         0         0         0
+    ## 10     2 United …  1825      2          0         0         0         0
+    ## # … with 16,721 more rows, and 31 more variables: sumonset5 <dbl>,
+    ## #   sumonset10 <dbl>, mincapdist <dbl>, land <dbl>, sea <dbl>, cowmaj <dbl>,
+    ## #   imports <dbl>, exports <dbl>, v2x_polyarchy <dbl>, polity2 <dbl>,
+    ## #   xm_qudsest <dbl>, sum_igo_full <dbl>, sum_igo_associate <dbl>,
+    ## #   sum_igo_observer <dbl>, sum_igo_anytype <dbl>, minmindist <dbl>,
+    ## #   leadertransition <dbl>, irregular <dbl>, n_leaders <int>, jan1leadid <chr>,
+    ## #   dec31leadid <chr>, milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>,
+    ## #   tpop <dbl>, upop <dbl>, cinc <dbl>, wbgdp2011est <dbl>, wbpopest <dbl>,
+    ## #   sdpest <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 8.477 sec elapsed
+    ## 10.25 sec elapsed
