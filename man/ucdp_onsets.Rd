@@ -16,50 +16,20 @@ A data frame with 10142 observations on the following eight variables.
 \item{\code{sumonset5}}{a numeric vector for the sum of new conflict episodes, whether because this is a new conflict or because there is more than five years since last conflict episode}
 \item{\code{sumonset10}}{a numeric vector for the sum of new conflict episodes, whether because this is a new conflict or because there is more than 10 years since last conflict episode}
 }
-
-A data frame with 4164 observations on the following 15 variables.
-\describe{
-\item{\code{conflict_id}}{a conflict identifier, not to be confused with an episode identifier (which I don't think UCDP offers)}
-\item{\code{year}}{a numeric vector for the year}
-\item{\code{gwno_a}}{the Gleditsch-Ward state code for the state on side A of the armed conflict}
-\item{\code{gwno_a_2nd}}{the Gleditsch-Ward state code for the state that actively supported side A of the armed conflict with the use of troops}
-\item{\code{gwno_b}}{the Gleditsch-Ward state code for the actor on side B of the armed conflict}
-\item{\code{gwno_b_2nd}}{the Gleditsch-Ward state code for the state that actively supported side B of the armed conflict with the use of troops}
-\item{\code{incompatability}}{a numeric vector for the main conflict issue (1 = territory, 2 = government, 3 = both)}
-\item{\code{intensity_level}}{a numeric vector for the intensity level in the calendar year (1 = minor (25-999 deaths), 2 = war (>1,000 deaths))}
-\item{\code{type_of_conflict}}{a numeric vector for the type of conflict (1 = extrasystemic, 2 = inter-state, 3 = intra-state, 4 = internationalized intra-state)}
-\item{\code{start_date}}{a date of the first battle-related death in the conflict, not to be confused with the first battle-related death of the episode}
-\item{\code{start_date2}}{a date of the first battle-related death in the episode, not to be confused with the first battle-related death of the conflict}
-\item{\code{start_prec2}}{the level of precision for \code{start_date2}}
-\item{\code{ep_end}}{a dummy variable for whether the conflict episode ended in the calendar year of observation}
-\item{\code{ep_end_date}}{the episode end date, if applicable}
-}
 }
 \usage{
-ucdp_onsets
-
 ucdp_onsets
 }
 \description{
 These are state-year level data for armed conflict onsets provided by the Uppsala Conflict Data Program (UCDP).
-
-These are (kind of) dyadic, but mostly state-level data, used internally for doing stuff with the UCDP armed conflict data
 }
 \details{
 The user will want to note that the data provided by UCDP are technically not country-year observations. They instead duplicate observations for cases of new conflicts
 or new conflict episodes. Further, the original data do not provide any information about the conflict-dyad in question to which those duplicates pertain. That means the most
 these data can do for the package's mission is provide summary information. The user should probably recode these variables into something else they may want for a
 particular application
-
-The \code{data-raw} directory on the project's Github will show how I processed the multiple strings for when there are multiple states on a given side.
 }
 \references{
-Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002)
-Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.
-
-Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace
-agreements. Journal of Peace Research 56(4): 589-603.
-
 Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002)
 Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.
 

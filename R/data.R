@@ -725,4 +725,4 @@ NULL
 #' Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace
 #' agreements. Journal of Peace Research 56(4): 589-603.
 
-"ucdp_onsets"
+"ucdp_acd"
