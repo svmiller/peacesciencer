@@ -5,6 +5,7 @@ library(magrittr)
 
 test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_contiguity()))
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_gwcode_to_cow()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_capital_distance()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_majors()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_trade()))
@@ -21,6 +22,7 @@ test_that("Dyad-year additions do not create duplicates", {
 
 
 test_that("State-year additions do not create duplicates", {
+  expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_gwcode_to_cow()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_contiguity()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_capital_distance()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_majors()))
@@ -30,5 +32,6 @@ test_that("State-year additions do not create duplicates", {
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_nmc()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_archigos()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_minimum_distance(system="cow")))
+  expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system = "gw") %>% add_ucdp_onsets()))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system="gw") %>% add_minimum_distance(system="gw")))
 })

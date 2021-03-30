@@ -4,6 +4,7 @@ peacesciencer 0.3.0 (in development)
 - Add `atop_alliance` (directed dyad-year) data
 - Add `archigos` data
 - Add `cow_sdp_gdp` and `gw_sdp_gdp` data
+- Add `ucdp_acd` data
 - Add `ucdp_onsets` data
 - Add `add_archigos()` function
 - Add `add_atop_alliance()` function

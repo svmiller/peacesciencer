@@ -84,6 +84,7 @@ It also has the following data sets:
 - `gw_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States
 - `gw_states`: Gleditsch-Ward independent state system data (version: 2017)
 - `maoz_powers`: Zeev Maoz' global/regional power data.
+- `ucdp_acd`: a (not quite) dyad-year and (not quite) state-year data set on armed conflict episodes
 - `ucdp_onsets`: a state-year data set of UCDP armed conflict onsets/episodes.
 
 The workflow is going to look something like this. This is a "tidy"-friendly approach to a data-generating process in quantitative peace science. 

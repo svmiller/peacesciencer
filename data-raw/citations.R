@@ -23,8 +23,8 @@ tribble(
   'surplus/gross domestic product', 'Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)", International Studies Quarterly 64(2): 392--405.',
   'trade', 'Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Cdebook, Version 4.0. Online: https://correlatesofwar.org',
   'trade', 'Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." Conflict Management and Peace Science, 26(5): 471-491.',
-  'ucdp_onsets', 'Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002) Armed Conflict 1946–2001: A New Dataset. Journal of Peace Research 39(5): 615–637.',
-  'ucdp_onsets', 'Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace agreements. Journal of Peace Research 56(4): 589-603.'
+  'ucdp', 'Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002) Armed Conflict 1946–2001: A New Dataset. Journal of Peace Research 39(5): 615–637.',
+  'ucdp', 'Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace agreements. Journal of Peace Research 56(4): 589-603.'
 ) -> citations
 
 
