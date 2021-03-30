@@ -10,6 +10,7 @@ A data frame with 27753 observations on the following five variables.
 \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
 \item{\code{year}}{a numeric vector for the year}
 \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
+\item{\code{wbpopest}}{a numeric vector for the estimated population size (log-transformed)}
 \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
 }
 }

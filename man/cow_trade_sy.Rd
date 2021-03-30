@@ -5,7 +5,7 @@
 \alias{cow_trade_sy}
 \title{Correlates of War National Trade Data Set (v. 4.0)}
 \format{
-A data frame with 14410 on the following four variables.
+A data frame with 14410 observations on the following four variables.
 \describe{
 \item{\code{ccode}}{the Correlates of War state system code}
 \item{\code{year}}{the year}
