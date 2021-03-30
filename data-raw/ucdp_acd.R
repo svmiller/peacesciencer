@@ -31,6 +31,10 @@ ucdp_acd %>%
 save(ucdp_acd, file="data/ucdp_acd.rda")
 
 
+# Here is where I fiddle with things...
+
+ucdp_acd %>%
+  filter(type_of_conflict %in% c(1, 3)) %>% summary
 
 
 ucdp_acd %>%
