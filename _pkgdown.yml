@@ -1,1 +1,8 @@
 url: http://svmiller.com
+
+template:
+  params:
+    bootswatch: cerulean
+
+figures:
+  fig.width: 11

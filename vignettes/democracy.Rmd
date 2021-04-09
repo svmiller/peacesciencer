@@ -55,7 +55,8 @@ missing_obs %>%
   filter(n == nobs) %>%
   mutate(country = countrycode::countrycode(ccode, "cown", "country.name")) %>%
   select(ccode, country, n, nobs) %>%
-  kbl(.)
+  kbl(., caption = "CoW States that Never Appear in the Polity Data") %>%
+  kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
 ```
 
 These seem like uncontroversial omissions. Perhaps no one will miss Monaco or Tonga in a dyad-year model on conflict onset. However, there are several problematic omissions here. The exclusion of Hanover, the two Hesses (sic), and Mecklenburg means there will be some important conflict-dyad omissions for the various wars of German unification. Belize has (I think) a prominent and conspicuous spatial rivalry with Guatemala, which, at points, has refused to acknowledge Belize' right to exist. The Eastern Caribbean omissions mean every observation in the 1983 invasion of Grenada will be dropped. Trinidad and Tobago has a territorial conflict with Venezuela regarding its oil-rich maritime boundary. It even had [a violent coup attempt in 1990](https://en.wikipedia.org/wiki/Jamaat_al_Muslimeen_coup_attempt), which appears in the UCDP data. 
@@ -67,7 +68,8 @@ missing_obs %>%
   filter(n < nobs) %>%
   mutate(country = countrycode::countrycode(ccode, "cown", "country.name")) %>%
   select(ccode, country, everything()) %>%
-  kbl(.)
+  kbl(., caption = "Situational Missigness in the Polity Data")  %>%
+  kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
 ```
 
 Some of these are really important omissions! Bosnia & Herzegovina only has democracy scores for its first three years in the system. Hungary has missing data incidentally coinciding with the year of the Soviet invasion in 1956. Tunisia's entire first spell in the CoW state system is missing, as is the first few years of its reappearance in the 1950s. Over 40% of the short-lived Republic of Vietnam's democracy data are missing. Missingness in Europe coinciding with the end of World War I is going to drop a lot of important conflicts of the time (see: Latvia in 1918 and 1919). The Dominican Republic's democracy scores go missing, just in time to drop the U.S. invasion of it from any analysis. Incidentally, *a lot* of missing observations here are going to collide with major conflicts. If a researcher is not careful here, there'll be more missingness in the data than meets the eye.
