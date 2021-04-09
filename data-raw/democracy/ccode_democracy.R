@@ -78,6 +78,8 @@ Polity %>%
     polityccode == 305 & year <= 1918 ~ 300,
     # got burned by this too. Polity had this right
     polityccode == 260 ~ 260,
+    # got burned by this too.
+    polityccode == 730 & year <= 1905 ~ 730,
     TRUE ~ ccode
   )) -> Polity
 
