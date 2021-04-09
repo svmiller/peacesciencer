@@ -1,0 +1,179 @@
+---
+title: "Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(tidyverse)
+library(peacesciencer)
+library(kableExtra)
+library(stevemisc)
+```
+
+Missing data is everywhere in almost all statistical models in the political and social sciences. Sometimes, a survey respondent withholds their income. A regression model selects on complete cases and will thus punt those observations from consideration in the model. This is potentially a major problem for statistical inference, though the implication for inference is contingent on both type and scope.[^megafootnote] Generally, unless missing data are missing completely at random and/or missingness pervades less than 5% of the data, the potential for bias in the analysis looms large. Inter-state conflict researchers often do not consider how much this concerns their analysis because the number of observations in a given dyad-year or state-year analysis will still be in the high thousands. However, the remaining number of observations is less than the point than the percentage missing and excluded from the analysis. 
+
+From my experience, the biggest offender here will be the democracy scores for states. The reasons for this are multiple and mostly stem from the use of Polity data. The Polity project was, if not the oldest, but certainly one of the oldest data sets that considered democracy in a cross-national context with observations dating to the 19th century. The democracy score that researchers would use was almost always the `polity2` variable in the data that added the democracy score and autocracy score in a given state-year into the analysis. Shortcomings here, though, are multiple, leaving aside comments about whether we can adequately understand democracy as a battery of executive constraints and execute-level open competition. For one, the Polity project only considers states with a population of at least a million whereas state system membership (certainly CoW) has a population threshold of 500,000. This means a localized sample of post-World War II conflicts won't have any Eastern Caribbean observations in it and the 1983 invasion of Grenada won't appear in the analyses. Further, the Polity project is also replete with interregnum observations, which are often treated as missing data.
+
+Consider the `ccode_democracy` data I provide in `{peacesciencer}` as illustrative of what's at stake. You can (and should for transparency's sake) see [the underlying code](https://github.com/svmiller/peacesciencer/tree/master/data-raw/democracy) that generates this data set on the Github repository for this package. Briefly, this is a data set that takes Version 10 of the Vdem data and the 2017 version of the Polity data (along with Xavier Marquez' UDS extensions, more on that later) and standardizes both to Correlates of War state system membership data. 
+
+```{r}
+#library(tidyverse)
+#library(peacesciencer)
+
+ccode_democracy
+```
+
+Doing this highlights just how much missingness there is in our democracy data. For example, let's standardize these data to all observations between 1816 and 2010 and see how much of the data are missing.
+
+```{r}
+ccode_democracy %>%
+  filter(between(year, 1816, 2010)) %>%
+  summarize(perc_missing = sum(is.na(polity2))/length(polity2))
+```
+
+Over 8% of the Polity data are missing in the CoW state system. Here would be the observations affected, starting with the states that don't appear at all in the Polity data.
+
+```{r}
+# library(kableExtra)
+ccode_democracy %>%
+  filter(between(year, 1816, 2010)) %>%
+  group_by(ccode) %>%
+  mutate(nobs = n()) %>%
+  filter(is.na(polity2)) %>%
+  group_by(ccode) %>%
+  summarize(n = n(),
+            nobs = unique(nobs),
+            years = str_c(year, collapse = ", ")) -> missing_obs
+
+missing_obs %>%
+  filter(n == nobs) %>%
+  mutate(country = countrycode::countrycode(ccode, "cown", "country.name")) %>%
+  select(ccode, country, n, nobs) %>%
+  kbl(.)
+```
+
+These seem like uncontroversial omissions. Perhaps no one will miss Monaco or Tonga in a dyad-year model on conflict onset. However, there are several problematic omissions here. The exclusion of Hanover, the two Hesses (sic), and Mecklenburg means there will be some important conflict-dyad omissions for the various wars of German unification. Belize has (I think) a prominent and conspicuous spatial rivalry with Guatemala, which, at points, has refused to acknowledge Belize' right to exist. The Eastern Caribbean omissions mean every observation in the 1983 invasion of Grenada will be dropped. Trinidad and Tobago has a territorial conflict with Venezuela regarding its oil-rich maritime boundary. It even had [a violent coup attempt in 1990](https://en.wikipedia.org/wiki/Jamaat_al_Muslimeen_coup_attempt), which appears in the UCDP data. 
+
+Here are the observations for which there is only situational missingness in the Polity data.
+
+```{r}
+missing_obs %>%
+  filter(n < nobs) %>%
+  mutate(country = countrycode::countrycode(ccode, "cown", "country.name")) %>%
+  select(ccode, country, everything()) %>%
+  kbl(.)
+```
+
+Some of these are really important omissions! Bosnia & Herzegovina only has democracy scores for its first three years in the system. Hungary has missing data incidentally coinciding with the year of the Soviet invasion in 1956. Tunisia's entire first spell in the CoW state system is missing, as is the first few years of its reappearance in the 1950s. Over 40% of the short-lived Republic of Vietnam's democracy data are missing. Missingness in Europe coinciding with the end of World War I is going to drop a lot of important conflicts of the time (see: Latvia in 1918 and 1919). The Dominican Republic's democracy scores go missing, just in time to drop the U.S. invasion of it from any analysis. Incidentally, *a lot* of missing observations here are going to collide with major conflicts. If a researcher is not careful here, there'll be more missingness in the data than meets the eye.
+
+There's no reason to accept these missing observations as a cost of doing business with Polity. That's why `{peacesciencer}` brings in multiple data sets that have better coverage than Polity. THe most unique of these comes from [Xavier Marquez](https://people.wgtn.ac.nz/xavier.marquez)' [extension of the Unified Democracy Scores (UDS) data](https://xmarquez.github.io/QuickUDS/). The UDS data were designed to be [a sort of "compromise" between competing measures of democracy](https://www.cambridge.org/core/journals/political-analysis/article/democratic-compromise-a-latent-variable-analysis-of-ten-measures-of-regime-type/2A6B2BBA6F80367644F2C5007E1CFC29), but the underlying statistical model---the graded response model---serves as a missing data fix too. If, say, the Polity project does not have observations of a particular state in a given year, the model leans on other inputs to derive a democracy estimate. The standard error of the estimate increases with missing inputs, but a lot of measures of democracy correlate highly regardless. The ensuing estimate, drawn from a standard normal distribution, serves as a solid estimate of the level democracy in a given year. It's included in `ccode_democracy` as `xm_qudest`.
+
+Here are a few cases of Xavier Marquez' filling in missing data while also passing the look test. First, here's Turkey.[^scales]
+
+
+
+```{r}
+# library(stevemisc)
+ccode_democracy %>%
+  # select(-v2x_polyarchy) %>%
+  filter(ccode == 640) %>%
+  gather(var, val, -ccode, -year) %>%
+  ggplot(.,aes(year, val)) +
+  theme_steve_web() +
+  facet_wrap(~var, nrow= 3, scales = "free") + geom_line() +
+  labs(y = "", x = "",
+       title = "Various Democracy Scores for Turkey, 1816-2010")
+
+```
+
+
+Here's Afghanistan, a mostly non-democratic country throughout its history.
+
+
+```{r}
+# library(stevemisc)
+ccode_democracy %>%
+  # select(-v2x_polyarchy) %>%
+  filter(ccode == 700) %>%
+  gather(var, val, -ccode, -year) %>%
+  ggplot(.,aes(year, val)) +
+  theme_steve_web() +
+  facet_wrap(~var, nrow= 3, scales = "free") + geom_line() +
+  labs(y = "", x = "",
+       title = "Various Democracy Scores for Afghanistan, 1919-2010")
+
+```
+
+Here's Portugal, a country that democratized at various points in its history.
+
+```{r}
+# library(stevemisc)
+ccode_democracy %>%
+  # select(-v2x_polyarchy) %>%
+  filter(ccode == 235) %>%
+  gather(var, val, -ccode, -year) %>%
+  ggplot(.,aes(year, val)) +
+  theme_steve_web() +
+  facet_wrap(~var, nrow= 3, scales = "free") + geom_line() +
+  labs(y = "", x = "",
+       title = "Various Democracy Scores for Portugal, 1816-2010")
+
+```
+
+Here's a correlation matrix for the three democracy estimates across time and space. Notice that Marquez' UDS extensions correlate with `polity2` at .94 and with the Vdem data at .91. That's better than the correlation between `polity2` and the Vdem data.
+
+```{r}
+ccode_democracy %>%
+  select(v2x_polyarchy:ncol(.)) %>%
+  cor(use="complete.obs")
+```
+
+More importantly, look at the data coverage of the UDS extensions vis-a-vis alternatives.
+
+```{r}
+ccode_democracy %>%
+  filter(between(year, 1816, 2010)) %>%
+  summary
+
+ccode_democracy %>%
+  filter(between(year, 1816, 2010)) %>%
+  filter(is.na(xm_qudsest)) -> missing_xm
+
+missing_xm
+```
+
+Marquez' UDS extensions are missing for just four cases: Austria-Hungary in 1918, Two Sicilies in 1861, Tunisia in 1881, and Egypt in 1882. That's better coverage than the alternatives. A user can accept these as missing observations since they involve just four cases. Alternatively, a user can knock off three of those with some kind of parlor trick like this.
+
+```{r}
+
+M1 <- lm(xm_qudsest ~ polity2, data=ccode_democracy)
+M2 <- lm(xm_qudsest ~ v2x_polyarchy, data=ccode_democracy)
+
+pol_intercept <- broom::tidy(M1)[1, 2] %>% pull()
+pol_coef <- broom::tidy(M1)[2, 2] %>% pull()
+
+vdem_intercept <- broom::tidy(M2)[1, 2] %>% pull()
+vdem_coef <- broom::tidy(M2)[2, 2] %>% pull()
+
+ccode_democracy %>%
+  mutate(impute_pol = pol_intercept + polity2*pol_coef,
+         impute_vdem = vdem_intercept + v2x_polyarchy*vdem_coef) %>%
+  mutate(imputed = case_when(
+    is.na(xm_qudsest) & !is.na(polity2) ~ impute_pol,
+    is.na(xm_qudsest) & !is.na(v2x_polyarchy) ~ impute_vdem,
+    TRUE ~ xm_qudsest
+  )) %>% select(-xm_qudsest) %>%
+  left_join(missing_xm, .)
+```
+
+Whatever you choose to do here, a conflict researcher should take missing data seriously in their democracy estimates. `{peacesciencer}` does, which is why the `add_democracy()` function in this package does more than merge in Polity data.
+
+[^megafootnote]: "Type" refers to the categories of missingness, whether missing completely at random (MCAR), missing at random (MAR), or missing not at random (MNAR). MCAR refers to cases where, say, a respondent withheld reporting their income in a survey because they flipped a coin and it came up heads. MAR refers to missingness that depends on observations that are recorded elsewhere (e.g. a respondent withholds reporting their income because they generally don't trust people, having previously communicated that in another survey prompt). MNAR refers to circumstances in which the missing data depend on the missing values themselves (e.g. high-income earners typically do not like reporting how much they earn). "Scope" refers to just how much missingness is present in the data, given the full set of observations. 
+
+[^scales]: Recall the three variables under consideration here work on different scales though all communicate the same underlying continuum of most autocratic to most democratic. The `polity2` variable is on a [-10,10] scale with one-point increments. The Vdem' polyarchy data are on a continuum from 0 to 1. The UDS estimates are standardized to a mean of 0 and a standard deviation of 1 where democracy is understood as latent phenomenon.

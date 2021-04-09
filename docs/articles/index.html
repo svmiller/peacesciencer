@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War international governmental organizations (IGOs) data to dyad-year or state-year data. — add_igos • peacesciencer</title>
+<title>Articles • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,7 @@
 
 
 
-<meta property="og:title" content="Add Correlates of War international governmental organizations (IGOs) data to dyad-year or state-year data. — add_igos" />
-<meta property="og:description" content="add_igos() allows you to add information from the Correlates oF War International
-Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes." />
+<meta property="og:title" content="Articles" />
 
 
 
@@ -60,7 +58,7 @@ Governmental Organizations data to dyad-year or state-year data, matching on Cor
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-topic">
+    <div class="container template-article-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -124,64 +122,18 @@ Governmental Organizations data to dyad-year or state-year data, matching on Cor
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War international governmental organizations (IGOs) data to dyad-year or state-year data.</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_igos.R'><code>R/add_igos.R</code></a></small>
-    <div class="hidden name"><code>add_igos.Rd</code></div>
+      <h1>Articles</h1>
     </div>
 
-    <div class="ref-description">
-    <p><code>add_igos()</code> allows you to add information from the Correlates oF War International
-Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes.</p>
+    <div class="section ">
+      <h3>All vignettes</h3>
+      <p class="section-desc"></p>
+
+      <dl>
+        <dt><a href="democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a></dt>
+        <dd></dt>
+      </dl>
     </div>
-
-    <pre class="usage"><span class='fu'>add_igos</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
-
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.</p></td>
-    </tr>
-    </table>
-
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p><code>add_igos()</code> takes a dyad-year data frame or state-year data frame and adds information available from
-the Correlates of War International Governmental Organizations data. If the data are dyad-year, the function returns
-the original data with just one additional column for the total number of mutual IGOs for which both members of the dyad
-are full members. If the data are state-year, the function returns the original data with four additional columns. These are
-the number oF IGOs for which the state is a full member, the number of IGOs for which the state is an associate member, the
-number of IGOs for which the state is an observer, and the number of IGOs for which the state is involved in any way (i.e. the
-sum of the other three columns).</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
-
-    <p>The function leans on attributes of the data that are provided by the <code>create_dyadyear()</code> or
-<code>create_stateyear()</code> function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, Anne Spencer Jamison, “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.</p>
-<p>Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Steven V. Miller</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_igos</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_igos</span><span class='op'>(</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
-  </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <nav id="toc" data-toggle="toc" class="sticky-top">
-      <h2 data-toc-skip>Contents</h2>
-    </nav>
   </div>
 </div>
 

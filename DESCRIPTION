@@ -33,4 +33,7 @@ Imports:
 Suggests: 
     countrycode,
     tibble,
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
