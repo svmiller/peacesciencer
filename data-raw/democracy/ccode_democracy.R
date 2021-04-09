@@ -74,6 +74,10 @@ Polity %>%
     country == "Serbia and Montenegro" ~ 345,
     country == "Sardinia" ~ 325,
     country == "Prussia" ~ 255,
+    # got burned by this, not gonna lie
+    polityccode == 305 & year <= 1918 ~ 300,
+    # got burned by this too. Polity had this right
+    polityccode == 260 ~ 260,
     TRUE ~ ccode
   )) -> Polity
 
