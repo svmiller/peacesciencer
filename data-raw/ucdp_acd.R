@@ -34,6 +34,19 @@ save(ucdp_acd, file="data/ucdp_acd.rda")
 # Here is where I fiddle with things...
 
 ucdp_acd %>%
+  mutate(gwcode = gwno_a) %>%
+  bind_rows(., ucdp_acd %>% mutate(gwcode = gwno_a_2nd)) %>%
+  bind_rows(., ucdp_acd %>% mutate(gwcode = gwno_b)) %>%
+  bind_rows(., ucdp_acd %>% mutate(gwcode = gwno_b_2nd)) %>%
+  filter(!is.na(gwcode)) %>%
+  mutate(sidea = case_when(gwcode == gwno_a ~ 1,
+                           gwcode == gwno_a_2nd ~ 1,
+                           TRUE ~ 0)) %>%
+  select(conflict_id, year, gwcode, sidea, everything()) %>%
+  arrange(year, conflict_id)
+  filter(type_of_conflict == 2) %>% summary
+
+ucdp_acd %>%
   filter(type_of_conflict %in% c(1, 3)) %>% summary
 
 

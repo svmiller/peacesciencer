@@ -30,7 +30,7 @@
 #' second observation is less than the country code for the first observation.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # CoW is default, will include years beyond 2016 (most recent CoW update)
 #' create_dyadyears()
 #'

@@ -176,22 +176,59 @@ data frame.</p>
     <p>Steven V. Miller</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/svmiller/peacesciencer'>peacesciencer</a></span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/svmiller/peacesciencer'>peacesciencer</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
 
 <span class='co'># CoW is default, will include years beyond 2016 (most recent CoW update)</span>
 <span class='fu'>create_stateyears</span><span class='op'>(</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,731 x 3</span><span>
+#&gt;    ccode statenme                  year
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>816
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>817
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>818
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>819
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>820
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>821
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>822
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>823
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>824
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>825
+#&gt; </span><span style='color: #949494;'># … with 16,721 more rows</span><span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, include most recent years</span>
 <span class='fu'>create_stateyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 18,289 x 3</span><span>
+#&gt;    gwcode statename                 year
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>816
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>817
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>818
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>819
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>820
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>821
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>822
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>823
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>824
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>825
+#&gt; </span><span style='color: #949494;'># … with 18,279 more rows</span><span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, don't include most recent years</span>
 <span class='fu'>create_stateyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span>, mry<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='op'>}</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 17,767 x 3</span><span>
+#&gt;    gwcode statename                 year
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>816
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>817
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>818
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>819
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>820
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>821
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>822
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>823
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>824
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2 United States of America  </span><span style='text-decoration: underline;'>1</span><span>825
+#&gt; </span><span style='color: #949494;'># … with 17,757 more rows</span><span></div><div class='input'>
 
-
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

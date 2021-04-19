@@ -25,7 +25,6 @@
 #' today. Use with some care.
 #'
 #' @examples
-#' \dontrun{
 #' library(peacesciencer)
 #' library(magrittr)
 #'
@@ -37,7 +36,6 @@
 #'
 #' # Gleditsch-Ward, don't include most recent years
 #' create_stateyears(system="gw", mry=FALSE)
-#' }
 #'
 #'
 create_stateyears <- function(system = "cow", mry = TRUE) {

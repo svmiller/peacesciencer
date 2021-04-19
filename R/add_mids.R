@@ -33,8 +33,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
+#' \donttest{
 #' cow_ddy %>% add_mids()
 #'
 #' # keep just the dispute number and Side A/B identifiers

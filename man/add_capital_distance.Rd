@@ -32,10 +32,7 @@ of the proverbial pipe.
 }
 \examples{
 
-\dontrun{
-library(magrittr)
-library(peacesciencer)
-
+\donttest{
 cow_ddy \%>\% add_capital_distance()
 
 create_stateyears() \%>\% add_capital_distance()

@@ -32,10 +32,7 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
-#' library(peacesciencer)
-#'
+#' \donttest{
 #' cow_ddy %>% add_contiguity()
 #'
 #' create_stateyears() %>% add_contiguity()
