@@ -29,8 +29,8 @@ of the proverbial pipe.
 }
 \examples{
 
-\dontrun{
-library(magrittr)
+\donttest{
+
 cow_ddy \%>\% add_igos()
 
 create_stateyears() \%>\% add_igos()

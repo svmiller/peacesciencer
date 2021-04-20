@@ -24,10 +24,8 @@ Data are from version 5.0 of the data.
 }
 \examples{
 
-\dontrun{
-library(magrittr)
 cow_ddy \%>\% add_atop_alliance()
-}
+
 }
 \references{
 Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and Andrew G. Long. 2002.

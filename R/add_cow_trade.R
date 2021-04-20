@@ -27,8 +27,8 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
+#' \donttest{
+#' # assumes an active internet connection
 #' cow_ddy %>% add_cow_trade()
 #' }
 

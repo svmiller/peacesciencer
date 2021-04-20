@@ -32,9 +32,9 @@
 #'
 #' @examples
 #'
-#'\dontrun{
-#' library(tidyverse)
-#' library(peacesciencer)
+#' \donttest{
+#'
+#' library(dplyr)
 #'
 #' create_stateyears(system="gw") %>% add_ucdp_onsets()
 #'

@@ -30,8 +30,6 @@ Gleditsch-Ward (\code{gw}) system membership data. The function leans on interna
 data provided in the package.
 }
 \examples{
-library(peacesciencer)
-library(magrittr)
 
 # CoW is default, will include years beyond 2016 (most recent CoW update)
 create_stateyears()

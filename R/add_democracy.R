@@ -30,12 +30,10 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
 #' cow_ddy %>% add_democracy()
 #'
 #' create_stateyears() %>% add_democracy()
-#' }
+#'
 #'
 
 add_democracy <- function(data) {

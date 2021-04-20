@@ -35,8 +35,7 @@ estimates have been log-transformed. Users can always exponentiate these if they
 }
 \examples{
 
-\dontrun{
-library(magrittr)
+\donttest{
 cow_ddy \%>\% add_sdp_gdp()
 
 create_stateyears() \%>\% add_sdp_gdp(system = "cow")

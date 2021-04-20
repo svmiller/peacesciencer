@@ -25,9 +25,7 @@
 #' today. Use with some care.
 #'
 #' @examples
-#' \dontrun{
-#' library(peacesciencer)
-#' library(magrittr)
+#' \donttest{
 #'
 #' # CoW is default, will include years beyond 2016 (most recent CoW update)
 #' create_statedays()

@@ -22,10 +22,8 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
 #' cow_ddy %>% add_atop_alliance()
-#' }
+#'
 
 add_atop_alliance <- function(data) {
 

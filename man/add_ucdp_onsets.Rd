@@ -30,9 +30,9 @@ into summaries. The user will probably want to consider some kind of recoding he
 }
 \examples{
 
-\dontrun{
-library(tidyverse)
-library(peacesciencer)
+\donttest{
+
+library(dplyr)
 
 create_stateyears(system="gw") \%>\% add_ucdp_onsets()
 

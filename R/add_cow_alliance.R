@@ -21,10 +21,9 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
+#'
 #' cow_ddy %>% add_cow_alliance()
-#' }
+#'
 
 add_cow_alliance <- function(data) {
 

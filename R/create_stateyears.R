@@ -25,8 +25,6 @@
 #' today. Use with some care.
 #'
 #' @examples
-#' library(peacesciencer)
-#' library(magrittr)
 #'
 #' # CoW is default, will include years beyond 2016 (most recent CoW update)
 #' create_stateyears()

@@ -26,8 +26,8 @@ of the proverbial pipe.
 }
 \examples{
 
-\dontrun{
-library(magrittr)
+\donttest{
+
 cow_ddy \%>\% add_nmc()
 
 create_stateyears() \%>\% add_nmc()

@@ -29,8 +29,8 @@
 #'
 #' @examples
 #'
-#' \dontrun{
-#' library(magrittr)
+#' \donttest{
+#'
 #' cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd()
 #' }
 #'
