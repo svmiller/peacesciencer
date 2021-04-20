@@ -26,12 +26,13 @@ of the proverbial pipe.
 }
 \examples{
 
-\donttest{
+# just call `library(tidyverse)` at the top of the your script
+library(magrittr)
 
 cow_ddy \%>\% add_nmc()
 
 create_stateyears() \%>\% add_nmc()
-}
+
 
 }
 \references{

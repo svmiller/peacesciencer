@@ -24,12 +24,13 @@
 #'
 #'
 #' @examples
-#' \donttest{
+#' # just call `library(tidyverse)` at the top of the your script
+#' library(magrittr)
 #'
 #' cow_ddy %>% add_gwcode_to_cow()
 #'
 #' create_stateyears() %>% add_gwcode_to_cow()
-#' }
+#'
 #'
 add_gwcode_to_cow <- function(data) {
 

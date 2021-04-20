@@ -25,6 +25,8 @@ Duplicates in the original directed dyad-year alliance data were pre-processed. 
 }
 \examples{
 
+# just call `library(tidyverse)` at the top of the your script
+library(magrittr)
 
 cow_ddy \%>\% add_cow_alliance()
 

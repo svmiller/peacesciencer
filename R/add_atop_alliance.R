@@ -22,6 +22,9 @@
 #'
 #' @examples
 #'
+#' # just call `library(tidyverse)` at the top of the your script
+#' library(magrittr)
+#'
 #' cow_ddy %>% add_atop_alliance()
 #'
 

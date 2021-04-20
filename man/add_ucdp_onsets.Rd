@@ -31,7 +31,8 @@ into summaries. The user will probably want to consider some kind of recoding he
 \examples{
 
 \donttest{
-
+# just call `library(tidyverse)` at the top of the your script
+library(magrittr)
 library(dplyr)
 
 create_stateyears(system="gw") \%>\% add_ucdp_onsets()

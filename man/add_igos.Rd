@@ -31,6 +31,9 @@ of the proverbial pipe.
 
 \donttest{
 
+# just call library(tidyverse) at the top of the pipe
+library(magrittr)
+
 cow_ddy \%>\% add_igos()
 
 create_stateyears() \%>\% add_igos()

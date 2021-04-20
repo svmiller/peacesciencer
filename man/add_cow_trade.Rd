@@ -31,6 +31,9 @@ functions in the entire package.
 \examples{
 
 \donttest{
+# just call `library(tidyverse)` at the top of the your script
+library(magrittr)
+
 # assumes an active internet connection
 cow_ddy \%>\% add_cow_trade()
 }

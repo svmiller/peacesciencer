@@ -31,6 +31,9 @@
 #'
 #' \donttest{
 #'
+#' # just call `library(tidyverse)` at the top of the your script
+#' library(magrittr)
+#'
 #' cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd()
 #' }
 #'

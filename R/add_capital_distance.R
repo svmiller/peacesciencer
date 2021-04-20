@@ -27,6 +27,8 @@ globalVariables(c('.', 'capitals', 'cow_ddy'))
 #' @examples
 #'
 #' \donttest{
+#' # just call `library(tidyverse)` at the top of the your script
+#' library(magrittr)
 #' cow_ddy %>% add_capital_distance()
 #'
 #' create_stateyears() %>% add_capital_distance()

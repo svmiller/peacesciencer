@@ -33,7 +33,8 @@
 #' @examples
 #'
 #' \donttest{
-#'
+#' # just call `library(tidyverse)` at the top of the your script
+#' library(magrittr)
 #' library(dplyr)
 #'
 #' create_stateyears(system="gw") %>% add_ucdp_onsets()

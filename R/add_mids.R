@@ -34,6 +34,8 @@
 #' @examples
 #'
 #' \donttest{
+#' # just call `library(tidyverse)` at the top of the your script
+#' library(magrittr)
 #' cow_ddy %>% add_mids()
 #'
 #' # keep just the dispute number and Side A/B identifiers
