@@ -36,7 +36,7 @@
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' cow_ddy %>% add_sdp_gdp()
+#' cow_ddy %>% add_sdp_gdp(system="cow")
 #'
 #' create_stateyears() %>% add_sdp_gdp(system = "cow")
 #'

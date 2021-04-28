@@ -24,14 +24,14 @@
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 #'
 #' @examples
-#'
+#' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
 #' cow_ddy %>% add_archigos()
 #'
 #' create_stateyears() %>% add_archigos()
-#'
+#' }
 #'
 #'
 #' @importFrom rlang .data

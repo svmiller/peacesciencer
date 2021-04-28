@@ -71,7 +71,7 @@ NULL
 #'
 #' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. ”V-Dem Codebook v10” Varieties of Democracy (V-Dem) Project.
 #'
-#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime CHaracteristics and Transitions, 1800-2017." Center for Systemic Peace.
+#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime Characteristics and Transitions, 1800-2017." Center for Systemic Peace.
 #'
 #' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). \doi{10.2139/ssrn.2753830}
 #'
@@ -566,7 +566,7 @@ NULL
 #' \item{\code{year}}{a numeric vector for the year}
 #' \item{\code{atop_defense}}{a numeric vector that equals 1 if there was an alliance observed with a defense pledge}
 #' \item{\code{atop_offense}}{a numeric vector that equals 1 if there was an alliance observed with a offense pledge}
-#' \item{\code{atop_neutral}}{a numeric vector that equals 1 if there was an alliance obeserved with a neutrality pledge}
+#' \item{\code{atop_neutral}}{a numeric vector that equals 1 if there was an alliance observed with a neutrality pledge}
 #' \item{\code{atop_nonagg}}{a numeric vector that equals 1 if there was an alliance obeserved with a non-aggression pledge}
 #' \item{\code{atop_consul}}{a numeric vector that equals 1 if there was an alliance obeserved with a consultation pledge}
 #' }
@@ -705,10 +705,11 @@ NULL
 #' \item{\code{gwno_a_2nd}}{the Gleditsch-Ward state code for the state that actively supported side A of the armed conflict with the use of troops}
 #' \item{\code{gwno_b}}{the Gleditsch-Ward state code for the actor on side B of the armed conflict}
 #' \item{\code{gwno_b_2nd}}{the Gleditsch-Ward state code for the state that actively supported side B of the armed conflict with the use of troops}
-#' \item{\code{incompatability}}{a numeric vector for the main conflict issue (1 = territory, 2 = government, 3 = both)}
+#' \item{\code{incompatibility}}{a numeric vector for the main conflict issue (1 = territory, 2 = government, 3 = both)}
 #' \item{\code{intensity_level}}{a numeric vector for the intensity level in the calendar year (1 = minor (25-999 deaths), 2 = war (>1,000 deaths))}
 #' \item{\code{type_of_conflict}}{a numeric vector for the type of conflict (1 = extrasystemic, 2 = inter-state, 3 = intra-state, 4 = internationalized intra-state)}
 #' \item{\code{start_date}}{a date of the first battle-related death in the conflict, not to be confused with the first battle-related death of the episode}
+#' \item{\code{start_prec}}{the level of precision for \code{start_date}}
 #' \item{\code{start_date2}}{a date of the first battle-related death in the episode, not to be confused with the first battle-related death of the conflict}
 #' \item{\code{start_prec2}}{the level of precision for \code{start_date2}}
 #' \item{\code{ep_end}}{a dummy variable for whether the conflict episode ended in the calendar year of observation}

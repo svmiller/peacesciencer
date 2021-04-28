@@ -12,7 +12,7 @@ A data frame with 272,046 observations on the following eight variables.
 \item{\code{year}}{a numeric vector for the year}
 \item{\code{atop_defense}}{a numeric vector that equals 1 if there was an alliance observed with a defense pledge}
 \item{\code{atop_offense}}{a numeric vector that equals 1 if there was an alliance observed with a offense pledge}
-\item{\code{atop_neutral}}{a numeric vector that equals 1 if there was an alliance obeserved with a neutrality pledge}
+\item{\code{atop_neutral}}{a numeric vector that equals 1 if there was an alliance observed with a neutrality pledge}
 \item{\code{atop_nonagg}}{a numeric vector that equals 1 if there was an alliance obeserved with a non-aggression pledge}
 \item{\code{atop_consul}}{a numeric vector that equals 1 if there was an alliance obeserved with a consultation pledge}
 }

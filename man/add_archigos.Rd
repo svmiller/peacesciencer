@@ -26,14 +26,14 @@ The function leans on attributes of the data that are provided by the \code{crea
 of the proverbial pipe.
 }
 \examples{
-
+\donttest{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 
 cow_ddy \%>\% add_archigos()
 
 create_stateyears() \%>\% add_archigos()
-
+}
 
 
 }

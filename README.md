@@ -122,6 +122,8 @@ It also has the following data sets:
 -   `gw_states`: Gleditsch-Ward independent state system data
     (version: 2017)
 -   `maoz_powers`: Zeev Maoz’ global/regional power data.
+-   `ucdp_acd`: a (not quite) dyad-year and (not quite) state-year data
+    set on armed conflict episodes
 -   `ucdp_onsets`: a state-year data set of UCDP armed conflict
     onsets/episodes.
 
@@ -134,7 +136,7 @@ state-year data. The dyad-year data are created with the
 `create_dyadyears()` function. It has a few optional parameters with
 hidden defaults. The user can specify what kind of state system
 (`system`) data they want to use—either Correlates of War (`"cow"`) or
-Gledtisch-Ward (`"gw"`), whether they want to extend the data to the
+Gleditsch-Ward (`"gw"`), whether they want to extend the data to the
 most recently concluded calendar year (`mry`) (i.e. Correlates of War
 state system membership data are current as of Dec. 31, 2016 and the
 script can extend that to the end of 2019), and whether the user wants
@@ -238,7 +240,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 48.613 sec elapsed
+    ## 44.99 sec elapsed
 
 ``` r
 # state-years now...
@@ -286,4 +288,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 10.25 sec elapsed
+    ## 8.97 sec elapsed

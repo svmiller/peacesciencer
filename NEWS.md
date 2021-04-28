@@ -1,4 +1,4 @@
-peacesciencer 0.3.0 (in development)
+peacesciencer 0.3.0
 ---------------------------------------------------------------------
 
 - Add `atop_alliance` (directed dyad-year) data
