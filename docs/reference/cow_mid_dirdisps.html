@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • peacesciencer</title>
+<title>Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0) — cow_mid_dirdisps • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0) — cow_mid_dirdisps" />
+<meta property="og:description" content="These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
+ Dispute (MID) project. Data are from version 5.0." />
 
 
 
@@ -60,7 +62,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -124,66 +126,64 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>cow_mid_dirdisps.Rd</code></div>
     </div>
 
-    <div id="peacesciencer-040-in-development" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-040-in-development" class="anchor"></a>peacesciencer 0.4.0 (in development)</h2>
-<ul>
-<li>add <code>cow_mid_dirdisps</code> data.</li>
-</ul>
-</div>
-    <div id="peacesciencer-030" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-030" class="anchor"></a>peacesciencer 0.3.0</h2>
-<ul>
-<li>Add <code>atop_alliance</code> (directed dyad-year) data</li>
-<li>Add <code>archigos</code> data</li>
-<li>Add <code>cow_sdp_gdp</code> and <code>gw_sdp_gdp</code> data</li>
-<li>Add <code>ucdp_acd</code> data</li>
-<li>Add <code>ucdp_onsets</code> data</li>
-<li>Add <code><a href="../reference/add_archigos.html">add_archigos()</a></code> function</li>
-<li>Add <code><a href="../reference/add_atop_alliance.html">add_atop_alliance()</a></code> function</li>
-<li>Add <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code> function. For now, this has no default. You must specify “gw” or “cow”.</li>
-<li>Add <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> function. For now, this has no default. You must specify “gw” or “cow”.</li>
-<li>Add <code>add_ucdp_onset()</code> function.</li>
-<li>Add “stops” that force the correct merge on the correct system code. In most applications, this is Correlates of War codes.</li>
-<li>File compression for data files (again)</li>
-<li>Fixed bug in <code><a href="../reference/filter_prd.html">filter_prd()</a></code>. Past versions of my code had treated non-contiguous dyads as 6s. Here, they’re 0s. That created situations where I wasn’t filtering anything at all with this function.</li>
-<li>Rename variables in <code>cow_alliance</code> to distinguish from ATOP equivalents.</li>
-</ul>
-</div>
-    <div id="peacesciencer-020" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-020" class="anchor"></a>peacesciencer 0.2.0</h2>
-<ul>
-<li>Fix stupid mistake(s) in README.</li>
-<li>File compression for the data files.</li>
-<li>Add Correlates of War intergovernmental organizations data.</li>
-<li>Add function for adding Correlates of War intergovernmental organizations data.</li>
-<li>Add Correlates of War trade data (state-year and dyad-year).</li>
-<li>Add minimum distance data</li>
-<li>Add citations data frame for assistance in properly citing things.</li>
-<li>Add <code><a href="../reference/create_statedays.html">create_statedays()</a></code> function.</li>
-</ul>
-</div>
-    <div id="peacesciencer-010" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-010" class="anchor"></a>peacesciencer 0.1.0</h2>
-<ul>
-<li>Initial developmental release</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p>These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
+ Dispute (MID) project. Data are from version 5.0.</p>
+    </div>
 
+    <pre class="usage"><span class='va'>cow_mid_dirdisps</span></pre>
+
+
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame with 11390 observations on the following 18 variables.</p><dl>
+<dt><code>dispnum</code></dt><dd><p>a numeric vector for the CoW-MID dispute number</p></dd>
+<dt><code>ccode1</code></dt><dd><p>a numeric vector for the focal state in the dyad</p></dd>
+<dt><code>ccode2</code></dt><dd><p>a numeric vector for the target state in the dyad</p></dd>
+<dt><code>year</code></dt><dd><p>a numeric vector for the dispute-year</p></dd>
+<dt><code>dispongoing</code></dt><dd><p>a numeric vector for whether there was a dispute ongoing in that year</p></dd>
+<dt><code>disponset</code></dt><dd><p>a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)</p></dd>
+<dt><code>sidea1</code></dt><dd><p>is <code>ccode1</code> on side A of the dispute?</p></dd>
+<dt><code>sidea2</code></dt><dd><p>is <code>ccode2</code> on side A of the dispute?</p></dd>
+<dt><code>fatality1</code></dt><dd><p>a numeric vector for the overall fatality level of <code>ccode1</code> in the dispute</p></dd>
+<dt><code>fatality2</code></dt><dd><p>a numeric vector for the overall fatality level of <code>ccode2</code> in the dispute</p></dd>
+<dt><code>fatalpre1</code></dt><dd><p>a numeric vector for the known fatalities (with precision) for <code>ccode1</code> in the dispute</p></dd>
+<dt><code>fatalpre2</code></dt><dd><p>a numeric vector for the known fatalities (with precision) for <code>ccode2</code> in the dispute</p></dd>
+<dt><code>hiact1</code></dt><dd><p>a numeric vector for the highest action of <code>ccode1</code> in the dispute</p></dd>
+<dt><code>hiact2</code></dt><dd><p>a numeric vector for the highest action of <code>ccode2</code> in the dispute</p></dd>
+<dt><code>hostlev1</code></dt><dd><p>a numeric vector for the hostility level of <code>ccode1</code> in the dispute</p></dd>
+<dt><code>hostlev2</code></dt><dd><p>a numeric vector for the hostility level of <code>ccode2</code> in the dispute</p></dd>
+<dt><code>orig1</code></dt><dd><p>is <code>ccode1</code> an originator of the dispute?</p></dd>
+<dt><code>orig2</code></dt><dd><p>is <code>ccode2</code> an originator of the dispute?</p></dd>
+
+</dl>
+
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The process of creating these is described at one of the references below. Importantly, these data are somewhat
+"naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
+Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
+action for both was a war. The data are thus similar to what the <code>EUGene</code> program would create for users back in the day. Use these
+data with that limitation in mind.</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
+URL: <a href='http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/'>http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/</a></p>
+<p>Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens
+and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J. Soules. 2021.
+"The MID5 Dataset, 2011–2014: Procedures, coding rules, and description" <em>Conflict Management and Peace Science</em>.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

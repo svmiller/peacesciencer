@@ -101,6 +101,8 @@ It also has the following data sets:
 -   `cow_igo_sy`: state-year data for Correlates of War
     intergovernmental organizations data.
 -   `cow_majors`: Correlates of War major powers data (version: 2016)
+-   `cow_mid_dirdisps`: Correlates of War Militarized Interstate Dispute
+    data (directed dyadic dispute-year, v. 5.0)
 -   `cow_mindist`: the minimum distance between Correlates of War
     states, in kilometers, in non-directed dyad-year format (1946-2015)
 -   `cow_nmc`: Correlates of War National Material Capabilities data
@@ -240,7 +242,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 44.99 sec elapsed
+    ## 38.729 sec elapsed
 
 ``` r
 # state-years now...
@@ -288,4 +290,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 8.97 sec elapsed
+    ## 8.983 sec elapsed
