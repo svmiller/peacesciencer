@@ -62,6 +62,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
+    </li>
+    <li>
       <a href="articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
     </li>
   </ul>
@@ -125,6 +128,8 @@
 <li>
 <code><a href="reference/add_cow_majors.html">add_cow_majors()</a></code>: adds Correlates of War major power information to dyad-year or state-year data.</li>
 <li>
+<code><a href="reference/add_cow_mids.html">add_cow_mids()</a></code>: adds Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame</li>
+<li>
 <code><a href="reference/add_cow_trade.html">add_cow_trade()</a></code>: adds Correlates of War trade data to dyad-year or state-year data.</li>
 <li>
 <code><a href="reference/add_democracy.html">add_democracy()</a></code>: adds estimates of democracy/levels of democracy to dyad-year or state-year data.</li>
@@ -175,6 +180,12 @@
 <code>cow_igo_sy</code>: state-year data for Correlates of War intergovernmental organizations data.</li>
 <li>
 <code>cow_majors</code>: Correlates of War major powers data (version: 2016)</li>
+<li>
+<code>cow_mid_ddydisps</code>: Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)</li>
+<li>
+<code>cow_mid_dirdisps</code>: Correlates of War Militarized Interstate Dispute data (directed dyadic dispute-year, v. 5.0)</li>
+<li>
+<code>cow_mid_disps</code>: Correlates of War Militarized Interstate Dispute data (abbreviated dispute-level, v. 5.0)</li>
 <li>
 <code>cow_mindist</code>: the minimum distance between Correlates of War states, in kilometers, in non-directed dyad-year format (1946-2015)</li>
 <li>
@@ -282,7 +293,7 @@
 <span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="do">## #   wbpopest2 &lt;dbl&gt;, sdpest2 &lt;dbl&gt;, prd &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 44.99 sec elapsed</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 39.373 sec elapsed</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># state-years now...</span>
 
@@ -324,7 +335,7 @@
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sdpest &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 8.97 sec elapsed</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 9.045 sec elapsed</span></span></code></pre></div>
 </div>
 
   </div>

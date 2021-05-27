@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0) — cow_mid_dirdisps • peacesciencer</title>
+<title>Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0) — cow_mid_ddydisps • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0) — cow_mid_dirdisps" />
+<meta property="og:title" content="Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0) — cow_mid_ddydisps" />
 <meta property="og:description" content="These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
- Dispute (MID) project. Data are from version 5.0." />
+ Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
+ Its primary aim here is merging into a dyad-year data frame." />
 
 
 
@@ -129,22 +130,23 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0)</h1>
+    <h1>Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>cow_mid_dirdisps.Rd</code></div>
+    <div class="hidden name"><code>cow_mid_ddydisps.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
- Dispute (MID) project. Data are from version 5.0.</p>
+ Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
+ Its primary aim here is merging into a dyad-year data frame.</p>
     </div>
 
-    <pre class="usage"><span class='va'>cow_mid_dirdisps</span></pre>
+    <pre class="usage"><span class='va'>cow_mid_ddydisps</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 11390 observations on the following 18 variables.</p><dl>
+    <p>A data frame with 10234 observations on the following 25 variables.</p><dl>
 <dt><code>dispnum</code></dt><dd><p>a numeric vector for the CoW-MID dispute number</p></dd>
 <dt><code>ccode1</code></dt><dd><p>a numeric vector for the focal state in the dyad</p></dd>
 <dt><code>ccode2</code></dt><dd><p>a numeric vector for the target state in the dyad</p></dd>
@@ -163,6 +165,12 @@
 <dt><code>hostlev2</code></dt><dd><p>a numeric vector for the hostility level of <code>ccode2</code> in the dispute</p></dd>
 <dt><code>orig1</code></dt><dd><p>is <code>ccode1</code> an originator of the dispute?</p></dd>
 <dt><code>orig2</code></dt><dd><p>is <code>ccode2</code> an originator of the dispute?</p></dd>
+<dt><code>fatality</code></dt><dd><p>a numeric vector for the fatality level of the dispute</p></dd>
+<dt><code>hostlev</code></dt><dd><p>a numeric vector for the hostility level of the MID</p></dd>
+<dt><code>mindur</code></dt><dd><p>a numeric vector for the minimum duration of the MID</p></dd>
+<dt><code>maxdur</code></dt><dd><p>a numeric vector for the maximum duration of the MID</p></dd>
+ <dt><code>recip</code></dt><dd><p>a numeric vector for whether a MID was reciprocated</p></dd>
+ <dt><code>stmon</code></dt><dd><p>a numeric vector for the start month of the MID</p></dd>
 
 </dl>
 

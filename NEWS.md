@@ -1,7 +1,9 @@
 peacesciencer 0.4.0 (in development)
 ---------------------------------------------------------------------
 
-- add `cow_mid_dirdisps` data.
+- Add `cow_mid_ddydisps`, `cow_mid_dirdisps`, and `cow_mid_disps` data.
+- Add `add_cow_mids()` function.
+- File compression for data files (again)
 
 peacesciencer 0.3.0
 ---------------------------------------------------------------------

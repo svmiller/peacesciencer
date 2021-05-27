@@ -22,6 +22,9 @@
     <loc>http://svmiller.com/reference/add_cow_majors.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/add_cow_mids.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/add_cow_trade.html</loc>
   </url>
   <url>
@@ -85,7 +88,13 @@
     <loc>http://svmiller.com/reference/cow_majors.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/cow_mid_ddydisps.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/cow_mid_dirdisps.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/cow_mid_disps.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_mindist.html</loc>
@@ -137,6 +146,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/ucdp_onsets.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/coerce-dispute-year-dyad-year.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/articles/democracy.html</loc>

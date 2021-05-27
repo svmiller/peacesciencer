@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_mids • peacesciencer</title>
+<title>Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_cow_mids • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_mids" />
-<meta property="og:description" content="add_mids() merges in GML's MID data to a dyad-year data frame. The current version
-of the GML MID data is 2.1.1." />
+<meta property="og:title" content="Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_cow_mids" />
+<meta property="og:description" content="add_cow_mids() merges in CoW's MID data to a dyad-year data frame. The current version
+of the CoW-MID data is version 5.0." />
 
 
 
@@ -129,17 +129,17 @@ of the GML MID data is 2.1.1." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_mids.R'><code>R/add_mids.R</code></a></small>
-    <div class="hidden name"><code>add_mids.Rd</code></div>
+    <h1>Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_cow_mids.R'><code>R/add_cow_mids.R</code></a></small>
+    <div class="hidden name"><code>add_cow_mids.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_mids()</code> merges in GML's MID data to a dyad-year data frame. The current version
-of the GML MID data is 2.1.1.</p>
+    <p><code>add_cow_mids()</code> merges in CoW's MID data to a dyad-year data frame. The current version
+of the CoW-MID data is version 5.0.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>add_cow_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,8 +153,8 @@ of the GML MID data is 2.1.1.</p>
       <td><p>an optional parameter, specified as a character vector, passed to the function in a <code>select(one_of(.))</code> wrapper. This
 allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 too much space in memory. Note: the Correlates of War system codes (<code>ccode1</code>, <code>ccode2</code>), the observation year
-(<code>year</code>), the presence or absence of an ongoing MID (<code>midongoing</code>), and the presence or absence of a unique
-MID onset (<code>midonset</code>) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
+(<code>year</code>), the presence or absence of an ongoing MID (<code>dispongoing</code>), and the presence or absence of a unique
+MID onset (<code>disponset</code>) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
 The user is free to keep or discard anything else they see fit.</p>
 <p>If <code>keep</code> is not specified in the function, the ensuing output returns everything.</p></td>
     </tr>
@@ -162,21 +162,20 @@ The user is free to keep or discard anything else they see fit.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_mids()</code> takes a dyad-year data frame and adds dyad-year dispute information
-from the GML MID data.</p>
+    <p><code>add_cow_mids()</code> takes a dyad-year data frame and adds dyad-year dispute information
+from the CoW-MID data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
 for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
 had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-This merging process employs the following rules to whittle down these duplicate dispute-year observations. It
-first selects on MID onsets, then selecting highest fatality level, then highest hostility level, then
-the longest estimating minimum dispute duration, and finally, in the event of duplicates still outstanding,
-selecting the MID that came first. This is how GML present their full directed and non-directed dyad-year data.</p>
+This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
+data frame.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
-Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.</p>
+    <p>Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens
+and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J. Soules. 2021.
+"The MID5 Dataset, 2011–2014: Procedures, coding rules, and description" <em>Conflict Management and Peace Science</em>.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven V. Miller</p>
@@ -186,7 +185,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_mids</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_mids.html'>add_mids</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,025,840 x 39</span><span>
 #&gt;    ccode1 ccode2  year dispnum midongoing midonset sidea1 sidea2 revstate1
 #&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
@@ -209,7 +208,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 #&gt; </span><span style='color: #949494;'>#   endmon </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, recip </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, numa </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, numb </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, ongo2010 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
 #&gt; </span><span style='color: #949494;'>#   version </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
 <span class='co'># keep just the dispute number and Side A/B identifiers</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_mids</span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dispnum"</span>,<span class='st'>"sidea1"</span>, <span class='st'>"sidea2"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_mids.html'>add_mids</a></span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dispnum"</span>,<span class='st'>"sidea1"</span>, <span class='st'>"sidea2"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2,025,840 x 8</span><span>
 #&gt;    ccode1 ccode2  year midonset midongoing dispnum sidea1 sidea2
 #&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>

@@ -52,6 +52,8 @@ following functions:
     information to dyad-year data.
 -   `add_cow_majors()`: adds Correlates of War major power information
     to dyad-year or state-year data.
+-   `add_cow_mids()`: adds Correlates of War (CoW) Militarized
+    Interstate Dispute (MID) data to dyad-year data frame
 -   `add_cow_trade()`: adds Correlates of War trade data to dyad-year or
     state-year data.
 -   `add_democracy()`: adds estimates of democracy/levels of democracy
@@ -101,8 +103,12 @@ It also has the following data sets:
 -   `cow_igo_sy`: state-year data for Correlates of War
     intergovernmental organizations data.
 -   `cow_majors`: Correlates of War major powers data (version: 2016)
+-   `cow_mid_ddydisps`: Directed Dyadic Dispute-Year Data with No
+    Duplicate Dyad-Years (CoW-MID, v. 5.0)
 -   `cow_mid_dirdisps`: Correlates of War Militarized Interstate Dispute
     data (directed dyadic dispute-year, v. 5.0)
+-   `cow_mid_disps`: Correlates of War Militarized Interstate Dispute
+    data (abbreviated dispute-level, v. 5.0)
 -   `cow_mindist`: the minimum distance between Correlates of War
     states, in kilometers, in non-directed dyad-year format (1946-2015)
 -   `cow_nmc`: Correlates of War National Material Capabilities data
@@ -242,7 +248,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 38.729 sec elapsed
+    ## 39.373 sec elapsed
 
 ``` r
 # state-years now...
@@ -290,4 +296,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 8.983 sec elapsed
+    ## 9.045 sec elapsed

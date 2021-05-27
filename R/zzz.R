@@ -9,5 +9,5 @@ if(getRversion() >= "2.15.1")
       "gml_dirdisp", "gw_ddy", "gw_states", "maoz_powers", "cow_nmc",
       "cow_igo_ndy", "cow_igo_sy", "cow_trade_sy", "gw_mindist", "cow_mindist",
       "archigos", "atop_alliance", "gw_sdp_gdp", "cow_sdp_gdp", "ucdp_onsets",
-      "ucdp_acd", "cow_mid_dirdisps")
+      "ucdp_acd", "cow_mid_dirdisps", "cow_mid_disps", "cow_mid_ddydisps")
   )
