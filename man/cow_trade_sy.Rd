@@ -23,7 +23,7 @@ These are state-year-level data for national trade from the Correlates of War pr
 The \code{data-raw} directory on the project's Github shows how the data were processed.
 }
 \references{
-Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Cdebook, Version 4.0. Online: \url{https://correlatesofwar.org}
+Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Codebook, Version 4.0. Online: \url{https://correlatesofwar.org}
 
 Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." \emph{Conflict Management and Peace Science}, 26(5): 471-491.
 }
