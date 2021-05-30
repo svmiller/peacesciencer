@@ -75,7 +75,7 @@ works for both the CoW-MID data and the Gibler-Miller-Little (GML) MID data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9999</span>
       </span>
     </div>
 
@@ -188,9 +188,24 @@ unbalanced/have gaps. Think of a state like Germany disappearing for 45 years as
 <span class='fu'><a href='add_cow_majors.html'>add_cow_majors</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
 <span class='fu'><a href='filter_prd.html'>filter_prd</a></span><span class='op'>(</span><span class='op'>)</span>  <span class='op'>%&gt;%</span>
 <span class='fu'>add_peace_years</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='error'>Error in sbtscs(data, .data$cowmidongoing, .data$year, .data$dyad, pad_ts = pad): could not find function "sbtscs"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,316 x 13</span><span>
+#&gt;    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>841           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>842           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>843           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>844           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>845           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>846           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>847           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>848           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>849           0             0           0             0
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>    100    101  </span><span style='text-decoration: underline;'>1</span><span>850           0             0           0             0
+#&gt; </span><span style='color: #949494;'># … with 246,306 more rows, and 6 more variables: conttype </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   cowmaj1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cowmaj2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, prd </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, cowmidspell </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   gmlmidspell </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'><span class='co'># }</span>
 
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.9999</span>
       </span>
     </div>
 
@@ -107,7 +107,10 @@
 <span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer">peacesciencer</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://svmiller.com/peacesciencer">peacesciencer</a></span><span class="op">)</span>
+<span class="co">#&gt; Registered S3 method overwritten by 'broom.mixed':</span>
+<span class="co">#&gt;   method      from </span>
+<span class="co">#&gt;   tidy.gamlss broom</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'kableExtra'</span>
@@ -132,7 +135,7 @@
 <span class="co">#&gt; 7     306 ITA     325    17     9   1860     19      1    1861     0       -9</span>
 <span class="co">#&gt; 8     306 FRN     220    17     9   1860     19      1    1861     1       -9</span>
 <span class="co">#&gt; # … with 2 more variables: hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;</span></code></pre></div>
-<p>This means a researcher must make careful design decisions about which cases to exclude from their data. There is no correct answer here, per se. There is good reason theoretically to employ certain case exclusion rules before others, but what follows are what I think to be sensible. Users who want different case exclusion rules are free to go to the dyadic dispute-year data available in this package and whittle it down to their satisfaction. I offer this as a tutorial for how <a href="https://github.com/svmiller/peacesciencer">peacesciencer</a> does it. I will start with version 5.0 of the CoW-MID data and the dyadic dispute-year data I created from it.</p>
+<p>This means a researcher must make careful design decisions about which cases to exclude from their data. There is no correct answer here, per se. There is good reason theoretically to employ certain case exclusion rules before others, but what follows are what I think to be sensible. Users who want different case exclusion rules are free to go to the dyadic dispute-year data available in this package and whittle it down to their satisfaction. I offer this as a tutorial for how <a href="http://svmiller.com/peacesciencer">peacesciencer</a> does it. I will start with version 5.0 of the CoW-MID data and the dyadic dispute-year data I created from it.</p>
 <div id="converting-cow-mid-dyadic-dispute-year-data-into-dyad-year-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#converting-cow-mid-dyadic-dispute-year-data-into-dyad-year-data" class="anchor"></a>Converting CoW-MID Dyadic Dispute-Year Data into Dyad-Year Data</h2>
@@ -260,7 +263,7 @@ disponset
 </tr>
 </tbody>
 </table>
-<p>Here’s how <a href="https://github.com/svmiller/peacesciencer">peacesciencer</a> does this first cut. Grouping by dyad-year (i.e. <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by(ccode1, ccode2, year)</a></code>), it creates a new variable that equals 1 if the number of rows by dyad-year is more than 1. Maintaining the same grouped structure, it calculates the standard deviation of the the <code>disponset</code> variable. Cases where no standard deviation could be calculate are cases where the dyad-year does not duplicate and these are assigned as 0. Next, it creates a simple <code>removeme</code> column that equals 1 if 1) it’s a duplicated dyad-year, and 2) it’s not a unique onset, and 3) the standard deviation is greater than 0 (i.e. there is at least one onset in that dyad-year). It then removes cases where <code>removeme == 1</code>.</p>
+<p>Here’s how <a href="http://svmiller.com/peacesciencer">peacesciencer</a> does this first cut. Grouping by dyad-year (i.e. <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by(ccode1, ccode2, year)</a></code>), it creates a new variable that equals 1 if the number of rows by dyad-year is more than 1. Maintaining the same grouped structure, it calculates the standard deviation of the the <code>disponset</code> variable. Cases where no standard deviation could be calculate are cases where the dyad-year does not duplicate and these are assigned as 0. Next, it creates a simple <code>removeme</code> column that equals 1 if 1) it’s a duplicated dyad-year, and 2) it’s not a unique onset, and 3) the standard deviation is greater than 0 (i.e. there is at least one onset in that dyad-year). It then removes cases where <code>removeme == 1</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span>  <span class="op">%&gt;%</span>
@@ -1371,7 +1374,7 @@ maxdur
 </tbody>
 </table>
 <p>The final case exclusion rules will round us home. First, a few of these duplicate dyad-years feature a case where one dispute was reciprocated and the other was not. For example, MID#4428 was a mutual border fortification while MID#4430 was just one border fortification directed by Kyrgyzstan against Uzbekistan. Thus, we should keep the one that involved at least two codable incidents rather than the MID in which there was just one codable incident.</p>
-<p>A reader may object here that reciprocation should feature higher in the proverbial chain, given its prominence in the audience cost literature. I caution that we should not do this. My published and ongoing work with Doug Gibler has driven home that the reciprocation variable is an information-poor variable. It only minimally tells you that Side B in a MID initiated a militarized incident or was involved in an attack in which there was no clear initiator. In our review of the conflict data, we find that attacks or ambushes initiated by Side A are countered when they happen more than half the time. Further, inferences made from the reciprocation variable are among the most sensitive to the errors we report in the CoW-MID data. For that reason, we discourage researchers from using this variable for their analyses and, for this application, it’s why <a href="https://github.com/svmiller/peacesciencer">peacesciencer</a> uses the dispute-level reciprocation variable near the bottom of the rung in its case exclusions.</p>
+<p>A reader may object here that reciprocation should feature higher in the proverbial chain, given its prominence in the audience cost literature. I caution that we should not do this. My published and ongoing work with Doug Gibler has driven home that the reciprocation variable is an information-poor variable. It only minimally tells you that Side B in a MID initiated a militarized incident or was involved in an attack in which there was no clear initiator. In our review of the conflict data, we find that attacks or ambushes initiated by Side A are countered when they happen more than half the time. Further, inferences made from the reciprocation variable are among the most sensitive to the errors we report in the CoW-MID data. For that reason, we discourage researchers from using this variable for their analyses and, for this application, it’s why <a href="http://svmiller.com/peacesciencer">peacesciencer</a> uses the dispute-level reciprocation variable near the bottom of the rung in its case exclusions.</p>
 <p>Still, here’s how to do that.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
@@ -1386,7 +1389,7 @@ maxdur
   <span class="co"># practice safe group_by()</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 <span class="co">#&gt; Joining, by = "dispnum"</span></code></pre></div>
-<p>We’re down to just three duplicate dyad-years now. The only reason MID#4428 and MID#4430 are both still there is CoW-MID has MID#4428 as unreciprocated at the dispute-level while it also has a militarized incident for Side B in the dispute. This is a CoW-MID issue and not a <a href="https://github.com/svmiller/peacesciencer">peacesciencer</a> issue.</p>
+<p>We’re down to just three duplicate dyad-years now. The only reason MID#4428 and MID#4430 are both still there is CoW-MID has MID#4428 as unreciprocated at the dispute-level while it also has a militarized incident for Side B in the dispute. This is a CoW-MID issue and not a <a href="http://svmiller.com/peacesciencer">peacesciencer</a> issue.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
