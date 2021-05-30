@@ -826,8 +826,8 @@ NULL
 #' \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}
 #' \item{\code{ccode2}}{a numeric vector for the target state in the dyad}
 #' \item{\code{year}}{a numeric vector for the dispute-year}
-#' \item{\code{dispongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
-#' \item{\code{disponset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}
+#' \item{\code{cowmidongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
+#' \item{\code{cowmidonset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}
 #' \item{\code{sidea1}}{is \code{ccode1} on side A of the dispute?}
 #' \item{\code{sidea2}}{is \code{ccode2} on side A of the dispute?}
 #' \item{\code{fatality1}}{a numeric vector for the overall fatality level of \code{ccode1} in the dispute}

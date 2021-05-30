@@ -46,6 +46,8 @@
 
 add_mids <- function(data, keep) {
 
+  .Deprecated("add_gml_mids")
+
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {

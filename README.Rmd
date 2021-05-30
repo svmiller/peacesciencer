@@ -50,8 +50,9 @@ The package is very much a work in progress. Right now, it has the following fun
 - `add_cow_trade()`: adds Correlates of War trade data to dyad-year or state-year data.
 - `add_democracy()`: adds estimates of democracy/levels of democracy to dyad-year or state-year data.
 - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year or state-year data with Correlates of War state codes.
+- `add_gml_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data.
 - `add_igos()`: adds Correlates of War International Governmental Organizations (IGOs) data to dyad-year or state-year data.
-- `add_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data.
+- `add_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data. (DEPRECATED)
 - `add_minimum_distance()`: adds minimum distance (in kilometers) to dyad-year or state-year data.
 - `add_nmc()`: adds estimates of national material capabilities (from Correlates of War) to dyad-year or state-year data.
 - `add_sdp_gdp()`: adds estimates of (gross and surplus) domestic product and population size to dyad-year or state-year data
@@ -83,6 +84,7 @@ It also has the following data sets:
 - `cow_states`: Correlates of War state system membership data (version: 2016)
 - `cow_trade_sy`: Correlates of War state-year trade data (version 4.0)
 - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the Gibler-Miller-Little inter-state dispute data.
+- `gml_mid_ddydisps`:  Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (Gibler-Miller-Little, v. 2.1.1)
 - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward state system members
 - `gw_mindist`: the minimum distance between  Gleditsch-Ward states, in kilometers, in non-directed dyad-year format (1946-2015)
 - `gw_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States

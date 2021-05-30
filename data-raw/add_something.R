@@ -1,11 +1,6 @@
 # This is a skeleton...
 
 add_something <- function(data) {
-  require(dplyr)
-  require(magrittr)
-  require(dplyr)
-  require(tidyr)
-  require(stringr)
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 

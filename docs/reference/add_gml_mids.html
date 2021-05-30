@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_cow_mids • peacesciencer</title>
+<title>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_gml_mids • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_cow_mids" />
-<meta property="og:description" content="add_cow_mids() merges in CoW's MID data to a dyad-year data frame. The current version
-of the CoW-MID data is version 5.0." />
+<meta property="og:title" content="Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_gml_mids" />
+<meta property="og:description" content="add_gml_mids() merges in GML's MID data to a dyad-year data frame. The current version
+of the GML MID data is 2.1.1." />
 
 
 
@@ -129,17 +129,17 @@ of the CoW-MID data is version 5.0." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_cow_mids.R'><code>R/add_cow_mids.R</code></a></small>
-    <div class="hidden name"><code>add_cow_mids.Rd</code></div>
+    <h1>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_gml_mids.R'><code>R/add_gml_mids.R</code></a></small>
+    <div class="hidden name"><code>add_gml_mids.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_cow_mids()</code> merges in CoW's MID data to a dyad-year data frame. The current version
-of the CoW-MID data is version 5.0.</p>
+    <p><code>add_gml_mids()</code> merges in GML's MID data to a dyad-year data frame. The current version
+of the GML MID data is 2.1.1.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_cow_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -153,8 +153,8 @@ of the CoW-MID data is version 5.0.</p>
       <td><p>an optional parameter, specified as a character vector, passed to the function in a <code>select(one_of(.))</code> wrapper. This
 allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 too much space in memory. Note: the Correlates of War system codes (<code>ccode1</code>, <code>ccode2</code>), the observation year
-(<code>year</code>), the presence or absence of an ongoing MID (<code>cowmidongoing</code>), and the presence or absence of a unique
-MID onset (<code>cowmidonset</code>) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
+(<code>year</code>), the presence or absence of an ongoing MID (<code>gmlmidongoing</code>), and the presence or absence of a unique
+MID onset (<code>gmlmidonset</code>) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
 The user is free to keep or discard anything else they see fit.</p>
 <p>If <code>keep</code> is not specified in the function, the ensuing output returns everything.</p></td>
     </tr>
@@ -162,8 +162,8 @@ The user is free to keep or discard anything else they see fit.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_cow_mids()</code> takes a dyad-year data frame and adds dyad-year dispute information
-from the CoW-MID data.</p>
+    <p><code>add_gml_mids()</code> takes a dyad-year data frame and adds dyad-year dispute information
+from the GML MID data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
@@ -173,9 +173,8 @@ This merging process employs several rules to whittle down these duplicate dyad-
 data frame.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens
-and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J. Soules. 2021.
-"The MID5 Dataset, 2011–2014: Procedures, coding rules, and description" <em>Conflict Management and Peace Science</em>.</p>
+    <p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
+Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven V. Miller</p>
@@ -185,9 +184,9 @@ and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_cow_mids</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,025,840 x 25</span><span>
-#&gt;    ccode1 ccode2  year dispnum cowmidongoing cowmidonset sidea1 sidea2 fatality1
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,025,842 x 40</span><span>
+#&gt;    ccode1 ccode2  year dispnum gmlmidongoing gmlmidonset sidea1 sidea2 revstate1
 #&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>920      </span><span style='color: #BB0000;'>NA</span><span>             0           0     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>921      </span><span style='color: #BB0000;'>NA</span><span>             0           0     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>
@@ -199,15 +198,18 @@ and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>927      </span><span style='color: #BB0000;'>NA</span><span>             0           0     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>928      </span><span style='color: #BB0000;'>NA</span><span>             0           0     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>929      </span><span style='color: #BB0000;'>NA</span><span>             0           0     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>        </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 2,025,830 more rows, and 16 more variables: fatality2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   fatalpre1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, fatalpre2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hiact1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hiact2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   hostlev1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hostlev2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, orig1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, orig2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, duplicated </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   fatality </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hostlev </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mindur </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, maxdur </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, recip </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
-#&gt; </span><span style='color: #949494;'>#   stmon </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+#&gt; </span><span style='color: #949494;'># … with 2,025,832 more rows, and 31 more variables: revstate2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   revtype11 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, revtype12 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, revtype21 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, revtype22 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   fatality1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, fatality2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, fatalpre1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, fatalpre2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   hiact1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hiact2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hostlev1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hostlev2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, orig1 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   orig2 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hiact </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, hostlev </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, mindur </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, maxdur </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   outcome </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, settle </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, fatality </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, fatalpre </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, stmon </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   endmon </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, recip </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, numa </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, numb </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>, ongo2010 </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #949494;'>,</span><span>
+#&gt; </span><span style='color: #949494;'>#   version </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span style='color: #949494;'>, duplicated </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
 <span class='co'># keep just the dispute number and Side A/B identifiers</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_cow_mids</span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dispnum"</span>,<span class='st'>"sidea1"</span>, <span class='st'>"sidea2"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2,025,840 x 8</span><span>
-#&gt;    ccode1 ccode2  year cowmidonset cowmidongoing dispnum sidea1 sidea2
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dispnum"</span>,<span class='st'>"sidea1"</span>, <span class='st'>"sidea2"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2,025,842 x 8</span><span>
+#&gt;    ccode1 ccode2  year gmlmidonset gmlmidongoing dispnum sidea1 sidea2
 #&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>920           0             0      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>921           0             0      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
@@ -219,7 +221,7 @@ and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J
 #&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>927           0             0      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>928           0             0      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
 #&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>929           0             0      </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>     </span><span style='color: #BB0000;'>NA</span><span>
-#&gt; </span><span style='color: #949494;'># … with 2,025,830 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt; </span><span style='color: #949494;'># … with 2,025,832 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 </div></span></pre>
   </div>

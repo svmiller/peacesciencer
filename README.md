@@ -60,10 +60,12 @@ following functions:
     to dyad-year or state-year data.
 -   `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
     or state-year data with Correlates of War state codes.
+-   `add_gml_mids():` adds dyad-year information about ongoing MIDs and
+    MID onsets from the Gibler-Miller-Little data.
 -   `add_igos()`: adds Correlates of War International Governmental
     Organizations (IGOs) data to dyad-year or state-year data.
 -   `add_mids():` adds dyad-year information about ongoing MIDs and MID
-    onsets from the Gibler-Miller-Little data.
+    onsets from the Gibler-Miller-Little data. (DEPRECATED)
 -   `add_minimum_distance()`: adds minimum distance (in kilometers) to
     dyad-year or state-year data.
 -   `add_nmc()`: adds estimates of national material capabilities (from
@@ -121,6 +123,8 @@ It also has the following data sets:
     4.0)
 -   `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the
     Gibler-Miller-Little inter-state dispute data.
+-   `gml_mid_ddydisps`: Directed Dyadic Dispute-Year Data with No
+    Duplicate Dyad-Years (Gibler-Miller-Little, v. 2.1.1)
 -   `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward
     state system members
 -   `gw_mindist`: the minimum distance between Gleditsch-Ward states, in
@@ -208,6 +212,10 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
+    ## Warning: 'add_mids' is deprecated.
+    ## Use 'add_gml_mids' instead.
+    ## See help("Deprecated")
+
     ## # A tibble: 246,314 x 97
     ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
     ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
@@ -248,7 +256,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 39.373 sec elapsed
+    ## 40.231 sec elapsed
 
 ``` r
 # state-years now...
@@ -296,4 +304,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 9.045 sec elapsed
+    ## 8.59 sec elapsed

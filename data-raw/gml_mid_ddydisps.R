@@ -2,13 +2,13 @@ library(tidyverse)
 library(peacesciencer)
 
 
-cow_mid_dirdisps %>%
+gml_dirdisp %>%
   group_by(ccode1, ccode2, year)  %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
   # Remove anything that's not a unique MID onset
-  mutate(sd = sd(disponset),
+  mutate(sd = sd(midonset),
          sd = ifelse(is.na(sd), 0, sd)) %>%
-  mutate(removeme = ifelse(duplicated == 1 & disponset == 0 & sd > 0, 1, 0)) %>%
+  mutate(removeme = ifelse(duplicated == 1 & midonset == 0 & sd > 0, 1, 0)) %>%
   filter(removeme != 1) %>%
   # remove detritus
   select(-removeme, -sd) %>%
@@ -86,11 +86,11 @@ hold_this %>%
   filter(stmon == min(stmon)) %>%
   arrange(ccode1, ccode2, year) %>%
   # practice safe group_by()
-  ungroup() -> cow_mid_ddydisps
+  ungroup() -> gml_mid_ddydisps
 
-cow_mid_ddydisps %>%
-  rename(cowmidongoing = dispongoing,
-         cowmidonset = disponset) -> cow_mid_ddydisps
+gml_mid_ddydisps %>%
+  rename(gmlmidongoing = midongoing,
+         gmlmidonset = midonset) -> gml_mid_ddydisps
 
-save(cow_mid_ddydisps, file="data/cow_mid_ddydisps.rda")
+save(gml_mid_ddydisps, file="data/gml_mid_ddydisps.rda")
 

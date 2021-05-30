@@ -18,8 +18,8 @@
 #' @param keep an optional parameter, specified as a character vector, passed to the function in a \code{select(one_of(.))} wrapper. This
 #' allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 #' too much space in memory. Note: the Correlates of War system codes (\code{ccode1}, \code{ccode2}), the observation year
-#' (\code{year}), the presence or absence of an ongoing MID (\code{dispongoing}), and the presence or absence of a unique
-#' MID onset (\code{disponset}) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
+#' (\code{year}), the presence or absence of an ongoing MID (\code{cowmidongoing}), and the presence or absence of a unique
+#' MID onset (\code{cowmidonset}) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
 #' The user is free to keep or discard anything else they see fit.
 #'
 #' If \code{keep} is not specified in the function, the ensuing output returns everything.
@@ -35,10 +35,10 @@
 #' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
-#' cow_ddy %>% add_mids()
+#' cow_ddy %>% add_cow_mids()
 #'
 #' # keep just the dispute number and Side A/B identifiers
-#' cow_ddy %>% add_mids(keep=c("dispnum","sidea1", "sidea2"))
+#' cow_ddy %>% add_cow_mids(keep=c("dispnum","sidea1", "sidea2"))
 #' }
 #'
 
@@ -57,12 +57,12 @@ add_cow_mids <- function(data, keep) {
     if (missing(keep)) {
       cow_mid_ddydisps %>% select(everything()) -> dirdisp
     } else {
-      cow_mid_ddydisps %>% select(one_of("ccode1", "ccode2", "year", "disponset", "dispongoing", keep)) -> dirdisp
+      cow_mid_ddydisps %>% select(one_of("ccode1", "ccode2", "year", "cowmidonset", "cowmidongoing", keep)) -> dirdisp
     }
 
     dirdisp %>%
       left_join(data, .) %>%
-      mutate_at(vars("disponset", "dispongoing"), ~ifelse(is.na(.), 0, .)) -> data
+      mutate_at(vars("cowmidonset", "cowmidongoing"), ~ifelse(is.na(.), 0, .)) -> data
 
     return(data)
 

@@ -2,7 +2,11 @@ peacesciencer 0.4.0 (in development)
 ---------------------------------------------------------------------
 
 - Add `cow_mid_ddydisps`, `cow_mid_dirdisps`, and `cow_mid_disps` data.
+- Add `gml_dir_ddydisps` data.
 - Add `add_cow_mids()` function.
+- Add `add_gml_mids()` function.
+- Add `add_peace_years()` function.
+- Deprecate `add_mids()`. Use `add_gml_mids()` instead.
 - File compression for data files (again)
 
 peacesciencer 0.3.0
