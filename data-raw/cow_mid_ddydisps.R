@@ -89,6 +89,7 @@ hold_this %>%
   ungroup() -> cow_mid_ddydisps
 
 cow_mid_ddydisps %>%
+  select(-duplicated) %>%
   rename(cowmidongoing = dispongoing,
          cowmidonset = disponset) -> cow_mid_ddydisps
 

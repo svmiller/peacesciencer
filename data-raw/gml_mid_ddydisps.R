@@ -3,6 +3,8 @@ library(peacesciencer)
 
 
 gml_dirdisp %>%
+  select(dispnum:sidea2, fatality1, fatality2, fatalpre1, fatalpre2,
+         hiact1, hiact2, hostlev1, hostlev2, orig1, orig2) %>%
   group_by(ccode1, ccode2, year)  %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
   # Remove anything that's not a unique MID onset
@@ -88,7 +90,15 @@ hold_this %>%
   # practice safe group_by()
   ungroup() -> gml_mid_ddydisps
 
+# We identified a duplicate MID that we correct in a later release (MID#2163, MID#3604). They're the same MID, but we're just going to drop one.
 gml_mid_ddydisps %>%
+  group_by(ccode1, ccode2, year) %>%
+  slice(1) %>%
+  ungroup() -> gml_mid_ddydisps
+
+
+gml_mid_ddydisps %>%
+  select(-duplicated) %>%
   rename(gmlmidongoing = midongoing,
          gmlmidonset = midonset) -> gml_mid_ddydisps
 
