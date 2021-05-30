@@ -85,4 +85,6 @@ dDisp %>%
     TRUE ~ disponset
   )) -> cow_mid_dirdisps
 
+attr(cow_mid_dirdisps, "ps_data_type") = "dyad_year"
+
 save(cow_mid_dirdisps, file="data/cow_mid_dirdisps.rda")

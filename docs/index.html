@@ -223,9 +223,9 @@
 <p>Thereafter, the user can specify what additional variables they want added to these dyad-year or state-year data. Do note: the additional functions lean primarily on Correlates of War state code identifiers. Indeed, the bulk of the quantitative peace science data ecosystem is built around the Correlates of War project. The variables the user wants are added in <a href="https://r4ds.had.co.nz/pipes.html">a “pipe”</a> in a process like this. Do note that the user may want to break up the data-generating process into a few manageable “chunks” (e.g. first generating dyad-year data and saving to an object, adding to it piece by piece).</p>
 <p>All told, the process will look something like this.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://svmiller.com/peacesciencer">peacesciencer</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://github.com/collectivemedia/tictoc">tictoc</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/collectivemedia/tictoc">tictoc</a></span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu"><a href="reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
