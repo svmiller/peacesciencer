@@ -179,10 +179,14 @@ library(tictoc)
 
 tic()
 create_dyadyears() %>%
-  # Add Gleditsch-Ward codes
-  add_gwcode_to_cow() %>%
   # Add GML MIDs 
-  add_mids() %>%
+  add_gml_mids(keep=NULL) %>%
+  # Add Correlates of War MIDs 
+  add_cow_mids(keep=NULL) %>%
+  # add peace years
+  add_peace_years() %>%
+  # Add Gleditsch-Ward codes, because we can
+  add_gwcode_to_cow() %>%
   # Add trade data
   add_cow_trade() %>%
   # Add capital-to-capital distance
@@ -212,31 +216,21 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## Warning: 'add_mids' is deprecated.
-    ## Use 'add_gml_mids' instead.
-    ## See help("Deprecated")
-
-    ## # A tibble: 246,314 x 97
-    ##    ccode1 ccode2  year gwcode1 gwcode2 dispnum midongoing midonset sidea1 sidea2
-    ##     <dbl>  <dbl> <dbl>   <dbl>   <dbl>   <dbl>      <dbl>    <dbl>  <dbl>  <dbl>
-    ##  1      2     20  1920       2      20      NA          0        0     NA     NA
-    ##  2      2     20  1921       2      20      NA          0        0     NA     NA
-    ##  3      2     20  1922       2      20      NA          0        0     NA     NA
-    ##  4      2     20  1923       2      20      NA          0        0     NA     NA
-    ##  5      2     20  1924       2      20      NA          0        0     NA     NA
-    ##  6      2     20  1925       2      20      NA          0        0     NA     NA
-    ##  7      2     20  1926       2      20      NA          0        0     NA     NA
-    ##  8      2     20  1927       2      20      NA          0        0     NA     NA
-    ##  9      2     20  1928       2      20      NA          0        0     NA     NA
-    ## 10      2     20  1929       2      20      NA          0        0     NA     NA
-    ## # … with 246,304 more rows, and 87 more variables: revstate1 <dbl>,
-    ## #   revstate2 <dbl>, revtype11 <dbl>, revtype12 <dbl>, revtype21 <dbl>,
-    ## #   revtype22 <dbl>, fatality1 <dbl>, fatality2 <dbl>, fatalpre1 <dbl>,
-    ## #   fatalpre2 <dbl>, hiact1 <dbl>, hiact2 <dbl>, hostlev1 <dbl>,
-    ## #   hostlev2 <dbl>, orig1 <dbl>, orig2 <dbl>, hiact <dbl>, hostlev <dbl>,
-    ## #   mindur <dbl>, maxdur <dbl>, outcome <dbl>, settle <dbl>, fatality <dbl>,
-    ## #   fatalpre <dbl>, stmon <dbl>, endmon <dbl>, recip <dbl>, numa <dbl>,
-    ## #   numb <dbl>, ongo2010 <dbl>, version <chr>, flow2 <dbl>, flow1 <dbl>,
+    ## # A tibble: 246,314 x 67
+    ##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
+    ##     <dbl>  <dbl> <dbl>       <dbl>         <dbl>       <dbl>         <dbl>
+    ##  1    100    101  1841           0             0           0             0
+    ##  2    100    101  1842           0             0           0             0
+    ##  3    100    101  1843           0             0           0             0
+    ##  4    100    101  1844           0             0           0             0
+    ##  5    100    101  1845           0             0           0             0
+    ##  6    100    101  1846           0             0           0             0
+    ##  7    100    101  1847           0             0           0             0
+    ##  8    100    101  1848           0             0           0             0
+    ##  9    100    101  1849           0             0           0             0
+    ## 10    100    101  1850           0             0           0             0
+    ## # … with 246,304 more rows, and 60 more variables: cowmidspell <dbl>,
+    ## #   gmlmidspell <dbl>, gwcode1 <dbl>, gwcode2 <dbl>, flow2 <dbl>, flow1 <dbl>,
     ## #   smoothflow2 <dbl>, smoothflow1 <dbl>, capdist <dbl>, conttype <dbl>,
     ## #   cowmaj1 <dbl>, cowmaj2 <dbl>, v2x_polyarchy1 <dbl>, polity21 <dbl>,
     ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
@@ -256,7 +250,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 40.231 sec elapsed
+    ## 71.534 sec elapsed
 
 ``` r
 # state-years now...
@@ -278,18 +272,18 @@ create_stateyears() %>%
 ```
 
     ## # A tibble: 16,731 x 39
-    ##    ccode statenme  year gwcode sumnewconf sumonset1 sumonset2 sumonset3
-    ##    <dbl> <chr>    <dbl>  <dbl>      <dbl>     <dbl>     <dbl>     <dbl>
-    ##  1     2 United …  1816      2          0         0         0         0
-    ##  2     2 United …  1817      2          0         0         0         0
-    ##  3     2 United …  1818      2          0         0         0         0
-    ##  4     2 United …  1819      2          0         0         0         0
-    ##  5     2 United …  1820      2          0         0         0         0
-    ##  6     2 United …  1821      2          0         0         0         0
-    ##  7     2 United …  1822      2          0         0         0         0
-    ##  8     2 United …  1823      2          0         0         0         0
-    ##  9     2 United …  1824      2          0         0         0         0
-    ## 10     2 United …  1825      2          0         0         0         0
+    ##    ccode statenme           year gwcode sumnewconf sumonset1 sumonset2 sumonset3
+    ##    <dbl> <chr>             <dbl>  <dbl>      <dbl>     <dbl>     <dbl>     <dbl>
+    ##  1     2 United States of…  1816      2          0         0         0         0
+    ##  2     2 United States of…  1817      2          0         0         0         0
+    ##  3     2 United States of…  1818      2          0         0         0         0
+    ##  4     2 United States of…  1819      2          0         0         0         0
+    ##  5     2 United States of…  1820      2          0         0         0         0
+    ##  6     2 United States of…  1821      2          0         0         0         0
+    ##  7     2 United States of…  1822      2          0         0         0         0
+    ##  8     2 United States of…  1823      2          0         0         0         0
+    ##  9     2 United States of…  1824      2          0         0         0         0
+    ## 10     2 United States of…  1825      2          0         0         0         0
     ## # … with 16,721 more rows, and 31 more variables: sumonset5 <dbl>,
     ## #   sumonset10 <dbl>, mincapdist <dbl>, land <dbl>, sea <dbl>, cowmaj <dbl>,
     ## #   imports <dbl>, exports <dbl>, v2x_polyarchy <dbl>, polity2 <dbl>,
@@ -304,4 +298,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 8.59 sec elapsed
+    ## 9.036 sec elapsed
