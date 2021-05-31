@@ -22,12 +22,24 @@ from these master records.
 data to a dyad-year or state-year data frame.
 }
 \details{
-The contiguity codes in the dyad-year data range from 1 to 6. 1 = direct land contiguity. 2 =
+The contiguity codes in the dyad-year data range from 0 to 5. 1 = direct land contiguity. 2 =
 separated by 12 miles of water or fewer (a la Stannis Baratheon). 3 = separated by
 24 miles of water or fewer (but more than 12 miles). 4 = separated by 150 miles
 of water or fewer (but more than 24 miles). 5 = separated by 400 miles of water
-or fewer (but more than 150 miles). 6 = separated by more than 400 miles of water (i.e.
-not contiguous).
+or fewer (but more than 150 miles).
+
+Importantly, 0 are the dyads that are not contiguous at all in the CoW contiguity data.
+This is a conscious decision on my part as I do not think of the CoW's contiguity data
+as exactly ordinal. Cross-reference CoW's contiguity data with the minimum distance
+data in this exact package to see how some dyads that CoW codes as not contiguous are
+in fact very close to each other, sometimes even land-contiguous. For example, Zimbabwe and
+Namibia are separated by only about a few hundred feet of water at that peculiar intersection of
+the Zambezi River where the borders of Zambia, Botswana, Namibia, and Zimbabwe meet. There is
+no contiguity record for this in the CoW data. There are other cases where contiguity records
+are situationally missing (e.g. India-Bangladesh, and Bangladesh-Myanmar in 1971) or other cases where
+states are much closer than CoW's contiguity data imply (e.g. Pakistan and the Soviet Union were separated by
+under 30 kilometers of Afghani territory). The researcher is free to recode these 0s to be, say, 6s, but this
+is why \pkg{peacesciencer} does not do this.
 
 For additional clarity, the "master records" produce duplicates for cases when
 the contiguity relationship changed in a given year. This function returns the
