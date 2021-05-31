@@ -45,15 +45,20 @@ save(td_rivalries, file="data/td_rivalries.rda")
 
 
 td_rivalries %>%
-  select(-ccodea, -ccodeb) %>%
-  bind_rows(td_rivalries %>% select(-ccodea, -ccodeb) %>% rename(ccode1 = ccode2, ccode2 = ccode1), .) %>%
-  arrange(rivalryno) %>%
-  select(rivalryno, rivalryname, ccode1, ccode2, everything(), -sidea, -sideb) %>%
+  bind_rows(td_rivalries %>% rename(ccode1 = .data$ccode2, ccode2 = .data$ccode1), .) %>%
+  arrange(.data$rivalryno) %>%
+  select(.data$rivalryno, .data$rivalryname, .data$ccode1, .data$ccode2,
+         .data$styear, .data$endyear, .data$region, .data$type1, .data$type2, .data$type3) %>%
   rowwise() %>%
-  mutate(year = list(seq(styear, endyear))) %>%
+  mutate(year = list(seq(.data$styear, .data$endyear))) %>%
   # Unnest the list, which will expand the data.
-  unnest(c(year)) %>%
+  unnest(c(.data$year)) %>% filter(ccode1 == 2 & year == 2000)
+
+  group_by(ccode1, year, type1) %>% summarize(ntype1 = n_distinct(type1),
+                                                                        ntype2 = n_distinct(type2),
+                                                                        ntype3 = n_distinct(type3)) %>% filter(ccode1 == 2 & year >= 2000)
   # Minor note: ccode change for Austria, post-1918 for rivalryno 79.
-  mutate(ccode1 = ifelse(ccode1 == 300 & year >= 1919, 305, ccode1),
-         ccode2 = ifelse(ccode2 == 300 & year >= 1919, 305, ccode2)) %>%
-  filter(rivalryno == 79) %>% filter(year >= 1914)
+  mutate(ccode1 = ifelse(.data$ccode1 == 300 & .data$year >= 1919, 305, .data$ccode1),
+         ccode2 = ifelse(.data$ccode2 == 300 & .data$year >= 1919, 305, .data$ccode2))
+
+td_rivalries

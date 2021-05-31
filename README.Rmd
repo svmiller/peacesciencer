@@ -119,6 +119,8 @@ create_dyadyears() %>%
   add_peace_years() %>%
   # Add Gleditsch-Ward codes, because we can
   add_gwcode_to_cow() %>%
+  # Add strategic rivalry data
+  add_strategic_rivalries() %>%
   # Add trade data
   add_cow_trade() %>%
   # Add capital-to-capital distance

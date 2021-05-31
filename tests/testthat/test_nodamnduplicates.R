@@ -18,6 +18,7 @@ test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_nmc()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_archigos()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_minimum_distance(system="cow")))
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_strategic_rivalries()))
   expect_equal(nrow(create_dyadyears(system = "gw")), nrow(create_dyadyears(system = "gw") %>% add_minimum_distance(system="gw")))
 
 })

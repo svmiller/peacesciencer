@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Changelog • peacesciencer</title>
+<title>Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame — add_strategic_rivalries • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Changelog" />
+<meta property="og:title" content="Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame — add_strategic_rivalries" />
+<meta property="og:description" content="add_strategic_rivalries() merges in Thompson and Dreyer's (2012) strategic rivalry data
+to a dyad-year data frame. The right-bound, as of right now, are bound at 2010." />
 
 
 
@@ -60,7 +62,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-news">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -127,82 +129,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1 data-toc-skip>Changelog <small></small></h1>
-      <small>Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
+    <h1>Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_strategic_rivalries.R'><code>R/add_strategic_rivalries.R</code></a></small>
+    <div class="hidden name"><code>add_strategic_rivalries.Rd</code></div>
     </div>
 
-    <div id="peacesciencer-050-in-development" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-050-in-development" class="anchor"></a>peacesciencer 0.5.0 (in development)</h2>
-<ul>
-<li>Add <code><a href="../reference/add_strategic_rivalries.html">add_strategic_rivalries()</a></code>.</li>
-<li>Add <code>td_rivalries</code> data.</li>
-<li>Patch <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which can now be used anywhere in the chain of commands (instead of just last).</li>
-</ul>
-</div>
-    <div id="peacesciencer-040" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-040" class="anchor"></a>peacesciencer 0.4.0</h2>
-<ul>
-<li>Add <code>cow_mid_ddydisps</code>, <code>cow_mid_dirdisps</code>, and <code>cow_mid_disps</code> data.</li>
-<li>Add <code>gml_mid_ddydisps</code> data.</li>
-<li>Add <code><a href="../reference/add_cow_mids.html">add_cow_mids()</a></code> function.</li>
-<li>Add <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> function.</li>
-<li>Add <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> function.</li>
-<li>Deprecate <code><a href="../reference/add_mids.html">add_mids()</a></code>. Use <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> instead.</li>
-<li>Assign <code>ps_data_type == "dyad_year"</code> as attribute to <code>cow_mid_dirdisps</code> and <code>gml_dirdisp</code>. This allows <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> functions for these data sets.</li>
-<li>File compression for data files (again)</li>
-</ul>
-</div>
-    <div id="peacesciencer-030" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-030" class="anchor"></a>peacesciencer 0.3.0</h2>
-<ul>
-<li>Add <code>atop_alliance</code> (directed dyad-year) data</li>
-<li>Add <code>archigos</code> data</li>
-<li>Add <code>cow_sdp_gdp</code> and <code>gw_sdp_gdp</code> data</li>
-<li>Add <code>ucdp_acd</code> data</li>
-<li>Add <code>ucdp_onsets</code> data</li>
-<li>Add <code><a href="../reference/add_archigos.html">add_archigos()</a></code> function</li>
-<li>Add <code><a href="../reference/add_atop_alliance.html">add_atop_alliance()</a></code> function</li>
-<li>Add <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code> function. For now, this has no default. You must specify “gw” or “cow”.</li>
-<li>Add <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> function. For now, this has no default. You must specify “gw” or “cow”.</li>
-<li>Add <code>add_ucdp_onset()</code> function.</li>
-<li>Add “stops” that force the correct merge on the correct system code. In most applications, this is Correlates of War codes.</li>
-<li>File compression for data files (again)</li>
-<li>Fixed bug in <code><a href="../reference/filter_prd.html">filter_prd()</a></code>. Past versions of my code had treated non-contiguous dyads as 6s. Here, they’re 0s. That created situations where I wasn’t filtering anything at all with this function.</li>
-<li>Rename variables in <code>cow_alliance</code> to distinguish from ATOP equivalents.</li>
-</ul>
-</div>
-    <div id="peacesciencer-020" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-020" class="anchor"></a>peacesciencer 0.2.0</h2>
-<ul>
-<li>Fix stupid mistake(s) in README.</li>
-<li>File compression for the data files.</li>
-<li>Add Correlates of War intergovernmental organizations data.</li>
-<li>Add function for adding Correlates of War intergovernmental organizations data.</li>
-<li>Add Correlates of War trade data (state-year and dyad-year).</li>
-<li>Add minimum distance data</li>
-<li>Add citations data frame for assistance in properly citing things.</li>
-<li>Add <code><a href="../reference/create_statedays.html">create_statedays()</a></code> function.</li>
-</ul>
-</div>
-    <div id="peacesciencer-010" class="section level2">
-<h2 class="hasAnchor">
-<a href="#peacesciencer-010" class="anchor"></a>peacesciencer 0.1.0</h2>
-<ul>
-<li>Initial developmental release</li>
-</ul>
-</div>
-  </div>
+    <div class="ref-description">
+    <p><code>add_strategic_rivalries()</code> merges in Thompson and Dreyer's (2012) strategic rivalry data
+to a dyad-year data frame. The right-bound, as of right now, are bound at 2010.</p>
+    </div>
 
+    <pre class="usage"><span class='fu'>add_strategic_rivalries</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>a dyad-year data frame (either "directed" or "non-directed")</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>add_strategic_rivalries()</code> takes a dyad-year data frame and adds information about ongoing strategic rivalries.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p><code>add_strategic_rivalries()</code> will include some other information derived from the rivalry data that the
+user may not want (e.g. start year of the rivalry). Feel free to select those out after the fact. Function includes
+an on-the-fly adjustment for Austria for rivalry #79. In this case, the Austria-Serbia rivalry continues for two years
+after Austria-Hungary (<code>ccode: 300</code>) became Austria (<code>ccode: 305</code>).</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+
+    <p>Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
+URL: <a href='http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/'>http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/</a></p>
+<p>Thompson, William R. and David Dreyer. 2012. <em>Handbook of International Rivalries</em>. CQ Press.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Steven V. Miller</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># just call `library(tidyverse)` at the top of the your script</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_stragegic_rivalries</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in add_stragegic_rivalries(.): could not find function "add_stragegic_rivalries"</span></div><div class='input'>
+</div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
     </nav>
   </div>
-
 </div>
 
 

@@ -187,6 +187,8 @@ create_dyadyears() %>%
   add_peace_years() %>%
   # Add Gleditsch-Ward codes, because we can
   add_gwcode_to_cow() %>%
+  # Add strategic rivalry data
+  add_strategic_rivalries() %>%
   # Add trade data
   add_cow_trade() %>%
   # Add capital-to-capital distance
@@ -216,7 +218,7 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 67
+    ## # A tibble: 246,314 x 75
     ##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
     ##     <dbl>  <dbl> <dbl>       <dbl>         <dbl>       <dbl>         <dbl>
     ##  1    100    101  1841           0             0           0             0
@@ -229,28 +231,30 @@ create_dyadyears() %>%
     ##  8    100    101  1848           0             0           0             0
     ##  9    100    101  1849           0             0           0             0
     ## 10    100    101  1850           0             0           0             0
-    ## # … with 246,304 more rows, and 60 more variables: cowmidspell <dbl>,
-    ## #   gmlmidspell <dbl>, gwcode1 <dbl>, gwcode2 <dbl>, flow2 <dbl>, flow1 <dbl>,
-    ## #   smoothflow2 <dbl>, smoothflow1 <dbl>, capdist <dbl>, conttype <dbl>,
-    ## #   cowmaj1 <dbl>, cowmaj2 <dbl>, v2x_polyarchy1 <dbl>, polity21 <dbl>,
-    ## #   xm_qudsest1 <dbl>, v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>,
-    ## #   dyadigos <dbl>, milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>,
-    ## #   tpop1 <dbl>, upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>,
-    ## #   irst2 <dbl>, pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>,
-    ## #   cow_defense <dbl>, cow_neutral <dbl>, cow_nonagg <dbl>, cow_entente <dbl>,
-    ## #   atop_defense <dbl>, atop_offense <dbl>, atop_neutral <dbl>,
-    ## #   atop_nonagg <dbl>, atop_consul <dbl>, mindist <dbl>,
-    ## #   leadertransition1 <dbl>, irregular1 <dbl>, n_leaders1 <int>,
-    ## #   jan1leadid1 <chr>, dec31leadid1 <chr>, leadertransition2 <dbl>,
-    ## #   irregular2 <dbl>, n_leaders2 <int>, jan1leadid2 <chr>, dec31leadid2 <chr>,
-    ## #   wbgdp2011est1 <dbl>, wbpopest1 <dbl>, sdpest1 <dbl>, wbgdp2011est2 <dbl>,
-    ## #   wbpopest2 <dbl>, sdpest2 <dbl>, prd <dbl>
+    ## # … with 246,304 more rows, and 68 more variables: cowmidspell <dbl>,
+    ## #   gmlmidspell <dbl>, gwcode1 <dbl>, gwcode2 <dbl>, rivalryno <dbl>,
+    ## #   rivalryname <chr>, styear <dbl>, endyear <dbl>, region <chr>, type1 <chr>,
+    ## #   type2 <chr>, type3 <chr>, flow2 <dbl>, flow1 <dbl>, smoothflow2 <dbl>,
+    ## #   smoothflow1 <dbl>, capdist <dbl>, conttype <dbl>, cowmaj1 <dbl>,
+    ## #   cowmaj2 <dbl>, v2x_polyarchy1 <dbl>, polity21 <dbl>, xm_qudsest1 <dbl>,
+    ## #   v2x_polyarchy2 <dbl>, polity22 <dbl>, xm_qudsest2 <dbl>, dyadigos <dbl>,
+    ## #   milex1 <dbl>, milper1 <dbl>, irst1 <dbl>, pec1 <dbl>, tpop1 <dbl>,
+    ## #   upop1 <dbl>, cinc1 <dbl>, milex2 <dbl>, milper2 <dbl>, irst2 <dbl>,
+    ## #   pec2 <dbl>, tpop2 <dbl>, upop2 <dbl>, cinc2 <dbl>, cow_defense <dbl>,
+    ## #   cow_neutral <dbl>, cow_nonagg <dbl>, cow_entente <dbl>, atop_defense <dbl>,
+    ## #   atop_offense <dbl>, atop_neutral <dbl>, atop_nonagg <dbl>,
+    ## #   atop_consul <dbl>, mindist <dbl>, leadertransition1 <dbl>,
+    ## #   irregular1 <dbl>, n_leaders1 <int>, jan1leadid1 <chr>, dec31leadid1 <chr>,
+    ## #   leadertransition2 <dbl>, irregular2 <dbl>, n_leaders2 <int>,
+    ## #   jan1leadid2 <chr>, dec31leadid2 <chr>, wbgdp2011est1 <dbl>,
+    ## #   wbpopest1 <dbl>, sdpest1 <dbl>, wbgdp2011est2 <dbl>, wbpopest2 <dbl>,
+    ## #   sdpest2 <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 71.534 sec elapsed
+    ## 73.019 sec elapsed
 
 ``` r
 # state-years now...
@@ -298,4 +302,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 9.036 sec elapsed
+    ## 9.003 sec elapsed
