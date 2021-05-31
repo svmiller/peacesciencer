@@ -2,6 +2,8 @@ peacesciencer 0.5.0 (in development)
 ---------------------------------------------------------------------
 
 - Add `add_strategic_rivalries()`.
+- Clarify documentation for `add_sdp_gdp()` about constructing a GDP per capita estimate.
+- Fix bug in `add_nmc()` (and `cow_nmc`). -9 is now explicitly NA, as it should have been.
 - Add `td_rivalries` data.
 - Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last).
 

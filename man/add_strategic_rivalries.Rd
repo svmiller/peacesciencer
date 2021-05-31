@@ -26,7 +26,7 @@ after Austria-Hungary (\code{ccode: 300}) became Austria (\code{ccode: 305}).
 
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
-cow_ddy \%>\% add_stragegic_rivalries()
+cow_ddy \%>\% add_strategic_rivalries()
 
 }
 \references{

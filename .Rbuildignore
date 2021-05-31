@@ -11,3 +11,5 @@
 ^pkgdown$
 vignettes/
 vignettes
+^Makefile$
+^user-guide$
