@@ -62,6 +62,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
       data <- sbtscs(data, .data$cowmidongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "cowmidspell"
+      attr(data, "ps_data_type") = "dyad_year"
 
     }
 
@@ -69,6 +70,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
       data <- sbtscs(data, .data$gmlmidongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "gmlmidspell"
+      attr(data, "ps_data_type") = "dyad_year"
 
 
     }

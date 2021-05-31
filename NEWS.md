@@ -1,4 +1,11 @@
-peacesciencer 0.4.0 (in development)
+peacesciencer 0.5.0 (in development)
+---------------------------------------------------------------------
+
+- Add `td_rivalries` data.
+- Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last).
+
+
+peacesciencer 0.4.0
 ---------------------------------------------------------------------
 
 - Add `cow_mid_ddydisps`, `cow_mid_dirdisps`, and `cow_mid_disps` data.

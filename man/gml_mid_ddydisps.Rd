@@ -5,7 +5,7 @@
 \alias{gml_mid_ddydisps}
 \title{Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)}
 \format{
-A data frame with 10234 observations on the following 25 variables.
+A data frame with 9262 observations on the following 25 variables.
 \describe{
 \item{\code{dispnum}}{a numeric vector for the dispute number}
 \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}

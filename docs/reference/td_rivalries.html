@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Zeev Maoz' Regional/Global Power Data — maoz_powers • peacesciencer</title>
+<title>Thompson and Dreyer's (2012) Strategic Rivalries, 1494-2010 — td_rivalries • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,12 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Zeev Maoz' Regional/Global Power Data — maoz_powers" />
-<meta property="og:description" content="These are Zeev Maoz' data for what states are regional or global powers at a given point time. They are
-extensions of the Correlates of War major power data, which only codes &quot;major&quot; power without consideration
-of regional or global distinctions. Think of Austria-Hungary as intuitive of the issue here. Austria-Hungary
-is a major power in the Correlates of War data, but there is good reason to treat Austria-Hungary as a major
-power only within Europe. That is what Zeev Maoz tries to do here." />
+<meta property="og:title" content="Thompson and Dreyer's (2012) Strategic Rivalries, 1494-2010 — td_rivalries" />
+<meta property="og:description" content="A simple summary of all strategic (inter-state) rivalries from Thompson and Dreyer (2012)." />
 
 
 
@@ -132,36 +128,45 @@ power only within Europe. That is what Zeev Maoz tries to do here." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Zeev Maoz' Regional/Global Power Data</h1>
+    <h1>Thompson and Dreyer's (2012) Strategic Rivalries, 1494-2010</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>maoz_powers.Rd</code></div>
+    <div class="hidden name"><code>td_rivalries.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are Zeev Maoz' data for what states are regional or global powers at a given point time. They are
-extensions of the Correlates of War major power data, which only codes "major" power without consideration
-of regional or global distinctions. Think of Austria-Hungary as intuitive of the issue here. Austria-Hungary
-is a major power in the Correlates of War data, but there is good reason to treat Austria-Hungary as a major
-power only within Europe. That is what Zeev Maoz tries to do here.</p>
+    <p>A simple summary of all strategic (inter-state) rivalries from Thompson and Dreyer (2012).</p>
     </div>
 
-    <pre class="usage"><span class='va'>maoz_powers</span></pre>
+    <pre class="usage"><span class='va'>td_rivalries</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 20 observations on the following 5 variables.</p><dl>
-<dt><code>ccode</code></dt><dd><p>a numeric vector for the Correlates of War country code</p></dd>
-<dt><code>regstdate</code></dt><dd><p>the start date for regional power status</p></dd>
-<dt><code>regenddate</code></dt><dd><p>the end date for regional power status</p></dd>
-<dt><code>globstdate</code></dt><dd><p>the start date for global power status</p></dd>
-<dt><code>globenddate</code></dt><dd><p>the end date for global power status</p></dd>
+    <p>A data frame with 197 observations on the following 10 variables.</p><dl>
+<dt><code>rivalryno</code></dt><dd><p>a numeric vector for the rivalry number</p></dd>
+<dt><code>rivalryname</code></dt><dd><p>a character vector for the rivalry name</p></dd>
+<dt><code>ccode1</code></dt><dd><p>the Correlates of War state code for the state with the lowest Correlates of War state code in the rivalry</p></dd>
+<dt><code>ccode2</code></dt><dd><p>the Correlates of War state code for the state with the highest Correlates of War state code in the rivalry</p></dd>
+<dt><code>styear</code></dt><dd><p>a numeric vector for the start year of the rivalry</p></dd>
+<dt><code>endyear</code></dt><dd><p>a numeric vector for the end year of the rivalry</p></dd>
+<dt><code>region</code></dt><dd><p>a character vector for the region of the rivalry, per Thompson and Dreyer (2012)</p></dd>
+<dt><code>type1</code></dt><dd><p>a character vector for the primary type of the rivalry (spatial, positional, ideological, or interventionary)</p></dd>
+<dt><code>type2</code></dt><dd><p>a character vector for the secondary type of the rivalry, if applicable (spatial, positional, ideological, or interventionary)</p></dd>
+<dt><code>type3</code></dt><dd><p>a character vector for the tertiary type of the rivalry, if applicable (spatial, positional, ideological, or interventionary)</p></dd>
 
 </dl>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Information gathered from the appendix of Thompson and Dreyer (2012). Ongoing rivalries are
+right-bound at 2010, the date of publication for Thompson and Dreyer's handbook. Users are free to change this if they like. Data are effectively
+identical to <code>strategic_rivalries</code> in <span class="pkg">stevemisc</span>, but include some behind-the-scenes processing (described in a blog post on
+<a href='http://svmiller.com'>http://svmiller.com</a>) that is available to see on the project's Github repository. The data object is also renamed to avoid a conflict.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Maoz, Zeev. 2010. Network of Nations: The Evolution, Structure, and Impact of International Networks, 1816-2001. Cambridge University Press.</p>
+    <p>Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
+URL: <a href='http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/'>http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/</a></p>
+<p>Thompson, William R. and David Dreyer. 2012. <em>Handbook of International Rivalries</em>. CQ Press.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

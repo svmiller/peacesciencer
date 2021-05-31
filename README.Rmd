@@ -111,10 +111,14 @@ library(tictoc)
 
 tic()
 create_dyadyears() %>%
-  # Add Gleditsch-Ward codes
-  add_gwcode_to_cow() %>%
   # Add GML MIDs 
-  add_mids() %>%
+  add_gml_mids(keep=NULL) %>%
+  # Add Correlates of War MIDs 
+  add_cow_mids(keep=NULL) %>%
+  # add peace years
+  add_peace_years() %>%
+  # Add Gleditsch-Ward codes, because we can
+  add_gwcode_to_cow() %>%
   # Add trade data
   add_cow_trade() %>%
   # Add capital-to-capital distance
