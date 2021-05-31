@@ -24,7 +24,7 @@
 #'
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
-#' cow_ddy %>% add_stragegic_rivalries()
+#' cow_ddy %>% add_strategic_rivalries()
 #'
 
 add_strategic_rivalries <- function(data) {
