@@ -34,10 +34,15 @@
 #'
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
+#' library(dplyr)
 #'
-#' create_stateyears(system = "gw") %>% add_ucdp_acd()
+#' create_stateyears(system = "gw") %>%
+#' add_ucdp_acd() %>%
+#' filter(between(year, 1946, 2019))
 #'
-#' create_stateyears(system = "gw) %>% add_ucdp_acd(type = "intrastate", issue = "government")
+#' create_stateyears(system = "gw) %>%
+#' add_ucdp_acd(type = "intrastate", issue = "government") %>%
+#' filter(between(year, 1946, 2019))
 #'
 #'
 #'
@@ -91,7 +96,7 @@ add_ucdp_acd <- function(data, type, issue) {
         left_join(data, .) -> data
 
       data %>%
-        mutate_at(vars("ucdpongoing","ucdponset"), ~ifelse(is.na(.), 0, .)) -> data
+        mutate_at(vars("ucdpongoing","ucdponset"), ~ifelse(is.na(.) & .data$year >= 1946 & .data$year < 2020, 0, .)) -> data
 
 
 
