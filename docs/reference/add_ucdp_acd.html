@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>UCDP Armed Conflict Data (ACD) (v. 20.1) — ucdp_acd • peacesciencer</title>
+<title>Add UCDP Armed Conflict Data to state-year data frame — add_ucdp_acd • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="UCDP Armed Conflict Data (ACD) (v. 20.1) — ucdp_acd" />
-<meta property="og:description" content="These are (kind of) dyadic, but mostly state-level data, used internally for doing stuff with the UCDP armed conflict data" />
+<meta property="og:title" content="Add UCDP Armed Conflict Data to state-year data frame — add_ucdp_acd" />
+<meta property="og:description" content="add_ucdp_acd() allows you to add UCDP Armed Conflict data to a state-year data frame" />
 
 
 
@@ -128,48 +128,58 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>UCDP Armed Conflict Data (ACD) (v. 20.1)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>ucdp_acd.Rd</code></div>
+    <h1>Add UCDP Armed Conflict Data to state-year data frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_ucdp_acd.R'><code>R/add_ucdp_acd.R</code></a></small>
+    <div class="hidden name"><code>add_ucdp_acd.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are (kind of) dyadic, but mostly state-level data, used internally for doing stuff with the UCDP armed conflict data</p>
+    <p><code>add_ucdp_acd()</code> allows you to add UCDP Armed Conflict data to a state-year data frame</p>
     </div>
 
-    <pre class="usage"><span class='va'>ucdp_acd</span></pre>
+    <pre class="usage"><span class='fu'>add_ucdp_acd</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>type</span>, <span class='va'>issue</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>state-year data frame</p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>the types of armed conflicts the user wants to consider, specified as a character vector.
+Options include "extrasystemic", "interstate", "intrastate", and "II". "II" is convenience shorthand for
+"internationalized intrastate". If you want just one (say: "intrastate"), then the type you want in quotes
+is sufficient. If you want multiple, wrap it in a vector with <code><a href='https://rdrr.io/r/base/c.html'>c()</a></code>.</p></td>
+    </tr>
+    <tr>
+      <th>issue</th>
+      <td><p>do you want to subset the data to just different armed conflicts over different types of issues?
+If so, specify those here as you would with the <code>type</code> argument. Options include "territory", "government",
+and "both".</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 4164 observations on the following 15 variables.</p><dl>
-<dt><code>conflict_id</code></dt><dd><p>a conflict identifier, not to be confused with an episode identifier (which I don't think UCDP offers)</p></dd>
-<dt><code>year</code></dt><dd><p>a numeric vector for the year</p></dd>
-<dt><code>gwno_a</code></dt><dd><p>the Gleditsch-Ward state code for the state on side A of the armed conflict</p></dd>
-<dt><code>gwno_a_2nd</code></dt><dd><p>the Gleditsch-Ward state code for the state that actively supported side A of the armed conflict with the use of troops</p></dd>
-<dt><code>gwno_b</code></dt><dd><p>the Gleditsch-Ward state code for the actor on side B of the armed conflict</p></dd>
-<dt><code>gwno_b_2nd</code></dt><dd><p>the Gleditsch-Ward state code for the state that actively supported side B of the armed conflict with the use of troops</p></dd>
-<dt><code>incompatibility</code></dt><dd><p>a character vector for the main conflict issue ("territory", "government", "both")</p></dd>
-<dt><code>intensity_level</code></dt><dd><p>a numeric vector for the intensity level in the calendar year (1 = minor (25-999 deaths), 2 = war (&gt;1,000 deaths))</p></dd>
-<dt><code>type_of_conflict</code></dt><dd><p>a character vector for the type of conflict ("extrasystemic", "interstate", "intrastate", "II"). "II" is a simple abbreviation of "internationalized intrastate"</p></dd>
-<dt><code>start_date</code></dt><dd><p>a date of the first battle-related death in the conflict, not to be confused with the first battle-related death of the episode</p></dd>
-<dt><code>start_prec</code></dt><dd><p>the level of precision for <code>start_date</code></p></dd>
-<dt><code>start_date2</code></dt><dd><p>a date of the first battle-related death in the episode, not to be confused with the first battle-related death of the conflict</p></dd>
-<dt><code>start_prec2</code></dt><dd><p>the level of precision for <code>start_date2</code></p></dd>
-<dt><code>ep_end</code></dt><dd><p>a dummy variable for whether the conflict episode ended in the calendar year of observation</p></dd>
-<dt><code>ep_end_date</code></dt><dd><p>the episode end date, if applicable</p></dd>
-
-</dl>
-
+    <p><code>add_ucdp_acd()</code> takes a state-year data frame and returns state-year information from the
+UCDP Armed Conflict data set (v. 20.1). The variables returned are whether there is an ongoing armed
+conflict in that year, whether there was an armed conflict episode onset that year, what was the maximum
+intensity observed that year (if an armed conflict was observed), and a character vector of the associated
+conflict IDs that year.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The <code>data-raw</code> directory on the project's Github will show how I processed the multiple strings for when there are multiple states on a given side.</p>
+    <p>Right now, only state-year data are supported. Function is in true pilot mode.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg &amp; Håvard Strand (2002)
 Armed Conflict 1946–2001: A New Dataset. <em>Journal of Peace Research</em> 39(5): 615–637.</p>
 <p>Pettersson, Therese; Stina Högbladh &amp; Magnus Öberg (2019). Organized violence, 1989-2018 and peace
 agreements. Journal of Peace Research 56(4): 589-603.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Steven V. Miller</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

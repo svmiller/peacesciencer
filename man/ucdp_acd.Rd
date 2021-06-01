@@ -13,9 +13,9 @@ A data frame with 4164 observations on the following 15 variables.
 \item{\code{gwno_a_2nd}}{the Gleditsch-Ward state code for the state that actively supported side A of the armed conflict with the use of troops}
 \item{\code{gwno_b}}{the Gleditsch-Ward state code for the actor on side B of the armed conflict}
 \item{\code{gwno_b_2nd}}{the Gleditsch-Ward state code for the state that actively supported side B of the armed conflict with the use of troops}
-\item{\code{incompatibility}}{a numeric vector for the main conflict issue (1 = territory, 2 = government, 3 = both)}
+\item{\code{incompatibility}}{a character vector for the main conflict issue ("territory", "government", "both")}
 \item{\code{intensity_level}}{a numeric vector for the intensity level in the calendar year (1 = minor (25-999 deaths), 2 = war (>1,000 deaths))}
-\item{\code{type_of_conflict}}{a numeric vector for the type of conflict (1 = extrasystemic, 2 = inter-state, 3 = intra-state, 4 = internationalized intra-state)}
+\item{\code{type_of_conflict}}{a character vector for the type of conflict ("extrasystemic", "interstate", "intrastate", "II"). "II" is a simple abbreviation of "internationalized intrastate"}
 \item{\code{start_date}}{a date of the first battle-related death in the conflict, not to be confused with the first battle-related death of the episode}
 \item{\code{start_prec}}{the level of precision for \code{start_date}}
 \item{\code{start_date2}}{a date of the first battle-related death in the episode, not to be confused with the first battle-related death of the conflict}
