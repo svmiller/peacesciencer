@@ -20,6 +20,7 @@ test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_minimum_distance(system="cow")))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_strategic_rivalries()))
   expect_equal(nrow(create_dyadyears(system = "gw")), nrow(create_dyadyears(system = "gw") %>% add_minimum_distance(system="gw")))
+  expect_equal(nrow(create_dyadyears(system = "gw")), nrow(create_dyadyears(system = "gw") %>% add_cow_to_gwcode()))
 
 })
 
@@ -37,4 +38,5 @@ test_that("State-year additions do not create duplicates", {
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_minimum_distance(system="cow")))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system = "gw") %>% add_ucdp_onsets()))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system="gw") %>% add_minimum_distance(system="gw")))
+  expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system="gw") %>% add_cow_to_gwcode()))
 })

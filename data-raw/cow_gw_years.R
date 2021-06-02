@@ -53,6 +53,7 @@ gw_states %>%
     TRUE ~ stateabb
   )) %>%
   rename(gw_statename = statename) %>%
+  mutate(enddate = if_else(enddate == as_date("2017-12-31"), as_date("2020-12-31"), enddate)) %>%
   rowwise() %>%
   mutate(day = list(seq(startdate, enddate, by = '1 day'))) %>%
   unnest(day) %>%
@@ -65,6 +66,7 @@ cow_states %>%
          enddate = ymd(paste0(endyear,"/",endmonth,"/",endday))) %>%
   select(stateabb:statenme, stdate, enddate) %>%
   rename(cow_statename = statenme) %>%
+  mutate(enddate = if_else(enddate == as_date("2016-12-31"), as_date("2020-12-31"), enddate)) %>%
   rowwise() %>%
   mutate(day = list(seq(stdate, enddate, by = '1 day'))) %>%
   unnest(day) %>%
@@ -73,11 +75,19 @@ cow_states %>%
 
 gwdays %>% full_join(., cowdays) -> cow_gw_days
 
-cow_gw_days %>% mutate(year = year(day)) %>% distinct(stateabb, year, gwcode, ccode, gw_statename, cow_statename) -> cow_gw_years
+cow_gw_days %>% mutate(year = year(day)) %>%
+  distinct(stateabb, year, gwcode, ccode, gw_statename, cow_statename) %>%
+  group_by(ccode, year) %>%
+  mutate(gwcode = ifelse(is.na(gwcode) & n() > 1, max(gwcode, na.rm=T), gwcode)) %>%
+  slice(1) %>% ungroup() -> cow_gw_years
 
-cow_gw_years %>% select(stateabb, year, gwcode, ccode, gw_statename, cow_statename) -> cow_gw_years
-
-cow_gw_years %>% filter(!is.na(ccode)) %>% group_by(ccode,year) %>% filter(n() > 1) %>% arrange(ccode) %>% data.frame
+# gwdays %>% full_join(., cowdays) -> cow_gw_days
+#
+# cow_gw_days %>% mutate(year = year(day)) %>% distinct(stateabb, year, gwcode, ccode, gw_statename, cow_statename) -> cow_gw_years
+#
+# cow_gw_years %>% select(stateabb, year, gwcode, ccode, gw_statename, cow_statename) -> cow_gw_years
+#
+# cow_gw_years %>% filter(!is.na(ccode)) %>% group_by(ccode,year) %>% filter(n() > 1) %>% arrange(ccode) %>% data.frame
 
 # ^ There are still about 24 duplicate ccode-years. These are cases where the ccode appears twice but the gwcode just once.
 
@@ -98,8 +108,12 @@ cow_gw_years %>%
 # So, I think this is going to have to do. YOu can't group-by and slice/filter(max) because you'll omit cases where there's a gwcode
 # but no ccode. I'm just going to leave this as is. I think there's workable stuff in here, no matter.
 
+cow_gw_years %>%
+  filter(!is.na(ccode)) %>%
+  group_by(ccode, year) %>% filter(n() > 1) %>% arrange(ccode, year)
 
 
 save(cow_gw_years, file="data/cow_gw_years.rda")
 
-
+create_stateyears() %>%
+  left_join(., cow_gw_years)

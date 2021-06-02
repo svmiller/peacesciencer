@@ -14,7 +14,8 @@ add_gwcode_to_cow(data)
 state system codes and adds their corollary Gleditsch-Ward codes.
 }
 \description{
-\code{add_gwcode_to_cow()} allows you to add estimates of democracy to either dyad-year or state-year data.
+\code{add_gwcode_to_cow()} allows you to match, as well as one can, Gleditsch-Ward system membership data
+with Correlates of War state system membership data.
 }
 \details{
 The \code{data-raw} directory on the project's Github contains more information about the underlying data that assists

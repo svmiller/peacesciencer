@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Correlates of War and Gleditsch-Ward states, by year — cow_gw_years • peacesciencer</title>
+<title>Gleditsch-Ward states and Correlates of War, by year — gw_cow_years • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Correlates of War and Gleditsch-Ward states, by year — cow_gw_years" />
-<meta property="og:description" content="This is a complete (I believe) data set on Correlates of War states and Gleditsch-Ward states, a byproduct
+<meta property="og:title" content="Gleditsch-Ward states and Correlates of War, by year — gw_cow_years" />
+<meta property="og:description" content="This is a complete (I believe) data set on Gleditsch-Ward states and Correlates of War states, a byproduct
 of a full_join() between gw_states and cow_states that leans largely on the
 state abbreviation variable." />
 
@@ -130,23 +130,23 @@ state abbreviation variable." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Correlates of War and Gleditsch-Ward states, by year</h1>
+    <h1>Gleditsch-Ward states and Correlates of War, by year</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>cow_gw_years.Rd</code></div>
+    <div class="hidden name"><code>gw_cow_years.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This is a complete (I believe) data set on Correlates of War states and Gleditsch-Ward states, a byproduct
+    <p>This is a complete (I believe) data set on Gleditsch-Ward states and Correlates of War states, a byproduct
 of a <code><a href='https://dplyr.tidyverse.org/reference/mutate-joins.html'>full_join()</a></code> between <code>gw_states</code> and <code>cow_states</code> that leans largely on the
 state abbreviation variable.</p>
     </div>
 
-    <pre class="usage"><span class='va'>cow_gw_years</span></pre>
+    <pre class="usage"><span class='va'>gw_cow_years</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 16936 observations on the following 6 variables.</p><dl>
+    <p>A data frame with 18425 observations on the following 6 variables.</p><dl>
 <dt><code>gwcode</code></dt><dd><p>a Gleditsch-Ward state code</p></dd>
 <dt><code>stateabb</code></dt><dd><p>the state abbreviation, which was the greatest source of agreement between both data sets</p></dd>
 <dt><code>gw_statename</code></dt><dd><p>the state name as it appears in the Gleditsch-Ward data</p></dd>
@@ -159,8 +159,8 @@ state abbreviation variable.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The <code>data-raw</code> directory on the project's Github contains more information about how these data were
-created. I'm going to use it for internal stuff. The workflow is going to treat the Correlates of War state system
-membership codes as more of the "master" codes, for which the user can add Gleditsch-Ward identifiers as they see
+created. I'm going to use it for internal stuff. The workflow is going to treat the Gleditsch-Ward state system
+membership codes as more of the "master" codes, for which the user can add Correlates of War identifiers as they see
 fit. Data are extended to 2020, assuming no changes to state system membership for either data set.</p>
 
   </div>

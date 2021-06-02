@@ -1,6 +1,7 @@
 peacesciencer 0.5.0 (in development)
 ---------------------------------------------------------------------
 
+- Add `add_cow_to_gwcode()`. Fix underlying data for `cow_gw_years`. Add `gw_cow_years`.
 - Add `add_strategic_rivalries()`.
 - Add `add_ucdp_acd()`. With it, update `ucdp_acd` data for functionality.
 - Clarify documentation for `add_sdp_gdp()` about constructing a GDP per capita estimate.
