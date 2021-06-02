@@ -114,6 +114,3 @@ cow_gw_years %>%
 
 
 save(cow_gw_years, file="data/cow_gw_years.rda")
-
-create_stateyears() %>%
-  left_join(., cow_gw_years)

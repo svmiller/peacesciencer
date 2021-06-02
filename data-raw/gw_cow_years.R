@@ -169,14 +169,3 @@ gw_cow_years %>%
 
 
 save(gw_cow_years, file="data/gw_cow_years.rda")
-
-
-
-
-gw_cow_years %>% filter(gwcode == 260) %>% data.frame
-
-create_stateyears(system = 'gw', mry= FALSE) -> ddd
-
-
-ddd %>%
-  left_join(., gw_cow_years %>% select(gwcode, ccode, year))
