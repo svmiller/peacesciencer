@@ -47,6 +47,17 @@ The fractionalization estimates are the familiar Herfindahl-Hirschman concentrat
 formula comes by way of Montalvo and Reynal-Querol (2000), though this book does not appear to be published
 beyond its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
 You can cite Alesina (2003) for the fractionalization measure if you'd like.
+
+In the most literal sense of "1", the group proportions may not sum to exactly 1 because of rounding in the
+data. There were only two problem cases in these data worth mentioning. First, in both data sets, there would
+be the occasional duplicates of group names by state-year (for example: Afghanistan in 1951 in the ethnic group
+data and the United States in 1948 in the religious group data). In those cases, the script I make available
+in the \code{data-raw} directory just select distinct values and that effectively fixes the problem of duplicates,
+where they do appear. Finally, Costa Rica had a curious problem for most years in the religious group data. All
+Costa Rica years have group data for Protestants, Roman Catholics, and "others." Up until 1964 or so, the "others"
+are zero. Afterward, there is some small proportion of "others". However, the sum of Protestants, Roman Catholics, and
+"others" exceeds 1 (pretty clearly) and the difference between the sum and 1 is entirely the "others." So, I drop
+the "others" for all years. I don't think that's terribly problematic, but it's worth saying that's what I did.
 }
 \references{
 Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and Romain Wacziarg. 2003.
