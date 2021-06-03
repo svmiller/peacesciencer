@@ -23,7 +23,8 @@ creg
 }
 \description{
 This is a data set with state-year estimates for ethnic and religious fractionalization/polarization,
-by way of the Composition of Religious and Ethnic Groups (CREG) project at the University of Illinois.
+by way of the Composition of Religious and Ethnic Groups (CREG) project at the
+University of Illinois. I-L-L.
 }
 \details{
 The \code{data-raw} directory on the project's Github contains more information about how these data were
@@ -37,9 +38,10 @@ post-World War II temporal domain. Likewise, the code for post-unification Germa
 The codebook actually says it's 265 (which would be East Germany's code), but this is assuredly a typo based on the data.
 
 The codebook cautions there are insufficient data for ethnic group estimates for Cameroon, France, India,
-Kosovo, Montenegro, Mozambique, and Papua New Guinea. The French case is particularly disppointing but the
-missing data there are a function of France's constitution. There are insufficient data to make religious
-group estimates for China, North Korea, and the short-lived Republic of Vietnam.
+Kosovo, Montenegro, Mozambique, and Papua New Guinea. The French case is particularly disappointing but the
+missing data there are a function of both France's constitution and modelling issues for CREG (per the
+codebook). There are insufficient data to make religious group estimates for China, North Korea, and the
+short-lived Republic of Vietnam.
 
 The fractionalization estimates are the familiar Herfindahl-Hirschman concentration index. The polarization
 formula comes by way of Montalvo and Reynal-Querol (2000), though this book does not appear to be published
