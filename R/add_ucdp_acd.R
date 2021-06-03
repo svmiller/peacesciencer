@@ -37,12 +37,12 @@
 #' library(dplyr)
 #'
 #' create_stateyears(system = "gw") %>%
-#' add_ucdp_acd() %>%
-#' filter(between(year, 1946, 2019))
+#' filter(between(year, 1946, 2019)) %>%
+#' add_ucdp_acd()
 #'
-#' create_stateyears(system = "gw) %>%
-#' add_ucdp_acd(type = "intrastate", issue = "government") %>%
-#' filter(between(year, 1946, 2019))
+#' create_stateyears(system = "gw") %>%
+#' filter(between(year, 1946, 2019)) %>%
+#' add_ucdp_acd(type = "intrastate", issue = "government")
 #'
 #'
 #'

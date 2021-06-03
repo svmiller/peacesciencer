@@ -31,6 +31,24 @@ conflict IDs that year.
 \details{
 Right now, only state-year data are supported. Function is in true pilot mode.
 }
+\examples{
+
+
+# just call `library(tidyverse)` at the top of the your script
+library(magrittr)
+library(dplyr)
+
+create_stateyears(system = "gw") \%>\%
+filter(between(year, 1946, 2019)) \%>\%
+add_ucdp_acd()
+
+create_stateyears(system = "gw") \%>\%
+filter(between(year, 1946, 2019)) \%>\%
+add_ucdp_acd(type = "intrastate", issue = "government")
+
+
+
+}
 \references{
 Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002)
 Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.

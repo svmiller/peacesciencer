@@ -34,17 +34,50 @@ library(tidyverse)
 tibble(group = c("A", "B","C", "D"),
        perc1 = .25,
        perc2 = c(.97, .01, .01, .01)) %>%
-  summarize(frac = 1 - sum(perc1^2),
-            pol = 1 - sum((((.5-perc2)/(.5))^2)*perc2))
+  summarize(frac1 = 1 - sum(perc1^2),
+            pol1 = 1 - sum((((.5-perc1)/(.5))^2)*perc1))
 
-eth <- read_csv("~/Dropbox/data/creg/EthnicGroupsLong_v1.02.csv") %>% rename_all(tolower) %>%
-  rename(group_estimate = `group estimate`) %>%
-  mutate(group_estimate = group_estimate/100)
+eth <- read_csv("~/Dropbox/data/creg/EthnicGroupsLong_v1.02.csv") %>%
+  rename_all(tolower) %>%
+  rename(group_estimate = `group estimate`,
+         group_name = `group name`) %>%
+  mutate(group_estimate = group_estimate/100) %>%
+  # There are occasional duplicates (e.g. Afghanistan in 1951)
+  group_by(country, cowcode, year, group_name) %>%
+  distinct(group_estimate) %>%
+  ungroup() %>% print()
 
 rel <- read_csv("~/Dropbox/data/creg/ReligiousGroupsLong_v1.02.csv") %>% rename_all(tolower) %>%
-  rename(group_estimate = `group estimate`) %>%
-  mutate(group_estimate = group_estimate/100)
+  rename(group_estimate = `group estimate`,
+         group_name = `group name`) %>%
+  mutate(group_estimate = group_estimate/100) %>%
+  group_by(country, cowcode, year, group_name) %>%
+  distinct(group_estimate) %>%
+  ungroup() %>% print()
 
+# Are there any sum(group_estimates) > 1?
+eth %>%
+  group_by(cowcode, year) %>%
+  mutate(sumgroup = sum(group_estimate)) %>%
+  ungroup() %>% arrange(-sumgroup)
+
+
+# Seems like we're good here.
+# For the rel?
+
+rel %>%
+  group_by(cowcode, year) %>%
+  mutate(sumgroup = sum(group_estimate)) %>%
+  ungroup() %>% arrange(-sumgroup)
+
+# oh boy...
+# This will mess with the ability to create accurate fractionalization/polarization measures.
+# Eye-balling these data, it looks like 1) it's all Costa Rica, of all countries and
+# 2) it's the "others" that are pushing these past 1.
+# So, we have to make a decision here: we're dropping the "others" for Costa Rica.
+
+rel %>%
+  filter(!(cowcode == 94 & group_name == "other")) -> rel
 
 # Garcia-Montalvo and Reynal-Querol (2002) for pol
 # Herfindahl-Hirschman concentration index for frac
@@ -87,3 +120,12 @@ creg %>%
 
 
 save(creg, file="data/creg.rda")
+
+
+# Fiddle with things here...
+
+creg %>%
+  group_by(ccode, year) %>%
+ # filter(n() > 1) %>%
+  arrange(ccode, year) %>%
+  mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .))
