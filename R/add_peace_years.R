@@ -41,6 +41,9 @@
 
 add_peace_years <- function(data, pad = FALSE) {
 
+  attr_ps_data_type <- attributes(data)$ps_data_type
+  attr_ps_system <- attributes(data)$ps_system
+
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
@@ -62,7 +65,9 @@ add_peace_years <- function(data, pad = FALSE) {
 
       data <- sbtscs(data, .data$cowmidongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "cowmidspell"
-      attr(data, "ps_data_type") = "dyad_year"
+
+      attr(data, "ps_data_type") <- attr_ps_data_type
+      attr(data, "ps_system") <-  attr_ps_system
 
     }
 
@@ -70,7 +75,9 @@ add_peace_years <- function(data, pad = FALSE) {
 
       data <- sbtscs(data, .data$gmlmidongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "gmlmidspell"
-      attr(data, "ps_data_type") = "dyad_year"
+
+      attr(data, "ps_data_type") <- attr_ps_data_type
+      attr(data, "ps_system") <-  attr_ps_system
 
 
     }

@@ -60,6 +60,8 @@ following functions:
     Interstate Dispute (MID) data to dyad-year data frame
 -   `add_cow_trade()`: adds Correlates of War trade data to dyad-year or
     state-year data.
+-   `add_creg_fractionalization()`: add fractionalization/polarization
+    estimates from CREG to your dyad-year or state-year data
 -   `add_democracy()`: adds estimates of democracy/levels of democracy
     to dyad-year or state-year data.
 -   `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year
@@ -222,12 +224,12 @@ create_dyadyears() %>%
   add_cow_alliance() %>%
   # add alliance data from ATOP
   add_atop_alliance() %>%
-  # add minimum distance. No default, must specify "cow" or "gw"
-  add_minimum_distance(system = "cow") %>%
+  # add minimum distance
+  add_minimum_distance() %>%
   # add Archigos data
   add_archigos() %>%
   # add gross and surplus GDP data
-  add_sdp_gdp(system = "cow") %>%
+  add_sdp_gdp() %>%
   # add terrain ruggedness data, if you wanted it
   add_rugged_terrain() %>%
   # you should probably filter to politically relevant dyads earlier than later...
@@ -235,7 +237,7 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 1,057,922 x 79
+    ## # A tibble: 246,314 x 79
     ##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
     ##     <dbl>  <dbl> <dbl>       <dbl>         <dbl>       <dbl>         <dbl>
     ##  1    100    101  1841           0             0           0             0
@@ -248,7 +250,7 @@ create_dyadyears() %>%
     ##  8    100    101  1848           0             0           0             0
     ##  9    100    101  1849           0             0           0             0
     ## 10    100    101  1850           0             0           0             0
-    ## # … with 1,057,912 more rows, and 72 more variables: cowmidspell <dbl>,
+    ## # … with 246,304 more rows, and 72 more variables: cowmidspell <dbl>,
     ## #   gmlmidspell <dbl>, gwcode1 <dbl>, gwcode2 <dbl>, rivalryno <dbl>,
     ## #   rivalryname <chr>, styear <dbl>, endyear <dbl>, region <chr>, type1 <chr>,
     ## #   type2 <chr>, type3 <chr>, flow2 <dbl>, flow1 <dbl>, smoothflow2 <dbl>,
@@ -272,7 +274,7 @@ create_dyadyears() %>%
 toc()
 ```
 
-    ## 87.831 sec elapsed
+    ## 76.177 sec elapsed
 
 ``` r
 # state-years now...
@@ -287,10 +289,10 @@ create_stateyears() %>%
   add_cow_trade() %>%
   add_democracy() %>%
   add_igos() %>%
-  add_minimum_distance(system = "cow") %>%
+  add_minimum_distance() %>%
   add_archigos() %>%
   add_nmc() %>%
-  add_sdp_gdp(system = "cow") 
+  add_sdp_gdp() 
 ```
 
     ## # A tibble: 16,731 x 39
@@ -320,4 +322,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 8.819 sec elapsed
+    ## 8.941 sec elapsed
