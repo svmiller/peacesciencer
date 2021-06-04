@@ -74,7 +74,7 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
       select(.data$ccode1, .data$ccode2, .data$year) -> data
 
     attr(data, "ps_data_type") = "dyad_year"
-    attr(data, "system") = "cow"
+    attr(data, "ps_system") = "cow"
 
     if (directed == TRUE) {
 
@@ -114,7 +114,7 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
         select(.data$gwcode1, .data$gwcode2, .data$year) -> data
 
       attr(data, "ps_data_type") = "dyad_year"
-      attr(data, "system") = "gw"
+      attr(data, "ps_system") = "gw"
 
       if (directed == TRUE) {
 

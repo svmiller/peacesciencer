@@ -57,7 +57,7 @@ create_statedays <- function(system = "cow", mry = TRUE) {
       select(.data$ccode, .data$statenme, .data$date) -> data
 
     attr(data, "ps_data_type") = "state_day"
-    attr(data, "system") = "cow"
+    attr(data, "ps_system") = "cow"
 
     return(data)
 
@@ -80,7 +80,7 @@ create_statedays <- function(system = "cow", mry = TRUE) {
       distinct(.data$gwcode, .data$statename, .data$date)  -> data
 
     attr(data, "ps_data_type") = "state_day"
-    attr(data, "system") = "gw"
+    attr(data, "ps_system") = "gw"
 
     return(data)
 

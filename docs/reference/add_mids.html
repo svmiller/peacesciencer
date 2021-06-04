@@ -189,7 +189,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_mids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: 'add_mids' is deprecated.</span>
 #&gt; <span class='warning'>Use 'add_gml_mids' instead.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,025,840 x 39</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 39</span>
 #&gt;    ccode1 ccode2  year dispnum midongoing midonset sidea1 sidea2 revstate1
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920      <span style='color: #BB0000;'>NA</span>          0        0     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>        <span style='color: #BB0000;'>NA</span>
@@ -202,7 +202,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 #&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927      <span style='color: #BB0000;'>NA</span>          0        0     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>        <span style='color: #BB0000;'>NA</span>
 #&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928      <span style='color: #BB0000;'>NA</span>          0        0     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>        <span style='color: #BB0000;'>NA</span>
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929      <span style='color: #BB0000;'>NA</span>          0        0     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>        <span style='color: #BB0000;'>NA</span>
-#&gt; <span style='color: #949494;'># … with 2,025,830 more rows, and 30 more variables: revstate2 &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'># … with 2,063,660 more rows, and 30 more variables: revstate2 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   revtype11 &lt;dbl&gt;, revtype12 &lt;dbl&gt;, revtype21 &lt;dbl&gt;, revtype22 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   fatality1 &lt;dbl&gt;, fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span>
@@ -214,7 +214,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_mids</span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"dispnum"</span>,<span class='st'>"sidea1"</span>, <span class='st'>"sidea2"</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='warning'>Warning: 'add_mids' is deprecated.</span>
 #&gt; <span class='warning'>Use 'add_gml_mids' instead.</span>
-#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,025,840 x 8</span>
+#&gt; <span class='warning'>See help("Deprecated")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 8</span>
 #&gt;    ccode1 ccode2  year midonset midongoing dispnum sidea1 sidea2
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920        0          0      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>
@@ -227,7 +227,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 #&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927        0          0      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>
 #&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928        0          0      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929        0          0      <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>
-#&gt; <span style='color: #949494;'># … with 2,025,830 more rows</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #949494;'># … with 2,063,660 more rows</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

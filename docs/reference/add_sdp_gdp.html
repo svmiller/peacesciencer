@@ -188,7 +188,7 @@ exponentiate the underlying variables before doing this.</p>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
 
 <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_sdp_gdp</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"cow"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,025,840 x 9</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 9</span>
 #&gt;    ccode1 ccode2  year wbgdp2011est1 wbpopest1 sdpest1 wbgdp2011est2 wbpopest2
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920          27.6      18.4    27.5          24.8      15.9
@@ -201,7 +201,7 @@ exponentiate the underlying variables before doing this.</p>
 #&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927          27.9      18.6    27.8          25.1      16.1
 #&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928          27.9      18.6    27.8          25.2      16.1
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929          27.9      18.6    27.8          25.1      16.1
-#&gt; <span style='color: #949494;'># … with 2,025,830 more rows, and 1 more variable: sdpest2 &lt;dbl&gt;</span></div><div class='input'>
+#&gt; <span style='color: #949494;'># … with 2,063,660 more rows, and 1 more variable: sdpest2 &lt;dbl&gt;</span></div><div class='input'>
 <span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_sdp_gdp</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"cow"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,731 x 6</span>
 #&gt;    ccode statenme                  year wbgdp2011est wbpopest sdpest

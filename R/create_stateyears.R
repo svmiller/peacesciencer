@@ -55,7 +55,7 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       distinct(.data$ccode, .data$statenme, .data$year) -> data
 
     attr(data, "ps_data_type") = "state_year"
-    attr(data, "system") = "cow"
+    attr(data, "ps_system") = "cow"
 
     return(data)
 
@@ -76,7 +76,7 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
       distinct(.data$gwcode, .data$statename, .data$year)  -> data
 
     attr(data, "ps_data_type") = "state_year"
-    attr(data, "system") = "gw"
+    attr(data, "ps_system") = "gw"
 
     return(data)
 

@@ -5,7 +5,7 @@
 \alias{cow_ddy}
 \title{A directed dyad-year data frame of Correlates of War state system members}
 \format{
-A data frame with 2025840 observations on the following 4 variables.
+A data frame with 2063670 observations on the following 3 variables.
 \describe{
 \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
@@ -17,7 +17,9 @@ cow_ddy
 }
 \description{
 This is a complete directed dyad-year data frame of Correlates of War
-state system members. I offer it here as a shortcut for various other functions.
+state system members. I offer it here as a shortcut for various other functions when
+I am working on new additions and don't want to invest time in waiting for
+\code{create_dyadyears()} to run.
 }
 \details{
 Data are a quick generation from the \code{create_dyadyears()} function in this package.

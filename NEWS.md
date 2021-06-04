@@ -5,6 +5,7 @@ peacesciencer 0.5.0 (in development)
 - Add `add_ccode_to_gw()`. Fix underlying data for `cow_gw_years`. Add `gw_cow_years`.
 - Add `add_strategic_rivalries()`.
 - Add `add_ucdp_acd()`. With it, update `ucdp_acd` data for functionality.
+- Add `add_rugged_terrain()`.
 - Add `creg` data.
 - Add `hief` data.
 - Add `rugged` data.
@@ -13,6 +14,7 @@ peacesciencer 0.5.0 (in development)
 - Clarify documentation for `add_contiguity()` for why non-contiguous dyads are 0s and not 6s. Briefly: I don't think of these data as ordinal and I don't encourage the researcher to think of them as ordinal either.
 - Fix bug in `add_nmc()` (and `cow_nmc`). -9 is now explicitly NA, as it should have been.
 - Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last).
+- Update `cow_ddy` and its documentation.
 
 
 peacesciencer 0.4.0
