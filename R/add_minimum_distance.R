@@ -17,8 +17,6 @@
 #' @author Steven V. Miller
 #'
 #' @param data a dyad-year data frame (either "directed" or "non-directed") or state-year data frame
-#' @param system a character specifying whether the user wants Correlates of War
-#' state-years ("cow") or Gleditsch-Ward ("gw") state-years.
 #'
 #' @references
 #'
@@ -40,11 +38,11 @@
 #' @importFrom rlang .data
 #' @importFrom rlang .env
 #'
-add_minimum_distance <- function(data, system) {
+add_minimum_distance <- function(data) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
-  if (system == "cow") {
+  if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
     # Just to deal with all cases, we're going to create a directed version
     cow_mindist %>%
       rename(ccode1 = .data$ccode2,
@@ -56,7 +54,7 @@ add_minimum_distance <- function(data, system) {
 
     return(data)
 
-  } else if (system == "gw") {
+  } else if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "gw") {
 
     gw_mindist %>%
       rename(gwcode1 = .data$gwcode2,
@@ -70,12 +68,12 @@ add_minimum_distance <- function(data, system) {
 
   } else {
 
-    stop("add_minimum_distance() requires a declaration of either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
+    stop("add_minimum_distance() requires either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
   }
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
-    if (system == "cow") {
+    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
       cow_mindist %>%
         group_by(.data$ccode1, .data$year) %>%
@@ -86,7 +84,7 @@ add_minimum_distance <- function(data, system) {
 
       return(data)
 
-    } else if (system == "gw") {
+    } else if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "gw") {
 
       gw_mindist %>%
         group_by(.data$gwcode1, .data$year) %>%
@@ -99,7 +97,7 @@ add_minimum_distance <- function(data, system) {
 
     } else {
 
-      stop("add_minimum_distance() requires a declaration of either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
+      stop("add_minimum_distance() requires either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
     }
 
   } else {

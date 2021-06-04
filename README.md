@@ -22,14 +22,16 @@ installation).
 
 # Installation
 
-You will ideally soon be able to install this on CRAN, as follows:
+You can install this on CRAN, as follows:
 
 ``` r
 install.packages("peacesciencer")
 ```
 
-Until then, you can install the development version of this package
-through the `devtools` package.
+You can install the development version of this package through the
+`devtools` package. The development version of the package invariably
+has more goodies, but may or may not be at various levels of
+stress-testing.
 
 ``` r
 devtools::install_github("svmiller/peacesciencer")
@@ -46,6 +48,8 @@ following functions:
     data.
 -   `add_capital_distance()`: adds capital-to-capital distance (in
     kilometers, “as the crow flies”) to dyad-year or state-year data.
+-   `add_ccode_to_gw()`: Add Correlates of War state system codes to
+    dyad-year or state-year data with Gleditsch-Ward state codes.
 -   `add_contiguity()`: adds Correlates of War direct contiguity data to
     dyad-year or state-year data.
 -   `add_cow_alliance()`: adds Correlates of War major alliance
@@ -70,8 +74,13 @@ following functions:
     dyad-year or state-year data.
 -   `add_nmc()`: adds estimates of national material capabilities (from
     Correlates of War) to dyad-year or state-year data.
+-   `add_peace_years()`: Add Peace Years to Your Conflict Data
 -   `add_sdp_gdp()`: adds estimates of (gross and surplus) domestic
     product and population size to dyad-year or state-year data
+-   `add_strategic_rivalries()`: Add Thompson and Dreyer’s (2012)
+    strategic rivalry data to dyad-year data frame
+-   `add_ucdp_acd()`: Add UCDP Armed Conflict Data to state-year data
+    frame
 -   `add_ucdp_onsets()`: adds UCDP onsets to state-year data
 -   `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward
     state system membership data into dyad-year format
@@ -121,6 +130,8 @@ It also has the following data sets:
     (version: 2016)
 -   `cow_trade_sy`: Correlates of War state-year trade data (version
     4.0)
+-   `creg`: Composition of Religious and Ethnic Groups (CREG)
+    Fractionalization/Polarization Estimates
 -   `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the
     Gibler-Miller-Little inter-state dispute data.
 -   `gml_mid_ddydisps`: Directed Dyadic Dispute-Year Data with No
@@ -133,7 +144,11 @@ It also has the following data sets:
     War States
 -   `gw_states`: Gleditsch-Ward independent state system data
     (version: 2017)
--   `maoz_powers`: Zeev Maoz’ global/regional power data.
+-   `hief`: Historical Index of Ethnic Fractionalization data
+-   `maoz_powers`: Zeev Maoz’ global/regional power data
+-   `rugged`: Rugged/Mountainous Terrain Data
+-   `td_rivalries`: Thompson and Dreyer’s (2012) Strategic Rivalries,
+    1494-2010
 -   `ucdp_acd`: a (not quite) dyad-year and (not quite) state-year data
     set on armed conflict episodes
 -   `ucdp_onsets`: a state-year data set of UCDP armed conflict
@@ -213,12 +228,14 @@ create_dyadyears() %>%
   add_archigos() %>%
   # add gross and surplus GDP data
   add_sdp_gdp(system = "cow") %>%
+  # add terrain ruggedness data, if you wanted it
+  add_rugged_terrain() %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 75
+    ## # A tibble: 1,057,922 x 79
     ##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
     ##     <dbl>  <dbl> <dbl>       <dbl>         <dbl>       <dbl>         <dbl>
     ##  1    100    101  1841           0             0           0             0
@@ -231,7 +248,7 @@ create_dyadyears() %>%
     ##  8    100    101  1848           0             0           0             0
     ##  9    100    101  1849           0             0           0             0
     ## 10    100    101  1850           0             0           0             0
-    ## # … with 246,304 more rows, and 68 more variables: cowmidspell <dbl>,
+    ## # … with 1,057,912 more rows, and 72 more variables: cowmidspell <dbl>,
     ## #   gmlmidspell <dbl>, gwcode1 <dbl>, gwcode2 <dbl>, rivalryno <dbl>,
     ## #   rivalryname <chr>, styear <dbl>, endyear <dbl>, region <chr>, type1 <chr>,
     ## #   type2 <chr>, type3 <chr>, flow2 <dbl>, flow1 <dbl>, smoothflow2 <dbl>,
@@ -248,13 +265,14 @@ create_dyadyears() %>%
     ## #   leadertransition2 <dbl>, irregular2 <dbl>, n_leaders2 <int>,
     ## #   jan1leadid2 <chr>, dec31leadid2 <chr>, wbgdp2011est1 <dbl>,
     ## #   wbpopest1 <dbl>, sdpest1 <dbl>, wbgdp2011est2 <dbl>, wbpopest2 <dbl>,
-    ## #   sdpest2 <dbl>, prd <dbl>
+    ## #   sdpest2 <dbl>, rugged1 <dbl>, newlmtnest1 <dbl>, rugged2 <dbl>,
+    ## #   newlmtnest2 <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 73.019 sec elapsed
+    ## 87.831 sec elapsed
 
 ``` r
 # state-years now...
@@ -302,4 +320,4 @@ create_stateyears() %>%
 toc()
 ```
 
-    ## 9.003 sec elapsed
+    ## 8.819 sec elapsed

@@ -14,6 +14,7 @@ peacesciencer 0.5.0 (in development)
 - Clarify documentation for `add_contiguity()` for why non-contiguous dyads are 0s and not 6s. Briefly: I don't think of these data as ordinal and I don't encourage the researcher to think of them as ordinal either.
 - Fix bug in `add_nmc()` (and `cow_nmc`). -9 is now explicitly NA, as it should have been.
 - Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last).
+- Remove mandatory "system" calls in `add_minimum_distance()` and `add_sdp_gdp()`. These merges now lean on system attributes declared in `create_dyadyears()` and `create_stateyears()`.
 - Update `cow_ddy` and its documentation.
 
 

@@ -8,9 +8,6 @@ add_sdp_gdp(data, system)
 }
 \arguments{
 \item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.}
-
-\item{system}{a character specifying whether the user wants Correlates of War
-state-years ("cow") or Gleditsch-Ward ("gw") state-years.}
 }
 \value{
 \code{add_sdp_gdp()} takes a dyad-year data frame or state-year data frame and adds information
@@ -43,9 +40,9 @@ library(magrittr)
 
 cow_ddy \%>\% add_sdp_gdp(system="cow")
 
-create_stateyears() \%>\% add_sdp_gdp(system = "cow")
+create_stateyears() \%>\% add_sdp_gdp()
 
-create_stateyears(system = "gw") \%>\% add_sdp_gdp(system = "gw")
+create_stateyears(system = "gw") \%>\% add_sdp_gdp()
 
 
 }

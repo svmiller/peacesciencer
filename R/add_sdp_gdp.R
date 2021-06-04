@@ -26,8 +26,6 @@
 #' @author Steven V. Miller
 #'
 #' @param data a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.
-#' @param system a character specifying whether the user wants Correlates of War
-#' state-years ("cow") or Gleditsch-Ward ("gw") state-years.
 #'
 #' @references
 #'
@@ -42,16 +40,16 @@
 #'
 #' cow_ddy %>% add_sdp_gdp(system="cow")
 #'
-#' create_stateyears() %>% add_sdp_gdp(system = "cow")
+#' create_stateyears() %>% add_sdp_gdp()
 #'
-#' create_stateyears(system = "gw") %>% add_sdp_gdp(system = "gw")
+#' create_stateyears(system = "gw") %>% add_sdp_gdp()
 #'
 #'
 add_sdp_gdp <- function(data, system) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
-    if (system == "cow") {
+    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
       data %>%
         left_join(., cow_sdp_gdp, by=c("ccode1"="ccode","year"="year")) %>%
@@ -65,7 +63,7 @@ add_sdp_gdp <- function(data, system) {
 
       return(data)
 
-    } else if (system == "gw") {
+    } else if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "gw") {
 
       data %>%
         left_join(., gw_sdp_gdp, by=c("gwcode1"="gwcode","year"="year")) %>%
@@ -82,19 +80,19 @@ add_sdp_gdp <- function(data, system) {
 
     } else {
 
-      stop("add_sdp_gdp() requires a declaration of either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
+      stop("add_sdp_gdp() requires either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
     }
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
-    if (system == "cow") {
+    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
       cow_sdp_gdp %>%
         left_join(data, .) -> data
 
       return(data)
 
-    } else if (system == "gw") {
+    } else if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "gw") {
 
       gw_sdp_gdp %>%
         left_join(data, .) -> data
@@ -103,7 +101,7 @@ add_sdp_gdp <- function(data, system) {
 
     } else {
 
-      stop("add_sdp_gdp() requires a declaration of either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
+      stop("add_sdp_gdp() requires either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
     }
 
   } else {

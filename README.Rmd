@@ -23,14 +23,14 @@ cat(
 
 # Installation
 
-You will ideally soon be able to install this on CRAN, as follows:
+You can install this on CRAN, as follows:
 
 ```r
 install.packages("peacesciencer")
 
 ```
 
-Until then, you can install the development version of this package through the `devtools` package.
+You can install the development version of this package through the `devtools` package. The development version of the package invariably has more goodies, but may or may not be at various levels of stress-testing.
 
 ```r
 devtools::install_github("svmiller/peacesciencer")
@@ -43,6 +43,7 @@ The package is very much a work in progress. Right now, it has the following fun
 - `add_archigos()`: adds some summary variables from Archigos about political leaders for state-year or dyad-year data.
 - `add_atop_alliance()`: adds ATOP alliance information to dyad-year data.
 - `add_capital_distance()`: adds capital-to-capital distance (in kilometers, "as the crow flies") to dyad-year or state-year data.
+- `add_ccode_to_gw()`: 	Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes.
 - `add_contiguity()`: adds Correlates of War direct contiguity data to dyad-year or state-year data.
 - `add_cow_alliance()`: adds Correlates of War major alliance information to dyad-year data.
 - `add_cow_majors()`: adds Correlates of War major power information to dyad-year or state-year data.
@@ -55,7 +56,10 @@ The package is very much a work in progress. Right now, it has the following fun
 - `add_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data. (DEPRECATED)
 - `add_minimum_distance()`: adds minimum distance (in kilometers) to dyad-year or state-year data.
 - `add_nmc()`: adds estimates of national material capabilities (from Correlates of War) to dyad-year or state-year data.
+- `add_peace_years()`: Add Peace Years to Your Conflict Data
 - `add_sdp_gdp()`: adds estimates of (gross and surplus) domestic product and population size to dyad-year or state-year data
+- `add_strategic_rivalries()`: Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame
+- `add_ucdp_acd()`: Add UCDP Armed Conflict Data to state-year data frame
 - `add_ucdp_onsets()`: adds UCDP onsets to state-year data
 - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward state system membership data into dyad-year format
 - `create_statedays()`: converts Correlates of War or Gleditsch-Ward state membership data into state-day format..
@@ -83,13 +87,17 @@ It also has the following data sets:
 - `cow_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States
 - `cow_states`: Correlates of War state system membership data (version: 2016)
 - `cow_trade_sy`: Correlates of War state-year trade data (version 4.0)
+- `creg`: Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates
 - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the Gibler-Miller-Little inter-state dispute data.
 - `gml_mid_ddydisps`:  Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (Gibler-Miller-Little, v. 2.1.1)
 - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward state system members
 - `gw_mindist`: the minimum distance between  Gleditsch-Ward states, in kilometers, in non-directed dyad-year format (1946-2015)
 - `gw_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States
 - `gw_states`: Gleditsch-Ward independent state system data (version: 2017)
-- `maoz_powers`: Zeev Maoz' global/regional power data.
+- `hief`: Historical Index of Ethnic Fractionalization data
+- `maoz_powers`: Zeev Maoz' global/regional power data
+- `rugged`: Rugged/Mountainous Terrain Data
+- `td_rivalries`: Thompson and Dreyer's (2012) Strategic Rivalries, 1494-2010
 - `ucdp_acd`: a (not quite) dyad-year and (not quite) state-year data set on armed conflict episodes
 - `ucdp_onsets`: a state-year data set of UCDP armed conflict onsets/episodes.
 
@@ -145,6 +153,8 @@ create_dyadyears() %>%
   add_archigos() %>%
   # add gross and surplus GDP data
   add_sdp_gdp(system = "cow") %>%
+  # add terrain ruggedness data, if you wanted it
+  add_rugged_terrain() %>%
   # you should probably filter to politically relevant dyads earlier than later...
   # Or not, it's your time and computer processor...
   filter_prd()
