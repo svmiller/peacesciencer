@@ -34,7 +34,7 @@
 #' create_stateyears(system = 'gw') %>% add_cow_to_gwcode()
 #'
 #'
-add_cow_to_gwcode <- function(data) {
+add_ccode_to_gw <- function(data) {
 
   gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year) -> hold_this
 
@@ -63,7 +63,7 @@ add_cow_to_gwcode <- function(data) {
 
     if (!all(i <- c("gwcode") %in% colnames(data))) {
 
-      stop("add_cow_to_gwcode() merges on the Gleditsch-Ward code, which your data don't have right now. Make sure to run create_stateyears(system = 'gw') at the top of the pipe.")
+      stop("add_ccode_to_gw() merges on the Gleditsch-Ward code, which your data don't have right now. Make sure to run create_stateyears(system = 'gw') at the top of the pipe.")
 
 
     } else {
@@ -76,7 +76,7 @@ add_cow_to_gwcode <- function(data) {
     }
 
   } else  {
-    stop("add_gwcode_to_cow() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+    stop("add_ccode_to_gw() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
   }
 
   return(data)

@@ -13,6 +13,9 @@
     <loc>http://svmiller.com/reference/add_capital_distance.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/add_ccode_to_gw.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/add_contiguity.html</loc>
   </url>
   <url>
@@ -23,9 +26,6 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/add_cow_mids.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_to_gwcode.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/add_cow_trade.html</loc>
