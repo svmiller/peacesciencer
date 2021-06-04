@@ -622,6 +622,7 @@ NULL
 #' \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
 #' \item{\code{wbpopest}}{a numeric vector for the estimated population size (log-transformed)}
 #' \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
+#'  \item{\code{wbgdppc2011est}}{a numeric vector for the estimated GDP per capita (log-transformed)}
 #' }
 #' @details These were extracted from the actual replication files from \emph{International Studies Quarterly}. Because these
 #' data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
@@ -649,6 +650,7 @@ NULL
 #' \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
 #' \item{\code{wbpopest}}{a numeric vector for the estimated population size (log-transformed)}
 #' \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
+#' \item{\code{wbgdppc2011est}}{a numeric vector for the estimated GDP per capita (log-transformed)}
 #' }
 #' @details These were provided by Anders on a separate Github repository for this project. Because these
 #' data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data

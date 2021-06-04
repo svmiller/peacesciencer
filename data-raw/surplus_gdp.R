@@ -5,9 +5,10 @@ cow_sdp_gdp <- readRDS("~/Dropbox/data/surplus-gdp/master.rds") %>%
   rename(wbgdp2011est = WorldBank_gdp_2011_ppp_estimate,
          wbpopest = WorldBank_pop_estimate,
          sdpest = gdp_surplus1095_truncated) %>%
+  mutate(wbgdppc2011est = wbgdp2011est/wbpopest) %>%
   # IIRC, R seems to get squeamish with file sizes for really large nominal numbers, like these. So +1 and log
   # That'll standardize with the gw_* data frame next as well.
-  mutate_at(vars(wbgdp2011est, wbpopest, sdpest), ~log(.+1)) %>%
+  mutate_at(vars(wbgdp2011est, wbpopest, sdpest, wbgdppc2011est), ~log(.+1)) %>%
   # I'm *pretty sure* Anders et al. are including years for which the state is not in the CoW system.
   # That'd explain why there are more rows in here than they should be.
   # The ultimate test for this for when left_join creates duplicates.
@@ -22,6 +23,7 @@ gw_sdp_gdp <- read_csv("~/Dropbox/data/surplus-gdp/gdp_pop_sdp_estimates.csv") %
          wbpopest = WorldBank_pop_estimate,
          sdpest = sdp) %>%
   select(gwcode, year, wbgdp2011est,wbpopest,sdpest) %>%
+  mutate(wbgdppc2011est = log(exp(wbgdp2011est)/exp(wbpopest) +1)) %>%
   print()
 
 save(gw_sdp_gdp, file="data/gw_sdp_gdp.rda")

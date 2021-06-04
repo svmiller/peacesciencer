@@ -5,10 +5,10 @@
 #'
 #'
 #' @return \code{add_sdp_gdp()} takes a dyad-year data frame or state-year data frame and adds information
-#' about the estimated gross domestic product (in 2011 USD) for that year, the estimated population in that year,
-#' and what Anders, Fariss and Markowitz term the "surplus domestic product" in that year. If the data are dyad-year, the function
-#' adds 6 total columns for the first state (i.e. \code{ccode1}) and the second state (i.e. \code{ccode2}) for all these estimates.
-#' If the data are state-year, the function returns three additional columns to the original data that contain that same information
+#' about the estimated gross domestic product (in 2011 USD) for that year, the estimated population in that year, the GDP per
+#' capita in that year, and what Anders, Fariss and Markowitz term the "surplus domestic product" in that year. If the data are dyad-year, the function
+#' adds eight total columns for the first state (i.e. \code{ccode1}) and the second state (i.e. \code{ccode2}) for all these estimates.
+#' If the data are state-year, the function returns four additional columns to the original data that contain that same information
 #' for a given state in a given year.
 #'
 #' @details The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
@@ -19,7 +19,7 @@
 #' different across both data sets even for common observations (e.g. the United States in 1816).
 #'
 #' Because these are large nominal numbers, the estimates have been log-transformed. Users can always exponentiate
-#' these if they choose. Researchers can use these data to construct reasonable estimates of GDP per capita, but must
+#' these if they choose. Researchers can use these data to construct reasonable estimates of surplus GDP per capita, but must
 #' exponentiate the underlying variables before doing this.
 #'
 #'
@@ -38,7 +38,7 @@
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' cow_ddy %>% add_sdp_gdp(system="cow")
+#' cow_ddy %>% add_sdp_gdp()
 #'
 #' create_stateyears() %>% add_sdp_gdp()
 #'
@@ -55,10 +55,12 @@ add_sdp_gdp <- function(data, system) {
         left_join(., cow_sdp_gdp, by=c("ccode1"="ccode","year"="year")) %>%
         rename(wbgdp2011est1 = .data$wbgdp2011est,
                wbpopest1 = .data$wbpopest,
+               wbgdppc2011est1 = .data$wbgdppc2011est,
                sdpest1 = .data$sdpest) %>%
         left_join(., cow_sdp_gdp, by=c("ccode2"="ccode","year"="year")) %>%
         rename(wbgdp2011est2 = .data$wbgdp2011est,
                wbpopest2 = .data$wbpopest,
+               wbgdppc2011est2 = .data$wbgdppc2011est,
                sdpest2 = .data$sdpest) -> data
 
       return(data)
@@ -69,10 +71,12 @@ add_sdp_gdp <- function(data, system) {
         left_join(., gw_sdp_gdp, by=c("gwcode1"="gwcode","year"="year")) %>%
         rename(wbgdp2011est1 = .data$wbgdp2011est,
                wbpopest1 = .data$wbpopest,
+               wbgdppc2011est1 = .data$wbgdppc2011est,
                sdpest1 = .data$sdpest) %>%
         left_join(., gw_sdp_gdp, by=c("gwcode2"="gwcode","year"="year")) %>%
         rename(wbgdp2011est2 = .data$wbgdp2011est,
                wbpopest2 = .data$wbpopest,
+               wbgdppc2011est2 = .data$wbgdppc2011est,
                sdpest2 = .data$sdpest) -> data
 
 

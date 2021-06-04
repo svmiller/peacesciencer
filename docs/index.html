@@ -134,6 +134,8 @@
 <li>
 <code><a href="reference/add_cow_trade.html">add_cow_trade()</a></code>: adds Correlates of War trade data to dyad-year or state-year data.</li>
 <li>
+<code><a href="reference/add_creg_fractionalization.html">add_creg_fractionalization()</a></code>: add fractionalization/polarization estimates from CREG to your dyad-year or state-year data</li>
+<li>
 <code><a href="reference/add_democracy.html">add_democracy()</a></code>: adds estimates of democracy/levels of democracy to dyad-year or state-year data.</li>
 <li>
 <code>add_gwcode_to_cow():</code> adds Gleditsch-Ward state codes to dyad-year or state-year data with Correlates of War state codes.</li>
@@ -273,18 +275,18 @@
   <span class="fu"><a href="reference/add_cow_alliance.html">add_cow_alliance</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># add alliance data from ATOP</span>
   <span class="fu"><a href="reference/add_atop_alliance.html">add_atop_alliance</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="co"># add minimum distance. No default, must specify "cow" or "gw"</span>
-  <span class="fu"><a href="reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="co"># add minimum distance</span>
+  <span class="fu"><a href="reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># add Archigos data</span>
   <span class="fu"><a href="reference/add_archigos.html">add_archigos</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># add gross and surplus GDP data</span>
-  <span class="fu"><a href="reference/add_sdp_gdp.html">add_sdp_gdp</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/add_sdp_gdp.html">add_sdp_gdp</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># add terrain ruggedness data, if you wanted it</span>
   <span class="fu"><a href="reference/add_rugged_terrain.html">add_rugged_terrain</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># you should probably filter to politically relevant dyads earlier than later...</span>
   <span class="co"># Or not, it's your time and computer processor...</span>
   <span class="fu"><a href="reference/filter_prd.html">filter_prd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,057,922 x 79</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 246,314 x 79</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">##     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1    100    101  1841           0             0           0             0</span></span>
@@ -297,7 +299,7 @@
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    100    101  1848           0             0           0             0</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    100    101  1849           0             0           0             0</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    100    101  1850           0             0           0             0</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,057,912 more rows, and 72 more variables: cowmidspell &lt;dbl&gt;,</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 246,304 more rows, and 72 more variables: cowmidspell &lt;dbl&gt;,</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="do">## #   gmlmidspell &lt;dbl&gt;, gwcode1 &lt;dbl&gt;, gwcode2 &lt;dbl&gt;, rivalryno &lt;dbl&gt;,</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   rivalryname &lt;chr&gt;, styear &lt;dbl&gt;, endyear &lt;dbl&gt;, region &lt;chr&gt;, type1 &lt;chr&gt;,</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   type2 &lt;chr&gt;, type3 &lt;chr&gt;, flow2 &lt;dbl&gt;, flow1 &lt;dbl&gt;, smoothflow2 &lt;dbl&gt;,</span></span>
@@ -318,7 +320,7 @@
 <span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## #   newlmtnest2 &lt;dbl&gt;, prd &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 87.831 sec elapsed</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 76.177 sec elapsed</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># state-years now...</span>
 
@@ -332,10 +334,10 @@
   <span class="fu"><a href="reference/add_cow_trade.html">add_cow_trade</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/add_democracy.html">add_democracy</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/add_igos.html">add_igos</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/add_archigos.html">add_archigos</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/add_nmc.html">add_nmc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="reference/add_sdp_gdp.html">add_sdp_gdp</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span> </code></pre></div>
+  <span class="fu"><a href="reference/add_sdp_gdp.html">add_sdp_gdp</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
 <div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 16,731 x 39</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    ccode statenme           year gwcode sumnewconf sumonset1 sumonset2 sumonset3</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
@@ -360,7 +362,7 @@
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sdpest &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 8.819 sec elapsed</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 8.941 sec elapsed</span></span></code></pre></div>
 </div>
 
   </div>

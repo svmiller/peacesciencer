@@ -144,8 +144,9 @@
 <li>Add <code>hief</code> data.</li>
 <li>Add <code>rugged</code> data.</li>
 <li>Add <code>td_rivalries</code> data.</li>
-<li>Clarify documentation for <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> about constructing a GDP per capita estimate.</li>
+<li>Add log-transformed GDP per capita estimates to <code>cow_sdp_gdp</code> and <code>gw_sdp_gdp</code>. Update <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> to reflect this change.</li>
 <li>Clarify documentation for <code><a href="../reference/add_contiguity.html">add_contiguity()</a></code> for why non-contiguous dyads are 0s and not 6s. Briefly: I don’t think of these data as ordinal and I don’t encourage the researcher to think of them as ordinal either.</li>
+<li>Expand <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which now works with UCDP conflict data.</li>
 <li>Fix bug in <code><a href="../reference/add_nmc.html">add_nmc()</a></code> (and <code>cow_nmc</code>). -9 is now explicitly NA, as it should have been.</li>
 <li>Patch <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which can now be used anywhere in the chain of commands (instead of just last).</li>
 <li>Remove mandatory “system” calls in <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code> and <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code>. These merges now lean on system attributes declared in <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</li>

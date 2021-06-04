@@ -24,6 +24,25 @@ works for both the CoW-MID data and the Gibler-Miller-Little (GML) MID data.
 \details{
 The function internally uses \code{sbtscs()} from \pkg{stevemisc}. In the interest of full disclosure,
 \code{sbtscs()} leans heavily on \code{btscs()} from \pkg{DAMisc}. I optimized some code for performance.
+
+Importantly, the underlying function (\code{sbtscs()} in \pkg{stevemisc}, by way of \code{btscs()} in \pkg{DAMisc})
+has important performance issues if you're trying to run it when your event data are sandwiched by observations
+without any event data. Here's what I mean. Assume you got the full Gleditsch-Ward state-year data from 1816 to 2020
+and then added the UCDP armed conflict data to it. If you want the peace-years for this, the function will fail because
+every year from 1816 to 1945 (along with 2020, as of writing) have no event data. You can force the function to "not fail"
+by setting \code{pad = TRUE} as an argument, but it's not clear this is advisable for this reason. Assume you wanted event data
+in UCDP for just the extrasystemic onsets. The data start in 1946 and, in 1946, the United Kingdom,
+Netherlands, and France had extrasystemic conflicts. For *all* years before 1946, the events are imputed as 1
+for those countries that had 1s in the first year of observation and everyone else is NA and implicitly assumed to be a zero.
+For those NAs, the function runs a sequence resulting in some wonky spells in 1946 that are not implied by (the absence of) the
+data. In fact, none of those are implied by the asbsence of data before 1946.
+
+The function works just fine if you truncate your temporal domain to reflect the nature of your event data. Basically,
+if you want to use this function more generally, filter your dyad-year or state-year data to make sure there are no years
+without any event data recorded (e.g. why would you have a CoW-MID analyses of dyad-years with observations before 1816?). This
+is less a problem when years with all-NAs succeed (and do not precede) the event data. For example, the UCDP conflict data
+run from 1946 to 2019 (as of writing). Having 2020 observations in there won't compromise the function output when \code{pad = TRUE}
+is included as an argument.
 }
 \examples{
 
