@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_ccode_to_gw.R
 \name{add_ccode_to_gw}
 \alias{add_ccode_to_gw}
-\title{Add Correlates of War state system codes to dyad-year or state-year data with  Gleditsch-Ward state codes.}
+\title{Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes.}
 \usage{
 add_ccode_to_gw(data)
 }
@@ -10,11 +10,11 @@ add_ccode_to_gw(data)
 \item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.}
 }
 \value{
-\code{add_cow_to_gwcode()} takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
+\code{add_ccode_to_gw()} takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
 state system codes and adds their corollary Correlates of War codes.
 }
 \description{
-\code{add_cow_to_gwcode()} allows you to match, as well as one can, Correlates of War system membership data
+\code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates of War system membership data
 with Gleditsch-Ward system data.
 }
 \details{
@@ -32,13 +32,14 @@ the \code{countrycode} package. Whether you use this function or the \code{count
 the output.
 }
 \examples{
+\donttest{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 
-create_dyadyears(system = "gw") \%>\% add_cow_to_gwcode()
+create_dyadyears(system = "gw") \%>\% add_ccode_to_gw()
 
-create_stateyears(system = 'gw') \%>\% add_cow_to_gwcode()
-
+create_stateyears(system = 'gw') \%>\% add_ccode_to_gw()
+}
 
 }
 \author{

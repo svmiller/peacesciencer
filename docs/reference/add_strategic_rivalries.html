@@ -139,7 +139,7 @@ to a dyad-year data frame. The right-bound, as of right now, are bound at 2010."
 to a dyad-year data frame. The right-bound, as of right now, are bound at 2010.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_strategic_rivalries</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>add_strategic_rivalries</span><span class='op'>(</span><span class='va'>data</span>, across_types <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -148,17 +148,31 @@ to a dyad-year data frame. The right-bound, as of right now, are bound at 2010.<
       <th>data</th>
       <td><p>a dyad-year data frame (either "directed" or "non-directed")</p></td>
     </tr>
+    <tr>
+      <th>across_types</th>
+      <td><p>optional, relevant for state-year, takes a value of 1, 2, or 3 to look for
+whether one of three types fits criteria for ideological, interventionary, positional, spatial
+rivalry. Defaults to 1.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_strategic_rivalries()</code> takes a dyad-year data frame and adds information about ongoing strategic rivalries.</p>
+    <p><code>add_strategic_rivalries()</code> takes a dyad-year data frame and adds information about ongoing strategic rivalries. It
+will also include a simple dummy variable for whether there was an ongoing rivalry in the year or not.
+For state-year data, it returns the count of ongoing strategic rivalries for the state in the year meeting a certain criteria (i.e.
+whether the state has an interventionary, ideological, positional, or spatial rivalry in an ongoing year, and how many).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>add_strategic_rivalries()</code> will include some other information derived from the rivalry data that the
 user may not want (e.g. start year of the rivalry). Feel free to select those out after the fact. Function includes
 an on-the-fly adjustment for Austria for rivalry #79. In this case, the Austria-Serbia rivalry continues for two years
 after Austria-Hungary (<code>ccode: 300</code>) became Austria (<code>ccode: 305</code>).</p>
+<p>The <code>across_types</code> argument is optional and observed for only state-year calls. It defaults to 1. At the default,
+the function looks into the rivalry data (in <code>td_rivalries</code>) and focuses on the `type1` column. If, say, a state has
+an ongoing rivalry and it is primarily spatial, it codes that as a spatial rivalry. Assume you input `across_types = 2`, the
+function then looks across both the `type1` and `type2` columns to see if there is a spatial component to the rivalry as
+either its primary or secondary dimension. If so, it codes that as a 1. <code>across_types</code> must be 1, 2, or 3.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
@@ -173,7 +187,7 @@ URL: <a href='http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-d
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
 <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_strategic_rivalries</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 11</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 12</span>
 #&gt;    ccode1 ccode2  year rivalryno rivalryname styear endyear region type1 type2
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920        <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>              <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>   
@@ -186,7 +200,24 @@ URL: <a href='http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-d
 #&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927        <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>              <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>   
 #&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928        <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>              <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>   
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929        <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>              <span style='color: #BB0000;'>NA</span>      <span style='color: #BB0000;'>NA</span> <span style='color: #BB0000;'>NA</span>     <span style='color: #BB0000;'>NA</span>    <span style='color: #BB0000;'>NA</span>   
-#&gt; <span style='color: #949494;'># … with 2,063,660 more rows, and 1 more variable: type3 &lt;chr&gt;</span></div><div class='input'>
+#&gt; <span style='color: #949494;'># … with 2,063,660 more rows, and 2 more variables: type3 &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   ongoingrivalry &lt;dbl&gt;</span></div><div class='input'>
+<span class='co'># across_types defaults to 1</span>
+<span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_strategic_rivalries</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,731 x 7</span>
+#&gt;    ccode statenme            year ideological interventionary positional spatial
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>           <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>816           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 2</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>817           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 3</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>818           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 4</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>819           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 5</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>820           0               0          1       0
+#&gt; <span style='color: #BCBCBC;'> 6</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>821           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 7</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>822           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 8</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>823           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'> 9</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>824           0               0          1       1
+#&gt; <span style='color: #BCBCBC;'>10</span>     2 United States of …  <span style='text-decoration: underline;'>1</span>825           0               0          1       1
+#&gt; <span style='color: #949494;'># … with 16,721 more rows</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

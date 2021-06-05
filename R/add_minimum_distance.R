@@ -27,11 +27,11 @@
 #' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
-#' cow_ddy %>% add_minimum_distance(system="cow")
+#' cow_ddy %>% add_minimum_distance()
 #'
-#' create_dyadyears(system = "gw") %>% add_minimum_distance(system = "gw")
+#' create_dyadyears(system = "gw") %>% add_minimum_distance()
 #'
-#' create_stateyears(system ="gw") %>% add_minimum_distance(system = "gw")
+#' create_stateyears(system ="gw") %>% add_minimum_distance()
 #' }
 #'
 #'

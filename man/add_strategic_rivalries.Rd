@@ -4,13 +4,20 @@
 \alias{add_strategic_rivalries}
 \title{Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame}
 \usage{
-add_strategic_rivalries(data)
+add_strategic_rivalries(data, across_types = 1)
 }
 \arguments{
 \item{data}{a dyad-year data frame (either "directed" or "non-directed")}
+
+\item{across_types}{optional, relevant for state-year, takes a value of 1, 2, or 3 to look for
+whether one of three types fits criteria for ideological, interventionary, positional, spatial
+rivalry. Defaults to 1.}
 }
 \value{
-\code{add_strategic_rivalries()} takes a dyad-year data frame and adds information about ongoing strategic rivalries.
+\code{add_strategic_rivalries()} takes a dyad-year data frame and adds information about ongoing strategic rivalries. It
+will also include a simple dummy variable for whether there was an ongoing rivalry in the year or not.
+For state-year data, it returns the count of ongoing strategic rivalries for the state in the year meeting a certain criteria (i.e.
+whether the state has an interventionary, ideological, positional, or spatial rivalry in an ongoing year, and how many).
 }
 \description{
 \code{add_strategic_rivalries()} merges in Thompson and Dreyer's (2012) strategic rivalry data
@@ -21,12 +28,21 @@ to a dyad-year data frame. The right-bound, as of right now, are bound at 2010.
 user may not want (e.g. start year of the rivalry). Feel free to select those out after the fact. Function includes
 an on-the-fly adjustment for Austria for rivalry #79. In this case, the Austria-Serbia rivalry continues for two years
 after Austria-Hungary (\code{ccode: 300}) became Austria (\code{ccode: 305}).
+
+The \code{across_types} argument is optional and observed for only state-year calls. It defaults to 1. At the default,
+the function looks into the rivalry data (in \code{td_rivalries}) and focuses on the `type1` column. If, say, a state has
+an ongoing rivalry and it is primarily spatial, it codes that as a spatial rivalry. Assume you input `across_types = 2`, the
+function then looks across both the `type1` and `type2` columns to see if there is a spatial component to the rivalry as
+either its primary or secondary dimension. If so, it codes that as a 1. \code{across_types} must be 1, 2, or 3.
 }
 \examples{
 
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 cow_ddy \%>\% add_strategic_rivalries()
+
+# across_types defaults to 1
+create_stateyears() \%>\% add_strategic_rivalries()
 
 }
 \references{

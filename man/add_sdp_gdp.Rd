@@ -4,7 +4,7 @@
 \alias{add_sdp_gdp}
 \title{Add (Surplus and Gross) Domestic Product Data}
 \usage{
-add_sdp_gdp(data, system)
+add_sdp_gdp(data)
 }
 \arguments{
 \item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.}

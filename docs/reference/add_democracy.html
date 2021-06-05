@@ -152,8 +152,8 @@
 
     <p><code>add_democracy()</code> takes a dyad-year data frame or state-year data frame and adds information
 about the level of democracy for the state or two states in the dyad in a given year. If the data are dyad-year, the function
-adds six total columns for the first state (i.e. <code>ccode1</code>) and the second state (i.e. <code>ccode2</code>) about the level
-of democracy measured by the Varieties of Democracy project (<code>v2x_polyarchy</code>), the Polity project (<code>polity2</code>), and
+adds six total columns for the first state (i.e. <code>ccode1</code> or <code>gwcode1</code>) and the second state (i.e. <code>ccode2</code> or <code>gwcode2</code>)
+about the level of democracy measured by the Varieties of Democracy project (<code>v2x_polyarchy</code>), the Polity project (<code>polity2</code>), and
 Xavier Marquez' <code>QuickUDS</code> extensions/estimates. If the data are state-year, the function returns three additional columns
 to the original data that contain that same information for a given state in a given year.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -192,7 +192,21 @@ of the proverbial pipe.</p>
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929          0.549       10        1.25          0.672
 #&gt; <span style='color: #949494;'># … with 2,063,660 more rows, and 2 more variables: polity22 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   xm_qudsest2 &lt;dbl&gt;</span></div><div class='input'>
-<span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_democracy</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_democracy</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 18,289 x 6</span>
+#&gt;    gwcode statename                 year v2x_polyarchy polity2 xm_qudsest
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>816         0.367       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 2</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>817         0.37        9      0.707
+#&gt; <span style='color: #BCBCBC;'> 3</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>818         0.365       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 4</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>819         0.362       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 5</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>820         0.349       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 6</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>821         0.336       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 7</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>822         0.341       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 8</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>823         0.345       9      0.707
+#&gt; <span style='color: #BCBCBC;'> 9</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>824         0.345       9      0.707
+#&gt; <span style='color: #BCBCBC;'>10</span>      2 United States of America  <span style='text-decoration: underline;'>1</span>825         0.341       9      0.707
+#&gt; <span style='color: #949494;'># … with 18,279 more rows</span></div><div class='input'><span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"cow"</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_democracy</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,731 x 6</span>
 #&gt;    ccode statenme                  year v2x_polyarchy polity2 xm_qudsest
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
@@ -207,7 +221,6 @@ of the proverbial pipe.</p>
 #&gt; <span style='color: #BCBCBC;'> 9</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>824         0.345       9      0.707
 #&gt; <span style='color: #BCBCBC;'>10</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>825         0.341       9      0.707
 #&gt; <span style='color: #949494;'># … with 16,721 more rows</span></div><div class='input'>
-
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

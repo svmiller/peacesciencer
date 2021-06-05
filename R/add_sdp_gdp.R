@@ -45,7 +45,7 @@
 #' create_stateyears(system = "gw") %>% add_sdp_gdp()
 #'
 #'
-add_sdp_gdp <- function(data, system) {
+add_sdp_gdp <- function(data) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 

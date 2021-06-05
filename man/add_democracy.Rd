@@ -12,8 +12,8 @@ add_democracy(data)
 \value{
 \code{add_democracy()} takes a dyad-year data frame or state-year data frame and adds information
 about the level of democracy for the state or two states in the dyad in a given year. If the data are dyad-year, the function
-adds six total columns for the first state (i.e. \code{ccode1}) and the second state (i.e. \code{ccode2}) about the level
-of democracy measured by the Varieties of Democracy project (\code{v2x_polyarchy}), the Polity project (\code{polity2}), and
+adds six total columns for the first state (i.e. \code{ccode1} or \code{gwcode1}) and the second state (i.e. \code{ccode2} or \code{gwcode2})
+about the level of democracy measured by the Varieties of Democracy project (\code{v2x_polyarchy}), the Polity project (\code{polity2}), and
 Xavier Marquez' \code{QuickUDS} extensions/estimates. If the data are state-year, the function returns three additional columns
 to the original data that contain that same information for a given state in a given year.
 }
@@ -32,8 +32,8 @@ library(magrittr)
 
 cow_ddy \%>\% add_democracy()
 
-create_stateyears() \%>\% add_democracy()
-
+create_stateyears(system="gw") \%>\% add_democracy()
+create_stateyears(system="cow") \%>\% add_democracy()
 
 }
 \references{

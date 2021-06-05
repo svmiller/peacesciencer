@@ -19,6 +19,7 @@ Description: These are useful tools and data sets for the study of quantitative
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 RoxygenNote: 7.1.1
 URL: https://github.com/svmiller/peacesciencer/
 BugReports: https://github.com/svmiller/peacesciencer/issues/

@@ -1,10 +1,10 @@
-#' Add Correlates of War state system codes to dyad-year or state-year data with  Gleditsch-Ward state codes.
+#' Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes.
 #'
-#' @description \code{add_cow_to_gwcode()} allows you to match, as well as one can, Correlates of War system membership data
+#' @description \code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates of War system membership data
 #' with Gleditsch-Ward system data.
 #'
 #'
-#' @return \code{add_cow_to_gwcode()} takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
+#' @return \code{add_ccode_to_gw()} takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
 #' state system codes and adds their corollary Correlates of War codes.
 #'
 #' @details The \code{data-raw} directory on the project's Github contains more information about the underlying data that assists
@@ -26,13 +26,14 @@
 #'
 #'
 #' @examples
+#' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' create_dyadyears(system = "gw") %>% add_cow_to_gwcode()
+#' create_dyadyears(system = "gw") %>% add_ccode_to_gw()
 #'
-#' create_stateyears(system = 'gw') %>% add_cow_to_gwcode()
-#'
+#' create_stateyears(system = 'gw') %>% add_ccode_to_gw()
+#' }
 #'
 add_ccode_to_gw <- function(data) {
 

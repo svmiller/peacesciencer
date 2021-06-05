@@ -11,7 +11,7 @@ hief %>%
   mutate(gwcode = countrycode::countrycode(country, "country.name", "gwn")) %>%
   mutate(gwcode = ifelse(country == "Republic of Vietnam", 817, gwcode)) %>%
   arrange(ccode) %>%
-  select(ccode, gwcode, country, year, efindex) -> hief
+  select(ccode, gwcode, year, efindex) -> hief
 
 
 save(hief, file="data/hief.rda")
