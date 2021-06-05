@@ -137,7 +137,7 @@
     <p><code>add_ucdp_acd()</code> allows you to add UCDP Armed Conflict data to a state-year data frame</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_ucdp_acd</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>type</span>, <span class='va'>issue</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>add_ucdp_acd</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>type</span>, <span class='va'>issue</span>, only_wars <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,6 +158,10 @@ is sufficient. If you want multiple, wrap it in a vector with <code><a href='htt
       <td><p>do you want to subset the data to just different armed conflicts over different types of issues?
 If so, specify those here as you would with the <code>type</code> argument. Options include "territory", "government",
 and "both".</p></td>
+    </tr>
+    <tr>
+      <th>only_wars</th>
+      <td><p>subsets the conflict data to just those with intensity levels of "war" (i.e. &gt;1,000 deaths). Defaults to FALSE.</p></td>
     </tr>
     </table>
 

@@ -20,6 +20,7 @@
 #' @param issue do you want to subset the data to just different armed conflicts over different types of issues?
 #' If so, specify those here as you would with the \code{type} argument. Options include "territory", "government",
 #' and "both".
+#' @param only_wars subsets the conflict data to just those with intensity levels of "war" (i.e. >1,000 deaths). Defaults to FALSE.
 #'
 #' @references
 #'
@@ -50,7 +51,7 @@
 #' @importFrom rlang .env
 
 
-add_ucdp_acd <- function(data, type, issue) {
+add_ucdp_acd <- function(data, type, issue, only_wars = FALSE) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
@@ -79,6 +80,13 @@ add_ucdp_acd <- function(data, type, issue) {
           filter(.data$type_of_conflict %in% type) -> hold_this
       } else {
         ucdp_acd -> hold_this
+      }
+
+      if (only_wars == TRUE) {
+        hold_this %>%
+          filter(.data$intensity_level == 2) -> hold_this
+      } else {
+
       }
 
       hold_this %>%

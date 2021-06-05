@@ -1,6 +1,7 @@
 peacesciencer 0.5.0 (in development)
 ---------------------------------------------------------------------
 
+- Add `LazyDataCompression: xz` to DESCRIPTION
 - Add "system" attributes to `create_dyadyears()`, `create_statedays()`, and `create_stateyears()`.
 - Add `add_ccode_to_gw()`. Fix underlying data for `cow_gw_years`. Add `gw_cow_years`.
 - Add `add_strategic_rivalries()`.

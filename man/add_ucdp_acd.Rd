@@ -4,7 +4,7 @@
 \alias{add_ucdp_acd}
 \title{Add UCDP Armed Conflict Data to state-year data frame}
 \usage{
-add_ucdp_acd(data, type, issue)
+add_ucdp_acd(data, type, issue, only_wars = FALSE)
 }
 \arguments{
 \item{data}{state-year data frame}
@@ -17,6 +17,8 @@ is sufficient. If you want multiple, wrap it in a vector with \code{c()}.}
 \item{issue}{do you want to subset the data to just different armed conflicts over different types of issues?
 If so, specify those here as you would with the \code{type} argument. Options include "territory", "government",
 and "both".}
+
+\item{only_wars}{subsets the conflict data to just those with intensity levels of "war" (i.e. >1,000 deaths). Defaults to FALSE.}
 }
 \value{
 \code{add_ucdp_acd()} takes a state-year data frame and returns state-year information from the
