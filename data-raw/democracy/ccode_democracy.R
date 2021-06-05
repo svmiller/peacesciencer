@@ -2,7 +2,7 @@ library(tidyverse)
 library(peacesciencer)
 library(countrycode)
 
-ccode_democracy <- create_stateyears()
+gwcode_democracy <- create_stateyears()
 
 Vdem <- readRDS("~/Dropbox/data/v-dem/10/V-Dem-CY-Core-v10.rds") %>%
   as_tibble() %>%

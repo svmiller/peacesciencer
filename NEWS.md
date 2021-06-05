@@ -7,6 +7,7 @@ peacesciencer 0.5.0 (in development)
 - Add `add_ucdp_acd()`. With it, update `ucdp_acd` data for functionality.
 - Add `add_rugged_terrain()`.
 - Add `creg` data.
+- Add `gwcode_democracy` data.
 - Add `hief` data.
 - Add `rugged` data.
 - Add `td_rivalries` data.

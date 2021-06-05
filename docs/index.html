@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
       </span>
     </div>
 
@@ -223,6 +223,8 @@
 <li>
 <code>gw_states</code>: Gleditsch-Ward independent state system data (version: 2017)</li>
 <li>
+<code>gwcode_democracy</code>: Gleditsch-Ward state-year data with three different estimates of democracy (Varieties of Democracy, Polity, Xavier Marquez/Pemstein et al.’s “(Quick) Unified Democracy Scores”).</li>
+<li>
 <code>hief</code>: Historical Index of Ethnic Fractionalization data</li>
 <li>
 <code>maoz_powers</code>: Zeev Maoz’ global/regional power data</li>
@@ -286,7 +288,7 @@
   <span class="co"># you should probably filter to politically relevant dyads earlier than later...</span>
   <span class="co"># Or not, it's your time and computer processor...</span>
   <span class="fu"><a href="reference/filter_prd.html">filter_prd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 246,314 x 79</span></span>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 246,314 x 81</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">##     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1    100    101  1841           0             0           0             0</span></span>
@@ -299,7 +301,7 @@
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8    100    101  1848           0             0           0             0</span></span>
 <span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9    100    101  1849           0             0           0             0</span></span>
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10    100    101  1850           0             0           0             0</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 246,304 more rows, and 72 more variables: cowmidspell &lt;dbl&gt;,</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 246,304 more rows, and 74 more variables: cowmidspell &lt;dbl&gt;,</span></span>
 <span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="do">## #   gmlmidspell &lt;dbl&gt;, gwcode1 &lt;dbl&gt;, gwcode2 &lt;dbl&gt;, rivalryno &lt;dbl&gt;,</span></span>
 <span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   rivalryname &lt;chr&gt;, styear &lt;dbl&gt;, endyear &lt;dbl&gt;, region &lt;chr&gt;, type1 &lt;chr&gt;,</span></span>
 <span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   type2 &lt;chr&gt;, type3 &lt;chr&gt;, flow2 &lt;dbl&gt;, flow1 &lt;dbl&gt;, smoothflow2 &lt;dbl&gt;,</span></span>
@@ -315,12 +317,12 @@
 <span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a><span class="do">## #   irregular1 &lt;dbl&gt;, n_leaders1 &lt;int&gt;, jan1leadid1 &lt;chr&gt;, dec31leadid1 &lt;chr&gt;,</span></span>
 <span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a><span class="do">## #   leadertransition2 &lt;dbl&gt;, irregular2 &lt;dbl&gt;, n_leaders2 &lt;int&gt;,</span></span>
 <span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a><span class="do">## #   jan1leadid2 &lt;chr&gt;, dec31leadid2 &lt;chr&gt;, wbgdp2011est1 &lt;dbl&gt;,</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## #   wbpopest1 &lt;dbl&gt;, sdpest1 &lt;dbl&gt;, wbgdp2011est2 &lt;dbl&gt;, wbpopest2 &lt;dbl&gt;,</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sdpest2 &lt;dbl&gt;, rugged1 &lt;dbl&gt;, newlmtnest1 &lt;dbl&gt;, rugged2 &lt;dbl&gt;,</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## #   newlmtnest2 &lt;dbl&gt;, prd &lt;dbl&gt;</span></span></code></pre></div>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a><span class="do">## #   wbpopest1 &lt;dbl&gt;, sdpest1 &lt;dbl&gt;, wbgdppc2011est1 &lt;dbl&gt;, wbgdp2011est2 &lt;dbl&gt;,</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="do">## #   wbpopest2 &lt;dbl&gt;, sdpest2 &lt;dbl&gt;, wbgdppc2011est2 &lt;dbl&gt;, rugged1 &lt;dbl&gt;,</span></span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="do">## #   newlmtnest1 &lt;dbl&gt;, rugged2 &lt;dbl&gt;, newlmtnest2 &lt;dbl&gt;, prd &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 76.177 sec elapsed</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 72.532 sec elapsed</span></span></code></pre></div>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># state-years now...</span>
 
@@ -338,7 +340,7 @@
   <span class="fu"><a href="reference/add_archigos.html">add_archigos</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/add_nmc.html">add_nmc</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/add_sdp_gdp.html">add_sdp_gdp</a></span><span class="op">(</span><span class="op">)</span> </code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 16,731 x 39</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 16,731 x 40</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    ccode statenme           year gwcode sumnewconf sumonset1 sumonset2 sumonset3</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;dbl&gt; &lt;chr&gt;             &lt;dbl&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1     2 United States of…  1816      2          0         0         0         0</span></span>
@@ -351,7 +353,7 @@
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  8     2 United States of…  1823      2          0         0         0         0</span></span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  9     2 United States of…  1824      2          0         0         0         0</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 10     2 United States of…  1825      2          0         0         0         0</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16,721 more rows, and 31 more variables: sumonset5 &lt;dbl&gt;,</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 16,721 more rows, and 32 more variables: sumonset5 &lt;dbl&gt;,</span></span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sumonset10 &lt;dbl&gt;, mincapdist &lt;dbl&gt;, land &lt;dbl&gt;, sea &lt;dbl&gt;, cowmaj &lt;dbl&gt;,</span></span>
 <span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="do">## #   imports &lt;dbl&gt;, exports &lt;dbl&gt;, v2x_polyarchy &lt;dbl&gt;, polity2 &lt;dbl&gt;,</span></span>
 <span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="do">## #   xm_qudsest &lt;dbl&gt;, sum_igo_full &lt;dbl&gt;, sum_igo_associate &lt;dbl&gt;,</span></span>
@@ -359,10 +361,10 @@
 <span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="do">## #   leadertransition &lt;dbl&gt;, irregular &lt;dbl&gt;, n_leaders &lt;int&gt;, jan1leadid &lt;chr&gt;,</span></span>
 <span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="do">## #   dec31leadid &lt;chr&gt;, milex &lt;dbl&gt;, milper &lt;dbl&gt;, irst &lt;dbl&gt;, pec &lt;dbl&gt;,</span></span>
 <span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="do">## #   tpop &lt;dbl&gt;, upop &lt;dbl&gt;, cinc &lt;dbl&gt;, wbgdp2011est &lt;dbl&gt;, wbpopest &lt;dbl&gt;,</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sdpest &lt;dbl&gt;</span></span></code></pre></div>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="do">## #   sdpest &lt;dbl&gt;, wbgdppc2011est &lt;dbl&gt;</span></span></code></pre></div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 8.941 sec elapsed</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 9.02 sec elapsed</span></span></code></pre></div>
 </div>
 
   </div>

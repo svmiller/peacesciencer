@@ -95,6 +95,7 @@ It also has the following data sets:
 - `gw_mindist`: the minimum distance between  Gleditsch-Ward states, in kilometers, in non-directed dyad-year format (1946-2015)
 - `gw_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States
 - `gw_states`: Gleditsch-Ward independent state system data (version: 2017)
+- `gwcode_democracy`: Gleditsch-Ward state-year data with three different estimates of democracy (Varieties of Democracy, Polity, Xavier Marquez/Pemstein et al.'s "(Quick) Unified Democracy Scores").
 - `hief`: Historical Index of Ethnic Fractionalization data
 - `maoz_powers`: Zeev Maoz' global/regional power data
 - `rugged`: Rugged/Mountainous Terrain Data

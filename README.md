@@ -146,6 +146,10 @@ It also has the following data sets:
     War States
 -   `gw_states`: Gleditsch-Ward independent state system data
     (version: 2017)
+-   `gwcode_democracy`: Gleditsch-Ward state-year data with three
+    different estimates of democracy (Varieties of Democracy, Polity,
+    Xavier Marquez/Pemstein et al.’s “(Quick) Unified Democracy
+    Scores”).
 -   `hief`: Historical Index of Ethnic Fractionalization data
 -   `maoz_powers`: Zeev Maoz’ global/regional power data
 -   `rugged`: Rugged/Mountainous Terrain Data
@@ -237,7 +241,7 @@ create_dyadyears() %>%
   filter_prd()
 ```
 
-    ## # A tibble: 246,314 x 79
+    ## # A tibble: 246,314 x 81
     ##    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
     ##     <dbl>  <dbl> <dbl>       <dbl>         <dbl>       <dbl>         <dbl>
     ##  1    100    101  1841           0             0           0             0
@@ -250,7 +254,7 @@ create_dyadyears() %>%
     ##  8    100    101  1848           0             0           0             0
     ##  9    100    101  1849           0             0           0             0
     ## 10    100    101  1850           0             0           0             0
-    ## # … with 246,304 more rows, and 72 more variables: cowmidspell <dbl>,
+    ## # … with 246,304 more rows, and 74 more variables: cowmidspell <dbl>,
     ## #   gmlmidspell <dbl>, gwcode1 <dbl>, gwcode2 <dbl>, rivalryno <dbl>,
     ## #   rivalryname <chr>, styear <dbl>, endyear <dbl>, region <chr>, type1 <chr>,
     ## #   type2 <chr>, type3 <chr>, flow2 <dbl>, flow1 <dbl>, smoothflow2 <dbl>,
@@ -266,15 +270,15 @@ create_dyadyears() %>%
     ## #   irregular1 <dbl>, n_leaders1 <int>, jan1leadid1 <chr>, dec31leadid1 <chr>,
     ## #   leadertransition2 <dbl>, irregular2 <dbl>, n_leaders2 <int>,
     ## #   jan1leadid2 <chr>, dec31leadid2 <chr>, wbgdp2011est1 <dbl>,
-    ## #   wbpopest1 <dbl>, sdpest1 <dbl>, wbgdp2011est2 <dbl>, wbpopest2 <dbl>,
-    ## #   sdpest2 <dbl>, rugged1 <dbl>, newlmtnest1 <dbl>, rugged2 <dbl>,
-    ## #   newlmtnest2 <dbl>, prd <dbl>
+    ## #   wbpopest1 <dbl>, sdpest1 <dbl>, wbgdppc2011est1 <dbl>, wbgdp2011est2 <dbl>,
+    ## #   wbpopest2 <dbl>, sdpest2 <dbl>, wbgdppc2011est2 <dbl>, rugged1 <dbl>,
+    ## #   newlmtnest1 <dbl>, rugged2 <dbl>, newlmtnest2 <dbl>, prd <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 76.177 sec elapsed
+    ## 72.532 sec elapsed
 
 ``` r
 # state-years now...
@@ -295,7 +299,7 @@ create_stateyears() %>%
   add_sdp_gdp() 
 ```
 
-    ## # A tibble: 16,731 x 39
+    ## # A tibble: 16,731 x 40
     ##    ccode statenme           year gwcode sumnewconf sumonset1 sumonset2 sumonset3
     ##    <dbl> <chr>             <dbl>  <dbl>      <dbl>     <dbl>     <dbl>     <dbl>
     ##  1     2 United States of…  1816      2          0         0         0         0
@@ -308,7 +312,7 @@ create_stateyears() %>%
     ##  8     2 United States of…  1823      2          0         0         0         0
     ##  9     2 United States of…  1824      2          0         0         0         0
     ## 10     2 United States of…  1825      2          0         0         0         0
-    ## # … with 16,721 more rows, and 31 more variables: sumonset5 <dbl>,
+    ## # … with 16,721 more rows, and 32 more variables: sumonset5 <dbl>,
     ## #   sumonset10 <dbl>, mincapdist <dbl>, land <dbl>, sea <dbl>, cowmaj <dbl>,
     ## #   imports <dbl>, exports <dbl>, v2x_polyarchy <dbl>, polity2 <dbl>,
     ## #   xm_qudsest <dbl>, sum_igo_full <dbl>, sum_igo_associate <dbl>,
@@ -316,10 +320,10 @@ create_stateyears() %>%
     ## #   leadertransition <dbl>, irregular <dbl>, n_leaders <int>, jan1leadid <chr>,
     ## #   dec31leadid <chr>, milex <dbl>, milper <dbl>, irst <dbl>, pec <dbl>,
     ## #   tpop <dbl>, upop <dbl>, cinc <dbl>, wbgdp2011est <dbl>, wbpopest <dbl>,
-    ## #   sdpest <dbl>
+    ## #   sdpest <dbl>, wbgdppc2011est <dbl>
 
 ``` r
 toc()
 ```
 
-    ## 8.941 sec elapsed
+    ## 9.02 sec elapsed
