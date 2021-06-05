@@ -5,8 +5,8 @@
 #'
 #' @return \code{add_democracy()} takes a dyad-year data frame or state-year data frame and adds information
 #' about the level of democracy for the state or two states in the dyad in a given year. If the data are dyad-year, the function
-#' adds six total columns for the first state (i.e. \code{ccode1}) and the second state (i.e. \code{ccode2}) about the level
-#' of democracy measured by the Varieties of Democracy project (\code{v2x_polyarchy}), the Polity project (\code{polity2}), and
+#' adds six total columns for the first state (i.e. \code{ccode1} or \code{gwcode1}) and the second state (i.e. \code{ccode2} or \code{gwcode2})
+#' about the level of democracy measured by the Varieties of Democracy project (\code{v2x_polyarchy}), the Polity project (\code{polity2}), and
 #' Xavier Marquez' \code{QuickUDS} extensions/estimates. If the data are state-year, the function returns three additional columns
 #' to the original data that contain that same information for a given state in a given year.
 #'
@@ -35,46 +35,58 @@
 #'
 #' cow_ddy %>% add_democracy()
 #'
-#' create_stateyears() %>% add_democracy()
-#'
+#' create_stateyears(system="gw") %>% add_democracy()
+#' create_stateyears(system="cow") %>% add_democracy()
 #'
 
 add_democracy <- function(data) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
-    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
-      stop("add_democracy() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
-
-
-    } else {
-
-    data %>% left_join(., ccode_democracy, by=c("ccode1"="ccode","year"="year")) %>%
-      rename(v2x_polyarchy1 = .data$v2x_polyarchy,
-             polity21 = .data$polity2,
-             xm_qudsest1 = .data$xm_qudsest) %>%
-      left_join(., ccode_democracy, by=c("ccode2"="ccode","year"="year")) %>%
-      rename(v2x_polyarchy2 = .data$v2x_polyarchy,
-             polity22 = .data$polity2,
-             xm_qudsest2 = .data$xm_qudsest) -> data
+      data %>% left_join(., ccode_democracy, by=c("ccode1"="ccode","year"="year")) %>%
+        rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+               polity21 = .data$polity2,
+               xm_qudsest1 = .data$xm_qudsest) %>%
+        left_join(., ccode_democracy, by=c("ccode2"="ccode","year"="year")) %>%
+        rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+               polity22 = .data$polity2,
+               xm_qudsest2 = .data$xm_qudsest) -> data
 
       return(data)
+
+    } else { # assuming it's G-W
+
+      data %>% left_join(., gwcode_democracy, by=c("gwcode1"="gwcode","year"="year")) %>%
+        rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+               polity21 = .data$polity2,
+               xm_qudsest1 = .data$xm_qudsest) %>%
+        left_join(., gwcode_democracy, by=c("gwcode2"="gwcode","year"="year")) %>%
+        rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+               polity22 = .data$polity2,
+               xm_qudsest2 = .data$xm_qudsest) -> data
+
+      return(data)
+
+
 
     }
 
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
-    if (!all(i <- c("ccode") %in% colnames(data))) {
+    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
-      stop("add_democracy() merges on the Correlates of War codes (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+      data %>%
+        left_join(., ccode_democracy) -> data
 
+      return(data)
 
-    } else {
+    } else { # assuming it's G-W
 
-    data %>%
-      left_join(., ccode_democracy) -> data
+      data %>%
+        left_join(., gwcode_democracy) -> data
 
       return(data)
 
