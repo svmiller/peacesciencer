@@ -7,6 +7,7 @@ peacesciencer 0.5.0 (in development)
 - Add `add_strategic_rivalries()`.
 - Add `add_ucdp_acd()`. With it, update `ucdp_acd` data for functionality.
 - Add `add_rugged_terrain()`.
+- Add `cow_war_intra` data.
 - Add `creg` data.
 - Add `gwcode_democracy` data. `add_democracy()` now takes CoW or G-W data.
 - Add `hief` data.

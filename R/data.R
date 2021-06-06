@@ -1142,3 +1142,44 @@ NULL
 #' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type. Political Analysis 18 (4): 426-449.
 #'
 "gwcode_democracy"
+
+
+#' Correlates of War Intra-State War Data (v. 4.1)
+#'
+#' These are a modified version of the intra-state war data from the Correlates of War project. Data are version 4.1. The temporal domain is
+#' 1816-2007.
+#'
+#' @format A data frame with 1361 observations on the following 17 variables.
+#' \describe{
+#' \item{\code{warnum}}{the Correlates of War war number}
+#' \item{\code{warname}}{the Correlates of War war name}
+#' \item{\code{wartype}}{a character vector for the type of war, either "local issues" or "central control"}
+#' \item{\code{year}}{a numeric vector for the year}
+#' \item{\code{cowcwonset}}{a dummy variable for whether this is a civil war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
+#' \item{\code{cowcwongoing}}{a numeric constant of 1}
+#' \item{\code{resume_combat}}{a dummy variable for whether this is a resumption of a conflict (i.e. \code{StartYear2} is not -8)}
+#' \item{\code{primary_state}}{a dummy variable for whether the state is the primary state having the civil war}
+#' \item{\code{ccodea}}{the Correlates of War state code for the participant on Side A. -8 = not applicable (participant is not a state)}
+#' \item{\code{sidea}}{the name of the participant on Side A. -8 = not applicable (no additional party on this side)}
+#' \item{\code{ccodeb}}{the Correlates of War state code for the participant on Side B. -8 = not applicable (participant is not a state)}
+#' \item{\code{sideb}}{the name of the participant on Side B. -8 = not applicable (no additional party on this side)}
+#' \item{\code{intnl}}{a dummy variable for if this is an internationalized civil war}
+#' \item{\code{outcome}}{an unordered-categorical variable for the outcome of the civil war. Values include 1 (Side A wins),
+#' 2 (Side B wins), 3 (Compromise), 4 (war transformed into another type of war), 5 (war is ongoing at the end of 2007),
+#' 6 (stalemate), 7 (conflict continues below severity of war)}
+#' \item{\code{sideadeaths}}{the estimated deaths for the Side A participant (-9 = unknown, -8 = not applicable)}
+#' \item{\code{sidebdeaths}}{the estimated deaths for the Side B participant (-9 = unknown, -8 = not applicable)}
+#' \item{\code{ongo2007}}{a dummy variable for if this war is ongoing as of the end of 2007}
+#' }
+#'
+#' @details See \code{data-raw} directory for how these data were generated.
+#'
+#' @references
+#'
+#' Dixon, Jeffrey, and Meredith Sarkees. 2016. A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014. Thousand Oaks, CA: Sage.
+#'
+#' Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
+#' Washington DC: CQ Press.
+#'
+
+"cow_war_intra"
