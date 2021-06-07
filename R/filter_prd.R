@@ -36,11 +36,15 @@
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' print(A <- cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd())
+#' A <- cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd()
+#'
+#' A
 #'
 #' # you can also use it as a shortcut for the other functions required
 #' # to calculate politically relevant dyads.
-#' print(B <- cow_ddy %>% filter_prd())
+#' B <- cow_ddy %>% filter_prd()
+#'
+#' B
 #'
 #' identical(A,B)
 #' }
@@ -71,7 +75,7 @@ filter_prd <- function(data) {
         return(data)
 
 
-      } else if (!all(i <- c("conttype") %in% colnames(data)) && (c("cowmaj1", "cowmaj2") %in% colnames(data))) {
+      } else if (!all(i <- c("conttype") %in% colnames(data)) && all(j <- c("cowmaj1", "cowmaj2") %in% colnames(data))) {
 
         data %>%
           add_contiguity() %>%
@@ -85,7 +89,7 @@ filter_prd <- function(data) {
 
         return(data)
 
-      } else if (!all(i <- c("cowmaj1", "cowmaj2") %in% colnames(data)) && (c("conttype") %in% colnames(data))) {
+      } else if (!all(i <- c("cowmaj1", "cowmaj2") %in% colnames(data)) && all(j <- c("conttype") %in% colnames(data))) {
 
         data %>%
           add_cow_majors() %>%

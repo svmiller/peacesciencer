@@ -36,10 +36,15 @@ politically relevant dyads. See the example below for what this means.
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 
-print(A <- cow_ddy \%>\% add_contiguity() \%>\% add_cow_majors() \%>\% filter_prd())
+A <- cow_ddy \%>\% add_contiguity() \%>\% add_cow_majors() \%>\% filter_prd()
 
-# you can also use it as a shortcut for the other functions required to calculate politically relevant dyads.
-print(B <- cow_ddy \%>\% filter_prd())
+A
+
+# you can also use it as a shortcut for the other functions required
+# to calculate politically relevant dyads.
+B <- cow_ddy \%>\% filter_prd()
+
+B
 
 identical(A,B)
 }
