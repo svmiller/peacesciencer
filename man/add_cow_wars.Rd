@@ -9,14 +9,14 @@ add_cow_wars(data, type, intratype = "all")
 \arguments{
 \item{data}{state-year data frame}
 
-\item{type}{the type of war you want to add. Options include "inter", "intra", and "extra".}
+\item{type}{the type of war you want to add. Options include "inter" or "intra".}
 
 \item{intratype}{the types of armed conflicts the user wants to consider, specified as a character vector.
-Options include "local issues" and "central control".}
+Options include "local issues" and "central control". Applicable only if \code{type} is "intra".}
 }
 \value{
 \code{add_cow_wars()} takes a dyad-year or state-year data frame and returns information about
-wars from either the extra-state, inter-state, or intra-state war data set from the Correlates of War.
+wars from either the inter-state or intra-state war data set from the Correlates of War.
 The function works for state-year data when the user wants information about extra-state wars or
 intra-state wars. The function works for dyad-year data when the user wants information about
 inter-state wars.
@@ -31,6 +31,8 @@ then whichever war was the deadliest. The inter-state war data work functionally
 On intra-state wars: the \code{primary_state} is used to identify the government principally fighting the domestic non-state actor over
 central control over local issues. Internationalized civil wars are included in the data, but not for outside actors that intervene on
 behalf of the government or rebel group.
+
+Extra-state war functionality is not available right now as I try to figure out the demand for its use.
 }
 \examples{
 

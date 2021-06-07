@@ -21,6 +21,7 @@ test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_strategic_rivalries()))
   expect_equal(nrow(create_dyadyears(system = "gw")), nrow(create_dyadyears(system = "gw") %>% add_minimum_distance()))
   expect_equal(nrow(create_dyadyears(system = "gw")), nrow(create_dyadyears(system = "gw") %>% add_ccode_to_gw()))
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_wars(type = "inter")))
 
 })
 
@@ -39,4 +40,7 @@ test_that("State-year additions do not create duplicates", {
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system = "gw") %>% add_ucdp_onsets()))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system="gw") %>% add_minimum_distance()))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system="gw") %>% add_ccode_to_gw()))
+  expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_wars(type = "intra")))
+  expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_wars(type = "intra", intratype = "central control")))
+  expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_wars(type = "intra", intratype = "local issues")))
 })

@@ -101,6 +101,18 @@ add_peace_years <- function(data, pad = FALSE) {
 
     }
 
+    if (all(i <- c("cowinterongoing", "cowinteronset") %in% colnames(data))) {
+
+      data <- sbtscs(data, .data$cowinterongoing, .data$year, .data$dyad, pad_ts = pad)
+      names(data)[names(data) == "spell"] <- "cowinterspell"
+
+      attr(data, "ps_data_type") <- attr_ps_data_type
+      attr(data, "ps_system") <-  attr_ps_system
+
+
+    }
+
+
     data$dyad <- NULL
     return(data)
 
@@ -118,8 +130,18 @@ add_peace_years <- function(data, pad = FALSE) {
 
     }
 
+    if (all(i <- c("cowintraongoing", "cowintraonset") %in% colnames(data))) {
+
+      data <- sbtscs(data, .data$cowintraongoing, .data$year, .data$ccode, pad_ts = pad)
+      names(data)[names(data) == "spell"] <- "cowintraspell"
+
+      attr(data, "ps_data_type") <- attr_ps_data_type
+      attr(data, "ps_system") <-  attr_ps_system
+
+    }
+
   } else  {
-    stop("add_peace_years() is only available for dyad-year data.")
+    stop("add_peace_years() sees nothing that needs peace years right now.")
   }
 
   return(data)

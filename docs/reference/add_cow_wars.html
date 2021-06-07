@@ -148,19 +148,19 @@
     </tr>
     <tr>
       <th>type</th>
-      <td><p>the type of war you want to add. Options include "inter", "intra", and "extra".</p></td>
+      <td><p>the type of war you want to add. Options include "inter" or "intra".</p></td>
     </tr>
     <tr>
       <th>intratype</th>
       <td><p>the types of armed conflicts the user wants to consider, specified as a character vector.
-Options include "local issues" and "central control".</p></td>
+Options include "local issues" and "central control". Applicable only if <code>type</code> is "intra".</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>add_cow_wars()</code> takes a dyad-year or state-year data frame and returns information about
-wars from either the extra-state, inter-state, or intra-state war data set from the Correlates of War.
+wars from either the inter-state or intra-state war data set from the Correlates of War.
 The function works for state-year data when the user wants information about extra-state wars or
 intra-state wars. The function works for dyad-year data when the user wants information about
 inter-state wars.</p>
@@ -171,6 +171,7 @@ then whichever war was the deadliest. The inter-state war data work functionally
 <p>On intra-state wars: the <code>primary_state</code> is used to identify the government principally fighting the domestic non-state actor over
 central control over local issues. Internationalized civil wars are included in the data, but not for outside actors that intervene on
 behalf of the government or rebel group.</p>
+<p>Extra-state war functionality is not available right now as I try to figure out the demand for its use.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Dixon, Jeffrey, and Meredith Sarkees. 2016. A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014. Thousand Oaks, CA: Sage.</p>

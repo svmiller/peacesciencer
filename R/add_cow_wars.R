@@ -3,7 +3,7 @@
 #' @description \code{add_cow_wars()} allows you to add UCDP Armed Conflict data to a state-year data frame
 #'
 #' @return \code{add_cow_wars()} takes a dyad-year or state-year data frame and returns information about
-#' wars from either the extra-state, inter-state, or intra-state war data set from the Correlates of War.
+#' wars from either the inter-state or intra-state war data set from the Correlates of War.
 #' The function works for state-year data when the user wants information about extra-state wars or
 #' intra-state wars. The function works for dyad-year data when the user wants information about
 #' inter-state wars.
@@ -15,12 +15,14 @@
 #' central control over local issues. Internationalized civil wars are included in the data, but not for outside actors that intervene on
 #' behalf of the government or rebel group.
 #'
+#' Extra-state war functionality is not available right now as I try to figure out the demand for its use.
+#'
 #' @author Steven V. Miller
 #'
 #' @param data state-year data frame
-#' @param type the type of war you want to add. Options include "inter", "intra", and "extra".
+#' @param type the type of war you want to add. Options include "inter" or "intra".
 #' @param intratype the types of armed conflicts the user wants to consider, specified as a character vector.
-#' Options include "local issues" and "central control".
+#' Options include "local issues" and "central control". Applicable only if \code{type} is "intra".
 #'
 #' @references
 #'
