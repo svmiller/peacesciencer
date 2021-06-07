@@ -183,8 +183,10 @@ contiguous Asian dyads." <em>Journal of Conflict Resolution</em> 20: 395-411.</p
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
 
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>A</span> <span class='op'>&lt;-</span> <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_contiguity.html'>add_contiguity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_cow_majors.html'>add_cow_majors</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,314 x 7</span>
+<span class='va'>A</span> <span class='op'>&lt;-</span> <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_contiguity.html'>add_contiguity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_cow_majors.html'>add_cow_majors</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='input'>
+<span class='va'>A</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,314 x 7</span>
 #&gt;    ccode1 ccode2  year conttype cowmaj1 cowmaj2   prd
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920        1       1       0     1
@@ -198,9 +200,12 @@ contiguous Asian dyads." <em>Journal of Conflict Resolution</em> 20: 395-411.</p
 #&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928        1       1       0     1
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929        1       1       0     1
 #&gt; <span style='color: #949494;'># … with 246,304 more rows</span></div><div class='input'>
-<span class='co'># you can also use it as a shortcut for the other functions required to calculate politically relevant dyads.</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>B</span> <span class='op'>&lt;-</span> <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,314 x 7</span>
+<span class='co'># you can also use it as a shortcut for the other functions required</span>
+<span class='co'># to calculate politically relevant dyads.</span>
+<span class='va'>B</span> <span class='op'>&lt;-</span> <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='input'>
+<span class='va'>B</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,314 x 7</span>
 #&gt;    ccode1 ccode2  year conttype cowmaj1 cowmaj2   prd
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920        1       1       0     1
