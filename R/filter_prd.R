@@ -13,7 +13,9 @@
 #' maximalist definitions of "direct contiguity" to focus on just the land-contiguous. This function
 #' is inclusive of any type of contiguity relationship.
 #'
-#' It will not take much effort to generalize this, though.
+#' As of the slated release of version 0.5, \code{filter_prd()} is a shortcut for \code{add_contiguity()}
+#' and/or \code{add_cow_majors()} if the function is executed in the absence of the data needed to create
+#' politically relevant dyads. See the example below for what this means.
 #'
 #' @author Steven V. Miller
 #'
@@ -34,7 +36,13 @@
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd()
+#' print(A <- cow_ddy %>% add_contiguity() %>% add_cow_majors() %>% filter_prd())
+#'
+#' # you can also use it as a shortcut for the other functions required
+#' # to calculate politically relevant dyads.
+#' print(B <- cow_ddy %>% filter_prd())
+#'
+#' identical(A,B)
 #' }
 #'
 
@@ -42,23 +50,73 @@ filter_prd <- function(data) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
-    if (!all(i <- c("ccode1", "ccode2", "conttype", "cowmaj1", "cowmaj2") %in% colnames(data))) {
+    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
 
-      stop("filter_prd() depends on add_contiguity() and add_cow_majors() in this application. Run those first before running this function. Both those functions depend on Correlates of War codes, so run the default create_dyadyears() at the top of the pipe.")
+      stop("filter_prd() depends on Correlates of War state codes (ccode1, ccode2), which you don't have right now. Run create_dyadyears() at the top of the pipe. The default returns CoW codes.")
 
 
     } else {
 
-  data %>%
-    mutate(prd = case_when(
-      conttype >= 1 ~ 1,
-      conttype == 0 & cowmaj1 == 1 ~ 1,
-      conttype == 0 & cowmaj2 == 1 ~ 1,
-      TRUE ~ 0
-    )) %>%
-    filter(.data$prd == 1) -> data
+      if (all(i <- c("conttype", "cowmaj1", "cowmaj2") %in% colnames(data))) {
 
-      return(data)
+        data %>%
+          mutate(prd = case_when(
+            conttype >= 1 ~ 1,
+            conttype == 0 & cowmaj1 == 1 ~ 1,
+            conttype == 0 & cowmaj2 == 1 ~ 1,
+            TRUE ~ 0
+          )) %>%
+          filter(.data$prd == 1) -> data
+
+        return(data)
+
+
+      } else if (!all(i <- c("conttype") %in% colnames(data)) && (c("cowmaj1", "cowmaj2") %in% colnames(data))) {
+
+        data %>%
+          add_contiguity() %>%
+          mutate(prd = case_when(
+            conttype >= 1 ~ 1,
+            conttype == 0 & cowmaj1 == 1 ~ 1,
+            conttype == 0 & cowmaj2 == 1 ~ 1,
+            TRUE ~ 0
+          )) %>%
+          filter(.data$prd == 1) -> data
+
+        return(data)
+
+      } else if (!all(i <- c("cowmaj1", "cowmaj2") %in% colnames(data)) && (c("conttype") %in% colnames(data))) {
+
+        data %>%
+          add_cow_majors() %>%
+          mutate(prd = case_when(
+            conttype >= 1 ~ 1,
+            conttype == 0 & cowmaj1 == 1 ~ 1,
+            conttype == 0 & cowmaj2 == 1 ~ 1,
+            TRUE ~ 0
+          )) %>%
+          filter(.data$prd == 1) -> data
+
+        return(data)
+
+      } else {
+
+        data %>%
+          add_contiguity() %>%
+          add_cow_majors() %>%
+          mutate(prd = case_when(
+            conttype >= 1 ~ 1,
+            conttype == 0 & cowmaj1 == 1 ~ 1,
+            conttype == 0 & cowmaj2 == 1 ~ 1,
+            TRUE ~ 0
+          )) %>%
+          filter(.data$prd == 1) -> data
+
+        return(data)
+
+      }
+
+
 
     }
 

@@ -163,7 +163,9 @@ relevant", and subsets the data frame to just those observations.</p>
 considers only "direct" contiguity and Correlates of War major power status. You can employ
 maximalist definitions of "direct contiguity" to focus on just the land-contiguous. This function
 is inclusive of any type of contiguity relationship.</p>
-<p>It will not take much effort to generalize this, though.</p>
+<p>As of the slated release of version 0.5, <code>filter_prd()</code> is a shortcut for <code><a href='add_contiguity.html'>add_contiguity()</a></code>
+and/or <code><a href='add_cow_majors.html'>add_cow_majors()</a></code> if the function is executed in the absence of the data needed to create
+politically relevant dyads. See the example below for what this means.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Weede, Erich. 1976. "Overwhelming preponderance as a pacifying condition among
@@ -181,7 +183,7 @@ contiguous Asian dyads." <em>Journal of Conflict Resolution</em> 20: 395-411.</p
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
 
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_contiguity.html'>add_contiguity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_cow_majors.html'>add_cow_majors</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>A</span> <span class='op'>&lt;-</span> <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_contiguity.html'>add_contiguity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='add_cow_majors.html'>add_cow_majors</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,314 x 7</span>
 #&gt;    ccode1 ccode2  year conttype cowmaj1 cowmaj2   prd
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
@@ -195,7 +197,25 @@ contiguous Asian dyads." <em>Journal of Conflict Resolution</em> 20: 395-411.</p
 #&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927        1       1       0     1
 #&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928        1       1       0     1
 #&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929        1       1       0     1
-#&gt; <span style='color: #949494;'># … with 246,304 more rows</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span style='color: #949494;'># … with 246,304 more rows</span></div><div class='input'>
+<span class='co'># you can also use it as a shortcut for the other functions required to calculate politically relevant dyads.</span>
+<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>B</span> <span class='op'>&lt;-</span> <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>filter_prd</span><span class='op'>(</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 246,314 x 7</span>
+#&gt;    ccode1 ccode2  year conttype cowmaj1 cowmaj2   prd
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 2</span>      2     20  <span style='text-decoration: underline;'>1</span>921        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 3</span>      2     20  <span style='text-decoration: underline;'>1</span>922        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 4</span>      2     20  <span style='text-decoration: underline;'>1</span>923        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 5</span>      2     20  <span style='text-decoration: underline;'>1</span>924        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 6</span>      2     20  <span style='text-decoration: underline;'>1</span>925        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 7</span>      2     20  <span style='text-decoration: underline;'>1</span>926        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928        1       1       0     1
+#&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929        1       1       0     1
+#&gt; <span style='color: #949494;'># … with 246,304 more rows</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/identical.html'>identical</a></span><span class='op'>(</span><span class='va'>A</span>,<span class='va'>B</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

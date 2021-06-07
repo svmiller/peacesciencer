@@ -25,7 +25,9 @@ considers only "direct" contiguity and Correlates of War major power status. You
 maximalist definitions of "direct contiguity" to focus on just the land-contiguous. This function
 is inclusive of any type of contiguity relationship.
 
-It will not take much effort to generalize this, though.
+As of the slated release of version 0.5, \code{filter_prd()} is a shortcut for \code{add_contiguity()}
+and/or \code{add_cow_majors()} if the function is executed in the absence of the data needed to create
+politically relevant dyads. See the example below for what this means.
 }
 \examples{
 
@@ -34,7 +36,12 @@ It will not take much effort to generalize this, though.
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 
-cow_ddy \%>\% add_contiguity() \%>\% add_cow_majors() \%>\% filter_prd()
+print(A <- cow_ddy \%>\% add_contiguity() \%>\% add_cow_majors() \%>\% filter_prd())
+
+# you can also use it as a shortcut for the other functions required to calculate politically relevant dyads.
+print(B <- cow_ddy \%>\% filter_prd())
+
+identical(A,B)
 }
 
 }

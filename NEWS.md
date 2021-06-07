@@ -17,6 +17,7 @@ peacesciencer 0.5.0 (in development)
 - Add log-transformed GDP per capita estimates to `cow_sdp_gdp` and `gw_sdp_gdp`. Update `add_sdp_gdp()` to reflect this change.
 - Clarify documentation for `add_contiguity()` for why non-contiguous dyads are 0s and not 6s. Briefly: I don't think of these data as ordinal and I don't encourage the researcher to think of them as ordinal either.
 - Expand `add_peace_years()`, which now works with UCDP conflict data.
+- `filter_prd()` is now a shortcut for `add_contiguity()` and/or `add_cow_majors()` if it is called near the top of the pipe (i.e. before the user executed the commands required to calculate politically relevant dyad status).
 - Fix bug in `add_nmc()` (and `cow_nmc`). -9 is now explicitly NA, as it should have been.
 - Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last).
 - Remove mandatory "system" calls in `add_minimum_distance()` and `add_sdp_gdp()`. These merges now lean on system attributes declared in `create_dyadyears()` and `create_stateyears()`.
