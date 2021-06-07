@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Correlates of War Intra-State War Data (v. 4.1) — cow_war_intra • peacesciencer</title>
+<title>Correlates of War Inter-State War Data (v. 4.0) — cow_war_inter • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Correlates of War Intra-State War Data (v. 4.1) — cow_war_intra" />
-<meta property="og:description" content="These are a modified version of the intra-state war data from the Correlates of War project. Data are version 4.1. The temporal domain is
-1816-2007." />
+<meta property="og:title" content="Correlates of War Inter-State War Data (v. 4.0) — cow_war_inter" />
+<meta property="og:description" content="These are a modified version of the inter-state war data from the Correlates of War project. Data are version 4.0. The temporal domain is
+1816-2007. Data are functionally directed dyadic war-year." />
 
 
 
@@ -129,51 +129,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Correlates of War Intra-State War Data (v. 4.1)</h1>
+    <h1>Correlates of War Inter-State War Data (v. 4.0)</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>cow_war_intra.Rd</code></div>
+    <div class="hidden name"><code>cow_war_inter.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are a modified version of the intra-state war data from the Correlates of War project. Data are version 4.1. The temporal domain is
-1816-2007.</p>
+    <p>These are a modified version of the inter-state war data from the Correlates of War project. Data are version 4.0. The temporal domain is
+1816-2007. Data are functionally directed dyadic war-year.</p>
     </div>
 
-    <pre class="usage"><span class='va'>cow_war_intra</span></pre>
+    <pre class="usage"><span class='va'>cow_war_inter</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 1361 observations on the following 17 variables.</p><dl>
+    <p>A data frame with 1932 observations on the following 15 variables.</p><dl>
 <dt><code>warnum</code></dt><dd><p>the Correlates of War war number</p></dd>
-<dt><code>warname</code></dt><dd><p>the Correlates of War war name</p></dd>
-<dt><code>wartype</code></dt><dd><p>a character vector for the type of war, either "local issues" or "central control"</p></dd>
+<dt><code>ccode1</code></dt><dd><p>the Correlates of War state code for side1</p></dd>
+ <dt><code>ccode2</code></dt><dd><p>the Correlates of War state code for side2</p></dd>
 <dt><code>year</code></dt><dd><p>a numeric vector for the year</p></dd>
-<dt><code>cowintraonset</code></dt><dd><p>a dummy variable for whether this is a civil war onset (i.e. either the year in <code>StartYear1</code> or <code>StartYear2</code> in the raw data)</p></dd>
-<dt><code>cowintraongoing</code></dt><dd><p>a numeric constant of 1</p></dd>
-<dt><code>resume_combat</code></dt><dd><p>a dummy variable for whether this is a resumption of a conflict (i.e. <code>StartYear2</code> is not -8)</p></dd>
-<dt><code>primary_state</code></dt><dd><p>a dummy variable for whether the state is the primary state having the civil war</p></dd>
-<dt><code>ccodea</code></dt><dd><p>the Correlates of War state code for the participant on Side A. -8 = not applicable (participant is not a state)</p></dd>
-<dt><code>sidea</code></dt><dd><p>the name of the participant on Side A. -8 = not applicable (no additional party on this side)</p></dd>
-<dt><code>ccodeb</code></dt><dd><p>the Correlates of War state code for the participant on Side B. -8 = not applicable (participant is not a state)</p></dd>
-<dt><code>sideb</code></dt><dd><p>the name of the participant on Side B. -8 = not applicable (no additional party on this side)</p></dd>
-<dt><code>intnl</code></dt><dd><p>a dummy variable for if this is an internationalized civil war</p></dd>
-<dt><code>outcome</code></dt><dd><p>an unordered-categorical variable for the outcome of the civil war. Values include 1 (Side A wins),
-2 (Side B wins), 3 (Compromise), 4 (war transformed into another type of war), 5 (war is ongoing at the end of 2007),
-6 (stalemate), 7 (conflict continues below severity of war)</p></dd>
-<dt><code>sideadeaths</code></dt><dd><p>the estimated deaths for the Side A participant (-9 = unknown, -8 = not applicable)</p></dd>
-<dt><code>sidebdeaths</code></dt><dd><p>the estimated deaths for the Side B participant (-9 = unknown, -8 = not applicable)</p></dd>
-<dt><code>ongo2007</code></dt><dd><p>a dummy variable for if this war is ongoing as of the end of 2007</p></dd>
+<dt><code>cowinteronset</code></dt><dd><p>a dummy variable for whether this is an inter-state war onset (i.e. either the year in <code>StartYear1</code> or <code>StartYear2</code> in the raw data)</p></dd>
+<dt><code>cowinterongoing</code></dt><dd><p>a numeric constant of 1</p></dd>
+<dt><code>sidea1</code></dt><dd><p>a numeric vector for the side in the war for <code>ccode1</code>, either 1 or 2</p></dd>
+<dt><code>sidea2</code></dt><dd><p>a numeric vector for the side in the war for <code>ccode2</code>, either 1 or 2</p></dd>
+<dt><code>initiator1</code></dt><dd><p>a dummy variable that equals 1 if <code>ccode1</code> initiated the war</p></dd>
+<dt><code>initiator2</code></dt><dd><p>a dummy variable that equals 1 if <code>ccode2</code> initiated the war</p></dd>
+<dt><code>outcome1</code></dt><dd><p>the outcome for <code>ccode1</code> as numeric vector. Outcomes are 1 (winner), 2 (loser), 3 (compromise/tied),
+4 (transformed into another type of war), 5 (ongoing at end of 2007, which is not observed in these data), 6 (stalemate),
+7 (conflict continues below severity of war), and 8 (changed sides)</p></dd>
+<dt><code>outcome2</code></dt><dd><p>the outcome for <code>ccode2</code> as numeric vector. Outcomes are 1 (winner), 2 (loser), 3 (compromise/tied),
+4 (transformed into another type of war), 5 (ongoing at end of 2007, which is not observed in these data), 6 (stalemate),
+7 (conflict continues below severity of war), and 8 (changed sides)</p></dd>
+<dt><code>batdeath1</code></dt><dd><p>the estimated deaths for <code>ccode1</code> (-9 = unknown)</p></dd>
+<dt><code>batdeath2</code></dt><dd><p>the estimated deaths for <code>ccode2</code> (-9 = unknown)</p></dd>
+<dt><code>resume</code></dt><dd><p>a dummy variable that equals 1 if this is a conflict resumption episode</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>See <code>data-raw</code> directory for how these data were generated.</p>
+    <p>See <code>data-raw</code> directory for how these data were generated. These data are here if you want it, but I caution against using them
+as gospel. There are a few problems here. One: -9s proliferate the data for battle deaths on either side, which is unhelpful. There are 10 cases where the sum
+of battle deaths is exactly 1,000 or 1,001. This is suspicious. The "side" variables are not well-explained---in fact they're not explained at all in the codebook---
+and this can lead a user astray if they want to interpret them analogous to the <code>sidea</code> variables in the Correlates of War Militarized Interstate Dispute
+data. You probably want to use the initiator variables for this. Further, the war data routinely betray the MID data and the two do not speak well to each other. The language Sarkees and Wayman (2010) use in their book
+talk about how MIDs "precede" a war or are "associated" with a war, which forgets the war data are supposed to be a subset of the MID data. In one case (Gulf War),
+they get the associated dispute number wrong and, in one prominent case (War of Bosnian Independence), they argue no MID exists at all (it's actually MID#3557).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Dixon, Jeffrey, and Meredith Sarkees. 2016. A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014. Thousand Oaks, CA: Sage.</p>
-<p>Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
+    <p>Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
 Washington DC: CQ Press.</p>
 
   </div>

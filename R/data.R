@@ -1155,8 +1155,8 @@ NULL
 #' \item{\code{warname}}{the Correlates of War war name}
 #' \item{\code{wartype}}{a character vector for the type of war, either "local issues" or "central control"}
 #' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{cowcwonset}}{a dummy variable for whether this is a civil war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
-#' \item{\code{cowcwongoing}}{a numeric constant of 1}
+#' \item{\code{cowintraonset}}{a dummy variable for whether this is a civil war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
+#' \item{\code{cowintraongoing}}{a numeric constant of 1}
 #' \item{\code{resume_combat}}{a dummy variable for whether this is a resumption of a conflict (i.e. \code{StartYear2} is not -8)}
 #' \item{\code{primary_state}}{a dummy variable for whether the state is the primary state having the civil war}
 #' \item{\code{ccodea}}{the Correlates of War state code for the participant on Side A. -8 = not applicable (participant is not a state)}
@@ -1183,3 +1183,48 @@ NULL
 #'
 
 "cow_war_intra"
+
+
+#' Correlates of War Inter-State War Data (v. 4.0)
+#'
+#' These are a modified version of the inter-state war data from the Correlates of War project. Data are version 4.0. The temporal domain is
+#' 1816-2007. Data are functionally directed dyadic war-year.
+#'
+#' @format A data frame with 1932 observations on the following 15 variables.
+#' \describe{
+#' \item{\code{warnum}}{the Correlates of War war number}
+#' \item{\code{ccode1}}{the Correlates of War state code for side1}
+#'  \item{\code{ccode2}}{the Correlates of War state code for side2}
+#' \item{\code{year}}{a numeric vector for the year}
+#' \item{\code{cowinteronset}}{a dummy variable for whether this is an inter-state war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
+#' \item{\code{cowinterongoing}}{a numeric constant of 1}
+#' \item{\code{sidea1}}{a numeric vector for the side in the war for \code{ccode1}, either 1 or 2}
+#' \item{\code{sidea2}}{a numeric vector for the side in the war for \code{ccode2}, either 1 or 2}
+#' \item{\code{initiator1}}{a dummy variable that equals 1 if \code{ccode1} initiated the war}
+#' \item{\code{initiator2}}{a dummy variable that equals 1 if \code{ccode2} initiated the war}
+#' \item{\code{outcome1}}{the outcome for \code{ccode1} as numeric vector. Outcomes are 1 (winner), 2 (loser), 3 (compromise/tied),
+#' 4 (transformed into another type of war), 5 (ongoing at end of 2007, which is not observed in these data), 6 (stalemate),
+#' 7 (conflict continues below severity of war), and 8 (changed sides)}
+#' \item{\code{outcome2}}{the outcome for \code{ccode2} as numeric vector. Outcomes are 1 (winner), 2 (loser), 3 (compromise/tied),
+#' 4 (transformed into another type of war), 5 (ongoing at end of 2007, which is not observed in these data), 6 (stalemate),
+#' 7 (conflict continues below severity of war), and 8 (changed sides)}
+#' \item{\code{batdeath1}}{the estimated deaths for \code{ccode1} (-9 = unknown)}
+#' \item{\code{batdeath2}}{the estimated deaths for \code{ccode2} (-9 = unknown)}
+#' \item{\code{resume}}{a dummy variable that equals 1 if this is a conflict resumption episode}
+#' }
+#'
+#' @details See \code{data-raw} directory for how these data were generated. These data are here if you want it, but I caution against using them
+#' as gospel. There are a few problems here. One: -9s proliferate the data for battle deaths on either side, which is unhelpful. There are 10 cases where the sum
+#' of battle deaths is exactly 1,000 or 1,001. This is suspicious. The "side" variables are not well-explained---in fact they're not explained at all in the codebook---
+#' and this can lead a user astray if they want to interpret them analogous to the \code{sidea} variables in the Correlates of War Militarized Interstate Dispute
+#' data. You probably want to use the initiator variables for this. Further, the war data routinely betray the MID data and the two do not speak well to each other. The language Sarkees and Wayman (2010) use in their book
+#' talk about how MIDs "precede" a war or are "associated" with a war, which forgets the war data are supposed to be a subset of the MID data. In one case (Gulf War),
+#' they get the associated dispute number wrong and, in one prominent case (War of Bosnian Independence), they argue no MID exists at all (it's actually MID#3557).
+#'
+#' @references
+#'
+#' Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
+#' Washington DC: CQ Press.
+#'
+
+"cow_war_inter"

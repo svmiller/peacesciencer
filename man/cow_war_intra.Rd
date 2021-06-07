@@ -11,8 +11,8 @@ A data frame with 1361 observations on the following 17 variables.
 \item{\code{warname}}{the Correlates of War war name}
 \item{\code{wartype}}{a character vector for the type of war, either "local issues" or "central control"}
 \item{\code{year}}{a numeric vector for the year}
-\item{\code{cowcwonset}}{a dummy variable for whether this is a civil war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
-\item{\code{cowcwongoing}}{a numeric constant of 1}
+\item{\code{cowintraonset}}{a dummy variable for whether this is a civil war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
+\item{\code{cowintraongoing}}{a numeric constant of 1}
 \item{\code{resume_combat}}{a dummy variable for whether this is a resumption of a conflict (i.e. \code{StartYear2} is not -8)}
 \item{\code{primary_state}}{a dummy variable for whether the state is the primary state having the civil war}
 \item{\code{ccodea}}{the Correlates of War state code for the participant on Side A. -8 = not applicable (participant is not a state)}

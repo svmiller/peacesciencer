@@ -31,6 +31,9 @@
     <loc>http://svmiller.com/reference/add_cow_trade.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/add_cow_wars.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/add_creg_fractionalization.html</loc>
   </url>
   <url>
@@ -131,6 +134,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_trade_sy.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/cow_war_inter.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_war_intra.html</loc>
