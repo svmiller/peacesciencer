@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
       </span>
     </div>
 
@@ -154,7 +154,7 @@
 <li>
 <code><a href="../reference/filter_prd.html">filter_prd()</a></code> is now a shortcut for <code><a href="../reference/add_contiguity.html">add_contiguity()</a></code> and/or <code><a href="../reference/add_cow_majors.html">add_cow_majors()</a></code> if it is called near the top of the pipe (i.e. before the user executed the commands required to calculate politically relevant dyad status).</li>
 <li>Fix bug in <code><a href="../reference/add_nmc.html">add_nmc()</a></code> (and <code>cow_nmc</code>). -9 is now explicitly NA, as it should have been.</li>
-<li>Patch <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which can now be used anywhere in the chain of commands (instead of just last).</li>
+<li>Patch <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which can now be used anywhere in the chain of commands (instead of just last). <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> is also a bit more “general” and includes a derivation of the <code><a href="https://rdrr.io/pkg/stevemisc/man/sbtscs.html">sbtscs()</a></code> function from the <code>{stevemisc}</code> package.</li>
 <li>Remove mandatory “system” calls in <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code> and <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code>. These merges now lean on system attributes declared in <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</li>
 <li>Update <code>cow_ddy</code> and its documentation.</li>
 </ul>

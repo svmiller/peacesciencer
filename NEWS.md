@@ -19,7 +19,7 @@ peacesciencer 0.5.0 (in development)
 - Expand `add_peace_years()`, which now works with UCDP conflict data.
 - `filter_prd()` is now a shortcut for `add_contiguity()` and/or `add_cow_majors()` if it is called near the top of the pipe (i.e. before the user executed the commands required to calculate politically relevant dyad status).
 - Fix bug in `add_nmc()` (and `cow_nmc`). -9 is now explicitly NA, as it should have been.
-- Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last).
+- Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last). `add_peace_years()` is also a bit more "general" and includes a derivation of the `sbtscs()` function from the `{stevemisc}` package.
 - Remove mandatory "system" calls in `add_minimum_distance()` and `add_sdp_gdp()`. These merges now lean on system attributes declared in `create_dyadyears()` and `create_stateyears()`.
 - Update `cow_ddy` and its documentation.
 
