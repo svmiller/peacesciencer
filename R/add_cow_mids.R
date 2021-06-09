@@ -62,7 +62,7 @@ add_cow_mids <- function(data, keep) {
 
     dirdisp %>%
       left_join(data, .) %>%
-      mutate_at(vars("cowmidonset", "cowmidongoing"), ~ifelse(is.na(.), 0, .)) -> data
+      mutate_at(vars("cowmidonset", "cowmidongoing"), ~ifelse(is.na(.) & between(year, 1816, 2014), 0, .)) -> data
 
     return(data)
 

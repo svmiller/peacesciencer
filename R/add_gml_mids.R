@@ -61,7 +61,7 @@ add_gml_mids <- function(data, keep) {
 
       dirdisp %>%
         left_join(data, .) %>%
-        mutate_at(vars("gmlmidonset", "gmlmidongoing"), ~ifelse(is.na(.), 0, .)) -> data
+        mutate_at(vars("gmlmidonset", "gmlmidongoing"), ~ifelse(is.na(.) & between(year, 1816, 2010), 0, .)) -> data
 
       return(data)
 
