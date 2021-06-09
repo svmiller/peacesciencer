@@ -60,6 +60,85 @@
 
 add_peace_years <- function(data, pad = FALSE) {
 
+  ps_btscs <- function(data, event, tvar, csunit, pad_ts = FALSE) {
+    hold_this <- data
+    tvar <- enquo(tvar)
+    event <- enquo(event)
+    csunit <- enquo(csunit)
+    data <- filter(data, !is.na(!!event))
+    data <- select(data, !!event, !!tvar, !!csunit)
+    data <- arrange(data, !!csunit, !!tvar)
+    sumevents <- data %>%
+      group_by(!!csunit) %>%
+      mutate(tot = sum(!!event, na.rm=T))
+    noevents <- sumevents %>%
+      group_by(!!csunit) %>%
+      filter(.data$tot == 0) %>%
+      mutate(spell = seq_along(!!tvar) - 1)
+    data <- sumevents %>%
+      group_by(!!csunit) %>%
+      filter(.data$tot > 0) %>%
+      as.data.frame()
+    tvar <- quo_name(tvar)
+    event <- quo_name(event)
+    csunit <- quo_name(csunit)
+    # Taken from Dave Armstrong's DAMisc package.
+    data$orig_order <- 1:nrow(data)
+    data <- data[order(data[[csunit]], data[[tvar]]), ]
+    spells <- function(x) {
+      tmp <- rep(0, length(x))
+      runcount <- 0
+      for (j in 2:length(x)) {
+        if (x[j] == 0 & x[(j - 1)] == 0) {
+          tmp[j] <- runcount <- runcount + 1
+        }
+        if (x[j] != 0 & x[(j - 1)] == 0) {
+          tmp[j] <- runcount + 1
+          runcount <- 0
+        }
+        if (x[j] == 0 & x[(j - 1)] != 0) {
+          tmp[j] <- runcount <- 0
+        }
+      }
+      tmp
+    }
+    sp <- split(data, data[[csunit]])
+    if (pad_ts) {
+      sp <- lapply(sp, function(x) x[match(seq(min(x[[tvar]], na.rm = T), max(x[[tvar]], na.rm = T)),
+                                           x[[tvar]]), ])
+      for (i in 1:length(sp)) {
+        if (any(is.na(sp[[i]][[event]]))) {
+          sp[[i]][[event]][which(is.na(sp[[i]][[event]]))] <- 1
+        }
+        if (any(is.na(sp[[i]][[tvar]]))) {
+          sp[[i]][[tvar]] <- seq(min(sp[[i]][[tvar]], na.rm = T), max(sp[[i]][[tvar]], na.rm = T))
+        }
+        if (any(is.na(sp[[i]][[csunit]]))) {
+          sp[[i]][[csunit]][which(is.na(sp[[i]][[csunit]]))] <- mean(sp[[i]][[csunit]], na.rm = T)
+        }
+      }
+    }
+    sp <- lapply(1:length(sp), function(x) {
+      cbind(sp[[x]], data.frame(spell = spells(sp[[x]][[event]])))
+    })
+    data <- do.call(rbind, sp)
+    if (!pad_ts) {
+      if (any(is.na(data$orig_order))) {
+        data <- data[-which(is.na(data$orig_order)), ]
+      }
+      data <- data[data$orig_order, ]
+    } else {
+      data <- data[order(data[[csunit]], data[[tvar]]), ]
+    }
+    data$orig_order <- NULL
+    data <- bind_rows(data, noevents)
+    data$tot <- NULL
+    data <- select(data, -!!event)
+    #data <- as_tibble(data[order(data[[csunit]], data[[tvar]]), ])
+    data <- left_join(hold_this, data)
+    return(data)
+  }
+
   attr_ps_data_type <- attributes(data)$ps_data_type
   attr_ps_system <- attributes(data)$ps_system
 
@@ -82,7 +161,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
     if (all(i <- c("cowmidongoing", "cowmidonset") %in% colnames(data))) {
 
-      data <- sbtscs(data, .data$cowmidongoing, .data$year, .data$dyad, pad_ts = pad)
+      data <- ps_btscs(data, .data$cowmidongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "cowmidspell"
 
       attr(data, "ps_data_type") <- attr_ps_data_type
@@ -92,7 +171,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
     if (all(i <- c("gmlmidongoing", "gmlmidonset") %in% colnames(data))) {
 
-      data <- sbtscs(data, .data$gmlmidongoing, .data$year, .data$dyad, pad_ts = pad)
+      data <- ps_btscs(data, .data$gmlmidongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "gmlmidspell"
 
       attr(data, "ps_data_type") <- attr_ps_data_type
@@ -103,7 +182,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
     if (all(i <- c("cowinterongoing", "cowinteronset") %in% colnames(data))) {
 
-      data <- sbtscs(data, .data$cowinterongoing, .data$year, .data$dyad, pad_ts = pad)
+      data <- ps_btscs(data, .data$cowinterongoing, .data$year, .data$dyad, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "cowinterspell"
 
       attr(data, "ps_data_type") <- attr_ps_data_type
@@ -122,7 +201,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
     if (all(i <- c("ucdpongoing", "ucdponset") %in% colnames(data))) {
 
-      data <- sbtscs(data, .data$ucdpongoing, .data$year, .data$gwcode, pad_ts = pad)
+      data <- ps_btscs(data, .data$ucdpongoing, .data$year, .data$gwcode, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "ucdpspell"
 
       attr(data, "ps_data_type") <- attr_ps_data_type
@@ -132,7 +211,7 @@ add_peace_years <- function(data, pad = FALSE) {
 
     if (all(i <- c("cowintraongoing", "cowintraonset") %in% colnames(data))) {
 
-      data <- sbtscs(data, .data$cowintraongoing, .data$year, .data$ccode, pad_ts = pad)
+      data <- ps_btscs(data, .data$cowintraongoing, .data$year, .data$ccode, pad_ts = pad)
       names(data)[names(data) == "spell"] <- "cowintraspell"
 
       attr(data, "ps_data_type") <- attr_ps_data_type
