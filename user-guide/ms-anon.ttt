@@ -1,0 +1,74 @@
+\begin{table}
+
+\caption{\label{tab:tab-dd}A "Dangerous Dyads" Analysis of Non-Directed Dyad-Years from \{peacesciencer\}}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{8cm}c}
+\toprule
+\textbf{ } & \textbf{Model 1}\\
+\midrule
+Land Contiguity & 1.044*\\
+ & (0.057)\\
+Dyadic CINC Proportion (Lower/Higher) & 0.444*\\
+ & (0.036)\\
+CoW Major Power in Dyad & 0.145*\\
+ & \vphantom{1} (0.058)\\
+Defense Pact & -0.102+\\
+ & (0.058)\\
+Dyadic Democracy (Weak-Link) & -0.509*\\
+ & (0.052)\\
+Dyadic GDP per Capita (Weak-Link) & 0.262*\\
+ & (0.050)\\
+Dyadic Militarization (Minimum) & 0.267*\\
+ & (0.023)\\
+t & -0.148*\\
+ & (0.005)\\
+t\textasciicircum{}2 & 0.002*\\
+ & \vphantom{1} (0.000)\\
+t\textasciicircum{}3 & 0.000*\\
+ & (0.000)\\
+Intercept & -3.055*\\
+ & (0.064)\\
+\midrule
+Num.Obs. & 106937\\
+\bottomrule
+\multicolumn{2}{l}{\textsuperscript{} + p $<$ 0.1, * p $<$ 0.05}\\
+\end{tabular}
+\end{table}
+\efloatseparator
+ 
+\begin{table}
+
+\caption{\label{tab:tab-cw}A Civil Conflict Analysis of Gleditsch-Ward State-Years in \{peacesciencer\}}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{8cm}cc}
+\toprule
+\textbf{ } & \textbf{All UCDP Conflicts} & \textbf{Wars Only}\\
+\midrule
+Population Size (Lagged) & 0.229* & 0.272*\\
+ & (0.067) & (0.106)\\
+Extended UDS Democracy Score (Lagged) & 0.257 & -0.085\\
+ & (0.181) & (0.270)\\
+Extended UDS Democracy Score\textasciicircum{}2 (Lagged) & -0.726* & -0.761*\\
+ & (0.211) & (0.352)\\
+\% Mountainous Terrain (Logged) & 0.055 & 0.342*\\
+ & (0.067) & (0.112)\\
+Ethnic Fractionalization & 0.442 & 0.333\\
+ & (0.358) & (0.554)\\
+Religious Fractionalization & -0.389 & -0.281\\
+ & (0.402) & (0.593)\\
+t & -0.074+ & -0.111*\\
+ & (0.039) & (0.056)\\
+t\textasciicircum{}2 & 0.004* & 0.005+\\
+ & (0.002) & (0.003)\\
+t\textasciicircum{}3 & 0.000* & 0.000+\\
+ & (0.000) & (0.000)\\
+Intercept & -5.097* & -6.590*\\
+ & (1.351) & (2.084)\\
+\midrule
+Num.Obs. & 8192 & 8192\\
+\bottomrule
+\multicolumn{3}{l}{\textsuperscript{} + p $<$ 0.1, * p $<$ 0.05}\\
+\end{tabular}
+\end{table}
+\efloatseparator
+ 

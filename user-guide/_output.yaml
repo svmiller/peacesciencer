@@ -1,0 +1,1 @@
+knit: stop('\n\nDon\'t knit with the "Knit" button in RStudio.\nUse RStudio\'s Terminal panel instead. Do something like "make all" or "make clean" for creating documents.\n\n')
