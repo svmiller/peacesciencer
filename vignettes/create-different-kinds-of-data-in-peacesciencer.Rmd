@@ -1,0 +1,142 @@
+---
+title: "Create Different Kinds of Data in `{peacesciencer}`"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This tutorial is a companion to [the user guide](https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf), which shows how to create different kinds of data in `{peacesciencer}`. However, space considerations (for ideal publication in a peer-reviewed journal) preclude the full "knitting" experience (i.e. giving the user a preview of what the data look like). What follows is a brief guide that expands on the tutorial section of that user guide for creating different kinds of data in `{peacesciencer}`.
+
+This vignette will lean on the `{tidyverse}` package, which will be included in almost anything you should do (optimally) with `{peacesciencer}`. I will also load `{lubridate}`. Internal functions in `{peacesciencer}` use `{lubridate}`---it is a formal dependency of `{peacesciencer}`---but users may want to load it for doing some additional stuff outside of `{peacesciencer}`.
+
+```{r setup}
+library(tidyverse)
+library(peacesciencer)
+library(lubridate)
+```
+
+## State-Year Data
+
+The most basic form of data `{peacesciencer}` creates is state-year, by way of `create_stateyears()`. `create_stateyears()` has two arguments: `system` and `mry`. `system` takes either "cow" or "gw", depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to "cow" in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. `mry` takes a logical (`TRUE` or `FALSE`), depending on whether the user wants the function to extend to the most recently concluded calendar year (`r `year(Sys.Date())-1`). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition to the state system since these data sets were last updated. `mry` defaults to `TRUE` in the absence of a user-specified override.
+
+This will create Correlates of War state-year data from 1816 to `r year(Sys.Date())-1`.
+
+```{r}
+create_stateyears()
+```
+
+This will create Gleditsch-Ward state-year data from 1816 to 2017.
+
+```{r}
+create_stateyears(system = "gw", mry = FALSE)
+```
+
+## Dyad-Year Data
+
+`create_dyadyears()` is one of the most useful functions in `{peacesciencer}`, transforming the raw Correlates of War state data (`cow_states` in `{peacesciencer}`) into all possible dyad-years. It has three arguments. `system` and `mry` operate the same as they do in `create_stateyears()`. There is an additional argument---`directed`---that also takes a logical (`TRUE` or `FALSE`). The default here is `TRUE`, returning *directed* dyad-year data (useful for dyadic conflict analyses where the initator/target distinction matters). `FALSE` returns *non-directed* dyad-year data, uesful for cases where the initiator/target distinction does not matter and the researcher cares more about the presence or absence of a conflict. The convention for non-directed dyad-year data is that `ccode2 > ccode1` and the underlying code of `create_dyadyears()` simply takes the directed dyad-year data and lops it in half with that rule.
+
+Here are all Correlates of War dyad-years from 1816 to `r year(Sys.Date())-1`.
+
+```{r}
+create_dyadyears()
+```
+
+Here are all Gleditsch-Ward dyad-years with the same temporal domain.
+
+```{r}
+create_dyadyears(system = "gw")
+```
+
+
+## Dyadic Dispute-Year Data
+
+Dyadic dispute-year data come pre-processed in `{peacesciencer}`. [Another vignette](http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html) show how these are transformed to true dyad-year data, but they are also available for analysis. For example, the (directed) dyadic dispute-year Gibler-Miller-Little (GML) MID data are available as `gml_dirdisp`. Here, we can add information to these dyadic dispute-years to identify contiguity relationships and Correlates of War major status.
+
+```{r}
+gml_dirdisp %>% add_contiguity() %>% add_cow_majors()
+```
+
+Users interested in the Correlates of War MID data will have this available for use as `cow_mid_dirdisps`. Future updates may change the object names for better standardization, but this is how it is now.
+
+## State-Day Data
+
+`{peacesciencer}` comes with a `create_statedays()` function. This is admittedly more proof of concept as it is *really* difficult to conjure too many *daily* data sets in peace science, certainly with coverage into the 19th century. No matter, `create_statedays()` will create these data. It too has the same `system` and `mry` arguments (and same defaults) as `create_stateyears()`.
+
+Here are all Correlates of War state-days from 1816 to `r year(Sys.Date())-1`.
+
+```{r}
+create_statedays()
+```
+
+Here are all Gleditsch-Ward state-days with the same temporal domain.
+
+```{r}
+create_statedays(system = "gw")
+```
+
+I can conjure an application where a user may want to think of daily conflict episodes within the Gleditsch-Ward domain. The UCDP armed conflict data have more precise dates than, say, the Correlates of War MID data, making such an analysis possible. However, there are no conflict data before 1946 and you should reflect that with `{peacesciencer}` with something like this. This will require `{lubridate}`.
+
+```{r}
+create_statedays(system = "gw") %>%
+  filter(year(date) >= 1946)
+```
+
+## State-Month Data
+
+State-months are simple aggregations of state-days. You can accomplish this with a few more extra commands after `create_statedays()`.
+
+```{r}
+create_statedays(system = "gw") %>%
+  mutate(year = year(date),
+         month = month(date)) %>%
+  distinct(gwcode, statename, year, month)
+
+```
+
+
+## State-Quarter Data
+
+There is some assumption about what a "quarter" would look like in a more general context, but it might look something like this. Again, this is an aggregation of `create_statedays()`.
+
+```{r}
+create_statedays(system = "gw") %>%
+  mutate(year = year(date),
+         month = month(date)) %>%
+  filter(month %in% c(1, 4, 7, 10)) %>%
+  mutate(quarter = case_when(
+    month == 1 ~ "Q1",
+    month == 4 ~ "Q2",
+    month == 7 ~ "Q3",
+    month == 10 ~ "Q4"
+  )) %>%
+  distinct(gwcode, statename, year, quarter)
+
+```
+
+
+## Leader-Day Data
+
+`{peacesciencer}` does not have leader-level units of analysis, but these can be easily created with the modified Archigos (`archigos`) data in `{peacesciencer}`. The data are version 4.1.
+
+```{r}
+archigos
+```
+
+If you want leader-days, here is the simplest path toward it. May this also give an idea of what functions like `create_statedays()` and `create_stateyears()` are doing underneath the proverbial hood.
+
+```{r}
+archigos %>%
+  rowwise() %>%
+  mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
+  unnest(date) %>%
+  select(ccode, leadid, date, everything())
+```
+
+The user may want to think about some additional post-processing on top of this, but this is enough to get started.
+
+
+Here is the pre-processed data
