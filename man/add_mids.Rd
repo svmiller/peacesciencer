@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_mids.R
 \name{add_mids}
 \alias{add_mids}
-\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame}
+\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame (DEPRECATED)}
 \usage{
 add_mids(data, keep)
 }
@@ -24,7 +24,8 @@ from the GML MID data.
 }
 \description{
 \code{add_mids()} merges in GML's MID data to a dyad-year data frame. The current version
-of the GML MID data is 2.1.1.
+of the GML MID data is 2.1.1. The function is depcrecated and replaced by \code{add_gml_mids()} to avoid
+confusion with the other conflict data option (\code{add_cow_mids()})
 }
 \details{
 Dyads are capable of having multiple disputes in a given year, which can create a problem

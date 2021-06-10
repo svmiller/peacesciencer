@@ -1,7 +1,8 @@
-#' Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame
+#' Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame (DEPRECATED)
 #'
 #' @description \code{add_mids()} merges in GML's MID data to a dyad-year data frame. The current version
-#' of the GML MID data is 2.1.1.
+#' of the GML MID data is 2.1.1. The function is depcrecated and replaced by \code{add_gml_mids()} to avoid
+#' confusion with the other conflict data option (\code{add_cow_mids()})
 #'
 #' @return \code{add_mids()} takes a dyad-year data frame and adds dyad-year dispute information
 #' from the GML MID data.
