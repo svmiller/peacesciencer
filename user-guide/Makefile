@@ -1,6 +1,6 @@
 # Specify a few variables to avoid repetition downstream
 
-OUTPUTS=doc/ms.pdf doc/ms-anon.pdf doc/ms.html doc/abstract.pdf
+OUTPUTS=doc/ms.pdf doc/ms-anon.pdf doc/ms.html doc/abstract.pdf inst/refs.bib
 RDS=  data/modDD.rds data/modCW.rds
 
 # Specify the primary targets: the outputs
