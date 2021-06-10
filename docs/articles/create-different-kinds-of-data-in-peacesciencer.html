@@ -339,9 +339,9 @@
 <span class="co">#&gt; 10      2 United States of America  1818 Q2     </span>
 <span class="co">#&gt; # … with 72,677 more rows</span></code></pre></div>
 </div>
-<div id="leader-day-data" class="section level2">
+<div id="leader-day-leader-month-leader-year-data" class="section level2">
 <h2 class="hasAnchor">
-<a href="#leader-day-data" class="anchor"></a>Leader-Day Data</h2>
+<a href="#leader-day-leader-month-leader-year-data" class="anchor"></a>Leader-Day (Leader-Month, Leader-Year) Data</h2>
 <p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> does not have leader-level units of analysis, but these can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The data are version 4.1.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span>
@@ -380,8 +380,57 @@
 <span class="co">#&gt;  9     2 81dcc176-1e42-1… 1869-03-12 1869-03-04 1877-03-04 Regul… Regu… Regular </span>
 <span class="co">#&gt; 10     2 81dcc176-1e42-1… 1869-03-13 1869-03-04 1877-03-04 Regul… Regu… Regular </span>
 <span class="co">#&gt; # … with 5,298,370 more rows</span></code></pre></div>
-<p>The user may want to think about some additional post-processing on top of this, but this is enough to get started.</p>
-<p>Here is the pre-processed data</p>
+<p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
+  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">date</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+         month <span class="op">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 177,122 x 10</span>
+<span class="co">#&gt; # Groups:   ccode, leadid, year, month [177,122]</span>
+<span class="co">#&gt;    ccode leadid      date       startdate  enddate    entry exit  exitcode  year</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  2     2 34fb1558-3… 1885-04-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  3     2 34fb1558-3… 1885-05-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  4     2 34fb1558-3… 1885-06-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  5     2 34fb1558-3… 1885-07-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  6     2 34fb1558-3… 1885-08-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  7     2 34fb1558-3… 1885-09-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  8     2 34fb1558-3… 1885-10-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  9     2 34fb1558-3… 1885-11-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt; 10     2 34fb1558-3… 1885-12-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt; # … with 177,112 more rows, and 1 more variable: month &lt;dbl&gt;</span></code></pre></div>
+<p>And here are leader-years.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
+  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">date</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="http://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 17,608 x 9</span>
+<span class="co">#&gt; # Groups:   ccode, leadid, year [17,608]</span>
+<span class="co">#&gt;    ccode leadid      date       startdate  enddate    entry exit  exitcode  year</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  2     2 34fb1558-3… 1886-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1886</span>
+<span class="co">#&gt;  3     2 34fb1558-3… 1887-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1887</span>
+<span class="co">#&gt;  4     2 34fb1558-3… 1888-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1888</span>
+<span class="co">#&gt;  5     2 34fb1558-3… 1889-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1889</span>
+<span class="co">#&gt;  6     2 34fb1558-3… 1893-03-04 1893-03-04 1897-03-04 Regu… Regu… Regular   1893</span>
+<span class="co">#&gt;  7     2 34fb1558-3… 1894-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   1894</span>
+<span class="co">#&gt;  8     2 34fb1558-3… 1895-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   1895</span>
+<span class="co">#&gt;  9     2 34fb1558-3… 1896-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   1896</span>
+<span class="co">#&gt; 10     2 34fb1558-3… 1897-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   1897</span>
+<span class="co">#&gt; # … with 17,598 more rows</span></code></pre></div>
 </div>
   </div>
 

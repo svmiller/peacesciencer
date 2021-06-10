@@ -118,7 +118,7 @@ create_statedays(system = "gw") %>%
 ```
 
 
-## Leader-Day Data
+## Leader-Day (Leader-Month, Leader-Year) Data
 
 `{peacesciencer}` does not have leader-level units of analysis, but these can be easily created with the modified Archigos (`archigos`) data in `{peacesciencer}`. The data are version 4.1.
 
@@ -136,7 +136,29 @@ archigos %>%
   select(ccode, leadid, date, everything())
 ```
 
-The user may want to think about some additional post-processing on top of this, but this is enough to get started.
+The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.
 
+```{r}
+archigos %>%
+  rowwise() %>%
+  mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
+  unnest(date) %>%
+  select(ccode, leadid, date, everything()) %>%
+  mutate(year = year(date),
+         month = month(date)) %>%
+  group_by(ccode, leadid, year, month) %>%
+  slice(1)
+```
 
-Here is the pre-processed data
+And here are leader-years.
+
+```{r}
+archigos %>%
+  rowwise() %>%
+  mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
+  unnest(date) %>%
+  select(ccode, leadid, date, everything()) %>%
+  mutate(year = year(date)) %>%
+  group_by(ccode, leadid, year) %>%
+  slice(1)
+```
