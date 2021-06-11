@@ -4,6 +4,7 @@ template:
   params:
     bootswatch: cerulean
 
+
 figures:
   fig.width: 11
 
@@ -26,13 +27,36 @@ figures:
 #     - icon: <span class="fas fa-github fa-lg"></span>
 #       href: https://github.com/rstudio/sparklyr
 
+authors:
+  Steven V. Miller:
+    href: http://svmiller.com
+
+
+reference:
+- title: Functions that Create Data
+  desc: "The following functions in `{peacesciencer}` create the base data of interest to a researcher, to which the researcher can use follow-up functions afterward to either add information and/or remove rows."
+  contents:
+  - starts_with("create")
+- title: Functions that Add/Merge/Filter Data
+  desc: "The following functions are called after the base data are created. These add various indicators of interest to the researcher and/or subset the base data to a handful of rows that the user deems appropriate for analysis."
+  contents:
+  - starts_with("add")
+  - starts_with("filter")
+- title: Data
+  desc: "These are the data included in `{peacesciencer}`. They are used internally for the functions listed above, though a researcher can also call these data objects into the R session if they would like to inspect the data for themselves."
+  contents:
+  - has_keyword("datasets")
+
 navbar:
   structure:
     left:  [home, reference, articles, user-guide, news]
     right: [github]
   components:
+    reference:
+      text: "Functions/Data"
+      href: "reference/index.html"
     user-guide:
-      text: "User Guide (Manuscript)"
+      text: "User Guide"
       menu:
       - text: HTML
         href: ms.html

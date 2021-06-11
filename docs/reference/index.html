@@ -86,7 +86,7 @@
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../reference/index.html">Functions/Data</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -108,7 +108,7 @@
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    User Guide (Manuscript)
+    User Guide
      
     <span class="caret"></span>
   </a>
@@ -159,8 +159,39 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-functions-that-create-data" class="hasAnchor"><a href="#section-functions-that-create-data" class="anchor"></a>Functions that Create Data</h2>
+          <p class="section-desc"><p>The following functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> create the base data of interest to a researcher, to which the researcher can use follow-up functions afterward to either add information and/or remove rows.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="create_dyadyears.html">create_dyadyears()</a></code> </p>
+        </td>
+        <td><p>Create dyad-years from state system membership data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="create_statedays.html">create_statedays()</a></code> </p>
+        </td>
+        <td><p>Create state-days from state system membership data</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="create_stateyears.html">create_stateyears()</a></code> </p>
+        </td>
+        <td><p>Create state-years from state system membership data</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-functions-that-add-merge-filter-data" class="hasAnchor"><a href="#section-functions-that-add-merge-filter-data" class="anchor"></a>Functions that Add/Merge/Filter Data</h2>
+          <p class="section-desc"><p>The following functions are called after the base data are created. These add various indicators of interest to the researcher and/or subset the base data to a handful of rows that the user deems appropriate for analysis.</p></p>
         </th>
       </tr>
       
@@ -315,6 +346,25 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="filter_prd.html">filter_prd()</a></code> </p>
+        </td>
+        <td><p>Filter dyad-year data to include just politically relevant dyads</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-data" class="hasAnchor"><a href="#section-data" class="anchor"></a>Data</h2>
+          <p class="section-desc"><p>These are the data included in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. They are used internally for the functions listed above, though a researcher can also call these data objects into the R session if they would like to inspect the data for themselves.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
           <p><code><a href="archigos.html">archigos</a></code> </p>
         </td>
         <td><p>Archigos: A (Subset of a) Dataset on Political Leaders</p></td>
@@ -447,33 +497,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="create_dyadyears.html">create_dyadyears()</a></code> </p>
-        </td>
-        <td><p>Create dyad-years from state system membership data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="create_statedays.html">create_statedays()</a></code> </p>
-        </td>
-        <td><p>Create state-days from state system membership data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="create_stateyears.html">create_stateyears()</a></code> </p>
-        </td>
-        <td><p>Create state-years from state system membership data</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="creg.html">creg</a></code> </p>
         </td>
         <td><p>Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filter_prd.html">filter_prd()</a></code> </p>
-        </td>
-        <td><p>Filter dyad-year data to include just politically relevant dyads</p></td>
       </tr><tr>
         
         <td>
