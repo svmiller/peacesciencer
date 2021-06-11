@@ -6,7 +6,7 @@
 
 
 rmarkdown::render("ms.Rmd",
-                  output_file="doc/ms.pdf",
+                  output_file="../docs/ms.pdf",
                   params=list(ps_website = "http://svmiller.com/peacesciencer",
                               ps_manuals = "http://svmiller.com/peacesciencer/reference",
                               ps_github = "https://github.com/svmiller/peacesciencer/"),

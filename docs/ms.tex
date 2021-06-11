@@ -1,0 +1,730 @@
+% ARTICLE 2 ----
+% This is just here so I know exactly what I'm looking at in Rstudio when messing with stuff.
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{cochineal}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}
+    }
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+\title{\texttt{\{peacesciencer\}}: A User's Guide for Quantitative Peace Science in R\thanks{Replication files are available on the author's Github account (\url{https://github.com/svmiller/peacesciencer}). \textbf{Current version}: June 11, 2021; \textbf{Corresponding author}: \href{mailto:steven.v.miller@gmail.com}{\nolinkurl{steven.v.miller@gmail.com}}.}}
+\author{true}
+\date{}
+
+% Jesus, okay, everything above this comment is default Pandoc LaTeX template. -----
+% ----------------------------------------------------------------------------------
+% I think I had assumed beamer and LaTex were somehow different templates.
+
+
+\usepackage{kantlipsum}
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+\renewenvironment{abstract}
+ {{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \relax}
+ {\endlist}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+%  \null
+%  \vskip 2em%
+%  \begin{center}%
+  \let \footnote \thanks
+      {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}
+    }
+%\fi
+\makeatother
+
+
+\title{\texttt{\{peacesciencer\}}: A User's Guide for Quantitative Peace Science in R\thanks{Replication files are available on the author's Github account (\url{https://github.com/svmiller/peacesciencer}). \textbf{Current version}: June 11, 2021; \textbf{Corresponding author}: \href{mailto:steven.v.miller@gmail.com}{\nolinkurl{steven.v.miller@gmail.com}}.}  }
+
+\date{}
+
+\usepackage{titlesec}
+
+% 
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\itshape} % \small\uppercase
+\titleformat*{\subsubsection}{\normalsize\itshape}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
+% add some other packages ----------
+
+% \usepackage{multicol}
+% This should regulate where figures float
+% See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
+\usepackage[section]{placeins}
+
+
+
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+\ifxetex
+  \PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
+\fi
+}
+
+\@ifpackageloaded{color}{
+    \PassOptionsToPackage{usenames,dvipsnames}{color}
+}{%
+    \usepackage[usenames,dvipsnames]{color}
+}
+\makeatother
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={Steven V. Miller (Clemson University)},
+             pdfkeywords = {software, statistical analysis, peace science, reproducibility},
+            pdftitle={\texttt{\{peacesciencer\}}: A User's Guide for Quantitative Peace Science in R},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=magenta,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Add an option for endnotes. -----
+
+
+
+% This will better treat References as a section when using natbib
+% https://tex.stackexchange.com/questions/49962/bibliography-title-fontsize-problem-with-bibtex-and-the-natbib-package
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\usepackage{longtable}
+\usepackage{booktabs}
+\LTcapwidth=.95\textwidth
+\linespread{1.05}
+\usepackage{hyperref}
+\usepackage{setspace}
+\let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
+\usepackage{colortbl}
+\arrayrulecolor{black}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\newtheorem{hypothesis}{Hypothesis}
+
+
+% trick for moving figures to back of document
+% really wish we'd knock this shit off with moving tables/figures to back of document
+% but, alas...
+
+
+\begin{document}
+
+% \textsf{\textbf{This is sans-serif bold text.}}
+% \textbf{\textsf{This is bold sans-serif text.}}
+
+
+% \maketitle
+
+{% \usefont{T1}{pnc}{m}{n}
+\setlength{\parindent}{0pt}
+\thispagestyle{plain}
+{%\fontsize{18}{20}\selectfont\raggedright
+\maketitle  % title \par
+
+}
+
+
+
+
+{
+   \vskip 13.5pt\relax \normalsize\fontsize{11}{12}
+   \MakeUppercase{Steven V. Miller}, \small{Clemson University}   
+
+}
+
+}
+
+
+
+
+
+
+
+
+\begin{abstract}
+
+%    \hbox{\vrule height .2pt width 39.14pc}
+
+    \vskip 8.5pt % \small
+
+\noindent \small{This article introduces \texttt{\{peacesciencer\}}, an R package that contains a litany of tools for creating data of widespread interest to the peace science community. The package is cross-platform, assuming only a somewhat recent installation of the R programming language with some of the enhanced functionality of the broadly popular \texttt{\{tidvyerse\}} packages. Peace science researchers can use this package to greatly reduce the time needed to perfectly recreate dyad-year and state-year data from scratch and merge in common indicators included in almost every dyad-year or state-year analysis (e.g.~democracy data, contiguity data). The software is freely available on CRAN and maintains an active website documenting its features at \url{http://svmiller.com/peacesciencer}.}
+
+
+\vskip 8.5pt \noindent \emph{Keywords}: software, statistical analysis, peace science, reproducibility \par
+
+%    \hbox{\vrule height .2pt width 39.14pc}
+
+
+
+\end{abstract}
+
+
+\vskip -8.5pt
+
+
+ % removetitleabstract
+
+
+\setlength{\parindent}{16pt}
+\setlength{\parskip}{0pt}
+
+% We'll put doublespacing here
+% Remember to cut it out later before bib
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+This data feature tackles a recurring problem for researchers in the peace science community. True research reproducibility is achieved creating original dyad-year or state-year data from scratch, though no published guide exists that informs how to do this on their own. Instead, researchers may end up reusing old code generated in past studies, leaving them to spend time and energy adjusting the sample of states, the temporal domain, and doing whatever additional troubleshooting may arise from this practice. In a related manner, researchers may spend too much time reproducing old code for standard information that goes into any dyad-year or state-year analysis---like contiguity relationships and democracy, among many others---and have to do additional troubleshooting for how these various data sources treat missing data or treat state codes in a manner inconsistent with the more accessible Correlates of War or Gleditsch-Ward state codes. This is all compounded by changes in technology that treat the creation of the data and the analysis of data as a continuous process in which the contemporary quantitative political scientist is increasingly becoming a computer programmer as well. Graduate students, in particular, face unique challenges associated with these developments. Graduate students beginning their careers in peace science must learn how scholarship informs data in peace science and how data inform scholarship at the same time they are needing to learn quantitative methods in a chosen software package.
+
+\texttt{\{peacesciencer\}} is designed to address these problems. Built around the free and open source R programming language, \texttt{\{peacesciencer\}} contains a suite of data and functions for creating data of interest to researchers. Researchers can use \texttt{\{peacesciencer\}} to create dyad-year, state-year, and even state-day data from scratch. Afterward, they can add a variety of standard information (e.g.~contiguity, alliances, major power status, GDP per capita estimates, capability estimates, and more) to these data with a simple command. This is a considerable time-saver since, in the absence of it, researchers would have to more meticulously code and transform the raw data to conform to the kind of data they want. \texttt{\{peacesciencer\}} comes with some data innovations as well, including a comprehensive data set on democracy by year, an original data set on capitals and capital transitions, and a function to create peace years between ongoing dyad-year or state-year conflicts. All are done with the maximum possible transparency. The project is available for public view of Github (\url{https://github.com/svmiller/peacesciencer}). The \texttt{data-raw} directory on the project's Github contains information and comments about how every data set was created and the \texttt{R} directory informs the user how each function works. The function manuals (\url{http://svmiller.com/peacesciencer/reference}) contain additional comments about what each function returns and, in appropriate cases, why it is doing what it is doing. Thus, \texttt{\{peacesciencer\}} not only assists a peace scientist with their research, but it does so in a manner that best conforms to the Data Access and Research Transparency Initiative (DA-RT) initiative across all political science.
+
+This data feature proceeds in the following fashion. The next section expands what need this package fills for peace scientists in the present. Afterward, it provides an overview of what is included in \texttt{\{peacesciencer\}} to help researchers more quickly conduct the kind of quantitative research they want. Thereafter, it provides a tutorial on how to install and best use \texttt{\{peacesciencer\}} in the R programming language. A more comprehensive tutorial follows, showing how \texttt{\{peacesciencer\}} already has a suite of data and functions that can allow for effective replications of a ``dangerous dyads'' type analysis (Bremer, 1992) and standard state-year analyses of civil conflict onset (e.g. Fearon \& Laitin, 2003). This feature concludes with a discussion of what else \texttt{\{peacesciencer\}} is capable of doing in future updates and how this R package can inform more reasoned design decisions for researchers in peace science.
+
+\hypertarget{why-peacesciencer}{%
+\section{\texorpdfstring{Why \texttt{\{peacesciencer\}}?}{Why \{peacesciencer\}?}}\label{why-peacesciencer}}
+
+\texttt{\{peacesciencer\}} is not the only software available to peace science researchers who want to reduce the time and energy required to faithfully recreate data from scratch. NewGene, for example, is a stand-alone software program for Microsoft Windows and Mac that can create various types of data of interest to international relations scholars (Bennett, Poast \& Stam, 2019). NewGene is itself the evolution of EUGene, which served conflict researchers well for over a decade (Bennett \& Stam, 2000). No matter, \texttt{\{peacesciencer\}} is motivated by the following ideals that led to its creation.
+
+For one, researchers invest too much time in the construction of a data set that faithfully captures the unit of analysis. Assume a researcher wants an original data set on all directed dyad-years for Correlates of War states for an analysis of inter-state conflict. How might one do that? The answer has never been immediately obvious. No published guide exists that shows a researcher how to create these data themselves from scratch, which is one reason why software bundles like EUGene and NewGene are attractive to researchers who primarily care about the substance of their research question. After all, EUGene's primary impetus was allowing researchers to create data sets for replication of previous studies, producing a host of data types (e.g.~dyad-year, state-year, dispute-year) along the way that users can amend as they saw fit. \texttt{\{peacesciencer\}} is primarily born from this question about how to create dyad-year and state-year data from scratch. The underlying code that produces these data types is available online and are converted into simple functions for the ease of the researcher.
+
+Second, researchers also invest too much time in retracing steps for peace science analyses for new projects. Assume a researcher who had finished a state-year analysis on the correlates of civil conflict onset a couple years ago and wants to start a new project that analyzes the same outcome from a different angle (or perhaps using newer data). Under these conditions, a researcher will have to find where they stored that replication code and copy-paste it into a new directory for the new project. They may then have to change the name of some files, change some code to account for potentially new column names in the newer data, and troubleshoot instances where their old code does not perform as it once did. At its worst, this process may lead to some errors by the researcher. At best, this is tedium that spends the researcher's time they would rather invest in analyzing the data. The lion's share of \texttt{\{peacesciencer\}}'s functionality is both creating the units of analysis for the researcher and merging in different forms of data in wide use in the peace science community so that the researcher can spend less of their time on tedium.
+
+Third, the creation of the data and the analysis of the data is increasingly becoming one continuous process. Not too long ago, it used to be the case that researchers had to download a data set, or create one from scratch (possibly in a spreadsheet or through a program like EUGene). After downloading or constructing the data, the researcher then opened a specialty program for statistical analysis (e.g.~SAS, SPSS, Stata) to recode raw data into a form suitable for analysis before running a statistical model that regresses some outcome on a set of covariates. Current research practices still resemble this process, but the steps between them are no longer as large as they were in the past. Software options exist that allow the researcher to load data, create data, clean data, analyze data, and present the results of the analysis all within one program. \texttt{\{peacesciencer\}}, by itself, does not do all these things, but it seamlessly connects the beginning of the research process to the end of the research process without needing to leave the increasingly popular R programming language and Rstudio (its free-for-use integrated desktop environment {[}IDE{]}).
+
+Fourth, it is increasingly the case that as the steps between creating data and analyzing data decrease in size, the lines between them blur as well. In other words, to create data is to code data and the contemporary quantitative political scientist is increasingly becoming a computer programmer (c.f. Bowers \& Voors, 2016). This is happening concurrent to innovations in programming languages for statistical analysis, especially the R programming language that \texttt{\{peacesciencer\}} uses. There have been significant advances in add-on packages that allow users to do things like get World Bank data from the internet (Arel-Bundock, 2021a), scrape \emph{any} type of data from the internet (Boehmke, 2016), and even format results from a statistical model for presentation in a way the reduces the probability of transcription errors to almost zero (Arel-Bundock, 2021b). \texttt{\{peacesciencer\}} embraces this. This R package reduces the time required to create peace science data for analysis and also informs the user about the code required to create the kind of data the user wants.
+
+Fifth, statistical software should be kind to graduate students in peace science with the aforementioned point in mind. Graduate students just beginning their career in peace science scholarship are tasked to learn the substantive material, the characteristics of the underlying data in wide use in the community, and the quantitative methods and statistical software available to them, effectively all at the same time. A student interested in civil conflict scholarship will need to learn the UCDP-PRIO armed conflict data in some detail at the same time they learn about the theoretical arguments that informed the creation of the data, likely at the same time they take quantitative methods courses that show them how to load and explore data in a chosen statistical software. At the same time that creating data is increasingly blurred with coding and processing data, students are simultaneously learning to explore data for themselves as they read about the analyses of the data. \texttt{\{peacesciencer\}} aims to make this process easier for graduate students using the features of the R programming language. Graduate students can use \texttt{\{peacesciencer\}} to learn about peace science data and computer programming in R at the same time.
+
+Finally, the creation and presentation of data in peace science should be 100\% robust and transparent, which \texttt{\{peacesciencer\}} takes seriously in the following ways. The website for \texttt{\{peacesciencer\}} has several vignettes that describe its processes in some detail. These include how it provides reasonable estimates of democracy that may not be available in the Polity data or the Varieties of Democracy data and how a researcher can whittle dyadic dispute-years into true dyad-years through reasonable case exclusions. \texttt{\{peacesciencer\}} subjects itself to a battery of tests before publishing updates, making sure new features do not create duplicate entries in the original data (which is the surest sign of a botched merge). The project's Github contains a publicly available \texttt{data-raw} directory that shows how every data set included (and processed) in \texttt{\{peacesciencer\}} was created. The function manuals included \texttt{\{peacesciencer\}} contain ample documentation that clarifies what the function is doing, what it returns to the user, and why it is doing it this way. Researchers can also use the project's Github to point out bugs, ask for further clarification, and propose additions. \texttt{\{peacesciencer\}} takes seriously the Data Access and Research Transparency Initiative (DA-RT) initiative across all political science and endeavors for maximum transparency, leveraging open source and version control software to inform users of what data it uses and how it uses the data.
+
+\hypertarget{what-is-included-in-peacesciencer}{%
+\section{\texorpdfstring{What is Included in \texttt{\{peacesciencer\}}}{What is Included in \{peacesciencer\}}}\label{what-is-included-in-peacesciencer}}
+
+\texttt{\{peacesciencer\}} comes with a battery of built-in functions for generating the most widespread forms of peace science data. Each function uses raw or pre-processed data included in \texttt{\{peacesciencer\}}. For example, \texttt{create\_dyadyears()} transforms the raw state system membership data for either the Correlates of War or Gleditsch-Ward system into the full universe of post-1816 dyad-years. \texttt{add\_gml\_mids()} uses a dyadic dispute-year version of the MID data offered by Gibler, Miller \& Little (2016), which, as the \texttt{data-raw} directory on the project's Github shows, is itself derived from the dispute-level and participant-level versions of the data. \texttt{\{peacesciencer\}} also has some data innovations. It has an original data set on capital-to-capital distances, calculating for distance in kilometers between state capitals using the ``Vincenty'' method (i.e.~``as the crow flies'') that also accounts for instances when capitals moved (e.g.~Brazil in 1960, Burundi in 2018). It also features an innovation of democracy data, providing reasonable estimates of democracy using the Marquez (2016) of extending the Unified Democracy Scores (UDS) data (Pemstein, Meserve \& Melton, 2010).\footnote{A vignette on the \texttt{\{peacesciencer\}} website explains just how much unnecessary missingess pervades data on democracy and how this might adversely affect inferences of inter-state or intra-state conflict.} As of writing, \texttt{\{peacesciencer\}} comes with the following functionality.
+
+\begingroup\fontsize{7}{9}\selectfont
+
+\begin{longtable}[t]{>{}l|>{}l|>{}c|>{}c}
+\caption{\label{tab:unnamed-chunk-1}Features of \{peacesciencer\}}\\
+\hline
+\textbf{Data} & \textbf{Description} & \textbf{Type} & \textbf{Function}\\
+\hline
+(CoW, G-W) Dyad-Year Data & Create dyad-years from state system membership data &  & \ttfamily{create\_dyadyears()}\\
+\arrayrulecolor{white}
+\hline
+(CoW, G-W) State-Year Data & Create state-years from state system membership data &  & \ttfamily{create\_stateyears()}\\
+\arrayrulecolor{white}
+\hline
+(CoW, G-W) State-Day Data & Create state-days from state system membership data &  & \ttfamily{create\_statedays()}\\
+\arrayrulecolor{white}
+\hline
+Archigos (v. 4.1) & Add Archigos political leader information & D, S & \ttfamily{add\_archigos()}\\
+\arrayrulecolor{white}
+\hline
+ATOP Alliances (v. 5.0) & Add ATOP alliance data & D & \ttfamily{add\_atop\_alliance()}\\
+\arrayrulecolor{white}
+\hline
+Capital-to-Capital Distances & Add capital-to-capital distance & D, S & \ttfamily{add\_capital\_distance()}\\
+\arrayrulecolor{white}
+\hline
+Convert CoW codes to G-W codes & Add matching CoW codes for G-W states by year & D, S & \ttfamily{add\_ccode\_to\_gw()}\\
+\arrayrulecolor{white}
+\hline
+Convert G-W codes to CoW codes & Add matching G-W codes for CoW states by year & D, S & \ttfamily{add\_gwcode\_to\_cow()}\\
+\arrayrulecolor{white}
+\hline
+CoW National Capabilities (v. 5.0) & Adds capabilities of states by year & D, S & \ttfamily{add\_nmc()}\\
+\arrayrulecolor{white}
+\hline
+CoW Direct Contiguity (v. 3.2) & Adds contiguity information by year & D, S & \ttfamily{add\_contiguity()}\\
+\arrayrulecolor{white}
+\hline
+CoW Alliances (v. 4.1) & Adds CoW alliance data by year & D & \ttfamily{add\_cow\_alliance()}\\
+\arrayrulecolor{white}
+\hline
+CoW IGOs (v. 3.0) & Adds CoW IGO data by year & D, S & \ttfamily{add\_igos()}\\
+\arrayrulecolor{white}
+\hline
+CoW Major Powers (v. 2016) & Adds CoW major power by year & D, S & \ttfamily{add\_cow\_majors()}\\
+\arrayrulecolor{white}
+\hline
+CoW MIDs (v. 5.0) & Add CoW MID information to data & D & \ttfamily{add\_cow\_mids()}\\
+\arrayrulecolor{white}
+\hline
+CoW Trade Data (v. 4.0) & Add CoW trade information to data & D, S & \ttfamily{add\_cow\_trade()}\\
+\arrayrulecolor{white}
+\hline
+CoW Wars & Add CoW inter-state (v. 4.0) and intra-state (v. 4.1) war data & D & \ttfamily{add\_cow\_wars()}\\
+\arrayrulecolor{white}
+\hline
+CREG (v. 1.02) & Add ethnic/religious fractionalization/polarization by year & D, S & \ttfamily{add\_creg\_fractionalization()}\\
+\arrayrulecolor{white}
+\hline
+Democracy & Add Polity (v. 2017), V-Dem (v. 10), and Marquez' (2016) UDS extensions & D,S & \ttfamily{add\_democracy()}\\
+\arrayrulecolor{white}
+\hline
+GML MIDs (v. 2.1.1) & Add Gibler-Miller-Little MIDs to data & D & \ttfamily{add\_gml\_mids()}\\
+\arrayrulecolor{white}
+\hline
+Minimum Distance (v. 2016) & Adds minimum distance data by year & D, S & \ttfamily{add\_minimum\_distance()}\\
+\arrayrulecolor{white}
+\hline
+Peace Years & Calculate peace years for various disputes & D, S & \ttfamily{add\_peace\_years()}\\
+\arrayrulecolor{white}
+\hline
+Rugged/Mountainous Terrain & Add 'ruggedness'/'mountainous' terrain data by year & D, S & \ttfamily{add\_rugged\_terrain()}\\
+\arrayrulecolor{white}
+\hline
+(Surplus/Gross) Domestic Product & Add Anders et al. (2020) GDP/SDP simulations by year & D, S & \ttfamily{add\_sdp\_gdp()}\\
+\arrayrulecolor{white}
+\hline
+Strategic Rivalries & Add Thompson and Dreyer (2012) strategic rivalry data by year & D, S & \ttfamily{add\_strategic\_rivalries()}\\
+\arrayrulecolor{white}
+\hline
+UCDP Armed Conflicts (v. 20.1) & Add UCDP armed conflict data by year & S & \ttfamily{add\_ucdp\_acd()}\\
+\arrayrulecolor{black}
+\hline
+\end{longtable}
+\endgroup{}
+
+\texttt{\{peacesciencer\}}'s coverage focuses mostly on data that are released as standalone data sets for download, especially those in the Correlates of War or Gleditsch-Ward ecosystem of data. Data that can be obtained from a stable advanced programming interface---like the World Bank, for example---can be obtained through those other means (e.g. Arel-Bundock, 2021a). Its coverage will assuredly expand with new additions of interest to the peace science community.
+
+\hypertarget{how-to-install-peacesciencer}{%
+\section{\texorpdfstring{How to Install \texttt{\{peacesciencer\}}}{How to Install \{peacesciencer\}}}\label{how-to-install-peacesciencer}}
+
+\texttt{\{peacesciencer\}} is a package for the R programming language. This assumes at least some familiarity with the R programming language. Users should have at least version 3.5 of R, which should not be an issue since the most recent version---as of writing---is 4.1.0. \texttt{\{peacesciencer\}} is designed to be as user-friendly as possible. Those proficient in R, those just learning R, and those with no experience in R should be able to pick up its use fairly quickly.
+
+\texttt{\{peacesciencer\}}'s functions work out of the box, though it works best with one additional package. This is \texttt{\{tidyverse\}}, itself a suit of packages that share a common form and design (Wickham \& Grolemund, 2017). \texttt{\{peacesciencer\}} functions make considerable use of the component packages of \texttt{\{tidyverse\}} but installing and loading \texttt{\{tidyverse\}} will allow the researcher to make quicker use of \texttt{\{peacesciencer\}}'s functionality. A user can open an R session and install both packages as follows.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"tidyverse"}\NormalTok{, }\StringTok{"peacesciencer"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+R packages once installed need to be loaded with every R session. The user can load both with the \texttt{library()} function in R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(peacesciencer)}
+\end{Highlighting}
+\end{Shaded}
+
+Thereafter, a researcher can start using \texttt{\{peacesciencer\}} to create the kind of data they need.
+
+\hypertarget{a-tutorial-on-how-to-use-peacesciencer}{%
+\section{\texorpdfstring{A Tutorial on How to Use \texttt{\{peacesciencer\}}}{A Tutorial on How to Use \{peacesciencer\}}}\label{a-tutorial-on-how-to-use-peacesciencer}}
+
+\texttt{\{peacesciencer\}} has a simple ``pipe''-based workflow. The top of the ``pipe'' is the first function to create the data. These options include \texttt{create\_dyadyears()}, \texttt{create\_stateyears()}, and \texttt{create\_statedays()}. All options include two arguments: \texttt{system} and \texttt{mry}. \texttt{system} takes one of two values---``cow'' or ``gw''---for what state system membership data the user wants. If \texttt{system} is not specified, the function defaults to Correlates of War system membership data given the prominence of the Correlates of War project in the conflict data ecosystem. \texttt{mry}---short for ``most recent year''---determines whether or not the function extends the membership data to the most recently concluded calendar year. The function defaults to \texttt{TRUE} in the absence of a user-specified override, meaning the data returned will include all relevant state-year data from 1816 to (as of writing) 2020 even though the Correlates of War state system data were last updated at the end of 2016 (and the Gleditsch-Ward system were last updated at the end of 2017). \texttt{create\_dyadyears()} has a third argument---\texttt{directed}---that determines whether the user wants directed dyad-year data or non-directed dyad-year data. The function defaults to \texttt{TRUE}, returning directed dyad-year data.
+
+The following example creates a full state-year data frame of Gleditsch-Ward states from 1816 to 2020.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_stateyears}\NormalTok{(}\AttributeTok{system =} \StringTok{\textquotesingle{}gw\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The below example would create a full non-directed dyad-year data frame of Correlates of War states from 1816 to 2016, the last year of record in the Correlates of War state system membership data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_dyadyears}\NormalTok{(}\AttributeTok{directed =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{mry =} \ConstantTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+This example would create a full state-day data frame from the Gleditsch-Ward system for all states from Jan.~1, 1816 to Dec.~31, 2020.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_statedays}\NormalTok{(}\AttributeTok{system =} \StringTok{\textquotesingle{}gw\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+There are not too many data sets in the peace science community with daily data, certainly dating to the 19th century, but \texttt{\{peacesciencer\}} can greatly reduce the costs of creating the kind of data the user may want.
+
+\hypertarget{add-standard-information-to-dyad-year-or-state-year-data}{%
+\subsection{Add Standard Information to Dyad-Year or State-Year Data}\label{add-standard-information-to-dyad-year-or-state-year-data}}
+
+The next step in the \texttt{\{peacesciencer\}} ``pipe''-based workflow will also be among the biggest time-savers for researchers using it. Researchers who want to understand, say, the correlates of inter-state conflict onset almost always do the following. They will add the dependent variables from an inter-state conflict data set, like the Gibler-Miller-Little (GML) dispute data set (Gibler, Miller \& Little, 2016). They will add several indicators to the dyad-year data that are well-traveled in conflict scholarship, including indicators of things like joint alliance contracts and the contiguity relationship of both states in the dyad. \texttt{\{peacesciencer\}} has great coverage for a lot of these data and can even allow almost full-scale replications with the data it offers.
+
+For example, assume a researcher wanted to replicate something analogous to Bremer's (1992) famous ``dangerous dyads'' analysis about the causes of conflict onset. \texttt{\{peacesciencer\}} can do something like this in the following pipe-based workflow. First, \texttt{create\_dyadyears(directed\ =\ FALSE,\ mry\ =\ FALSE)} will create a non-directed dyad-year data frame for all Correlates of War states from 1816 to 2016.
+
+After creating the base data they want, the user can add data to it with the ``pipe'' operator. The \texttt{\{tidyverse\}} represents this pipe operator as \texttt{\%\textgreater{}\%}. Ending each line with this pipe passes forward an object (here: data) into the next function on the next line. Put in other words, \texttt{create\_dyadyears(directed\ =\ FALSE,\ mry\ =\ FALSE)\ \%\textgreater{}\%\ filter\_prd()} is a command in \texttt{\{tidyverse\}} and \texttt{\{peacesciencer\}} to create all non-directed dyad-years from 1816 to 2016 and then subset those data to only the politically relevant dyad-years. Because politically relevant dyads depend on information about the major power status for both states as well as their contiguity relationship (Lemke \& Reed, 2001), the function adds in those data (i.e.~quietly executing \texttt{add\_contiguity()} and \texttt{add\_cow\_majors()}) before subsetting the data to just the dyads that have some kind of contiguity relationship and/or have a major power in it.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_dyadyears}\NormalTok{(}\AttributeTok{directed =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{mry =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter\_prd}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_gml\_mids}\NormalTok{(}\AttributeTok{keep =} \ConstantTok{NULL}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_peace\_years}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_nmc}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_democracy}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_cow\_alliance}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_sdp\_gdp}\NormalTok{() }\OtherTok{{-}\textgreater{}}\NormalTok{ Data}
+\end{Highlighting}
+\end{Shaded}
+
+Next, the pipe-based workflow continues with \texttt{add\_gml\_mids(keep\ =\ NULL)}, which will add information about whether there was an ongoing dispute in the dyad (and whether it was a dispute onset) from the GML dispute data.\footnote{\texttt{keep\ =\ NULL} is optional and removes supporting information about dyadic dispute-participants (e.g.~dispute-level hostility, dispute-level outcome) in order to reduce the size of the data set.} \texttt{add\_peace\_years()} will calculate peace years between ongoing disputes in these politically relevant non-directed dyads.\footnote{\texttt{add\_peace\_years()} will only calculate the peace years---titled, in this case, \texttt{gmlmidspell}---and will leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend manually creating splines or square/cube terms because it creates more problems in adjusting for temporal dependence in model predictions. In a regression formula in R, you can specify the Carter \& Signorino (2010) approach as \texttt{...\ +\ gmlmidspell\ +\ I(gmlmidspell\^{}2)\ +\ I(gmlmidspell\^{}3)}. The Beck, Katz \& Tucker (1998) cubic splines approach is \texttt{...\ +\ splines::bs(gmlmidspell,\ 4)}. This function includes the spell and three splines (hence the 4 in the command).} \texttt{add\_nmc()} will add information from the Correlates of War National Military Capabilities data, prominently the CINC scores that conflict scholars routinely use for assessing hypotheses of power preponderance and power parity. \texttt{add\_democracy()} will add information about the level of democracy for both states in the dyad using three different indicators. Researchers can select which one they prefer from these indicators. \texttt{add\_cow\_alliance()} will add information about whether there was an alliance in the dyad-year by way of whether there was an agreement that included a defense pledge, a neutrality pledge, a non-aggression pledge, or an entente pledge. Finally, \texttt{add\_sdp\_gdp()} will add information about GDP, GDP per capita, and the surplus domestic product of both states in the dyad from the simulations done by Anders, Fariss \& Markowitz (2020).
+
+Whereas \texttt{add\_sdp\_gdp()} is the last command in the pipe-based workflow, the \texttt{\{peacesciencer\}} call ends by assigning to an object called \texttt{Data}. This type of assignment is done with the ``right hand'' assignment operator (i.e.~\texttt{-\textgreater{}}). If the user wants to move these data into Stata for analysis, they can save it to their current working directory with a command like \texttt{haven::write\_dta(Data,\ "my-data.dta")} and import it into Stata when they are done.
+
+\texttt{\{peacesciencer\}} has pre-processed, cleaned, recoded, and merged the desired data that has greatly reduced the time and energy a researcher might otherwise spend doing something like hard-coding \texttt{-9s} in these data to be \texttt{NA} in the National Material Capabilities data. There is only some slight data work to create the desired indicators for a statistical model of conflict onset. Here, briefly, these functions lean on \texttt{\{tidyverse\}} ``verbs'' and base R terminology to do things like creating a dummy variable for whether the dyad was land-contiguous, whether there was a major power on either side of the non-directed dyad, creating some ``weak-link'' indicators of militarization, relative power in the dyad, level of democracy in the dyad (using the Marquez (2016) for extending the Unified Democracy Scores data), and the GDP per capita in the dyad.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{landcontig =} \FunctionTok{ifelse}\NormalTok{(conttype }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{cowmajdyad =} \FunctionTok{ifelse}\NormalTok{(cowmaj1 }\SpecialCharTok{==} \DecValTok{1} \SpecialCharTok{|}\NormalTok{ cowmaj2 }\SpecialCharTok{==} \DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Create estimate of militarization as milper/tpop}
+  \CommentTok{\# Then make a weak{-}link}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{milit1 =}\NormalTok{ milper1}\SpecialCharTok{/}\NormalTok{tpop1,}
+         \AttributeTok{milit2 =}\NormalTok{ milper2}\SpecialCharTok{/}\NormalTok{tpop2,}
+         \AttributeTok{minmilit =} \FunctionTok{ifelse}\NormalTok{(milit1 }\SpecialCharTok{\textgreater{}}\NormalTok{ milit2,}
+\NormalTok{                           milit2, milit1)) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# create CINC proportion (lower over higher)}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{cincprop =} \FunctionTok{ifelse}\NormalTok{(cinc1 }\SpecialCharTok{\textgreater{}}\NormalTok{ cinc2,}
+\NormalTok{                           cinc2}\SpecialCharTok{/}\NormalTok{cinc1, cinc1}\SpecialCharTok{/}\NormalTok{cinc2)) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# create weak{-}link specification using Quick UDS data}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{mindemest =} \FunctionTok{ifelse}\NormalTok{(xm\_qudsest1 }\SpecialCharTok{\textgreater{}}\NormalTok{ xm\_qudsest2,}
+\NormalTok{                            xm\_qudsest2, xm\_qudsest1)) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# Create "weak{-}link" measure of jointly advanced economies}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{minwbgdppc =} \FunctionTok{ifelse}\NormalTok{(wbgdppc2011est1 }\SpecialCharTok{\textgreater{}}\NormalTok{ wbgdppc2011est2,}
+\NormalTok{                             wbgdppc2011est2, wbgdppc2011est1)) }\OtherTok{{-}\textgreater{}}\NormalTok{ Data}
+\end{Highlighting}
+\end{Shaded}
+
+Table \ref{tab:tab-dd} is a formatted version of the results of a logistic regression model of conflict onset using these ``dangerous dyads'' indicators. Users typically do not end their analysis here---often looking for new predictors of conflict onset with these covariates in mind---but \texttt{\{peacesciencer\}} greatly reduces the time and energy researchers must invest into cleaning and processing data for analysis.
+
+\begin{table}
+
+\caption{\label{tab:tab-dd}A "Dangerous Dyads" Analysis of Non-Directed Dyad-Years from \{peacesciencer\}}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{8cm}c}
+\toprule
+\textbf{ } & \textbf{Model 1}\\
+\midrule
+Land Contiguity & 1.044*\\
+ & (0.057)\\
+Dyadic CINC Proportion (Lower/Higher) & 0.444*\\
+ & (0.036)\\
+CoW Major Power in Dyad & 0.145*\\
+ & \vphantom{1} (0.058)\\
+Defense Pact & -0.102+\\
+ & (0.058)\\
+Dyadic Democracy (Weak-Link) & -0.509*\\
+ & (0.052)\\
+Dyadic GDP per Capita (Weak-Link) & 0.262*\\
+ & (0.050)\\
+Dyadic Militarization (Minimum) & 0.267*\\
+ & (0.023)\\
+t & -0.148*\\
+ & (0.005)\\
+t\textasciicircum{}2 & 0.002*\\
+ & \vphantom{1} (0.000)\\
+t\textasciicircum{}3 & 0.000*\\
+ & (0.000)\\
+Intercept & -3.055*\\
+ & (0.064)\\
+\midrule
+Num.Obs. & 106937\\
+\bottomrule
+\multicolumn{2}{l}{\textsuperscript{} + p $<$ 0.1, * p $<$ 0.05}\\
+\end{tabular}
+\end{table}
+
+\texttt{\{peacesciencer\}} is also capable of creating data for replications of standard civil conflict analyses. Suppose a researcher wants to create a state-year data frame to conduct an analysis of civil conflict onset analogous to Fearon and Laitin's (2003) well-cited analysis of civil conflict onset, but using UCDP conflict data and the Gleditsch-Ward state system for creating the appropriate universe of state-years. The pipe-based workflow will start with \texttt{create\_stateyears(system\ =\ \textquotesingle{}gw\textquotesingle{})}, creating the full universe of Gleditsch-Ward state years from 1816 to 2020. Whereas the UCDP data included in \texttt{\{peacesciencer\}} are from 1946 to 2019 (v. 20.1), we can subset (``filter'') the data to just those years with \texttt{filter(year\ \%in\%\ c(1946,\ 2019))}. Next, we can use the \texttt{add\_ucdp\_acd()} function to return information about ongoing UCDP conflicts and onsets for these states. \texttt{add\_ucdp\_acd()} takes three arguments: \texttt{type}, \texttt{issue}, and \texttt{only\_wars}. \texttt{type} is an optional argument for the type of armed conflicts for which the researcher wants information. Options include ``extrasystemic'', ``interstate'', ``intrastate'', and ``II'' (short for ``internationalized intrastate''). If no \texttt{type} is specified, the function returns information about ongoing disputes and onsets for all states for all tyeps of conflict. If the user wants information about multiple types of conflict--say: intra-state wars and internationalized intra-state wars---they can specify that as a character vector (e.g.~\texttt{type\ =\ c("intrastate",\ "II")}). \texttt{issue} is another optional argument for what issue types of conflicts the user wants beyond the type of armed conflict. Options include ``territory'', ``government'', and ``both''. If no \texttt{issue} is specified, the function returns information for all conflicts irregarding the particular issue. \texttt{only\_wars} is an argument that subsets the data to just those with the intensity levels of ``war'' when \texttt{only\_wars\ =\ TRUE}. The argument defaults to \texttt{FALSE}, returning information about conflicts with at least 25 deaths in addition to the conflicts with more than 1,000 deaths. In this application, \texttt{add\_ucdp\_acd(type\ =\ "intrastate",\ only\_wars\ =\ FALSE))} returns state-year information about ongoing intra-state conflicts over any issue and at either of UCDP's severity thresholds.\footnote{The function also returns some background information of interest to the researcher, including the maximum intensity observed and the IDs associated with all ongoing conflicts in the state that year.}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_stateyears}\NormalTok{(}\AttributeTok{system =} \StringTok{\textquotesingle{}gw\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{1946}\SpecialCharTok{:}\DecValTok{2019}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_ucdp\_acd}\NormalTok{(}\AttributeTok{type=}\StringTok{"intrastate"}\NormalTok{, }\AttributeTok{only\_wars =} \ConstantTok{FALSE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_peace\_years}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_democracy}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_creg\_fractionalization}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_sdp\_gdp}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_rugged\_terrain}\NormalTok{() }\OtherTok{{-}\textgreater{}}\NormalTok{ Data}
+\end{Highlighting}
+\end{Shaded}
+
+Finally, we can add some covariates of interest to these data. \texttt{add\_peace\_years()} calculates peace spells between ongoing conflicts in the data generated by \texttt{add\_ucdp\_acd()}. \texttt{add\_democracy()} adds information about the level of democracy in the year using three prominent data sets on democracy (Polity, V-Dem, and Marquez' (2016) extension of Pemstein et al's (2010) Unified Democracy Scores). \texttt{add\_creg\_fractionalization()} adds information about the fractionalization and polarization of a state's ethnic and religious groups from the Composition of Religious and Ethnic Groups (CREG) Project at the University of Illinois. \texttt{add\_sdp\_gdp()} will add information about a state's estimated GDP, population, and GDP per capita from the Anders, Fariss \& Markowitz (2020) simulations. Finally, \texttt{add\_rugged\_terrain()} provide two estimates of the ruggedness of a state's terrain. The first is the terrain ruggedness index calculated by Nunn \& Puga (2012) and the second is the Gibler \& Miller (2014) extension of the natural logged percentage of the state that is mountainous (originally calculated by Fearon \& Laitin (2003)). At the end of the pipe, the data returned by \texttt{\{peacesciencer\}} is assigned to an object minimally called \texttt{Data}.
+
+\texttt{\{peacesciencer\}}'s tight integration with the \texttt{\{tidyverse\}} permits wide flexibility for the researcher. For example, assume the researcher wants to discern the estimated effect of the same set of covariates on intra-state conflicts at the threshold of war and those intra-state conflicts at or below the threshold of war. The first call included all conflicts with at least 25 deaths, per the UCDP's inclusion rules, and the peace years were calculated for those as well. If the researcher wants a new set of conflicts with a new set of peace years, it would be a simple matter of repeating the pipe-based workflow, but altering the argument in \texttt{add\_ucdp\_acd()} to be \texttt{only\_wars\ =\ TRUE}. \texttt{\{peacesciencer\}} would then calculate the peace years for those (\texttt{add\_peace\_years()}). To avoid confusion with the overlapping column names, the researcher can use some \texttt{\{tidyverse\}} verbs to rename all those conflict variables to have a distinct prefix of \texttt{war\_} (i.e.~\texttt{rename\_at(vars(ucdpongoing:ucdpspell),\ \textasciitilde{}paste0("war\_",\ .))}) before finally joining these data into the master data frame (i.e.~\texttt{left\_join(Data,\ .)\ -\textgreater{}\ Data}). Table \ref{tab:tab-cw} shows the fruits of the data \texttt{\{peacesciencer\}} generated after some post-processing for lagging important variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_stateyears}\NormalTok{(}\AttributeTok{system =} \StringTok{\textquotesingle{}gw\textquotesingle{}}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{1946}\SpecialCharTok{:}\DecValTok{2019}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_ucdp\_acd}\NormalTok{(}\AttributeTok{type=}\StringTok{"intrastate"}\NormalTok{, }\AttributeTok{only\_wars =} \ConstantTok{TRUE}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{add\_peace\_years}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rename\_at}\NormalTok{(}\FunctionTok{vars}\NormalTok{(ucdpongoing}\SpecialCharTok{:}\NormalTok{ucdpspell), }\SpecialCharTok{\textasciitilde{}}\FunctionTok{paste0}\NormalTok{(}\StringTok{"war\_"}\NormalTok{, .)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{left\_join}\NormalTok{(Data, .) }\OtherTok{{-}\textgreater{}}\NormalTok{ Data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:tab-cw}A Civil Conflict Analysis of Gleditsch-Ward State-Years in \{peacesciencer\}}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{8cm}cc}
+\toprule
+\textbf{ } & \textbf{All UCDP Conflicts} & \textbf{Wars Only}\\
+\midrule
+Population Size (Lagged) & 0.229* & 0.272*\\
+ & (0.067) & (0.106)\\
+Extended UDS Democracy Score (Lagged) & 0.257 & -0.085\\
+ & (0.181) & (0.270)\\
+Extended UDS Democracy Score\textasciicircum{}2 (Lagged) & -0.726* & -0.761*\\
+ & (0.211) & (0.352)\\
+\% Mountainous Terrain (Logged) & 0.055 & 0.342*\\
+ & (0.067) & (0.112)\\
+Ethnic Fractionalization & 0.442 & 0.333\\
+ & (0.358) & (0.554)\\
+Religious Fractionalization & -0.389 & -0.281\\
+ & (0.402) & (0.593)\\
+t & -0.074+ & -0.111*\\
+ & (0.039) & (0.056)\\
+t\textasciicircum{}2 & 0.004* & 0.005+\\
+ & (0.002) & (0.003)\\
+t\textasciicircum{}3 & 0.000* & 0.000+\\
+ & (0.000) & (0.000)\\
+Intercept & -5.097* & -6.590*\\
+ & (1.351) & (2.084)\\
+\midrule
+Num.Obs. & 8192 & 8192\\
+\bottomrule
+\multicolumn{3}{l}{\textsuperscript{} + p $<$ 0.1, * p $<$ 0.05}\\
+\end{tabular}
+\end{table}
+
+\hypertarget{conclusion}{%
+\section{Conclusion}\label{conclusion}}
+
+\texttt{\{peacesciencer\}} is already more than capable of creating the kind of data in high demand in peace science. It can create dyad-year and state-year data. It is also generalizable to the dispute data included in the package, allowing for merging into \emph{dispute-year} data as well. This feature showed how it can effectively approximate two types of analyses in wide use in the peace science community. Surely researchers can and will add more information to these simple analyses after using \texttt{\{peacesciencer\}}, but the package already does a lot of the tedious work for researchers. It also does this in a maximally transparent way that conforms well to the DA-RT initiative across all political science.
+
+This is not to say \texttt{\{peacesciencer\}} does everything, but \texttt{\{peacesciencer\}} can only evolve and expand on what it already does well. For example, \texttt{\{peacesciencer\}} does not right now handle \emph{k}-adic data (c.f. Poast, 2010). However, the nature of \emph{k}-ads do not make for necessarily problematic data merges and should not be difficult to add for researchers who want it in future updates. Likewise, \texttt{\{peacesciencer\}} contains the Archigos leader data (Goemans, Gleditsch \& Chiozza, 2009) and is able to transform that into interesting data at the dyad-level and state-level, but doing a leader-level analysis with information about leader willingness to use force (e.g. Carter \& Smith, 2020) is not right now available. However, these are possible expansions on what \texttt{\{peacesciencer\}} already does well. Thus, this package can only evolve to meet new analytical demands for the peace science community. Users are free to request new features as ``issues'' on the project's Github.
+
+Finally, a skeptical reader should not think that making the process as simple as possible necessarily facilitates poor decision-making by the user. In cases where it is evident what the user wants (e.g.~an estimate of the level of democracy in the state-year), \texttt{\{peacesciencer\}} does the necessary work to provide the user that information. However, the package makes sure to leave important decision-making to the researcher. For example, \texttt{add\_cow\_alliance()} returns information about various types of alliance pledges in the dyad-year---should one exist---but leaves it to the researcher to say whether they want to define the presence of an alliance to be just a defense pledge or any type of alliance pledge. \texttt{add\_contiguity()} returns information about the type of contiguity relationship in the dyad-year, but leaves it to the researcher whether they want to code a contiguity variable as the presence of a mutual land border or some other type of contiguity threshold. The documentation included in this package, and on the website, is replete with caveats about the underlying data (e.g.~the contiguity data are not ordinal and should not be treated as such), how and where data issues arise (e.g.~how CoW state system data differ from Gleditsch-Ward data and how one is coerced into the other), and how researchers should consider optimally using its functionality (e.g.~\texttt{add\_ucdp\_acd()} probably should not lump all forms of conflict together). \texttt{\{peacesciencer\}} does not endeavor to make researchers lazy or sloppy, and it does not ultimately do this. Instead, \texttt{\{peacesciencer\}} reduces the tedium associated with starting quantitative peace science research, achieving this in a quick, robust, and transparent way.
+
+\newpage
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\setlength{\parskip}{6pt}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-andersetal2020bbgb}{}%
+Anders, Therese, Christopher J Fariss \& Jonathan N Markowitz (2020) Bread before guns or butter: Introducing surplus domestic product (SDP). \emph{International Studies Quarterly} 64(2): 392--405.
+
+\leavevmode\hypertarget{ref-arelbundock2021m}{}%
+Arel-Bundock, Vincent (2021b) \emph{Modelsummary: Summary Tables and Plots for Statistical Models and Data: Beautiful, Customizable, and Publication-Ready} (\url{https://CRAN.R-project.org/package=modelsummary}).
+
+\leavevmode\hypertarget{ref-arelbundock2021w}{}%
+Arel-Bundock, Vincent (2021a) \emph{WDI: World Development Indicators and Other World Bank Data} (\url{https://CRAN.R-project.org/package=WDI}).
+
+\leavevmode\hypertarget{ref-becketal1998tts}{}%
+Beck, Nathaniel, Jonathan N Katz \& Richard Tucker (1998) Taking time seriously: Time-series-cross-section analysis with a binary dependent variable. \emph{American Journal of Political Science} 42(4): 1260--1288.
+
+\leavevmode\hypertarget{ref-bennettetal2019n}{}%
+Bennett, DScott, Paul Poast \& Allan C Stam (2019) NewGene: An introduction for users. \emph{Journal of Conflict Resolution} 63(6): 1579--1592.
+
+\leavevmode\hypertarget{ref-bennettstam2000e}{}%
+Bennett, DScott \& Allan Stam (2000) EUGene: A conceptual manual. \emph{International Interactions} 26(2): 179--204.
+
+\leavevmode\hypertarget{ref-boehmke2016dwr}{}%
+Boehmke, Bradley C (2016) \emph{Data Wrangling with {R}}. Springer.
+
+\leavevmode\hypertarget{ref-bowersvoors2016hiyr}{}%
+Bowers, Jake \& Maarten Voors (2016) How to improve your relationship with your future self. \emph{Revista de Ciencia Politica} 36(3): 829--848.
+
+\leavevmode\hypertarget{ref-bremer1992ddc}{}%
+Bremer, Stuart A (1992) Dangerous dyads: Conditions affecting the likelihood of interstate war, 1816-1965. \emph{Journal of Conflict Resolution} 36(2): 309--341.
+
+\leavevmode\hypertarget{ref-cartersignorino2010bf}{}%
+Carter, David B \& Curtis S Signorino (2010) Back to the future: Modeling time dependence in binary data. \emph{Political Analysis} 18(3): 271--292.
+
+\leavevmode\hypertarget{ref-cartersmith2020fml}{}%
+Carter, Jeff \& Charles E Smith (2020) A framework for measuring leaders' willingness to use force. \emph{American Political Science Review} 114(4): 1352--1358.
+
+\leavevmode\hypertarget{ref-fearonlaitin2003eicw}{}%
+Fearon, James D \& David D Laitin (2003) Ethnicity, insurgency, and civil war. \emph{American Political Science Review} 97(1): 75--90.
+
+\leavevmode\hypertarget{ref-giblermiller2014etts}{}%
+Gibler, Douglas M \& Steven V Miller (2014) External territorial threat, state capacity, and civil war. \emph{Journal of Peace Research} 51(5): 634--646.
+
+\leavevmode\hypertarget{ref-gibleretal2016amid}{}%
+Gibler, Douglas M, Steven V Miller \& Erin K Little (2016) An analysis of the {M}ilitarized {I}nterstate {D}ispute {(MID)} dataset, 1816-2001. \emph{International Studies Quarterly} 60(4): 719--730.
+
+\leavevmode\hypertarget{ref-goemansetal2009ia}{}%
+Goemans, Henk E, Kristian Skrede Gleditsch \& Giacomo Chiozza (2009) Introducing {A}rchigos: A dataset on political leaders. \emph{Journal of Peace Research} 46(2): 269--83.
+
+\leavevmode\hypertarget{ref-lemkereed2001rprd}{}%
+Lemke, Douglas \& William Reed (2001) The relevance of politically relevant dyads. \emph{Journal of Conflict Resolution} 45(1): 126--144.
+
+\leavevmode\hypertarget{ref-marquez2016qme}{}%
+Marquez, Xavier (2016) A quick method for extending the {U}nified {D}emocracy {S}cores (\url{http://dx.doi.org/10.2139/ssrn.2753830}).
+
+\leavevmode\hypertarget{ref-nunnpuga2012r}{}%
+Nunn, Nathan \& Diego Puga (2012) Ruggedness: The blessing of bad geography in {A}frica. \emph{Review of Economics and Statistics} 94(1): 20--36.
+
+\leavevmode\hypertarget{ref-pemsteinetal2010dc}{}%
+Pemstein, Daniel, Stephen A Meserve \& James Melton (2010) Democratic compromise: A latent variable analysis of ten measures of regime type. \emph{Political Analysis} 18(4): 426--449.
+
+\leavevmode\hypertarget{ref-poast2010mdd}{}%
+Poast, Paul (2010) (Mis)using dyadic data to analyze multilateral events. \emph{Political Analysis} 18(4): 403--425.
+
+\leavevmode\hypertarget{ref-wickhamgrolemund2017rds}{}%
+Wickham, Hadley \& Garrett Grolemund (2017) \emph{{R} for Data Science}. Sebastopol, CA: O'Reilly Media, Inc.
+
+\end{CSLReferences}
+
+\end{document}

@@ -1,6 +1,6 @@
 # Specify a few variables to avoid repetition downstream
 
-OUTPUTS=doc/ms.pdf doc/ms-anon.pdf doc/ms.html doc/abstract.pdf inst/refs.bib
+OUTPUTS= ../docs/ms.pdf doc/ms-anon.pdf ../docs/ms.html doc/abstract.pdf inst/refs.bib
 RDS=  data/modDD.rds data/modCW.rds
 
 # Specify the primary targets: the outputs
@@ -16,7 +16,7 @@ clean:
 
 # Specialty sourcing for each output
 
-doc/ms.pdf:	ms.Rmd $(RDS)
+../docs/ms.pdf:	ms.Rmd $(RDS)
 	Rscript -e 'source("src/render_pdf.R")'
 
 doc/ms-anon.pdf: ms.Rmd $(RDS)
@@ -25,7 +25,7 @@ doc/ms-anon.pdf: ms.Rmd $(RDS)
 #doc/ms.docx: ms.Rmd $(RDS)
 #	Rscript -e 'source("src/render_docx.R")'
 
-doc/ms.html:	ms.Rmd
+../docs/ms.html:	ms.Rmd
 	Rscript -e 'source("src/render_html.R")'
 
 doc/abstract.pdf:	ms.Rmd
