@@ -6,3 +6,35 @@ template:
 
 figures:
   fig.width: 11
+
+# navbar:
+#   title: "peacesciencer"
+#   left:
+#     - icon: <span class="fas fa-home fa-lg"></span>
+#       href: index.html
+#     - text: "dplyr"
+#       href: articles/dplyr.html
+#     - text: "ML"
+#       href: articles/ML.html
+#     - text: "Extensions"
+#       href: articles/extensions.html
+#     - text: "Deployment"
+#       href: articles/deployment.html
+#     - text: "Reference"
+#       href: "reference/"
+#   right:
+#     - icon: <span class="fas fa-github fa-lg"></span>
+#       href: https://github.com/rstudio/sparklyr
+
+navbar:
+  structure:
+    left:  [home, reference, articles, user-guide, news]
+    right: [github]
+  components:
+    user-guide:
+      text: "User Guide (Manuscript)"
+      menu:
+      - text: HTML
+        href: ms.html
+      - text: PDF
+        href: ms.pdf
