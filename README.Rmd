@@ -60,13 +60,13 @@ db_descript <- lapply(db,function(x) {
     invisible(out)
   })
 
-tibble(x = db_names, y = gsub("\n","",unlist(db_descript))) %>%
+tibble(x = db_names, y = gsub("\n"," ",unlist(db_descript))) %>%
   mutate(x = str_sub(x, 1, nchar(x)-3)) %>%
   left_join(peacesciencer_functions, .) %>%
   mutate(func = paste0(x,"()")) -> peacesciencer_functions
 
 peacesciencer_functions %>%
-  mutate(link = paste0("[",x,"()](http://svmiller.com/peacesciencer/reference/",x,".html)")) -> peacesciencer_functions
+  mutate(link = paste0("[`",x,"()`](http://svmiller.com/peacesciencer/reference/",x,".html)")) -> peacesciencer_functions
 
 tibble(`**Function**` = peacesciencer_functions$link,
        `**Description**` = peacesciencer_functions$y) %>%
