@@ -11,6 +11,25 @@ body {
 	color: #111111;
 }
 
+.ref-index p {
+	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+	font-size: 11.5pt;
+	line-height: 1.5;
+	font-weight: 300;
+	color: #111111;
+}
+
+.template-reference-index th p  {
+  font-style: italic;
+  padding: 2px;
+}
+
+.template-reference-index tbody:after {
+  content: '';
+  display: block;
+  height: 15px;
+}
+
 h1, h2, h3, h4, h5, h6 {
 	font-family: 'Titillium Web', serif;
 }

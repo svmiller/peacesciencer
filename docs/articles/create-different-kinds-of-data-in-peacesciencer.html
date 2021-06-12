@@ -101,7 +101,7 @@
 
       
 
-      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create Different Kinds of Data in <code>{peacesciencer}</code>
@@ -116,18 +116,21 @@
     
     
 <p>This tutorial is a companion to <a href="https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf">the user guide</a>, which shows how to create different kinds of data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. However, space considerations (for ideal publication in a peer-reviewed journal) preclude the full “knitting” experience (i.e. giving the user a preview of what the data look like). What follows is a brief guide that expands on the tutorial section of that user guide for creating different kinds of data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>.</p>
-<p>This vignette will lean on the <a href="https://tidyverse.tidyverse.org">tidyverse</a> package, which will be included in almost anything you should do (optimally) with <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. I will also load <a href="https://lubridate.tidyverse.org">lubridate</a>. Internal functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> use <a href="https://lubridate.tidyverse.org">lubridate</a>—it is a formal dependency of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>—but users may want to load it for doing some additional stuff outside of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>.</p>
+<p>This vignette will lean on the <a href="http://tidyverse.tidyverse.org">tidyverse</a> package, which will be included in almost anything you should do (optimally) with <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. I will also load <a href="https://lubridate.tidyverse.org">lubridate</a>. Internal functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> use <a href="https://lubridate.tidyverse.org">lubridate</a>—it is a formal dependency of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>—but users may want to load it for doing some additional stuff outside of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
 <span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.2     ✓ dplyr   1.0.6</span>
-<span class="co">#&gt; ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
+<span class="co">#&gt; ✓ tibble  3.0.6     ✓ dplyr   1.0.4</span>
+<span class="co">#&gt; ✓ tidyr   1.1.2     ✓ stringr 1.4.0</span>
 <span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span>
 <span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a></span><span class="op">)</span>
+<span class="co">#&gt; Registered S3 method overwritten by 'broom.mixed':</span>
+<span class="co">#&gt;   method      from </span>
+<span class="co">#&gt;   tidy.gamlss broom</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lubridate'</span>
@@ -408,18 +411,18 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 177,122 x 10</span>
 <span class="co">#&gt; # Groups:   ccode, leadid, year, month [177,122]</span>
-<span class="co">#&gt;    ccode leadid      date       startdate  enddate    entry exit  exitcode  year</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  2     2 34fb1558-3… 1885-04-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  3     2 34fb1558-3… 1885-05-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  4     2 34fb1558-3… 1885-06-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  5     2 34fb1558-3… 1885-07-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  6     2 34fb1558-3… 1885-08-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  7     2 34fb1558-3… 1885-09-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  8     2 34fb1558-3… 1885-10-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt;  9     2 34fb1558-3… 1885-11-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
-<span class="co">#&gt; 10     2 34fb1558-3… 1885-12-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;    ccode leadid date       startdate  enddate    entry exit  exitcode  year</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     2 34fb1… 1885-03-04 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  2     2 34fb1… 1885-04-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  3     2 34fb1… 1885-05-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  4     2 34fb1… 1885-06-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  5     2 34fb1… 1885-07-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  6     2 34fb1… 1885-08-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  7     2 34fb1… 1885-09-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  8     2 34fb1… 1885-10-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt;  9     2 34fb1… 1885-11-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
+<span class="co">#&gt; 10     2 34fb1… 1885-12-01 1885-03-04 1889-03-04 Regu… Regu… Regular   1885</span>
 <span class="co">#&gt; # … with 177,112 more rows, and 1 more variable: month &lt;dbl&gt;</span></code></pre></div>
 <p>And here are leader-years.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
