@@ -56,6 +56,18 @@ for (x in 1:100) {
 Times$"add_gml_mids(keep=NULL)" <- tibble(x = unlist(lapply(tic.log(format = FALSE), function(x) x$toc - x$tic)))
 tic.clearlog()
 
+# * add_cow_mids(keep=NULL) -----
+
+for (x in 1:100) {
+  tic(x)
+  cow_ddy %>% add_cow_mids(keep = NULL)
+  gc()
+  toc(log = TRUE, quiet = TRUE)
+}
+
+Times$"add_cow_mids(keep=NULL)" <- tibble(x = unlist(lapply(tic.log(format = FALSE), function(x) x$toc - x$tic)))
+tic.clearlog()
+
 # * add_peace_years() (dyadic, GML) -----
 
 cow_ddy %>% add_gml_mids(keep = NULL) -> Data
@@ -68,6 +80,21 @@ for (x in 1:100) {
 }
 
 Times$"add_peace_years() (dyadic, GML)" <- tibble(x = unlist(lapply(tic.log(format = FALSE), function(x) x$toc - x$tic)))
+tic.clearlog()
+
+# * add_peace_years() (dyadic, CoW) -----
+
+rm(Data)
+cow_ddy %>% add_cow_mids(keep = NULL) -> Data
+
+for (x in 1:100) {
+  tic(x)
+  Data %>% add_peace_years()
+  gc()
+  toc(log = TRUE, quiet = TRUE)
+}
+
+Times$"add_peace_years() (dyadic, CoW)" <- tibble(x = unlist(lapply(tic.log(format = FALSE), function(x) x$toc - x$tic)))
 tic.clearlog()
 
 # * add_peace_years() (state, GW) -----
