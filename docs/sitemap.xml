@@ -49,9 +49,6 @@
     <loc>http://svmiller.com/reference/add_igos.html</loc>
   </url>
   <url>
-    <loc>http://svmiller.com/reference/add_mids.html</loc>
-  </url>
-  <url>
     <loc>http://svmiller.com/reference/add_minimum_distance.html</loc>
   </url>
   <url>
@@ -131,6 +128,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_states.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/cow_trade_ndy.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_trade_sy.html</loc>

@@ -10,11 +10,10 @@
 #' the second country (and vice-versa) along with their "smooth" equivalents.
 #'
 #' @details For the dyad-year data, there must be some kind of information loss in order to work within the
-#' limited space available to this package. This package loads a truncated version of the data
-#' from my website. It will also load these data every time you use the function for dyad-year data.
-#' This implies 1) you probably should not use this function unless you earnestly want these data, 2) this
-#' function won't work for you without an active internet connection, and 3) this will be one of the slowest
-#' functions in the entire package.
+#' limited space available to this package. This package loads a truncated version of the data in which the trade
+#' values are rounded to integers in order to greatly reduce the disk space for this package. I do not think this
+#' to be terribly problematic, though I admit I do not like it. If this is a problem for your research question,
+#' you may want to consider not using this function for dyad-year data.
 #'
 #' @author Steven V. Miller
 #'
@@ -31,7 +30,6 @@
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' # assumes an active internet connection
 #' cow_ddy %>% add_cow_trade()
 #' }
 
@@ -46,10 +44,20 @@ add_cow_trade <- function(data) {
 
     } else {
 
-    cow_trade_ddy <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
+    #cow_trade_ddy <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
 
-    cow_trade_ddy %>%
-      left_join(data, .) -> data
+    # cow_trade_ddy %>%
+    #   left_join(data, .) -> data
+
+      cow_trade_ndy %>%
+        rename(ccode1 = .data$ccode2,
+               ccode2 = .data$ccode1,
+               flow1 = .data$flow2,
+               flow2 = .data$flow1,
+               smoothflow1 = .data$smoothflow2,
+               smoothflow2 = .data$smoothflow1) %>%
+        bind_rows(cow_trade_ndy, .) %>%
+        left_join(data, .) -> data
 
     return(data)
 

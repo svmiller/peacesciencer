@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.9</span>
       </span>
     </div>
 
@@ -103,6 +103,9 @@
     </li>
     <li>
       <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
+    </li>
+    <li>
+      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
     </li>
   </ul>
 </li>
@@ -160,6 +163,7 @@
 <li>Add <code><a href="../reference/add_strategic_rivalries.html">add_strategic_rivalries()</a></code>.</li>
 <li>Add <code><a href="../reference/add_ucdp_acd.html">add_ucdp_acd()</a></code>. With it, update <code>ucdp_acd</code> data for functionality.</li>
 <li>Add <code><a href="../reference/add_rugged_terrain.html">add_rugged_terrain()</a></code>.</li>
+<li>Add <code>cow_trade_ndy</code> data. With it, update <code><a href="../reference/add_cow_trade.html">add_cow_trade()</a></code> function for speed upgrades.</li>
 <li>Add <code>cow_war_inter ,</code>cow_war_intra` data.</li>
 <li>Add <code>creg</code> data.</li>
 <li>Add <code>gwcode_democracy</code> data. <code><a href="../reference/add_democracy.html">add_democracy()</a></code> now takes CoW or G-W data.</li>
@@ -174,6 +178,7 @@
 <li>Fix bug in <code><a href="../reference/add_nmc.html">add_nmc()</a></code> (and <code>cow_nmc</code>). -9 is now explicitly NA, as it should have been.</li>
 <li>Patch <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which can now be used anywhere in the chain of commands (instead of just last). <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> is also a bit more “general” and includes a derivation of the <code><a href="https://rdrr.io/pkg/stevemisc/man/sbtscs.html">sbtscs()</a></code> function from the <code>{stevemisc}</code> package.</li>
 <li>Remove mandatory “system” calls in <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code> and <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code>. These merges now lean on system attributes declared in <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</li>
+<li>Remove <code>add_mids()</code>. Use <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> instead.</li>
 <li>Update <code>cow_ddy</code> and its documentation.</li>
 </ul>
 </div>
@@ -186,7 +191,7 @@
 <li>Add <code><a href="../reference/add_cow_mids.html">add_cow_mids()</a></code> function.</li>
 <li>Add <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> function.</li>
 <li>Add <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> function.</li>
-<li>Deprecate <code><a href="../reference/add_mids.html">add_mids()</a></code>. Use <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> instead.</li>
+<li>Deprecate <code>add_mids()</code>. Use <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> instead.</li>
 <li>Assign <code>ps_data_type == "dyad_year"</code> as attribute to <code>cow_mid_dirdisps</code> and <code>gml_dirdisp</code>. This allows <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> functions for these data sets.</li>
 <li>File compression for data files (again)</li>
 </ul>

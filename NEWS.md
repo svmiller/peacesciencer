@@ -8,6 +8,7 @@ peacesciencer 0.5.0 (in development)
 - Add `add_strategic_rivalries()`.
 - Add `add_ucdp_acd()`. With it, update `ucdp_acd` data for functionality.
 - Add `add_rugged_terrain()`.
+- Add `cow_trade_ndy` data. With it, update `add_cow_trade()` function for speed upgrades.
 - Add `cow_war_inter , `cow_war_intra` data.
 - Add `creg` data.
 - Add `gwcode_democracy` data. `add_democracy()` now takes CoW or G-W data.
@@ -21,6 +22,7 @@ peacesciencer 0.5.0 (in development)
 - Fix bug in `add_nmc()` (and `cow_nmc`). -9 is now explicitly NA, as it should have been.
 - Patch `add_peace_years()`, which can now be used anywhere in the chain of commands (instead of just last). `add_peace_years()` is also a bit more "general" and includes a derivation of the `sbtscs()` function from the `{stevemisc}` package.
 - Remove mandatory "system" calls in `add_minimum_distance()` and `add_sdp_gdp()`. These merges now lean on system attributes declared in `create_dyadyears()` and `create_stateyears()`.
+- Remove `add_mids()`. Use `add_gml_mids()` instead.
 - Update `cow_ddy` and its documentation.
 
 

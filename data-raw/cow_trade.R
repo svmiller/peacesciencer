@@ -16,11 +16,21 @@ cow_trade_ndy <- read_csv("~/Dropbox/data/cow/trade/Dyadic_COW_4.0.csv") %>%
 # about 3 MBs (after max compression). That's not really acceptable to me for the sake of keeping this under 5 MBs total.
 # So, I think I'm going to save the file to an RDS and load it off my website.
 
-saveRDS(cow_trade_ndy, file="data/cow_trade_ndy.rds")
+# saveRDS(cow_trade_ndy, file="data/cow_trade_ndy.rds")
 # ^ I'm going to move this.
 # http://svmiller.com/R/peacesciencer/cow_trade_ndy.rds
 
-# save(cow_trade_ndy, file="data/cow_trade_ndy.rda")
+# alternatively, I can do it this way.
+
+cow_trade_ndy %>%
+  filter_at(vars(flow1:smoothflow2), all_vars(is.na(.))) %>%
+  anti_join(cow_trade_ndy, .) -> cow_trade_ndy
+
+cow_trade_ndy %>% mutate_at(vars(flow1:smoothflow2), ~round(.)) -> cow_trade_ndy
+
+
+save(cow_trade_ndy, file="data/cow_trade_ndy.rda")
+tools::resaveRdaFiles("data/cow_trade_ndy.rda")
 # ^ I tried...
 
 # I'mma try the DDY version now...

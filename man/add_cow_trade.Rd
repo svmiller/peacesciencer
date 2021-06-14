@@ -22,11 +22,10 @@ data to a dyad-year data frame
 }
 \details{
 For the dyad-year data, there must be some kind of information loss in order to work within the
-limited space available to this package. This package loads a truncated version of the data
-from my website. It will also load these data every time you use the function for dyad-year data.
-This implies 1) you probably should not use this function unless you earnestly want these data, 2) this
-function won't work for you without an active internet connection, and 3) this will be one of the slowest
-functions in the entire package.
+limited space available to this package. This package loads a truncated version of the data in which the trade
+values are rounded to integers in order to greatly reduce the disk space for this package. I do not think this
+to be terribly problematic, though I admit I do not like it. If this is a problem for your research question,
+you may want to consider not using this function for dyad-year data.
 }
 \examples{
 
@@ -34,7 +33,6 @@ functions in the entire package.
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 
-# assumes an active internet connection
 cow_ddy \%>\% add_cow_trade()
 }
 }

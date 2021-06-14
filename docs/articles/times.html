@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.9</span>
       </span>
     </div>
 
@@ -104,7 +104,7 @@
 
       
 
-      </header><script src="times_files/accessible-code-block-0.0.1/empty-anchor.js"></script><script src="times_files/kePrint-0.0.1/kePrint.js"></script><link href="times_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+      </header><script src="times_files/header-attrs-2.8/header-attrs.js"></script><script src="times_files/kePrint-0.0.1/kePrint.js"></script><link href="times_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -120,19 +120,16 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
 <span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.0.6     ✓ dplyr   1.0.4</span>
-<span class="co">#&gt; ✓ tidyr   1.1.2     ✓ stringr 1.4.0</span>
+<span class="co">#&gt; ✓ tibble  3.1.2     ✓ dplyr   1.0.6</span>
+<span class="co">#&gt; ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
 <span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span>
 <span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a></span><span class="op">)</span>
-<span class="co">#&gt; Registered S3 method overwritten by 'broom.mixed':</span>
-<span class="co">#&gt;   method      from </span>
-<span class="co">#&gt;   tidy.gamlss broom</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'kableExtra'</span>
@@ -144,7 +141,7 @@
 <span class="va">state_bench</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"~/Dropbox/projects/peacesciencer/data-raw/times/state_bench.rds"</span><span class="op">)</span>
 <span class="va">dyad_bench</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="st">"~/Dropbox/projects/peacesciencer/data-raw/times/dyad_bench.rds"</span><span class="op">)</span></code></pre></div>
 <p>I had time around watching the UEFA Euro 2020 action to evaluate the expected run times in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The TV is in the living room and that meant I can have my laptop open for this. My laptop is a more appropriate computer for doing this because <a href="http://svmiller.com/blog/2019/07/notes-to-self-new-linux-installation-r-ubuntu/">my desktop is comically overpowered</a> and may provide some unrealistic expectations (for me) about how other users might experience <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<p><a href="https://github.com/svmiller/peacesciencer/tree/master/data-raw/times">A subdirectory on the project’s Github</a> shows what I did here. I grouped the functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> into two types, with one type have two subcomponents. The first type creates base data. These are <code><a href="../reference/create_statedays.html">create_statedays()</a></code>, <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>, and <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>. The second type broadly changes data—either adding to it or subtracting from it. For convenience sake, it’s good to think of this family of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> functions as applicable to state-year or dyad-year data. With that in mind, I used the <a href="https://github.com/joshuaulrich/microbenchmark/">microbenchmark</a> package to run each of the relevant functions 100 times—across those two types (and three overall groups)—to see how long these functions can take for a user with a computer similar to mine. The times are calculated as nanoseconds and the benchmarking happened while I was also fiddling with other things, perusing the internet, and watching UEFA Euro 2020. Thus, what I offer here is illustrative, but still useful.</p>
+<p><a href="https://github.com/svmiller/peacesciencer/tree/master/data-raw/times">A subdirectory on the project’s Github</a> shows what I did here. I grouped the functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> into two types, with one type have two subcomponents. The first type creates base data. These are <code><a href="../reference/create_statedays.html">create_statedays()</a></code>, <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>, and <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>. The second type broadly changes data—either adding to it or subtracting from it. For convenience sake, it’s good to think of this family of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> functions as applicable to state-year or dyad-year data. With that in mind, I used the <code>{microbenchmark}</code> package to run each of the relevant functions 100 times—across those two types (and three overall groups)—to see how long these functions can take for a user with a computer similar to mine. The times are calculated as nanoseconds and the benchmarking happened while I was also fiddling with other things, perusing the internet, and watching UEFA Euro 2020. Thus, what I offer here is illustrative, but still useful.</p>
 <p>A user can see the associated R Markdown file for this vignette to see the code for processing/formatting, so I want to focus on just the substance. Here is a summary table of the run times for the <code>create_*</code> functions from this exercise. Note that these functions were executed with the default options, so these are all Correlates of War state system data from 1816 to the most recently concluded calendar year.</p>
 <table class="table table table-striped">
 <caption>

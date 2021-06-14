@@ -556,6 +556,33 @@ NULL
 #'
 "cow_trade_sy"
 
+
+#' Correlates of War Dyadic Trade Data Set (v. 4.0)
+#'
+#' These are dyad-year-level data for national trade from the Correlates of War project.
+#'
+#'
+#' @format A data frame with 673654 observations on the following seven variables.
+#' \describe{
+#' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
+#' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
+#' \item{\code{year}}{the year}
+#' \item{\code{flow1}}{imports of \code{ccode1} from \code{ccode2}, in current million USD}
+#' \item{\code{flow2}}{imports of \code{ccode2} from \code{ccode1}, in current million USD}
+#' \item{\code{smoothflow1}}{smoothed \code{flow1} values}
+#' \item{\code{smoothflow2}}{smoothed \code{flow2} values}
+#' }
+#'
+#' @details The \code{data-raw} directory on the project's Github shows how the data were processed.
+#'
+#' @references
+#'
+#' Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Codebook, Version 4.0. Online: \url{https://correlatesofwar.org}
+#'
+#' Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." \emph{Conflict Management and Peace Science}, 26(5): 471-491.
+#'
+"cow_trade_ndy"
+
 #' Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.0)
 #'
 #' These are directed dyad-year-level data for alliance obligations and provisions from the ATOP project

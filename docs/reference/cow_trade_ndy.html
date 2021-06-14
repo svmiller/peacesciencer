@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War major power information to a dyad-year or state-year data frame — add_cow_majors • peacesciencer</title>
+<title>Correlates of War Dyadic Trade Data Set (v. 4.0) — cow_trade_ndy • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Correlates of War major power information to a dyad-year or state-year data frame — add_cow_majors" />
-<meta property="og:description" content="add_cow_majors() allows you to add Correlates of War major power variables
-to a dyad-year or state-year data frame." />
+<meta property="og:title" content="Correlates of War Dyadic Trade Data Set (v. 4.0) — cow_trade_ndy" />
+<meta property="og:description" content="These are dyad-year-level data for national trade from the Correlates of War project." />
 
 
 
@@ -150,69 +149,39 @@ to a dyad-year or state-year data frame." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War major power information to a dyad-year or state-year data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_cow_majors.R'><code>R/add_cow_majors.R</code></a></small>
-    <div class="hidden name"><code>add_cow_majors.Rd</code></div>
+    <h1>Correlates of War Dyadic Trade Data Set (v. 4.0)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>cow_trade_ndy.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_cow_majors()</code> allows you to add Correlates of War major power variables
-to a dyad-year or state-year data frame.</p>
+    <p>These are dyad-year-level data for national trade from the Correlates of War project.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_cow_majors</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>cow_trade_ndy</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><code>add_cow_majors()</code> takes a dyad-year data frame or state-year data frame and adds information
-about major power status for the given state or dyad in that year. If the data are dyad-year, the function
-returns two columns for whether the first state (i.e. <code>ccode1</code>) or the second state (i.e. <code>ccode2</code>) are major powers
-in the given year, according to the Correlates of War. 1 = is a major power. 0 = is not a major
-power. If the data are state-year, the functions returns just one column (<code>cowmaj</code>) for whether the
-state was a major power in a given dyad-year.</p>
+    <p>A data frame with 673654 observations on the following seven variables.</p><dl>
+<dt><code>ccode1</code></dt><dd><p>a numeric vector for the Correlates of War state code for the first state</p></dd>
+<dt><code>ccode2</code></dt><dd><p>a numeric vector for the Correlates of War state code for the second state</p></dd>
+<dt><code>year</code></dt><dd><p>the year</p></dd>
+<dt><code>flow1</code></dt><dd><p>imports of <code>ccode1</code> from <code>ccode2</code>, in current million USD</p></dd>
+<dt><code>flow2</code></dt><dd><p>imports of <code>ccode2</code> from <code>ccode1</code>, in current million USD</p></dd>
+<dt><code>smoothflow1</code></dt><dd><p>smoothed <code>flow1</code> values</p></dd>
+<dt><code>smoothflow2</code></dt><dd><p>smoothed <code>flow2</code> values</p></dd>
+
+</dl>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function leans on attributes of the data that are provided by the <code>create_dyadyear()</code> or
-<code>create_stateyear()</code> function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.</p>
+    <p>The <code>data-raw</code> directory on the project's Github shows how the data were processed.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Correlates of War Project. 2017. "State System Membership List, v2016." Online, <a href='https://correlatesofwar.org/data-sets/state-system-membership'>https://correlatesofwar.org/data-sets/state-system-membership</a></p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+    <p>Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Codebook, Version 4.0. Online: <a href='https://correlatesofwar.org'>https://correlatesofwar.org</a></p>
+<p>Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." <em>Conflict Management and Peace Science</em>, 26(5): 471-491.</p>
 
-    <p>Steven V. Miller</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'># just call `library(tidyverse)` at the top of the your script</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_cow_majors</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 5</span>
-#&gt;    ccode1 ccode2  year cowmaj1 cowmaj2
-#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920       1       0
-#&gt; <span style='color: #BCBCBC;'> 2</span>      2     20  <span style='text-decoration: underline;'>1</span>921       1       0
-#&gt; <span style='color: #BCBCBC;'> 3</span>      2     20  <span style='text-decoration: underline;'>1</span>922       1       0
-#&gt; <span style='color: #BCBCBC;'> 4</span>      2     20  <span style='text-decoration: underline;'>1</span>923       1       0
-#&gt; <span style='color: #BCBCBC;'> 5</span>      2     20  <span style='text-decoration: underline;'>1</span>924       1       0
-#&gt; <span style='color: #BCBCBC;'> 6</span>      2     20  <span style='text-decoration: underline;'>1</span>925       1       0
-#&gt; <span style='color: #BCBCBC;'> 7</span>      2     20  <span style='text-decoration: underline;'>1</span>926       1       0
-#&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927       1       0
-#&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928       1       0
-#&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929       1       0
-#&gt; <span style='color: #949494;'># … with 2,063,660 more rows</span></div><div class='input'>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
