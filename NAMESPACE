@@ -9,5 +9,5 @@ import(tidyr)
 
 importFrom(magrittr,"%>%")
 importFrom(rlang, .data)
-importFrom(stevemisc, sbtscs)
+importFrom(stevemisc, ps_btscs)
 importFrom(stats, "sd")
