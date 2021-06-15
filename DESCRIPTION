@@ -31,7 +31,7 @@ Imports:
     tidyr,
     stringr,
     rlang,
-    stevemisc
+    stevemisc (>= 1.1.0)
 Suggests: 
     countrycode,
     tibble,
