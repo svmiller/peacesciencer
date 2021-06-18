@@ -59,7 +59,6 @@ expand. The current development version has the following functions.
 | [`add_gml_mids()`](http://svmiller.com/peacesciencer/reference/add_gml_mids.html)                             | add\_gml\_mids() merges in GML’s MID data to a dyad-year data frame. The current version of the GML MID data is 2.1.1.                                                                                                                                                                                                                                        |
 | [`add_gwcode_to_cow()`](http://svmiller.com/peacesciencer/reference/add_gwcode_to_cow.html)                   | add\_gwcode\_to\_cow() allows you to match, as well as one can, Gleditsch-Ward system membership data with Correlates of War state system membership data.                                                                                                                                                                                                    |
 | [`add_igos()`](http://svmiller.com/peacesciencer/reference/add_igos.html)                                     | add\_igos() allows you to add information from the Correlates oF War International Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes.                                                                                                                                                               |
-| [`add_mids()`](http://svmiller.com/peacesciencer/reference/add_mids.html)                                     | add\_mids() merges in GML’s MID data to a dyad-year data frame. The current version of the GML MID data is 2.1.1. The function is depcrecated and replaced by add\_gml\_mids() to avoid confusion with the other conflict data option (add\_cow\_mids())                                                                                                      |
 | [`add_minimum_distance()`](http://svmiller.com/peacesciencer/reference/add_minimum_distance.html)             | add\_minimum\_distance() allows you to add the minimum distance (in kilometers) to a dyad-year or state-year data frame. These estimates are recorded in the cow\_mindist and gw\_mindist data that come with this package. The data are current as of the end of 2015.                                                                                       |
 | [`add_nmc()`](http://svmiller.com/peacesciencer/reference/add_nmc.html)                                       | add\_nmc() allows you to add the Correlates of War National Material Capabilities data to dyad-year or state-year data.                                                                                                                                                                                                                                       |
 | [`add_peace_years()`](http://svmiller.com/peacesciencer/reference/add_peace_years.html)                       | add\_peace\_years() calculates peace years for your ongoing dyadic conflicts. The function works for both the CoW-MID data and the Gibler-Miller-Little (GML) MID data.                                                                                                                                                                                       |
@@ -96,6 +95,7 @@ The current development version also includes the following data.
 | [`cow_nmc`](http://svmiller.com/peacesciencer/reference/cow_nmc.html)                   | Correlates of War National Military Capabilities Data                                          |
 | [`cow_sdp_gdp`](http://svmiller.com/peacesciencer/reference/cow_sdp_gdp.html)           | (Surplus and Gross) Domestic Product for Correlates of War States                              |
 | [`cow_states`](http://svmiller.com/peacesciencer/reference/cow_states.html)             | Correlates of War State System Membership Data (1816-2016)                                     |
+| [`cow_trade_ndy`](http://svmiller.com/peacesciencer/reference/cow_trade_ndy.html)       | Correlates of War Dyadic Trade Data Set (v. 4.0)                                               |
 | [`cow_trade_sy`](http://svmiller.com/peacesciencer/reference/cow_trade_sy.html)         | Correlates of War National Trade Data Set (v. 4.0)                                             |
 | [`cow_war_inter`](http://svmiller.com/peacesciencer/reference/cow_war_inter.html)       | Correlates of War Inter-State War Data (v. 4.0)                                                |
 | [`cow_war_intra`](http://svmiller.com/peacesciencer/reference/cow_war_intra.html)       | Correlates of War Intra-State War Data (v. 4.1)                                                |
@@ -222,9 +222,9 @@ core `{peacesciencer}` functionality whereas the other stuff is some
 post-processing and, as a bonus, some modeling.
 
 ``` r
-#library(tidyverse)
-#library(peacesciencer)
-# library(stevemisc)
+# library(tidyverse) # load this first for most/all things
+# library(peacesciencer) # the package of interest
+# library(stevemisc) # a dependency, but also used for standardizing variables for better interpretation
 library(tictoc)
 
 tic()
@@ -258,57 +258,32 @@ Data %>%
                              wbgdppc2011est2, wbgdppc2011est1)) -> Data
 
 # r2sd() is in {stevemisc}, a {peacesciencer} dependency.
+# This is just for a more readable regression output.
 Data %>%
   mutate_at(vars("cincprop", "mindemest", "minwbgdppc", "minmilit"),
             ~r2sd(.)) -> Data
 
-summary(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_defense +
+broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_defense +
                mindemest + minwbgdppc + minmilit +
                gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3), data= Data,
              family=binomial(link="logit")))
-```
-
-    ## 
-    ## Call:
-    ## glm(formula = gmlmidonset ~ landcontig + cincprop + cowmajdyad + 
-    ##     cow_defense + mindemest + minwbgdppc + minmilit + gmlmidspell + 
-    ##     I(gmlmidspell^2) + I(gmlmidspell^3), family = binomial(link = "logit"), 
-    ##     data = Data)
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -1.8623  -0.2188  -0.1373  -0.0961   5.7550  
-    ## 
-    ## Coefficients:
-    ##                    Estimate Std. Error z value Pr(>|z|)    
-    ## (Intercept)      -3.041e+00  6.343e-02 -47.944  < 2e-16 ***
-    ## landcontig        1.052e+00  5.677e-02  18.527  < 2e-16 ***
-    ## cincprop          4.461e-01  3.629e-02  12.293  < 2e-16 ***
-    ## cowmajdyad        1.411e-01  5.749e-02   2.454   0.0141 *  
-    ## cow_defense      -9.927e-02  5.764e-02  -1.722   0.0850 .  
-    ## mindemest        -4.918e-01  5.243e-02  -9.381  < 2e-16 ***
-    ## minwbgdppc        2.828e-01  5.091e-02   5.555 2.77e-08 ***
-    ## minmilit          2.608e-01  2.308e-02  11.299  < 2e-16 ***
-    ## gmlmidspell      -1.475e-01  5.066e-03 -29.112  < 2e-16 ***
-    ## I(gmlmidspell^2)  2.486e-03  1.353e-04  18.376  < 2e-16 ***
-    ## I(gmlmidspell^3) -1.164e-05  8.953e-07 -13.000  < 2e-16 ***
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
-    ##     Null deviance: 23398  on 103922  degrees of freedom
-    ## Residual deviance: 19710  on 103912  degrees of freedom
-    ##   (19234 observations deleted due to missingness)
-    ## AIC: 19732
-    ## 
-    ## Number of Fisher Scoring iterations: 8
-
-``` r
+#> # A tibble: 11 x 5
+#>    term               estimate   std.error statistic   p.value
+#>    <chr>                 <dbl>       <dbl>     <dbl>     <dbl>
+#>  1 (Intercept)      -3.04      0.0634         -47.9  0        
+#>  2 landcontig        1.05      0.0568          18.5  1.26e- 76
+#>  3 cincprop          0.446     0.0363          12.3  9.89e- 35
+#>  4 cowmajdyad        0.141     0.0575           2.45 1.41e-  2
+#>  5 cow_defense      -0.0993    0.0576          -1.72 8.50e-  2
+#>  6 mindemest        -0.492     0.0524          -9.38 6.55e- 21
+#>  7 minwbgdppc        0.283     0.0509           5.56 2.77e-  8
+#>  8 minmilit          0.261     0.0231          11.3  1.33e- 29
+#>  9 gmlmidspell      -0.147     0.00507        -29.1  2.51e-186
+#> 10 I(gmlmidspell^2)  0.00249   0.000135        18.4  2.05e- 75
+#> 11 I(gmlmidspell^3) -0.0000116 0.000000895    -13.0  1.22e- 38
 toc()
+#> 11.244 sec elapsed
 ```
-
-    ## 11.725 sec elapsed
 
 Here is how you might do a standard civil conflict analysis using
 Gleditsch-Ward states and UCDP conflict data.
@@ -331,9 +306,6 @@ create_stateyears(system = 'gw') %>%
   rename_at(vars(ucdpongoing:ucdpspell), ~paste0("war_", .)) %>%
   left_join(Data, .) -> Data
 
-
-
-
 Data %>%
   arrange(gwcode, year) %>%
   group_by(gwcode) %>%
@@ -342,100 +314,50 @@ Data %>%
   rename_at(vars(contains("_l1")),
             ~paste("l1", gsub("_l1", "", .), sep = "_") ) -> Data
 
-
 modCW <- list()
-summary(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
+broom::tidy(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
                     l1_xm_qudsest + I(l1_xm_qudsest^2) +
                     newlmtnest + ethfrac + relfrac +
                     ucdpspell + I(ucdpspell^2) + I(ucdpspell^3), data=subset(Data),
                   family = binomial(link="logit")))
-```
+#> # A tibble: 11 x 5
+#>    term                 estimate std.error statistic  p.value
+#>    <chr>                   <dbl>     <dbl>     <dbl>    <dbl>
+#>  1 (Intercept)        -5.10      1.35         -3.77  0.000161
+#>  2 l1_wbgdppc2011est  -0.285     0.110        -2.59  0.00952 
+#>  3 l1_wbpopest         0.229     0.0672        3.41  0.000645
+#>  4 l1_xm_qudsest       0.257     0.181         1.43  0.154   
+#>  5 I(l1_xm_qudsest^2) -0.726     0.211        -3.44  0.000574
+#>  6 newlmtnest          0.0549    0.0666        0.824 0.410   
+#>  7 ethfrac             0.442     0.358         1.23  0.217   
+#>  8 relfrac            -0.389     0.402        -0.969 0.333   
+#>  9 ucdpspell          -0.0738    0.0393       -1.88  0.0601  
+#> 10 I(ucdpspell^2)      0.00443   0.00205       2.16  0.0304  
+#> 11 I(ucdpspell^3)     -0.0000602 0.0000280    -2.15  0.0316
 
-    ## 
-    ## Call:
-    ## glm(formula = ucdponset ~ l1_wbgdppc2011est + l1_wbpopest + l1_xm_qudsest + 
-    ##     I(l1_xm_qudsest^2) + newlmtnest + ethfrac + relfrac + ucdpspell + 
-    ##     I(ucdpspell^2) + I(ucdpspell^3), family = binomial(link = "logit"), 
-    ##     data = subset(Data))
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -0.4103  -0.2142  -0.1658  -0.1024   3.4601  
-    ## 
-    ## Coefficients:
-    ##                      Estimate Std. Error z value Pr(>|z|)    
-    ## (Intercept)        -5.097e+00  1.351e+00  -3.774 0.000161 ***
-    ## l1_wbgdppc2011est  -2.854e-01  1.101e-01  -2.593 0.009516 ** 
-    ## l1_wbpopest         2.294e-01  6.723e-02   3.412 0.000645 ***
-    ## l1_xm_qudsest       2.574e-01  1.805e-01   1.426 0.153887    
-    ## I(l1_xm_qudsest^2) -7.260e-01  2.108e-01  -3.444 0.000574 ***
-    ## newlmtnest          5.490e-02  6.660e-02   0.824 0.409743    
-    ## ethfrac             4.418e-01  3.580e-01   1.234 0.217095    
-    ## relfrac            -3.892e-01  4.017e-01  -0.969 0.332563    
-    ## ucdpspell          -7.381e-02  3.926e-02  -1.880 0.060108 .  
-    ## I(ucdpspell^2)      4.431e-03  2.047e-03   2.165 0.030396 *  
-    ## I(ucdpspell^3)     -6.019e-05  2.801e-05  -2.149 0.031638 *  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
-    ##     Null deviance: 1359.9  on 8191  degrees of freedom
-    ## Residual deviance: 1275.0  on 8181  degrees of freedom
-    ##   (2298 observations deleted due to missingness)
-    ## AIC: 1297
-    ## 
-    ## Number of Fisher Scoring iterations: 9
-
-``` r
-summary(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
+broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
                     l1_xm_qudsest + I(l1_xm_qudsest^2) +
                     newlmtnest + ethfrac + relfrac +
                     war_ucdpspell + I(war_ucdpspell^2) + I(war_ucdpspell^3), data=subset(Data),
                   family = binomial(link="logit")))
-```
+#> # A tibble: 11 x 5
+#>    term                 estimate std.error statistic p.value
+#>    <chr>                   <dbl>     <dbl>     <dbl>   <dbl>
+#>  1 (Intercept)        -6.59      2.08         -3.16  0.00157
+#>  2 l1_wbgdppc2011est  -0.343     0.172        -1.99  0.0463 
+#>  3 l1_wbpopest         0.272     0.106         2.56  0.0105 
+#>  4 l1_xm_qudsest      -0.0846    0.270        -0.313 0.754  
+#>  5 I(l1_xm_qudsest^2) -0.761     0.352        -2.16  0.0307 
+#>  6 newlmtnest          0.342     0.112         3.05  0.00226
+#>  7 ethfrac             0.333     0.554         0.601 0.548  
+#>  8 relfrac            -0.281     0.593        -0.474 0.635  
+#>  9 war_ucdpspell      -0.111     0.0562       -1.98  0.0478 
+#> 10 I(war_ucdpspell^2)  0.00466   0.00252       1.85  0.0643 
+#> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
-    ## 
-    ## Call:
-    ## glm(formula = war_ucdponset ~ l1_wbgdppc2011est + l1_wbpopest + 
-    ##     l1_xm_qudsest + I(l1_xm_qudsest^2) + newlmtnest + ethfrac + 
-    ##     relfrac + war_ucdpspell + I(war_ucdpspell^2) + I(war_ucdpspell^3), 
-    ##     family = binomial(link = "logit"), data = subset(Data))
-    ## 
-    ## Deviance Residuals: 
-    ##     Min       1Q   Median       3Q      Max  
-    ## -0.3897  -0.1381  -0.0955  -0.0491   3.4561  
-    ## 
-    ## Coefficients:
-    ##                      Estimate Std. Error z value Pr(>|z|)   
-    ## (Intercept)        -6.590e+00  2.084e+00  -3.162  0.00157 **
-    ## l1_wbgdppc2011est  -3.430e-01  1.721e-01  -1.993  0.04625 * 
-    ## l1_wbpopest         2.723e-01  1.065e-01   2.557  0.01054 * 
-    ## l1_xm_qudsest      -8.464e-02  2.701e-01  -0.313  0.75404   
-    ## I(l1_xm_qudsest^2) -7.612e-01  3.523e-01  -2.160  0.03074 * 
-    ## newlmtnest          3.417e-01  1.119e-01   3.054  0.00226 **
-    ## ethfrac             3.334e-01  5.545e-01   0.601  0.54762   
-    ## relfrac            -2.811e-01  5.927e-01  -0.474  0.63536   
-    ## war_ucdpspell      -1.113e-01  5.625e-02  -1.979  0.04779 * 
-    ## I(war_ucdpspell^2)  4.662e-03  2.520e-03   1.850  0.06434 . 
-    ## I(war_ucdpspell^3) -4.991e-05  3.018e-05  -1.654  0.09819 . 
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## (Dispersion parameter for binomial family taken to be 1)
-    ## 
-    ##     Null deviance: 689.84  on 8191  degrees of freedom
-    ## Residual deviance: 626.95  on 8181  degrees of freedom
-    ##   (2298 observations deleted due to missingness)
-    ## AIC: 648.95
-    ## 
-    ## Number of Fisher Scoring iterations: 10
-
-``` r
 toc()
+#> 4.068 sec elapsed
 ```
-
-    ## 4.055 sec elapsed
 
 # Issues/Requests
 

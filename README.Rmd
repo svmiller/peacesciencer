@@ -5,7 +5,15 @@ always_allow_html: TRUE
 
 # `peacesciencer`: Tools and Data for Quantitative Peace Science
 
-```{r echo=FALSE, results="hide", message=FALSE}
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+
+```{r loadstuff, echo=FALSE, results="hide", message=FALSE}
 library("badger")
 library("tidyverse")
 library(kableExtra)
@@ -172,9 +180,9 @@ All told, the process will look something like this. Assume you want to create s
 
 ```{r, cache=F, message=F, eval=T}
 
-#library(tidyverse)
-#library(peacesciencer)
-# library(stevemisc)
+# library(tidyverse) # load this first for most/all things
+# library(peacesciencer) # the package of interest
+# library(stevemisc) # a dependency, but also used for standardizing variables for better interpretation
 library(tictoc)
 
 tic()
@@ -208,11 +216,12 @@ Data %>%
                              wbgdppc2011est2, wbgdppc2011est1)) -> Data
 
 # r2sd() is in {stevemisc}, a {peacesciencer} dependency.
+# This is just for a more readable regression output.
 Data %>%
   mutate_at(vars("cincprop", "mindemest", "minwbgdppc", "minmilit"),
             ~r2sd(.)) -> Data
 
-summary(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_defense +
+broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_defense +
                mindemest + minwbgdppc + minmilit +
                gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3), data= Data,
              family=binomial(link="logit")))
@@ -241,9 +250,6 @@ create_stateyears(system = 'gw') %>%
   rename_at(vars(ucdpongoing:ucdpspell), ~paste0("war_", .)) %>%
   left_join(Data, .) -> Data
 
-
-
-
 Data %>%
   arrange(gwcode, year) %>%
   group_by(gwcode) %>%
@@ -252,15 +258,14 @@ Data %>%
   rename_at(vars(contains("_l1")),
             ~paste("l1", gsub("_l1", "", .), sep = "_") ) -> Data
 
-
 modCW <- list()
-summary(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
+broom::tidy(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
                     l1_xm_qudsest + I(l1_xm_qudsest^2) +
                     newlmtnest + ethfrac + relfrac +
                     ucdpspell + I(ucdpspell^2) + I(ucdpspell^3), data=subset(Data),
                   family = binomial(link="logit")))
 
-summary(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
+broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbpopest  +
                     l1_xm_qudsest + I(l1_xm_qudsest^2) +
                     newlmtnest + ethfrac + relfrac +
                     war_ucdpspell + I(war_ucdpspell^2) + I(war_ucdpspell^3), data=subset(Data),
