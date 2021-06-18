@@ -6,6 +6,7 @@ import(geosphere)
 import(stringr)
 import(lubridate)
 import(tidyr)
+import(bib2df)
 
 importFrom(magrittr,"%>%")
 importFrom(rlang, .data)

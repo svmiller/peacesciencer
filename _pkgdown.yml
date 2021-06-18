@@ -42,6 +42,10 @@ reference:
   contents:
   - starts_with("add")
   - starts_with("filter")
+- title: Other Functions
+  desc: "These are miscellaneous functions also included in this package."
+  contents:
+  - starts_with("ps_cite()")
 - title: Data
   desc: "These are the data included in `{peacesciencer}`. They are used internally for the functions listed above, though a researcher can also call these data objects into the R session if they would like to inspect the data for themselves."
   contents:

@@ -274,6 +274,28 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 toc()
 ```
 
+# Citing What You Do in `{peacesciencer}`
+
+You can (and should) cite what you do in `{peacesciencer}`. The package includes a data frame of a `BibTeX` file (`ps_bib`) and a function for finding and returning `BibTeX` entries that you can include in your projects. This is the `ps_cite()` function. The `ps_cite()` function takes a string and does a partial match for relevant keywords (as `KEYWORDS`) associated with entries in the `ps_bib` file. For example, you can (and should) cite the package itself.
+
+```{r}
+ps_cite("peacesciencer")
+```
+
+You can see what are the relevant citations to consider using for the data returned by `add_democracy()`
+
+```{r}
+ps_cite("add_democracy()")
+```
+
+You can also return partial matches to see what citations are associated with, say, alliance data in this package.
+
+```{r}
+ps_cite("alliance")
+```
+
+This function might expand in complexity in future releases, but you can use it right now for finding appropriate citations. You an also scan the `ps_bib` data to see what is in there.
+
 # Issues/Requests
 
 `{peacesciencer}` is already more than capable to meet a wide variety of needs in the peace science community. Users are free to raise an issue on the project's Github if some feature is not performing as they think it should or if there are additions they would like to see.

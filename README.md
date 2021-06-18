@@ -71,6 +71,7 @@ expand. The current development version has the following functions.
 | [`create_statedays()`](http://svmiller.com/peacesciencer/reference/create_statedays.html)                     | create\_statedays() allows you to create state-day data from either the Correlates of War (CoW) state system membership data or the Gleditsch-Ward (gw) system membership data. The function leans on internal data provided in the package.                                                                                                                  |
 | [`create_stateyears()`](http://svmiller.com/peacesciencer/reference/create_stateyears.html)                   | create\_stateyears() allows you to generate state-year data from either the Correlates of War (CoW) state system membership data or the Gleditsch-Ward (gw) system membership data. The function leans on internal data provided in the package.                                                                                                              |
 | [`filter_prd()`](http://svmiller.com/peacesciencer/reference/filter_prd.html)                                 | filter\_prd() filters a dyad-year data frame to just those that are “politically relevant.” This is useful for discarding unnecessary (and unwanted) observations that just consume space in memory.                                                                                                                                                          |
+| [`ps_cite()`](http://svmiller.com/peacesciencer/reference/ps_cite.html)                                       | ps\_cite() allows the user to get citations to scholarship that they should include in their papers that incorporate the functions and data in this package.                                                                                                                                                                                                  |
 
 The current development version also includes the following data.
 
@@ -80,7 +81,6 @@ The current development version also includes the following data.
 | [`atop_alliance`](http://svmiller.com/peacesciencer/reference/atop_alliance.html)       | Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.0)                        |
 | [`capitals`](http://svmiller.com/peacesciencer/reference/capitals.html)                 | A complete list of capitals and capital transitions for Correlates of War state system members |
 | [`ccode_democracy`](http://svmiller.com/peacesciencer/reference/ccode_democracy.html)   | Democracy data for all Correlates of War states                                                |
-| [`citations`](http://svmiller.com/peacesciencer/reference/citations.html)               | Citations for Data/Functions Used in ‘peacesciencer’                                           |
 | [`cow_alliance`](http://svmiller.com/peacesciencer/reference/cow_alliance.html)         | Correlates of War directed dyad-year alliance data                                             |
 | [`cow_contdir`](http://svmiller.com/peacesciencer/reference/cow_contdir.html)           | Correlates of War Direct Contiguity Data (v. 3.2)                                              |
 | [`cow_ddy`](http://svmiller.com/peacesciencer/reference/cow_ddy.html)                   | A directed dyad-year data frame of Correlates of War state system members                      |
@@ -110,6 +110,7 @@ The current development version also includes the following data.
 | [`gwcode_democracy`](http://svmiller.com/peacesciencer/reference/gwcode_democracy.html) | Democracy data for all Gleditsch-Ward states                                                   |
 | [`hief`](http://svmiller.com/peacesciencer/reference/hief.html)                         | Historical Index of Ethnic Fractionalization data                                              |
 | [`maoz_powers`](http://svmiller.com/peacesciencer/reference/maoz_powers.html)           | Zeev Maoz’ Regional/Global Power Data                                                          |
+| [`ps_bib`](http://svmiller.com/peacesciencer/reference/ps_bib.html)                     | A ‘BibTeX’ Data Frame of Citations                                                             |
 | [`rugged`](http://svmiller.com/peacesciencer/reference/rugged.html)                     | Rugged/Mountainous Terrain Data                                                                |
 | [`td_rivalries`](http://svmiller.com/peacesciencer/reference/td_rivalries.html)         | Thompson and Dreyer’s (2012) Strategic Rivalries, 1494-2010                                    |
 | [`ucdp_acd`](http://svmiller.com/peacesciencer/reference/ucdp_acd.html)                 | UCDP Armed Conflict Data (ACD) (v. 20.1)                                                       |
@@ -282,7 +283,7 @@ broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_
 #> 10 I(gmlmidspell^2)  0.00249   0.000135        18.4  2.05e- 75
 #> 11 I(gmlmidspell^3) -0.0000116 0.000000895    -13.0  1.22e- 38
 toc()
-#> 11.244 sec elapsed
+#> 11.6 sec elapsed
 ```
 
 Here is how you might do a standard civil conflict analysis using
@@ -356,8 +357,105 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
 toc()
-#> 4.068 sec elapsed
+#> 4.239 sec elapsed
 ```
+
+# Citing What You Do in `{peacesciencer}`
+
+You can (and should) cite what you do in `{peacesciencer}`. The package
+includes a data frame of a `BibTeX` file (`ps_bib`) and a function for
+finding and returning `BibTeX` entries that you can include in your
+projects. This is the `ps_cite()` function. The `ps_cite()` function
+takes a string and does a partial match for relevant keywords (as
+`KEYWORDS`) associated with entries in the `ps_bib` file. For example,
+you can (and should) cite the package itself.
+
+``` r
+ps_cite("peacesciencer")
+#> @Manual{peacesciencer-package,
+#>   Author = {Steven V. Miller},
+#>   Title = {peacesciencer}: A User's Guide for Quantitative Peace Science in R},
+#>   Year = {2021},
+#>   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw()},
+#>   Url = {http://svmiller.com/peacesciencer}
+#> }
+```
+
+You can see what are the relevant citations to consider using for the
+data returned by `add_democracy()`
+
+``` r
+ps_cite("add_democracy()")
+#> @Unpublished{coppedgeetal2020vdem,
+#>   Author = {Michael Coppedge and John Gerring and Carl Henrik Knutsen and Staffan I. Lindberg and Jan Teorell and David Altman and Michael Bernhard and M. Steven Fish and Adam Glynn and Allen Hicken and Anna Luhrmann and Kyle L. Marquardt and Kelly McMann and Pamela Paxton and Daniel Pemstein and Brigitte Seim and Rachel Sigman and Svend-Erik Skaaning and Jeffrey Staton and Agnes Cornell and Lisa Gastaldi and Haakon Gjerl{\o}w and Valeriya Mechkova and Johannes von R{\"o}mer and Aksel Sundtr{\"o}m and Eitan Tzelgov and Luca Uberti and Yi-ting Wang and Tore Wig and Daniel Ziblatt},
+#>   Note = {Varieties of Democracy ({V}-{D}em) Project},
+#>   Title = {V-Dem Codebook v10},
+#>   Year = {2020},
+#>   Keywords = {add_democracy(), v-dem, varieties of democracy}
+#> }
+#> 
+#> 
+#> @Unpublished{marshalletal2017p,
+#>   Author = {Monty G. Marshall and Ted Robert Gurr and Keith Jaggers},
+#>   Note = {University of Maryland, Center for International Development and Conflict Management},
+#>   Title = {Polity {IV} Project: Political Regime Characteristics and Transitions, 1800-2016},
+#>   Year = {2017},
+#>   Keywords = {add_democracy(), polity}
+#> }
+#> 
+#> 
+#> @Unpublished{marquez2016qme,
+#>   Author = {Xavier Marquez},
+#>   Note = {Available at SSRN: http://ssrn.com/abstract=2753830},
+#>   Title = {A Quick Method for Extending the {U}nified {D}emocracy {S}cores},
+#>   Year = {2016},
+#>   Keywords = {add_democracy(), UDS, Unified Democracy Scores},
+#>   Url = {http://dx.doi.org/10.2139/ssrn.2753830}
+#> }
+#> 
+#> 
+#> @Article{pemsteinetal2010dc,
+#>   Author = {Pemstein, Daniel and Stephen A. Meserve and James Melton},
+#>   Journal = {Political Analysis},
+#>   Number = {4},
+#>   Pages = {426--449},
+#>   Title = {Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type},
+#>   Volume = {18},
+#>   Year = {2010},
+#>   Keywords = {add_democracy(), UDS, Unified Democracy Scores},
+#>   Owner = {steve},
+#>   Timestamp = {2011.01.30}
+#> }
+```
+
+You can also return partial matches to see what citations are associated
+with, say, alliance data in this package.
+
+``` r
+ps_cite("alliance")
+#> @Article{leedsetal2002atop,
+#>   Author = {Bretty Ashley Leeds and Jeffrey M. Ritter and Sara McLaughlin Mitchell and Andrew G. Long},
+#>   Journal = {International Interactions},
+#>   Pages = {237--260},
+#>   Title = {Alliance Treaty Obligations and Provisions, 1815-1944},
+#>   Volume = {28},
+#>   Year = {2002},
+#>   Keywords = {add_atop_alliance()}
+#> }
+#> 
+#> 
+#> @Book{gibler2009ima,
+#>   Author = {Douglas M. Gibler},
+#>   Publisher = {Washington DC: CQ Press},
+#>   Title = {International Military Alliances, 1648-2008},
+#>   Year = {2009},
+#>   Keywords = {add_cow_alliance()}
+#> }
+```
+
+This function might expand in complexity in future releases, but you can
+use it right now for finding appropriate citations. You an also scan the
+`ps_bib` data to see what is in there.
 
 # Issues/Requests
 

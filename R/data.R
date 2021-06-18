@@ -329,7 +329,7 @@ NULL
 #' @details Data originally provided by Gleditsch with no column names. Column names were added before some light re-cleaning in order
 #' to generate these data.
 #'
-#' @references Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" 25(4): 393--413.
+#' @references Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" International Interactions 25(4): 393--413.
 #'
 "gw_states"
 
@@ -399,18 +399,6 @@ NULL
 "cow_nmc"
 
 
-#' Citations for Data/Functions Used in \code{peacesciencer}
-#'
-#' This is a master list of references for data/functions used in this package. Do check it out to make sure you're faithfully citing what you're using.
-#'
-#' @format A data frame with two variables:
-#' \describe{
-#' \item{\code{data_function}}{the data or function used or referenced in the package}
-#' \item{\code{citation}}{an appropriate (text) citation you should include in your manuscript}
-#' }
-#'
-"citations"
-
 #' Correlates of War Non-Directed Dyad-Year International Governmental Organizations (IGOs) Data
 #'
 #' This is a non-directed dyad-year version of the Correlates of War IGOs data. I use it internally for merging IGOs data into dyad-year data.
@@ -430,7 +418,7 @@ NULL
 #'
 #' @references
 #'
-#' Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, Anne Spencer Jamison, “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
+#' Pevehouse, Jon C.W., Timothy Nordstrom, Roseanne W McManus, Anne Spencer Jamison, 2020. “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
 #'
 #' Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.
 #'
@@ -457,7 +445,7 @@ NULL
 #'
 #' @references
 #'
-#' Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, Anne Spencer Jamison, “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
+#' Pevehouse, Jon C.W., Timothy Nordstrom, Roseanne W McManus, Anne Spencer Jamison. 2020. “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
 #'
 #' Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.
 #'
@@ -1255,3 +1243,59 @@ NULL
 #'
 
 "cow_war_inter"
+
+
+#' A \code{BibTeX} Data Frame of Citations
+#'
+#' This is a \code{BibTeX} file, loaded as a data frame, to assist the user in properly citing the source material that is used in this package.
+#'
+#' @format A data frame with 37 observations on the following 40 variables.
+#' \describe{
+#' \item{\code{CATEGORY}}{the \code{BibTeX} entry type}
+#' \item{\code{BIBTEXKEY}}{the \code{BibTeX} unique entry key}
+#'  \item{\code{ADDRESS}}{another \code{BibTeX} field}
+#' \item{\code{ANNOTE}}{another \code{BibTeX} field}
+#' \item{\code{AUTHOR}}{a list of authors for this entry}
+#' \item{\code{BOOKTITLE}}{another \code{BibTeX} field, for book title (if appropriate)}
+#' \item{\code{CHAPTER}}{another \code{BibTeX} field, for chapter (if appropriate)}
+#' \item{\code{CROSSREF}}{another \code{BibTeX} field}
+#' \item{\code{EDITION}}{another \code{BibTeX} field, for edition of book (if appropriate)}
+#' \item{\code{EDITOR}}{another \code{BibTeX} field, for book editor (if appropriate)}
+#' \item{\code{HOWPUBLISHED}}{another \code{BibTeX} field}
+#' \item{\code{INSTITUTION}}{another \code{BibTeX} field}
+#' \item{\code{JOURNAL}}{another \code{BibTeX} field, for the journal name (if appropriate)}
+#' \item{\code{KEY}}{another \code{BibTeX} field}
+#' \item{\code{MONTH}}{another \code{BibTeX} field}
+#' \item{\code{NOTE}}{another \code{BibTeX} field}
+#' \item{\code{NUMBER}}{another \code{BibTeX} field, for journal volume number (if appropriate)}
+#' \item{\code{ORGANIZATION}}{another \code{BibTeX} field}
+#' \item{\code{PAGES}}{another \code{BibTeX} field, for pages of the entry}
+#' \item{\code{PUBLISHER}}{another \code{BibTeX} field, for book publisher (if appropriate)}
+#' \item{\code{SCHOOL}}{another \code{BibTeX} field}
+#' \item{\code{SERIES}}{another \code{BibTeX} field}
+#' \item{\code{TITLE}}{another \code{BibTeX} field, for title of the entry}
+#' \item{\code{TYPE}}{another \code{BibTeX} field}
+#' \item{\code{VOLUME}}{another \code{BibTeX} field, for journal volume (if appropriate)}
+#' \item{\code{YEAR}}{another \code{BibTeX} field, for year of publication}
+#' \item{\code{KEYWORDS}}{another \code{BibTeX} field, used primarily for selective filtering in this package}
+#' \item{\code{URL}}{another \code{BibTeX} field, for website (if appropriate)}
+#' \item{\code{OWNER}}{another \code{BibTeX} field}
+#' \item{\code{TIMESTAMP}}{another \code{BibTeX} field, used occasionally when I started populating my master file (you will see some old entries here)}
+#' \item{\code{DOI}}{another \code{BibTeX} field, for a digital object identifier (used rarely)}
+#' \item{\code{EPRINT}}{another \code{BibTeX} field}
+#' \item{\code{JOURNALTITLE}}{another \code{BibTeX} field, which I think is actually a \code{BibLaTeX} field}
+#' \item{\code{ISSN}}{another \code{BibTeX} field}
+#' \item{\code{ABSTRACT}}{another \code{BibTeX} field, for entry abstract (if appropriate)}
+#' \item{\code{COPYRIGHT}}{another \code{BibTeX} field}
+#' \item{\code{JSTOR_ARTICLETYPE}}{another \code{BibTeX} field}
+#' \item{\code{JSTOR_FORMATTEDDATE}}{another \code{BibTeX} field}
+#' \item{\code{DATE.ADDED}}{another \code{BibTeX} field}
+#' \item{\code{DATE.MODIFIED}}{another \code{BibTeX} field}
+#' }
+#'
+#' @details See \code{data-raw} directory for how these data were generated. The data were created by \pkg{bib2df}, which is now a package dependency.
+#' I assume the user has some familiarity with \code{BibTeX}. Some entires were copy-pasted from my master bibliography file that I started in 2008 or so.
+#'
+#'
+
+"ps_bib"
