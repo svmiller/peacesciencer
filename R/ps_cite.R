@@ -4,8 +4,8 @@
 #' should include in their papers that incorporate the functions and data in this package.
 #'
 #' @return \code{ps_cite()} takes a character vector and scans the \code{ps_bib} data in
-#' this package to return a \code{BibTeX} citation (or citations) that they should use
-#' to properly cite the material they are using (as generated in this package). The citations
+#' this package to return a \code{BibTeX} citation (or citations) for the researcher to use
+#' to properly cite the material they are getting from this package. The citations
 #' are returned as a full \code{BibTeX} entry (or entries) that they can copy-paste into their
 #' own \code{BibTeX} file.
 #'
@@ -19,6 +19,8 @@
 #'
 #' @examples
 #'
+#' # You can cite the package
+#' ps_cite("peacesciencer")
 #'
 #' # You can do partial matching
 #' ps_cite("democracy")
