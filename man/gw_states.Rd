@@ -25,6 +25,6 @@ Data originally provided by Gleditsch with no column names. Column names were ad
 to generate these data.
 }
 \references{
-Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" 25(4): 393--413.
+Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" International Interactions 25(4): 393--413.
 }
 \keyword{datasets}

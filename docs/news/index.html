@@ -156,6 +156,7 @@
 <h2 class="hasAnchor">
 <a href="#peacesciencer-050-in-development" class="anchor"></a>peacesciencer 0.5.0 (in development)</h2>
 <ul>
+<li>Add <a href="https://docs.ropensci.org/bib2df">bib2df</a> as package dependency. Force upgraded version of <code>{stevemisc}</code> as package dependency.</li>
 <li>Add <code>LazyDataCompression: xz</code> to DESCRIPTION</li>
 <li>Add “system” attributes to <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>, <code><a href="../reference/create_statedays.html">create_statedays()</a></code>, and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</li>
 <li>Add <code><a href="../reference/add_cow_wars.html">add_cow_wars()</a></code> function.</li>
@@ -170,12 +171,14 @@
 <li>Add <code>hief</code> data.</li>
 <li>Add <code>rugged</code> data.</li>
 <li>Add <code>td_rivalries</code> data.</li>
+<li>Add <code><a href="../reference/ps_cite.html">ps_cite()</a></code> and <code>ps_bib</code>. Remove <code>citations</code>.</li>
 <li>Add log-transformed GDP per capita estimates to <code>cow_sdp_gdp</code> and <code>gw_sdp_gdp</code>. Update <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> to reflect this change.</li>
 <li>Clarify documentation for <code><a href="../reference/add_contiguity.html">add_contiguity()</a></code> for why non-contiguous dyads are 0s and not 6s. Briefly: I don’t think of these data as ordinal and I don’t encourage the researcher to think of them as ordinal either.</li>
 <li>Expand <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which now works with UCDP conflict data.</li>
 <li>
 <code><a href="../reference/filter_prd.html">filter_prd()</a></code> is now a shortcut for <code><a href="../reference/add_contiguity.html">add_contiguity()</a></code> and/or <code><a href="../reference/add_cow_majors.html">add_cow_majors()</a></code> if it is called near the top of the pipe (i.e. before the user executed the commands required to calculate politically relevant dyad status).</li>
 <li>Fix bug in <code><a href="../reference/add_nmc.html">add_nmc()</a></code> (and <code>cow_nmc</code>). -9 is now explicitly NA, as it should have been.</li>
+<li>Fix some typos/incomplete information in documentation. These concerned references to scholarship on these topics.</li>
 <li>Patch <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code>, which can now be used anywhere in the chain of commands (instead of just last). <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> is also a bit more “general” and includes a derivation of the <code><a href="https://rdrr.io/pkg/stevemisc/man/sbtscs.html">sbtscs()</a></code> function from the <code>{stevemisc}</code> package.</li>
 <li>Remove mandatory “system” calls in <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code> and <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code>. These merges now lean on system attributes declared in <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</li>
 <li>Remove <code>add_mids()</code>. Use <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> instead.</li>
