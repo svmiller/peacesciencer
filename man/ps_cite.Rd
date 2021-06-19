@@ -27,7 +27,6 @@ simple pattern-matching is in base R. I assume the user has some familiarity wit
 \examples{
 
 # You can cite the package
-
 ps_cite("peacesciencer")
 
 # You can do partial matching
