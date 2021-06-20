@@ -204,55 +204,55 @@ data frame.</p>
 
 <span class='co'># CoW is default, will include years beyond 2016 (most recent CoW update)</span>
 <span class='fu'>create_statedays</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,061,091 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,061,091 x 3</span><span>
 #&gt;    ccode statenme                 date      
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'> 1</span>     2 United States of America 1816-01-01
-#&gt; <span style='color: #BCBCBC;'> 2</span>     2 United States of America 1816-01-02
-#&gt; <span style='color: #BCBCBC;'> 3</span>     2 United States of America 1816-01-03
-#&gt; <span style='color: #BCBCBC;'> 4</span>     2 United States of America 1816-01-04
-#&gt; <span style='color: #BCBCBC;'> 5</span>     2 United States of America 1816-01-05
-#&gt; <span style='color: #BCBCBC;'> 6</span>     2 United States of America 1816-01-06
-#&gt; <span style='color: #BCBCBC;'> 7</span>     2 United States of America 1816-01-07
-#&gt; <span style='color: #BCBCBC;'> 8</span>     2 United States of America 1816-01-08
-#&gt; <span style='color: #BCBCBC;'> 9</span>     2 United States of America 1816-01-09
-#&gt; <span style='color: #BCBCBC;'>10</span>     2 United States of America 1816-01-10
-#&gt; <span style='color: #949494;'># … with 6,061,081 more rows</span></div><div class='input'>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     2 United States of America 1816-01-01
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     2 United States of America 1816-01-02
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     2 United States of America 1816-01-03
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     2 United States of America 1816-01-04
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     2 United States of America 1816-01-05
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     2 United States of America 1816-01-06
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     2 United States of America 1816-01-07
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     2 United States of America 1816-01-08
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     2 United States of America 1816-01-09
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>     2 United States of America 1816-01-10
+#&gt; </span><span style='color: #949494;'># … with 6,061,081 more rows</span><span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, include most recent years</span>
 <span class='fu'>create_statedays</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,638,781 x 3</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6,638,781 x 3</span><span>
 #&gt;    gwcode statename                date      
-#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'> 1</span>      2 United States of America 1816-01-01
-#&gt; <span style='color: #BCBCBC;'> 2</span>      2 United States of America 1816-01-02
-#&gt; <span style='color: #BCBCBC;'> 3</span>      2 United States of America 1816-01-03
-#&gt; <span style='color: #BCBCBC;'> 4</span>      2 United States of America 1816-01-04
-#&gt; <span style='color: #BCBCBC;'> 5</span>      2 United States of America 1816-01-05
-#&gt; <span style='color: #BCBCBC;'> 6</span>      2 United States of America 1816-01-06
-#&gt; <span style='color: #BCBCBC;'> 7</span>      2 United States of America 1816-01-07
-#&gt; <span style='color: #BCBCBC;'> 8</span>      2 United States of America 1816-01-08
-#&gt; <span style='color: #BCBCBC;'> 9</span>      2 United States of America 1816-01-09
-#&gt; <span style='color: #BCBCBC;'>10</span>      2 United States of America 1816-01-10
-#&gt; <span style='color: #949494;'># … with 6,638,771 more rows</span></div><div class='input'>
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2 United States of America 1816-01-01
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2 United States of America 1816-01-02
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>      2 United States of America 1816-01-03
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      2 United States of America 1816-01-04
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>      2 United States of America 1816-01-05
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>      2 United States of America 1816-01-06
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>      2 United States of America 1816-01-07
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2 United States of America 1816-01-08
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2 United States of America 1816-01-09
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2 United States of America 1816-01-10
+#&gt; </span><span style='color: #949494;'># … with 6,638,771 more rows</span><span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, don't include most recent years</span>
 <span class='fu'>create_statedays</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span>, mry<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 6,448,077 x 3</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 6,448,077 x 3</span><span>
 #&gt;    gwcode statename                date      
-#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'> 1</span>      2 United States of America 1816-01-01
-#&gt; <span style='color: #BCBCBC;'> 2</span>      2 United States of America 1816-01-02
-#&gt; <span style='color: #BCBCBC;'> 3</span>      2 United States of America 1816-01-03
-#&gt; <span style='color: #BCBCBC;'> 4</span>      2 United States of America 1816-01-04
-#&gt; <span style='color: #BCBCBC;'> 5</span>      2 United States of America 1816-01-05
-#&gt; <span style='color: #BCBCBC;'> 6</span>      2 United States of America 1816-01-06
-#&gt; <span style='color: #BCBCBC;'> 7</span>      2 United States of America 1816-01-07
-#&gt; <span style='color: #BCBCBC;'> 8</span>      2 United States of America 1816-01-08
-#&gt; <span style='color: #BCBCBC;'> 9</span>      2 United States of America 1816-01-09
-#&gt; <span style='color: #BCBCBC;'>10</span>      2 United States of America 1816-01-10
-#&gt; <span style='color: #949494;'># … with 6,448,067 more rows</span></div><div class='input'><span class='co'># }</span>
+#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                    </span><span style='color: #949494;font-style: italic;'>&lt;date&gt;</span><span>    
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2 United States of America 1816-01-01
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2 United States of America 1816-01-02
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>      2 United States of America 1816-01-03
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      2 United States of America 1816-01-04
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>      2 United States of America 1816-01-05
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>      2 United States of America 1816-01-06
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>      2 United States of America 1816-01-07
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2 United States of America 1816-01-08
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2 United States of America 1816-01-09
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2 United States of America 1816-01-10
+#&gt; </span><span style='color: #949494;'># … with 6,448,067 more rows</span><span></div><div class='input'><span class='co'># }</span>
 
 
-</div></pre>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -1,4 +1,4 @@
-#' Get \code{BibTeX} Entries Associated with `{peacesciencer}` Data and Functions
+#' Get \code{BibTeX} Entries Associated with \pkg{peacesciencer} Data and Functions
 #'
 #' @description \code{ps_cite()} allows the user to get citations to scholarship that they
 #' should include in their papers that incorporate the functions and data in this package.

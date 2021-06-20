@@ -2,7 +2,7 @@
 % Please edit documentation in R/ps_cite.R
 \name{ps_cite}
 \alias{ps_cite}
-\title{Get \code{BibTeX} Entries Associated with `{peacesciencer}` Data and Functions}
+\title{Get \code{BibTeX} Entries Associated with \pkg{peacesciencer} Data and Functions}
 \usage{
 ps_cite(x)
 }
