@@ -163,6 +163,7 @@ check_both(260)
 gw_cow_years %>%
   mutate(ccode = case_when(
     gwcode == 260 & year >= 1991 ~ 255,
+    gwcode == 678 & between(year, 1926, 1989) ~ 678,
     TRUE ~ ccode
   )) -> gw_cow_years
 
