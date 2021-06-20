@@ -1,0 +1,85 @@
+---
+title: "A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=F}
+library(tidyverse)
+library(peacesciencer)
+library(kableExtra)
+library(stevemisc)
+```
+
+The peace science data ecosystem fundamentally revolves around two different state systems. The first is the Correlates of War (CoW) system. The CoW system is, as far as I can tell, the first of its kind to devise numeric codes for states in the international system while also offering a temporal dimension. I am unaware of a definitive article describing the CoW system data---[Sarkees and Wayman discuss it in their book](https://us.sagepub.com/en-us/nam/resort-to-war/book236426)---but the criteria for consideration of a state hinge on matters of territorial occupation (i.e. a state is a geopolitical entity), population size (>500,000, supposedly), diplomatic recognition (by the UK or France before 1919 and by the League of Nations/UN afterward), having an independent foreign policy (which is why "One China, two systems" Hong Kong won't count), and having a sovereign political authority (i.e. to filter out puppet states).[^russettetal] Peace scientists, certainly in the inter-state context, know these data well. They serve as the basis for the entire CoW data ecosystem.
+
+[^russettetal]: I am aware of [the Russett et al. *American Political Science Review* article from 1968](https://www.jstor.org/stable/1953441), but this article is so dated and the international system has undergone so many changes since this publication that I'm disinclined to treat it as an adequate statement for how CoW sees its state system data right now.
+
+The Gleditsch-Ward (G-W) system is a revision of these data. Introduced in [a 1999 article in *International Interactions*](https://www.tandfonline.com/doi/abs/10.1080/03050629908434958), G-W raise some conceptual problems (as they see it) with the CoW system. The revisions to this system amounted to an alternative system that features prominently in some important data sets. Civil conflict researchers likely use this system more than the CoW system because of its basis in the UCDP armed conflict data. The G-W system also feature prominently in [some macroeconomic data](https://academic.oup.com/isq/article-abstract/64/2/392/5824855?redirectedFrom=fulltext) and [some spatial data sets](https://icr.ethz.ch/data/cshapes/).
+
+This vignette will offer a discussion of these two systems. It will eschew the conceptual issues that motivate the divergences between the two; indeed, the differences are often overstated to belie the commonality between the two. Integration of the two in---spitballing here---more than 90% of applications will be unproblematic. However, where the two do differ, they differ in ways that amount to a collision of one system into the other. `{peacesciencer}` treats these collisions as unavoidable. The functions it implements acknowledge this and, subtly, encourage the researcher to acknowledge this as well.
+
+## Where the Systems Conflict With Each Other
+
+By in large, a user might see the differences between the two systems and overstate the differences they see. For example, CoW treats Canada as an independent state only starting in 1920 (coinciding with [its founding membership in the League of Nations](https://www.rcinet.ca/en/2017/01/10/canada-history-jan-10-1920-founding-of-the-league-of-nations/), one of its coding criteria) whereas G-W have Canada as an independent state starting in 1867 (coinciding with [The British North America Act, 1867](https://en.wikipedia.org/wiki/Constitution_Act,_1867)). However, the code for Canada (20) is identical in both systems and Canada never had a period where it disappeared from either system. These cases are simple; one temporal domain is a subset of the other system's temporal domain for a particular state. Likewise, G-W will have a few states that CoW doesn't have (e.g. Transvaal and Orange Free State) and CoW will have a few states that G-W doesn't have (e.g. Sao Tome and Principe and Seychelles). These cases are simple; there is no corresponding state code for the entity in the other system. The commonality of both is more apparent than the differences (at least I think), but it is also the case that where they differ, they sometimes *really* differ. Trying to integrate one into the other amounts to a collision.
+
+Here is an example where the two systems will collide with each other. [Yemeni unification](https://en.wikipedia.org/wiki/Yemeni_unification) is one of several points of divergence between the two systems. Unlike, say, the dissolution of Yugoslavia, both CoW and G-W are in agreement on when the unification took place (22 May 1990). However, they disagree on what this means for data entry. I am unaware of either Gleditsch-Ward or Correlates of War discussing this exact case, but the difference in interpretation mirrors (likely) how they see the unification of Germany that same year. CoW seems to interpret Yemeni unification as the creation of an unseen, entirely new Yemeni state and not just a simple integration of one into the other. Thus, the newly formed Republic of Yemen ("Yemen") gets a new state code. Gleditsch-Ward seem to interpret that unification was less the case of the formation of a new state, but more the demise of the People's Democratic Republic of Yemen ("South Yemen") and its integration into the Yemen Arab Republic ("North Yemen"). There is no new code for this new entity, just the continuation of "Yemen (Arab Republic of Yemen)" and the demise of "Yemen, People's Republic of."
+
+This might seem like it's a distinction without much of a difference, but it will matter in your standard peace science data. Here, for example, is what would happen when we merge Gleditsch-Ward codes into CoW state-year data for these cases.
+
+```{r}
+create_stateyears() %>%
+  filter(ccode %in% c(678:680) & year %in% c(1988:1991)) %>%
+  add_gwcode_to_cow()
+```
+
+The G-W code of 678 is going to be duplicated twice in these data. G-W code 678 in 1990 refers to both the Yemen Arab Republic before unification, and Yemen after unification. CoW sees two states where G-W sees one. For state-day data, this would not be a problem. For state-year data, this becomes a problem. Worse yet, there is no easy way around this and it's a unique issue that arises in trying to integrate two different state systems with each other.
+
+Here is another case where both systems will collide with each other: Serbia and Yugoslavia. In this case, both state systems differ in major ways on both classifying entities and dates.
+
+```{r}
+cow_states %>%
+    mutate(startdate = lubridate::ymd(paste0(styear,"/",stmonth, "/", stday)),
+           enddate = lubridate::ymd(paste0(endyear,"/",endmonth,"/",endday))) %>%
+    select(stateabb:statenme, startdate, enddate) %>%
+    mutate(data = "CoW") %>%
+    rename(statename = statenme) %>%
+    filter(ccode == 345) %>% 
+  bind_rows(., gw_states %>% filter(gwcode %in% c(340, 345)) %>% mutate(data = "G-W")) %>%
+  select(data, stateabb, statename, ccode, gwcode, everything())
+```
+
+The main difference here is how should we interpret what Yugoslavia was. Unlike the case of Yemen, G-W do discuss Yugoslavia a bit in [their 1999 article](https://www.tandfonline.com/doi/abs/10.1080/03050629908434958). Here is one passage on page 397.
+
+>   Yugoslavia appears in the COW-list continuously  from  1878 to  1941. However,the  Serbian  government  fled   the  German  invasion  in   1915.  The  new kingdom  of  Serbia,  Croatia,  and Montenegro  was proclaimed  in  1918 and did  not  become  the  Kingdom  of  Yugoslavia  until  1929.  Is  it  sensible  toconsider  this  a  single  polity?
+
+They revisit this case again on page 401 when describing the major differences between their system and CoW's system.
+
+>   Unlike  COW,  we consider Serbia from  1878 to the Austro-Hungarian invasion in  1915 to be a different   polity  from  the  Kingdom  of  the  Croats,  Serbs,  and  Slovenes (renamed  Yugoslavia  in  1929),  which  is  not  established  until  1918.
+
+There is an interesting difference of interpretation about whether Serbia should disappear from the international system for a three-year period during World War I. CoW says "no" while G-W point to the government's retreat through Albania and the Austro-Hungarian/Bulgarian occupations as suggestive of a "state" without territory (and, thus, not a state). The bigger difference of interpretation concerns how to interpret "Yugoslavia." CoW seem to interpret a Serbia "center" to Yugoslavia, analogous to their interpretation (and G-W's interpretation) of a Prussian core to the German Empire. For CoW, this means Serbia precedes and succeeds Yugoslavia and Yugoslavia is fundamentally a territorial expansion of Serbia as a result of World War I. For G-W, the 1915 retreat of the Serbian government and the 1918 creation of the State of Slovenes, Croats and Serbs amounts to the death of one state (Serbia) and the formation of a new state (Yugoslavia) few years later. Yugoslavia dies in 2006 when the last remnant of its creation, Montenegro, emerges as independent from Serbia. Thus, Serbia reappears as a state system entity for the first time since 1915.
+
+The integration here will run inverse to the situation with Yemeni and German unification in 1990. In those cases, G-W see integration whereas CoW sees new state creation (in the case of Yemen) or old state restoration (in the case of Germany). In this case, CoW sees one continuous state breaking apart whereas G-W see a state death and old state restoration. Correlates of War state code 345 will appear twice for 2006, referring to both the G-W state of Serbia and the G-W state of Yugoslavia that same year.
+
+```{r}
+create_stateyears(system = 'gw') %>%
+  filter(gwcode %in% c(340, 345) & year %in% c(2005:2008)) %>%
+  add_ccode_to_gw()
+```
+
+## How `{peacesciencer}` Handles the Integration of CoW and G-W State System Data
+
+`{peacesciencer}` has two functions for converting CoW codes into G-W codes (and vice-versa). `add_ccode_to_gw()` will take a G-W state-year or dyad-year data frame and match the G-W codes to CoW codes. The data it uses for this is the `gw_cow_years` data frame in this package. You can see [how it was created here](https://github.com/svmiller/peacesciencer/blob/master/data-raw/gw_cow_years.R) (along with ample annotation about what I'm doing, where the two differ, and why I'm doing what I'm doing). The corollary to this is  `add_gwcode_to_cow()`, which adds G-W codes to a CoW state-year or dyad-year data frame. This function uses the `cow_gw_years` data frame in this package. The code that generates these data are also amply annotated and [available for public viewing](https://github.com/svmiller/peacesciencer/blob/master/data-raw/cow_gw_years.R). These are more about the implementation but the philosophy is more important to state here. I break this philosophy into the following main points.
+
+First, these collisions between the G-W state system data and CoW state system data are unavoidable at the higher levels of temporal aggregation (e.g. state-years). If the user is trying to merge G-W codes into CoW state-year data, they will create duplicate G-W state codes in 1990 for Yemen Arab Republic/Yemen (and Germany/West Germany). This is because CoW sees two states merging into one new (Yemen) or previous (Germany) state while G-W see one folding into the other. A similar situation will happen trying to merge CoW codes into G-W state-year data regarding the final disintegration of Yugoslavia in 2006. CoW sees Serbia as preceding, dominating, and succeeding Yugoslavia where G-W see Yugoslavia as an entity entirely distinct from Serbia. Consider the implication here: a user may have Gleditsch-Ward state-year data for a civil conflict analysis and want to merge in CoW's national material capabilities data into it. Matching CoW codes to G-W state codes before hand will invariably create duplicate entries Serbia-2006 and Yugoslavia-2006. The user cannot avoid this. This will happen where the two state systems collide with each other.
+
+Second, the functionality I build into `{peacesciencer}` comes from a philosophy that some classification system *must* be a "master" system. [I preach this to my students as well](http://svmiller.com/blog/2021/01/a-tutorial-on-state-classification-systems/). What the user elects to treat as the "master" system is to their discretion, but `{peacesciencer}` forces this on the user in an important way. Namely, `create_dyadyears()`, `create_stateyears()`, and `create_statedays()` assign a "ps_system" attribute into the data it creates. If the user starts their workflow with `create_stateyears(system = 'gw')`, they will get a state-year data frame in which the "master" system is G-W. If the user instead wants CoW to be the master system, they should run `create_stateyears(system = 'cow')` and not `create_stateyears(system = 'gw')`. This is ultimately a design choice by the user, but `{peacesciencer}` will force this in its own way. Something *must* be a "master" system.
+
+It's worth stating that there is no right or wrong answer here and that the user's choice should be tailored to the research design. My recommendation is to take one of two tracks toward choosing the "master" system. One approach is to make the "master" system to be the one coinciding with the bulk of the data the author will use. CoW has a larger presence than G-W in the peace science data ecosystem, certainly for "right-hand side" variables (e.g. capabilities, trade) and for inter-state conflict. Whereas I am primarily an inter-state conflict researcher, this would account for why CoW is the default option for the data-creation functions. A more reasonable approach is to make the "master" system to be the one coinciding with the outcome variable. Think of it this way. The user is creating data in `{peacesciencer}` because they want to explain some outcome. Let's say they are interested in explaining intrastate conflict at all levels of intensity in the UCDP armed conflict data. These conflicts use the G-W system for classification. The data they collect are fundamentally nested in the universe of G-W state-year data since 1946. It is more important, as a principle, to get that part right than to split hairs about Yemen, Germany, and Serbia/Yugoslavia. Thus, the user should get that part right and make the G-W system their master (e.g. through `create_stateyears(system = 'gw')`).
+
+Finally, `{peacesciencer}` strives to make the integration as seamless as possible when it can. For example, `add_minimum_distance()` will look at the data the user feeds it to see what is the "master" system. If it's CoW, `add_minimum_distance()` will merge in minimum distance data from the `cow_mindist` data frame in this package. If it's the G-W system, `add_minimum_distance()` will merge in minimum distance data from the `gw_mindist` data frame. `add_sdp_gdp()` and `add_democracy()` also do this. Collisions between the CoW state system data and G-W state system data are unavoidable; for example, anything in the CoW ecosystem (e.g. alliances, IGOs, capabilities) is going to require CoW codes before merging. Where possible, `{peacesciencer}` tries to be inclusive and avoid elevating one over the other where it can.
