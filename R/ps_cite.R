@@ -34,6 +34,6 @@
 
 ps_cite <- function(x) {
 
-  ps_bib %>% filter(grepl(x, KEYWORDS)) %>% df2bib()
+  ps_bib %>% filter(grepl(x, .data$KEYWORDS)) %>% df2bib()
 
 }
