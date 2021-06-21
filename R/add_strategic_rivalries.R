@@ -34,14 +34,14 @@
 #' Thompson, William R. and David Dreyer. 2012. \emph{Handbook of International Rivalries}. CQ Press.
 #'
 #' @examples
-#'
+#' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #' cow_ddy %>% add_strategic_rivalries()
 #'
 #' # across_types defaults to 1
 #' create_stateyears() %>% add_strategic_rivalries()
-#'
+#' }
 
 add_strategic_rivalries <- function(data, across_types = 1) {
 

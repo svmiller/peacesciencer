@@ -36,14 +36,14 @@ function then looks across both the `type1` and `type2` columns to see if there 
 either its primary or secondary dimension. If so, it codes that as a 1. \code{across_types} must be 1, 2, or 3.
 }
 \examples{
-
+\donttest{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 cow_ddy \%>\% add_strategic_rivalries()
 
 # across_types defaults to 1
 create_stateyears() \%>\% add_strategic_rivalries()
-
+}
 }
 \references{
 Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".

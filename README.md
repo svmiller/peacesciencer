@@ -181,10 +181,10 @@ The current development version also includes the following data.
 # How to Use `{peacesciencer}`
 
 [`{peacesciencer}` has a user’s
-guide](https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf)
-that is worth reading. The workflow is going to look something like
-this. This is a “tidy”-friendly approach to a data-generating process in
-quantitative peace science.
+guide](http://svmiller.com/peacesciencer/ms.pdf) that is worth reading.
+The workflow is going to look something like this. This is a
+“tidy”-friendly approach to a data-generating process in quantitative
+peace science.
 
 First, start with one of two processes to create either dyad-year or
 state-year data. The dyad-year data are created with the
@@ -283,7 +283,7 @@ broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_
 #> 10 I(gmlmidspell^2)  0.00249   0.000135        18.4  2.05e- 75
 #> 11 I(gmlmidspell^3) -0.0000116 0.000000895    -13.0  1.22e- 38
 toc()
-#> 11.6 sec elapsed
+#> 11.511 sec elapsed
 ```
 
 Here is how you might do a standard civil conflict analysis using
@@ -357,7 +357,7 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
 toc()
-#> 4.239 sec elapsed
+#> 3.892 sec elapsed
 ```
 
 # Citing What You Do in `{peacesciencer}`
@@ -376,8 +376,8 @@ ps_cite("peacesciencer")
 #>   Author = {Steven V. Miller},
 #>   Title = {peacesciencer}: A User's Guide for Quantitative Peace Science in R},
 #>   Year = {2021},
-#>   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw()},
-#>   Url = {http://svmiller.com/peacesciencer}
+#>   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw(), add_gwcode_to_cow(), capitals},
+#>   Url = {http://svmiller.com/peacesciencer/}
 #> }
 ```
 

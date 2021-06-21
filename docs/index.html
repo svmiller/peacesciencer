@@ -434,7 +434,7 @@
 <h1 class="hasAnchor">
 <a href="#how-to-use-peacesciencer" class="anchor"></a>How to Use <code>{peacesciencer}</code>
 </h1>
-<p><a href="https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf"><code>{peacesciencer}</code> has a user’s guide</a> that is worth reading. The workflow is going to look something like this. This is a “tidy”-friendly approach to a data-generating process in quantitative peace science.</p>
+<p><a href="http://svmiller.com/peacesciencer/ms.pdf"><code>{peacesciencer}</code> has a user’s guide</a> that is worth reading. The workflow is going to look something like this. This is a “tidy”-friendly approach to a data-generating process in quantitative peace science.</p>
 <p>First, start with one of two processes to create either dyad-year or state-year data. The dyad-year data are created with the <code><a href="reference/create_dyadyears.html">create_dyadyears()</a></code> function. It has a few optional parameters with hidden defaults. The user can specify what kind of state system (<code>system</code>) data they want to use—either Correlates of War (<code>"cow"</code>) or Gleditsch-Ward (<code>"gw"</code>), whether they want to extend the data to the most recently concluded calendar year (<code>mry</code>) (i.e. Correlates of War state system membership data are current as of Dec. 31, 2016 and the script can extend that to the end of the most recently concluded calendar year), and whether the user wants directed or non-directed dyad-year data (<code>directed</code>).</p>
 <p>The <code><a href="reference/create_stateyears.html">create_stateyears()</a></code> works much the same way, though “directed” and “non-directed” make no sense in the state-year context. Both functions default to Correlates of War state system membership data to the most recently concluded calendar year.</p>
 <p>Thereafter, the user can specify what additional variables they want added to these dyad-year or state-year data. Do note: the additional functions lean primarily on Correlates of War state code identifiers. Indeed, the bulk of the quantitative peace science data ecosystem is built around the Correlates of War project. The variables the user wants are added in <a href="https://r4ds.had.co.nz/pipes.html">a “pipe”</a> in a process like this. Do note that the user may want to break up the data-generating process into a few manageable “chunks” (e.g. first generating dyad-year data and saving to an object, adding to it piece by piece).</p>
@@ -500,7 +500,7 @@
 <span class="co">#&gt; 10 I(gmlmidspell^2)  0.00249   0.000135        18.4  2.05e- 75</span>
 <span class="co">#&gt; 11 I(gmlmidspell^3) -0.0000116 0.000000895    -13.0  1.22e- 38</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 11.6 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 11.511 sec elapsed</span></code></pre></div>
 <p>Here is how you might do a standard civil conflict analysis using Gleditsch-Ward states and UCDP conflict data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span>
@@ -570,7 +570,7 @@
 <span class="co">#&gt; 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 4.239 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 3.892 sec elapsed</span></code></pre></div>
 </div>
 <div id="citing-what-you-do-in-peacesciencer" class="section level1">
 <h1 class="hasAnchor">
@@ -583,8 +583,8 @@
 <span class="co">#&gt;   Author = {Steven V. Miller},</span>
 <span class="co">#&gt;   Title = {peacesciencer}: A User's Guide for Quantitative Peace Science in R},</span>
 <span class="co">#&gt;   Year = {2021},</span>
-<span class="co">#&gt;   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw()},</span>
-<span class="co">#&gt;   Url = {http://svmiller.com/peacesciencer}</span>
+<span class="co">#&gt;   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw(), add_gwcode_to_cow(), capitals},</span>
+<span class="co">#&gt;   Url = {http://svmiller.com/peacesciencer/}</span>
 <span class="co">#&gt; }</span></code></pre></div>
 <p>You can see what are the relevant citations to consider using for the data returned by <code><a href="reference/add_democracy.html">add_democracy()</a></code></p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
