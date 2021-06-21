@@ -112,5 +112,15 @@ cow_gw_years %>%
   filter(!is.na(ccode)) %>%
   group_by(ccode, year) %>% filter(n() > 1) %>% arrange(ccode, year)
 
+# But let's do a group_by fill, though.
+# I had encountered a situation where I had though left_join was smart enough to overcome my laziness
+# However, it mean that some gwcodes weren't registering.
+
+cow_gw_years %>%
+  group_by(ccode, year) %>%
+  fill(gwcode) %>%
+  group_by(ccode, year) %>%
+  slice(1) -> cow_gw_years
+
 
 save(cow_gw_years, file="data/cow_gw_years.rda")
