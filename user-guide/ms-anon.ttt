@@ -1,5 +1,93 @@
 \begin{table}
 
+\caption{\label{tab:tab-functionality}Features of \{peacesciencer\}}
+\centering
+\fontsize{8}{10}\selectfont
+\begin{tabular}[t]{>{}l|>{}l|>{}c|>{}c}
+\hline
+\textbf{Data} & \textbf{Description} & \textbf{Type} & \textbf{Function}\\
+\hline
+(CoW, G-W) Dyad-Year Data & Create dyad-years from state system membership data &  & \ttfamily{create\_dyadyears()}\\
+\arrayrulecolor{white}
+\hline
+(CoW, G-W) State-Year Data & Create state-years from state system membership data &  & \ttfamily{create\_stateyears()}\\
+\arrayrulecolor{white}
+\hline
+(CoW, G-W) State-Day Data & Create state-days from state system membership data &  & \ttfamily{create\_statedays()}\\
+\arrayrulecolor{white}
+\hline
+Archigos (v. 4.1) & Add Archigos political leader information & D, S & \ttfamily{add\_archigos()}\\
+\arrayrulecolor{white}
+\hline
+ATOP Alliances (v. 5.0) & Add ATOP alliance data & D & \ttfamily{add\_atop\_alliance()}\\
+\arrayrulecolor{white}
+\hline
+Capital-to-Capital Distances & Add capital-to-capital distance & D, S & \ttfamily{add\_capital\_distance()}\\
+\arrayrulecolor{white}
+\hline
+Convert CoW codes to G-W codes & Add matching CoW codes for G-W states by year & D, S & \ttfamily{add\_ccode\_to\_gw()}\\
+\arrayrulecolor{white}
+\hline
+Convert G-W codes to CoW codes & Add matching G-W codes for CoW states by year & D, S & \ttfamily{add\_gwcode\_to\_cow()}\\
+\arrayrulecolor{white}
+\hline
+CoW National Capabilities (v. 5.0) & Adds capabilities of states by year & D, S & \ttfamily{add\_nmc()}\\
+\arrayrulecolor{white}
+\hline
+CoW Direct Contiguity (v. 3.2) & Adds contiguity information by year & D, S & \ttfamily{add\_contiguity()}\\
+\arrayrulecolor{white}
+\hline
+CoW Alliances (v. 4.1) & Adds CoW alliance data by year & D & \ttfamily{add\_cow\_alliance()}\\
+\arrayrulecolor{white}
+\hline
+CoW IGOs (v. 3.0) & Adds CoW IGO data by year & D, S & \ttfamily{add\_igos()}\\
+\arrayrulecolor{white}
+\hline
+CoW Major Powers (v. 2016) & Adds CoW major power by year & D, S & \ttfamily{add\_cow\_majors()}\\
+\arrayrulecolor{white}
+\hline
+CoW MIDs (v. 5.0) & Add CoW MID information to data & D & \ttfamily{add\_cow\_mids()}\\
+\arrayrulecolor{white}
+\hline
+CoW Trade Data (v. 4.0) & Add CoW trade information to data & D, S & \ttfamily{add\_cow\_trade()}\\
+\arrayrulecolor{white}
+\hline
+CoW Wars & Add CoW inter-state (v. 4.0) and intra-state (v. 4.1) war data & D & \ttfamily{add\_cow\_wars()}\\
+\arrayrulecolor{white}
+\hline
+CREG (v. 1.02) & Add ethnic/religious fractionalization/polarization by year & D, S & \ttfamily{add\_creg\_fractionalization()}\\
+\arrayrulecolor{white}
+\hline
+Democracy & Add Polity (v. 2017), V-Dem (v. 10), and Marquez' (2016) UDS extensions & D,S & \ttfamily{add\_democracy()}\\
+\arrayrulecolor{white}
+\hline
+GML MIDs (v. 2.1.1) & Add Gibler-Miller-Little MIDs to data & D & \ttfamily{add\_gml\_mids()}\\
+\arrayrulecolor{white}
+\hline
+Minimum Distance (v. 2016) & Adds minimum distance data by year & D, S & \ttfamily{add\_minimum\_distance()}\\
+\arrayrulecolor{white}
+\hline
+Peace Years & Calculate peace years for various disputes & D, S & \ttfamily{add\_peace\_years()}\\
+\arrayrulecolor{white}
+\hline
+Rugged/Mountainous Terrain & Add 'ruggedness'/'mountainous' terrain data by year & D, S & \ttfamily{add\_rugged\_terrain()}\\
+\arrayrulecolor{white}
+\hline
+(Surplus/Gross) Domestic Product & Add Anders et al. (2020) GDP/SDP simulations by year & D, S & \ttfamily{add\_sdp\_gdp()}\\
+\arrayrulecolor{white}
+\hline
+Strategic Rivalries & Add Thompson and Dreyer (2012) strategic rivalry data by year & D, S & \ttfamily{add\_strategic\_rivalries()}\\
+\arrayrulecolor{white}
+\hline
+UCDP Armed Conflicts (v. 20.1) & Add UCDP armed conflict data by year & S & \ttfamily{add\_ucdp\_acd()}\\
+\arrayrulecolor{black}
+\hline
+\end{tabular}
+\end{table}
+\efloatseparator
+ 
+\begin{table}
+
 \caption{\label{tab:tab-dd}A "Dangerous Dyads" Analysis of Non-Directed Dyad-Years from \{peacesciencer\}}
 \centering
 \begin{tabular}[t]{>{\raggedright\arraybackslash}p{8cm}c}
