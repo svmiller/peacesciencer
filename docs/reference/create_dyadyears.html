@@ -214,70 +214,70 @@ by either Correlates of War or Gleditsch-Ward and returns a dyad-year data frame
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># CoW is default, will include years beyond 2016 (most recent CoW update)</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 3</span>
 #&gt;    ccode1 ccode2  year
-#&gt;     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>920
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>921
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>922
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>923
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>924
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>925
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>926
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>927
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>928
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>      2     20  </span><span style='text-decoration: underline;'>1</span><span>929
-#&gt; </span><span style='color: #949494;'># … with 2,063,660 more rows</span><span></div><div class='input'>
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920
+#&gt; <span style='color: #BCBCBC;'> 2</span>      2     20  <span style='text-decoration: underline;'>1</span>921
+#&gt; <span style='color: #BCBCBC;'> 3</span>      2     20  <span style='text-decoration: underline;'>1</span>922
+#&gt; <span style='color: #BCBCBC;'> 4</span>      2     20  <span style='text-decoration: underline;'>1</span>923
+#&gt; <span style='color: #BCBCBC;'> 5</span>      2     20  <span style='text-decoration: underline;'>1</span>924
+#&gt; <span style='color: #BCBCBC;'> 6</span>      2     20  <span style='text-decoration: underline;'>1</span>925
+#&gt; <span style='color: #BCBCBC;'> 7</span>      2     20  <span style='text-decoration: underline;'>1</span>926
+#&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927
+#&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928
+#&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929
+#&gt; <span style='color: #949494;'># … with 2,063,660 more rows</span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, include most recent years</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2,029,660 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,029,660 x 3</span>
 #&gt;    gwcode1 gwcode2  year
-#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>867
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>868
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>869
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>870
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>871
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>872
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>873
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>874
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>875
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>876
-#&gt; </span><span style='color: #949494;'># … with 2,029,650 more rows</span><span></div><div class='input'>
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>       2      20  <span style='text-decoration: underline;'>1</span>867
+#&gt; <span style='color: #BCBCBC;'> 2</span>       2      20  <span style='text-decoration: underline;'>1</span>868
+#&gt; <span style='color: #BCBCBC;'> 3</span>       2      20  <span style='text-decoration: underline;'>1</span>869
+#&gt; <span style='color: #BCBCBC;'> 4</span>       2      20  <span style='text-decoration: underline;'>1</span>870
+#&gt; <span style='color: #BCBCBC;'> 5</span>       2      20  <span style='text-decoration: underline;'>1</span>871
+#&gt; <span style='color: #BCBCBC;'> 6</span>       2      20  <span style='text-decoration: underline;'>1</span>872
+#&gt; <span style='color: #BCBCBC;'> 7</span>       2      20  <span style='text-decoration: underline;'>1</span>873
+#&gt; <span style='color: #BCBCBC;'> 8</span>       2      20  <span style='text-decoration: underline;'>1</span>874
+#&gt; <span style='color: #BCBCBC;'> 9</span>       2      20  <span style='text-decoration: underline;'>1</span>875
+#&gt; <span style='color: #BCBCBC;'>10</span>       2      20  <span style='text-decoration: underline;'>1</span>876
+#&gt; <span style='color: #949494;'># … with 2,029,650 more rows</span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, don't include most recent years</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span>, mry<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 1,939,354 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,939,354 x 3</span>
 #&gt;    gwcode1 gwcode2  year
-#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>867
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>868
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>869
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>870
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>871
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>872
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>873
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>874
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>875
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>876
-#&gt; </span><span style='color: #949494;'># … with 1,939,344 more rows</span><span></div><div class='input'>
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>       2      20  <span style='text-decoration: underline;'>1</span>867
+#&gt; <span style='color: #BCBCBC;'> 2</span>       2      20  <span style='text-decoration: underline;'>1</span>868
+#&gt; <span style='color: #BCBCBC;'> 3</span>       2      20  <span style='text-decoration: underline;'>1</span>869
+#&gt; <span style='color: #BCBCBC;'> 4</span>       2      20  <span style='text-decoration: underline;'>1</span>870
+#&gt; <span style='color: #BCBCBC;'> 5</span>       2      20  <span style='text-decoration: underline;'>1</span>871
+#&gt; <span style='color: #BCBCBC;'> 6</span>       2      20  <span style='text-decoration: underline;'>1</span>872
+#&gt; <span style='color: #BCBCBC;'> 7</span>       2      20  <span style='text-decoration: underline;'>1</span>873
+#&gt; <span style='color: #BCBCBC;'> 8</span>       2      20  <span style='text-decoration: underline;'>1</span>874
+#&gt; <span style='color: #BCBCBC;'> 9</span>       2      20  <span style='text-decoration: underline;'>1</span>875
+#&gt; <span style='color: #BCBCBC;'>10</span>       2      20  <span style='text-decoration: underline;'>1</span>876
+#&gt; <span style='color: #949494;'># … with 1,939,344 more rows</span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, don't include most recent years, directed = FALSE</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span>, mry<span class='op'>=</span><span class='cn'>FALSE</span>, directed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 969,677 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 969,677 x 3</span>
 #&gt;    gwcode1 gwcode2  year
-#&gt;      </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>867
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>868
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>869
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>870
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>871
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>872
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>873
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>874
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>875
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>       2      20  </span><span style='text-decoration: underline;'>1</span><span>876
-#&gt; </span><span style='color: #949494;'># … with 969,667 more rows</span><span></div><div class='input'><span class='co'># }</span>
+#&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>       2      20  <span style='text-decoration: underline;'>1</span>867
+#&gt; <span style='color: #BCBCBC;'> 2</span>       2      20  <span style='text-decoration: underline;'>1</span>868
+#&gt; <span style='color: #BCBCBC;'> 3</span>       2      20  <span style='text-decoration: underline;'>1</span>869
+#&gt; <span style='color: #BCBCBC;'> 4</span>       2      20  <span style='text-decoration: underline;'>1</span>870
+#&gt; <span style='color: #BCBCBC;'> 5</span>       2      20  <span style='text-decoration: underline;'>1</span>871
+#&gt; <span style='color: #BCBCBC;'> 6</span>       2      20  <span style='text-decoration: underline;'>1</span>872
+#&gt; <span style='color: #BCBCBC;'> 7</span>       2      20  <span style='text-decoration: underline;'>1</span>873
+#&gt; <span style='color: #BCBCBC;'> 8</span>       2      20  <span style='text-decoration: underline;'>1</span>874
+#&gt; <span style='color: #BCBCBC;'> 9</span>       2      20  <span style='text-decoration: underline;'>1</span>875
+#&gt; <span style='color: #BCBCBC;'>10</span>       2      20  <span style='text-decoration: underline;'>1</span>876
+#&gt; <span style='color: #949494;'># … with 969,667 more rows</span></div><div class='input'><span class='co'># }</span>
 
-</div></span></pre>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
