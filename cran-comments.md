@@ -4,7 +4,7 @@
 
 ## R CMD check results, Other Comments
 
-R CMD check done via `devtools::check()`, resulting in 0 errors, 1 warnings, and 0 notes. The warning comes from a deprecation of a function `add_mids()`. `add_gml_mids()` replaces `add_mids()` and `add_mids()` will be removed in version 0.5.0. All tests passed.
+R CMD check done via `devtools::check()`, resulting in 0 errors, 0 warnings, and 0 notes. This release includes the removal of a deprecated function, which triggered a warning in the last update. All tests passed.
 
 CRAN's check log also identifies many UTF-8 strings, though I think don't think these issues in the check log are ultimately actionable or problematic.
 
