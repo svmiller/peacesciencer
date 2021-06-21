@@ -1,4 +1,4 @@
-peacesciencer 0.5.0 (in development)
+peacesciencer 0.5.0
 ---------------------------------------------------------------------
 
 - Add `{bib2df}` as package dependency. Force upgraded version of `{stevemisc}` as package dependency.
@@ -10,7 +10,7 @@ peacesciencer 0.5.0 (in development)
 - Add `add_ucdp_acd()`. With it, update `ucdp_acd` data for functionality.
 - Add `add_rugged_terrain()`.
 - Add `cow_trade_ndy` data. With it, update `add_cow_trade()` function for speed upgrades.
-- Add `cow_war_inter , `cow_war_intra` data.
+- Add `cow_war_inter`, `cow_war_intra` data.
 - Add `creg` data.
 - Add `gwcode_democracy` data. `add_democracy()` now takes CoW or G-W data.
 - Add `hief` data.
