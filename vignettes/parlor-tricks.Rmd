@@ -172,3 +172,41 @@ Bremer %>% select(ccode1:year, militarized1:ncol(.)) %>%
 ```
 
 If we wanted to perfectly recreate the data as Bremer (1992) did it almost 30 years ago, here's how you'd do it in `{peacesciencer}` (albeit with newer data). Still, I think the data innovations that have followed Bremer (1992) merit the approach employed in the user's guide.
+
+
+## Get Multiple Peace Years in One Fell Swoop
+
+`add_peace_years()` is designed to work generally, based on the other data/functions included in the package. For example, assume you wanted to a dyad-year analysis comparing the Correlates of War (CoW) Militarized Interstate Dispute (MID) with the Gibler-Miller-Little conflict data. Just add both in the pipe and ask for peace-years.
+
+```{r}
+cow_ddy %>%
+  # non-directed, politically relevant, for convenience
+  filter(ccode2 > ccode1) %>%
+  filter_prd() %>%
+  add_cow_mids(keep = NULL) %>%
+  add_gml_mids(keep = NULL) %>%
+  add_peace_years() -> NDY
+
+# Here's a snapshot of U.S-Cuba from 1980-89 for illustration sake.
+NDY %>%
+  filter(ccode1 == 2 & ccode2 == 40) %>%
+  select(ccode1:year, cowmidongoing, gmlmidongoing, cowmidspell:gmlmidspell) %>%
+  filter(year >= 1980)
+```
+
+You can do this with state-year data as well. For example, you can compare how CoW and UCDP code civil wars differently since 1946. Do note, however, that [the nature of different state systems used in these data sets](http://svmiller.com/peacesciencer/articles/state-systems.html) means we'll treat one as a master and merge other codes into it. 
+```{r}
+create_stateyears(system = 'gw') %>%
+  filter(between(year, 1946, 2019)) %>%
+  add_ccode_to_gw() %>%
+  add_ucdp_acd(type = "intrastate", only_wars = TRUE) %>%
+  add_cow_wars(type = "intra") %>%
+  # select just a few things
+  select(gwcode, ccode, year, statename, ucdpongoing, ucdponset,
+         cowintraongoing, cowintraonset) %>%
+  add_peace_years() %>%
+  select(gwcode:statename, ucdpspell, cowintraspell, everything()) %>%
+  # India is illustrative of how the two differ.
+  # UCDP has an intra-state conflict to the level of war early into its existence. CoW does not.
+  filter(gwcode == 750)
+```
