@@ -1,3 +1,8 @@
+peacesciencer 0.6.0 (in development)
+---------------------------------------------------------------------
+
+- Extend `cow_mindist` and `gw_mindist` data, given new `{cshapes}` updates. Data now run from 1886 to 2019.
+
 peacesciencer 0.5.0
 ---------------------------------------------------------------------
 

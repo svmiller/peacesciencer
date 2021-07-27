@@ -91,7 +91,7 @@ The current development version also includes the following data.
 | [`cow_mid_ddydisps`](http://svmiller.com/peacesciencer/reference/cow_mid_ddydisps.html) | Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)               |
 | [`cow_mid_dirdisps`](http://svmiller.com/peacesciencer/reference/cow_mid_dirdisps.html) | Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0)                                            |
 | [`cow_mid_disps`](http://svmiller.com/peacesciencer/reference/cow_mid_disps.html)       | Abbreviate CoW-MID Dispute-level Data (v. 5.0)                                                 |
-| [`cow_mindist`](http://svmiller.com/peacesciencer/reference/cow_mindist.html)           | The Minimum Distance Between States in the Correlates of War System, 1946-2015                 |
+| [`cow_mindist`](http://svmiller.com/peacesciencer/reference/cow_mindist.html)           | The Minimum Distance Between States in the Correlates of War System, 1886-2019                 |
 | [`cow_nmc`](http://svmiller.com/peacesciencer/reference/cow_nmc.html)                   | Correlates of War National Military Capabilities Data                                          |
 | [`cow_sdp_gdp`](http://svmiller.com/peacesciencer/reference/cow_sdp_gdp.html)           | (Surplus and Gross) Domestic Product for Correlates of War States                              |
 | [`cow_states`](http://svmiller.com/peacesciencer/reference/cow_states.html)             | Correlates of War State System Membership Data (1816-2016)                                     |
@@ -104,7 +104,7 @@ The current development version also includes the following data.
 | [`gml_mid_ddydisps`](http://svmiller.com/peacesciencer/reference/gml_mid_ddydisps.html) | Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)               |
 | [`gw_cow_years`](http://svmiller.com/peacesciencer/reference/gw_cow_years.html)         | Gleditsch-Ward states and Correlates of War, by year                                           |
 | [`gw_ddy`](http://svmiller.com/peacesciencer/reference/gw_ddy.html)                     | A directed dyad-year data frame of Gleditsch-Ward state system members                         |
-| [`gw_mindist`](http://svmiller.com/peacesciencer/reference/gw_mindist.html)             | The Minimum Distance Between States in the Gleditsch-Ward System, 1946-2015                    |
+| [`gw_mindist`](http://svmiller.com/peacesciencer/reference/gw_mindist.html)             | The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019                    |
 | [`gw_sdp_gdp`](http://svmiller.com/peacesciencer/reference/gw_sdp_gdp.html)             | (Surplus and Gross) Domestic Product for Gleditsch-Ward States                                 |
 | [`gw_states`](http://svmiller.com/peacesciencer/reference/gw_states.html)               | Gleditsch-Ward (Independent States) System Membership Data (1816-2017)                         |
 | [`gwcode_democracy`](http://svmiller.com/peacesciencer/reference/gwcode_democracy.html) | Democracy data for all Gleditsch-Ward states                                                   |
@@ -283,7 +283,7 @@ broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_
 #> 10 I(gmlmidspell^2)  0.00249   0.000135        18.4  2.05e- 75
 #> 11 I(gmlmidspell^3) -0.0000116 0.000000895    -13.0  1.22e- 38
 toc()
-#> 11.511 sec elapsed
+#> 11.799 sec elapsed
 ```
 
 Here is how you might do a standard civil conflict analysis using
@@ -357,7 +357,7 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
 toc()
-#> 3.892 sec elapsed
+#> 4.315 sec elapsed
 ```
 
 # Citing What You Do in `{peacesciencer}`
