@@ -4,7 +4,7 @@
 if(getRversion() >= "2.15.1")
   utils::globalVariables(
     # underlying data used for behind-the-scenes handsomeness
-    c("capitals", "ccode_democracy", "cow_alliance", "cow_contdir",
+    c("cow_capitals", "gw_capitals", "ccode_democracy", "cow_alliance", "cow_contdir",
       "cow_ddy", "cow_gw_years", "cow_majors", "cow_states",
       "gml_dirdisp", "gw_ddy", "gw_states", "maoz_powers", "cow_nmc",
       "cow_igo_ndy", "cow_igo_sy", "cow_trade_sy", "gw_mindist", "cow_mindist",
