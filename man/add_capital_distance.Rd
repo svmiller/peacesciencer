@@ -14,14 +14,15 @@ add_capital_distance(data)
 capital-to-capital distance between the first state and the second state (in dyad-year data) or the minimum
 capital-to-capital distance for a given state in a given year. A minor
 note about this function: cases of capital transition are recorded in the
-\code{capitals} data but, in the conversion to capital-years (and eventual
+underlying data but, in the conversion to capital-years (and eventual
 merging into a dyad-year data frame), the Jan. 1 capital is used for calculating
 distances.
 }
 \description{
 \code{add_capital_distance()} allows you to add capital-to-capital
-distance to a dyad-year or state-year data frame. The capitals are coded in the \code{capitals}
-data frame, along with their latitudes and longitudes. The distance variable that
+distance to a dyad-year or state-year data frame. The capitals are coded in the
+\code{cow_capitals} and \code{gw_capitals}
+data frames, along with their latitudes and longitudes. The distance variable that
 emerges \code{capdist} is calculated using the "Vincenty" method (i.e. "as the crow
 flies") and is expressed in kilometers.
 }

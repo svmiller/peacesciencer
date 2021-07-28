@@ -2,6 +2,8 @@ peacesciencer 0.6.0 (in development)
 ---------------------------------------------------------------------
 
 - Extend `cow_mindist` and `gw_mindist` data, given new `{cshapes}` updates. Data now run from 1886 to 2019.
+- Create `cow_capitals` and `gw_capitals` data. Remove `capitals` data for redundancy. Both capital data sets extended to 2020.
+- `add_capital_distance()` now works with Correlates of War and Gleditsch-Ward data, both dyad-year and state-year.
 
 peacesciencer 0.5.0
 ---------------------------------------------------------------------

@@ -1,253 +1,265 @@
-ccode,statenme,capital,styear,endyear
-2,United States of America,Washington D.C.,1816,2019
-20,Canada,Ottawa,1816,1841
-20,Canada,Kingston,1841,1843
-20,Canada,Montreal,1843,1849
-20,Canada,Toronto,1849,1859
-20,Canada,Quebec City,1859,1865
-20,Canada,Ottawa,1865,2019
-31,Bahamas,Nassau,1816,2019
-40,Cuba,Havana,1816,2019
-41,Haiti,Port-au-Prince,1816,2019
-42,Dominican Republic,Santo Domingo,1816,2019
-51,Jamaica,Kingston,1816,2019
-52,Trinidad & Tobago,Port-of-Spain,1816,2019
-53,Barbados,Bridgetown,1816,2019
-54,Dominica,Roseau,1816,2019
-55,Grenada,St. George's,1816,2019
-56,Saint Lucia,Castries,1816,2019
-57,Saint Vincent & Grenadines,Kingstown,1816,2019
-58,Antigua & Barbuda,St. John's,1816,2019
-60,Saint Kitts & Nevis,Basseterre,1816,2019
-70,Mexico,Mexico City,1816,2019
-80,Belize,Belize City,1816,1970
-80,Belize,Belmopan,1970,2019
-90,Guatemala,Guatemala City,1816,2019
-91,Honduras,Tegucigalpa,1816,2019
-92,El Salvador,San Salvador,1816,2019
-93,Nicaragua,Managua,1816,2019
-94,Costa Rica,San Jose,1816,2019
-95,Panama,Panama City,1816,2019
-100,Colombia,Bogota,1816,2019
-101,Venezuela,Caracas,1816,2019
-110,Guyana,Georgetown,1816,2019
-115,Suriname,Paramaribo,1816,2019
-130,Ecuador,Quito,1816,2019
-135,Peru,Lima,1816,2019
-140,Brazil,Rio de Janeiro,1816,1960
-140,Brazil,Brasilia,1960,2019
-145,Bolivia,Sucre,1816,2019
-150,Paraguay,Asuncion,1816,2019
-155,Chile,Santiago,1816,2019
-160,Argentina,Buenos Aires,1816,2019
-165,Uruguay,Montevideo,1816,2019
-200,United Kingdom,London,1816,2019
-205,Ireland,Dublin,1816,2019
-210,Netherlands,Amsterdam,1816,2019
-211,Belgium,Brussels,1816,2019
-212,Luxembourg,Luxembourg City,1816,2019
-220,France,Paris,1816,1940
-220,France,Vichy,1940,1942
-220,France,Paris,1942,2019
-221,Monaco,Monaco,1816,2019
-223,Liechtenstein,Vaduz,1816,2019
-225,Switzerland,Bern,1816,2019
-230,Spain,Madrid,1816,2019
-232,Andorra,Andorra la Vella,1816,2019
-235,Portugal,Rio de Janeiro,1816,1821
-235,Portugal,Lisbon,1821,2019
-240,Hanover,Hannover,1816,2019
-245,Bavaria,Munich,1816,2019
-255,Germany,Berlin,1816,2019
-260,German Federal Republic,Bonn,1816,2019
-265,German Democratic Republic,East Berlin,1816,2019
-267,Baden,Karlsruhe,1816,2019
-269,Saxony,Dresden,1816,2019
-271,Wuerttemburg,Stuttgart,1816,2019
-273,Hesse Electoral,Kassel,1816,2019
-275,Hesse Grand Ducal,Darmstadt,1816,2019
-280,Mecklenburg Schwerin,Ludwigslust,1816,1837
-280,Mecklenburg Schwerin,Schwerin,1837,2019
-290,Poland,Warsaw,1816,2019
-300,Austria-Hungary,Vienna,1816,2019
-305,Austria,Vienna,1816,2019
-310,Hungary,Budapest,1816,2019
-315,Czechoslovakia,Prague,1816,2019
-316,Czechia,Prague,1816,2019
-317,Slovakia,Bratislava,1816,2019
-325,Italy,Torino,1816,1865
-325,Italy,Florence,1865,1871
-325,Italy,Rome,1871,2019
-327,Papal States,Rome,1816,2019
-329,Two Sicilies,Naples,1816,2019
-331,San Marino,San Marino,1816,2019
-332,Modena,Modena,1816,2019
-335,Parma,Parma,1816,2019
-337,Tuscany,Florence,1816,2019
-338,Malta,Valletta,1816,2019
-339,Albania,Tirana,1816,1912
-339,Albania,Vlore,1912,1920
-339,Albania,Tirana,1920,2019
-341,Montenegro,Cetinje,1816,1946
-341,Montenegro,Podgorica,1946,2019
-343,Macedonia,Skopje,1816,2019
-344,Croatia,Zagreb,1816,2019
-345,Yugoslavia,Belgrade,1816,2019
-346,Bosnia and Herzegovina,Sarajevo,1816,2019
-347,Kosovo,Pristina,1816,2019
-349,Slovenia,Ljubljana,1816,2019
-350,Greece,Athens,1816,1821
-350,Greece,Nafplion,1821,1834
-350,Greece,Athens,1834,2019
-352,Cyprus,Nicosia,1816,2019
-355,Bulgaria,Sofia,1816,2019
-359,Moldova,Chisinau,1816,2019
-360,Romania,Bucharest,1816,2019
-365,Russia,Saint Petersburg,1816,1918
-365,Russia,Moscow,1918,2019
-366,Estonia,Tallinn,1816,2019
-367,Latvia,Riga,1816,2019
-368,Lithuania,Kaunas,1918,1940
-368,Lithuania,Vilnius,1940,2019
-369,Ukraine,Kiev,1816,2019
-370,Belarus,Minsk,1816,2019
-371,Armenia,Yerevan,1816,2019
-372,Georgia,Tbilisi,1816,2019
-373,Azerbaijan,Baku,1816,2019
-375,Finland,Turku,1816,1812
-375,Finland,Helsinki,1816,2019
-380,Sweden,Stockholm,1816,2019
-385,Norway,Oslo,1816,2019
-390,Denmark,Copenhagen,1816,2019
-395,Iceland,Reykjavik,1816,2019
-402,Cape Verde,Praia,1816,2019
-403,Sao Tome and Principe,Sao Tome,1816,2019
-404,Guinea-Bissau,Boe,1973,1974
-404,Guinea-Bissau,Bissau,1974,2019
-411,Equatorial Guinea,Malabo,1816,2019
-420,Gambia,Banjul,1816,2019
-432,Mali,Bamako,1816,2019
-433,Senegal,Dakar,1816,2019
-434,Benin,Porto-Novo,1816,2019
-435,Mauritania,Nouakchott,1816,2019
-436,Niger,Niamey,1816,2019
-437,Ivory Coast,Yamoussoukro,1983,2019
-437,Ivory Coast,Abidjan,1933,1983
-438,Guinea,Conakry,1816,2019
-439,Burkina Faso,Ouagadougou,1816,2019
-450,Liberia,Monrovia,1816,2019
-451,Sierra Leone,Freetown,1816,2019
-452,Ghana,Accra,1816,2019
-461,Togo,Lome,1816,2019
-471,Cameroon,Yaounde,1816,2019
-475,Nigeria,Lagos,1816,1991
-475,Nigeria,Abuja,1991,2019
-481,Gabon,Libreville,1816,2019
-482,Central African Republic,Bangui,1816,2019
-483,Chad,N'Djamena,1816,2019
-484,Congo,Brazzaville,1816,2019
-490,Democratic Republic of the Congo,Kinshasa,1816,2019
-500,Uganda,Kampala,1816,2019
-501,Kenya,Nairobi,1816,2019
-510,Tanzania,Dodoma,1816,2019
-511,Zanzibar,Zanzibar City,1816,2019
-516,Burundi,Bujumbura,1816,2019
-516,Burundi,Gitega,2018,2019
-517,Rwanda,Kigali,1816,2019
-520,Somalia,Mogadishu,1816,2019
-522,Djibouti,Djibouti City,1816,2019
-530,Ethiopia,Addis Ababa,1816,2019
-531,Eritrea,Asmara,1816,2019
-540,Angola,Luanda,1816,2019
-541,Mozambique,Maputo,1816,2019
-551,Zambia,Lusaka,1816,2019
-552,Zimbabwe,Harare,1816,2019
-553,Malawi,Lilongwe,1816,2019
-560,South Africa,Pretoria,1816,2019
-565,Namibia,Windhoek,1816,2019
-570,Lesotho,Maseru,1816,2019
-571,Botswana,Gaborone,1816,2019
-572,Swaziland,Mbabane,1816,2019
-580,Madagascar,Antananarivo,1816,2019
-581,Comoros,Moroni,1816,2019
-590,Mauritius,Port Louis,1816,2019
-591,Seychelles,Victoria,1816,2019
-600,Morocco,Rabat,1816,2019
-615,Algeria,Algiers,1816,2019
-616,Tunisia,Tunis,1816,2019
-620,Libya,Tripoli,1816,2019
-625,Sudan,Khartoum,1816,2019
-626,South Sudan,Juba,1816,2019
-630,Iran,Tehran,1816,2019
-640,Turkey,Ankara,1816,2019
-645,Iraq,Baghdad,1816,2019
-651,Egypt,Cairo,1816,2019
-652,Syria,Damascus,1816,2019
-660,Lebanon,Beirut,1816,2019
-663,Jordan,Amman,1816,2019
-666,Israel,Jerusalem,1816,2019
-670,Saudi Arabia,Riyadh,1816,2019
-678,Yemen Arab Republic,Sanaa,1816,2019
-679,Yemen,Sanaa,1816,2019
-680,Yemen People's Republic,Aden,1816,2019
-690,Kuwait,Kuwait City,1816,2019
-692,Bahrain,Manama,1816,2019
-694,Qatar,Doha,1816,2019
-696,United Arab Emirates,Abu Dhabi,1816,2019
-698,Oman,Muscat,1816,2019
-700,Afghanistan,Kabul,1816,2019
-701,Turkmenistan,Ashgabat,1816,2019
-702,Tajikistan,Dushanbe,1816,2019
-703,Kyrgyzstan,Bishkek,1816,2019
-704,Uzbekistan,Tashkent,1816,2019
-705,Kazakhstan,Almaty,1991,1998
-705,Kazakhstan,Astana,1998,2019
-710,China,Beijing,1816,2019
-712,Mongolia,Ulaanbaatar,1816,2019
-713,Taiwan,Taipei,1816,2019
-730,Korea,Seoul,1816,2019
-731,North Korea,Pyongyang,1816,2019
-732,South Korea,Seoul,1816,2019
-740,Japan,Kyoto,1816,1868
-740,Japan,Tokyo,1868,2019
-750,India,Calcutta,1816,1912
-750,India,New Delhi,1912,2019
-760,Bhutan,Thimphu,1816,2019
-770,Pakistan,Karachi,1947,1959
-770,Pakistan,Rawalpindi,1959,1967
-770,Pakistan,Islamabad,1967,2019
-771,Bangladesh,Dhaka,1816,2019
-775,Myanmar,Rangoon,1948,2005
-775,Myanmar,Pyinmana,2005,2019
-780,Sri Lanka,Colombo,1816,2019
-781,Maldive Islands,Male,1816,2019
-790,Nepal,Kathmandu,1816,2019
-800,Thailand,Bangkok,1816,2019
-811,Cambodia,Phnom Penh,1816,2019
-812,Laos,Vientiane,1816,2019
-816,Vietnam,Hanoi,1816,2019
-817,Republic of Vietnam,Saigon,1816,2019
-820,Malaysia,Kuala Lumpur,1816,2019
-830,Singapore,Singapore,1816,2019
-835,Brunei,Bandar Seri Begawan,1816,2019
-840,Philippines,Quezon City,1946,1976
-840,Philippines,Manila,1976,2019
-850,Indonesia,Jakarta,1816,2019
-860,East Timor,Dili,1816,2019
-900,Australia,Melbourne,1901,1927
-900,Australia,Canberra,1927,2019
-910,Papua New Guinea,Port Moresby,1816,2019
-920,New Zealand,Russell,1840,1841
-920,New Zealand,Auckland,1841,1865
-920,New Zealand,Wellington,1865,2019
-935,Vanuatu,Port Vila,1816,2019
-940,Solomon Islands,Honiara,1816,2019
-946,Kiribati,South Tarawa,1816,2019
-947,Tuvalu,Funafuti,1816,2019
-950,Fiji,Suva,1816,2019
-955,Tonga,Nuku'alofa,1816,2019
-970,Nauru,Yaren,1816,2019
-983,Marshall Islands,Majuro,1816,2019
-986,Palau,Koror,1816,2019
-987,Federated States of Micronesia,Palikir,1816,2019
-990,Samoa,Apia,1816,2019
+ccode,gwcode,statenme,capital,styear,endyear
+2,2,United States of America,Washington D.C.,1816,2020
+20,20,Canada,Ottawa,1816,1841
+20,20,Canada,Kingston,1841,1843
+20,20,Canada,Montreal,1843,1849
+20,20,Canada,Toronto,1849,1859
+20,20,Canada,Quebec City,1859,1865
+20,20,Canada,Ottawa,1865,2020
+31,31,Bahamas,Nassau,1816,2020
+40,40,Cuba,Havana,1816,2020
+41,41,Haiti,Port-au-Prince,1816,2020
+42,42,Dominican Republic,Santo Domingo,1816,2020
+51,51,Jamaica,Kingston,1816,2020
+52,52,Trinidad & Tobago,Port-of-Spain,1816,2020
+53,53,Barbados,Bridgetown,1816,2020
+54,,Dominica,Roseau,1816,2020
+55,,Grenada,St. George's,1816,2020
+56,,Saint Lucia,Castries,1816,2020
+57,,Saint Vincent & Grenadines,Kingstown,1816,2020
+58,,Antigua & Barbuda,St. John's,1816,2020
+60,,Saint Kitts & Nevis,Basseterre,1816,2020
+70,70,Mexico,Mexico City,1816,2020
+80,80,Belize,Belize City,1816,1970
+80,80,Belize,Belmopan,1970,2020
+,89,United Provinces of Central America,Guatemala City,1816,1834
+,89,United Provinces of Central America,San Salvador,1834,2020
+90,90,Guatemala,Guatemala City,1816,2020
+91,91,Honduras,Tegucigalpa,1816,2020
+92,92,El Salvador,San Salvador,1816,2020
+93,93,Nicaragua,Managua,1816,2020
+94,94,Costa Rica,San Jose,1816,2020
+95,95,Panama,Panama City,1816,2020
+,99,Gran Colombia,Bogota,1816,1830
+100,100,Colombia,Bogota,1816,2020
+101,101,Venezuela,Caracas,1816,2020
+110,110,Guyana,Georgetown,1816,2020
+115,115,Suriname,Paramaribo,1816,2020
+130,130,Ecuador,Quito,1816,2020
+135,135,Peru,Lima,1816,2020
+140,140,Brazil,Rio de Janeiro,1816,1960
+140,140,Brazil,Brasilia,1960,2020
+145,145,Bolivia,Sucre,1816,2020
+150,150,Paraguay,Asuncion,1816,2020
+155,155,Chile,Santiago,1816,2020
+160,160,Argentina,Buenos Aires,1816,2020
+165,165,Uruguay,Montevideo,1816,2020
+200,200,United Kingdom,London,1816,2020
+205,205,Ireland,Dublin,1816,2020
+210,210,Netherlands,Amsterdam,1816,2020
+211,211,Belgium,Brussels,1816,2020
+212,212,Luxembourg,Luxembourg City,1816,2020
+220,220,France,Paris,1816,1940
+220,220,France,Vichy,1940,1942
+220,220,France,Paris,1942,2020
+221,,Monaco,Monaco,1816,2020
+223,,Liechtenstein,Vaduz,1816,2020
+225,225,Switzerland,Bern,1816,2020
+230,230,Spain,Madrid,1816,2020
+232,,Andorra,Andorra la Vella,1816,2020
+235,235,Portugal,Rio de Janeiro,1816,1821
+235,235,Portugal,Lisbon,1821,2020
+240,240,Hanover,Hannover,1816,2020
+245,245,Bavaria,Munich,1816,2020
+255,255,Germany,Berlin,1816,2020
+260,260,German Federal Republic,Bonn,1816,2020
+265,265,German Democratic Republic,East Berlin,1816,2020
+267,267,Baden,Karlsruhe,1816,2020
+269,269,Saxony,Dresden,1816,2020
+271,271,Wuerttemburg,Stuttgart,1816,2020
+273,273,Hesse Electoral,Kassel,1816,2020
+275,275,Hesse Grand Ducal,Darmstadt,1816,2020
+280,280,Mecklenburg Schwerin,Ludwigslust,1816,1837
+280,280,Mecklenburg Schwerin,Schwerin,1837,2020
+290,290,Poland,Warsaw,1816,2020
+300,300,Austria-Hungary,Vienna,1816,2020
+305,305,Austria,Vienna,1816,2020
+310,310,Hungary,Budapest,1816,2020
+315,315,Czechoslovakia,Prague,1816,2020
+316,316,Czechia,Prague,1816,2020
+317,317,Slovakia,Bratislava,1816,2020
+325,325,Italy,Torino,1816,1865
+325,325,Italy,Florence,1865,1871
+325,325,Italy,Rome,1871,2020
+327,327,Papal States,Rome,1816,2020
+329,329,Two Sicilies,Naples,1816,2020
+331,,San Marino,San Marino,1816,2020
+332,332,Modena,Modena,1816,2020
+335,335,Parma,Parma,1816,2020
+337,337,Tuscany,Florence,1816,2020
+338,338,Malta,Valletta,1816,2020
+339,339,Albania,Tirana,1816,1912
+339,339,Albania,Vlore,1912,1920
+339,339,Albania,Tirana,1920,2020
+,340,Serbia,Belgrade,1816,2020
+341,341,Montenegro,Cetinje,1816,1946
+341,341,Montenegro,Podgorica,1946,2020
+343,343,Macedonia,Skopje,1816,2020
+344,344,Croatia,Zagreb,1816,2020
+345,345,Yugoslavia,Belgrade,1816,2020
+346,346,Bosnia and Herzegovina,Sarajevo,1816,2020
+347,347,Kosovo,Pristina,1816,2020
+349,349,Slovenia,Ljubljana,1816,2020
+350,350,Greece,Athens,1816,1821
+350,350,Greece,Nafplion,1821,1834
+350,350,Greece,Athens,1834,2020
+352,352,Cyprus,Nicosia,1816,2020
+355,355,Bulgaria,Sofia,1816,2020
+359,359,Moldova,Chisinau,1816,2020
+360,360,Romania,Bucharest,1816,2020
+365,365,Russia,Saint Petersburg,1816,1918
+365,365,Russia,Moscow,1918,2020
+366,366,Estonia,Tallinn,1816,2020
+367,367,Latvia,Riga,1816,2020
+368,368,Lithuania,Kaunas,1918,1940
+368,368,Lithuania,Vilnius,1940,2020
+369,369,Ukraine,Kiev,1816,2020
+370,370,Belarus,Minsk,1816,2020
+371,371,Armenia,Yerevan,1816,2020
+372,372,Georgia,Tbilisi,1816,2020
+373,373,Azerbaijan,Baku,1816,2020
+375,375,Finland,Turku,1816,1812
+375,375,Finland,Helsinki,1816,2020
+380,380,Sweden,Stockholm,1816,2020
+385,385,Norway,Oslo,1816,2020
+390,390,Denmark,Copenhagen,1816,2020
+395,395,Iceland,Reykjavik,1816,2020
+402,402,Cape Verde,Praia,1816,2020
+403,,Sao Tome and Principe,Sao Tome,1816,2020
+404,404,Guinea-Bissau,Boe,1973,1974
+404,404,Guinea-Bissau,Bissau,1974,2020
+411,411,Equatorial Guinea,Malabo,1816,2020
+420,420,Gambia,Banjul,1816,2020
+432,432,Mali,Bamako,1816,2020
+433,433,Senegal,Dakar,1816,2020
+434,434,Benin,Porto-Novo,1816,2020
+435,435,Mauritania,Nouakchott,1816,2020
+436,436,Niger,Niamey,1816,2020
+437,437,Ivory Coast,Yamoussoukro,1983,2020
+437,437,Ivory Coast,Abidjan,1933,1983
+438,438,Guinea,Conakry,1816,2020
+439,439,Burkina Faso,Ouagadougou,1816,2020
+450,450,Liberia,Monrovia,1816,2020
+451,451,Sierra Leone,Freetown,1816,2020
+452,452,Ghana,Accra,1816,2020
+461,461,Togo,Lome,1816,2020
+471,471,Cameroon,Yaounde,1816,2020
+475,475,Nigeria,Lagos,1816,1991
+475,475,Nigeria,Abuja,1991,2020
+481,481,Gabon,Libreville,1816,2020
+482,482,Central African Republic,Bangui,1816,2020
+483,483,Chad,N'Djamena,1816,2020
+484,484,Congo,Brazzaville,1816,2020
+490,490,Democratic Republic of the Congo,Kinshasa,1816,2020
+500,500,Uganda,Kampala,1816,2020
+501,501,Kenya,Nairobi,1816,2020
+510,510,Tanzania,Dodoma,1816,2020
+511,511,Zanzibar,Zanzibar City,1816,2020
+516,516,Burundi,Bujumbura,1816,2020
+516,516,Burundi,Gitega,2018,2020
+517,517,Rwanda,Kigali,1816,2020
+520,520,Somalia,Mogadishu,1816,2020
+522,522,Djibouti,Djibouti City,1816,2020
+530,530,Ethiopia,Addis Ababa,1816,2020
+531,531,Eritrea,Asmara,1816,2020
+540,540,Angola,Luanda,1816,2020
+541,541,Mozambique,Maputo,1816,2020
+551,551,Zambia,Lusaka,1816,2020
+552,552,Zimbabwe,Harare,1816,2020
+553,553,Malawi,Lilongwe,1816,2020
+560,560,South Africa,Pretoria,1816,2020
+,563,Transvaal,Pretoria,1816,1910
+,564,Orange Free State,Bloemfontein,1816,1910
+565,565,Namibia,Windhoek,1816,2020
+570,570,Lesotho,Maseru,1816,2020
+571,571,Botswana,Gaborone,1816,2020
+572,572,Swaziland,Mbabane,1816,2020
+580,580,Madagascar,Antananarivo,1816,2020
+581,581,Comoros,Moroni,1816,2020
+590,590,Mauritius,Port Louis,1816,2020
+591,,Seychelles,Victoria,1816,2020
+600,600,Morocco,Rabat,1816,2020
+615,615,Algeria,Algiers,1816,2020
+616,616,Tunisia,Tunis,1816,2020
+620,620,Libya,Tripoli,1816,2020
+625,625,Sudan,Khartoum,1816,2020
+626,626,South Sudan,Juba,1816,2020
+630,630,Iran,Tehran,1816,2020
+640,640,Turkey,Ankara,1816,2020
+645,645,Iraq,Baghdad,1816,2020
+651,651,Egypt,Cairo,1816,2020
+652,652,Syria,Damascus,1816,2020
+660,660,Lebanon,Beirut,1816,2020
+663,663,Jordan,Amman,1816,2020
+666,666,Israel,Jerusalem,1816,2020
+670,670,Saudi Arabia,Riyadh,1816,2020
+678,678,Yemen Arab Republic,Sanaa,1816,2020
+679,679,Yemen,Sanaa,1816,2020
+680,680,Yemen People's Republic,Aden,1816,2020
+690,690,Kuwait,Kuwait City,1816,2020
+692,692,Bahrain,Manama,1816,2020
+694,694,Qatar,Doha,1816,2020
+696,696,United Arab Emirates,Abu Dhabi,1816,2020
+698,698,Oman,Muscat,1816,2020
+700,700,Afghanistan,Kabul,1816,2020
+701,701,Turkmenistan,Ashgabat,1816,2020
+702,702,Tajikistan,Dushanbe,1816,2020
+703,703,Kyrgyzstan,Bishkek,1816,2020
+704,704,Uzbekistan,Tashkent,1816,2020
+705,705,Kazakhstan,Almaty,1991,1998
+705,705,Kazakhstan,Astana,1998,2020
+710,710,China,Beijing,1816,2020
+,711,Tibet,Lhasa,1816,2020
+712,712,Mongolia,Ulaanbaatar,1816,2020
+713,713,Taiwan,Taipei,1816,2020
+730,730,Korea,Seoul,1816,2020
+731,731,North Korea,Pyongyang,1816,2020
+732,732,South Korea,Seoul,1816,2020
+740,740,Japan,Kyoto,1816,1868
+740,740,Japan,Tokyo,1868,2020
+750,750,India,Calcutta,1816,1912
+750,750,India,New Delhi,1912,2020
+760,760,Bhutan,Thimphu,1816,2020
+770,770,Pakistan,Karachi,1947,1959
+770,770,Pakistan,Rawalpindi,1959,1967
+770,770,Pakistan,Islamabad,1967,2020
+771,771,Bangladesh,Dhaka,1816,2020
+,775,Myanmar,Amarapura,1816,1821
+,775,Myanmar,Inwa,1821,1842
+,775,Myanmar,Amarapura,1842,1859
+,775,Myanmar,Mandalay,1859,1885
+775,775,Myanmar,Rangoon,1948,2005
+775,775,Myanmar,Pyinmana,2005,2020
+780,780,Sri Lanka,Colombo,1816,2020
+781,781,Maldive Islands,Male,1816,2020
+790,790,Nepal,Kathmandu,1816,2020
+800,800,Thailand,Bangkok,1816,2020
+811,811,Cambodia,Phnom Penh,1816,2020
+812,812,Laos,Vientiane,1816,2020
+,815,Vietnam (Annam/Cochin China/Tonkin),Saigon,1816,1893
+816,816,Vietnam,Hanoi,1816,2020
+817,817,Republic of Vietnam,Saigon,1816,2020
+820,820,Malaysia,Kuala Lumpur,1816,2020
+830,830,Singapore,Singapore,1816,2020
+835,835,Brunei,Bandar Seri Begawan,1816,2020
+840,840,Philippines,Quezon City,1946,1976
+840,840,Philippines,Manila,1976,2020
+850,850,Indonesia,Jakarta,1816,2020
+860,860,East Timor,Dili,1816,2020
+900,900,Australia,Melbourne,1901,1927
+900,900,Australia,Canberra,1927,2020
+910,910,Papua New Guinea,Port Moresby,1816,2020
+920,920,New Zealand,Russell,1840,1841
+920,920,New Zealand,Auckland,1841,1865
+920,920,New Zealand,Wellington,1865,2020
+935,935,Vanuatu,Port Vila,1816,2020
+940,940,Solomon Islands,Honiara,1816,2020
+946,946,Kiribati,South Tarawa,1816,2020
+947,947,Tuvalu,Funafuti,1816,2020
+950,950,Fiji,Suva,1816,2020
+955,955,Tonga,Nuku'alofa,1816,2020
+970,970,Nauru,Yaren,1816,2020
+983,983,Marshall Islands,Majuro,1816,2020
+986,986,Palau,Koror,1816,2020
+987,987,Federated States of Micronesia,Palikir,1816,2020
+990,990,Samoa,Apia,1816,2020

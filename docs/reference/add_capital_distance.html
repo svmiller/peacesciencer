@@ -43,8 +43,9 @@
 
 <meta property="og:title" content="Add capital-to-capital distance to a dyad-year or state-year data frame — add_capital_distance" />
 <meta property="og:description" content="add_capital_distance() allows you to add capital-to-capital
-distance to a dyad-year or state-year data frame. The capitals are coded in the capitals
-data frame, along with their latitudes and longitudes. The distance variable that
+distance to a dyad-year or state-year data frame. The capitals are coded in the
+cow_capitals and gw_capitals
+data frames, along with their latitudes and longitudes. The distance variable that
 emerges capdist is calculated using the &quot;Vincenty&quot; method (i.e. &quot;as the crow
 flies&quot;) and is expressed in kilometers." />
 
@@ -166,8 +167,9 @@ flies&quot;) and is expressed in kilometers." />
 
     <div class="ref-description">
     <p><code>add_capital_distance()</code> allows you to add capital-to-capital
-distance to a dyad-year or state-year data frame. The capitals are coded in the <code>capitals</code>
-data frame, along with their latitudes and longitudes. The distance variable that
+distance to a dyad-year or state-year data frame. The capitals are coded in the
+<code>cow_capitals</code> and <code>gw_capitals</code>
+data frames, along with their latitudes and longitudes. The distance variable that
 emerges <code>capdist</code> is calculated using the "Vincenty" method (i.e. "as the crow
 flies") and is expressed in kilometers.</p>
     </div>
@@ -189,7 +191,7 @@ flies") and is expressed in kilometers.</p>
 capital-to-capital distance between the first state and the second state (in dyad-year data) or the minimum
 capital-to-capital distance for a given state in a given year. A minor
 note about this function: cases of capital transition are recorded in the
-<code>capitals</code> data but, in the conversion to capital-years (and eventual
+underlying data but, in the conversion to capital-years (and eventual
 merging into a dyad-year data frame), the Jan. 1 capital is used for calculating
 distances.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -210,31 +212,31 @@ of the proverbial pipe.</p>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 4</span>
 #&gt;    ccode1 ccode2  year capdist
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920    735.
-#&gt; <span style='color: #BCBCBC;'> 2</span>      2     20  <span style='text-decoration: underline;'>1</span>921    735.
-#&gt; <span style='color: #BCBCBC;'> 3</span>      2     20  <span style='text-decoration: underline;'>1</span>922    735.
-#&gt; <span style='color: #BCBCBC;'> 4</span>      2     20  <span style='text-decoration: underline;'>1</span>923    735.
-#&gt; <span style='color: #BCBCBC;'> 5</span>      2     20  <span style='text-decoration: underline;'>1</span>924    735.
-#&gt; <span style='color: #BCBCBC;'> 6</span>      2     20  <span style='text-decoration: underline;'>1</span>925    735.
-#&gt; <span style='color: #BCBCBC;'> 7</span>      2     20  <span style='text-decoration: underline;'>1</span>926    735.
-#&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927    735.
-#&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928    735.
-#&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929    735.
+#&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 2</span>      2     20  <span style='text-decoration: underline;'>1</span>921   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 3</span>      2     20  <span style='text-decoration: underline;'>1</span>922   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 4</span>      2     20  <span style='text-decoration: underline;'>1</span>923   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 5</span>      2     20  <span style='text-decoration: underline;'>1</span>924   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 6</span>      2     20  <span style='text-decoration: underline;'>1</span>925   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 7</span>      2     20  <span style='text-decoration: underline;'>1</span>926   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928   <span style='text-decoration: underline;'>2</span>011.
+#&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929   <span style='text-decoration: underline;'>2</span>011.
 #&gt; <span style='color: #949494;'># … with 2,063,660 more rows</span></div><div class='input'>
 <span class='fu'><a href='create_stateyears.html'>create_stateyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_capital_distance</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,731 x 4</span>
 #&gt;    ccode statenme                  year mincapdist
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>816      <span style='text-decoration: underline;'>5</span>742.
-#&gt; <span style='color: #BCBCBC;'> 2</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>817      <span style='text-decoration: underline;'>5</span>742.
-#&gt; <span style='color: #BCBCBC;'> 3</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>818      <span style='text-decoration: underline;'>5</span>742.
-#&gt; <span style='color: #BCBCBC;'> 4</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>819      <span style='text-decoration: underline;'>5</span>742.
-#&gt; <span style='color: #BCBCBC;'> 5</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>820      <span style='text-decoration: underline;'>5</span>742.
-#&gt; <span style='color: #BCBCBC;'> 6</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>821      <span style='text-decoration: underline;'>5</span>742.
-#&gt; <span style='color: #BCBCBC;'> 7</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>822      <span style='text-decoration: underline;'>5</span>744.
-#&gt; <span style='color: #BCBCBC;'> 8</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>823      <span style='text-decoration: underline;'>5</span>744.
-#&gt; <span style='color: #BCBCBC;'> 9</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>824      <span style='text-decoration: underline;'>5</span>744.
-#&gt; <span style='color: #BCBCBC;'>10</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>825      <span style='text-decoration: underline;'>5</span>744.
+#&gt; <span style='color: #BCBCBC;'> 1</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>816      <span style='text-decoration: underline;'>6</span>677.
+#&gt; <span style='color: #BCBCBC;'> 2</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>817      <span style='text-decoration: underline;'>6</span>677.
+#&gt; <span style='color: #BCBCBC;'> 3</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>818      <span style='text-decoration: underline;'>6</span>677.
+#&gt; <span style='color: #BCBCBC;'> 4</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>819      <span style='text-decoration: underline;'>6</span>677.
+#&gt; <span style='color: #BCBCBC;'> 5</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>820      <span style='text-decoration: underline;'>6</span>677.
+#&gt; <span style='color: #BCBCBC;'> 6</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>821      <span style='text-decoration: underline;'>6</span>677.
+#&gt; <span style='color: #BCBCBC;'> 7</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>822      <span style='text-decoration: underline;'>6</span>679.
+#&gt; <span style='color: #BCBCBC;'> 8</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>823      <span style='text-decoration: underline;'>6</span>679.
+#&gt; <span style='color: #BCBCBC;'> 9</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>824      <span style='text-decoration: underline;'>6</span>679.
+#&gt; <span style='color: #BCBCBC;'>10</span>     2 United States of America  <span style='text-decoration: underline;'>1</span>825      <span style='text-decoration: underline;'>6</span>679.
 #&gt; <span style='color: #949494;'># … with 16,721 more rows</span></div><div class='input'><span class='co'># }</span>
 
 

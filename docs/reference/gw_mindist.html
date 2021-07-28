@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Minimum Distance Between States in the Gleditsch-Ward System, 1946-2015 — gw_mindist • peacesciencer</title>
+<title>The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019 — gw_mindist • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="The Minimum Distance Between States in the Gleditsch-Ward System, 1946-2015 — gw_mindist" />
+<meta property="og:title" content="The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019 — gw_mindist" />
 <meta property="og:description" content="These are non-directed dyad-year data for the minimum distance between states in the Gleditsch-Ward state system from
-1946 to 2015. The data are generated from the cshapes package." />
+1886 to 2018. The data are generated from the cshapes package." />
 
 
 
@@ -75,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.9999</span>
       </span>
     </div>
 
@@ -156,14 +156,14 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>The Minimum Distance Between States in the Gleditsch-Ward System, 1946-2015</h1>
+    <h1>The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
     <div class="hidden name"><code>gw_mindist.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>These are non-directed dyad-year data for the minimum distance between states in the Gleditsch-Ward state system from
-1946 to 2015. The data are generated from the <code>cshapes</code> package.</p>
+1886 to 2018. The data are generated from the <span class="pkg">cshapes</span> package.</p>
     </div>
 
     <pre class="usage"><span class='va'>gw_mindist</span></pre>
@@ -175,25 +175,23 @@
 <dt><code>gwcode1</code></dt><dd><p>the Gleditsch-Ward state system code for the first state</p></dd>
 <dt><code>gwcode2</code></dt><dd><p>the Gleditsch-Ward state system code for the second state</p></dd>
 <dt><code>year</code></dt><dd><p>the year</p></dd>
-<dt><code>mindist</code></dt><dd><p>the minimum distance between states on Dec. 31 of the year, in kilometers</p></dd>
+<dt><code>mindist</code></dt><dd><p>the minimum distance between states on Jan. 1 of the year, in kilometers</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The data are generated from the <code>cshapes</code> package. The package authors purport that the data
+    <p>The data are generated from the <span class="pkg">cshapes</span> package. The package authors purport that the data
 are generated to be compatible with the Gleditsch-Ward system. I trust them on this; indeed, Gleditsch is one of the
-authors of the <code>cshapes</code> package. However, I'm not sure how exhaustive the coverage is. For example,
-Tibet is missing in these data and it should not be. I do not use Gleditsch-Ward codes for my own research, so my
-quality control here for functions using these data will be minimal. I can only confirm there are no duplicates in the
-data.</p>
+authors of the <span class="pkg">cshapes</span> package.</p>
 <p>Data are automatically generated (by default) as directed dyad-years. I elect to make them non-directed for space
 considerations. Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
 looks weird to see the code that does it.</p>
-<p>Most of the data I prove elsewhere in this package are to be understood as the data as they were at the *start* of
+<p>Previous versions of these data were for the minimum distance as of Dec. 31 of the referent year. These are now Jan. 1.
+Most of the data I prove elsewhere in this package are  to be understood as the data as they were at the *start* of
 the year. This is how I process, for example, the <code>capitals</code> data as they get merged in the <code><a href='add_capital_distance.html'>add_capital_distance()</a></code>
-function. However, the script that generates these data are set at Dec. 31 of the year and not Jan. 1. I do this for concerns
-of maximizing data coverage. If you wanted the same effect, just lag the data a year.</p>
+function. However, the script that generates these data are set at Jan. 1 of the year and not Dec. 31. Right now, the <span class="pkg">cshapes</span>
+does not appear to work on my system and I do not know why. Fortunately, the package authors made these data available.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The <code>cshapes</code> Package." <em>The R Journal</em> 2(1): 18-24</p>

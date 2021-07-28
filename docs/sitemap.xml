@@ -79,13 +79,13 @@
     <loc>http://svmiller.com/reference/atop_alliance.html</loc>
   </url>
   <url>
-    <loc>http://svmiller.com/reference/capitals.html</loc>
-  </url>
-  <url>
     <loc>http://svmiller.com/reference/ccode_democracy.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_alliance.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/cow_capitals.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_contdir.html</loc>
@@ -158,6 +158,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/gml_mid_ddydisps.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/gw_capitals.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/gw_cow_years.html</loc>

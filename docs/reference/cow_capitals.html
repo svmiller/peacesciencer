@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0) — gml_mid_ddydisps • peacesciencer</title>
+<title>A complete list of capitals and capital transitions for Correlates of War state system members — cow_capitals • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,10 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0) — gml_mid_ddydisps" />
-<meta property="og:description" content="These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
- Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
- Its primary aim here is merging into a dyad-year data frame." />
+<meta property="og:title" content="A complete list of capitals and capital transitions for Correlates of War state system members — cow_capitals" />
+<meta property="og:description" content="This is a complete list of capitals and capital transitions for Correlates of War state system members. I
+use it internally for calculating capital-to-capital distances in the add_capital_distances() function." />
 
 
 
@@ -157,63 +156,56 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)</h1>
+    <h1>A complete list of capitals and capital transitions for Correlates of War state system members</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>gml_mid_ddydisps.Rd</code></div>
+    <div class="hidden name"><code>cow_capitals.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
- Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
- Its primary aim here is merging into a dyad-year data frame.</p>
+    <p>This is a complete list of capitals and capital transitions for Correlates of War state system members. I
+use it internally for calculating capital-to-capital distances in the <code>add_capital_distances()</code> function.</p>
     </div>
 
-    <pre class="usage"><span class='va'>gml_mid_ddydisps</span></pre>
+    <pre class="usage"><span class='va'>cow_capitals</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 9262 observations on the following 25 variables.</p><dl>
-<dt><code>dispnum</code></dt><dd><p>a numeric vector for the dispute number</p></dd>
-<dt><code>ccode1</code></dt><dd><p>a numeric vector for the focal state in the dyad</p></dd>
-<dt><code>ccode2</code></dt><dd><p>a numeric vector for the target state in the dyad</p></dd>
-<dt><code>year</code></dt><dd><p>a numeric vector for the dispute-year</p></dd>
-<dt><code>gmlmidongoing</code></dt><dd><p>a numeric vector for whether there was a dispute ongoing in that year</p></dd>
-<dt><code>gmlmidonset</code></dt><dd><p>a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)</p></dd>
-<dt><code>sidea1</code></dt><dd><p>is <code>ccode1</code> on side A of the dispute?</p></dd>
-<dt><code>sidea2</code></dt><dd><p>is <code>ccode2</code> on side A of the dispute?</p></dd>
-<dt><code>fatality1</code></dt><dd><p>a numeric vector for the overall fatality level of <code>ccode1</code> in the dispute</p></dd>
-<dt><code>fatality2</code></dt><dd><p>a numeric vector for the overall fatality level of <code>ccode2</code> in the dispute</p></dd>
-<dt><code>fatalpre1</code></dt><dd><p>a numeric vector for the known fatalities (with precision) for <code>ccode1</code> in the dispute</p></dd>
-<dt><code>fatalpre2</code></dt><dd><p>a numeric vector for the known fatalities (with precision) for <code>ccode2</code> in the dispute</p></dd>
-<dt><code>hiact1</code></dt><dd><p>a numeric vector for the highest action of <code>ccode1</code> in the dispute</p></dd>
-<dt><code>hiact2</code></dt><dd><p>a numeric vector for the highest action of <code>ccode2</code> in the dispute</p></dd>
-<dt><code>hostlev1</code></dt><dd><p>a numeric vector for the hostility level of <code>ccode1</code> in the dispute</p></dd>
-<dt><code>hostlev2</code></dt><dd><p>a numeric vector for the hostility level of <code>ccode2</code> in the dispute</p></dd>
-<dt><code>orig1</code></dt><dd><p>is <code>ccode1</code> an originator of the dispute?</p></dd>
-<dt><code>orig2</code></dt><dd><p>is <code>ccode2</code> an originator of the dispute?</p></dd>
-<dt><code>fatality</code></dt><dd><p>a numeric vector for the fatality level of the dispute</p></dd>
-<dt><code>hostlev</code></dt><dd><p>a numeric vector for the hostility level of the MID</p></dd>
-<dt><code>mindur</code></dt><dd><p>a numeric vector for the minimum duration of the MID</p></dd>
-<dt><code>maxdur</code></dt><dd><p>a numeric vector for the maximum duration of the MID</p></dd>
- <dt><code>recip</code></dt><dd><p>a numeric vector for whether a MID was reciprocated</p></dd>
- <dt><code>stmon</code></dt><dd><p>a numeric vector for the start month of the MID</p></dd>
+    <p>A data frame with 252 observations on the following 7 variables.</p><dl>
+<dt><code>ccode</code></dt><dd><p>a numeric vector for the Correlates of War state code</p></dd>
+<dt><code>statenme</code></dt><dd><p>a character vector for the state</p></dd>
+<dt><code>capital</code></dt><dd><p>a character vector for the name of the capital</p></dd>
+<dt><code>styear</code></dt><dd><p>a character vector for the start year. See details section for more information.</p></dd>
+<dt><code>endyear</code></dt><dd><p>a character vector for the end year. See details section for more information.</p></dd>
+<dt><code>lat</code></dt><dd><p>a numeric vector of the latitude coordinates for the capital</p></dd>
+<dt><code>lng</code></dt><dd><p>a numeric vector of the longitude coordinates for the capital</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The process of creating these is described at one of the references below. Importantly, these data are somewhat
-"naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
-Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
-action for both was a war. The data are thus similar to what the <code>EUGene</code> program would create for users back in the day. Use these
-data with that limitation in mind.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
-URL: <a href='http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/'>http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/</a></p>
-<p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
-Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.</p>
+    <p>For convenience, the start year for most states is 1816. Samoa, for example, was not a state
+in 1816. However, the functions that use the <code>cow_capitals</code> data will not create observations for states
+that did not exist at a given point in time.</p>
+<p>The data should be current as of the end of 2020.</p>
+<p>Cases where a start year is not 1816 indicate a capital transition. For example, Brazil's capital moved from
+Rio de Janeiro to Brasilia (a planned capital) in 1960. Only 25 states in the data experienced a capital transition.
+The most recent was Burundi in 2018. Indonesia, as of writing, is planning on a capital transition, but this has not
+been completed yet.</p>
+<p>Kazakhstan renamed its capital for the state leader in 2019. These data retain the name of Astana. This will be changed
+in the event the software I use records this change.</p>
+<p>The capitals data are not without some peculiarities. Prominently, Portugal transferred the Portuguese court from
+Lisbon to Rio de Janeiro from 1808 to 1821. *This is recorded in the data.* A knowledge of the inter-state conflict data
+will note there was no war or dispute between, say, Portugal and Spain (or Portugal and any other country) at any point
+during this time, but it does create some weirdness that would suggest a massive distance between two countries, like
+Portugal and Spain, that are otherwise land-contiguous.</p>
+<p>On Spain: the republican government moved the capital at the start of the civil war (in 1936) to Valencia. However, it
+abandoned this capital by 1937. I elect to not record this capital transition.</p>
+<p>The data also do some (I think) reasonable back-dating of capitals to coincide with states in transition without
+necessarily formal capitals by the first appearance in the state system membership data. These concern Lithuania,
+Kazakhstan, and the Philippines. Kaunas is the initial post-independence capital of Lithuania. Almaty is the initial
+post-independence capital of Kazakhstan. Quezon City is the initial post-independence capital of the Philippines.
+This concerns, at the most, one or two years for each of these three countries.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
