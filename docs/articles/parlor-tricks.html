@@ -110,7 +110,7 @@
 
       
 
-      </header><script src="parlor-tricks_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
+      </header><script src="parlor-tricks_files/header-attrs-2.10/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Various Parlor Tricks in <code>{peacesciencer}</code>
@@ -152,7 +152,7 @@
 
 <span class="co"># Proof of concept: Here's India</span>
 <span class="va">Data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gwcode</span> <span class="op">==</span> <span class="fl">750</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 73 x 9</span>
+<span class="co">#&gt; # A tibble: 73 × 9</span>
 <span class="co">#&gt;    gwcode statename  year ucdpongoing ucdponset newstate maxintensity</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;</span>
 <span class="co">#&gt;  1    750 India      1947           0         0        1           NA</span>
@@ -170,7 +170,7 @@
 
 <span class="co"># And here's Belize</span>
 <span class="va">Data</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gwcode</span> <span class="op">==</span> <span class="fl">80</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 39 x 9</span>
+<span class="co">#&gt; # A tibble: 39 × 9</span>
 <span class="co">#&gt;    gwcode statename  year ucdpongoing ucdponset newstate maxintensity</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;        &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     80 Belize     1981           0         0        1           NA</span>
@@ -232,7 +232,7 @@
 <span class="co">#&gt;   &gt;</span>
 <span class="co">#&gt; &gt;[6]&gt;</span>
 <span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; # A tibble: 122,891 x 7</span>
+<span class="co">#&gt; # A tibble: 122,891 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year cinc1 cinc2 relpow whichside      </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt;  1      2    200  1892 0.173 0.173      0 ccode1 &gt; ccode2</span>
@@ -248,7 +248,7 @@
 <span class="co">#&gt; # … with 122,881 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; # A tibble: 106,286 x 7</span>
+<span class="co">#&gt; # A tibble: 106,286 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year  cinc1   cinc2 relpow whichside      </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt;  1      2     70  1831 0.0420 0.00945      1 ccode1 &gt; ccode2</span>
@@ -264,7 +264,7 @@
 <span class="co">#&gt; # … with 106,276 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; # A tibble: 181,740 x 7</span>
+<span class="co">#&gt; # A tibble: 181,740 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year cinc1   cinc2 relpow whichside      </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;          </span>
 <span class="co">#&gt;  1      2     20  1920 0.290 0.0101       2 ccode1 &gt; ccode2</span>
@@ -280,7 +280,7 @@
 <span class="co">#&gt; # … with 181,730 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[4]]</span>
-<span class="co">#&gt; # A tibble: 130,448 x 7</span>
+<span class="co">#&gt; # A tibble: 130,448 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year  cinc1 cinc2 relpow whichside       </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;           </span>
 <span class="co">#&gt;  1      2    200  1861 0.144  0.258      0 ccode2 &gt;= ccode1</span>
@@ -296,7 +296,7 @@
 <span class="co">#&gt; # … with 130,438 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[5]]</span>
-<span class="co">#&gt; # A tibble: 122,921 x 7</span>
+<span class="co">#&gt; # A tibble: 122,921 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year  cinc1 cinc2 relpow whichside       </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;           </span>
 <span class="co">#&gt;  1      2    200  1816 0.0397 0.337      1 ccode2 &gt;= ccode1</span>
@@ -312,7 +312,7 @@
 <span class="co">#&gt; # … with 122,911 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[6]]</span>
-<span class="co">#&gt; # A tibble: 216,185 x 7</span>
+<span class="co">#&gt; # A tibble: 216,185 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year   cinc1  cinc2 relpow whichside       </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;           </span>
 <span class="co">#&gt;  1     20    200  1920 0.0101  0.128       2 ccode2 &gt;= ccode1</span>
@@ -350,7 +350,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">year</span>, <span class="va">prop_tpop</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">Advanced</span>
 
 <span class="va">Advanced</span>
-<span class="co">#&gt; # A tibble: 15,171 x 7</span>
+<span class="co">#&gt; # A tibble: 15,171 × 7</span>
 <span class="co">#&gt;    ccode  year prop_tpop prop_irst prop_pec econcap advanced</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     2  1816    0.0398    0.0954  0.00966  0.0525        1</span>
@@ -393,7 +393,7 @@
 <span class="co">#&gt;   &gt;</span>
 <span class="co">#&gt; &gt;[3]&gt;</span>
 <span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; # A tibble: 492,975 x 8</span>
+<span class="co">#&gt; # A tibble: 492,975 × 8</span>
 <span class="co">#&gt;    ccode1 ccode2  year     cinc1   cinc2 advanced1 advanced2 advancedcat</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     31     40  1986 0.0000349 0.00326         0         0           0</span>
@@ -409,7 +409,7 @@
 <span class="co">#&gt; # … with 492,965 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; # A tibble: 315,590 x 8</span>
+<span class="co">#&gt; # A tibble: 315,590 × 8</span>
 <span class="co">#&gt;    ccode1 ccode2  year cinc1     cinc2 advanced1 advanced2 advancedcat</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      2     31  1986 0.135 0.0000349         1         0           1</span>
@@ -425,7 +425,7 @@
 <span class="co">#&gt; # … with 315,580 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; # A tibble: 50,502 x 8</span>
+<span class="co">#&gt; # A tibble: 50,502 × 8</span>
 <span class="co">#&gt;    ccode1 ccode2  year cinc1   cinc2 advanced1 advanced2 advancedcat</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      2     20  1920 0.290 0.0101          1         1           2</span>
@@ -459,7 +459,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">year</span>, <span class="va">prop_tpop</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">ncol</a></span><span class="op">(</span><span class="va">.</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">Militarized</span>
 
 <span class="va">Militarized</span>
-<span class="co">#&gt; # A tibble: 15,171 x 7</span>
+<span class="co">#&gt; # A tibble: 15,171 × 7</span>
 <span class="co">#&gt;    ccode  year prop_tpop prop_milex prop_milper militcap militarized</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     2  1816    0.0398     0.0682     0.00859   0.0384           0</span>
@@ -500,7 +500,7 @@
 <span class="co">#&gt;   &gt;</span>
 <span class="co">#&gt; &gt;[3]&gt;</span>
 <span class="co">#&gt; [[1]]</span>
-<span class="co">#&gt; # A tibble: 285,670 x 6</span>
+<span class="co">#&gt; # A tibble: 285,670 × 6</span>
 <span class="co">#&gt;    ccode1 ccode2  year militarized1 militarized2 militcat</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      2     20  1923            0            0        0</span>
@@ -516,7 +516,7 @@
 <span class="co">#&gt; # … with 285,660 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[2]]</span>
-<span class="co">#&gt; # A tibble: 316,019 x 6</span>
+<span class="co">#&gt; # A tibble: 316,019 × 6</span>
 <span class="co">#&gt;    ccode1 ccode2  year militarized1 militarized2 militcat</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      2     20  1920            1            0        1</span>
@@ -532,7 +532,7 @@
 <span class="co">#&gt; # … with 316,009 more rows</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [[3]]</span>
-<span class="co">#&gt; # A tibble: 104,556 x 6</span>
+<span class="co">#&gt; # A tibble: 104,556 × 6</span>
 <span class="co">#&gt;    ccode1 ccode2  year militarized1 militarized2 militcat</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      2     20  1942            1            1        2</span>
@@ -571,7 +571,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">40</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode1</span><span class="op">:</span><span class="va">year</span>, <span class="va">cowmidongoing</span>, <span class="va">gmlmidongoing</span>, <span class="va">cowmidspell</span><span class="op">:</span><span class="va">gmlmidspell</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">1980</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 37 x 7</span>
+<span class="co">#&gt; # A tibble: 37 × 7</span>
 <span class="co">#&gt;    ccode1 ccode2  year cowmidongoing gmlmidongoing cowmidspell gmlmidspell</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span>
 <span class="co">#&gt;  1      2     40  1980             0             0           0           0</span>
@@ -605,7 +605,7 @@
 <span class="co">#&gt; Joining, by = c("year", "ccode")</span>
 <span class="co">#&gt; Joining, by = c("gwcode", "year")</span>
 <span class="co">#&gt; Joining, by = c("ccode", "year")</span>
-<span class="co">#&gt; # A tibble: 73 x 10</span>
+<span class="co">#&gt; # A tibble: 73 × 10</span>
 <span class="co">#&gt;    gwcode ccode  year statename ucdpspell cowintraspell ucdpongoing ucdponset</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1    750   750  1947 India             0             0           0         0</span>

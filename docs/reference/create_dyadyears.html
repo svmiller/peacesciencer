@@ -217,7 +217,7 @@ by either Correlates of War or Gleditsch-Ward and returns a dyad-year data frame
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='co'># CoW is default, will include years beyond 2016 (most recent CoW update)</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 × 3</span>
 #&gt;    ccode1 ccode2  year
 #&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920
@@ -233,7 +233,7 @@ by either Correlates of War or Gleditsch-Ward and returns a dyad-year data frame
 #&gt; <span style='color: #949494;'># … with 2,063,660 more rows</span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, include most recent years</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,029,660 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,029,660 × 3</span>
 #&gt;    gwcode1 gwcode2  year
 #&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>       2      20  <span style='text-decoration: underline;'>1</span>867
@@ -249,7 +249,7 @@ by either Correlates of War or Gleditsch-Ward and returns a dyad-year data frame
 #&gt; <span style='color: #949494;'># … with 2,029,650 more rows</span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, don't include most recent years</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span>, mry<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,939,354 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,939,354 × 3</span>
 #&gt;    gwcode1 gwcode2  year
 #&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>       2      20  <span style='text-decoration: underline;'>1</span>867
@@ -265,7 +265,7 @@ by either Correlates of War or Gleditsch-Ward and returns a dyad-year data frame
 #&gt; <span style='color: #949494;'># … with 1,939,344 more rows</span></div><div class='input'>
 <span class='co'># Gleditsch-Ward, don't include most recent years, directed = FALSE</span>
 <span class='fu'>create_dyadyears</span><span class='op'>(</span>system<span class='op'>=</span><span class='st'>"gw"</span>, mry<span class='op'>=</span><span class='cn'>FALSE</span>, directed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 969,677 x 3</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 969,677 × 3</span>
 #&gt;    gwcode1 gwcode2  year
 #&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>       2      20  <span style='text-decoration: underline;'>1</span>867

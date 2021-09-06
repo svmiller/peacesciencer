@@ -110,7 +110,7 @@
 
       
 
-      </header><script src="democracy_files/header-attrs-2.8/header-attrs.js"></script><script src="democracy_files/kePrint-0.0.1/kePrint.js"></script><link href="democracy_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+      </header><script src="democracy_files/header-attrs-2.10/header-attrs.js"></script><script src="democracy_files/kePrint-0.0.1/kePrint.js"></script><link href="democracy_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -128,10 +128,10 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.2     ✓ dplyr   1.0.6</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
+<span class="co">#&gt; ✓ tibble  3.1.4     ✓ dplyr   1.0.7</span>
 <span class="co">#&gt; ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span>
+<span class="co">#&gt; ✓ readr   2.0.1     ✓ forcats 0.5.1</span>
 <span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
@@ -156,7 +156,7 @@
 <span class="co">#library(peacesciencer)</span>
 
 <span class="va">ccode_democracy</span>
-<span class="co">#&gt; # A tibble: 16,731 x 5</span>
+<span class="co">#&gt; # A tibble: 16,731 × 5</span>
 <span class="co">#&gt;    ccode  year v2x_polyarchy polity2 xm_qudsest</span>
 <span class="co">#&gt;    &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt;  1     2  1816         0.367       9      0.707</span>
@@ -175,7 +175,7 @@
 <code class="sourceCode R"><span class="va">ccode_democracy</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/between.html">between</a></span><span class="op">(</span><span class="va">year</span>, <span class="fl">1816</span>, <span class="fl">2010</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>perc_missing <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">polity2</span><span class="op">)</span><span class="op">)</span><span class="op">/</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">polity2</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 1</span>
+<span class="co">#&gt; # A tibble: 1 × 1</span>
 <span class="co">#&gt;   perc_missing</span>
 <span class="co">#&gt;          &lt;dbl&gt;</span>
 <span class="co">#&gt; 1       0.0850</span></code></pre></div>
@@ -194,7 +194,7 @@
 
 <span class="va">missing_obs</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">==</span> <span class="va">nobs</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu">countrycode</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/countrycode/man/countrycode.html">countrycode</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="st">"cown"</span>, <span class="st">"country.name"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu">countrycode</span><span class="fu">::</span><span class="fu"><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="st">"cown"</span>, <span class="st">"country.name"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">country</span>, <span class="va">n</span>, <span class="va">nobs</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"CoW States that Never Appear in the Polity Data"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
@@ -686,7 +686,7 @@ Samoa
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">missing_obs</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&lt;</span> <span class="va">nobs</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu">countrycode</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/countrycode/man/countrycode.html">countrycode</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="st">"cown"</span>, <span class="st">"country.name"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>country <span class="op">=</span> <span class="fu">countrycode</span><span class="fu">::</span><span class="fu"><a href="https://vincentarelbundock.github.io/countrycode/reference/countrycode.html">countrycode</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="st">"cown"</span>, <span class="st">"country.name"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">country</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Situational Missigness in the Polity Data"</span><span class="op">)</span>  <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
@@ -1627,7 +1627,7 @@ Solomon Islands
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">xm_qudsest</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">missing_xm</span>
 
 <span class="va">missing_xm</span>
-<span class="co">#&gt; # A tibble: 4 x 5</span>
+<span class="co">#&gt; # A tibble: 4 × 5</span>
 <span class="co">#&gt;   ccode  year v2x_polyarchy polity2 xm_qudsest</span>
 <span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">#&gt; 1   300  1918        NA           0         NA</span>
@@ -1656,7 +1656,7 @@ Solomon Islands
   <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">xm_qudsest</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">missing_xm</span>, <span class="va">.</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode", "year", "v2x_polyarchy", "polity2")</span>
-<span class="co">#&gt; # A tibble: 4 x 8</span>
+<span class="co">#&gt; # A tibble: 4 × 8</span>
 <span class="co">#&gt;   ccode  year v2x_polyarchy polity2 xm_qudsest impute_pol impute_vdem imputed</span>
 <span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;         &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;      &lt;dbl&gt;       &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt; 1   300  1918        NA           0         NA      0.273      NA       0.273</span>

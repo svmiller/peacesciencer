@@ -110,7 +110,7 @@
 
       
 
-      </header><script src="coerce-dispute-year-dyad-year_files/header-attrs-2.8/header-attrs.js"></script><script src="coerce-dispute-year-dyad-year_files/kePrint-0.0.1/kePrint.js"></script><link href="coerce-dispute-year-dyad-year_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+      </header><script src="coerce-dispute-year-dyad-year_files/header-attrs-2.10/header-attrs.js"></script><script src="coerce-dispute-year-dyad-year_files/kePrint-0.0.1/kePrint.js"></script><link href="coerce-dispute-year-dyad-year_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
@@ -127,10 +127,10 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.2     ✓ dplyr   1.0.6</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
+<span class="co">#&gt; ✓ tibble  3.1.4     ✓ dplyr   1.0.7</span>
 <span class="co">#&gt; ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span>
+<span class="co">#&gt; ✓ readr   2.0.1     ✓ forcats 0.5.1</span>
 <span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
@@ -147,7 +147,7 @@
 <code class="sourceCode R"><span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"~/Dropbox/data/cow/mid/5/MIDB 5.0.dta"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dispnum</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">112</span>, <span class="fl">113</span>, <span class="fl">306</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">sidea</span>, <span class="va">fatality</span>, <span class="va">hiact</span>, <span class="va">hostlev</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 8 x 13</span>
+<span class="co">#&gt; # A tibble: 8 × 13</span>
 <span class="co">#&gt;   dispnum stabb ccode stday stmon styear endday endmon endyear sidea fatality</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1     112 ITA     325     7     9   1860     29      9    1860     1        4</span>
@@ -175,7 +175,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> 
 <span class="co">#&gt; `summarise()` has grouped output by 'ccode1', 'ccode2'. You can override using the `.groups` argument.</span>
-<span class="co">#&gt; # A tibble: 498 x 5</span>
+<span class="co">#&gt; # A tibble: 498 × 5</span>
 <span class="co">#&gt;    ccode1 ccode2  year     n mids                            </span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                           </span>
 <span class="co">#&gt;  1    200    365  1920     6 186, 197, 1133, 2363, 2364, 2604</span>
@@ -309,7 +309,7 @@ disponset
 <code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">200</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1903</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 6</span>
+<span class="co">#&gt; # A tibble: 1 × 6</span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year dispongoing disponset</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1    3301      2    200  1903           1         1</span></code></pre></div>
@@ -542,7 +542,7 @@ hiact2
 <p>This will fix the Russia-Turkey-1853 problem.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">365</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">640</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1853</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 20</span>
+<span class="co">#&gt; # A tibble: 1 × 20</span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year dispongoing disponset sidea1 sidea2 fatality1</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt; 1      57    365    640  1853           1         1      1      0         6</span>
@@ -675,7 +675,7 @@ hiact2
 <code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">750</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">770</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1963</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 × 9</span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year disponset fatality1 fatality2 hiact1 hiact2</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1    1317    750    770  1963         1         0         0      0     14</span></code></pre></div>
@@ -688,7 +688,7 @@ hiact2
 <code class="sourceCode R"><span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"~/Dropbox/data/cow/mid/5/MIDB 5.0.dta"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dispnum</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1506</span>, <span class="fl">1523</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">sidea</span>, <span class="va">fatality</span>, <span class="va">hiact</span>, <span class="va">hostlev</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 7 x 13</span>
+<span class="co">#&gt; # A tibble: 7 × 13</span>
 <span class="co">#&gt;   dispnum stabb ccode stday stmon styear endday endmon endyear sidea fatality</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt; 1    1506 VEN     101    -9    10   1852     -9     11    1852     1        0</span>
@@ -724,7 +724,7 @@ hiact2
 <code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">135</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">100</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1852</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 x 9</span>
+<span class="co">#&gt; # A tibble: 1 × 9</span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year disponset fatality1 fatality2 hiact1 hiact2</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
 <span class="co">#&gt; 1    1523    135    100  1852         1         0         0      0      8</span></code></pre></div>
@@ -1798,7 +1798,7 @@ maxdur
 <code class="sourceCode R"><span class="va">cow_mid_ddydisps</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> 
-<span class="co">#&gt; # A tibble: 0 x 25</span>
+<span class="co">#&gt; # A tibble: 0 × 25</span>
 <span class="co">#&gt; # Groups:   ccode1, ccode2, year [0]</span>
 <span class="co">#&gt; # … with 25 variables: dispnum &lt;dbl&gt;, ccode1 &lt;dbl&gt;, ccode2 &lt;dbl&gt;, year &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   dispongoing &lt;dbl&gt;, disponset &lt;dbl&gt;, sidea1 &lt;dbl&gt;, sidea2 &lt;dbl&gt;,</span>
