@@ -39,7 +39,7 @@ add_atop_alliance <- function(data) {
     } else {
       atop_alliance %>%
         left_join(data, .) %>%
-        mutate_at(vars("atop_defense", "atop_offense", "atop_neutral", "atop_nonagg", "atop_consul"), ~ifelse(is.na(.), 0, .)) -> data
+        mutate_at(vars("atop_defense", "atop_offense", "atop_neutral", "atop_nonagg", "atop_consul"), ~ifelse(is.na(.) & year <= 2018, 0, .)) -> data
     }
 
 
