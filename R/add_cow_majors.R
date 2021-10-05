@@ -38,7 +38,7 @@ add_cow_majors <- function(data) {
   cow_majors %>%
     select(.data$ccode, .data$styear, .data$endyear) %>%
     rowwise() %>%
-    mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(year) %>%
+    mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
     select(-.data$styear, -.data$endyear) %>%
     mutate(cowmaj = 1) -> major_years
 

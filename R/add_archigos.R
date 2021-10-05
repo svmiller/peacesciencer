@@ -44,8 +44,8 @@ add_archigos <- function(data) {
     rowwise() %>%
     mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
     unnest(date) %>%
-    mutate(year = year(date)) %>%
-    filter(year >= 1870) %>%
+    mutate(year = .pshf_year(date)) %>%
+    filter(.data$year >= 1870) %>%
     arrange(date) %>%
     group_by(.data$ccode, .data$year) %>%
     mutate(jan1leadid = first(.data$leadid),
@@ -68,10 +68,10 @@ add_archigos <- function(data) {
     } else {
 
       hold_this %>%
-        rename_at(vars(-year), ~paste0(.,"1")) %>%
+        rename_at(vars(-.data$year), ~paste0(.,"1")) %>%
         left_join(data, .) %>%
         left_join(., hold_this  %>%
-                    rename_at(vars(-year), ~paste0(.,"2"))) -> data
+                    rename_at(vars(-.data$year), ~paste0(.,"2"))) -> data
 
       return(data)
 

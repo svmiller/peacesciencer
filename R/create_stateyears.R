@@ -49,7 +49,7 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
     cow_states %>%
       rowwise() %>%
       mutate(year = list(seq(.data$styear, .data$endyear2))) %>%
-      unnest(c(year)) %>%
+      unnest(c(.data$year)) %>%
       arrange(.data$ccode, .data$year) %>%
       select(.data$ccode, .data$statenme, .data$year) %>%
       distinct(.data$ccode, .data$statenme, .data$year) -> data
@@ -62,15 +62,15 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
   } else if(system == "gw") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1
-      gw_states$endyear = ifelse(year(gw_states$enddate) == max(year(gw_states$enddate)), mry, year(gw_states$enddate))
+      gw_states$endyear = ifelse(.pshf_year(gw_states$enddate) == max(.pshf_year(gw_states$enddate)), mry, .pshf_year(gw_states$enddate))
     } else {
-      gw_states$endyear <- year(gw_states$enddate)
+      gw_states$endyear <- .pshf_year(gw_states$enddate)
     }
     gw_states %>%
-      mutate(styear = year(.data$startdate)) %>%
+      mutate(styear = .pshf_year(.data$startdate)) %>%
       rowwise() %>%
       mutate(year = list(seq(.data$styear, .data$endyear))) %>%
-      unnest(c(year)) %>%
+      unnest(c(.data$year)) %>%
       arrange(.data$gwcode, .data$year) %>%
       select(.data$gwcode, .data$statename, .data$year)  %>%
       distinct(.data$gwcode, .data$statename, .data$year)  -> data

@@ -49,8 +49,8 @@ create_statedays <- function(system = "cow", mry = TRUE) {
     }
 
     cow_states %>%
-      mutate(stdate = ymd(paste0(.data$styear,"/", .data$stmonth,"/", .data$stday)),
-             enddate = ymd(paste0(.data$endyear2, "/", .data$endmonth,"/",.data$endday))) %>%
+      mutate(stdate = as.Date(paste0(.data$styear,"/", .data$stmonth,"/", .data$stday)),
+             enddate = as.Date(paste0(.data$endyear2, "/", .data$endmonth,"/",.data$endday))) %>%
       rowwise() %>%
       mutate(date = list(seq(.data$stdate, .data$enddate, by = '1 day'))) %>%
       unnest(date) %>%
@@ -63,9 +63,9 @@ create_statedays <- function(system = "cow", mry = TRUE) {
 
   } else if(system == "gw") {
     if (mry == TRUE) {
-      gw_states$enddate2 = if_else(year(gw_states$enddate) == max(year(gw_states$enddate)),
-                                  ymd(paste0(as.numeric(format(Sys.Date(), "%Y"))-1,"/12/31")),
-                                  gw_states$enddate)
+      gw_states$enddate2 = if_else(.pshf_year(gw_states$enddate) == max(.pshf_year(gw_states$enddate)),
+                                   as.Date(paste0(as.numeric(format(Sys.Date(), "%Y"))-1,"/12/31")),
+                                   gw_states$enddate)
     } else {
       gw_states$enddate2 <- gw_states$enddate
     }

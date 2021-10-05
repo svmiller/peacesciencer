@@ -63,13 +63,13 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
       filter(.data$ccode1!=.data$ccode2) %>%
       left_join(., cow_states, by=c("ccode1"="ccode")) %>%
       # ...and filter out cases where the years don't align.
-      filter(year >= .data$styear & year <= .data$endyear) %>%
+      filter(.data$year >= .data$styear & .data$year <= .data$endyear) %>%
       # Get rid of styear and endyear to do it again.
       select(-.data$styear,-.data$endyear) %>%
       # And do it again, this time for ccode2
       left_join(., cow_states, by=c("ccode2"="ccode")) %>%
       # Again, filter out cases where years don't align.
-      filter(year >= .data$styear & year <= .data$endyear) %>%
+      filter(.data$year >= .data$styear & .data$year <= .data$endyear) %>%
       # And select just what we need.
       select(.data$ccode1, .data$ccode2, .data$year) -> data
 
@@ -84,17 +84,17 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
     return(data)
 
     } else if(system == "gw") {
-      gw_states$styear <- year(gw_states$startdate)
+      gw_states$styear <- .pshf_year(gw_states$startdate)
       if (mry == TRUE) {
         mry <- as.numeric(format(Sys.Date(), "%Y"))-1
-        gw_states$endyear = ifelse(year(gw_states$enddate) == max(year(gw_states$enddate)), mry, year(gw_states$enddate))
+        gw_states$endyear = ifelse(.pshf_year(gw_states$enddate) == max(.pshf_year(gw_states$enddate)), mry, .pshf_year(gw_states$enddate))
         max_endyear <- max(gw_states$endyear)
       } else {
-        gw_states$endyear <- year(gw_states$enddate)
+        gw_states$endyear <- .pshf_year(gw_states$enddate)
         max_endyear <- max(gw_states$endyear)
       }
       gw_states %>%
-        mutate(styear = year(.data$startdate)) %>%
+        mutate(styear = .pshf_year(.data$startdate)) %>%
         # Select just the stuff we need
         select(.data$gwcode, .data$styear, .data$endyear) %>%
         # Expand the data, create two ccodes as well
@@ -103,13 +103,13 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
         filter(.data$gwcode1 != .data$gwcode2) %>%
         left_join(., gw_states, by=c("gwcode1"="gwcode")) %>%
         # ...and filter out cases where the years don't align.
-        filter(year >= .data$styear & year <= .data$endyear) %>%
+        filter(.data$year >= .data$styear & .data$year <= .data$endyear) %>%
         # Get rid of styear and endyear to do it again.
         select(-.data$styear,-.data$endyear) %>%
         # And do it again, this time for ccode2
         left_join(., gw_states, by=c("gwcode2"="gwcode")) %>%
         # Again, filter out cases where years don't align.
-        filter(year >= .data$styear & year <= .data$endyear) %>%
+        filter(.data$year >= .data$styear & .data$year <= .data$endyear) %>%
         # And select just what we need.
         select(.data$gwcode1, .data$gwcode2, .data$year) -> data
 

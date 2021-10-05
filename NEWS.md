@@ -5,6 +5,7 @@ peacesciencer 0.6.0 (in development)
 - Create `cow_capitals` and `gw_capitals` data. Remove `capitals` data for redundancy. Both capital data sets extended to 2020.
 - `add_capital_distance()` now works with Correlates of War and Gleditsch-Ward data, both dyad-year and state-year.
 - Fix bug in `add_atop_alliances()` that added 0s to years after the ATOP domain. Thanks to @joshuaalley for pointing this out.
+- Add/start a helper function file. These are internal functions I may need to write in order to reduce the potential of dependency issues resulting in package archival. This was necessitated by an Oct. 5, 2021 email from Brian Ripley about the slated removal of `{lubridate}`. Earlier versions of this package uncritically leaned on `{lubridate}` for functions I could either write myself (i.e. `year()`, which is now `.pshf_year()`) or were already duplicated in base functions in R (i.e. `ymd()`, a wrapper for `as.Date()` as I use it). With it, `{lubridate}` is no longer a requirement for this package.
 
 peacesciencer 0.5.0
 ---------------------------------------------------------------------
