@@ -63,7 +63,7 @@ add_cow_mids <- function(data, keep) {
     dirdisp %>%
       left_join(data, .) %>%
       mutate_at(vars("cowmidonset", "cowmidongoing"), ~ifelse(is.na(.) & between(.data$year, 1816, 2014), 0, .)) -> data
-
+    message("add_cow_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.\nSee: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html")
     return(data)
 
     }
