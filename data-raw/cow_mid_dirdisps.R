@@ -87,5 +87,6 @@ dDisp %>%
 
 attr(cow_mid_dirdisps, "ps_data_type") = "dyad_year"
 attr(cow_mid_dirdisps, "ps_system") = "cow"
+attr(cow_mid_dirdisps, "ps_conflict_type") = "cow-mid"
 
 save(cow_mid_dirdisps, file="data/cow_mid_dirdisps.rda")
