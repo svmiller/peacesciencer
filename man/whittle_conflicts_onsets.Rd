@@ -2,20 +2,23 @@
 % Please edit documentation in R/whittle_conflicts_onsets.R
 \name{whittle_conflicts_onsets}
 \alias{whittle_conflicts_onsets}
+\alias{wc_onsets}
 \title{Whittle Unique Conflict Onset-Years from Conflict-Year Data}
 \usage{
 whittle_conflicts_onsets(data)
+
+wc_onsets(...)
 }
 \arguments{
 \item{data}{a data frame with a declared conflict attribute type.}
 }
 \value{
-\code{whittle_conflict_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+\code{whittle_conflicts_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
 dyad and year, returns just those observations with unique onsets where duplicates exist. This will not eliminate all duplicates, far
 from it, but it's a sensible place to start.
 }
 \description{
-\code{whittle_conflict_onsets()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+\code{whittle_conflicts_onsets()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
 data to unique onsets where duplicates exist by some kind of cross-sectional unit and year. The inspiration here is clearly the problem
 of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data).
 }
@@ -25,6 +28,8 @@ for merging into a complete dyad-year data frame. Consider the case of France an
 had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
 The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
 merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
+
+\code{wc_onsets()} is a simple, less wordy, shortcut for the same function.
 }
 \examples{
 

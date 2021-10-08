@@ -1,10 +1,10 @@
 #' Whittle Unique Conflict Onset-Years from Conflict-Year Data
 #'
-#' @description \code{whittle_conflict_onsets()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+#' @description \code{whittle_conflicts_onsets()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
 #' data to unique onsets where duplicates exist by some kind of cross-sectional unit and year. The inspiration here is clearly the problem
 #' of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data).
 #'
-#' @return \code{whittle_conflict_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+#' @return \code{whittle_conflicts_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
 #' dyad and year, returns just those observations with unique onsets where duplicates exist. This will not eliminate all duplicates, far
 #' from it, but it's a sensible place to start.
 #'
@@ -14,6 +14,8 @@
 #' The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
 #' merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
 #'
+#' \code{wc_onsets()} is a simple, less wordy, shortcut for the same function.
+#'
 #' @author Steven V. Miller
 #'
 #' @param data a data frame with a declared conflict attribute type.
@@ -22,6 +24,8 @@
 #'
 #' Miller, Steven V. 2021. "How {peacesciencer} Coerces Dispute-Year Data into Dyad-Year Data".
 #' URL: \url{http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html}
+#'
+#' @name whittle_conflicts_onsets
 #'
 #' @examples
 #'
@@ -41,7 +45,7 @@ whittle_conflicts_onsets <- function(data) {
 
   if(is.null(attributes(data)$ps_conflict_type)) {
 
-    stop("The 'whittle' class of functions in {peacesciencer} only work on conflict available in the package.")
+    stop("The 'whittle' class of functions in {peacesciencer} only works on conflict data available in the package.")
   }
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year" &&  attributes(data)$ps_conflict_type == "gml") {
@@ -100,3 +104,9 @@ whittle_conflicts_onsets <- function(data) {
 
   return(data)
 }
+
+
+#' @rdname whittle_conflicts_onsets
+#' @export
+
+wc_onsets <- function(...) peacesciencer::whittle_conflicts_onsets(...)

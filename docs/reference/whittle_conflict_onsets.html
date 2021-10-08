@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Whittle Unique Conflict Onset-Years from Conflict-Year Data — whittle_conflicts_onsets • peacesciencer</title>
+<title>Whittle Unique Conflict Onset-Years from Conflict-Year Data — whittle_conflict_onsets • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Whittle Unique Conflict Onset-Years from Conflict-Year Data — whittle_conflicts_onsets" />
-<meta property="og:description" content="whittle_conflicts_onsets() is in a class of do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
+<meta property="og:title" content="Whittle Unique Conflict Onset-Years from Conflict-Year Data — whittle_conflict_onsets" />
+<meta property="og:description" content="whittle_conflict_onsets() is in a class of do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
 data to unique onsets where duplicates exist by some kind of cross-sectional unit and year. The inspiration here is clearly the problem
 of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data)." />
 
@@ -159,11 +159,11 @@ of whittling dyadic dispute-year data into true dyad-year data (like in the Gibl
     <div class="page-header">
     <h1>Whittle Unique Conflict Onset-Years from Conflict-Year Data</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/whittle_conflicts_onsets.R'><code>R/whittle_conflicts_onsets.R</code></a></small>
-    <div class="hidden name"><code>whittle_conflicts_onsets.Rd</code></div>
+    <div class="hidden name"><code>whittle_conflict_onsets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>whittle_conflicts_onsets()</code> is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+    <p><code>whittle_conflict_onsets()</code> is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
 data to unique onsets where duplicates exist by some kind of cross-sectional unit and year. The inspiration here is clearly the problem
 of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data).</p>
     </div>
@@ -183,7 +183,7 @@ of whittling dyadic dispute-year data into true dyad-year data (like in the Gibl
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>whittle_conflicts_onsets()</code> takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+    <p><code>whittle_conflict_onsets()</code> takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
 dyad and year, returns just those observations with unique onsets where duplicates exist. This will not eliminate all duplicates, far
 from it, but it's a sensible place to start.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
@@ -193,7 +193,6 @@ for merging into a complete dyad-year data frame. Consider the case of France an
 had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
 The default process in <span class="pkg">peacesciencer</span> employs several rules to whittle down these duplicate dyad-years for
 merging into a dyad-year data frame. These are available in <code><a href='add_cow_mids.html'>add_cow_mids()</a></code> and <code><a href='add_gml_mids.html'>add_gml_mids()</a></code>.</p>
-<p><code>wc_onsets()</code> is a simple, less wordy, shortcut for the same function.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Miller, Steven V. 2021. "How peacesciencer Coerces Dispute-Year Data into Dyad-Year Data".
