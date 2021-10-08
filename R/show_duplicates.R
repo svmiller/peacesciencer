@@ -25,7 +25,7 @@
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
 #'
-#' gml_mid_dirdisps %>% show_duplicates()
+#' gml_dirdisp %>% show_duplicates()
 #' cow_mid_dirdisps %>% show_duplicates()
 
 
