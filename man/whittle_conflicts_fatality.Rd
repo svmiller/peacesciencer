@@ -22,8 +22,9 @@ This will not eliminate all duplicates, far from it, but it's a sensible second 
 }
 \description{
 \code{whittle_conflicts_fatality()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-data to unique onsets where duplicates exist by some kind of cross-sectional unit and year. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data).
+data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
+function will keep the observations with the highest observed fatality.
 }
 \details{
 Dyads are capable of having multiple disputes in a given year, which can create a problem

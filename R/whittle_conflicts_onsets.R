@@ -1,8 +1,9 @@
 #' Whittle Unique Conflict Onset-Years from Conflict-Year Data
 #'
 #' @description \code{whittle_conflicts_onsets()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-#' data to unique onsets where duplicates exist by some kind of cross-sectional unit and year. The inspiration here is clearly the problem
-#' of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data).
+#' data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
+#' of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
+#' function will drop ongoing conflicts in the presence of unique onsets.
 #'
 #' @return \code{whittle_conflicts_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
 #' dyad and year, returns just those observations with unique onsets where duplicates exist. This will not eliminate all duplicates, far

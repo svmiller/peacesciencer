@@ -1,14 +1,14 @@
-#' Whittle Duplicate Conflict-Years by Highest Fatality
+#' Whittle Duplicate Conflict-Years by Conflict Hostility
 #'
-#' @description \code{whittle_conflicts_fatality()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+#' @description  \code{whittle_conflicts_hostility()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
 #' data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
 #' of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-#' function will keep the observations with the highest observed fatality.
+#' function will keep the observations with the highest observed hostility.
 #'
-#' @return \code{whittle_conflicts_fatality()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+#' @return \code{whittle_conflicts_hostility()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
 #' dyad and year, returns just those observations that have the highest observed dispute-level fatality.
-#' This will not eliminate all duplicates, far from it, but it's a sensible second cut (after whittling onsets in
-#' \code{whittle_conflicts_onsets()} the extent to which dispute-level fatality is a good heuristic for dispute-level severity/importance.
+#' This will not eliminate all duplicates, far from it, but it's a sensible second or third cut (after whittling onsets in
+#' \code{whittle_conflicts_onsets()} the extent to which dispute-level hostility is a good heuristic for dispute-level severity/importance.
 #'
 #' @details Dyads are capable of having multiple disputes in a given year, which can create a problem
 #' for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
@@ -16,12 +16,7 @@
 #' The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
 #' merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
 #'
-#' As of writing, the Correlates of War and Gibler-Miller-Little conflict data record some -9s for fatalities. In those cases,
-#' dispute-level fatality is momentarily recoded to be .5 (i.e. fatal, but without too many fatalities). This is a missing data problem
-#' that Gibler and Miller correct in a forthcoming publication in \emph{Journal of Conflict Resolution}. Until then, this function makes
-#' that kind of determination about disputes with missing fatalities.
-#'
-#' \code{wc_fatality()} is a simple, less wordy, shortcut for the same function.
+#' \code{wc_hostility()} is a simple, less wordy, shortcut for the same function.
 #'
 #' @author Steven V. Miller
 #'
@@ -33,23 +28,23 @@
 #' Miller, Steven V. 2021. "How {peacesciencer} Coerces Dispute-Year Data into Dyad-Year Data".
 #' URL: \url{http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html}
 #'
-#' @name whittle_conflicts_fatality
+#' @name whittle_conflicts_hostility
 #'
 #' @examples
 #'
 #' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
-#' gml_dirdisp %>% whittle_conflicts_onsets() %>% whittle_conflicts_fatality()
+#' gml_dirdisp %>% whittle_conflicts_onsets() %>% whittle_conflicts_hostility()
 #'
-#' cow_mid_dirdisps %>% whittle_conflicts_onsets() %>% whittle_conflicts_fatality()
+#' cow_mid_dirdisps %>% whittle_conflicts_onsets() %>% whittle_conflicts_hostility()
 #'
 #'
 #' }
 #'
 
 
-whittle_conflicts_fatality <- function(data) {
+whittle_conflicts_hostility <- function(data) {
 
   if(is.null(attributes(data)$ps_conflict_type)) {
 
@@ -63,14 +58,12 @@ whittle_conflicts_fatality <- function(data) {
     attr_ps_conflict_type <- attributes(data)$ps_conflict_type
 
     data %>%
-      mutate(fatality = ifelse(.data$fatality == -9, .5, .data$fatality)) %>%
       arrange(.data$ccode1, .data$ccode2, .data$year) %>%
       group_by(.data$ccode1, .data$ccode2, .data$year) %>%
       mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
       group_by(.data$ccode1, .data$ccode2, .data$year, .data$duplicated) %>%
-      # Keep the highest fatality
-      filter(.data$fatality == max(.data$fatality)) %>%
-      mutate(fatality = ifelse(.data$fatality == .5, -9, .data$fatality)) %>%
+      # Keep the highest hostility
+      filter(.data$hostlev == max(.data$hostlev)) %>%
       arrange(.data$ccode1, .data$ccode2, .data$year) %>%
       # practice safe group_by()
       ungroup() %>%
@@ -89,15 +82,13 @@ whittle_conflicts_fatality <- function(data) {
 
 
     data %>%
-      left_join(., cow_mid_disps %>% select(.data$dispnum, .data$fatality)) %>%
-      mutate(fatality = ifelse(.data$fatality == -9, .5, .data$fatality)) %>%
+      left_join(., cow_mid_disps %>% select(.data$dispnum, .data$hostlev)) %>%
       arrange(.data$ccode1, .data$ccode2, .data$year) %>%
       group_by(.data$ccode1, .data$ccode2, .data$year) %>%
       mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
       group_by(.data$ccode1, .data$ccode2, .data$year, .data$duplicated) %>%
-      # Keep the highest fatality
-      filter(.data$fatality == max(.data$fatality)) %>%
-      mutate(fatality = ifelse(.data$fatality == .5, -9, .data$fatality)) %>%
+      # Keep the highest hostlev
+      filter(.data$hostlev == max(.data$hostlev)) %>%
       arrange(.data$ccode1, .data$ccode2, .data$year) %>%
       # practice safe group_by()
       ungroup() %>%
@@ -110,14 +101,14 @@ whittle_conflicts_fatality <- function(data) {
 
 
   } else  {
-    stop("whittle_conflicts_fatalities() doesn't recognize the data supplied to it.")
+    stop("whittle_conflicts_hostility() doesn't recognize the data supplied to it.")
   }
 
   return(data)
 }
 
 
-#' @rdname whittle_conflicts_fatality
+#' @rdname whittle_conflicts_hostility
 #' @export
 
-wc_fatality <- function(...) peacesciencer::whittle_conflicts_fatality(...)
+wc_hostility <- function(...) peacesciencer::whittle_conflicts_hostility(...)
