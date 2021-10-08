@@ -144,8 +144,8 @@
 <p>The package is already well developed and its functionality continues to expand. The current development version has the following functions.</p>
 <table class="table">
 <colgroup>
-<col width="22%">
-<col width="77%">
+<col width="19%">
+<col width="80%">
 </colgroup>
 <thead><tr class="header">
 <th align="left"><strong>Function</strong></th>
@@ -214,7 +214,7 @@
 </tr>
 <tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/add_minimum_distance.html"><code>add_minimum_distance()</code></a></td>
-<td align="left">add_minimum_distance() allows you to add the minimum distance (in kilometers) to a dyad-year or state-year data frame. These estimates are recorded in the cow_mindist and gw_mindist data that come with this package. The data are current as of the end of 2015.</td>
+<td align="left">add_minimum_distance() allows you to add the minimum distance (in kilometers) to a dyad-year or state-year data frame. These estimates are recorded in the cow_mindist and gw_mindist data that come with this package. The data are current as of the end of 2019.</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/add_nmc.html"><code>add_nmc()</code></a></td>
@@ -263,6 +263,38 @@
 <tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/ps_cite.html"><code>ps_cite()</code></a></td>
 <td align="left">ps_cite() allows the user to get citations to scholarship that they should include in their papers that incorporate the functions and data in this package.</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_duration.html"><code>wc_duration()</code></a></td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_fatality.html"><code>wc_fatality()</code></a></td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_hostility.html"><code>wc_hostility()</code></a></td>
+<td align="left">NA</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_onsets.html"><code>wc_onsets()</code></a></td>
+<td align="left">NA</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_duration.html"><code>whittle_conflicts_duration()</code></a></td>
+<td align="left">whittle_conflicts_duration() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest estimated duration.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_fatality.html"><code>whittle_conflicts_fatality()</code></a></td>
+<td align="left">whittle_conflicts_fatality() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest observed fatality.</td>
+</tr>
+<tr class="odd">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_hostility.html"><code>whittle_conflicts_hostility()</code></a></td>
+<td align="left">whittle_conflicts_hostility() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest observed hostility.</td>
+</tr>
+<tr class="even">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_onsets.html"><code>whittle_conflicts_onsets()</code></a></td>
+<td align="left">whittle_conflicts_onsets() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will drop ongoing conflicts in the presence of unique onsets.</td>
 </tr>
 </tbody>
 </table>
@@ -375,61 +407,65 @@
 </tr>
 <tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gml_mid_ddydisps.html"><code>gml_mid_ddydisps</code></a></td>
-<td align="left">Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)</td>
+<td align="left">Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (GML, v. 2.2.1)</td>
 </tr>
 <tr class="even">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/gml_mid_disps.html"><code>gml_mid_disps</code></a></td>
+<td align="left">Abbreviated GML MID Dispute-level Data (v. 2.2.1)</td>
+</tr>
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gw_capitals.html"><code>gw_capitals</code></a></td>
 <td align="left">A complete list of capitals and capital transitions for Gleditsch-Ward state system members</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gw_cow_years.html"><code>gw_cow_years</code></a></td>
 <td align="left">Gleditsch-Ward states and Correlates of War, by year</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gw_ddy.html"><code>gw_ddy</code></a></td>
 <td align="left">A directed dyad-year data frame of Gleditsch-Ward state system members</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gw_mindist.html"><code>gw_mindist</code></a></td>
 <td align="left">The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gw_sdp_gdp.html"><code>gw_sdp_gdp</code></a></td>
 <td align="left">(Surplus and Gross) Domestic Product for Gleditsch-Ward States</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gw_states.html"><code>gw_states</code></a></td>
 <td align="left">Gleditsch-Ward (Independent States) System Membership Data (1816-2017)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/gwcode_democracy.html"><code>gwcode_democracy</code></a></td>
 <td align="left">Democracy data for all Gleditsch-Ward states</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/hief.html"><code>hief</code></a></td>
 <td align="left">Historical Index of Ethnic Fractionalization data</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/maoz_powers.html"><code>maoz_powers</code></a></td>
 <td align="left">Zeev Maoz’ Regional/Global Power Data</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/ps_bib.html"><code>ps_bib</code></a></td>
 <td align="left">A ‘BibTeX’ Data Frame of Citations</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/rugged.html"><code>rugged</code></a></td>
 <td align="left">Rugged/Mountainous Terrain Data</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/td_rivalries.html"><code>td_rivalries</code></a></td>
 <td align="left">Thompson and Dreyer’s (2012) Strategic Rivalries, 1494-2010</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/ucdp_acd.html"><code>ucdp_acd</code></a></td>
 <td align="left">UCDP Armed Conflict Data (ACD) (v. 20.1)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/ucdp_onsets.html"><code>ucdp_onsets</code></a></td>
 <td align="left">UCDP Onset Data (v. 19.1)</td>
 </tr>
@@ -492,22 +528,22 @@
                <span class="va">mindemest</span> <span class="op">+</span> <span class="va">minwbgdppc</span> <span class="op">+</span> <span class="va">minmilit</span> <span class="op">+</span>
                <span class="va">gmlmidspell</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">gmlmidspell</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">gmlmidspell</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, data<span class="op">=</span> <span class="va">Data</span>,
              family<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 x 5</span>
+<span class="co">#&gt; # A tibble: 11 × 5</span>
 <span class="co">#&gt;    term               estimate   std.error statistic   p.value</span>
 <span class="co">#&gt;    &lt;chr&gt;                 &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 (Intercept)      -3.04      0.0634         -47.9  0        </span>
-<span class="co">#&gt;  2 landcontig        1.05      0.0568          18.5  1.26e- 76</span>
-<span class="co">#&gt;  3 cincprop          0.446     0.0363          12.3  9.89e- 35</span>
-<span class="co">#&gt;  4 cowmajdyad        0.141     0.0575           2.45 1.41e-  2</span>
-<span class="co">#&gt;  5 cow_defense      -0.0993    0.0576          -1.72 8.50e-  2</span>
-<span class="co">#&gt;  6 mindemest        -0.492     0.0524          -9.38 6.55e- 21</span>
-<span class="co">#&gt;  7 minwbgdppc        0.283     0.0509           5.56 2.77e-  8</span>
-<span class="co">#&gt;  8 minmilit          0.261     0.0231          11.3  1.33e- 29</span>
-<span class="co">#&gt;  9 gmlmidspell      -0.147     0.00507        -29.1  2.51e-186</span>
-<span class="co">#&gt; 10 I(gmlmidspell^2)  0.00249   0.000135        18.4  2.05e- 75</span>
-<span class="co">#&gt; 11 I(gmlmidspell^3) -0.0000116 0.000000895    -13.0  1.22e- 38</span>
+<span class="co">#&gt;  1 (Intercept)      -3.05      0.0635         -48.1  0        </span>
+<span class="co">#&gt;  2 landcontig        1.06      0.0568          18.7  4.09e- 78</span>
+<span class="co">#&gt;  3 cincprop          0.453     0.0362          12.5  7.16e- 36</span>
+<span class="co">#&gt;  4 cowmajdyad        0.144     0.0575           2.51 1.21e-  2</span>
+<span class="co">#&gt;  5 cow_defense      -0.118     0.0580          -2.04 4.10e-  2</span>
+<span class="co">#&gt;  6 mindemest        -0.499     0.0525          -9.51 1.92e- 21</span>
+<span class="co">#&gt;  7 minwbgdppc        0.293     0.0511           5.72 1.06e-  8</span>
+<span class="co">#&gt;  8 minmilit          0.260     0.0231          11.3  2.13e- 29</span>
+<span class="co">#&gt;  9 gmlmidspell      -0.146     0.00505        -29.0  7.61e-185</span>
+<span class="co">#&gt; 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  3.16e- 75</span>
+<span class="co">#&gt; 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.24e- 38</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 12.931 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 10.886 sec elapsed</span></code></pre></div>
 <p>Here is how you might do a standard civil conflict analysis using Gleditsch-Ward states and UCDP conflict data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span>
@@ -541,7 +577,7 @@
                     <span class="va">newlmtnest</span> <span class="op">+</span> <span class="va">ethfrac</span> <span class="op">+</span> <span class="va">relfrac</span> <span class="op">+</span>
                     <span class="va">ucdpspell</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">ucdpspell</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">ucdpspell</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span>,
                   family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 x 5</span>
+<span class="co">#&gt; # A tibble: 11 × 5</span>
 <span class="co">#&gt;    term                 estimate std.error statistic  p.value</span>
 <span class="co">#&gt;    &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 (Intercept)        -5.10      1.35         -3.77  0.000161</span>
@@ -561,7 +597,7 @@
                     <span class="va">newlmtnest</span> <span class="op">+</span> <span class="va">ethfrac</span> <span class="op">+</span> <span class="va">relfrac</span> <span class="op">+</span>
                     <span class="va">war_ucdpspell</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">war_ucdpspell</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html">I</a></span><span class="op">(</span><span class="va">war_ucdpspell</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span>,
                   family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 11 x 5</span>
+<span class="co">#&gt; # A tibble: 11 × 5</span>
 <span class="co">#&gt;    term                 estimate std.error statistic p.value</span>
 <span class="co">#&gt;    &lt;chr&gt;                   &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 (Intercept)        -6.59      2.08         -3.16  0.00157</span>
@@ -577,7 +613,7 @@
 <span class="co">#&gt; 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 4.263 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 4.115 sec elapsed</span></code></pre></div>
 </div>
 <div id="citing-what-you-do-in-peacesciencer" class="section level1">
 <h1 class="hasAnchor">

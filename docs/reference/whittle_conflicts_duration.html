@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Whittle Duplicate Conflict-Years by Highest Fatality — whittle_conflicts_fatality • peacesciencer</title>
+<title>Whittle Duplicate Conflict-Years by Conflict Duration — whittle_conflicts_duration • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,11 +41,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Whittle Duplicate Conflict-Years by Highest Fatality — whittle_conflicts_fatality" />
-<meta property="og:description" content="whittle_conflicts_fatality() is in a class of do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
+<meta property="og:title" content="Whittle Duplicate Conflict-Years by Conflict Duration — whittle_conflicts_duration" />
+<meta property="og:description" content="whittle_conflicts_duration() is in a class of do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
 data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
 of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations with the highest observed fatality." />
+function will keep the observations with the highest estimated duration." />
 
 
 
@@ -158,21 +158,21 @@ function will keep the observations with the highest observed fatality." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Whittle Duplicate Conflict-Years by Highest Fatality</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/whittle_conflicts_fatality.R'><code>R/whittle_conflicts_fatality.R</code></a></small>
-    <div class="hidden name"><code>whittle_conflicts_fatality.Rd</code></div>
+    <h1>Whittle Duplicate Conflict-Years by Conflict Duration</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/whittle_conflicts_duration.R'><code>R/whittle_conflicts_duration.R</code></a></small>
+    <div class="hidden name"><code>whittle_conflicts_duration.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>whittle_conflicts_fatality()</code> is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+    <p><code>whittle_conflicts_duration()</code> is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
 data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
 of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations with the highest observed fatality.</p>
+function will keep the observations with the highest estimated duration.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>whittle_conflicts_fatality</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
+    <pre class="usage"><span class='fu'>whittle_conflicts_duration</span><span class='op'>(</span><span class='va'>data</span>, durtype <span class='op'>=</span> <span class='st'>"mindur"</span><span class='op'>)</span>
 
-<span class='fu'>wc_fatality</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
+<span class='fu'>wc_duration</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -182,6 +182,10 @@ function will keep the observations with the highest observed fatality.</p>
       <td><p>a data frame with a declared conflict attribute type.</p></td>
     </tr>
     <tr>
+      <th>durtype</th>
+      <td><p>a duration on which to filter/whittle the data. Options include <code>"mindur"</code> or  <code>"maxdur"</code>. The default is  <code>"mindur"</code>.</p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td><p>optional, only to make the shortcut work</p></td>
     </tr>
@@ -189,10 +193,11 @@ function will keep the observations with the highest observed fatality.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>whittle_conflicts_fatality()</code> takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+    <p><code>whittle_conflicts_duration()</code> takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
 dyad and year, returns just those observations that have the highest observed dispute-level fatality.
-This will not eliminate all duplicates, far from it, but it's a sensible second cut (after whittling onsets in
-<code><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets()</a></code> the extent to which dispute-level fatality is a good heuristic for dispute-level severity/importance.</p>
+This will not eliminate all duplicates, far from it, but it's a sensible cut later into the procedure (after whittling onsets in
+<code>whittle_conflicts_onsets(), and maybe some other things</code> the extent to which dispute-level duration
+is a heuristic for dispute-level severity/importance.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
@@ -200,11 +205,14 @@ for merging into a complete dyad-year data frame. Consider the case of France an
 had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
 The default process in <span class="pkg">peacesciencer</span> employs several rules to whittle down these duplicate dyad-years for
 merging into a dyad-year data frame. These are available in <code><a href='add_cow_mids.html'>add_cow_mids()</a></code> and <code><a href='add_gml_mids.html'>add_gml_mids()</a></code>.</p>
-<p>As of writing, the Correlates of War and Gibler-Miller-Little conflict data record some -9s for fatalities. In those cases,
-dispute-level fatality is momentarily recoded to be .5 (i.e. fatal, but without too many fatalities). This is a missing data problem
-that Gibler and Miller correct in a forthcoming publication in <em>Journal of Conflict Resolution</em>. Until then, this function makes
-that kind of determination about disputes with missing fatalities.</p>
-<p><code>wc_fatality()</code> is a simple, less wordy, shortcut for the same function.</p>
+<p>Some conflicts can be of an unknown length and often come with estimates of a minimum duration
+and a maximum duration. This will concern the <code>durtype</code> parameter in this function. In many/most conflicts,
+certainly thinking of the inter-state dispute data, dates are known with precision (to the day) and the
+estimate of minimum conflict duration is equal to the estimate of maximum conflict duration. For some conflicts,
+the estimates will vary. This does importantly imply that using this particular whittle function with the
+default (<code>mindur</code>) will produce different results than using this particular whittle function and asking
+to retain the highest maximum duration (<code>maxdur</code>). Use the function with that in mind.</p>
+<p><code>wc_duration()</code> is a simple, less wordy, shortcut for the same function.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Miller, Steven V. 2021. "How peacesciencer Coerces Dispute-Year Data into Dyad-Year Data".
@@ -218,8 +226,8 @@ URL: <a href='http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dya
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='va'>gml_dirdisp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>whittle_conflicts_fatality</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9,504 × 39</span>
+<span class='va'>gml_dirdisp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>whittle_conflicts_duration</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9,308 × 39</span>
 #&gt;    dispnum ccode1 ccode2  year midongoing midonset sidea1 sidea2 revstate1
 #&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>    <span style='text-decoration: underline;'>2</span>968      2     20  <span style='text-decoration: underline;'>1</span>979          1        1      0      1         0
@@ -232,15 +240,15 @@ URL: <a href='http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dya
 #&gt; <span style='color: #BCBCBC;'> 8</span>     246      2     40  <span style='text-decoration: underline;'>1</span>960          1        1      1      0         1
 #&gt; <span style='color: #BCBCBC;'> 9</span>     246      2     40  <span style='text-decoration: underline;'>1</span>961          1        0      1      0         1
 #&gt; <span style='color: #BCBCBC;'>10</span>      61      2     40  <span style='text-decoration: underline;'>1</span>962          1        1      1      0         1
-#&gt; <span style='color: #949494;'># … with 9,494 more rows, and 30 more variables: revstate2 &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'># … with 9,298 more rows, and 30 more variables: revstate2 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   revtype11 &lt;dbl&gt;, revtype12 &lt;dbl&gt;, revtype21 &lt;dbl&gt;, revtype22 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   fatality1 &lt;dbl&gt;, fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   orig2 &lt;dbl&gt;, hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;, mindur &lt;dbl&gt;, maxdur &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   outcome &lt;dbl&gt;, settle &lt;dbl&gt;, fatality &lt;dbl&gt;, fatalpre &lt;dbl&gt;, stmon &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   endmon &lt;dbl&gt;, recip &lt;dbl&gt;, numa &lt;dbl&gt;, numb &lt;dbl&gt;, ongo2010 &lt;dbl&gt;, …</span></div><div class='input'>
-<span class='va'>cow_mid_dirdisps</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>whittle_conflicts_fatality</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = "dispnum"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10,536 × 19</span>
+<span class='va'>cow_mid_dirdisps</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>whittle_conflicts_duration</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = "dispnum"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10,268 × 20</span>
 #&gt;    dispnum ccode1 ccode2  year dispongoing disponset sidea1 sidea2 fatality1
 #&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>    <span style='text-decoration: underline;'>2</span>968      2     20  <span style='text-decoration: underline;'>1</span>979           1         1      0      1         0
@@ -253,9 +261,10 @@ URL: <a href='http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dya
 #&gt; <span style='color: #BCBCBC;'> 8</span>     246      2     40  <span style='text-decoration: underline;'>1</span>960           1         1      0      1         0
 #&gt; <span style='color: #BCBCBC;'> 9</span>     246      2     40  <span style='text-decoration: underline;'>1</span>961           1         0      0      1         0
 #&gt; <span style='color: #BCBCBC;'>10</span>      61      2     40  <span style='text-decoration: underline;'>1</span>962           1         1      1      0         0
-#&gt; <span style='color: #949494;'># … with 10,526 more rows, and 10 more variables: fatality2 &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'># … with 10,258 more rows, and 11 more variables: fatality2 &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;, hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;,</span>
-#&gt; <span style='color: #949494;'>#   hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;, orig2 &lt;dbl&gt;, fatality &lt;dbl&gt;</span></div><div class='input'>
+#&gt; <span style='color: #949494;'>#   hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;, orig2 &lt;dbl&gt;, mindur &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   maxdur &lt;dbl&gt;</span></div><div class='input'>
 
 <span class='co'># }</span>
 

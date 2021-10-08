@@ -160,6 +160,9 @@
     <loc>http://svmiller.com/reference/gml_mid_ddydisps.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/gml_mid_disps.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/gw_capitals.html</loc>
   </url>
   <url>
@@ -203,6 +206,15 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/ucdp_onsets.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/whittle_conflicts_duration.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/whittle_conflicts_fatality.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/whittle_conflicts_hostility.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/whittle_conflicts_onsets.html</loc>

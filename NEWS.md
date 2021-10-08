@@ -10,7 +10,7 @@ peacesciencer 0.6.0 (in development)
 - Add dispute-level summary of GML conflict data to assist with user-run whittle functions. This is `gml_mid_disps`.
 - Add `ps_conflict_type` attributes for some conflict data (e.g. CoW-MID, GML).
 - Add messages about case exclusion rules to `add_cow_mids()` and `add_gml_mids()`.
-- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`, `whittle_conflicts_fatality()`, `whittle_conflicts_hostility()`.
+- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`, `whittle_conflicts_fatality()`, `whittle_conflicts_hostility()`, `whittle_conflict_duration()`.
 
 peacesciencer 0.5.0
 ---------------------------------------------------------------------
