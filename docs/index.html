@@ -265,34 +265,22 @@
 <td align="left">ps_cite() allows the user to get citations to scholarship that they should include in their papers that incorporate the functions and data in this package.</td>
 </tr>
 <tr class="odd">
-<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_duration.html"><code>wc_duration()</code></a></td>
-<td align="left">NA</td>
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/show_duplicates.html"><code>show_duplicates()</code></a></td>
+<td align="left">show_duplicates() shows which data are duplicated in data generated in peacesciencer. It’s a useful diagnostic tool for users doing some do-it-yourself functions with peacesciencer.</td>
 </tr>
 <tr class="even">
-<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_fatality.html"><code>wc_fatality()</code></a></td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
-<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_hostility.html"><code>wc_hostility()</code></a></td>
-<td align="left">NA</td>
-</tr>
-<tr class="even">
-<td align="left"><a href="http://svmiller.com/peacesciencer/reference/wc_onsets.html"><code>wc_onsets()</code></a></td>
-<td align="left">NA</td>
-</tr>
-<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_duration.html"><code>whittle_conflicts_duration()</code></a></td>
 <td align="left">whittle_conflicts_duration() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest estimated duration.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_fatality.html"><code>whittle_conflicts_fatality()</code></a></td>
 <td align="left">whittle_conflicts_fatality() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest observed fatality.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_hostility.html"><code>whittle_conflicts_hostility()</code></a></td>
 <td align="left">whittle_conflicts_hostility() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest observed hostility.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_onsets.html"><code>whittle_conflicts_onsets()</code></a></td>
 <td align="left">whittle_conflicts_onsets() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will drop ongoing conflicts in the presence of unique onsets.</td>
 </tr>
@@ -543,7 +531,7 @@
 <span class="co">#&gt; 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  3.16e- 75</span>
 <span class="co">#&gt; 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.24e- 38</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 10.886 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 11.572 sec elapsed</span></code></pre></div>
 <p>Here is how you might do a standard civil conflict analysis using Gleditsch-Ward states and UCDP conflict data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span>
@@ -613,7 +601,7 @@
 <span class="co">#&gt; 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 4.115 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 4.113 sec elapsed</span></code></pre></div>
 </div>
 <div id="citing-what-you-do-in-peacesciencer" class="section level1">
 <h1 class="hasAnchor">

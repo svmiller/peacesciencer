@@ -71,6 +71,8 @@ db_descript <- lapply(db,function(x) {
 tibble(x = db_names, y = gsub("\n"," ",unlist(db_descript))) %>%
   mutate(x = str_sub(x, 1, nchar(x)-3)) %>%
   left_join(peacesciencer_functions, .) %>%
+  # wc_ is a shortcut
+   filter(!str_starts(x, "wc_")) %>%
   mutate(func = paste0(x,"()")) -> peacesciencer_functions
 
 peacesciencer_functions %>%
