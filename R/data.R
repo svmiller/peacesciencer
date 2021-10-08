@@ -287,7 +287,7 @@ NULL
 
 #' Directed dispute-year data (Gibler, Miller, and Little, 2016)
 #'
-#' These are directed dispute-year data from the most recent version (2.1.1) of the
+#' These are directed dispute-year data from the most recent version (2.2.1) of the
 #' Gibler-Miller-Little (GML) militarized interstate dispute (MID) data. They are
 #' used internally for merging into full dyad-year data frames.
 #'
@@ -942,10 +942,10 @@ NULL
 "cow_mid_ddydisps"
 
 
-#' Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)
+#' Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (GML, v. 2.2.1)
 #'
-#' These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
-#'  Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
+#' These are directed dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
+#'  Dispute (MID) project. Data are from version 2.2.1. These were whittled to where there is no duplicate dyad-years.
 #'  Its primary aim here is merging into a dyad-year data frame.
 #'
 #'
@@ -1355,3 +1355,36 @@ NULL
 #'
 
 "ps_bib"
+
+
+#' Abbreviated GML MID Dispute-level Data (v. 2.2.1)
+#'
+#' This is an abbreviated version of the dispute-level Gibler-Miller-Little (GML) MID data.
+#'
+#'
+#' @format A data frame with 2436 observations on the following 7 variables.
+#' \describe{
+#' \item{\code{dispnum}}{a numeric vector for the CoW-MID dispute number}
+#' \item{\code{styear}}{a numeric vector for the start year of the MID}
+#' \item{\code{stmon}}{a numeric vector for the start month of the MID}
+#' \item{\code{outcome}}{a numeric vector for the outcome of the MID}
+#' \item{\code{settle}}{a numeric vector for the how dispute was settled}
+#' \item{\code{fatality}}{a numeric vector for the fatality level of the dispute}
+#' \item{\code{mindur}}{a numeric vector for the minimum duration of the MID}
+#' \item{\code{maxdur}}{a numeric vector for the maximum duration of the MID}
+#' \item{\code{hiact}}{a numeric vector for the highest action of the MID}
+#' \item{\code{hostlev}}{a numeric vector for the hostility level of the MID}
+#'  \item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
+#' }
+#'
+#' @details These data are purposely light on information; they're not intended to be used for dispute-level analyses, per se.
+#' They're intended to augment the directed dyadic dispute-year data by adding in variables that serve as exclusion rules to whittle
+#' the data from dyadic dispute-year to just dyad-year data.
+#'
+#' @references
+#'
+#' Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
+#' Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
+#'
+
+"gml_mid_disps"

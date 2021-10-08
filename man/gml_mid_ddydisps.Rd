@@ -3,7 +3,7 @@
 \docType{data}
 \name{gml_mid_ddydisps}
 \alias{gml_mid_ddydisps}
-\title{Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)}
+\title{Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (GML, v. 2.2.1)}
 \format{
 A data frame with 9262 observations on the following 25 variables.
 \describe{
@@ -37,8 +37,8 @@ A data frame with 9262 observations on the following 25 variables.
 gml_mid_ddydisps
 }
 \description{
-These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
- Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
+These are directed dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
+ Dispute (MID) project. Data are from version 2.2.1. These were whittled to where there is no duplicate dyad-years.
  Its primary aim here is merging into a dyad-year data frame.
 }
 \details{

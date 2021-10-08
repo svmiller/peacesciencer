@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Directed dispute-year data (Gibler, Miller, and Little, 2016) — gml_dirdisp • peacesciencer</title>
+<title>Abbreviated GML MID Dispute-level Data (v. 2.2.1) — gml_mid_disps • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,10 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Directed dispute-year data (Gibler, Miller, and Little, 2016) — gml_dirdisp" />
-<meta property="og:description" content="These are directed dispute-year data from the most recent version (2.2.1) of the
-Gibler-Miller-Little (GML) militarized interstate dispute (MID) data. They are
-used internally for merging into full dyad-year data frames." />
+<meta property="og:title" content="Abbreviated GML MID Dispute-level Data (v. 2.2.1) — gml_mid_disps" />
+<meta property="og:description" content="This is an abbreviated version of the dispute-level Gibler-Miller-Little (GML) MID data." />
 
 
 
@@ -157,70 +155,40 @@ used internally for merging into full dyad-year data frames." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Directed dispute-year data (Gibler, Miller, and Little, 2016)</h1>
+    <h1>Abbreviated GML MID Dispute-level Data (v. 2.2.1)</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>gml_dirdisp.Rd</code></div>
+    <div class="hidden name"><code>gml_mid_disps.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are directed dispute-year data from the most recent version (2.2.1) of the
-Gibler-Miller-Little (GML) militarized interstate dispute (MID) data. They are
-used internally for merging into full dyad-year data frames.</p>
+    <p>This is an abbreviated version of the dispute-level Gibler-Miller-Little (GML) MID data.</p>
     </div>
 
-    <pre class="usage"><span class='va'>gml_dirdisp</span></pre>
+    <pre class="usage"><span class='va'>gml_mid_disps</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 10330 observations on the following 39 variables.</p><dl>
-<dt><code>dispnum</code></dt><dd><p>the dispute number</p></dd>
-<dt><code>ccode1</code></dt><dd><p>a numeric vector for the Correlates of War state code for the first state</p></dd>
-<dt><code>ccode2</code></dt><dd><p>a numeric vector for the Correlates of War state code for the second state</p></dd>
-<dt><code>year</code></dt><dd><p>a numeric vector for the year</p></dd>
-<dt><code>midongoing</code></dt><dd><p>a constant of 1 for ongoing disputes</p></dd>
-<dt><code>midonset</code></dt><dd><p>a numeric vector that equals 1 for the onset year of a given dispute</p></dd>
-<dt><code>sidea1</code></dt><dd><p>is the first state (in <code>ccode1</code>) on the side that took the first militarized action?</p></dd>
-<dt><code>sidea2</code></dt><dd><p>is the second state (in <code>ccode2</code>) on the side that took the first militarized action?</p></dd>
-<dt><code>revstate1</code></dt><dd><p>is the first state (in <code>ccode1</code>) a revisionist state in the dispute?</p></dd>
-<dt><code>revstate2</code></dt><dd><p>is the second state (in <code>ccode2</code>) a revisionist state in the dispute?</p></dd>
-<dt><code>revtype11</code></dt><dd><p>what is the <code>revtype1</code> value for <code>ccode1</code>?</p></dd>
-<dt><code>revtype12</code></dt><dd><p>what is the <code>revtype1</code> value for <code>ccode2</code>?</p></dd>
-<dt><code>revtype21</code></dt><dd><p>what is the <code>revtype2</code> value for <code>ccode1</code>?</p></dd>
-<dt><code>revtype22</code></dt><dd><p>what is the <code>revtype2</code> value for <code>ccode2</code>?</p></dd>
-<dt><code>fatality1</code></dt><dd><p>what is the <code>fatality</code> value for <code>ccode1</code>?</p></dd>
-<dt><code>fatality2</code></dt><dd><p>what is the <code>fatality</code> value for <code>ccode2</code>?</p></dd>
-<dt><code>fatalpre1</code></dt><dd><p>what is the <code>fatalpre</code> value for <code>ccode1</code>?</p></dd>
-<dt><code>fatalpre2</code></dt><dd><p>what is the <code>fatalpre</code> value for <code>ccode2</code>?</p></dd>
-<dt><code>hiact1</code></dt><dd><p>what is the <code>hiact</code> value for <code>ccode1</code>?</p></dd>
-<dt><code>hiact2</code></dt><dd><p>what is the <code>hiact</code> value for <code>ccode2</code>?</p></dd>
-<dt><code>hostlev1</code></dt><dd><p>what is the <code>hostlev</code> value for <code>ccode1</code>?</p></dd>
-<dt><code>hostlev2</code></dt><dd><p>what is the <code>hostlev</code> value for <code>ccode2</code>?</p></dd>
-<dt><code>orig1</code></dt><dd><p>is <code>ccode1</code> an originator (1) of the dispute or a joiner (0)?</p></dd>
-<dt><code>orig2</code></dt><dd><p>is <code>ccode2</code> an originator (1) of the dispute or a joiner (0)?</p></dd>
-<dt><code>hiact</code></dt><dd><p>the highest level of action observed in the dispute</p></dd>
- <dt><code>hostlev</code></dt><dd><p>the hostility level of action observed in the dispute</p></dd>
- <dt><code>mindur</code></dt><dd><p>the minimum length of the dispute (in days)</p></dd>
- <dt><code>maxdur</code></dt><dd><p>the maximum length of the dispute (in days)</p></dd>
- <dt><code>outcome</code></dt><dd><p>the dispute-level outcome</p></dd>
- <dt><code>settle</code></dt><dd><p>the settlement value for the dispute</p></dd>
- <dt><code>fatality</code></dt><dd><p>the ordinal fatality level for the dispute</p></dd>
-<dt><code>fatalpre</code></dt><dd><p>the fatalities (with precision, if known) for the dispute</p></dd>
-<dt><code>stmon</code></dt><dd><p>the start month of the dispute (dispute-level)</p></dd>
-<dt><code>endmon</code></dt><dd><p>the end month of the dispute (dispute-level)</p></dd>
-<dt><code>recip</code></dt><dd><p>was the dispute reciprocated (i.e. did Side B also have a militarized action)?</p></dd>
-<dt><code>numa</code></dt><dd><p>the number of participants on Side A</p></dd>
-<dt><code>numb</code></dt><dd><p>the number of participants on Side B</p></dd>
- <dt><code>ongo2010</code></dt><dd><p>was the dispute ongoing as of 2010?</p></dd>
-  <dt><code>version</code></dt><dd><p>a version identifier</p></dd>
+    <p>A data frame with 2436 observations on the following 7 variables.</p><dl>
+<dt><code>dispnum</code></dt><dd><p>a numeric vector for the CoW-MID dispute number</p></dd>
+<dt><code>styear</code></dt><dd><p>a numeric vector for the start year of the MID</p></dd>
+<dt><code>stmon</code></dt><dd><p>a numeric vector for the start month of the MID</p></dd>
+<dt><code>outcome</code></dt><dd><p>a numeric vector for the outcome of the MID</p></dd>
+<dt><code>settle</code></dt><dd><p>a numeric vector for the how dispute was settled</p></dd>
+<dt><code>fatality</code></dt><dd><p>a numeric vector for the fatality level of the dispute</p></dd>
+<dt><code>mindur</code></dt><dd><p>a numeric vector for the minimum duration of the MID</p></dd>
+<dt><code>maxdur</code></dt><dd><p>a numeric vector for the maximum duration of the MID</p></dd>
+<dt><code>hiact</code></dt><dd><p>a numeric vector for the highest action of the MID</p></dd>
+<dt><code>hostlev</code></dt><dd><p>a numeric vector for the hostility level of the MID</p></dd>
+ <dt><code>recip</code></dt><dd><p>a numeric vector for whether a MID was reciprocated</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Data are the directed dispute-year data made available in version 2.1.1 of the GML MID data.</p>
-<p>I would caution against using the <code>revtype</code> variables. They are not informative. They are however
-included for legacy reasons.</p>
+    <p>These data are purposely light on information; they're not intended to be used for dispute-level analyses, per se.
+They're intended to augment the directed dyadic dispute-year data by adding in variables that serve as exclusion rules to whittle
+the data from dyadic dispute-year to just dyad-year data.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized

@@ -52,7 +52,7 @@ A data frame with 10330 observations on the following 39 variables.
 gml_dirdisp
 }
 \description{
-These are directed dispute-year data from the most recent version (2.1.1) of the
+These are directed dispute-year data from the most recent version (2.2.1) of the
 Gibler-Miller-Little (GML) militarized interstate dispute (MID) data. They are
 used internally for merging into full dyad-year data frames.
 }

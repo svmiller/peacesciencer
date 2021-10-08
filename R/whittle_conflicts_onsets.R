@@ -19,6 +19,7 @@
 #' @author Steven V. Miller
 #'
 #' @param data a data frame with a declared conflict attribute type.
+#' @param ... optional, only to make the shortcut work
 #'
 #' @references
 #'

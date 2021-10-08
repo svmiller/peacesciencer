@@ -11,6 +11,8 @@ wc_onsets(...)
 }
 \arguments{
 \item{data}{a data frame with a declared conflict attribute type.}
+
+\item{...}{optional, only to make the shortcut work}
 }
 \value{
 \code{whittle_conflicts_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the

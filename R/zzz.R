@@ -12,5 +12,5 @@ if(getRversion() >= "2.15.1")
       "ucdp_acd", "cow_mid_dirdisps", "cow_mid_disps", "cow_mid_ddydisps",
       "gml_mid_ddydisps", "td_rivalries", "gw_cow_years", "rugged", "creg",
       "hief", "gwcode_democracy", "cow_war_intra", "cow_war_inter", "cow_trade_ndy",
-      "ps_bib")
+      "ps_bib", "gml_mid_disps")
   )

@@ -18,7 +18,7 @@ gml_dirdisp %>%
   ungroup() -> hold_this
 
 hold_this %>%
-  left_join(., cow_mid_disps %>% select(dispnum, fatality)) %>%
+  # left_join(., gml_mid_disps %>% select(dispnum, fatality)) %>%
   mutate(fatality = ifelse(fatality == -9, .5, fatality)) %>%
   arrange(ccode1, ccode2, year) %>%
   group_by(ccode1, ccode2, year) %>%

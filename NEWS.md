@@ -6,9 +6,11 @@ peacesciencer 0.6.0 (in development)
 - `add_capital_distance()` now works with Correlates of War and Gleditsch-Ward data, both dyad-year and state-year.
 - Fix bug in `add_atop_alliances()` that added 0s to years after the ATOP domain. Thanks to @joshuaalley for pointing this out.
 - Add/start a helper function file. These are internal functions I may need to write in order to reduce the potential of dependency issues resulting in package archival. This was necessitated by an Oct. 5, 2021 email from Brian Ripley about the slated removal of `{lubridate}`. Earlier versions of this package uncritically leaned on `{lubridate}` for functions I could either write myself (i.e. `year()`, which is now `.pshf_year()`) or were already duplicated in base functions in R (i.e. `ymd()`, a wrapper for `as.Date()` as I use it). With it, `{lubridate}` is no longer a requirement for this package.
+- Upgrade GML conflict data sets to 2.2.1. Fix/update documentation on this.
+- Add dispute-level summary of GML conflict data to assist with user-run whittle functions. This is `gml_mid_disps`.
 - Add `ps_conflict_type` attributes for some conflict data (e.g. CoW-MID, GML).
 - Add messages about case exclusion rules to `add_cow_mids()` and `add_gml_mids()`.
-- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`.
+- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`, `whittle_conflicts_fatality()`.
 
 peacesciencer 0.5.0
 ---------------------------------------------------------------------

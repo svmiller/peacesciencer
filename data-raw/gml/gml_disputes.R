@@ -1,6 +1,6 @@
 library(tidyverse)
 
-gml_dirdisp <- read_csv("data-raw/disputes/gml-ddy-disputes-2.1.1.csv")
+gml_dirdisp <- read_csv("~/Dropbox/projects/mid-project/gml-mid-data/2.2.1/gml-ddy-disputes-2.2.1.csv")
 
 attr(gml_dirdisp, "ps_data_type") = "dyad_year"
 attr(gml_dirdisp, "ps_system") = "cow"
