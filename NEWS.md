@@ -8,6 +8,7 @@ peacesciencer 0.6.0 (in development)
 - Add/start a helper function file. These are internal functions I may need to write in order to reduce the potential of dependency issues resulting in package archival. This was necessitated by an Oct. 5, 2021 email from Brian Ripley about the slated removal of `{lubridate}`. Earlier versions of this package uncritically leaned on `{lubridate}` for functions I could either write myself (i.e. `year()`, which is now `.pshf_year()`) or were already duplicated in base functions in R (i.e. `ymd()`, a wrapper for `as.Date()` as I use it). With it, `{lubridate}` is no longer a requirement for this package.
 - Add `ps_conflict_type` attributes for some conflict data (e.g. CoW-MID, GML).
 - Add messages about case exclusion rules to `add_cow_mids()` and `add_gml_mids()`.
+- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`.
 
 peacesciencer 0.5.0
 ---------------------------------------------------------------------

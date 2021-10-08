@@ -170,6 +170,7 @@
 <li>Add/start a helper function file. These are internal functions I may need to write in order to reduce the potential of dependency issues resulting in package archival. This was necessitated by an Oct. 5, 2021 email from Brian Ripley about the slated removal of <a href="https://lubridate.tidyverse.org">lubridate</a>. Earlier versions of this package uncritically leaned on <a href="https://lubridate.tidyverse.org">lubridate</a> for functions I could either write myself (i.e. <code><a href="https://lubridate.tidyverse.org/reference/year.html">year()</a></code>, which is now <code>.pshf_year()</code>) or were already duplicated in base functions in R (i.e. <code><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd()</a></code>, a wrapper for <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code> as I use it). With it, <a href="https://lubridate.tidyverse.org">lubridate</a> is no longer a requirement for this package.</li>
 <li>Add <code>ps_conflict_type</code> attributes for some conflict data (e.g. CoW-MID, GML).</li>
 <li>Add messages about case exclusion rules to <code><a href="../reference/add_cow_mids.html">add_cow_mids()</a></code> and <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code>.</li>
+<li>Add “whittle” class of functions. These include <code><a href="../reference/whittle_conflicts_onsets.html">whittle_conflicts_onsets()</a></code>.</li>
 </ul>
 </div>
     <div id="peacesciencer-050" class="section level2">
