@@ -8,3 +8,6 @@ _dross
 CRAN-RELEASE
 !.gitignore
 inst/doc
+
+# I hate that JabRef does this.
+data-raw/bib/ps_bib.bib.bak
