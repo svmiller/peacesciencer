@@ -4,7 +4,7 @@ library(peacesciencer)
 
 gml_dirdisp %>%
   select(dispnum:sidea2, fatality1, fatality2, fatalpre1, fatalpre2,
-         hiact1, hiact2, hostlev1, hostlev2, orig1, orig2) %>%
+         hiact1, hiact2, hostlev1, hostlev2, orig1, orig2, fatality, hostlev, recip, mindur, maxdur, stmon) %>%
   group_by(ccode1, ccode2, year)  %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
   # Remove anything that's not a unique MID onset
@@ -18,7 +18,6 @@ gml_dirdisp %>%
   ungroup() -> hold_this
 
 hold_this %>%
-  # left_join(., gml_mid_disps %>% select(dispnum, fatality)) %>%
   mutate(fatality = ifelse(fatality == -9, .5, fatality)) %>%
   arrange(ccode1, ccode2, year) %>%
   group_by(ccode1, ccode2, year) %>%
@@ -33,7 +32,6 @@ hold_this %>%
 
 
 hold_this %>%
-  left_join(., cow_mid_disps %>% select(dispnum, hostlev)) %>%
   arrange(ccode1, ccode2, year) %>%
   group_by(ccode1, ccode2, year) %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
@@ -47,7 +45,6 @@ hold_this %>%
 
 
 hold_this %>%
-  left_join(., cow_mid_disps %>% select(dispnum, mindur, maxdur)) %>%
   arrange(ccode1, ccode2, year) %>%
   group_by(ccode1, ccode2, year) %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
@@ -66,7 +63,6 @@ hold_this %>%
 
 
 hold_this %>%
-  left_join(., cow_mid_disps %>% select(dispnum, recip)) %>%
   arrange(ccode1, ccode2, year) %>%
   group_by(ccode1, ccode2, year) %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
@@ -79,7 +75,6 @@ hold_this %>%
 #> Joining, by = "dispnum"
 
 hold_this %>%
-  left_join(., cow_mid_disps %>% select(dispnum, stmon)) %>%
   arrange(ccode1, ccode2, year) %>%
   group_by(ccode1, ccode2, year) %>%
   mutate(duplicated = ifelse(n() > 1, 1, 0)) %>%
@@ -90,7 +85,7 @@ hold_this %>%
   # practice safe group_by()
   ungroup() -> gml_mid_ddydisps
 
-# We identified a duplicate MID that we correct in a later release (MID#2163, MID#3604). They're the same MID, but we're just going to drop one.
+# That should do it. Now let's just make sure.
 gml_mid_ddydisps %>%
   group_by(ccode1, ccode2, year) %>%
   slice(1) %>%
