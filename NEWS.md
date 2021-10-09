@@ -10,7 +10,7 @@ peacesciencer 0.6.0 (in development)
 - Add dispute-level summary of GML conflict data to assist with user-run whittle functions. This is `gml_mid_disps`.
 - Add `ps_conflict_type` attributes for some conflict data (e.g. CoW-MID, GML).
 - Add messages about case exclusion rules to `add_cow_mids()` and `add_gml_mids()`.
-- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`, `whittle_conflicts_fatality()`, `whittle_conflicts_hostility()`, `whittle_conflicts_duration()`. These are admittedly gnarly function names to type out if you don't have an IDE like Rstudio to assist you. Thus, these respective functions come with shortcuts of `wc_` (e.g. `wc_onsets()`).
+- Add "whittle" class of functions. These include `whittle_conflicts_onsets()`, `whittle_conflicts_fatality()`, `whittle_conflicts_hostility()`, `whittle_conflicts_duration()`, `whittle_conflicts_reciprocation()`. These are admittedly gnarly function names to type out if you don't have an IDE like Rstudio to assist you. Thus, these respective functions come with shortcuts of `wc_` (e.g. `wc_onsets()`). Check the package documentation to see what these are.
 - Add `show_duplicates()` as a diagnostic tool. This function is useful for users who want to do some advanced stuff with data created in `{peacesciencer}` (e.g. merging in custom data) and want to see if they botched a merge by creating duplicate observations.
 
 peacesciencer 0.5.0
