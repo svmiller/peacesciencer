@@ -853,7 +853,7 @@ NULL
 "cow_mid_dirdisps"
 
 
-#' Abbreviate CoW-MID Dispute-level Data (v. 5.0)
+#' Abbreviated CoW-MID Dispute-level Data (v. 5.0)
 #'
 #' This is an abbreviated version of the dispute-level CoW-MID data.
 #'

@@ -3,7 +3,7 @@
 \docType{data}
 \name{cow_mid_disps}
 \alias{cow_mid_disps}
-\title{Abbreviate CoW-MID Dispute-level Data (v. 5.0)}
+\title{Abbreviated CoW-MID Dispute-level Data (v. 5.0)}
 \format{
 A data frame with 2436 observations on the following 7 variables.
 \describe{
