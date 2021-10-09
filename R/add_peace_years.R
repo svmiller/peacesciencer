@@ -1,9 +1,12 @@
 #' Add Peace Years to Your Conflict Data
 #'
-#' @description \code{add_peace_years()} calculates peace years for your ongoing dyadic conflicts. The function
-#' works for both the CoW-MID data and the Gibler-Miller-Little (GML) MID data.
+#' @description \code{add_peace_years()} calculates peace years for your ongoing conflicts. The function
+#' works for both dyad-year and state-year data generated in \pkg{peacesciencer}.
 #'
-#' @return \code{add_peace_years()} takes a dyad-year data frame and adds peace years for ongoing dyadic conflicts.
+#' @return \code{add_peace_years()} takes a dyad-year or state-year data frame and adds peace years for ongoing conflicts.
+#' Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
+#' Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data supported in this function include the UCDP
+#' armed conflict data and the CoW intra-state war data.
 #'
 #' @details The function internally uses \code{sbtscs()} from \pkg{stevemisc}. In the interest of full disclosure,
 #' \code{sbtscs()} leans heavily on \code{btscs()} from \pkg{DAMisc}. I optimized some code for performance.
@@ -18,7 +21,7 @@
 #' Netherlands, and France had extrasystemic conflicts. For *all* years before 1946, the events are imputed as 1
 #' for those countries that had 1s in the first year of observation and everyone else is NA and implicitly assumed to be a zero.
 #' For those NAs, the function runs a sequence resulting in some wonky spells in 1946 that are not implied by (the absence of) the
-#' data. In fact, none of those are implied by the asbsence of data before 1946.
+#' data. In fact, none of those are implied by the absence of data before 1946.
 #'
 #' The function works just fine if you truncate your temporal domain to reflect the nature of your event data. Basically,
 #' if you want to use this function more generally, filter your dyad-year or state-year data to make sure there are no years
@@ -27,9 +30,19 @@
 #' run from 1946 to 2019 (as of writing). Having 2020 observations in there won't compromise the function output when \code{pad = TRUE}
 #' is included as an argument.
 #'
+#' Finally, \code{add_peace_years()} will only calculate the peace years and will leave the temporal dependence adjustment
+#' to the taste of the researcher. Importantly, I do not recommend manually creating splines or square/cube terms because
+#' it creates more problems in adjusting for temporal dependence in model predictions. In a regression formula in R,
+#' you can specify the Carter and Signorino (2010) approach as
+#' \code{... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)} (assuming you ran \code{add_peace_years()} on a dyad-year data frame
+#' including the Gibler-Miller-Little conflict data).
+#' The Beck et al. cubic splines approach is \code{... + splines::bs(gmlmidspell, 4)}. This function includes
+#' the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions,
+#' given R's functionality.
+#'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed")
+#' @param data a dyad-year data frame (either "directed" or "non-directed") or state-year data frame
 #' @param pad an optional parameter, defaults to FALSE. If TRUE, the peace-year calculations fill in cases where panels are
 #' unbalanced/have gaps. Think of a state like Germany disappearing for 45 years as illustrative of this.
 #'
@@ -39,6 +52,12 @@
 #'
 #' @references Armstrong, Dave. 2016. ``\pkg{DAMisc}: Dave Armstrong's Miscellaneous Functions.''
 #' \emph{R package version 1.4-3}.
+#'
+#' Beck, Nathaniel, Jonathan N. Katz, and Richard Tucker. 1998. "Taking Time Seriously: Time-Series-Cross-Section
+#' Analysis with a Binary Dependent Variable." \emph{American Journal of Political Science} 42(4): 1260--1288.
+#'
+#' Carter, David B. and Curtis S. Signorino. 2010. "Back to the Future: Modeling Time Dependence in Binary Data."
+#' \emph{Political Analysis} 18(3): 271--292.
 #'
 #' Miller, Steven V. 2017. ``Quickly Create Peace Years for BTSCS Models with \code{sbtscs} in \code{stevemisc}.''
 #' \url{http://svmiller.com/blog/2017/06/quickly-create-peace-years-for-btscs-models-with-stevemisc/}
