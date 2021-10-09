@@ -79,7 +79,7 @@ whittle_conflicts_reciprocation <- function(data) {
       data %>%
         group_by(.data$ccode1, .data$ccode2, .data$year, .data$duplicated) %>%
         # keep highest reciprocateds
-        filter(.data$mindur == max(.data$recip)) %>%
+        filter(.data$recip == max(.data$recip)) %>%
         arrange(.data$ccode1, .data$ccode2, .data$year) %>%
         # practice safe group_by()
         ungroup() %>%
@@ -107,7 +107,7 @@ whittle_conflicts_reciprocation <- function(data) {
     data %>%
       group_by(.data$ccode1, .data$ccode2, .data$year, .data$duplicated) %>%
       # keep highest reciprocateds
-      filter(.data$mindur == max(.data$recip)) %>%
+      filter(.data$recip == max(.data$recip)) %>%
       arrange(.data$ccode1, .data$ccode2, .data$year) %>%
       # practice safe group_by()
       ungroup() %>%

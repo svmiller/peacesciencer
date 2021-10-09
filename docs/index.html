@@ -284,6 +284,10 @@
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_onsets.html"><code>whittle_conflicts_onsets()</code></a></td>
 <td align="left">whittle_conflicts_onsets() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will drop ongoing conflicts in the presence of unique onsets.</td>
 </tr>
+<tr class="even">
+<td align="left"><a href="http://svmiller.com/peacesciencer/reference/whittle_conflicts_reciprocation.html"><code>whittle_conflicts_reciprocation()</code></a></td>
+<td align="left">whittle_conflicts_reciprocation() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations that are reciprocated (i.e. have militarized actions on both sides of the conflict).</td>
+</tr>
 </tbody>
 </table>
 <p>The current development version also includes the following data.</p>
@@ -351,7 +355,7 @@
 </tr>
 <tr class="even">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/cow_mid_disps.html"><code>cow_mid_disps</code></a></td>
-<td align="left">Abbreviate CoW-MID Dispute-level Data (v. 5.0)</td>
+<td align="left">Abbreviated CoW-MID Dispute-level Data (v. 5.0)</td>
 </tr>
 <tr class="odd">
 <td align="left"><a href="http://svmiller.com/peacesciencer/reference/cow_mindist.html"><code>cow_mindist</code></a></td>
@@ -531,7 +535,7 @@
 <span class="co">#&gt; 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  3.16e- 75</span>
 <span class="co">#&gt; 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.24e- 38</span>
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 11.572 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 10.705 sec elapsed</span></code></pre></div>
 <p>Here is how you might do a standard civil conflict analysis using Gleditsch-Ward states and UCDP conflict data.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">tic</a></span><span class="op">(</span><span class="op">)</span>
@@ -601,7 +605,7 @@
 <span class="co">#&gt; 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/tictoc/man/tic.html">toc</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; 4.113 sec elapsed</span></code></pre></div>
+<span class="co">#&gt; 4.196 sec elapsed</span></code></pre></div>
 </div>
 <div id="citing-what-you-do-in-peacesciencer" class="section level1">
 <h1 class="hasAnchor">
