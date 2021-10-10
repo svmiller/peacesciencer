@@ -199,20 +199,20 @@ will work with other functions in <span class="pkg">peacesciencer</span> that ha
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,608 × 9</span>
-#&gt;    ccode leadid      date       startdate  enddate    entry exit  exitcode  year
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span>     2 34fb1558-3… 1885-03-04 1885-03-04 1889-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>885
-#&gt; <span style='color: #BCBCBC;'> 2</span>     2 34fb1558-3… 1886-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>886
-#&gt; <span style='color: #BCBCBC;'> 3</span>     2 34fb1558-3… 1887-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>887
-#&gt; <span style='color: #BCBCBC;'> 4</span>     2 34fb1558-3… 1888-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>888
-#&gt; <span style='color: #BCBCBC;'> 5</span>     2 34fb1558-3… 1889-01-01 1885-03-04 1889-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>889
-#&gt; <span style='color: #BCBCBC;'> 6</span>     2 34fb1558-3… 1893-03-04 1893-03-04 1897-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>893
-#&gt; <span style='color: #BCBCBC;'> 7</span>     2 34fb1558-3… 1894-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>894
-#&gt; <span style='color: #BCBCBC;'> 8</span>     2 34fb1558-3… 1895-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>895
-#&gt; <span style='color: #BCBCBC;'> 9</span>     2 34fb1558-3… 1896-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>896
-#&gt; <span style='color: #BCBCBC;'>10</span>     2 34fb1558-3… 1897-01-01 1893-03-04 1897-03-04 Regu… Regu… Regular   <span style='text-decoration: underline;'>1</span>897
-#&gt; <span style='color: #949494;'># … with 17,598 more rows</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,608 × 11</span>
+#&gt;    ccode leadid        leader  gender startdate  enddate    entry exit  exitcode
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
+#&gt; <span style='color: #BCBCBC;'> 1</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 2</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 3</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 4</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 5</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 6</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 7</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 8</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'> 9</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #BCBCBC;'>10</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
+#&gt; <span style='color: #949494;'># … with 17,598 more rows, and 2 more variables: date &lt;date&gt;, year &lt;dbl&gt;</span></div><div class='input'>
 
 </div></pre>
   </div>

@@ -3,7 +3,7 @@ library(tidyverse)
 archigos <- haven::read_dta("/home/steve/Dropbox/data/archigos/Archigos_4.1_stata14.dta")
 
 archigos %>%
-  select(ccode, leadid, startdate, enddate, entry, exit, exitcode) %>%
+  select(ccode, leadid, leader, gender, startdate, enddate, entry, exit, exitcode) %>%
   mutate(startdate = lubridate::ymd(startdate),
          enddate = lubridate::ymd(enddate)) -> archigos
 

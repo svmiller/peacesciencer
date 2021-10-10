@@ -663,6 +663,8 @@ NULL
 #' \describe{
 #' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
 #' \item{\code{leadid}}{the unique leader identifier}
+#'  \item{\code{leader}}{the leader name}
+#'   \item{\code{gender}}{a categorical variable for leader gender ("M" for men, "W" for women)}
 #' \item{\code{startdate}}{a date for the leader start date}
 #' \item{\code{enddate}}{a date for the leader end date}
 #' \item{\code{entry}}{a character vector for the leader's entry type}

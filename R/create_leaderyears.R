@@ -32,11 +32,10 @@ create_leaderyears <- function(system = "archigos") {
 
     archigos %>%
       rowwise() %>%
-      mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
-      unnest(date) %>%
-      select(ccode, leadid, date, everything()) %>%
-      mutate(year = .pshf_year(date)) %>%
-      group_by(ccode, leadid, year) %>%
+      mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
+      unnest(.data$date) %>%
+      mutate(year = .pshf_year(.data$date)) %>%
+      group_by(.data$ccode, .data$leadid, .data$year) %>%
       slice(1) %>% ungroup() -> data
 
     attr(data, "ps_data_type") = "state_year"
