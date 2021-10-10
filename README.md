@@ -37,174 +37,32 @@ stress-testing.
 devtools::install_github("svmiller/peacesciencer")
 ```
 
-# What’s Included in `{peacesciencer}`
-
-The package is already well developed and its functionality continues to
-expand. The current development version has the following functions.
-
-| **Function**                                                                                                            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-|:------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [`add_archigos()`](http://svmiller.com/peacesciencer/reference/add_archigos.html)                                       | add\_archigos() allows you to add some information about leaders to dyad-year or state-year data. The function leans on an abbreviated version of the data, which also comes in this package.                                                                                                                                                                                                                                                                                                                           |
-| [`add_atop_alliance()`](http://svmiller.com/peacesciencer/reference/add_atop_alliance.html)                             | add\_atop\_alliance() allows you to add Alliance Treaty Obligations and Provisions (ATOP) data to a dyad-year data frame.                                                                                                                                                                                                                                                                                                                                                                                               |
-| [`add_capital_distance()`](http://svmiller.com/peacesciencer/reference/add_capital_distance.html)                       | add\_capital\_distance() allows you to add capital-to-capital distance to a dyad-year or state-year data frame. The capitals are coded in the cow\_capitals and gw\_capitals data frames, along with their latitudes and longitudes. The distance variable that emerges capdist is calculated using the “Vincenty” method (i.e. “as the crow flies”) and is expressed in kilometers.                                                                                                                                    |
-| [`add_ccode_to_gw()`](http://svmiller.com/peacesciencer/reference/add_ccode_to_gw.html)                                 | add\_ccode\_to\_gw() allows you to match, as well as one can, Correlates of War system membership data with Gleditsch-Ward system data.                                                                                                                                                                                                                                                                                                                                                                                 |
-| [`add_contiguity()`](http://svmiller.com/peacesciencer/reference/add_contiguity.html)                                   | add\_contiguity() allows you to add Correlates of War contiguity data to a dyad-year or state-year data frame.                                                                                                                                                                                                                                                                                                                                                                                                          |
-| [`add_cow_alliance()`](http://svmiller.com/peacesciencer/reference/add_cow_alliance.html)                               | add\_cow\_alliance() allows you to add Correlates of War alliance data to a dyad-year data frame                                                                                                                                                                                                                                                                                                                                                                                                                        |
-| [`add_cow_majors()`](http://svmiller.com/peacesciencer/reference/add_cow_majors.html)                                   | add\_cow\_majors() allows you to add Correlates of War major power variables to a dyad-year or state-year data frame.                                                                                                                                                                                                                                                                                                                                                                                                   |
-| [`add_cow_mids()`](http://svmiller.com/peacesciencer/reference/add_cow_mids.html)                                       | add\_cow\_mids() merges in CoW’s MID data to a dyad-year data frame. The current version of the CoW-MID data is version 5.0.                                                                                                                                                                                                                                                                                                                                                                                            |
-| [`add_cow_trade()`](http://svmiller.com/peacesciencer/reference/add_cow_trade.html)                                     | add\_cow\_trade() allows you to add Correlates of War alliance data to a dyad-year data frame                                                                                                                                                                                                                                                                                                                                                                                                                           |
-| [`add_cow_wars()`](http://svmiller.com/peacesciencer/reference/add_cow_wars.html)                                       | add\_cow\_wars() allows you to add UCDP Armed Conflict data to a state-year data frame                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [`add_creg_fractionalization()`](http://svmiller.com/peacesciencer/reference/add_creg_fractionalization.html)           | add\_creg\_fractionalization() allows you to add information about the fractionalization/polarization of a state’s ethnic and religious groups to your dyad-year or state-year data.                                                                                                                                                                                                                                                                                                                                    |
-| [`add_democracy()`](http://svmiller.com/peacesciencer/reference/add_democracy.html)                                     | add\_democracy() allows you to add estimates of democracy to either dyad-year or state-year data.                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| [`add_gml_mids()`](http://svmiller.com/peacesciencer/reference/add_gml_mids.html)                                       | add\_gml\_mids() merges in GML’s MID data to a dyad-year data frame. The current version of the GML MID data is 2.1.1.                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [`add_gwcode_to_cow()`](http://svmiller.com/peacesciencer/reference/add_gwcode_to_cow.html)                             | add\_gwcode\_to\_cow() allows you to match, as well as one can, Gleditsch-Ward system membership data with Correlates of War state system membership data.                                                                                                                                                                                                                                                                                                                                                              |
-| [`add_igos()`](http://svmiller.com/peacesciencer/reference/add_igos.html)                                               | add\_igos() allows you to add information from the Correlates oF War International Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes.                                                                                                                                                                                                                                                                                                                         |
-| [`add_minimum_distance()`](http://svmiller.com/peacesciencer/reference/add_minimum_distance.html)                       | add\_minimum\_distance() allows you to add the minimum distance (in kilometers) to a dyad-year or state-year data frame. These estimates are recorded in the cow\_mindist and gw\_mindist data that come with this package. The data are current as of the end of 2019.                                                                                                                                                                                                                                                 |
-| [`add_nmc()`](http://svmiller.com/peacesciencer/reference/add_nmc.html)                                                 | add\_nmc() allows you to add the Correlates of War National Material Capabilities data to dyad-year or state-year data.                                                                                                                                                                                                                                                                                                                                                                                                 |
-| [`add_peace_years()`](http://svmiller.com/peacesciencer/reference/add_peace_years.html)                                 | add\_peace\_years() calculates peace years for your ongoing conflicts. The function works for both dyad-year and state-year data generated in peacesciencer.                                                                                                                                                                                                                                                                                                                                                            |
-| [`add_rugged_terrain()`](http://svmiller.com/peacesciencer/reference/add_rugged_terrain.html)                           | add\_rugged\_terrain() allows you to add information, however crude, about the “ruggedness” of a state’s terrain to your dyad-year or state-year data.                                                                                                                                                                                                                                                                                                                                                                  |
-| [`add_sdp_gdp()`](http://svmiller.com/peacesciencer/reference/add_sdp_gdp.html)                                         | add\_sdp\_gdp() allows you to add estimated GDP and “surplus” domestic product data from a 2020 analysis published in International Studies Quarterly by Anders, Fariss, and Markowitz.                                                                                                                                                                                                                                                                                                                                 |
-| [`add_strategic_rivalries()`](http://svmiller.com/peacesciencer/reference/add_strategic_rivalries.html)                 | add\_strategic\_rivalries() merges in Thompson and Dreyer’s (2012) strategic rivalry data to a dyad-year data frame. The right-bound, as of right now, are bound at 2010.                                                                                                                                                                                                                                                                                                                                               |
-| [`add_ucdp_acd()`](http://svmiller.com/peacesciencer/reference/add_ucdp_acd.html)                                       | add\_ucdp\_acd() allows you to add UCDP Armed Conflict data to a state-year data frame                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| [`add_ucdp_onsets()`](http://svmiller.com/peacesciencer/reference/add_ucdp_onsets.html)                                 | add\_ucdp\_onsets() allows you to add information about conflict episode onsets from the UCDP data program to state-year data.                                                                                                                                                                                                                                                                                                                                                                                          |
-| [`create_dyadyears()`](http://svmiller.com/peacesciencer/reference/create_dyadyears.html)                               | create\_dyadyears() allows you to dyad-year data from either the Correlates of War (CoW) state system membership data or the Gleditsch-Ward (gw) system membership data. The function leans on internal data provided in the package.                                                                                                                                                                                                                                                                                   |
-| [`create_statedays()`](http://svmiller.com/peacesciencer/reference/create_statedays.html)                               | create\_statedays() allows you to create state-day data from either the Correlates of War (CoW) state system membership data or the Gleditsch-Ward (gw) system membership data. The function leans on internal data provided in the package.                                                                                                                                                                                                                                                                            |
-| [`create_stateyears()`](http://svmiller.com/peacesciencer/reference/create_stateyears.html)                             | create\_stateyears() allows you to generate state-year data from either the Correlates of War (CoW) state system membership data or the Gleditsch-Ward (gw) system membership data. The function leans on internal data provided in the package.                                                                                                                                                                                                                                                                        |
-| [`filter_prd()`](http://svmiller.com/peacesciencer/reference/filter_prd.html)                                           | filter\_prd() filters a dyad-year data frame to just those that are “politically relevant.” This is useful for discarding unnecessary (and unwanted) observations that just consume space in memory.                                                                                                                                                                                                                                                                                                                    |
-| [`ps_cite()`](http://svmiller.com/peacesciencer/reference/ps_cite.html)                                                 | ps\_cite() allows the user to get citations to scholarship that they should include in their papers that incorporate the functions and data in this package.                                                                                                                                                                                                                                                                                                                                                            |
-| [`show_duplicates()`](http://svmiller.com/peacesciencer/reference/show_duplicates.html)                                 | show\_duplicates() shows which data are duplicated in data generated in peacesciencer. It’s a useful diagnostic tool for users doing some do-it-yourself functions with peacesciencer.                                                                                                                                                                                                                                                                                                                                  |
-| [`whittle_conflicts_duration()`](http://svmiller.com/peacesciencer/reference/whittle_conflicts_duration.html)           | whittle\_conflicts\_duration() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest estimated duration.                                                      |
-| [`whittle_conflicts_fatality()`](http://svmiller.com/peacesciencer/reference/whittle_conflicts_fatality.html)           | whittle\_conflicts\_fatality() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest observed fatality.                                                       |
-| [`whittle_conflicts_hostility()`](http://svmiller.com/peacesciencer/reference/whittle_conflicts_hostility.html)         | whittle\_conflicts\_hostility() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations with the highest observed hostility.                                                     |
-| [`whittle_conflicts_onsets()`](http://svmiller.com/peacesciencer/reference/whittle_conflicts_onsets.html)               | whittle\_conflicts\_onsets() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will drop ongoing conflicts in the presence of unique onsets.                                                          |
-| [`whittle_conflicts_reciprocation()`](http://svmiller.com/peacesciencer/reference/whittle_conflicts_reciprocation.html) | whittle\_conflicts\_reciprocation() is in a class of do-it-yourself functions for coercing (i.e. “whittling”) conflict-year data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular function will keep the observations that are reciprocated (i.e. have militarized actions on both sides of the conflict). |
-
-The current development version also includes the following data.
-
-| **Object Name**                                                                         | **Description**                                                                                |
-|:----------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------|
-| [`archigos`](http://svmiller.com/peacesciencer/reference/archigos.html)                 | Archigos: A (Subset of a) Dataset on Political Leaders                                         |
-| [`atop_alliance`](http://svmiller.com/peacesciencer/reference/atop_alliance.html)       | Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.0)                        |
-| [`ccode_democracy`](http://svmiller.com/peacesciencer/reference/ccode_democracy.html)   | Democracy data for all Correlates of War states                                                |
-| [`cow_alliance`](http://svmiller.com/peacesciencer/reference/cow_alliance.html)         | Correlates of War directed dyad-year alliance data                                             |
-| [`cow_capitals`](http://svmiller.com/peacesciencer/reference/cow_capitals.html)         | A complete list of capitals and capital transitions for Correlates of War state system members |
-| [`cow_contdir`](http://svmiller.com/peacesciencer/reference/cow_contdir.html)           | Correlates of War Direct Contiguity Data (v. 3.2)                                              |
-| [`cow_ddy`](http://svmiller.com/peacesciencer/reference/cow_ddy.html)                   | A directed dyad-year data frame of Correlates of War state system members                      |
-| [`cow_gw_years`](http://svmiller.com/peacesciencer/reference/cow_gw_years.html)         | Correlates of War and Gleditsch-Ward states, by year                                           |
-| [`cow_igo_ndy`](http://svmiller.com/peacesciencer/reference/cow_igo_ndy.html)           | Correlates of War Non-Directed Dyad-Year International Governmental Organizations (IGOs) Data  |
-| [`cow_igo_sy`](http://svmiller.com/peacesciencer/reference/cow_igo_sy.html)             | Correlates of War State-Year International Governmental Organizations (IGOs) Data              |
-| [`cow_majors`](http://svmiller.com/peacesciencer/reference/cow_majors.html)             | Correlates of War Major Powers Data (1816-2016)                                                |
-| [`cow_mid_ddydisps`](http://svmiller.com/peacesciencer/reference/cow_mid_ddydisps.html) | Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)               |
-| [`cow_mid_dirdisps`](http://svmiller.com/peacesciencer/reference/cow_mid_dirdisps.html) | Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0)                                            |
-| [`cow_mid_disps`](http://svmiller.com/peacesciencer/reference/cow_mid_disps.html)       | Abbreviated CoW-MID Dispute-level Data (v. 5.0)                                                |
-| [`cow_mindist`](http://svmiller.com/peacesciencer/reference/cow_mindist.html)           | The Minimum Distance Between States in the Correlates of War System, 1886-2019                 |
-| [`cow_nmc`](http://svmiller.com/peacesciencer/reference/cow_nmc.html)                   | Correlates of War National Military Capabilities Data                                          |
-| [`cow_sdp_gdp`](http://svmiller.com/peacesciencer/reference/cow_sdp_gdp.html)           | (Surplus and Gross) Domestic Product for Correlates of War States                              |
-| [`cow_states`](http://svmiller.com/peacesciencer/reference/cow_states.html)             | Correlates of War State System Membership Data (1816-2016)                                     |
-| [`cow_trade_ndy`](http://svmiller.com/peacesciencer/reference/cow_trade_ndy.html)       | Correlates of War Dyadic Trade Data Set (v. 4.0)                                               |
-| [`cow_trade_sy`](http://svmiller.com/peacesciencer/reference/cow_trade_sy.html)         | Correlates of War National Trade Data Set (v. 4.0)                                             |
-| [`cow_war_inter`](http://svmiller.com/peacesciencer/reference/cow_war_inter.html)       | Correlates of War Inter-State War Data (v. 4.0)                                                |
-| [`cow_war_intra`](http://svmiller.com/peacesciencer/reference/cow_war_intra.html)       | Correlates of War Intra-State War Data (v. 4.1)                                                |
-| [`creg`](http://svmiller.com/peacesciencer/reference/creg.html)                         | Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates     |
-| [`gml_dirdisp`](http://svmiller.com/peacesciencer/reference/gml_dirdisp.html)           | Directed dispute-year data (Gibler, Miller, and Little, 2016)                                  |
-| [`gml_mid_ddydisps`](http://svmiller.com/peacesciencer/reference/gml_mid_ddydisps.html) | Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (GML, v. 2.2.1)                 |
-| [`gml_mid_disps`](http://svmiller.com/peacesciencer/reference/gml_mid_disps.html)       | Abbreviated GML MID Dispute-level Data (v. 2.2.1)                                              |
-| [`gw_capitals`](http://svmiller.com/peacesciencer/reference/gw_capitals.html)           | A complete list of capitals and capital transitions for Gleditsch-Ward state system members    |
-| [`gw_cow_years`](http://svmiller.com/peacesciencer/reference/gw_cow_years.html)         | Gleditsch-Ward states and Correlates of War, by year                                           |
-| [`gw_ddy`](http://svmiller.com/peacesciencer/reference/gw_ddy.html)                     | A directed dyad-year data frame of Gleditsch-Ward state system members                         |
-| [`gw_mindist`](http://svmiller.com/peacesciencer/reference/gw_mindist.html)             | The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019                    |
-| [`gw_sdp_gdp`](http://svmiller.com/peacesciencer/reference/gw_sdp_gdp.html)             | (Surplus and Gross) Domestic Product for Gleditsch-Ward States                                 |
-| [`gw_states`](http://svmiller.com/peacesciencer/reference/gw_states.html)               | Gleditsch-Ward (Independent States) System Membership Data (1816-2017)                         |
-| [`gwcode_democracy`](http://svmiller.com/peacesciencer/reference/gwcode_democracy.html) | Democracy data for all Gleditsch-Ward states                                                   |
-| [`hief`](http://svmiller.com/peacesciencer/reference/hief.html)                         | Historical Index of Ethnic Fractionalization data                                              |
-| [`maoz_powers`](http://svmiller.com/peacesciencer/reference/maoz_powers.html)           | Zeev Maoz’ Regional/Global Power Data                                                          |
-| [`ps_bib`](http://svmiller.com/peacesciencer/reference/ps_bib.html)                     | A ‘BibTeX’ Data Frame of Citations                                                             |
-| [`rugged`](http://svmiller.com/peacesciencer/reference/rugged.html)                     | Rugged/Mountainous Terrain Data                                                                |
-| [`td_rivalries`](http://svmiller.com/peacesciencer/reference/td_rivalries.html)         | Thompson and Dreyer’s (2012) Strategic Rivalries, 1494-2010                                    |
-| [`ucdp_acd`](http://svmiller.com/peacesciencer/reference/ucdp_acd.html)                 | UCDP Armed Conflict Data (ACD) (v. 20.1)                                                       |
-| [`ucdp_onsets`](http://svmiller.com/peacesciencer/reference/ucdp_onsets.html)           | UCDP Onset Data (v. 19.1)                                                                      |
-
-<!-- The package is very much a work in progress. Right now, it has the following functions: -->
-<!-- - `add_archigos()`: adds some summary variables from Archigos about political leaders for state-year or dyad-year data. -->
-<!-- - `add_atop_alliance()`: adds ATOP alliance information to dyad-year data. -->
-<!-- - `add_capital_distance()`: adds capital-to-capital distance (in kilometers, "as the crow flies") to dyad-year or state-year data. -->
-<!-- - `add_ccode_to_gw()`:     Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes. -->
-<!-- - `add_contiguity()`: adds Correlates of War direct contiguity data to dyad-year or state-year data. -->
-<!-- - `add_cow_alliance()`: adds Correlates of War major alliance information to dyad-year data. -->
-<!-- - `add_cow_majors()`: adds Correlates of War major power information to dyad-year or state-year data. -->
-<!-- - `add_cow_mids()`: adds Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame -->
-<!-- - `add_cow_trade()`: adds Correlates of War trade data to dyad-year or state-year data. -->
-<!-- - `add_creg_fractionalization()`: add fractionalization/polarization estimates from CREG to your dyad-year or state-year data -->
-<!-- - `add_democracy()`: adds estimates of democracy/levels of democracy to dyad-year or state-year data. -->
-<!-- - `add_gwcode_to_cow():` adds Gleditsch-Ward state codes to dyad-year or state-year data with Correlates of War state codes. -->
-<!-- - `add_gml_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data. -->
-<!-- - `add_igos()`: adds Correlates of War International Governmental Organizations (IGOs) data to dyad-year or state-year data. -->
-<!-- - `add_mids():` adds dyad-year information about ongoing MIDs and MID onsets from the Gibler-Miller-Little data. (DEPRECATED) -->
-<!-- - `add_minimum_distance()`: adds minimum distance (in kilometers) to dyad-year or state-year data. -->
-<!-- - `add_nmc()`: adds estimates of national material capabilities (from Correlates of War) to dyad-year or state-year data. -->
-<!-- - `add_peace_years()`: Add Peace Years to Your Conflict Data -->
-<!-- - `add_sdp_gdp()`: adds estimates of (gross and surplus) domestic product and population size to dyad-year or state-year data -->
-<!-- - `add_strategic_rivalries()`: Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame -->
-<!-- - `add_ucdp_acd()`: Add UCDP Armed Conflict Data to state-year data frame -->
-<!-- - `add_ucdp_onsets()`: adds UCDP onsets to state-year data -->
-<!-- - `create_dyadyears()`: converts Correlates of War or Gleditsch-Ward state system membership data into dyad-year format -->
-<!-- - `create_statedays()`: converts Correlates of War or Gleditsch-Ward state membership data into state-day format.. -->
-<!-- - `create_stateyears()`: converts Correlates of War or Gleditsch-Ward state membership data into state-year format. -->
-<!-- - `filter_prd()`: filters dyad-year data frame to just "politically relevant" dyads. -->
-<!-- It also has the following data sets: -->
-<!-- - `archigos`: an abbreviated version of the Archigos data, used internally -->
-<!-- - `atop_alliance:` directed dyad-year alliance data from ATOP -->
-<!-- - `capitals`: a list of capitals and capital transitions for Correlates of War state system members -->
-<!-- - `ccode_democracy`: Correlates of War state-year data with three different estimates of democracy (Varieties of Democracy, Polity, Xavier Marquez/Pemstein et al.'s "(Quick) Unified Democracy Scores"). -->
-<!-- - `cow_alliance`: directed dyad-year alliance formation data from the Correlates of War -->
-<!-- - `cow_contdir`: Correlates of War Direct Contiguity Data (v. 3.2) -->
-<!-- - `cow_ddy`: a full directed dyad-year data frame of Correlates of War state system members -->
-<!-- - `cow_gw_years`: a yearly data frame including information about Correlates of War and Gleditsch-Ward states. -->
-<!-- - `cow_igo_ndy`: non-directed dyad-year data for Correlates of War intergovernmental organizations data. -->
-<!-- - `cow_igo_sy`: state-year data for Correlates of War intergovernmental organizations data. -->
-<!-- - `cow_majors`: Correlates of War major powers data (version: 2016) -->
-<!-- - `cow_mid_ddydisps`:  Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0) -->
-<!-- - `cow_mid_dirdisps`: Correlates of War Militarized Interstate Dispute data (directed dyadic dispute-year, v. 5.0)  -->
-<!-- - `cow_mid_disps`: Correlates of War Militarized Interstate Dispute data (abbreviated dispute-level, v. 5.0)  -->
-<!-- - `cow_mindist`: the minimum distance between Correlates of War states, in kilometers, in non-directed dyad-year format (1946-2015) -->
-<!-- - `cow_nmc`: Correlates of War National Material Capabilities data (version 5.0) -->
-<!-- - `cow_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States -->
-<!-- - `cow_states`: Correlates of War state system membership data (version: 2016) -->
-<!-- - `cow_trade_sy`: Correlates of War state-year trade data (version 4.0) -->
-<!-- - `creg`: Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates -->
-<!-- - `gml_dirdisp`: directed dispute-year data from version 2.1.1 of the Gibler-Miller-Little inter-state dispute data. -->
-<!-- - `gml_mid_ddydisps`:  Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (Gibler-Miller-Little, v. 2.1.1) -->
-<!-- - `gw_ddy`: a full directed dyad-year data frame of Gleditsch-Ward state system members -->
-<!-- - `gw_mindist`: the minimum distance between  Gleditsch-Ward states, in kilometers, in non-directed dyad-year format (1946-2015) -->
-<!-- - `gw_sdp_gdp`: (Surplus and Gross) Domestic Product for Correlates of War States -->
-<!-- - `gw_states`: Gleditsch-Ward independent state system data (version: 2017) -->
-<!-- - `gwcode_democracy`: Gleditsch-Ward state-year data with three different estimates of democracy (Varieties of Democracy, Polity, Xavier Marquez/Pemstein et al.'s "(Quick) Unified Democracy Scores"). -->
-<!-- - `hief`: Historical Index of Ethnic Fractionalization data -->
-<!-- - `maoz_powers`: Zeev Maoz' global/regional power data -->
-<!-- - `rugged`: Rugged/Mountainous Terrain Data -->
-<!-- - `td_rivalries`: Thompson and Dreyer's (2012) Strategic Rivalries, 1494-2010 -->
-<!-- - `ucdp_acd`: a (not quite) dyad-year and (not quite) state-year data set on armed conflict episodes -->
-<!-- - `ucdp_onsets`: a state-year data set of UCDP armed conflict onsets/episodes. -->
-
 # How to Use `{peacesciencer}`
 
-[`{peacesciencer}` has a user’s
+New users should read two things to get started. [The package’s
+website](http://svmiller.com/peacesciencer/index.html) has an exhaustive
+list and description of [all the functions and data
+included](http://svmiller.com/peacesciencer/reference/index.html) in the
+package. [`{peacesciencer}` has a user’s
 guide](http://svmiller.com/peacesciencer/ms.pdf) that is worth reading.
-The workflow is going to look something like this. This is a
-“tidy”-friendly approach to a data-generating process in quantitative
-peace science.
+The user’s guide points to its potential uses and benefits while also
+offering some encouragement for those completely new to the R
+programming language. The package is designed to be accessible to those
+with no prior experience with R, though completely new users who feel
+lost or overwhelmed should learn about [the “tidy” approach to
+R](https://www.tidyverse.org/) to help them get started.
 
-First, start with one of two processes to create either dyad-year or
-state-year data. The dyad-year data are created with the
-`create_dyadyears()` function. It has a few optional parameters with
-hidden defaults. The user can specify what kind of state system
-(`system`) data they want to use—either Correlates of War (`"cow"`) or
-Gleditsch-Ward (`"gw"`), whether they want to extend the data to the
-most recently concluded calendar year (`mry`) (i.e. Correlates of War
-state system membership data are current as of Dec. 31, 2016 and the
-script can extend that to the end of the most recently concluded
-calendar year), and whether the user wants directed or non-directed
-dyad-year data (`directed`).
+The workflow is going to look something like this. First, start with one
+of two processes to create either dyad-year or state-year data. The
+dyad-year data are created with the `create_dyadyears()` function. It
+has a few optional parameters with hidden defaults. The user can specify
+what kind of state system (`system`) data they want to use—either
+Correlates of War (`"cow"`) or Gleditsch-Ward (`"gw"`), whether they
+want to extend the data to the most recently concluded calendar year
+(`mry`) (i.e. Correlates of War state system membership data are current
+as of Dec. 31, 2016 and the script can extend that to the end of the
+most recently concluded calendar year), and whether the user wants
+directed or non-directed dyad-year data (`directed`).
 
 The `create_stateyears()` works much the same way, though “directed” and
 “non-directed” make no sense in the state-year context. Both functions
@@ -231,6 +89,7 @@ core `{peacesciencer}` functionality whereas the other stuff is some
 post-processing and, as a bonus, some modeling.
 
 ``` r
+
 # library(tidyverse) # load this first for most/all things
 # library(peacesciencer) # the package of interest
 # library(stevemisc) # a dependency, but also used for standardizing variables for better interpretation
@@ -291,13 +150,14 @@ broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_
 #> 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  3.16e- 75
 #> 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.24e- 38
 toc()
-#> 10.747 sec elapsed
+#> 9.817 sec elapsed
 ```
 
 Here is how you might do a standard civil conflict analysis using
 Gleditsch-Ward states and UCDP conflict data.
 
 ``` r
+
 tic()
 create_stateyears(system = 'gw') %>%
   filter(year %in% c(1946:2019)) %>%
@@ -365,7 +225,7 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
 toc()
-#> 4.034 sec elapsed
+#> 3.899 sec elapsed
 ```
 
 # Citing What You Do in `{peacesciencer}`

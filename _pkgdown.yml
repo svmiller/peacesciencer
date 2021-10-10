@@ -59,7 +59,7 @@ navbar:
     right: [github]
   components:
     reference:
-      text: "Functions/Data"
+      text: "What’s Included?"
       href: "reference/index.html"
     user-guide:
       text: "User Guide"

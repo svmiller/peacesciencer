@@ -24,7 +24,7 @@ from the GML MID data.
 }
 \description{
 \code{add_gml_mids()} merges in GML's MID data to a dyad-year data frame. The current version
-of the GML MID data is 2.1.1.
+of the GML MID data is 2.2.1.
 }
 \details{
 Dyads are capable of having multiple disputes in a given year, which can create a problem
