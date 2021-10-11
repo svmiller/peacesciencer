@@ -21,6 +21,7 @@ Encoding: UTF-8
 LazyData: true
 LazyDataCompression: xz
 RoxygenNote: 7.1.2
+Additional_repositories: http://svmiller.com/drat
 URL: https://github.com/svmiller/peacesciencer/
 BugReports: https://github.com/svmiller/peacesciencer/issues/
 Imports:
