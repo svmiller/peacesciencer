@@ -46,6 +46,7 @@ reference:
 - title: Other Functions
   desc: "These are miscellaneous functions also included in this package."
   contents:
+  - starts_with("download_extdata()")
   - starts_with("ps_cite()")
   - starts_with("show_duplicates()")
 - title: Data
