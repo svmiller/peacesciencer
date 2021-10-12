@@ -8,7 +8,7 @@ test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_gwcode_to_cow()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_capital_distance()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_majors()))
-  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_trade()))
+#   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% download_extdata() %>% add_cow_trade()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_democracy()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_gwcode_to_cow()))
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_gml_mids()))

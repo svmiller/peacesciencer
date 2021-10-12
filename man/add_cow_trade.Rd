@@ -28,13 +28,12 @@ to be terribly problematic, though I admit I do not like it. If this is a proble
 you may want to consider not using this function for dyad-year data.
 }
 \examples{
-
-\donttest{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
+# The function below works, but depends on running `download_extdata()` beforehand.
+# cow_ddy \%>\% add_cow_trade()
 
-cow_ddy \%>\% add_cow_trade()
-}
+create_stateyears() \%>\% add_cow_trade()
 }
 \references{
 Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."

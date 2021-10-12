@@ -16,7 +16,7 @@ if(getRversion() >= "2.15.1")
   )
 
 
-.onLoad <- function(libname, pkgname) {
+.onAttach <- function(libname, pkgname) {
 
   remote_files <- c("cow_trade_ddy")
   extdata_dir <- system.file("extdata", package="peacesciencer")
@@ -25,7 +25,7 @@ if(getRversion() >= "2.15.1")
 
 
   if (!all(file.exists(the_files))) {
-    message("{peacesciencer} includes additional remote data for separate download. Please type ?download_extdata() for more.\nThis message disappears on load when these data are downloaded and in the package's `extdata` directory.")
+    packageStartupMessage("{peacesciencer} includes additional remote data for separate download. Please type ?download_extdata() for more information.\nThis message disappears on load when these data are downloaded and in the package's `extdata` directory.")
   }
   else {
 

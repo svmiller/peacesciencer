@@ -37,7 +37,7 @@
 #' @examples
 #'
 #' \dontrun{
-#' download_extras()
+#' download_extdata()
 #' }
 
 download_extdata <- function(overwrite = FALSE) {

@@ -25,13 +25,12 @@
 #' \emph{Conflict Management and Peace Science}. 26(5): 471-491.
 #'
 #' @examples
-#'
-#' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
+#' # The function below works, but depends on running `download_extdata()` beforehand.
+#' # cow_ddy %>% add_cow_trade()
 #'
-#' cow_ddy %>% add_cow_trade()
-#' }
+#' create_stateyears() %>% add_cow_trade()
 
 add_cow_trade <- function(data) {
 
@@ -44,22 +43,18 @@ add_cow_trade <- function(data) {
 
     } else {
 
-    #cow_trade_ddy <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
+      if (!file.exists(system.file("extdata", "cow_trade_ddy.rds", package="peacesciencer"))) {
 
-    # cow_trade_ddy %>%
-    #   left_join(data, .) -> data
+        stop("Dyadic CoW trade data is now stored remotely and must be downloaded separately.\nThis error disappears after successfully running download_extdata(). Thereafter, the function works with no problem.")
 
-      cow_trade_ndy %>%
-        rename(ccode1 = .data$ccode2,
-               ccode2 = .data$ccode1,
-               flow1 = .data$flow2,
-               flow2 = .data$flow1,
-               smoothflow1 = .data$smoothflow2,
-               smoothflow2 = .data$smoothflow1) %>%
-        bind_rows(cow_trade_ndy, .) %>%
-        left_join(data, .) -> data
+      } else {
 
-    return(data)
+        readRDS(system.file("extdata", "cow_trade_ddy.rds", package="peacesciencer")) %>%
+          left_join(data, .) -> data
+
+        return(data)
+
+      }
 
     }
 

@@ -39,7 +39,7 @@ These are directed dyad-year-level data for national trade from the Correlates o
 \examples{
 
 \dontrun{
-download_extras()
+download_extdata()
 }
 }
 \references{
