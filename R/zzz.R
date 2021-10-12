@@ -14,3 +14,20 @@ if(getRversion() >= "2.15.1")
       "hief", "gwcode_democracy", "cow_war_intra", "cow_war_inter", "cow_trade_ndy",
       "ps_bib", "gml_mid_disps")
   )
+
+
+.onLoad <- function(libname, pkgname) {
+
+  remote_files <- c("cow_trade_ddy")
+  extdata_dir <- system.file("extdata", package="peacesciencer")
+
+  the_files <- paste0(extdata_dir, "/", remote_files, ".rds")
+
+
+  if (!all(file.exists(the_files))) {
+    message("{peacesciencer} includes additional remote data for separate download. Please type ?download_extdata() for more.\nThis message disappears on load when these data are downloaded and in the package's `extdata` directory.")
+  }
+  else {
+
+  }
+}

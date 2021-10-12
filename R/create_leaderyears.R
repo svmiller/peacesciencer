@@ -22,9 +22,9 @@
 #' @param system a leader system with which to create leader-years. Right now, only "archigos" is supported.
 #'
 #' @examples
-#'
+#' \donttest{
 #' create_leaderyears()
-#'
+#' }
 #'
 create_leaderyears <- function(system = "archigos") {
 

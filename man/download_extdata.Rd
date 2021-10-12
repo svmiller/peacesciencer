@@ -12,7 +12,8 @@ downloaded the data and, if you already have, it does nothing. If TRUE, the func
 }
 \value{
 \code{download_extdata()} downloads some extra data stored on my website (\url{http://svmiller.com}) and
-sticks them in the \code{extdata} directory in the package.
+sticks them in the \code{extdata} directory in the package. Right now, these data are just the directed dyad-year
+Correlates of War trade data.
 }
 \description{
 \code{download_extdata()} leverages R's \code{inst} directory flexibility to allow you to download

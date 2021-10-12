@@ -20,7 +20,8 @@
 #' some extra data and store it in the package.
 #'
 #' @return \code{download_extdata()} downloads some extra data stored on my website (\url{http://svmiller.com}) and
-#' sticks them in the \code{extdata} directory in the package.
+#' sticks them in the \code{extdata} directory in the package. Right now, these data are just the directed dyad-year
+#' Correlates of War trade data.
 #'
 #' @author Steven V. Miller
 #'

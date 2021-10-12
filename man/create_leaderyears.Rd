@@ -25,9 +25,9 @@ will work with other functions in \pkg{peacesciencer} that have support for stat
 \code{add_rugged_terrain()}). This is declared in the attribute field.
 }
 \examples{
-
+\donttest{
 create_leaderyears()
-
+}
 
 }
 \references{
