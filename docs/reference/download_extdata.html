@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create leader-years from leader data — create_leaderyears • peacesciencer</title>
+<title>Download Some Extra Data for Peace Science Research — download_extdata • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create leader-years from leader data — create_leaderyears" />
-<meta property="og:description" content="create_leaderyears() allows you to generate leader-year data from
-leader-level data provided in peacesciencer" />
+<meta property="og:title" content="Download Some Extra Data for Peace Science Research — download_extdata" />
+<meta property="og:description" content="download_extdata() leverages R's inst directory flexibility to allow you to download
+some extra data and store it in the package." />
 
 
 
@@ -156,64 +156,66 @@ leader-level data provided in peacesciencer" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create leader-years from leader data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/create_leaderyears.R'><code>R/create_leaderyears.R</code></a></small>
-    <div class="hidden name"><code>create_leaderyears.Rd</code></div>
+    <h1>Download Some Extra Data for Peace Science Research</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/download_extdata.R'><code>R/download_extdata.R</code></a></small>
+    <div class="hidden name"><code>download_extdata.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>create_leaderyears()</code> allows you to generate leader-year data from
-leader-level data provided in <span class="pkg">peacesciencer</span></p>
+    <p><code>download_extdata()</code> leverages R's <code>inst</code> directory flexibility to allow you to download
+some extra data and store it in the package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_leaderyears</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"archigos"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>download_extdata</span><span class='op'>(</span>overwrite <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>system</th>
-      <td><p>a leader system with which to create leader-years. Right now, only "archigos" is supported.</p></td>
+      <th>overwrite</th>
+      <td><p>logical, defaults to FALSE. If FALSE, the function checks to see if you've already
+downloaded the data and, if you already have, it does nothing. If TRUE, the function redownloads the data.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>create_leaderyears()</code> takes leader-level data available in <span class="pkg">peacesciencer</span>
-and returns a leader-year-level data frame.</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p><code>download_extdata()</code> downloads some extra data stored on my website (<a href='http://svmiller.com'>http://svmiller.com</a>) and
+sticks them in the <code>extdata</code> directory in the package. Right now, these data are just the directed dyad-year
+Correlates of War trade data.</p>
+    <h2 class="hasAnchor" id="a-description-of-various-data-sets-this-will-download"><a class="anchor" href="#a-description-of-various-data-sets-this-will-download"></a>A Description of Various Data Sets This Will Download</h2>
 
-    <p><code>create_leaderyears()</code>, as of writing, only supports the Archigos data set of leaders. Importantly:
-the absence of much leader-level covariates (of which I am aware) means, for now, the data that are returned are
-treated as observationally equivalent to state-year data. Users should be careful here, but it does mean the data
-will work with other functions in <span class="pkg">peacesciencer</span> that have support for state-year data (e.g. <code><a href='add_nmc.html'>add_nmc()</a></code>,
-<code><a href='add_rugged_terrain.html'>add_rugged_terrain()</a></code>). This is declared in the attribute field.</p>
+    
+<h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Correlates of War Dyadic Trade Data Set (v. 4.0)</h3>
+
+
+<p>These are directed dyad-year-level data for national trade from the Correlates of War project.</p><table class='table'>
+<tr><td>COLUMN</td><td>DESCRIPTION</td></tr>
+<tr><td><code>ccode1</code></td><td>a numeric vector for the Correlates of War state code for the first state</td></tr>
+<tr><td><code>ccode2</code></td><td>a numeric vector for the Correlates of War state code for the second state</td></tr>
+<tr><td><code>year</code></td><td>the year</td></tr>
+<tr><td><code>flow1</code></td><td>imports of <code>ccode1</code> from <code>ccode2</code>, in current million USD</td></tr>
+<tr><td><code>flow2</code></td><td>imports of <code>ccode2</code> from <code>ccode1</code>, in current million USD</td></tr>
+<tr><td><code>smoothflow1</code></td><td>smoothed <code>flow1</code> values</td></tr>
+<tr><td><code>smoothflow2</code></td><td>smoothed <code>flow2</code> values</td></tr>
+</table>
+
+
+
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-<em>Journal of Peace Research</em> 46(2): 269--83.</p>
+    <p>Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."
+<em>Conflict Management and Peace Science</em>. 26(5): 471-491.</p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven V. Miller</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
-<span class='fu'>create_leaderyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,608 × 11</span>
-#&gt;    ccode leadid        leader  gender startdate  enddate    entry exit  exitcode
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 2</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 3</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 4</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 5</span>     2 34fb1558-3bb… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 6</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 7</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 8</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'> 9</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #BCBCBC;'>10</span>     2 34fb1558-3bb… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular 
-#&gt; <span style='color: #949494;'># … with 17,598 more rows, and 2 more variables: date &lt;date&gt;, year &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
-
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='fu'>download_extras</span><span class='op'>(</span><span class='op'>)</span>
+<span class='op'>}</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
