@@ -1372,3 +1372,38 @@ NULL
 #'
 
 "gml_mid_disps"
+
+
+#' Leader Willingness to Use Force
+#'
+#' These are the estimates of leader willingness to use force as estimated by Carter and Smith (2020).
+#'
+#'
+#' @format A data frame with 3042 observations on the following 10 variables.
+#' \describe{
+#' \item{\code{obsid}}{an observational ID from \code{archigos}}
+#' \item{\code{leadid29}}{a leader ID, as previously used by Archigos before version 4}
+#' \item{\code{theta1_mean}}{the mean simulated M1 theta, as estimated by Carter and Smith (2020)}
+#' \item{\code{theta1_sd}}{the standard deviation of simulated M1 thetas}
+#' \item{\code{theta2_mean}}{the mean simulated M2 theta, as estimated by Carter and Smith (2020)}
+#' \item{\code{theta2_sd}}{the standard deviation of simulated M2 thetas}
+#' \item{\code{theta3_mean}}{the mean simulated M3 theta, as estimated by Carter and Smith (2020)}
+#' \item{\code{theta3_sd}}{the standard deviation of simulated M3 thetas}
+#' \item{\code{theta4_mean}}{the mean simulated M4 theta, as estimated by Carter and Smith (2020)}
+#' \item{\code{theta4_sd}}{the standard deviation of simulated M4 thetas}
+#' }
+#'
+#' @details The letter published by the authors contains more information as to what these thetas refer.
+#' The "M1" theta is a variation of the standard Rasch model from the boilerplate information in the LEAD
+#' data. The authors consider this to be "theoretically relevant" or "risk-related" as these all refer to conflict
+#' or risk-taking. The "M2" theta expands on "M1" by including political orientation and psychological characteristics.
+#' "M3" and "M4" expand on "M1" and "M2" by considering all 36 variables in the LEAD data.
+#'
+#' The authors construct and include all these measures, though their analyses suggest "M2" is the best-performing measure.
+#'
+#' @references
+#'
+#' Carter, Jeff and Charles E. Smith, Jr. 2020. "A Framework for Measuring Leaders' Willingness
+#' to Use Force." \emph{American Political Science Review} 114(4): 1352--1358.
+
+"lwuf"
