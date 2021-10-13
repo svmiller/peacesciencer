@@ -45,7 +45,7 @@ add_cow_trade <- function(data) {
 
       if (!file.exists(system.file("extdata", "cow_trade_ddy.rds", package="peacesciencer"))) {
 
-        stop("Dyadic CoW trade data is now stored remotely and must be downloaded separately.\nThis error disappears after successfully running download_extdata(). Thereafter, the function works with no problem.")
+        stop("Dyadic CoW trade data is now stored remotely and must be downloaded separately.\nThis error disappears after successfully running `download_extdata()`. Thereafter, the function works with no problem and the dyadic trade data (`cow_trade_ddy`) can be loaded for additional exploration.")
 
       } else {
 

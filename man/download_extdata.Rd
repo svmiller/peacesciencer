@@ -20,6 +20,7 @@ Correlates of War trade data.
 some extra data and store it in the package.
 }
 \section{A Description of Various Data Sets This Will Download}{
+Running \code{download_extdata()} returns the following data that will be stored in the package's \code{extdata} directory.
 \subsection{Correlates of War Dyadic Trade Data Set (v. 4.0)}{
 
 These are directed dyad-year-level data for national trade from the Correlates of War project.\tabular{ll}{

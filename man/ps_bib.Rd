@@ -42,9 +42,6 @@ A data frame with 37 observations on the following 40 variables.
 \item{\code{JOURNALTITLE}}{another \code{BibTeX} field, which I think is actually a \code{BibLaTeX} field}
 \item{\code{ISSN}}{another \code{BibTeX} field}
 \item{\code{ABSTRACT}}{another \code{BibTeX} field, for entry abstract (if appropriate)}
-\item{\code{COPYRIGHT}}{another \code{BibTeX} field}
-\item{\code{JSTOR_ARTICLETYPE}}{another \code{BibTeX} field}
-\item{\code{JSTOR_FORMATTEDDATE}}{another \code{BibTeX} field}
 \item{\code{DATE.ADDED}}{another \code{BibTeX} field}
 \item{\code{DATE.MODIFIED}}{another \code{BibTeX} field}
 }
@@ -57,6 +54,6 @@ This is a \code{BibTeX} file, loaded as a data frame, to assist the user in prop
 }
 \details{
 See \code{data-raw} directory for how these data were generated. The data were created by \pkg{bib2df}, which is now a package dependency.
-I assume the user has some familiarity with \code{BibTeX}. Some entires were copy-pasted from my master bibliography file that I started in 2008 or so.
+I assume the user has some familiarity with \code{BibTeX}. Some entries were copy-pasted from my master bibliography file that I started in 2008 or so.
 }
 \keyword{datasets}

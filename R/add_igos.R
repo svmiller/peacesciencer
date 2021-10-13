@@ -1,6 +1,6 @@
 #' Add Correlates of War international governmental organizations (IGOs) data to dyad-year or state-year data.
 #'
-#' @description \code{add_igos()} allows you to add information from the Correlates oF War International
+#' @description \code{add_igos()} allows you to add information from the Correlates of War International
 #' Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes.
 #'
 #'

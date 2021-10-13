@@ -19,7 +19,7 @@ number of IGOs for which the state is an observer, and the number of IGOs for wh
 sum of the other three columns).
 }
 \description{
-\code{add_igos()} allows you to add information from the Correlates oF War International
+\code{add_igos()} allows you to add information from the Correlates of War International
 Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes.
 }
 \details{

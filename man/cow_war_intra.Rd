@@ -36,7 +36,8 @@ These are a modified version of the intra-state war data from the Correlates of 
 1816-2007.
 }
 \details{
-See \code{data-raw} directory for how these data were generated.
+See \code{data-raw} directory for how these data were generated. In the Guinnea-Bissau Civil War (1998, 1999),
+the "Mané Junta" were changed to just "Mane Junta" to coincide with CRAN's character requirements.
 }
 \references{
 Dixon, Jeffrey, and Meredith Sarkees. 2016. A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014. Thousand Oaks, CA: Sage.

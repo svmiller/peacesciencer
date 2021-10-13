@@ -3,6 +3,14 @@ library(tidyverse)
 
 ps_bib <- bib2df("~/Dropbox/projects/peacesciencer/data-raw/bib/ps_bib.bib") %>% filter(CATEGORY != "COMMENT")
 
+# I'm going to have to do this iteratively, methinks...
+
+ps_bib %>% mutate_if(is.character,
+                     list(enc = ~stringi::stri_enc_isascii(.))) %>%
+  select(CATEGORY_enc:ncol(.)) %>%
+  summary
+# ^ I think I got it...
+
 save(ps_bib, file="data/ps_bib.rda")
 
 #df2bib(ps_bib)

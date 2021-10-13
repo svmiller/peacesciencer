@@ -43,7 +43,7 @@
 
 <meta property="og:title" content="Archigos: A (Subset of a) Dataset on Political Leaders — archigos" />
 <meta property="og:description" content="These are leader-level data drawn from the Archigos data. Space considerations mean I offer here just a few columns
-based on these data." />
+based on these data.  Data are version 4.1." />
 
 
 
@@ -75,7 +75,7 @@ based on these data." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -163,7 +163,7 @@ based on these data." />
 
     <div class="ref-description">
     <p>These are leader-level data drawn from the Archigos data. Space considerations mean I offer here just a few columns
-based on these data.</p>
+based on these data.  Data are version 4.1.</p>
     </div>
 
     <pre class="usage"><span class='va'>archigos</span></pre>
@@ -171,11 +171,13 @@ based on these data.</p>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 3409 observations on the following seven variables.</p><dl>
+    <p>A data frame with 3409 observations on the following 10 variables.</p><dl>
 <dt><code>ccode</code></dt><dd><p>a numeric vector for the Correlates of War state code</p></dd>
+<dt><code>obsid</code></dt><dd><p>a character vector for observation ID</p></dd>
 <dt><code>leadid</code></dt><dd><p>the unique leader identifier</p></dd>
- <dt><code>leader</code></dt><dd><p>the leader name</p></dd>
-  <dt><code>gender</code></dt><dd><p>a categorical variable for leader gender ("M" for men, "W" for women)</p></dd>
+<dt><code>leader</code></dt><dd><p>the leader name</p></dd>
+<dt><code>yrborn</code></dt><dd><p>the year the leader was born</p></dd>
+<dt><code>gender</code></dt><dd><p>a categorical variable for leader gender ("M" for men, "W" for women)</p></dd>
 <dt><code>startdate</code></dt><dd><p>a date for the leader start date</p></dd>
 <dt><code>enddate</code></dt><dd><p>a date for the leader end date</p></dd>
 <dt><code>entry</code></dt><dd><p>a character vector for the leader's entry type</p></dd>
@@ -187,7 +189,14 @@ based on these data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Space considerations mean I can only offer a few columns from the overall data. Archigos data are rich with information. Consult
-the raw data available on Hein Goeman's website for more. Data are version 4.1.</p>
+the raw data available on Hein Goeman's website for more.</p>
+<p>To best conform with data requirements on CRAN, a few leader names were renamed if they included irregular
+characters (e.g. umlauts or accents). These leaders are "(Juan Orlando) Hernández" (<code>HON-2014</code>),
+"(Antonio) Saca González" (<code>SAL-2004</code>), "Julián Trujillo Largacha" (<code>COL-1878</code>), "César Gaviria Trujillo"
+(<code>COL-1990</code>), "Gabriel García Moreno" (<code>ECU-1869</code>), "Marcos A. Morínigo" (<code>PAR-1894-1</code>), "Higinio Morínigo" (<code>PAR-1940</code>),
+"Sebastián Piñera" (<code>CHL-2010</code>), "Sauli Niinistö" (<code>FIN-2012</code>), "Louis Gerhard De Geer" (<code>SWD-1876</code>),
+"Stefan Löfven" (<code>SWD-2014</code>), "Lars Løkke Rasmussen" (<code>DEN-2009</code>, <code>DEN-2015</code>), and "Fernando de Araújo"
+(<code>ETM-2008-1</code>). None of these names contain these special characters in the data here.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"

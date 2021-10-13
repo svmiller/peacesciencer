@@ -48,6 +48,23 @@ cow_war_intra %>%
   mutate(cowintraongoing = 1) %>%
   select(warnum, warname, wartype, year, cowintraonset, cowintraongoing, resume_combat, everything()) -> cow_war_intra
 
+# what are the irregular characters...
+
+cow_war_intra %>% mutate_if(is.character,
+                            list(enc = ~stringi::stri_enc_isascii(.))) %>% summary
+
+# ^ just two sidebs...
+
+cow_war_intra %>% mutate_if(is.character,
+                            list(enc = ~stringi::stri_enc_isascii(.))) %>%
+  filter(sideb_enc == FALSE) %>% data.frame
+
+# same Side Bs...
+
+cow_war_intra %>%
+  mutate(sideb = case_when(warnum == 902 & year %in% c(1998, 1999) & ccodea == 404 ~ "Mane Junta",
+                           TRUE  ~ sideb)) -> cow_war_intra
+
 save(cow_war_intra, file="data/cow_war_intra.rda")
 
 

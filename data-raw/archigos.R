@@ -1,11 +1,49 @@
 library(tidyverse)
 
-archigos <- haven::read_dta("/home/steve/Dropbox/data/archigos/Archigos_4.1_stata14.dta")
+# archigos <- haven::read_dta("~/Dropbox/data/archigos/Archigos_4.1_stata14.dta")
 
-archigos %>%
-  select(ccode, leadid, leader, gender, startdate, enddate, entry, exit, exitcode) %>%
+haven::read_dta("~/Dropbox/data/archigos/Archigos_4.1_stata14.dta") %>%
+  select(obsid, ccode, leadid, leader, yrborn, gender, startdate, enddate, entry, exit, exitcode) %>%
   mutate(startdate = lubridate::ymd(startdate),
          enddate = lubridate::ymd(enddate)) -> archigos
+
+# Gonna futz with some character encoding problems here.
+archigos %>%
+  mutate_at(vars( "obsid", "leadid", "leader", "gender", "entry", "exit", "exitcode"),
+            list(enc = ~stringi::stri_enc_isascii(.)))
+
+#^ leader names...
+
+archigos %>%
+  mutate_at(vars( "obsid", "leadid", "leader", "gender", "entry", "exit", "exitcode"),
+            list(enc = ~stringi::stri_enc_isascii(.))) %>% filter(leader_enc == FALSE) %>%
+  distinct(obsid, ccode, leader) -> rename_these
+
+rename_these %>%
+  mutate(leader_corrected = c("Hernandez", "Saca Gonzalez",
+                              "Julian Trujillo Largacha",
+                              "Cesar Gaviria Trujillo",
+                              "Gabriel Garcia Moreno",
+                              "Marcos A. Morinigo",
+                              "Higinio Morinigo",
+                              "Sebastian Pinera",
+                              "Sauli Ninisto",
+                              "Louis Gerhard De Geer",
+                              "Stefan Lofven",
+                              "Lars Lokke Rasmussen",
+                              "Lars Lokke Rasmussen",
+                              "Fernando de Araujo"),
+         correctme = 1) %>%
+  left_join(archigos, .) %>%
+  mutate(correctme = ifelse(is.na(correctme), 0, correctme)) %>%
+  mutate(leader = ifelse(correctme == 1, leader_corrected, leader)) %>%
+  select(obsid:exitcode) -> archigos
+
+archigos %>%
+  mutate_at(vars( "obsid", "leadid", "leader", "gender", "entry", "exit", "exitcode"),
+            list(enc = ~stringi::stri_enc_isascii(.))) %>% summary
+
+
 
 save(archigos, file="data/archigos.rda")
 

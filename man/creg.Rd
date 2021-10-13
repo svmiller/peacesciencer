@@ -7,7 +7,6 @@
 \format{
 A data frame with 11523 observations on the following 9 variables.
 \describe{
-\item{\code{country}}{a character vector of the state name}
 \item{\code{ccode}}{a Correlates of War state code}
 \item{\code{gwcode}}{a Gleditsch-Ward state code}
 \item{\code{creg_ccode}}{a numeric code for the state, mostly patterned off Correlates of War codes but with important differences. See details section for more.}

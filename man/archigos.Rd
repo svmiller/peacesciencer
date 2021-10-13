@@ -5,12 +5,14 @@
 \alias{archigos}
 \title{Archigos: A (Subset of a) Dataset on Political Leaders}
 \format{
-A data frame with 3409 observations on the following seven variables.
+A data frame with 3409 observations on the following 10 variables.
 \describe{
 \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
+\item{\code{obsid}}{a character vector for observation ID}
 \item{\code{leadid}}{the unique leader identifier}
- \item{\code{leader}}{the leader name}
-  \item{\code{gender}}{a categorical variable for leader gender ("M" for men, "W" for women)}
+\item{\code{leader}}{the leader name}
+\item{\code{yrborn}}{the year the leader was born}
+\item{\code{gender}}{a categorical variable for leader gender ("M" for men, "W" for women)}
 \item{\code{startdate}}{a date for the leader start date}
 \item{\code{enddate}}{a date for the leader end date}
 \item{\code{entry}}{a character vector for the leader's entry type}
@@ -23,11 +25,19 @@ archigos
 }
 \description{
 These are leader-level data drawn from the Archigos data. Space considerations mean I offer here just a few columns
-based on these data.
+based on these data.  Data are version 4.1.
 }
 \details{
 Space considerations mean I can only offer a few columns from the overall data. Archigos data are rich with information. Consult
-the raw data available on Hein Goeman's website for more. Data are version 4.1.
+the raw data available on Hein Goeman's website for more.
+
+To best conform with data requirements on CRAN, a few leader names were renamed if they included irregular
+characters (e.g. umlauts or accents). These leaders are "(Juan Orlando) Hernández" (\code{HON-2014}),
+"(Antonio) Saca González" (\code{SAL-2004}), "Julián Trujillo Largacha" (\code{COL-1878}), "César Gaviria Trujillo"
+(\code{COL-1990}), "Gabriel García Moreno" (\code{ECU-1869}), "Marcos A. Morínigo" (\code{PAR-1894-1}), "Higinio Morínigo" (\code{PAR-1940}),
+"Sebastián Piñera" (\code{CHL-2010}), "Sauli Niinistö" (\code{FIN-2012}), "Louis Gerhard De Geer" (\code{SWD-1876}),
+"Stefan Löfven" (\code{SWD-2014}), "Lars Løkke Rasmussen" (\code{DEN-2009}, \code{DEN-2015}), and "Fernando de Araújo"
+(\code{ETM-2008-1}). None of these names contain these special characters in the data here.
 }
 \references{
 Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"

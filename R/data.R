@@ -629,14 +629,16 @@ NULL
 #' Archigos: A (Subset of a) Dataset on Political Leaders
 #'
 #' These are leader-level data drawn from the Archigos data. Space considerations mean I offer here just a few columns
-#' based on these data.
+#' based on these data.  Data are version 4.1.
 #'
 #'
-#' @format A data frame with 3409 observations on the following seven variables.
+#' @format A data frame with 3409 observations on the following 10 variables.
 #' \describe{
 #' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
+#' \item{\code{obsid}}{a character vector for observation ID}
 #' \item{\code{leadid}}{the unique leader identifier}
 #'  \item{\code{leader}}{the leader name}
+#'   \item{\code{yrborn}}{the year the leader was born}
 #'   \item{\code{gender}}{a categorical variable for leader gender ("M" for men, "W" for women)}
 #' \item{\code{startdate}}{a date for the leader start date}
 #' \item{\code{enddate}}{a date for the leader end date}
@@ -645,12 +647,22 @@ NULL
 #' \item{\code{exitcode}}{a character vector for more information about the leader's exit type}
 #' }
 #' @details Space considerations mean I can only offer a few columns from the overall data. Archigos data are rich with information. Consult
-#' the raw data available on Hein Goeman's website for more. Data are version 4.1.
+#' the raw data available on Hein Goeman's website for more.
+#'
+#' To best conform with data requirements on CRAN, a few leader names were renamed if they included irregular
+#' characters (e.g. umlauts or accents). These leaders are "(Juan Orlando) Hernández" (`HON-2014`),
+#' "(Antonio) Saca González" (`SAL-2004`), "Julián Trujillo Largacha" (`COL-1878`), "César Gaviria Trujillo"
+#' (`COL-1990`), "Gabriel García Moreno" (`ECU-1869`), "Marcos A. Morínigo" (`PAR-1894-1`), "Higinio Morínigo" (`PAR-1940`),
+#' "Sebastián Piñera" (`CHL-2010`), "Sauli Niinistö" (`FIN-2012`), "Louis Gerhard De Geer" (`SWD-1876`),
+#' "Stefan Löfven" (`SWD-2014`), "Lars Løkke Rasmussen" (`DEN-2009`, `DEN-2015`), and "Fernando de Araújo"
+#' (`ETM-2008-1`). None of these names contain these special characters in the data here.
 #'
 #' @references
 #'
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
+#'
+#' @md
 
 "archigos"
 
@@ -1101,7 +1113,6 @@ NULL
 #'
 #' @format A data frame with 11523 observations on the following 9 variables.
 #' \describe{
-#' \item{\code{country}}{a character vector of the state name}
 #' \item{\code{ccode}}{a Correlates of War state code}
 #' \item{\code{gwcode}}{a Gleditsch-Ward state code}
 #' \item{\code{creg_ccode}}{a numeric code for the state, mostly patterned off Correlates of War codes but with important differences. See details section for more.}
@@ -1218,7 +1229,8 @@ NULL
 #' \item{\code{ongo2007}}{a dummy variable for if this war is ongoing as of the end of 2007}
 #' }
 #'
-#' @details See \code{data-raw} directory for how these data were generated.
+#' @details See \code{data-raw} directory for how these data were generated. In the Guinnea-Bissau Civil War (1998, 1999),
+#' the "Mané Junta" were changed to just "Mane Junta" to coincide with CRAN's character requirements.
 #'
 #' @references
 #'
@@ -1317,15 +1329,12 @@ NULL
 #' \item{\code{JOURNALTITLE}}{another \code{BibTeX} field, which I think is actually a \code{BibLaTeX} field}
 #' \item{\code{ISSN}}{another \code{BibTeX} field}
 #' \item{\code{ABSTRACT}}{another \code{BibTeX} field, for entry abstract (if appropriate)}
-#' \item{\code{COPYRIGHT}}{another \code{BibTeX} field}
-#' \item{\code{JSTOR_ARTICLETYPE}}{another \code{BibTeX} field}
-#' \item{\code{JSTOR_FORMATTEDDATE}}{another \code{BibTeX} field}
 #' \item{\code{DATE.ADDED}}{another \code{BibTeX} field}
 #' \item{\code{DATE.MODIFIED}}{another \code{BibTeX} field}
 #' }
 #'
 #' @details See \code{data-raw} directory for how these data were generated. The data were created by \pkg{bib2df}, which is now a package dependency.
-#' I assume the user has some familiarity with \code{BibTeX}. Some entires were copy-pasted from my master bibliography file that I started in 2008 or so.
+#' I assume the user has some familiarity with \code{BibTeX}. Some entries were copy-pasted from my master bibliography file that I started in 2008 or so.
 #'
 #'
 

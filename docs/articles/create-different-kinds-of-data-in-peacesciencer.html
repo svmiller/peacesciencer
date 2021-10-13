@@ -32,7 +32,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0</span>
       </span>
     </div>
 
@@ -370,20 +370,20 @@
 <p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> does not have leader-level units of analysis, but these can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The data are version 4.1.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span>
-<span class="co">#&gt; # A tibble: 3,409 × 9</span>
-<span class="co">#&gt;    ccode leadid     leader  gender startdate  enddate    entry exit  exitcode   </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;      &lt;chr&gt;   &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;      </span>
-<span class="co">#&gt;  1     2 81dcc176-… Grant   M      1869-03-04 1877-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt;  2     2 81dcc177-… Hayes   M      1877-03-04 1881-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt;  3     2 81dcf24a-… Garfie… M      1881-03-04 1881-09-19 Regu… Irre… Assassinat…</span>
-<span class="co">#&gt;  4     2 81dcf24b-… Arthur  M      1881-09-19 1885-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt;  5     2 34fb1558-… Clevel… M      1885-03-04 1889-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt;  6     2 81dcf24d-… Harris… M      1889-03-04 1893-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt;  7     2 34fb1558-… Clevel… M      1893-03-04 1897-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt;  8     2 81dcf24e-… McKinl… M      1897-03-04 1901-09-14 Regu… Irre… Assassinat…</span>
-<span class="co">#&gt;  9     2 81dd231e-… Roosev… M      1901-09-14 1909-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt; 10     2 81dd231f-… Taft    M      1909-03-04 1913-03-04 Regu… Regu… Regular    </span>
-<span class="co">#&gt; # … with 3,399 more rows</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 3,409 × 11</span>
+<span class="co">#&gt;    obsid  ccode leadid    leader yrborn gender startdate  enddate    entry exit </span>
+<span class="co">#&gt;    &lt;chr&gt;  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 USA-1…     2 81dcc176… Grant    1822 M      1869-03-04 1877-03-04 Regu… Regu…</span>
+<span class="co">#&gt;  2 USA-1…     2 81dcc177… Hayes    1822 M      1877-03-04 1881-03-04 Regu… Regu…</span>
+<span class="co">#&gt;  3 USA-1…     2 81dcf24a… Garfi…   1831 M      1881-03-04 1881-09-19 Regu… Irre…</span>
+<span class="co">#&gt;  4 USA-1…     2 81dcf24b… Arthur   1829 M      1881-09-19 1885-03-04 Regu… Regu…</span>
+<span class="co">#&gt;  5 USA-1…     2 34fb1558… Cleve…   1837 M      1885-03-04 1889-03-04 Regu… Regu…</span>
+<span class="co">#&gt;  6 USA-1…     2 81dcf24d… Harri…   1833 M      1889-03-04 1893-03-04 Regu… Regu…</span>
+<span class="co">#&gt;  7 USA-1…     2 34fb1558… Cleve…   1837 M      1893-03-04 1897-03-04 Regu… Regu…</span>
+<span class="co">#&gt;  8 USA-1…     2 81dcf24e… McKin…   1843 M      1897-03-04 1901-09-14 Regu… Irre…</span>
+<span class="co">#&gt;  9 USA-1…     2 81dd231e… Roose…   1858 M      1901-09-14 1909-03-04 Regu… Regu…</span>
+<span class="co">#&gt; 10 USA-1…     2 81dd231f… Taft     1857 M      1909-03-04 1913-03-04 Regu… Regu…</span>
+<span class="co">#&gt; # … with 3,399 more rows, and 1 more variable: exitcode &lt;chr&gt;</span></code></pre></div>
 <p>If you want leader-days, here is the simplest path toward it. May this also give an idea of what functions like <code><a href="../reference/create_statedays.html">create_statedays()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> are doing underneath the proverbial hood.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
@@ -391,20 +391,21 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 5,298,380 × 10</span>
-<span class="co">#&gt;    ccode leadid       date       leader gender startdate  enddate    entry exit </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;        &lt;date&gt;     &lt;chr&gt;  &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1     2 81dcc176-1e… 1869-03-04 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  2     2 81dcc176-1e… 1869-03-05 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  3     2 81dcc176-1e… 1869-03-06 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  4     2 81dcc176-1e… 1869-03-07 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  5     2 81dcc176-1e… 1869-03-08 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  6     2 81dcc176-1e… 1869-03-09 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  7     2 81dcc176-1e… 1869-03-10 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  8     2 81dcc176-1e… 1869-03-11 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  9     2 81dcc176-1e… 1869-03-12 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt; 10     2 81dcc176-1e… 1869-03-13 Grant  M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt; # … with 5,298,370 more rows, and 1 more variable: exitcode &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 5,298,380 × 12</span>
+<span class="co">#&gt;    ccode leadid      date       obsid leader yrborn gender startdate  enddate   </span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
+<span class="co">#&gt;  1     2 81dcc176-1… 1869-03-04 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  2     2 81dcc176-1… 1869-03-05 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  3     2 81dcc176-1… 1869-03-06 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  4     2 81dcc176-1… 1869-03-07 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  5     2 81dcc176-1… 1869-03-08 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  6     2 81dcc176-1… 1869-03-09 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  7     2 81dcc176-1… 1869-03-10 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  8     2 81dcc176-1… 1869-03-11 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt;  9     2 81dcc176-1… 1869-03-12 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt; 10     2 81dcc176-1… 1869-03-13 USA-… Grant    1822 M      1869-03-04 1877-03-04</span>
+<span class="co">#&gt; # … with 5,298,370 more rows, and 3 more variables: entry &lt;chr&gt;, exit &lt;chr&gt;,</span>
+<span class="co">#&gt; #   exitcode &lt;chr&gt;</span></code></pre></div>
 <p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
@@ -416,22 +417,22 @@
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 177,122 × 12</span>
+<span class="co">#&gt; # A tibble: 177,122 × 14</span>
 <span class="co">#&gt; # Groups:   ccode, leadid, year, month [177,122]</span>
-<span class="co">#&gt;    ccode leadid      date       leader  gender startdate  enddate    entry exit </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  2     2 34fb1558-3… 1885-04-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  3     2 34fb1558-3… 1885-05-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  4     2 34fb1558-3… 1885-06-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  5     2 34fb1558-3… 1885-07-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  6     2 34fb1558-3… 1885-08-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  7     2 34fb1558-3… 1885-09-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  8     2 34fb1558-3… 1885-10-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  9     2 34fb1558-3… 1885-11-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt; 10     2 34fb1558-3… 1885-12-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt; # … with 177,112 more rows, and 3 more variables: exitcode &lt;chr&gt;, year &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   month &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;    ccode leadid      date       obsid leader yrborn gender startdate  enddate   </span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
+<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  2     2 34fb1558-3… 1885-04-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  3     2 34fb1558-3… 1885-05-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  4     2 34fb1558-3… 1885-06-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  5     2 34fb1558-3… 1885-07-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  6     2 34fb1558-3… 1885-08-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  7     2 34fb1558-3… 1885-09-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  8     2 34fb1558-3… 1885-10-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  9     2 34fb1558-3… 1885-11-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt; 10     2 34fb1558-3… 1885-12-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt; # … with 177,112 more rows, and 5 more variables: entry &lt;chr&gt;, exit &lt;chr&gt;,</span>
+<span class="co">#&gt; #   exitcode &lt;chr&gt;, year &lt;dbl&gt;, month &lt;dbl&gt;</span></code></pre></div>
 <p>And here are leader-years.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
@@ -442,21 +443,22 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode</span>, <span class="va">leadid</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 17,608 × 11</span>
+<span class="co">#&gt; # A tibble: 17,608 × 13</span>
 <span class="co">#&gt; # Groups:   ccode, leadid, year [17,608]</span>
-<span class="co">#&gt;    ccode leadid      date       leader  gender startdate  enddate    entry exit </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  2     2 34fb1558-3… 1886-01-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  3     2 34fb1558-3… 1887-01-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  4     2 34fb1558-3… 1888-01-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  5     2 34fb1558-3… 1889-01-01 Clevel… M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  6     2 34fb1558-3… 1893-03-04 Clevel… M      1893-03-04 1897-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  7     2 34fb1558-3… 1894-01-01 Clevel… M      1893-03-04 1897-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  8     2 34fb1558-3… 1895-01-01 Clevel… M      1893-03-04 1897-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  9     2 34fb1558-3… 1896-01-01 Clevel… M      1893-03-04 1897-03-04 Regu… Regu…</span>
-<span class="co">#&gt; 10     2 34fb1558-3… 1897-01-01 Clevel… M      1893-03-04 1897-03-04 Regu… Regu…</span>
-<span class="co">#&gt; # … with 17,598 more rows, and 2 more variables: exitcode &lt;chr&gt;, year &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;    ccode leadid      date       obsid leader yrborn gender startdate  enddate   </span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
+<span class="co">#&gt;  1     2 34fb1558-3… 1885-03-04 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  2     2 34fb1558-3… 1886-01-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  3     2 34fb1558-3… 1887-01-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  4     2 34fb1558-3… 1888-01-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  5     2 34fb1558-3… 1889-01-01 USA-… Cleve…   1837 M      1885-03-04 1889-03-04</span>
+<span class="co">#&gt;  6     2 34fb1558-3… 1893-03-04 USA-… Cleve…   1837 M      1893-03-04 1897-03-04</span>
+<span class="co">#&gt;  7     2 34fb1558-3… 1894-01-01 USA-… Cleve…   1837 M      1893-03-04 1897-03-04</span>
+<span class="co">#&gt;  8     2 34fb1558-3… 1895-01-01 USA-… Cleve…   1837 M      1893-03-04 1897-03-04</span>
+<span class="co">#&gt;  9     2 34fb1558-3… 1896-01-01 USA-… Cleve…   1837 M      1893-03-04 1897-03-04</span>
+<span class="co">#&gt; 10     2 34fb1558-3… 1897-01-01 USA-… Cleve…   1837 M      1893-03-04 1897-03-04</span>
+<span class="co">#&gt; # … with 17,598 more rows, and 4 more variables: entry &lt;chr&gt;, exit &lt;chr&gt;,</span>
+<span class="co">#&gt; #   exitcode &lt;chr&gt;, year &lt;dbl&gt;</span></code></pre></div>
 </div>
   </div>
 

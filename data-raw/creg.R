@@ -116,7 +116,8 @@ creg %>%
     creg_ccode == 393 ~ 365,
     TRUE ~ creg_ccode
   )) %>%
-  select(country, ccode, gwcode, everything()) -> creg
+  # gonna drop country to conserve space.
+  select(ccode, gwcode, everything(), -country) -> creg
 
 
 save(creg, file="data/creg.rda")

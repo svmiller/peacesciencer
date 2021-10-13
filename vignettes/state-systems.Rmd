@@ -56,7 +56,7 @@ cow_states %>%
 
 The main difference here is how should we interpret what Yugoslavia was. Unlike the case of Yemen, G-W discuss Yugoslavia a bit in [their 1999 article](https://www.tandfonline.com/doi/abs/10.1080/03050629908434958). Here is one passage on page 397.
 
->   Yugoslavia appears in the COW-list continuously  from  1878 to  1941. However,the  Serbian  government  fled   the  German  invasion  in   1915.  The  new kingdom  of  Serbia,  Croatia,  and Montenegro  was proclaimed  in  1918 and did  not  become  the  Kingdom  of  Yugoslavia  until  1929.  Is  it  sensible  toconsider  this  a  single  polity?
+>   Yugoslavia appears in the COW-list continuously  from  1878 to  1941. However,the  Serbian  government  fled   the  German  invasion  in   1915.  The  new kingdom  of  Serbia,  Croatia,  and Montenegro  was proclaimed  in  1918 and did  not  become  the  Kingdom  of  Yugoslavia  until  1929.  Is  it  sensible  to consider  this  a  single  polity?
 
 They revisit this case again on page 401 when describing the major differences between their system and CoW's system.
 
