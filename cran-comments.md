@@ -2,10 +2,6 @@
 
 * ubuntu 18.04, R 4.0.3
 
-## Comments to CRAN after first-round rejection
-
-I thank CRAN for reminding me that I moved the user's guide. The time issue with the `add_strategic_rivalries()` function is a bit of surprise. I now made that a "don't test" as I have with some of the other, more time-consuming functions.
-
 ## R CMD check results, Other Comments
 
 R CMD check done via `devtools::check()`, resulting in 0 errors, 0 warnings, and 0 notes. This release includes the removal of a deprecated function, which triggered a warning in the last update. All tests passed.
