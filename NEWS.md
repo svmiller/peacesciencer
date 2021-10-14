@@ -4,6 +4,7 @@ peacesciencer 0.7.0 (in development)
 This is a leader-intensive update. Additions/new features include:
 
 - `lwuf`: a data set from [Carter and Smith (2020)](https://doi.org/10.1017/S0003055420000313) measuring leader willingness to use force.
+- `download_extdata()` now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015.
 
 peacesciencer 0.6.0
 ---------------------------------------------------------------------

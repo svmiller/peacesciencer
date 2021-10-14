@@ -35,6 +35,23 @@ These are directed dyad-year-level data for national trade from the Correlates o
 }
 
 }
+
+\subsection{Directed Leader Dyad-Year Data, 1870-2015}{
+
+These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1).\tabular{ll}{
+   COLUMN \tab DESCRIPTION \cr
+   \code{year} \tab the year \cr
+   \code{leadid1} \tab the unique Archigos (v. 4.1) leader ID for the first leader \cr
+   \code{leadid2} \tab the unique Archigos (v. 4.1) leader ID for the second leader \cr
+   \code{ccode1} \tab a numeric vector for the Correlates of War state code for the first state \cr
+   \code{startdate1} \tab the start date in office for the first leader \cr
+   \code{enddate1} \tab the end date in office for the first leader \cr
+   \code{ccode2} \tab a numeric vector for the Correlates of War state code for the second state \cr
+   \code{startdate2} \tab the start date in office for the second leader \cr
+   \code{enddate2} \tab the end date in office for the second leader \cr
+}
+
+}
 }
 
 \examples{
@@ -46,6 +63,9 @@ download_extdata()
 \references{
 Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."
 \emph{Conflict Management and Peace Science}. 26(5): 471-491.
+
+Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
+\emph{Journal of Peace Research} 46(2): 269--83.
 }
 \author{
 Steven V. Miller

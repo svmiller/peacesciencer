@@ -18,6 +18,23 @@
 #' | `smoothflow1` | smoothed \code{flow1} values |
 #' | `smoothflow2` | smoothed \code{flow2} values |
 #'
+#' ## Directed Leader Dyad-Year Data, 1870-2015
+#'
+#' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1).
+#'
+#' | COLUMN | DESCRIPTION |
+#' | -------| ------------|
+#' | `year` | the year |
+#' | `leadid1` | the unique Archigos (v. 4.1) leader ID for the first leader |
+#' | `leadid2` | the unique Archigos (v. 4.1) leader ID for the second leader |
+#' | `ccode1` | a numeric vector for the Correlates of War state code for the first state |
+#' | `startdate1` | the start date in office for the first leader |
+#' | `enddate1` | the end date in office for the first leader |
+#' | `ccode2` | a numeric vector for the Correlates of War state code for the second state |
+#' | `startdate2` | the start date in office for the second leader |
+#' | `enddate2` | the end date in office for the second leader |
+#'
+#'
 #' @description \code{download_extdata()} leverages R's \code{inst} directory flexibility to allow you to download
 #' some extra data and store it in the package.
 #'
@@ -35,6 +52,9 @@
 #'
 #' Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."
 #' \emph{Conflict Management and Peace Science}. 26(5): 471-491.
+#'
+#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
+#' \emph{Journal of Peace Research} 46(2): 269--83.
 #'
 #' @examples
 #'
@@ -55,11 +75,27 @@ download_extdata <- function(overwrite = FALSE) {
       message("cow_trade_ddy.rds downloaded and moved to /extdata directory in the package.")
     }
 
+    # directed leader dyad-year data now...
+    if(file.exists(system.file("extdata", "dir_leader_dyad_years.rds", package="peacesciencer"))) {
+      message("dir_leader_dyad_years.rds is in /extdata in the package directory.")
+    } else {
+      message("Downloading dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
+      dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/dir_leader_dyad_years.rds"))
+      saveRDS(dir_leader_dyad_years, paste0(extdata_dir,"/dir_leader_dyad_years.rds"))
+      message("dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+    }
+
+
   } else if (overwrite == TRUE){
     message("Downloading cow_trade_ddy.rds from http://svmiller.com/R/peacesciencer.")
     cow_trade_ddy <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
     saveRDS(cow_trade_ddy, paste0(extdata_dir,"/cow_trade_ddy.rds"))
     message("cow_trade_ddy.rds downloaded and moved to /extdata directory in the package.")
+
+    message("Downloading dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
+    dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/dir_leader_dyad_years.rds"))
+    saveRDS(dir_leader_dyad_years, paste0(extdata_dir,"/dir_leader_dyad_years.rds"))
+    message("dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
   } else {
     stop("overwrite must either be TRUE (T) or FALSE (F). Default is FALSE (F)")
   }
