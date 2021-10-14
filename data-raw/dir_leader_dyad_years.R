@@ -1,6 +1,7 @@
 library(tidyverse)
 library(stevemisc)
 library(peacesciencer)
+library(lubridate)
 
 archigos %>%
   rowwise() %>%
