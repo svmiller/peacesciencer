@@ -42,4 +42,7 @@ for (i in 1870:2015) {
   dir_leader_dyad_years <- bind_rows(dir_leader_dyad_years, hold_this)
 }
 
+dir_leader_dyad_years %>%
+  arrange(year, ccode1, startdate1, ccode2, startdate2) -> dir_leader_dyad_years
+
 saveRDS(dir_leader_dyad_years, "~/Dropbox/svmiller.github.io/R/peacesciencer/dir_leader_dyad_years.rds")
