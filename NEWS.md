@@ -1,3 +1,10 @@
+<!-- NEWS.md is maintained by https://cynkra.github.io/fledge, do not edit -->
+
+# peacesciencer 0.6.1.9000 (2021-10-15)
+
+- Same as previous version.
+
+
 peacesciencer 0.7.0 (in development)
 ---------------------------------------------------------------------
 
