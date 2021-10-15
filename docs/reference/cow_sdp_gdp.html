@@ -75,7 +75,7 @@ include population estimates for per capita standardization." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.0001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.9999</span>
       </span>
     </div>
 
@@ -187,6 +187,11 @@ include population estimates for per capita standardization.</p>
 data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
 (which Anders et al. published) and the Gleditsch-Ward version of these data (which appear to be the one the authors will more
 vigorously support going forward).</p>
+<p>Space considerations compel me to round these data to three decimal points.  These "economic" data are routinely
+the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated
+anyways and the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than
+25<!-- % of its original size. The original simulations are available for remote download if you'd like. Type \code{?download_extdata()} for -->
+more information.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)"

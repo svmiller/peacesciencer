@@ -59,6 +59,9 @@
 #' @examples
 #'
 #' \dontrun{
+#' # Here's where the data are going to be downloaded.
+#' system.file("extdata", package="peacesciencer")
+#' # Now, let's download the data.
 #' download_extdata()
 #' }
 

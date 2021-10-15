@@ -57,6 +57,9 @@ These are all directed leader dyad-year data from 1870-2015. Data come from the 
 \examples{
 
 \dontrun{
+# Here's where the data are going to be downloaded.
+system.file("extdata", package="peacesciencer")
+# Now, let's download the data.
 download_extdata()
 }
 }

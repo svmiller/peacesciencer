@@ -27,6 +27,12 @@ These were provided by Anders on a separate Github repository for this project. 
 data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
 (which Anders et al. published) and the Gleditsch-Ward version of these data (which appear to be the one the authors will more
 vigorously support going forward).
+
+Space considerations compel me to round these data to three decimal points.  These "economic" data are routinely
+the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated
+anyways and the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than
+25% of its original size. The original simulations are available for remote download if you'd like. Type \code{?download_extdata()} for
+more information.
 }
 \references{
 Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)"
