@@ -15,28 +15,17 @@ cow_sdp_gdp <- readRDS("~/Dropbox/data/surplus-gdp/master.rds") %>%
   # I don't think they will here, but that's why I test for that.
   print()
 
+
+# Save a remote version, just in case.
+saveRDS(cow_sdp_gdp, "~/Dropbox/svmiller.github.io/R/peacesciencer/cow_sdp_gdp.rds")
+
+# I don't like that I'm doing this, but I think it makes the most sense for future space considerations
+# Basically, I'm going to round the information provided here to three decimal points.
+# These "economic" data are routinely the biggest in the package, and it's because of the decimal points.
+# JUSTIFICATION: these data are estimated/simulated anyways, and the information loss this will do
+#   is just at the 1/1000ths decimal point.
+
+cow_sdp_gdp %>%
+  mutate_at(vars(wbgdp2011est:ncol(.)), ~round(., 3)) -> cow_sdp_gdp
+
 save(cow_sdp_gdp, file="data/cow_sdp_gdp.rda")
-
-gw_sdp_gdp <- read_csv("~/Dropbox/data/surplus-gdp/gdp_pop_sdp_estimates.csv") %>%
-  rename(gwcode = gwno,
-         wbgdp2011est = WorldBank_gdp_2011_ppp_estimate,
-         wbpopest = WorldBank_pop_estimate,
-         sdpest = sdp) %>%
-  select(gwcode, year, wbgdp2011est,wbpopest,sdpest) %>%
-  mutate(wbgdppc2011est = log(exp(wbgdp2011est)/exp(wbpopest) +1)) %>%
-  print()
-
-save(gw_sdp_gdp, file="data/gw_sdp_gdp.rda")
-
-# fiddling with things here...
-
-create_stateyears() %>%
-  left_join(., cow_surplus_gdp)
-
-create_stateyears(system = "gw") %>%
-  left_join(., gw_surplus_gdp)
-
-cow_surplus_gdp %>%
-  group_by(ccode, year) %>%
-  tally() %>%
-  arrange(-n)

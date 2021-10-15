@@ -6,6 +6,12 @@ This is a leader-intensive update. Additions/new features include:
 - `lwuf`: a data set from [Carter and Smith (2020)](https://doi.org/10.1017/S0003055420000313) measuring leader willingness to use force.
 - `download_extdata()` now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015.
 
+Other changes include:
+
+- The data in `cow_sdp_gdp` and `gw_sdp_gdp` are now rounded to three decimal points.  These "economic" data are routinely the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated anyways and 
+the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than 25% of 
+its original size. This is a huge reduction in disk space. The original simulations are [available for remote download](http://svmiller.com/R/peacesciencer/) if you'd like. Type `?download_extdata()` for more information.
+
 peacesciencer 0.6.0
 ---------------------------------------------------------------------
 
