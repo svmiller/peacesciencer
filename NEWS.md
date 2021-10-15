@@ -5,6 +5,7 @@ This is a leader-intensive update. Additions/new features include:
 
 - `lwuf`: a data set from [Carter and Smith (2020)](https://doi.org/10.1017/S0003055420000313) measuring leader willingness to use force.
 - `download_extdata()` now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015.
+- `create_leaderdyadyears()`: create leader dyad-year data (via `archigos`) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in `download_extdata()`.
 
 Other changes include:
 
