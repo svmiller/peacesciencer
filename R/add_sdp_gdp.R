@@ -87,7 +87,7 @@ add_sdp_gdp <- function(data) {
       stop("add_sdp_gdp() requires either Correlates of War ('cow') or Gleditsch-Ward ('gw') as system type.")
     }
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 

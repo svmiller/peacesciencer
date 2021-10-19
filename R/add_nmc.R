@@ -67,7 +67,7 @@ add_nmc <- function(data) {
     }
 
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (!all(i <- c("ccode") %in% colnames(data))) {
 

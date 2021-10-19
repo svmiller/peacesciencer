@@ -13,6 +13,7 @@ Other changes include:
 - The data in `cow_sdp_gdp` and `gw_sdp_gdp` are now rounded to three decimal points.  These "economic" data are routinely the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated anyways and 
 the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than 25% of 
 its original size. This is a huge reduction in disk space. The original simulations are [available for remote download](http://svmiller.com/R/peacesciencer/) if you'd like. Type `?download_extdata()` for more information.
+- "leader-year" (`leader_year`) is now an attribute. Where appropriate, leader-year and state-year functions are treated the same. For example, the GDP data contained in  `add_sdp_gdp()` are fundamentally state-year, but perhaps a leader-year control of interest even as leaders are nested in states.
 
 peacesciencer 0.6.0
 ---------------------------------------------------------------------

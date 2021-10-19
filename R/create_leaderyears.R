@@ -38,7 +38,7 @@ create_leaderyears <- function(system = "archigos") {
       group_by(.data$ccode, .data$leadid, .data$year) %>%
       slice(1) %>% ungroup() -> data
 
-    attr(data, "ps_data_type") = "state_year"
+    attr(data, "ps_data_type") = "leader_year"
     attr(data, "ps_system") = "cow"
 
     return(data)
