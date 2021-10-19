@@ -1421,12 +1421,13 @@ NULL
 "lwuf"
 
 
-#' Leaders at Participant Onset and Conclusion in the GML MID Data (v. 2.2.1)
+#' Participant Summaries of the GML-MID Data
 #'
-#' These are the leaders at the onset and conclusion of a participant episode in the GML MID data.
+#' These are the participant summaries of the most recent GML-MID data. The data also include leaders at the onset
+#' and conclusion of a participant episode in the GML MID data.
 #'
 #'
-#' @format A data frame with 5217 observations on the following 10 variables.
+#' @format A data frame with 5217 observations on the following 13 variables.
 #' \describe{
 #' \item{\code{dispnum}}{the dispute ID in the GML MID data}
 #' \item{\code{ccode}}{the Correlates of War code for the participant}
@@ -1438,9 +1439,12 @@ NULL
 #' \item{\code{endday}}{the end day for the participant}
 #' \item{\code{obsid_start}}{an observational ID from \code{archigos} for the leader at the participant onset}
 #' \item{\code{obsid_end}}{an observational ID from \code{archigos} for the leader at the participant conclusion}
+#' \item{\code{sidea}}{was participant on Side A of the dispute}
+#' \item{\code{hiact}}{highest action for participant in dispute(-episode)}
+#' \item{\code{orig}}{was participant an originator?}
 #' }
 #'
-#' @details Archigos data are version 4.1. GML MID Data are version 2.2.1. The \code{data-raw} directory
+#' @details Information about leaders come from Archigos (v. 4.1). GML MID Data are version 2.2.1. The \code{data-raw} directory
 #' contains information about how these data were generated. There is invariably going to be some guesswork here because
 #' dates are sometimes not known with precision. Sometimes, a dispute coincides even with a leadership change when dates are
 #' known with precision. The source script includes a discussion of these cases and shows how the data were generated with all
@@ -1457,4 +1461,4 @@ NULL
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
-"gml_part_leaders"
+"gml_part"

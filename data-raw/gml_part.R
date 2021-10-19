@@ -12,6 +12,8 @@ Part <- read_csv("~/Dropbox/projects/mid-project/gml-mid-data/2.2.1/gml-midb-2.2
   mutate(stdate = make_date(styear, stmon, stday),
          enddate = make_date(endyear, endmon, endday))
 
+# LEADERS AT ONSET AND CONCLUSION ----
+
 # Let's start with start dates, known days ----
 Part %>%
   filter(!is.na(stdate)) %>%
@@ -372,6 +374,65 @@ hold_this %>%
 hold_this %>%
   mutate(obsid_start = ifelse(is.na(stdate), obsid_unknownstdate, obsid_knownstdate),
          obsid_end = ifelse(is.na(enddate), obsid_unknownenddate, obsid_knownenddate)) %>%
-  select(dispnum:stday, endyear:endday, obsid_start, obsid_end) -> gml_part_leaders
+  select(dispnum:stday, endyear:endday, obsid_start, obsid_end) -> gml_part
 
-save(gml_part_leaders, file="data/gml_part_leaders.rda")
+Part %>% select(dispnum:styear, sidea, hiact, orig) %>%
+  left_join(gml_part, .) -> gml_part
+
+save(gml_part, file="data/gml_part.rda")
+
+# LEADERS WHO INITIATED OR WERE TARGETED -----
+
+
+
+## * A discussion here about action weirdness in dispute data -----
+
+# If the state is a joiner, you'll have to look no matter what.
+# If hiact %in% c(17, 20, 21) for either/both sides, who knows and you'll have to look.
+#
+# gml_part_leaders %>%
+#   group_by(dispnum) %>%
+#   mutate(n_ccodes = n_distinct(ccode),
+#          bilat = ifelse(n_ccodes == 2, 1, 0)) %>%
+#   ungroup() -> gml_part_leaders
+#
+#
+# gml_part_leaders %>%
+#   mutate(init = case_when(
+#     # If hiact %in% c(0:16) AND it's bilateral AND sidea == 0, it has to be targeted.
+#     hiact %in% c(0:16) & bilat == 1 & sidea == 0 ~ 0,
+#     # If hiact %in% c(0:16) AND it's bilateral AND sidea == 1, it was initiator.
+#     hiact %in% c(0:16) & bilat == 1 & sidea == 1 ~ 1,
+#     # If hiact %in% c(0:16) and it's multilateral BUT it's an originator and sidea == 0, still targeted
+#     hiact %in% c(0:16) & bilat == 0 & sidea == 0 & orig == 1 ~ 0,
+#     # Likewise: hiact %in% c(0:16), multilateral, sidea == 1 & orig == 1, initiator
+#     hiact %in% c(0:16) & bilat == 0 & sidea == 1 & orig == 1 ~ 1,
+#     # Related to the above stuff, if hiact == 0, not an initiator
+#     hiact == 0 ~ 0,
+#   )) -> gml_part_leaders
+#
+# gml_part_leaders %>% summary
+# # FML, 1699 cases...
+# # Mind you, leader data start at 1870. Can we make this a little easier?
+# gml_part_leaders %>% filter(!is.na(obsid_start) & !is.na(obsid_end)) %>% summary
+# # FML, 1552 cases.
+# # Goddammit, okay...
+#
+#
+# gml_part_leaders %>%
+#   filter(is.na(init)) %>% distinct(dispnum)
+# # 688 disputes, though...
+# # Okay, I'm going to take this off-script and do it in a working directory. It'll be easier than doing an endless case_when command.
+#
+# gml_part_leaders %>%
+#   group_by(dispnum) %>%
+#   filter(any(is.na(init))) %>%
+#   write_csv(., "data-raw/scratchpad/missing-participant-initiators.csv", na='')
+#
+# # ^ This will involve some archive searching. I'll add a comment column that explains my work.
+# # Will also save to .xlsx, just in case...
+# # My data set, my rules: I'm going to borrow from Hutchison and Gibler (2007) and Miller (2013, 2017), who interpret
+# # a simultaneous clash to be a case of initiator. Borrowing baseball terminology, "tie goes to the offense."
+#
+#
+# save(gml_part_leaders, file="data/gml_part_leaders.rda")
