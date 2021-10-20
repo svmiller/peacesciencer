@@ -382,13 +382,28 @@ hold_this %>%
          obsid_end = ifelse(is.na(enddate), obsid_unknownenddate, obsid_knownenddate)) %>%
   select(dispnum:stday, endyear:endday, obsid_start, obsid_end) -> gml_part
 
-# * dummy start/end dates, in cases of unknowns ----
+# * dummy start/end dates, in cases of unknowns and dates coinciding with leader turnover ----
 # This is going to be a parlor trick for doing leader-year analyses.
 # IT SHOULD NOT BE USED FOR CALCULATING DURATIONS
+# Basically, because coercing these information to leader-year is going to go through a leader-day
+# conversion, which will primarily lean on matching with ccodes and dates, we're going to need to make
+# sure no wrong leader is identified.
 
 gml_part %>%
   mutate(dummy_stday = case_when(
-    stday != -9 ~ stday,
+    # We're going to start with cases where we need to adjust the day to make sure they don't coincide with leaders to whom disputes don't apply
+    # MID#0125 is illustrative here. This started with the overthrow of the monarchy, on the 14th. However, the overthrow
+    # is what started the MID, so Faisal II shouldn't get any overlap here. So, we're going to impute the 15th here because,
+    # that way, a merge down the road won't credit Faisal II as being part of this dispute. Really: he wasn't even alive.
+    dispnum == 125 & ccode == 645 & styear == 1958 ~ 15, # post-date
+    dispnum == 258 & ccode == 385 & styear == 1940 ~ 8, # pre-dating it, so Quisling isn't involved.
+    dispnum == 1530 & ccode == 41 & styear == 1888 ~ 17, # post-date
+    dispnum == 2079 & ccode == 155 & styear == 1958 ~ 4, # post-date
+    dispnum == 2331 & ccode == 645 & styear == 1958 ~ 15, # post-date, as above
+    dispnum == 3133 & ccode == 630 & styear == 1909 ~ 17, # post-date
+    dispnum == 3179 & ccode == 200 & styear == 1976 ~ 4, # pre-date,
+    dispnum == 4293 & ccode == 694 & styear == 1995 ~ 28, # post-date, because it happened after a coup.
+    # NOW: the unknown dates...
     # Some of these, you may need to get creative. If you can, just impute a 1.
     dispnum == 91 & ccode == 220 & styear == 1887 ~ 1,
     dispnum == 247 & ccode == 220 & styear == 1905 ~ 1,
@@ -398,6 +413,12 @@ gml_part %>%
     dispnum == 2030 & ccode == 812 & styear == 1960 ~ 19, # we suggest a start date around the 19th
     dispnum == 2622 & ccode == 500 & styear == 1971 ~ 25, # This is Amin's dispute, and he starts the 25th.
     dispnum == 4190 & ccode == 640 & styear == 1996 ~ 1, # Yilmaz, so just impute a 1.
+    # One other case: the unknown date for Honduras in MID#2040.
+    # This happened on Lopez' watch. We'll add this to Nicaragua too.
+    dispnum == 2040 & ccode == 91 & styear == 1920 ~ 2,
+    dispnum == 2040 & ccode == 93 & styear == 1920 ~ 2,
+    # for most applications, certainly with known days, just use what you got.
+    stday != -9 ~ stday,
     # The lion's share of these cases are ones with no leader transition, so just impute 1.
     TRUE ~ 1,
   )) -> gml_part
@@ -406,7 +427,22 @@ gml_part %>%
   mutate(last_day_endmon = day(as.Date(eom(make_datetime(endyear, endmon))))) %>%
   mutate(last_day_endmon = as.double(last_day_endmon)) %>%
   mutate(dummy_endday = case_when(
-    endday != -9 ~ endday,
+    # Cases where the end date collides with a leader transition and we want to cheat around that.
+    dispnum == 257 & ccode == 211 & endyear == 1918 ~ 10, # pre-date
+    dispnum == 258 & ccode == 360 & endyear == 1944 ~ 22, # pre-date
+    dispnum == 1350 & ccode == 812 & endyear == 1960 ~ 6, # pre-date
+    dispnum == 1435 & ccode == 811 & endyear == 1979 ~ 6, # pre-date
+    dispnum == 1750 & ccode == 640 & endyear == 1876 ~ 29, # pre-date
+    dispnum == 2341 & ccode == 100 & endyear == 1898 ~ 6, # pre-date
+    dispnum == 2649 & ccode == 710 & endyear == 1917 ~ 15, # post-date
+    dispnum == 3020 & ccode == 2 & endyear == 1981 ~ 21, # post-date
+    dispnum == 3179 & ccode == 200 & endyear == 1976 ~ 4, # pre-date
+    dispnum == 3564 & ccode == 640 & endyear == 1993 ~ 15, # pre-date
+    dispnum == 3568 & ccode == 2 & endyear == 1993 ~ 21, # post-date
+    dispnum == 3705 & ccode == 385 & endyear == 1940 ~ 8, # pre-date
+    dispnum == 4162 & ccode == 570 & endyear == 1994 ~ 13, # pre-date
+    dispnum == 4246 & ccode == 484 & endyear == 1997 ~ 16, # post-date
+    # NOW: the unknown end days
     # If it's the new leader from the month, grab the last day. If not, get creative.
     dispnum == 1098 & ccode == 160 & endyear == 1955 ~ last_day_endmon,
     dispnum == 1418 & ccode == 461 & endyear == 1963 ~ last_day_endmon,
@@ -417,6 +453,8 @@ gml_part %>%
     dispnum == 4190 & ccode == 640 & endyear == 1996 ~ last_day_endmon,
     dispnum == 4197 & ccode == 2 & endyear == 2001 ~ 1, # this didn't bleed long into 2001
     dispnum == 4244 & ccode == 490 & endyear == 1997 ~ 15, # I'm saying Mobutu, and he's removed on the 16th. Let's make it the 15th so there's no spillover.
+    # for most applications, certainly with known days, just use what you got.
+    endday != -9 ~ endday,
     # The lion's share of these cases are ones with no leader transition, so just impute the last day of the month
     TRUE ~ last_day_endmon
   )) -> gml_part

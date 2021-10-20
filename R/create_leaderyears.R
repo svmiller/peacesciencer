@@ -49,6 +49,7 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
         mutate(date = list(seq(.data$stdate, .data$enddate, by = "1 day"))) %>%
         unnest(.data$date) %>%
         select(.data$ccode, .data$date) %>%
+        # semi-join kinda life, baby, baby...
         semi_join(leaderdays, .) -> hold_this
 
       hold_this %>%
