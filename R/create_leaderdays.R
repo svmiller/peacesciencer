@@ -50,6 +50,10 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
         semi_join(leaderdays, .) -> data
 
 
+    } else if (standardize_cow == FALSE) {
+
+      leaderdays -> data
+
     }
 
   } else if(system != "archigos") {
