@@ -1427,7 +1427,7 @@ NULL
 #' and conclusion of a participant episode in the GML MID data.
 #'
 #'
-#' @format A data frame with 5217 observations on the following 13 variables.
+#' @format A data frame with 5217 observations on the following 21 variables.
 #' \describe{
 #' \item{\code{dispnum}}{the dispute ID in the GML MID data}
 #' \item{\code{ccode}}{the Correlates of War code for the participant}
@@ -1439,9 +1439,15 @@ NULL
 #' \item{\code{endday}}{the end day for the participant}
 #' \item{\code{obsid_start}}{an observational ID from \code{archigos} for the leader at the participant onset}
 #' \item{\code{obsid_end}}{an observational ID from \code{archigos} for the leader at the participant conclusion}
+#' \item{\code{dummy_stday}}{a "dummy" start day for the participant. See details for more.}
+#' \item{\code{dummy_endday}}{a "dummy" end day for the participant. See details for more.}
 #' \item{\code{sidea}}{was participant on Side A of the dispute}
 #' \item{\code{hiact}}{highest action for participant in dispute(-episode)}
 #' \item{\code{orig}}{was participant an originator?}
+#' \item{\code{anymiss_leader_start}}{a dummy variable for disputes that equals 1 for a dispute in which *any* participant has a missing leader ID at the start date.}
+#' \item{\code{anymiss_leader_end}}{a dummy variable for disputes that equals 1 for a dispute in which *any* participant has a missing leader ID at the end date.}
+#' \item{\code{allmiss_leader_start}}{a dummy variable for disputes that equals 1 for a dispute in which *all* participants have a missing leader ID at the start date.}
+#' \item{\code{allmiss_leader_end}}{a dummy variable for disputes that equals 1 for a dispute in which *all* participants have a missing leader ID at the end date.}
 #' }
 #'
 #' @details Information about leaders come from Archigos (v. 4.1). GML MID Data are version 2.2.1. The \code{data-raw} directory
@@ -1452,6 +1458,15 @@ NULL
 #'
 #' Do note that participants can have several episodes within a dispute. Sometimes participants switch sides (e.g. Romania in World War 2).
 #' Sometime participants drop in and out of a long-running dispute (e.g. Syria, prominently, in MID#4182).
+#'
+#' "Dummy" start days and end days are there to serve as a parlor trick in assigning disputes to leaders in leader-level analyses. Where days
+#' are known with precision, the dummy day is that number. In most cases, where the day is not known with precision coincides with a month
+#' that has no leader transition. Thus, the start day that gets imputed is going to be the first of the month (for the dummy start day)
+#' or the last of the month (for the dummy end day). Cases where there was a leader transition (or two) that month may require some more
+#' sensitive imputing. For example, our best guess is Antonio Guzmán Blanco of Venezuela is president for the end of MID#1639, given his
+#' role in trying to negotiate a conclusion to the dispute. Archigos has him leaving office on the 7th, so that's the end day that gets imputed
+#' for him. Again, these are here to serve as a parlor trick in assigning disputes to leaders for leader-level analyses. Be careful about using
+#' these data for calculating dispute-participant duration. In fact: don't do that.
 #'
 #' @references
 #'

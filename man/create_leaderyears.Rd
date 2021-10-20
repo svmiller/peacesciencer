@@ -4,10 +4,14 @@
 \alias{create_leaderyears}
 \title{Create leader-years from leader data}
 \usage{
-create_leaderyears(system = "archigos")
+create_leaderyears(system = "archigos", standardize_cow = TRUE)
 }
 \arguments{
 \item{system}{a leader system with which to create leader-years. Right now, only "archigos" is supported.}
+
+\item{standardize_cow}{logical, defaults to TRUE. If TRUE, the function standardizes the leader years to just those that
+overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If FALSE, the function
+returns all leader-years as implied by the Archigos data.}
 }
 \value{
 \code{create_leaderyears()} takes leader-level data available in \pkg{peacesciencer}
@@ -27,6 +31,8 @@ will work with other functions in \pkg{peacesciencer} that have support for stat
 \examples{
 \donttest{
 create_leaderyears()
+
+create_leaderyears(standardize_cow = FALSE)
 }
 
 }

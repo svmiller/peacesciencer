@@ -10,7 +10,13 @@ archigos %>%
 
 Part <- read_csv("~/Dropbox/projects/mid-project/gml-mid-data/2.2.1/gml-midb-2.2.1.csv") %>%
   mutate(stdate = make_date(styear, stmon, stday),
-         enddate = make_date(endyear, endmon, endday))
+         enddate = make_date(endyear, endmon, endday)) %>%
+  # First, a few error correction that will be fixed in MIC 1.0
+  # For MID#1272, the start date for Poland (290) and Lithuania (368) is Nov. 13, 1918
+  mutate(stday = ifelse(dispnum == 1272 & ccode %in% c(290, 368), 13, stday),
+         stmon = ifelse(dispnum == 1272 & ccode %in% c(290, 368), 11, stmon)) %>%
+  # Second, forgot to adjust the start dates for the war declaration on Japan in MID#3514
+  mutate(stday = ifelse(dispnum == 3514 & ccode %in% c(740, 93), 8, stday))
 
 # LEADERS AT ONSET AND CONCLUSION ----
 
@@ -376,8 +382,58 @@ hold_this %>%
          obsid_end = ifelse(is.na(enddate), obsid_unknownenddate, obsid_knownenddate)) %>%
   select(dispnum:stday, endyear:endday, obsid_start, obsid_end) -> gml_part
 
+# * dummy start/end dates, in cases of unknowns ----
+# This is going to be a parlor trick for doing leader-year analyses.
+# IT SHOULD NOT BE USED FOR CALCULATING DURATIONS
+
+gml_part %>%
+  mutate(dummy_stday = case_when(
+    stday != -9 ~ stday,
+    # Some of these, you may need to get creative. If you can, just impute a 1.
+    dispnum == 91 & ccode == 220 & styear == 1887 ~ 1,
+    dispnum == 247 & ccode == 220 & styear == 1905 ~ 1,
+    dispnum == 1363 & ccode == 2 & styear == 1961 ~ 1,
+    dispnum == 1418 & ccode == 461 & styear == 1963 ~ 1,
+    dispnum == 1677 & ccode == 40 & styear == 1933 ~ 7, # we suggest a start date around the 7th, so why not...
+    dispnum == 2030 & ccode == 812 & styear == 1960 ~ 19, # we suggest a start date around the 19th
+    dispnum == 2622 & ccode == 500 & styear == 1971 ~ 25, # This is Amin's dispute, and he starts the 25th.
+    dispnum == 4190 & ccode == 640 & styear == 1996 ~ 1, # Yilmaz, so just impute a 1.
+    # The lion's share of these cases are ones with no leader transition, so just impute 1.
+    TRUE ~ 1,
+  )) -> gml_part
+
+gml_part %>%
+  mutate(last_day_endmon = day(as.Date(eom(make_datetime(endyear, endmon))))) %>%
+  mutate(last_day_endmon = as.double(last_day_endmon)) %>%
+  mutate(dummy_endday = case_when(
+    endday != -9 ~ endday,
+    # If it's the new leader from the month, grab the last day. If not, get creative.
+    dispnum == 1098 & ccode == 160 & endyear == 1955 ~ last_day_endmon,
+    dispnum == 1418 & ccode == 461 & endyear == 1963 ~ last_day_endmon,
+    dispnum == 1535 & ccode == 2 & endyear == 1885 ~ last_day_endmon,
+    dispnum == 1639 & ccode == 101 & endyear == 1887 ~ 7, # a tough one, but I'm giving it to Guzman Blanco.
+    dispnum == 1670 & ccode == 220 & endyear == 1926 ~ 7, # date of CSM report
+    dispnum == 2973 & ccode == 380 & endyear == 1982 ~ last_day_endmon,
+    dispnum == 4190 & ccode == 640 & endyear == 1996 ~ last_day_endmon,
+    dispnum == 4197 & ccode == 2 & endyear == 2001 ~ 1, # this didn't bleed long into 2001
+    dispnum == 4244 & ccode == 490 & endyear == 1997 ~ 15, # I'm saying Mobutu, and he's removed on the 16th. Let's make it the 15th so there's no spillover.
+    # The lion's share of these cases are ones with no leader transition, so just impute the last day of the month
+    TRUE ~ last_day_endmon
+  )) -> gml_part
+
+gml_part %>% select(-last_day_endmon) -> gml_part
+
 Part %>% select(dispnum:styear, sidea, hiact, orig) %>%
   left_join(gml_part, .) -> gml_part
+
+# For later usage: what disputes have missing leaders?
+gml_part %>%
+  group_by(dispnum) %>%
+  mutate(anymiss_leader_start = ifelse(any(is.na(obsid_start)), 1, 0),
+         anymiss_leader_end = ifelse(any(is.na(obsid_end)), 1, 0),
+         allmiss_leader_start = ifelse(all(is.na(obsid_start)), 1, 0),
+         allmiss_leader_end = ifelse(all(is.na(obsid_end)), 1, 0),) %>%
+  ungroup() -> gml_part
 
 save(gml_part, file="data/gml_part.rda")
 

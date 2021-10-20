@@ -2,14 +2,15 @@
 % Please edit documentation in R/add_gml_mids.R
 \name{add_gml_mids}
 \alias{add_gml_mids}
-\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year data frame}
+\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year or state-year data frame}
 \usage{
 add_gml_mids(data, keep)
 }
 \arguments{
 \item{data}{a dyad-year data frame (either "directed" or "non-directed")}
 
-\item{keep}{an optional parameter, specified as a character vector, passed to the function in a \code{select(one_of(.))} wrapper. This
+\item{keep}{an optional parameter, specified as a character vector, applicable to just the dyad-year data, and
+passed to the function in a \code{select(one_of(.))} wrapper. This
 allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 too much space in memory. Note: the Correlates of War system codes (\code{ccode1}, \code{ccode2}), the observation year
 (\code{year}), the presence or absence of an ongoing MID (\code{gmlmidongoing}), and the presence or absence of a unique
@@ -19,11 +20,14 @@ The user is free to keep or discard anything else they see fit.
 If \code{keep} is not specified in the function, the ensuing output returns everything.}
 }
 \value{
-\code{add_gml_mids()} takes a dyad-year data frame and adds dyad-year dispute information
-from the GML MID data.
+\code{add_gml_mids()} takes a dyad-year or state-year data frame and adds dyad-year dispute information
+from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
+and assorted participant- and dispute-level summaries. If the data are state-year, the function returns information about ongoing
+disputes (and onsets) and whether there were any ongoing disputes (and onsets) the state initiated. A character string of dispute
+numbers active in the observation year is returned too.
 }
 \description{
-\code{add_gml_mids()} merges in GML's MID data to a dyad-year data frame. The current version
+\code{add_gml_mids()} merges in GML's MID data to a dyad-year or state-year data frame. The current version
 of the GML MID data is 2.2.1.
 }
 \details{
@@ -32,6 +36,15 @@ for merging into a complete dyad-year data frame. Consider the case of France an
 had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
 This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
 data frame.
+
+Determining "initiation" for state-year summaries of inter-state disputes since there is an implied directionality of "initiation."
+In about half of all cases, this is straightforward. You can use the participant summaries and determine that if the dispute
+was bilateral and the dispute did not escalate beyond an attack, the state on Side A initiated the dispute. For multilateral MIDs, these
+conditions still hold at least for originators. However, there is *considerable* difficulty for cases where 1) participant-level summaries
+suggested actions at the level of clash or higher, 2) the participant was a joiner and not an originator. The effort required to
+flesh this out is enormous, and perhaps forthcoming in a future update. For now, the simple determination is all states on Side A that
+were originators are all initiators, even though there are conceivable cases where, for example, a participant on Side B initiated
+a course of action as a joiner (e.g. the Sudetenland crisis comes to mind here). Everyone else is not an originator.
 }
 \examples{
 
