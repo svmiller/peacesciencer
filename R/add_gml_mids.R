@@ -164,38 +164,38 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
       mutate(date = list(seq(.data$stdate, .data$enddate, by = "1 day")),
              gmlmidonset = list(ifelse(date == min(.data$date), 1, 0))) %>%
       unnest(c(.data$date, .data$gmlmidonset)) %>%
-      mutate(gmlmidongoing = 1) -> hold_this
+      mutate(gmlmidongoing = 1) %>%
+      select(.data$dispnum:.data$ccode, .data$obsid_start, .data$sidea, .data$orig, .data$date, .data$gmlmidongoing, .data$gmlmidonset) %>%
+      left_join(leaderdays, .) -> hold_this
 
     if (init == "sidea-orig") {
       hold_this %>%
-        mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & (.data$sidea == 1 & .data$orig == 1), 1, 0),
-               gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0)) %>%
-        select(.data$dispnum:.data$ccode, .data$obsid_start, .data$sidea, .data$orig, .data$date:.data$gmlmidonset_init) -> hold_this
+        mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & .data$obsid_start == .data$obsid & (.data$sidea == 1 & .data$orig == 1), 1, 0),
+               gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0)) -> hold_this
 
     } else if (init == "sidea-with-joiners") {
 
       hold_this %>%
-        mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & (.data$sidea == 1 | ( .data$orig == 0 & .data$sidea == 1 )), 1, 0),
-               gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0)) %>%
-        select(.data$dispnum:.data$ccode, .data$obsid_start, .data$sidea, .data$orig, .data$date:.data$gmlmidonset_init) -> hold_this
+        mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & .data$obsid_start == .data$obsid & (.data$sidea == 1 | ( .data$orig == 0 & .data$sidea == 1 )), 1, 0),
+               gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0))  -> hold_this
 
     } else if (init == "sidea-all-joiners") {
 
       hold_this %>%
-        mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & (.data$sidea == 1 | (.data$orig == 0)), 1, 0),
-               gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0)) %>%
-        select(.data$dispnum:.data$ccode, .data$obsid_start,  .data$sidea, .data$orig, .data$date:.data$gmlmidonset_init) -> hold_this
+        mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & .data$obsid_start == .data$obsid & (.data$sidea == 1 | (.data$orig == 0)), 1, 0),
+               gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0))  -> hold_this
 
     }
 
     hold_this %>%
-      left_join(leaderdays, .) %>%
+      # left_join(leaderdays, .) %>%
       mutate(year = .pshf_year(.data$date)) %>%
       group_by(.data$obsid, .data$year) %>%
       summarize(gmlmidongoing = sum(.data$gmlmidongoing, na.rm=T),
                 gmlmidonset = sum(.data$gmlmidonset, na.rm=T),
                 gmlmidongoing_init = sum(.data$gmlmidongoing_init, na.rm=T),
-                gmlmidonset_init = sum(.data$gmlmidonset_init, na.rm=T)) -> hold_this
+                gmlmidonset_init = sum(.data$gmlmidonset_init, na.rm=T)) %>%
+      ungroup() -> hold_this
 
 
     hold_this %>%
