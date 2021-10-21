@@ -7,6 +7,7 @@ This is a leader-intensive update. Additions/new features include:
 - `download_extdata()` now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015.
 - `create_leaderdyadyears()`: create leader dyad-year data (via `archigos`) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in `download_extdata()`.
 - `gml_part`: a data set on participant summary information from the GML MID data.
+- `add_gml_mids()` now works with leader-year data. See documentation for more.
 
 Other changes include:
 

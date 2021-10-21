@@ -166,14 +166,14 @@ of the GML MID data is 2.2.1." />
 of the GML MID data is 2.2.1.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span>, init <span class='op'>=</span> <span class='st'>"sidea-all-joiners"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed")</p></td>
+      <td><p>a dyad-year data frame (either "directed" or "non-directed"), a state-year data frame, or a leader-year data frame</p></td>
     </tr>
     <tr>
       <th>keep</th>
@@ -186,15 +186,24 @@ MID onset (<code>gmlmidonset</code>) are *always* returned. It would be foolish 
 The user is free to keep or discard anything else they see fit.</p>
 <p>If <code>keep</code> is not specified in the function, the ensuing output returns everything.</p></td>
     </tr>
+    <tr>
+      <th>init</th>
+      <td><p>how should initiators be coded? Applicable only to state-year and leader-year data. This parameter accepts one of
+three possible values (<code>"sidea-orig"</code>, <code>"sidea-with-joiners"</code>, <code>"sidea-all-joiners"</code>). <code>"sidea-orig"</code> = a state initiates a MID (which
+appears as a summary return in the output) if the state was on Side A at the onset of the dispute. <code>"sidea-with-joiners"</code> = a state
+initiates a MID (which appears as a summary return in the output) if the state was on Side A at the onset of the dispute or if the
+state joined the MID on Side A. <code>"sidea-all-joiners"</code> = a state initiates a MID (which appears as a summary return in the output) if the
+state was on Side A at the onset of the dispute or if it joined at any point thereafter. See details section for more discussion. The
+default is  <code>"sidea-all-joiners"</code>.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>add_gml_mids()</code> takes a dyad-year or state-year data frame and adds dyad-year dispute information
 from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
-and assorted participant- and dispute-level summaries. If the data are state-year, the function returns information about ongoing
-disputes (and onsets) and whether there were any ongoing disputes (and onsets) the state initiated. A character string of dispute
-numbers active in the observation year is returned too.</p>
+and assorted participant- and dispute-level summaries. If the data are state-year or leader-year, the function returns information about ongoing
+disputes (and onsets) and whether there were any ongoing disputes (and onsets) the state (or leader) initiated.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
@@ -207,9 +216,17 @@ In about half of all cases, this is straightforward. You can use the participant
 was bilateral and the dispute did not escalate beyond an attack, the state on Side A initiated the dispute. For multilateral MIDs, these
 conditions still hold at least for originators. However, there is *considerable* difficulty for cases where 1) participant-level summaries
 suggested actions at the level of clash or higher, 2) the participant was a joiner and not an originator. The effort required to
-flesh this out is enormous, and perhaps forthcoming in a future update. For now, the simple determination is all states on Side A that
-were originators are all initiators, even though there are conceivable cases where, for example, a participant on Side B initiated
-a course of action as a joiner (e.g. the Sudetenland crisis comes to mind here). Everyone else is not an originator.</p>
+flesh this out is enormous, and perhaps forthcoming in a future update.</p>
+<p><code>add_gml_mids()</code> allows you to make one of three judgment
+calls here (see the arguments section of the documentation). If it were my call to make, I would say you should probably use the option
+<code>"sidea-all-joiners"</code>. My review of the MID data with Doug Gibler suggests most states that join a dispute are not roped into
+a conflict (i.e. targeted by some other state) after the first incident. They routinely initiate their entry into the conflict, which is
+what this concept of "initiation" is supposed to capture in the literature. There are no doubt cases where some third state is brought into
+the dispute by the actions of some other state even as the original MID coding rules place a high barrier on coding that type of dispute entry.
+However, the time required to individually assess whether a state initiated their entry into a MID under something other than the
+simplest of cases (e.g. bilateral cases where the highest participant action fell short of a clash) would be too time-consuming. It would
+require an audit of almost half of all participant-level summaries in the data. In a forthcoming publication, Gibler and Miller offer
+excellent coverage here with a new data set on militarized events. However, this would include only confrontations after World War II.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
@@ -223,14 +240,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:purrr’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    set_names</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:tidyr’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    extract</span></div><div class='input'><span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>add_gml_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.</span>
 #&gt; <span class='message'>See: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 × 24</span>
 #&gt;    ccode1 ccode2  year dispnum gmlmidongoing gmlmidonset sidea1 sidea2 fatality1
