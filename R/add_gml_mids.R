@@ -106,9 +106,10 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
     gml_part %>%
+      filter(.data$allmiss_leader_start == 0 & .data$allmiss_leader_end == 0) %>%
       rowwise() %>%
       mutate(year = list(seq(.data$styear, .data$endyear)),
-             gmlmidonset = list(ifelse(year == min(.data$year), 1, 0))) %>%
+             gmlmidonset = list(ifelse(.data$year == min(.data$year), 1, 0))) %>%
       unnest(c(.data$year, .data$gmlmidonset)) %>%
       mutate(gmlmidongoing = 1) -> hold_this
 
@@ -120,7 +121,7 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
 
     } else if (init == "sidea-with-joiners") {
 
-      old_this %>%
+      hold_this %>%
         mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & (.data$sidea == 1 | ( .data$orig == 0 & .data$sidea == 1)), 1, 0),
                gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0)) %>%
         select(.data$dispnum:.data$ccode, .data$year, .data$gmlmidonset:ncol(.)) -> hold_this
