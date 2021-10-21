@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_gml_mids.R
 \name{add_gml_mids}
 \alias{add_gml_mids}
-\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year or state-year data frame}
+\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame}
 \usage{
 add_gml_mids(data, keep, init = "sidea-all-joiners")
 }
@@ -34,7 +34,7 @@ and assorted participant- and dispute-level summaries. If the data are state-yea
 disputes (and onsets) and whether there were any ongoing disputes (and onsets) the state (or leader) initiated.
 }
 \description{
-\code{add_gml_mids()} merges in GML's MID data to a dyad-year or state-year data frame. The current version
+\code{add_gml_mids()} merges in GML's MID data to a dyad-year, state-year, or leader-year data frame. The current version
 of the GML MID data is 2.2.1.
 }
 \details{
