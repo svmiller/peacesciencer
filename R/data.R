@@ -1304,7 +1304,7 @@ NULL
 #'
 #' This is a \code{BibTeX} file, loaded as a data frame, to assist the user in properly citing the source material that is used in this package.
 #'
-#' @format A data frame with 37 observations on the following 40 variables.
+#' @format A data frame with the following columns.
 #' \describe{
 #' \item{\code{CATEGORY}}{the \code{BibTeX} entry type}
 #' \item{\code{BIBTEXKEY}}{the \code{BibTeX} unique entry key}
@@ -1477,3 +1477,36 @@ NULL
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
 "gml_part"
+
+#' (An Abbreviation of) The LEAD Data Set
+#'
+#' These are an abbreviated version of the LEAD Data Set, incorporating variables that I think are most interesting
+#' or potentially useful from these data.
+#'
+#'
+#' @format A data frame with 3042 observations on the following 13 variables.
+#' \describe{
+#' \item{\code{obsid}}{an observational ID from \code{archigos}}
+#' \item{\code{leadid29}}{a leader ID, as previously used by Archigos before version 4}
+#' \item{\code{leveledu}}{0 = primary, 1 = secondary, 2 = university, 3 = graduate}
+#' \item{\code{milservice}}{did leader have prior military service?}
+#' \item{\code{combat}}{did leader have prior combat experience in military service?}
+#' \item{\code{rebel}}{was leader previously part of a rebel group?}
+#' \item{\code{warwin}}{was leader previously part of a winning war effort as part of military service?}
+#' \item{\code{warloss}}{was leader previously part of a losing war effort as part of military service?}
+#' \item{\code{rebelwin}}{was leader previously part of a winning war effort as part of a rebel group?}
+#' \item{\code{rebelloss}}{was leader previously part of a losing war effort as part of a rebel group?}
+#' \item{\code{yrsexper}}{previous years of experience in politics before becoming a leader}
+#' \item{\code{physhealth}}{does leader have physical health issues?}
+#' \item{\code{mentalhealth}}{does leader have mental health issues?}
+#' }
+#'
+#' @details Data are ported from Ellis et al. (2015). Users who want more of these variables included in \pkg{peacesciencer} should
+#' raise an issue on Github.
+#'
+#' @references
+#'
+#' Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015. "Introducing the
+#' LEAD Data Set." \emph{International Interactions} 41(4): 718--741.
+
+"LEAD"

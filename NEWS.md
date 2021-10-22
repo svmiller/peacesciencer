@@ -3,6 +3,7 @@ peacesciencer 0.7.0 (in development)
 
 This is a leader-intensive update. Additions/new features include:
 
+- `LEAD`: a data set on select leader experience and attribute descriptions (LEAD).
 - `lwuf`: a data set from [Carter and Smith (2020)](https://doi.org/10.1017/S0003055420000313) measuring leader willingness to use force.
 - `download_extdata()` now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015.
 - `create_leaderdyadyears()`: create leader dyad-year data (via `archigos`) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in `download_extdata()`.
@@ -10,6 +11,7 @@ This is a leader-intensive update. Additions/new features include:
 - `add_gml_mids()` now works with leader-year data. See documentation for more.
 - `add_peace_years()` now works with leader-year data, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
 - `add_lwuf()` adds estimates of leader willingness to use force to leader-year analyses.
+- `add_lead()` adds some leader attributes to leader-year analyses.
 
 Other changes include:
 

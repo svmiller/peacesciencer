@@ -5,7 +5,7 @@
 \alias{ps_bib}
 \title{A \code{BibTeX} Data Frame of Citations}
 \format{
-A data frame with 37 observations on the following 40 variables.
+A data frame with the following columns.
 \describe{
 \item{\code{CATEGORY}}{the \code{BibTeX} entry type}
 \item{\code{BIBTEXKEY}}{the \code{BibTeX} unique entry key}
