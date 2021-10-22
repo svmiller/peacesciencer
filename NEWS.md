@@ -9,6 +9,7 @@ This is a leader-intensive update. Additions/new features include:
 - `gml_part`: a data set on participant summary information from the GML MID data.
 - `add_gml_mids()` now works with leader-year data. See documentation for more.
 - `add_peace_years()` now works with leader-year data, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
+- `add_lwuf()` adds estimates of leader willingness to use force to leader-year analyses.
 
 Other changes include:
 
