@@ -8,6 +8,7 @@ This is a leader-intensive update. Additions/new features include:
 - `create_leaderdyadyears()`: create leader dyad-year data (via `archigos`) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in `download_extdata()`.
 - `gml_part`: a data set on participant summary information from the GML MID data.
 - `add_gml_mids()` now works with leader-year data. See documentation for more.
+- `add_peace_years()` now works with leader-year data, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
 
 Other changes include:
 

@@ -186,7 +186,10 @@ returns all leader-years as implied by the Archigos data.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>create_leaderyears()</code> takes leader-level data available in <span class="pkg">peacesciencer</span>
-and returns a leader-year-level data frame.</p>
+and returns a leader-year-level data frame. This minimal output contains the observation ID
+from Archigos, the year, the Correlates of War state code for the leader (i.e. leaders are nested in states),
+the leader's name in Archigos (if it may help the reader to have that), an approximation of the leader's age,
+and the year in office for the leader (as a running count, starting at 1).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>create_leaderyears()</code>, as of writing, only supports the Archigos data set of leaders. Importantly:
@@ -194,6 +197,8 @@ the absence of much leader-level covariates (of which I am aware) means, for now
 treated as observationally equivalent to state-year data. Users should be careful here, but it does mean the data
 will work with other functions in <span class="pkg">peacesciencer</span> that have support for state-year data (e.g. <code><a href='add_nmc.html'>add_nmc()</a></code>,
 <code><a href='add_rugged_terrain.html'>add_rugged_terrain()</a></code>). This is declared in the attribute field.</p>
+<p>Many leader ages are known with precision. Many are not recorded in the Archigos data. Knowing well that years are aggregates
+of days, the leader age variable that gets returned in this output should be treated as an approximation of the leader's age.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
@@ -205,35 +210,35 @@ will work with other functions in <span class="pkg">peacesciencer</span> that ha
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,136 × 12</span>
-#&gt;    obsid    ccode leadid  leader yrborn gender startdate  enddate    entry exit 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877     2 81dcc1… Hayes    <span style='text-decoration: underline;'>1</span>822 M      1877-03-04 1881-03-04 Regu… Regu…
-#&gt; <span style='color: #949494;'># … with 16,126 more rows, and 2 more variables: exitcode &lt;chr&gt;, year &lt;dbl&gt;</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,136 × 7</span>
+#&gt;    obsid     year ccode leader gender leaderage yrinoffice
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869     2 Grant  M             47          1
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870     2 Grant  M             48          2
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871     2 Grant  M             49          3
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872     2 Grant  M             50          4
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873     2 Grant  M             51          5
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874     2 Grant  M             52          6
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875     2 Grant  M             53          7
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876     2 Grant  M             54          8
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877     2 Grant  M             55          9
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877     2 Hayes  M             55          1
+#&gt; <span style='color: #949494;'># … with 16,126 more rows</span></div><div class='input'>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span>standardize_cow <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 12</span>
-#&gt;    obsid    ccode leadid  leader yrborn gender startdate  enddate    entry exit 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877     2 81dcc1… Hayes    <span style='text-decoration: underline;'>1</span>822 M      1877-03-04 1881-03-04 Regu… Regu…
-#&gt; <span style='color: #949494;'># … with 17,676 more rows, and 2 more variables: exitcode &lt;chr&gt;, year &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 7</span>
+#&gt;    obsid     year ccode leader gender leaderage yrinoffice
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869     2 Grant  M             47          1
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870     2 Grant  M             48          2
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871     2 Grant  M             49          3
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872     2 Grant  M             50          4
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873     2 Grant  M             51          5
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874     2 Grant  M             52          6
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875     2 Grant  M             53          7
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876     2 Grant  M             54          8
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877     2 Grant  M             55          9
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877     2 Hayes  M             55          1
+#&gt; <span style='color: #949494;'># … with 17,676 more rows</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

@@ -15,7 +15,10 @@ returns all leader-years as implied by the Archigos data.}
 }
 \value{
 \code{create_leaderyears()} takes leader-level data available in \pkg{peacesciencer}
-and returns a leader-year-level data frame.
+and returns a leader-year-level data frame. This minimal output contains the observation ID
+from Archigos, the year, the Correlates of War state code for the leader (i.e. leaders are nested in states),
+the leader's name in Archigos (if it may help the reader to have that), an approximation of the leader's age,
+and the year in office for the leader (as a running count, starting at 1).
 }
 \description{
 \code{create_leaderyears()} allows you to generate leader-year data from
@@ -27,6 +30,9 @@ the absence of much leader-level covariates (of which I am aware) means, for now
 treated as observationally equivalent to state-year data. Users should be careful here, but it does mean the data
 will work with other functions in \pkg{peacesciencer} that have support for state-year data (e.g. \code{add_nmc()},
 \code{add_rugged_terrain()}). This is declared in the attribute field.
+
+Many leader ages are known with precision. Many are not recorded in the Archigos data. Knowing well that years are aggregates
+of days, the leader age variable that gets returned in this output should be treated as an approximation of the leader's age.
 }
 \examples{
 \donttest{

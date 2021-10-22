@@ -198,7 +198,9 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
       ungroup() -> hold_this
 
 
+
     hold_this %>%
+      mutate_at(vars("gmlmidongoing", "gmlmidonset", "gmlmidongoing_init", "gmlmidonset_init"), ~ifelse(.data$year >= 2011, NA, .)) %>%
       mutate_at(vars("gmlmidongoing", "gmlmidonset", "gmlmidongoing_init", "gmlmidonset_init"), ~ifelse(. >= 1, 1, 0)) -> hold_this
 
     data %>%

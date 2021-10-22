@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year or state-year data frame — add_gml_mids • peacesciencer</title>
+<title>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame — add_gml_mids • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year or state-year data frame — add_gml_mids" />
-<meta property="og:description" content="add_gml_mids() merges in GML's MID data to a dyad-year or state-year data frame. The current version
+<meta property="og:title" content="Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame — add_gml_mids" />
+<meta property="og:description" content="add_gml_mids() merges in GML's MID data to a dyad-year, state-year, or leader-year data frame. The current version
 of the GML MID data is 2.2.1." />
 
 
@@ -156,13 +156,13 @@ of the GML MID data is 2.2.1." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year or state-year data frame</h1>
+    <h1>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_gml_mids.R'><code>R/add_gml_mids.R</code></a></small>
     <div class="hidden name"><code>add_gml_mids.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_gml_mids()</code> merges in GML's MID data to a dyad-year or state-year data frame. The current version
+    <p><code>add_gml_mids()</code> merges in GML's MID data to a dyad-year, state-year, or leader-year data frame. The current version
 of the GML MID data is 2.2.1.</p>
     </div>
 
@@ -240,7 +240,10 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='input'><span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>add_gml_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.</span>
 #&gt; <span class='message'>See: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 × 24</span>
 #&gt;    ccode1 ccode2  year dispnum gmlmidongoing gmlmidonset sidea1 sidea2 fatality1

@@ -4,13 +4,19 @@
 #' leader-level data provided in \pkg{peacesciencer}
 #'
 #' @return \code{create_leaderyears()} takes leader-level data available in \pkg{peacesciencer}
-#' and returns a leader-year-level data frame.
+#' and returns a leader-year-level data frame. This minimal output contains the observation ID
+#' from Archigos, the year, the Correlates of War state code for the leader (i.e. leaders are nested in states),
+#' the leader's name in Archigos (if it may help the reader to have that), an approximation of the leader's age,
+#' and the year in office for the leader (as a running count, starting at 1).
 #'
 #' @details \code{create_leaderyears()}, as of writing, only supports the Archigos data set of leaders. Importantly:
 #' the absence of much leader-level covariates (of which I am aware) means, for now, the data that are returned are
 #' treated as observationally equivalent to state-year data. Users should be careful here, but it does mean the data
 #' will work with other functions in \pkg{peacesciencer} that have support for state-year data (e.g. \code{add_nmc()},
 #' \code{add_rugged_terrain()}). This is declared in the attribute field.
+#'
+#' Many leader ages are known with precision. Many are not recorded in the Archigos data. Knowing well that years are aggregates
+#' of days, the leader age variable that gets returned in this output should be treated as an approximation of the leader's age.
 #'
 #' @author Steven V. Miller
 #'
@@ -57,7 +63,7 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
         group_by(.data$ccode, .data$obsid, .data$year) %>%
         slice(1) %>% ungroup() -> data
 
-      data$date <- NULL
+      #data$date <- NULL
 
 
     } else {
@@ -67,7 +73,7 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
         group_by(.data$ccode, .data$obsid, .data$year) %>%
         slice(1) %>% ungroup() -> data
 
-      data$date <- NULL
+      #data$date <- NULL
 
     }
 
@@ -77,6 +83,14 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
     stop("Right now, only the Archigos leader data are supported.")
 
   }
+
+  data %>%
+    mutate(leaderage = .data$year - .data$yrborn) %>%
+    group_by(.data$obsid) %>%
+    mutate(yrinoffice = 1:n()) %>%
+    ungroup() -> data
+
+  data <- subset(data, select=c("obsid", "year", "ccode", "leader", "gender", "leaderage", "yrinoffice"))
 
   attr(data, "ps_data_type") = "leader_year"
   attr(data, "ps_system") = "cow"

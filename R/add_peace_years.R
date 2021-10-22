@@ -159,7 +159,31 @@ add_peace_years <- function(data, pad = FALSE) {
 
     }
 
-  } else  {
+    if (all(i <- c("gmlmidongoing", "gmlmidonset", "gmlmidongoing_init", "gmlmidonset_init") %in% colnames(data))) {
+
+      data <- ps_btscs(data, .data$gmlmidongoing, .data$year, .data$ccode, pad_ts = pad)
+      names(data)[names(data) == "spell"] <- "gmlmidspell"
+
+      data <- ps_btscs(data, .data$gmlmidongoing_init, .data$year, .data$ccode, pad_ts = pad)
+      names(data)[names(data) == "spell"] <- "gmlmidinitspell"
+
+      attr(data, "ps_data_type") <- attr_ps_data_type
+      attr(data, "ps_system") <-  attr_ps_system
+
+    }
+
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "leader_year")  {
+
+    data <- ps_spells(data, .data$gmlmidongoing, .data$year, .data$obsid)
+    names(data)[names(data) == "spell"] <- "gmlmidspell"
+
+    data <- ps_spells(data, .data$gmlmidongoing_init, .data$year, .data$obsid)
+    names(data)[names(data) == "spell"] <- "gmlmidinitspell"
+
+    # attr(data, "ps_data_type") <- attr_ps_data_type
+    # attr(data, "ps_system") <-  attr_ps_system
+
+  } else {
     stop("add_peace_years() sees nothing that needs peace years right now.")
   }
 
