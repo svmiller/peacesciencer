@@ -13,3 +13,4 @@ vignettes/
 vignettes
 ^Makefile$
 ^user-guide$
+LICENSE*
