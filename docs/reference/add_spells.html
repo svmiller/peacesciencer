@@ -194,7 +194,7 @@ are all treated as failures. Defaults to FALSE.</p></td>
     <p><code>add_spells()</code> takes a dyad-year, leader-year, or  state-year data frame and adds spells for ongoing
 conflicts. Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
 Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data supported in this function include the UCDP
-armed conflict data and the CoW intra-state war data.</p>
+armed conflict data and the CoW intra-state war data. Leader-year conflict data supported include the GML MID data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The function internally uses <code>ps_spells()</code> from <span class="pkg">stevemisc</span>. In the interest of full disclosure,
@@ -215,11 +215,11 @@ became a war) started in 1980 and ended in 1988. There are no other bilateral in
 Correlates of War coding rules. If peace years are calculated at the "onset" of the event, it would list peace-years between the two countries
 from 1981 to 1988. I've never understood that to make sense, but still I've seen others insist this is the correct way to do it.
 <code><a href='add_peace_years.html'>add_peace_years()</a></code> would force the calculation on the ongoing event, which I still maintain is correct. <code>add_spells()</code> will
-allow you to calculate onsets, even if ongoing events are the default.</p>
+allow you to calculate on onsets, even if ongoing events are the default.</p>
 <p>The underlying function for <code>add_spells()</code> will stop without a return if there are NAs bracketing observed events. The surest way
 this will happen is if you're doing something like a dyad-year analysis of inter-state conflicts from 1816 to 2010, but <code><a href='create_dyadyears.html'>create_dyadyears()</a></code>
 created observations from 2011 to 2020 for you as well. Remove those before using this function and confine the temporal domain to just
-those time-units (e.g. years) for which there is observed event data.</p>
+those time-units (e.g. years) for which there is observed event data. See what I do in the example below.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Beger, Andreas, Daina Chiba, Daniel W. Hill, Jr, Nils W. Metternich, Shahryar Minhas and Michael D. Ward. 2018.
@@ -237,6 +237,10 @@ Analysis with a Binary Dependent Variable." <em>American Journal of Political Sc
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='input'>
 <span class='va'>aaa</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/subset.html'>subset</a></span><span class='op'>(</span><span class='va'>cow_ddy</span>, <span class='va'>year</span> <span class='op'>&lt;=</span> <span class='fl'>2010</span><span class='op'>)</span>
 
 <span class='va'>aaa</span> <span class='op'>%&gt;%</span>
@@ -248,7 +252,22 @@ Analysis with a Binary Dependent Variable." <em>American Journal of Political Sc
 <span class='fu'>add_spells</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>add_gml_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.</span>
 #&gt; <span class='message'>See: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>add_cow_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.</span>
-#&gt; <span class='message'>See: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='error'>Error in add_spells(.): I see a column here with the name `spell` and am reticent to overwrite it. Consider renaming this column or deleting it before continuing.</span></div><div class='input'><span class='co'># }</span>
+#&gt; <span class='message'>See: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "orig_order"</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "orig_order"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 224,576 × 13</span>
+#&gt;    ccode1 ccode2  year gmlmidonset gmlmidongoing cowmidonset cowmidongoing
+#&gt;     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>      2     20  <span style='text-decoration: underline;'>1</span>920           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 2</span>      2     20  <span style='text-decoration: underline;'>1</span>921           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 3</span>      2     20  <span style='text-decoration: underline;'>1</span>922           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 4</span>      2     20  <span style='text-decoration: underline;'>1</span>923           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 5</span>      2     20  <span style='text-decoration: underline;'>1</span>924           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 6</span>      2     20  <span style='text-decoration: underline;'>1</span>925           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 7</span>      2     20  <span style='text-decoration: underline;'>1</span>926           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 8</span>      2     20  <span style='text-decoration: underline;'>1</span>927           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'> 9</span>      2     20  <span style='text-decoration: underline;'>1</span>928           0             0           0             0
+#&gt; <span style='color: #BCBCBC;'>10</span>      2     20  <span style='text-decoration: underline;'>1</span>929           0             0           0             0
+#&gt; <span style='color: #949494;'># … with 224,566 more rows, and 6 more variables: conttype &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   cowmaj1 &lt;dbl&gt;, cowmaj2 &lt;dbl&gt;, prd &lt;dbl&gt;, gmlmidspell &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   cowmidspell &lt;dbl&gt;</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

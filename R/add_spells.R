@@ -8,7 +8,7 @@
 #' @return \code{add_spells()} takes a dyad-year, leader-year, or  state-year data frame and adds spells for ongoing
 #' conflicts. Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
 #' Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data supported in this function include the UCDP
-#' armed conflict data and the CoW intra-state war data.
+#' armed conflict data and the CoW intra-state war data. Leader-year conflict data supported include the GML MID data.
 #'
 #' @details The function internally uses \code{ps_spells()} from \pkg{stevemisc}. In the interest of full disclosure,
 #' \code{ps_spells()} leans heavily on \code{add_duration()} from \pkg{spduration}. I optimized some code for performance.
@@ -30,7 +30,7 @@
 #' Correlates of War coding rules. If peace years are calculated at the "onset" of the event, it would list peace-years between the two countries
 #' from 1981 to 1988. I've never understood that to make sense, but still I've seen others insist this is the correct way to do it.
 #' \code{add_peace_years()} would force the calculation on the ongoing event, which I still maintain is correct. \code{add_spells()} will
-#' allow you to calculate onsets, even if ongoing events are the default.
+#' allow you to calculate on onsets, even if ongoing events are the default.
 #'
 #' The underlying function for \code{add_spells()} will stop without a return if there are NAs bracketing observed events. The surest way
 #' this will happen is if you're doing something like a dyad-year analysis of inter-state conflicts from 1816 to 2010, but \code{create_dyadyears()}
@@ -63,6 +63,7 @@
 #' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
 #' library(magrittr)
+#'
 #' aaa <- subset(cow_ddy, year <= 2010)
 #'
 #' aaa %>%

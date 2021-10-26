@@ -21,7 +21,7 @@ are all treated as failures. Defaults to FALSE.}
 \code{add_spells()} takes a dyad-year, leader-year, or  state-year data frame and adds spells for ongoing
 conflicts. Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
 Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data supported in this function include the UCDP
-armed conflict data and the CoW intra-state war data.
+armed conflict data and the CoW intra-state war data. Leader-year conflict data supported include the GML MID data.
 }
 \description{
 \code{add_spells()} calculates "spells" in your state-year, leader-year, or dyad-year data. The application here is
@@ -48,18 +48,19 @@ became a war) started in 1980 and ended in 1988. There are no other bilateral in
 Correlates of War coding rules. If peace years are calculated at the "onset" of the event, it would list peace-years between the two countries
 from 1981 to 1988. I've never understood that to make sense, but still I've seen others insist this is the correct way to do it.
 \code{add_peace_years()} would force the calculation on the ongoing event, which I still maintain is correct. \code{add_spells()} will
-allow you to calculate onsets, even if ongoing events are the default.
+allow you to calculate on onsets, even if ongoing events are the default.
 
 The underlying function for \code{add_spells()} will stop without a return if there are NAs bracketing observed events. The surest way
 this will happen is if you're doing something like a dyad-year analysis of inter-state conflicts from 1816 to 2010, but \code{create_dyadyears()}
 created observations from 2011 to 2020 for you as well. Remove those before using this function and confine the temporal domain to just
-those time-units (e.g. years) for which there is observed event data.
+those time-units (e.g. years) for which there is observed event data. See what I do in the example below.
 }
 \examples{
 
 \donttest{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
+
 aaa <- subset(cow_ddy, year <= 2010)
 
 aaa \%>\%
