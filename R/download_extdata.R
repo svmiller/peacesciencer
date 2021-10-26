@@ -25,8 +25,8 @@
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
 #' | `year` | the year |
-#' | `leadid1` | the unique Archigos (v. 4.1) leader ID for the first leader |
-#' | `leadid2` | the unique Archigos (v. 4.1) leader ID for the second leader |
+#' | `obsid1` | the unique Archigos (v. 4.1) observation ID for the first leader |
+#' | `obsid2` | the unique Archigos (v. 4.1) observation ID for the second leader |
 #' | `ccode1` | a numeric vector for the Correlates of War state code for the first state |
 #' | `startdate1` | the start date in office for the first leader |
 #' | `enddate1` | the end date in office for the first leader |

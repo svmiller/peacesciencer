@@ -41,8 +41,8 @@ These are directed dyad-year-level data for national trade from the Correlates o
 These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1).\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
-   \code{leadid1} \tab the unique Archigos (v. 4.1) leader ID for the first leader \cr
-   \code{leadid2} \tab the unique Archigos (v. 4.1) leader ID for the second leader \cr
+   \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
+   \code{obsid2} \tab the unique Archigos (v. 4.1) observation ID for the second leader \cr
    \code{ccode1} \tab a numeric vector for the Correlates of War state code for the first state \cr
    \code{startdate1} \tab the start date in office for the first leader \cr
    \code{enddate1} \tab the end date in office for the first leader \cr
