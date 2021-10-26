@@ -10,9 +10,7 @@ add_peace_years(data, pad = FALSE)
 \item{data}{a dyad-year data frame (either "directed" or "non-directed") or state-year data frame}
 
 \item{pad}{an optional parameter, defaults to FALSE. If TRUE, the peace-year calculations fill in cases where panels are
-unbalanced/have gaps. Think of a state like Germany disappearing for 45 years as illustrative of this.
-
-If \code{keep} is not specified in the function, the ensuing output returns everything.}
+unbalanced/have gaps. Think of a state like Germany disappearing for 45 years as illustrative of this.}
 }
 \value{
 \code{add_peace_years()} takes a dyad-year or state-year data frame and adds peace years for ongoing conflicts.
@@ -21,8 +19,14 @@ Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data sup
 armed conflict data and the CoW intra-state war data.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 \code{add_peace_years()} calculates peace years for your ongoing conflicts. The function
-works for both dyad-year and state-year data generated in \pkg{peacesciencer}.
+works for both dyad-year and state-year data generated in \pkg{peacesciencer}. As of the forthcoming
+v. 0.7.0, \code{add_peace_years()} will be deprecated for the more generic and versatile \code{add_spells()}. Users
+are free to continue with the function, though I recommend it only for more balanced panels (like state-year or dyad-year),
+and less for imbalanced panels (like leader-years, or leader-dyad-years). As the change in name implies, \code{add_spells()} will
+have greater flexibility with both cross-sectional units and time.
 }
 \details{
 The function internally uses \code{sbtscs()} from \pkg{stevemisc}. In the interest of full disclosure,
@@ -35,7 +39,7 @@ and then added the UCDP armed conflict data to it. If you want the peace-years f
 every year from 1816 to 1945 (along with 2020, as of writing) have no event data. You can force the function to "not fail"
 by setting \code{pad = TRUE} as an argument, but it's not clear this is advisable for this reason. Assume you wanted event data
 in UCDP for just the extrasystemic onsets. The data start in 1946 and, in 1946, the United Kingdom,
-Netherlands, and France had extrasystemic conflicts. For *all* years before 1946, the events are imputed as 1
+Netherlands, and France had extrasystemic conflicts. For \emph{all} years before 1946, the events are imputed as 1
 for those countries that had 1s in the first year of observation and everyone else is NA and implicitly assumed to be a zero.
 For those NAs, the function runs a sequence resulting in some wonky spells in 1946 that are not implied by (the absence of) the
 data. In fact, none of those are implied by the absence of data before 1946.

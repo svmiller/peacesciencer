@@ -21,6 +21,7 @@ its original size. This is a huge reduction in disk space. The original simulati
 - "leader-year" (`leader_year`) is now an attribute. Where appropriate, leader-year and state-year functions are treated the same. For example, the GDP data contained in  `add_sdp_gdp()` are fundamentally state-year, but perhaps a leader-year control of interest even as leaders are nested in states.
 - `create_leaderyears()` works on the observation ID and not the leader ID. Observation IDs are unique to each leader-period, but leader IDs are not.
 - The directed leader dyad-year data is indexed by observation ID and not leader ID, per se. This is because leaders can have multiple terms in office.
+- `add_peace_years()` has been superseded by `add_spells()`. The "superseded" language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. `add_spells()` promises to have greater functionality.
 
 peacesciencer 0.6.0
 ---------------------------------------------------------------------

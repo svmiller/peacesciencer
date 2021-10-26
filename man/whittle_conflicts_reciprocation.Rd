@@ -38,7 +38,7 @@ Scholars are free to use this as a heuristic for whittling conflict-year data to
 I would be remiss if I did not offer a caveat about the reciprocation variable in inter-state dispute data. Namely, it is noisy
 and is not doing what scholars often think it's doing in the inter-state dispute data. Reciprocation is observed only
 when there is a militarized action on both sides of the conflict. By definition, someone on Side A will have a militarized
-action. Not every state on Side B does. However, scholars should *not* interpret that as the absence of militarized responses.
+action. Not every state on Side B does. However, scholars should \emph{not} interpret that as the absence of militarized responses.
 In a forthcoming article in \emph{Journal of Conflict Resolution}, Doug Gibler and I make the case that reciprocation
 isn't a useful variable to maintain at all because it can only invite errors (as is often the case in the CoW-MID data) and
 will obscure the fact that states that are attacked by another side routinely fight back. On many

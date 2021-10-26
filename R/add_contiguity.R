@@ -85,7 +85,7 @@ add_contiguity <- function(data) {
 
     }
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (!all(i <- c("ccode") %in% colnames(data))) {
 
@@ -113,7 +113,7 @@ add_contiguity <- function(data) {
     }
   }
   else  {
-    stop("add_contiguity() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+    stop("add_contiguity() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, or dyad_year. Try running create_leaderyears(), create_dyadyears(), or create_stateyears() at the start of the pipe.")
 
   }
 

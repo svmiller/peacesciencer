@@ -12,7 +12,7 @@ A data frame with 27753 observations on the following five variables.
 \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
 \item{\code{wbpopest}}{a numeric vector for the estimated population size (log-transformed)}
 \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
- \item{\code{wbgdppc2011est}}{a numeric vector for the estimated GDP per capita (log-transformed)}
+\item{\code{wbgdppc2011est}}{a numeric vector for the estimated GDP per capita (log-transformed)}
 }
 }
 \usage{
@@ -31,7 +31,7 @@ vigorously support going forward).
 Space considerations compel me to round these data to three decimal points.  These "economic" data are routinely
 the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated
 anyways and the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than
-25% of its original size. The original simulations are available for remote download if you'd like. Type \code{?download_extdata()} for
+25\% of its original size. The original simulations are available for remote download if you'd like. Type \code{?download_extdata()} for
 more information.
 }
 \references{

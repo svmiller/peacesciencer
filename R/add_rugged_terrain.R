@@ -8,7 +8,7 @@
 #' system or the Gleditsch-Ward system, and returns information about the
 #' "ruggedness" of the state's terrain. The two indicators returned are the
 #' "terrain ruggedness index" calculated by Nunn and Puga (2012) and a logarithmic
-#' transformation of how mountainous the state is (as calculated by Gibler and Miller [2014]).
+#' transformation of how mountainous the state is (as calculated by Gibler and Miller, 2014).
 #' The dyad-year data get four additional columns (i.e. both indicators for both states
 #' in the dyad) whereas the state-year data get just the two additional columns.
 #'

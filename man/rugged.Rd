@@ -21,11 +21,11 @@ This is a data set on state-level estimates for the "ruggedness" of a state's te
 }
 \details{
 The \code{data-raw} directory on the project's Github contains more information about how these data were
-created. It goes without saying that these data move *slowly* so the data are really only applicable for making state-to-state
+created. It goes without saying that these data move \emph{slowly} so the data are really only applicable for making state-to-state
 comparisons and not states-in-time comparisons. The terrain ruggedness index is originally introduced by Riley et al. (1999) but
 is amended by Nunn and Puga (2012). The mountain terrain data was originally created by Fearon and Laitin (2003) but extended and
 amended by Gibler and Miller (2014). The data are functionally time-agnostic---use with caution in your state-year analyses---but all
-data sets seem to benchmark around 1999-2000. I'm not sure it matters  *that* much, but it matters a little at the margins, I suppose,
+data sets seem to benchmark around 1999-2000. I'm not sure it matters  \emph{that} much, but it matters a little at the margins, I suppose,
 if you suspect there are major differences in interpretation of how much more "rugged" the Soviet Union was than Russia, or Yugoslavia
 than Serbia.
 }

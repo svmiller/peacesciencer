@@ -55,13 +55,13 @@ add_cow_majors <- function(data) {
     rename(cowmaj1 = .data$cowmaj) %>%
     left_join(., major_years, by=c("ccode2"="ccode","year"="year")) %>%
     rename(cowmaj2 = .data$cowmaj) %>%
-    mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.), 0, .)) -> data
+    mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= 2016, 0, .)) -> data
 
   return(data)
 
     }
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (!all(i <- c("ccode") %in% colnames(data))) {
 
@@ -71,14 +71,14 @@ add_cow_majors <- function(data) {
     } else {
     data %>%
       left_join(., major_years) %>%
-      mutate(cowmaj = ifelse(is.na(.data$cowmaj), 0, 1)) -> data
+      mutate(cowmaj = ifelse(is.na(.data$cowmaj)  & .data$year <= 2016, 0, 1)) -> data
 
     return(data)
 
     }
 
   } else  {
-      stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+      stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, or dyad_year. Try running create_dyadyears(), create_leaderyears(), or create_stateyears() at the start of the pipe.")
     }
 
   return(data)

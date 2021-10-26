@@ -39,7 +39,7 @@ Kazakhstan renamed its capital for the state leader in 2019. These data retain t
 in the event the software I use records this change.
 
 The capitals data are not without some peculiarities. Prominently, Portugal transferred the Portuguese court from
-Lisbon to Rio de Janeiro from 1808 to 1821. *This is recorded in the data.* A knowledge of the inter-state conflict data
+Lisbon to Rio de Janeiro from 1808 to 1821. \emph{This is recorded in the data.} A knowledge of the inter-state conflict data
 will note there was no war or dispute between, say, Portugal and Spain (or Portugal and any other country) at any point
 during this time, but it does create some weirdness that would suggest a massive distance between two countries, like
 Portugal and Spain, that are otherwise land-contiguous.

@@ -17,7 +17,7 @@ A data frame with 2436 observations on the following 7 variables.
 \item{\code{maxdur}}{a numeric vector for the maximum duration of the MID}
 \item{\code{hiact}}{a numeric vector for the highest action of the MID}
 \item{\code{hostlev}}{a numeric vector for the hostility level of the MID}
- \item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
+\item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
 }
 }
 \usage{

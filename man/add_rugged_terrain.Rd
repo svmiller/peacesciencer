@@ -15,7 +15,7 @@ data frame, whether the primary state identifiers are from the Correlates of War
 system or the Gleditsch-Ward system, and returns information about the
 "ruggedness" of the state's terrain. The two indicators returned are the
 "terrain ruggedness index" calculated by Nunn and Puga (2012) and a logarithmic
-transformation of how mountainous the state is (as calculated by Gibler and Miller [2014]).
+transformation of how mountainous the state is (as calculated by Gibler and Miller, 2014).
 The dyad-year data get four additional columns (i.e. both indicators for both states
 in the dyad) whereas the state-year data get just the two additional columns.
 }
@@ -26,7 +26,7 @@ about the "ruggedness" of a state's terrain to your dyad-year or state-year data
 \details{
 Please see the information for the underlying data \code{rugged}, and the
 associated R script in the \code{data-raw} directory, to see how these data are generated.
-Importantly, these data are time-agnostic and move *slowly*. We're talking about geography here.
+Importantly, these data are time-agnostic and move \emph{slowly}. We're talking about geography here.
 Both data sets benchmark around 1999-2000 and it's a leap of faith to use these data for comparisons
 across the entirety of the Correlates of War or Gleditsch-Ward system membership. Every use of data
 of these types have been either cross-sectional snapshots or for making state-to-state comparisons

@@ -36,7 +36,7 @@ Second, urban population size is an estimate based on, well, an estimate of the 
 or more people.
 
 Third, the Composite Index of National Capability score is calculated as each state's world share of each of the six composite indicators
-also included in the data in a given year. It theoretically is bound between 0 and 1. A state with a 1 is 100% responsible for 1) all of the military expenditures
+also included in the data in a given year. It theoretically is bound between 0 and 1. A state with a 1 is 100\% responsible for 1) all of the military expenditures
 in the world, 2) is the only state with a military, 3) does all the iron and steel production, 4) all the world's primary energy consumption, and 5)
 is the only state in the world with a population and an urban population. Incidentally, the maximum scores observed in the data belong to the United States in 1945.
 }

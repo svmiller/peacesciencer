@@ -182,7 +182,7 @@ passed to the function in a <code>select(one_of(.))</code> wrapper. This
 allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 too much space in memory. Note: the Correlates of War system codes (<code>ccode1</code>, <code>ccode2</code>), the observation year
 (<code>year</code>), the presence or absence of an ongoing MID (<code>gmlmidongoing</code>), and the presence or absence of a unique
-MID onset (<code>gmlmidonset</code>) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
+MID onset (<code>gmlmidonset</code>) are <em>always</em> returned. It would be foolish and self-defeating to eliminate those observations.
 The user is free to keep or discard anything else they see fit.</p>
 <p>If <code>keep</code> is not specified in the function, the ensuing output returns everything.</p></td>
     </tr>
@@ -214,7 +214,7 @@ data frame.</p>
 <p>Determining "initiation" for state-year summaries of inter-state disputes since there is an implied directionality of "initiation."
 In about half of all cases, this is straightforward. You can use the participant summaries and determine that if the dispute
 was bilateral and the dispute did not escalate beyond an attack, the state on Side A initiated the dispute. For multilateral MIDs, these
-conditions still hold at least for originators. However, there is *considerable* difficulty for cases where 1) participant-level summaries
+conditions still hold at least for originators. However, there is <em>considerable</em> difficulty for cases where 1) participant-level summaries
 suggested actions at the level of clash or higher, 2) the participant was a joiner and not an originator. The effort required to
 flesh this out is enormous, and perhaps forthcoming in a future update.</p>
 <p><code>add_gml_mids()</code> allows you to make one of three judgment
@@ -240,10 +240,7 @@ Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='input'><span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_gml_mids</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode1", "ccode2", "year")</span></div><div class='output co'>#&gt; <span class='message'>add_gml_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.</span>
 #&gt; <span class='message'>See: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2,063,670 × 24</span>
 #&gt;    ccode1 ccode2  year dispnum gmlmidongoing gmlmidonset sidea1 sidea2 fatality1

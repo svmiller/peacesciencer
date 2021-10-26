@@ -33,14 +33,14 @@ considerations. Making non-directed dyad-year data into directed dyad-year data 
 looks weird to see the code that does it.
 
 Previous versions of these data were for the minimum distance as of Dec. 31 of the referent year. These are now Jan. 1.
-Most of the data I prove elsewhere in this package are  to be understood as the data as they were at the *start* of
+Most of the data I prove elsewhere in this package are  to be understood as the data as they were at the \emph{start} of
 the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
 function. However, the script that generates these data are set at Jan. 1 of the year and not Dec. 31. Right now, the \pkg{cshapes}
 does not appear to work on my system and I do not know why. Fortunately, the package authors made these data available.
 }
 \references{
 Schvitz, Guy et al. 2021. "Mapping The International System, 1886-2017: The \code{CShapes} 2.0 Dataset."
- \emph{Journal of Conflict Resolution}. \url{https://journals.sagepub.com/doi/full/10.1177/00220027211013563}
+\emph{Journal of Conflict Resolution}. \url{https://journals.sagepub.com/doi/full/10.1177/00220027211013563}
 
 Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
 }

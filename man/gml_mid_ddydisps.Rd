@@ -29,8 +29,8 @@ A data frame with 9262 observations on the following 25 variables.
 \item{\code{hostlev}}{a numeric vector for the hostility level of the MID}
 \item{\code{mindur}}{a numeric vector for the minimum duration of the MID}
 \item{\code{maxdur}}{a numeric vector for the maximum duration of the MID}
- \item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
- \item{\code{stmon}}{a numeric vector for the start month of the MID}
+\item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
+\item{\code{stmon}}{a numeric vector for the start month of the MID}
 }
 }
 \usage{
@@ -38,8 +38,8 @@ gml_mid_ddydisps
 }
 \description{
 These are directed dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
- Dispute (MID) project. Data are from version 2.2.1. These were whittled to where there is no duplicate dyad-years.
- Its primary aim here is merging into a dyad-year data frame.
+Dispute (MID) project. Data are from version 2.2.1. These were whittled to where there is no duplicate dyad-years.
+Its primary aim here is merging into a dyad-year data frame.
 }
 \details{
 The process of creating these is described at one of the references below. Importantly, these data are somewhat

@@ -46,3 +46,13 @@ test_that("State-year additions do not create duplicates", {
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_wars(type = "intra", intratype = "central control")))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_cow_wars(type = "intra", intratype = "local issues")))
 })
+
+
+test_that("Leader-year additions do not create duplicates", {
+  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_gml_mids()))
+  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_lead()))
+  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_gwcode_to_cow()))
+  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_lwuf()))
+  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_contiguity()))
+  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_cow_majors()))
+})

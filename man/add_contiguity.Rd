@@ -43,7 +43,7 @@ is why \pkg{peacesciencer} does not do this.
 
 For additional clarity, the "master records" produce duplicates for cases when
 the contiguity relationship changed in a given year. This function returns the
-*minimum* contiguity relationship observed in that given year. There should be no
+\emph{minimum} contiguity relationship observed in that given year. There should be no
 duplicates in the returned output.
 }
 \examples{

@@ -1,7 +1,14 @@
 #' Add Peace Years to Your Conflict Data
 #'
-#' @description \code{add_peace_years()} calculates peace years for your ongoing conflicts. The function
-#' works for both dyad-year and state-year data generated in \pkg{peacesciencer}.
+#' @description
+#' `r lifecycle::badge("superseded")`
+#'
+#' \code{add_peace_years()} calculates peace years for your ongoing conflicts. The function
+#' works for both dyad-year and state-year data generated in \pkg{peacesciencer}. As of the forthcoming
+#' v. 0.7.0, \code{add_peace_years()} will be deprecated for the more generic and versatile \code{add_spells()}. Users
+#' are free to continue with the function, though I recommend it only for more balanced panels (like state-year or dyad-year),
+#' and less for imbalanced panels (like leader-years, or leader-dyad-years). As the change in name implies, \code{add_spells()} will
+#' have greater flexibility with both cross-sectional units and time.
 #'
 #' @return \code{add_peace_years()} takes a dyad-year or state-year data frame and adds peace years for ongoing conflicts.
 #' Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
@@ -45,8 +52,6 @@
 #' @param data a dyad-year data frame (either "directed" or "non-directed") or state-year data frame
 #' @param pad an optional parameter, defaults to FALSE. If TRUE, the peace-year calculations fill in cases where panels are
 #' unbalanced/have gaps. Think of a state like Germany disappearing for 45 years as illustrative of this.
-#'
-#' If \code{keep} is not specified in the function, the ensuing output returns everything.
 #'
 #' @references
 #'

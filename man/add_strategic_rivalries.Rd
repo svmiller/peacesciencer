@@ -30,9 +30,9 @@ an on-the-fly adjustment for Austria for rivalry #79. In this case, the Austria-
 after Austria-Hungary (\code{ccode: 300}) became Austria (\code{ccode: 305}).
 
 The \code{across_types} argument is optional and observed for only state-year calls. It defaults to 1. At the default,
-the function looks into the rivalry data (in \code{td_rivalries}) and focuses on the `type1` column. If, say, a state has
-an ongoing rivalry and it is primarily spatial, it codes that as a spatial rivalry. Assume you input `across_types = 2`, the
-function then looks across both the `type1` and `type2` columns to see if there is a spatial component to the rivalry as
+the function looks into the rivalry data (in \code{td_rivalries}) and focuses on the \code{type1} column. If, say, a state has
+an ongoing rivalry and it is primarily spatial, it codes that as a spatial rivalry. Assume you input \code{across_types = 2}, the
+function then looks across both the \code{type1} and \code{type2} columns to see if there is a spatial component to the rivalry as
 either its primary or secondary dimension. If so, it codes that as a 1. \code{across_types} must be 1, 2, or 3.
 }
 \examples{

@@ -14,7 +14,7 @@ passed to the function in a \code{select(one_of(.))} wrapper. This
 allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 too much space in memory. Note: the Correlates of War system codes (\code{ccode1}, \code{ccode2}), the observation year
 (\code{year}), the presence or absence of an ongoing MID (\code{gmlmidongoing}), and the presence or absence of a unique
-MID onset (\code{gmlmidonset}) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
+MID onset (\code{gmlmidonset}) are \emph{always} returned. It would be foolish and self-defeating to eliminate those observations.
 The user is free to keep or discard anything else they see fit.
 
 If \code{keep} is not specified in the function, the ensuing output returns everything.}
@@ -47,7 +47,7 @@ data frame.
 Determining "initiation" for state-year summaries of inter-state disputes since there is an implied directionality of "initiation."
 In about half of all cases, this is straightforward. You can use the participant summaries and determine that if the dispute
 was bilateral and the dispute did not escalate beyond an attack, the state on Side A initiated the dispute. For multilateral MIDs, these
-conditions still hold at least for originators. However, there is *considerable* difficulty for cases where 1) participant-level summaries
+conditions still hold at least for originators. However, there is \emph{considerable} difficulty for cases where 1) participant-level summaries
 suggested actions at the level of clash or higher, 2) the participant was a joiner and not an originator. The effort required to
 flesh this out is enormous, and perhaps forthcoming in a future update.
 

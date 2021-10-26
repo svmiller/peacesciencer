@@ -9,7 +9,7 @@ A data frame with 1932 observations on the following 15 variables.
 \describe{
 \item{\code{warnum}}{the Correlates of War war number}
 \item{\code{ccode1}}{the Correlates of War state code for side1}
- \item{\code{ccode2}}{the Correlates of War state code for side2}
+\item{\code{ccode2}}{the Correlates of War state code for side2}
 \item{\code{year}}{a numeric vector for the year}
 \item{\code{cowinteronset}}{a dummy variable for whether this is an inter-state war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
 \item{\code{cowinterongoing}}{a numeric constant of 1}

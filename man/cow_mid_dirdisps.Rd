@@ -32,7 +32,7 @@ cow_mid_dirdisps
 }
 \description{
 These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
- Dispute (MID) project. Data are from version 5.0.
+Dispute (MID) project. Data are from version 5.0.
 }
 \details{
 The process of creating these is described at one of the references below. Importantly, these data are somewhat

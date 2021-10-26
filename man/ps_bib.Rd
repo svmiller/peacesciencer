@@ -9,7 +9,7 @@ A data frame with the following columns.
 \describe{
 \item{\code{CATEGORY}}{the \code{BibTeX} entry type}
 \item{\code{BIBTEXKEY}}{the \code{BibTeX} unique entry key}
- \item{\code{ADDRESS}}{another \code{BibTeX} field}
+\item{\code{ADDRESS}}{another \code{BibTeX} field}
 \item{\code{ANNOTE}}{another \code{BibTeX} field}
 \item{\code{AUTHOR}}{a list of authors for this entry}
 \item{\code{BOOKTITLE}}{another \code{BibTeX} field, for book title (if appropriate)}

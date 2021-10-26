@@ -13,7 +13,7 @@ add_cow_mids(data, keep)
 allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
 too much space in memory. Note: the Correlates of War system codes (\code{ccode1}, \code{ccode2}), the observation year
 (\code{year}), the presence or absence of an ongoing MID (\code{cowmidongoing}), and the presence or absence of a unique
-MID onset (\code{cowmidonset}) are *always* returned. It would be foolish and self-defeating to eliminate those observations.
+MID onset (\code{cowmidonset}) are \emph{always} returned. It would be foolish and self-defeating to eliminate those observations.
 The user is free to keep or discard anything else they see fit.
 
 If \code{keep} is not specified in the function, the ensuing output returns everything.}

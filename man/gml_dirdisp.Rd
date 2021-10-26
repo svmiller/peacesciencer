@@ -32,20 +32,20 @@ A data frame with 10330 observations on the following 39 variables.
 \item{\code{orig1}}{is \code{ccode1} an originator (1) of the dispute or a joiner (0)?}
 \item{\code{orig2}}{is \code{ccode2} an originator (1) of the dispute or a joiner (0)?}
 \item{\code{hiact}}{the highest level of action observed in the dispute}
- \item{\code{hostlev}}{the hostility level of action observed in the dispute}
- \item{\code{mindur}}{the minimum length of the dispute (in days)}
- \item{\code{maxdur}}{the maximum length of the dispute (in days)}
- \item{\code{outcome}}{the dispute-level outcome}
- \item{\code{settle}}{the settlement value for the dispute}
- \item{\code{fatality}}{the ordinal fatality level for the dispute}
+\item{\code{hostlev}}{the hostility level of action observed in the dispute}
+\item{\code{mindur}}{the minimum length of the dispute (in days)}
+\item{\code{maxdur}}{the maximum length of the dispute (in days)}
+\item{\code{outcome}}{the dispute-level outcome}
+\item{\code{settle}}{the settlement value for the dispute}
+\item{\code{fatality}}{the ordinal fatality level for the dispute}
 \item{\code{fatalpre}}{the fatalities (with precision, if known) for the dispute}
 \item{\code{stmon}}{the start month of the dispute (dispute-level)}
 \item{\code{endmon}}{the end month of the dispute (dispute-level)}
 \item{\code{recip}}{was the dispute reciprocated (i.e. did Side B also have a militarized action)?}
 \item{\code{numa}}{the number of participants on Side A}
 \item{\code{numb}}{the number of participants on Side B}
- \item{\code{ongo2010}}{was the dispute ongoing as of 2010?}
-  \item{\code{version}}{a version identifier}
+\item{\code{ongo2010}}{was the dispute ongoing as of 2010?}
+\item{\code{version}}{a version identifier}
 }
 }
 \usage{

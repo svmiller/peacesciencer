@@ -188,6 +188,9 @@
 <li>“leader-year” (<code>leader_year</code>) is now an attribute. Where appropriate, leader-year and state-year functions are treated the same. For example, the GDP data contained in <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> are fundamentally state-year, but perhaps a leader-year control of interest even as leaders are nested in states.</li>
 <li>
 <code><a href="../reference/create_leaderyears.html">create_leaderyears()</a></code> works on the observation ID and not the leader ID. Observation IDs are unique to each leader-period, but leader IDs are not.</li>
+<li>The directed leader dyad-year data is indexed by observation ID and not leader ID, per se. This is because leaders can have multiple terms in office.</li>
+<li>
+<code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> has been superseded by <code><a href="../reference/add_spells.html">add_spells()</a></code>. The “superseded” language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. <code><a href="../reference/add_spells.html">add_spells()</a></code> promises to have greater functionality.</li>
 </ul>
 </div>
     <div id="peacesciencer-060" class="section level2">

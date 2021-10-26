@@ -22,7 +22,7 @@ from 1870 to 2015.
 Archigos data first introduced and described by Goemans et al. (2009).
 }
 \details{
-This is a *complete* and *universal* leader dyad-year data frame for all possible dyadic
+This is a \emph{complete} and \emph{universal} leader dyad-year data frame for all possible dyadic
 leader pairings from 1870 to 2015. This has several implications. First: these data are enormous. The
 output is over 2.4 million rows long! Second: the time required to create these data from scratch would
 take too long for a normal function call. This amounts to an unholy combination of data that are too large
