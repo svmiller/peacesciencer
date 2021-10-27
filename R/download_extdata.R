@@ -28,11 +28,14 @@
 #' | `obsid1` | the unique Archigos (v. 4.1) observation ID for the first leader |
 #' | `obsid2` | the unique Archigos (v. 4.1) observation ID for the second leader |
 #' | `ccode1` | a numeric vector for the Correlates of War state code for the first state |
-#' | `startdate1` | the start date in office for the first leader |
-#' | `enddate1` | the end date in office for the first leader |
 #' | `ccode2` | a numeric vector for the Correlates of War state code for the second state |
-#' | `startdate2` | the start date in office for the second leader |
-#' | `enddate2` | the end date in office for the second leader |
+#' | `bothincow` | a dummy variable that equals 1 if *both* state leaders were leaders of states in the CoW state system in the year, with overlapping days. |
+#' | `gender1` | the gender of `obsid1` ("M" or "F") |
+#' | `gender2` | the gender of `obsid2` ("M" or "F") |
+#' | `leaderage1` | the approximate age (i.e. `year - yrborn`) for `obsid1` in the year |
+#' | `leaderage2` | the approximate age (i.e. `year - yrborn`) for `obsid2` in the year |
+#' | `yrinoffice1` | a running count for the tenure of `obsid1`, starting at 1. |
+#' | `yrinoffice2` | a running count for the tenure of `obsid2`, starting at 1. |
 #'
 #'
 #' @description \code{download_extdata()} leverages R's \code{inst} directory flexibility to allow you to download

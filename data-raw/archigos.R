@@ -5,7 +5,9 @@ library(tidyverse)
 haven::read_dta("~/Dropbox/data/archigos/Archigos_4.1_stata14.dta") %>%
   select(obsid, ccode, leadid, leader, yrborn, gender, startdate, enddate, entry, exit, exitcode) %>%
   mutate(startdate = lubridate::ymd(startdate),
-         enddate = lubridate::ymd(enddate)) -> archigos
+         enddate = lubridate::ymd(enddate)) %>%
+  # renaming ccode to be gwcode, since these are Gleditsch-Ward states and not CoW states
+  rename(gwcode = ccode) -> archigos
 
 # Gonna futz with some character encoding problems here.
 archigos %>%
@@ -17,7 +19,7 @@ archigos %>%
 archigos %>%
   mutate_at(vars( "obsid", "leadid", "leader", "gender", "entry", "exit", "exitcode"),
             list(enc = ~stringi::stri_enc_isascii(.))) %>% filter(leader_enc == FALSE) %>%
-  distinct(obsid, ccode, leader) -> rename_these
+  distinct(obsid, gwcode, leader) -> rename_these
 
 rename_these %>%
   mutate(leader_corrected = c("Hernandez", "Saca Gonzalez",

@@ -86,15 +86,60 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
 
     } else {
 
-      if (missing(keep)) {
-        gml_mid_ddydisps %>% select(everything()) -> dirdisp
-      } else {
-        gml_mid_ddydisps %>% select(one_of("ccode1", "ccode2", "year", "gmlmidonset", "gmlmidongoing", keep)) -> dirdisp
+      if (nrow(data %>% filter(.data$ccode1 > .data$ccode2)) == 0) {
+
+        message("Dyadic data are non-directed and initiation variables make no sense in this context.")
+
+        if (missing(keep)) {
+          gml_mid_ddydisps %>% select(everything()) -> dirdisp
+        } else {
+          gml_mid_ddydisps %>% select(one_of("ccode1", "ccode2", "year", "gmlmidonset", "gmlmidongoing", keep)) -> dirdisp
+        }
+
+        dirdisp %>%
+          left_join(data, .) %>%
+          mutate_at(vars("gmlmidonset", "gmlmidongoing"), ~ifelse(is.na(.) & between(.data$year, 1816, 2010), 0, .)) -> data
+
+      } else { # Assuming data are directed...
+
+        if (init == "sidea-orig") {
+
+          gml_mid_ddydisps %>%
+            mutate(init1 = ifelse(.data$sidea1 == 1 & .data$orig1 == 1, 1, 0),
+                   init2 = ifelse(.data$sidea2 == 1 & .data$orig2 == 1, 1, 0)) -> hold_this
+
+        } else if (init == "sidea-with-joiners") {
+
+          gml_mid_ddydisps %>%
+            mutate(init1 = ifelse(.data$sidea1 == 1  | (.data$orig1 == 0 & .data$sidea1 == 1), 1, 0),
+                   init2 = ifelse(.data$sidea2 == 1  | (.data$orig2 == 0 & .data$sidea2 == 1), 1, 0)) -> hold_this
+
+        } else if (init == "sidea-all-joiners") {
+
+          gml_mid_ddydisps %>%
+            mutate(init1 = ifelse(.data$sidea1 == 1  | (.data$orig1 == 0), 1, 0),
+                   init2 = ifelse(.data$sidea2 == 1  | (.data$orig2 == 0), 1, 0) ) -> hold_this
+
+        }
+
+
+        if (missing(keep)) {
+          hold_this %>% select(everything()) -> dirdisp
+        } else {
+          hold_this %>% select(one_of("ccode1", "ccode2", "year",
+                                             "gmlmidonset", "gmlmidongoing",
+                                             "init1", "init2",
+                                             "sidea1", "sidea2", "orig1", "orig2",
+                                             keep)) -> dirdisp
+        }
+
+        dirdisp %>%
+          left_join(data, .) %>%
+          mutate_at(vars("gmlmidonset", "gmlmidongoing"), ~ifelse(is.na(.) & between(.data$year, 1816, 2010), 0, .)) -> data
+
       }
 
-      dirdisp %>%
-        left_join(data, .) %>%
-        mutate_at(vars("gmlmidonset", "gmlmidongoing"), ~ifelse(is.na(.) & between(.data$year, 1816, 2010), 0, .)) -> data
+
 
       message("add_gml_mids() IMPORTANT MESSAGE: By default, this function whittles dispute-year data into dyad-year data by first selecting on unique onsets. Thereafter, where duplicates remain, it whittles dispute-year data into dyad-year data in the following order: 1) retaining highest `fatality`, 2) retaining highest `hostlev`, 3) retaining highest estimated `mindur`, 4) retaining reciprocated over non-reciprocated observations, 5) retaining the observation with the lowest start month, and, where duplicates still remained (and they don't), 6) forcibly dropping all duplicates for observations that are otherwise very similar.\nSee: http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html")
       return(data)

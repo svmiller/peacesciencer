@@ -5,9 +5,9 @@
 \alias{archigos}
 \title{Archigos: A (Subset of a) Dataset on Political Leaders}
 \format{
-A data frame with 3409 observations on the following 10 variables.
+A data frame with 3409 observations on the following 11 variables.
 \describe{
-\item{\code{ccode}}{a numeric vector for the Correlates of War state code}
+\item{\code{gwcode}}{a numeric vector for the Gleditsch-Ward state code}
 \item{\code{obsid}}{a character vector for observation ID}
 \item{\code{leadid}}{the unique leader identifier}
 \item{\code{leader}}{the leader name}
@@ -38,6 +38,9 @@ characters (e.g. umlauts or accents). These leaders are "(Juan Orlando) Hernánd
 "Sebastián Piñera" (\code{CHL-2010}), "Sauli Niinistö" (\code{FIN-2012}), "Louis Gerhard De Geer" (\code{SWD-1876}),
 "Stefan Löfven" (\code{SWD-2014}), "Lars Løkke Rasmussen" (\code{DEN-2009}, \code{DEN-2015}), and "Fernando de Araújo"
 (\code{ETM-2008-1}). None of these names contain these special characters in the data here.
+
+For clarity's sake, I renamed the \code{ccode} column in the raw data to be \code{gwcode}. This is because it may deceive the user peeking into
+the data that these are not Correlates of War state codes, but Gleditsch-Ward state codes.
 }
 \references{
 Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"

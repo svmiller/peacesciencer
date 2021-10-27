@@ -34,9 +34,15 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
   if (system == "archigos") {
 
     archigos %>%
+      # rename(gwcode = .data$ccode) %>%
       rowwise() %>%
       mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
-      unnest(.data$date) -> leaderdays
+      unnest(.data$date) %>%
+      mutate(year = .pshf_year(.data$date)) -> leaderdays
+
+    leaderdays %>%
+      left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) %>%
+      select(.data$obsid, .data$gwcode, .data$ccode, everything()) -> leaderdays
 
     if (standardize_cow == TRUE) {
 
@@ -50,8 +56,12 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
         # semi-join kinda life, baby, baby...
         semi_join(leaderdays, .) -> data
 
+      data$year <- NULL
+
 
     } else if (standardize_cow == FALSE) {
+
+      leaderdays$year <- NULL
 
       leaderdays -> data
 
@@ -64,7 +74,11 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
   }
 
   attr(data, "ps_data_type") = "leader_day"
-  attr(data, "ps_system") = "cow"
+  if (standardize_cow == TRUE) {
+    attr(data, "ps_system") = "cow"
+  } else {
+    attr(data, "ps_system") = "gw"
+  }
 
   return(data)
 }

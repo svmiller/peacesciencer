@@ -632,9 +632,9 @@ NULL
 #' based on these data.  Data are version 4.1.
 #'
 #'
-#' @format A data frame with 3409 observations on the following 10 variables.
+#' @format A data frame with 3409 observations on the following 11 variables.
 #' \describe{
-#' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
+#' \item{\code{gwcode}}{a numeric vector for the Gleditsch-Ward state code}
 #' \item{\code{obsid}}{a character vector for observation ID}
 #' \item{\code{leadid}}{the unique leader identifier}
 #'  \item{\code{leader}}{the leader name}
@@ -656,6 +656,9 @@ NULL
 #' "Sebastián Piñera" (`CHL-2010`), "Sauli Niinistö" (`FIN-2012`), "Louis Gerhard De Geer" (`SWD-1876`),
 #' "Stefan Löfven" (`SWD-2014`), "Lars Løkke Rasmussen" (`DEN-2009`, `DEN-2015`), and "Fernando de Araújo"
 #' (`ETM-2008-1`). None of these names contain these special characters in the data here.
+#'
+#' For clarity's sake, I renamed the `ccode` column in the raw data to be `gwcode`. This is because it may deceive the user peeking into
+#' the data that these are not Correlates of War state codes, but Gleditsch-Ward state codes.
 #'
 #' @references
 #'

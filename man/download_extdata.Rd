@@ -44,11 +44,14 @@ These are all directed leader dyad-year data from 1870-2015. Data come from the 
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
    \code{obsid2} \tab the unique Archigos (v. 4.1) observation ID for the second leader \cr
    \code{ccode1} \tab a numeric vector for the Correlates of War state code for the first state \cr
-   \code{startdate1} \tab the start date in office for the first leader \cr
-   \code{enddate1} \tab the end date in office for the first leader \cr
    \code{ccode2} \tab a numeric vector for the Correlates of War state code for the second state \cr
-   \code{startdate2} \tab the start date in office for the second leader \cr
-   \code{enddate2} \tab the end date in office for the second leader \cr
+   \code{bothincow} \tab a dummy variable that equals 1 if \emph{both} state leaders were leaders of states in the CoW state system in the year, with overlapping days. \cr
+   \code{gender1} \tab the gender of \code{obsid1} ("M" or "F") \cr
+   \code{gender2} \tab the gender of \code{obsid2} ("M" or "F") \cr
+   \code{leaderage1} \tab the approximate age (i.e. \code{year - yrborn}) for \code{obsid1} in the year \cr
+   \code{leaderage2} \tab the approximate age (i.e. \code{year - yrborn}) for \code{obsid2} in the year \cr
+   \code{yrinoffice1} \tab a running count for the tenure of \code{obsid1}, starting at 1. \cr
+   \code{yrinoffice2} \tab a running count for the tenure of \code{obsid2}, starting at 1. \cr
 }
 
 }

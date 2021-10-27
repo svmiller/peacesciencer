@@ -171,8 +171,8 @@ based on these data.  Data are version 4.1.</p>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 3409 observations on the following 10 variables.</p><dl>
-<dt><code>ccode</code></dt><dd><p>a numeric vector for the Correlates of War state code</p></dd>
+    <p>A data frame with 3409 observations on the following 11 variables.</p><dl>
+<dt><code>gwcode</code></dt><dd><p>a numeric vector for the Gleditsch-Ward state code</p></dd>
 <dt><code>obsid</code></dt><dd><p>a character vector for observation ID</p></dd>
 <dt><code>leadid</code></dt><dd><p>the unique leader identifier</p></dd>
 <dt><code>leader</code></dt><dd><p>the leader name</p></dd>
@@ -197,6 +197,8 @@ characters (e.g. umlauts or accents). These leaders are "(Juan Orlando) Hernánd
 "Sebastián Piñera" (<code>CHL-2010</code>), "Sauli Niinistö" (<code>FIN-2012</code>), "Louis Gerhard De Geer" (<code>SWD-1876</code>),
 "Stefan Löfven" (<code>SWD-2014</code>), "Lars Løkke Rasmussen" (<code>DEN-2009</code>, <code>DEN-2015</code>), and "Fernando de Araújo"
 (<code>ETM-2008-1</code>). None of these names contain these special characters in the data here.</p>
+<p>For clarity's sake, I renamed the <code>ccode</code> column in the raw data to be <code>gwcode</code>. This is because it may deceive the user peeking into
+the data that these are not Correlates of War state codes, but Gleditsch-Ward state codes.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"

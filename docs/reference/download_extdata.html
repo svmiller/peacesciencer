@@ -211,11 +211,14 @@ Correlates of War trade data.</p>
 <tr><td><code>obsid1</code></td><td>the unique Archigos (v. 4.1) observation ID for the first leader</td></tr>
 <tr><td><code>obsid2</code></td><td>the unique Archigos (v. 4.1) observation ID for the second leader</td></tr>
 <tr><td><code>ccode1</code></td><td>a numeric vector for the Correlates of War state code for the first state</td></tr>
-<tr><td><code>startdate1</code></td><td>the start date in office for the first leader</td></tr>
-<tr><td><code>enddate1</code></td><td>the end date in office for the first leader</td></tr>
 <tr><td><code>ccode2</code></td><td>a numeric vector for the Correlates of War state code for the second state</td></tr>
-<tr><td><code>startdate2</code></td><td>the start date in office for the second leader</td></tr>
-<tr><td><code>enddate2</code></td><td>the end date in office for the second leader</td></tr>
+<tr><td><code>bothincow</code></td><td>a dummy variable that equals 1 if <em>both</em> state leaders were leaders of states in the CoW state system in the year, with overlapping days.</td></tr>
+<tr><td><code>gender1</code></td><td>the gender of <code>obsid1</code> ("M" or "F")</td></tr>
+<tr><td><code>gender2</code></td><td>the gender of <code>obsid2</code> ("M" or "F")</td></tr>
+<tr><td><code>leaderage1</code></td><td>the approximate age (i.e. <code>year - yrborn</code>) for <code>obsid1</code> in the year</td></tr>
+<tr><td><code>leaderage2</code></td><td>the approximate age (i.e. <code>year - yrborn</code>) for <code>obsid2</code> in the year</td></tr>
+<tr><td><code>yrinoffice1</code></td><td>a running count for the tenure of <code>obsid1</code>, starting at 1.</td></tr>
+<tr><td><code>yrinoffice2</code></td><td>a running count for the tenure of <code>obsid2</code>, starting at 1.</td></tr>
 </table>
 
 

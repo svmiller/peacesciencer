@@ -42,9 +42,15 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
   if (system == "archigos") {
 
     archigos %>%
+      # rename(gwcode = .data$ccode) %>%
       rowwise() %>%
       mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
-      unnest(.data$date) -> leaderdays
+      unnest(.data$date) %>%
+      mutate(year = .pshf_year(.data$date)) -> leaderdays
+
+    leaderdays %>%
+      left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) %>%
+      select(.data$obsid, .data$gwcode, .data$ccode, everything()) -> leaderdays
 
     if (standardize_cow == TRUE) {
 
@@ -59,7 +65,7 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
         semi_join(leaderdays, .) -> hold_this
 
       hold_this %>%
-        mutate(year = .pshf_year(.data$date)) %>%
+       # mutate(year = .pshf_year(.data$date)) %>%
         group_by(.data$ccode, .data$obsid, .data$year) %>%
         slice(1) %>% ungroup() -> data
 
@@ -70,7 +76,7 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
 
       leaderdays %>%
         mutate(year = .pshf_year(.data$date)) %>%
-        group_by(.data$ccode, .data$obsid, .data$year) %>%
+        group_by(.data$gwcode, .data$obsid, .data$year) %>%
         slice(1) %>% ungroup() -> data
 
       #data$date <- NULL
@@ -90,10 +96,16 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
     mutate(yrinoffice = 1:n()) %>%
     ungroup() -> data
 
-  data <- subset(data, select=c("obsid", "year", "ccode", "leader", "gender", "leaderage", "yrinoffice"))
+  data <- subset(data, select=c("obsid", "year", "gwcode", "ccode", "leader", "gender", "leaderage", "yrinoffice"))
 
   attr(data, "ps_data_type") = "leader_year"
-  attr(data, "ps_system") = "cow"
+
+  if (standardize_cow == TRUE) {
+    attr(data, "ps_system") = "cow"
+  } else {
+    attr(data, "ps_system") = "gw"
+  }
+
 
   return(data)
 }

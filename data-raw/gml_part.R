@@ -2,11 +2,13 @@ library(tidyverse)
 library(peacesciencer)
 library(lubridate)
 
-archigos %>%
-  rowwise() %>%
-  mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
-  unnest(.data$date) %>%
-  select(ccode, obsid, date, everything()) -> leaderdays
+# archigos %>%
+#   rowwise() %>%
+#   mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
+#   unnest(.data$date) %>%
+#   select(ccode, obsid, date, everything()) -> leaderdays
+
+create_leaderdays() -> leaderdays
 
 Part <- read_csv("~/Dropbox/projects/mid-project/gml-mid-data/2.2.1/gml-midb-2.2.1.csv") %>%
   mutate(stdate = make_date(styear, stmon, stday),

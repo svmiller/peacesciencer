@@ -22,6 +22,7 @@ its original size. This is a huge reduction in disk space. The original simulati
 - `create_leaderyears()` works on the observation ID and not the leader ID. Observation IDs are unique to each leader-period, but leader IDs are not.
 - The directed leader dyad-year data is indexed by observation ID and not leader ID, per se. This is because leaders can have multiple terms in office.
 - `add_peace_years()` has been superseded by `add_spells()`. The "superseded" language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. `add_spells()` promises to have greater functionality.
+- `archigos` data's `ccode` has been renamed to `gwcode` to reflect these are actually Gleditsch-Ward state codes.
 
 peacesciencer 0.6.0
 ---------------------------------------------------------------------
