@@ -36,16 +36,37 @@ These are directed dyad-year-level data for national trade from the Correlates o
 
 }
 
-\subsection{Directed Leader Dyad-Year Data, 1870-2015}{
+\subsection{Directed Leader Dyad-Year Data, 1870-2015 (CoW States)}{
 
-These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1).\tabular{ll}{
+These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
+data are standardized to just those observations where both leaders and states appear in the CoW state system data.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
    \code{obsid2} \tab the unique Archigos (v. 4.1) observation ID for the second leader \cr
    \code{ccode1} \tab a numeric vector for the Correlates of War state code for the first state \cr
    \code{ccode2} \tab a numeric vector for the Correlates of War state code for the second state \cr
-   \code{bothincow} \tab a dummy variable that equals 1 if \emph{both} state leaders were leaders of states in the CoW state system in the year, with overlapping days. \cr
+   \code{gender1} \tab the gender of \code{obsid1} ("M" or "F") \cr
+   \code{gender2} \tab the gender of \code{obsid2} ("M" or "F") \cr
+   \code{leaderage1} \tab the approximate age (i.e. \code{year - yrborn}) for \code{obsid1} in the year \cr
+   \code{leaderage2} \tab the approximate age (i.e. \code{year - yrborn}) for \code{obsid2} in the year \cr
+   \code{yrinoffice1} \tab a running count for the tenure of \code{obsid1}, starting at 1. \cr
+   \code{yrinoffice2} \tab a running count for the tenure of \code{obsid2}, starting at 1. \cr
+}
+
+}
+
+\subsection{Directed Leader Dyad-Year Data, 1870-2015 (Gleditsch-Ward States)}{
+
+These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
+data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
+system).\tabular{ll}{
+   COLUMN \tab DESCRIPTION \cr
+   \code{year} \tab the year \cr
+   \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
+   \code{obsid2} \tab the unique Archigos (v. 4.1) observation ID for the second leader \cr
+   \code{gwcode1} \tab a numeric vector for the Gleditsch-Ward state code for the first state \cr
+   \code{gwcode2} \tab a numeric vector for the Gleditsch-Ward state code for the second state \cr
    \code{gender1} \tab the gender of \code{obsid1} ("M" or "F") \cr
    \code{gender2} \tab the gender of \code{obsid2} ("M" or "F") \cr
    \code{leaderage1} \tab the approximate age (i.e. \code{year - yrborn}) for \code{obsid1} in the year \cr

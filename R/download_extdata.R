@@ -18,9 +18,10 @@
 #' | `smoothflow1` | smoothed \code{flow1} values |
 #' | `smoothflow2` | smoothed \code{flow2} values |
 #'
-#' ## Directed Leader Dyad-Year Data, 1870-2015
+#' ## Directed Leader Dyad-Year Data, 1870-2015 (CoW States)
 #'
-#' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1).
+#' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
+#' data are standardized to just those observations where both leaders and states appear in the CoW state system data.
 #'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
@@ -29,7 +30,27 @@
 #' | `obsid2` | the unique Archigos (v. 4.1) observation ID for the second leader |
 #' | `ccode1` | a numeric vector for the Correlates of War state code for the first state |
 #' | `ccode2` | a numeric vector for the Correlates of War state code for the second state |
-#' | `bothincow` | a dummy variable that equals 1 if *both* state leaders were leaders of states in the CoW state system in the year, with overlapping days. |
+#' | `gender1` | the gender of `obsid1` ("M" or "F") |
+#' | `gender2` | the gender of `obsid2` ("M" or "F") |
+#' | `leaderage1` | the approximate age (i.e. `year - yrborn`) for `obsid1` in the year |
+#' | `leaderage2` | the approximate age (i.e. `year - yrborn`) for `obsid2` in the year |
+#' | `yrinoffice1` | a running count for the tenure of `obsid1`, starting at 1. |
+#' | `yrinoffice2` | a running count for the tenure of `obsid2`, starting at 1. |
+#'
+#'
+#' ## Directed Leader Dyad-Year Data, 1870-2015 (Gleditsch-Ward States)
+#'
+#' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
+#' data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
+#' system).
+#'
+#' | COLUMN | DESCRIPTION |
+#' | -------| ------------|
+#' | `year` | the year |
+#' | `obsid1` | the unique Archigos (v. 4.1) observation ID for the first leader |
+#' | `obsid2` | the unique Archigos (v. 4.1) observation ID for the second leader |
+#' | `gwcode1` | a numeric vector for the Gleditsch-Ward state code for the first state |
+#' | `gwcode2` | a numeric vector for the Gleditsch-Ward state code for the second state |
 #' | `gender1` | the gender of `obsid1` ("M" or "F") |
 #' | `gender2` | the gender of `obsid2` ("M" or "F") |
 #' | `leaderage1` | the approximate age (i.e. `year - yrborn`) for `obsid1` in the year |
@@ -82,13 +103,23 @@ download_extdata <- function(overwrite = FALSE) {
     }
 
     # directed leader dyad-year data now...
-    if(file.exists(system.file("extdata", "dir_leader_dyad_years.rds", package="peacesciencer"))) {
-      message("dir_leader_dyad_years.rds is in /extdata in the package directory.")
+    if(file.exists(system.file("extdata", "cow_dir_leader_dyad_years.rds", package="peacesciencer"))) {
+      message("cow_dir_leader_dyad_years.rds is in /extdata in the package directory.")
     } else {
-      message("Downloading dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
-      dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/dir_leader_dyad_years.rds"))
-      saveRDS(dir_leader_dyad_years, paste0(extdata_dir,"/dir_leader_dyad_years.rds"))
-      message("dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+      message("Downloading cow_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
+      cow_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_dir_leader_dyad_years.rds"))
+      saveRDS(cow_dir_leader_dyad_years, paste0(extdata_dir,"/cow_dir_leader_dyad_years.rds"))
+      message("cow_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+    }
+
+    # directed leader dyad-year data now...
+    if(file.exists(system.file("extdata", "gw_dir_leader_dyad_years.rds", package="peacesciencer"))) {
+      message("gw_dir_leader_dyad_years.rds is in /extdata in the package directory.")
+    } else {
+      message("Downloading gw_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
+      gw_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
+      saveRDS(gw_dir_leader_dyad_years, paste0(extdata_dir,"/gw_dir_leader_dyad_years.rds"))
+      message("gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
     }
 
 
@@ -98,10 +129,17 @@ download_extdata <- function(overwrite = FALSE) {
     saveRDS(cow_trade_ddy, paste0(extdata_dir,"/cow_trade_ddy.rds"))
     message("cow_trade_ddy.rds downloaded and moved to /extdata directory in the package.")
 
-    message("Downloading dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
-    dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/dir_leader_dyad_years.rds"))
-    saveRDS(dir_leader_dyad_years, paste0(extdata_dir,"/dir_leader_dyad_years.rds"))
-    message("dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+    message("Downloading cow_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
+    cow_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_dir_leader_dyad_years.rds"))
+    saveRDS(cow_dir_leader_dyad_years, paste0(extdata_dir,"/cow_dir_leader_dyad_years.rds"))
+    message("cow_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+
+    message("Downloading gw_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
+    gw_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
+    saveRDS(gw_dir_leader_dyad_years, paste0(extdata_dir,"/gw_dir_leader_dyad_years.rds"))
+    message("gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+
+
   } else {
     stop("overwrite must either be TRUE (T) or FALSE (F). Default is FALSE (F)")
   }

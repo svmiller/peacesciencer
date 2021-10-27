@@ -5,7 +5,10 @@ library(tidyverse)
 haven::read_dta("~/Dropbox/data/archigos/Archigos_4.1_stata14.dta") %>%
   select(obsid, ccode, leadid, leader, yrborn, gender, startdate, enddate, entry, exit, exitcode) %>%
   mutate(startdate = lubridate::ymd(startdate),
-         enddate = lubridate::ymd(enddate)) %>%
+         enddate = lubridate::ymd(enddate),
+         # Gonna hard-code the -999 yrborns to be NA
+         # earliest birth is 1797 in these data anyway, so this is safe...
+         yrborn = ifelse(yrborn < 1700, NA, yrborn)) %>%
   # renaming ccode to be gwcode, since these are Gleditsch-Ward states and not CoW states
   rename(gwcode = ccode) -> archigos
 
