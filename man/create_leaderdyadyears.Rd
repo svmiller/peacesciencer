@@ -4,13 +4,17 @@
 \alias{create_leaderdyadyears}
 \title{Create leader-dyad-years from the Archigos data}
 \usage{
-create_leaderdyadyears(directed = TRUE)
+create_leaderdyadyears(directed = TRUE, system = "gw")
 }
 \arguments{
 \item{directed}{optional, defaults to TRUE. If TRUE, the function returns so-called
 "directed" leader dyad-year data. If FALSE, the function returns
 non-directed data. The standard here is to drop cases where the country code for the
 second observation is less than the country code for the first observation.}
+
+\item{system}{a character specifying whether the user wants Correlates of War
+state-years ("cow") or Gleditsch-Ward ("gw") state-years. Gleditsch-Ward is the
+default.}
 }
 \value{
 \code{create_leaderdyadyears()} takes remote data available for separate download
@@ -24,7 +28,7 @@ Archigos data first introduced and described by Goemans et al. (2009).
 \details{
 This is a \emph{complete} and \emph{universal} leader dyad-year data frame for all possible dyadic
 leader pairings from 1870 to 2015. This has several implications. First: these data are enormous. The
-output is over 2.4 million rows long! Second: the time required to create these data from scratch would
+output is over 2 million rows long! Second: the time required to create these data from scratch would
 take too long for a normal function call. This amounts to an unholy combination of data that are too large
 for CRAN's disk space restrictions (5 MB) and too time-consuming to do from scratch every time. Thus, the
 data are pre-generated and stored remotely. Check \code{download_extdata()} for more information.
