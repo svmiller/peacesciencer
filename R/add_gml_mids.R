@@ -262,6 +262,55 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
       left_join(., hold_this) -> data
 
 
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "leader_dyad_year") {
+
+    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+
+      stop("add_gml_mids() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_leaderdyadyears(system='cow') at the top of the pipe.")
+
+    }
+
+    if (nrow(data %>% filter(.data$ccode1 > .data$ccode2)) == 0) {
+
+      message("The leader-dyadic data are non-directed and initiation variables make no sense in this context.")
+
+      data %>%
+        left_join(., gml_mid_ddlydisps) -> hold_this
+
+      hold_this %>%
+        mutate_at(vars("gmlmidonset", "gmlmidongoing"), ~ifelse(is.na(.) & between(.data$year, 1816, 2010), 0, .)) -> data
+
+    } else { # Assuming the data are directed....
+
+      data %>%
+        left_join(., gml_mid_ddlydisps) -> hold_this
+
+      if (init == "sidea-orig") {
+        hold_this %>%
+          mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & .data$obsid_start1 == .data$obsid1 & (.data$sidea1 == 1 & .data$orig1 == 1), 1, 0),
+                 gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0)) -> hold_this
+
+      } else if (init == "sidea-with-joiners") {
+
+        hold_this %>%
+          mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & .data$obsid_start1 == .data$obsid1 & (.data$sidea1 == 1 | ( .data$orig1 == 0 & .data$sidea1 == 1 )), 1, 0),
+                 gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0))  -> hold_this
+
+      } else if (init == "sidea-all-joiners") {
+
+        hold_this %>%
+          mutate(gmlmidongoing_init = ifelse(.data$gmlmidongoing == 1 & .data$obsid_start1 == .data$obsid1 & (.data$sidea1 == 1 | (.data$orig1 == 0)), 1, 0),
+                 gmlmidonset_init = ifelse(.data$gmlmidonset == 1 & .data$gmlmidongoing_init == 1, 1, 0))  -> hold_this
+
+      }
+
+      hold_this %>%
+        mutate_at(vars("gmlmidonset", "gmlmidongoing",
+                       "gmlmidonset_init", "gmlmidongoing_init"), ~ifelse(is.na(.) & !(is.na(obsid1) & is.na(obsid2)) & between(.data$year, 1816, 2010), 0, .)) -> data
+
+    }
+
+
   } else {
     stop("add_gml_mids() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, or dyad_year. Try running create_dyadyears(), create_leaderyears(), or create_stateyears() at the start of the pipe.")
   }

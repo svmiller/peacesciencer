@@ -19,6 +19,10 @@ A data frame with 10708 observations on the following 12 variables.
 \item{\code{sidea2}}{is \code{ccode2} on side A of the dispute?}
 \item{\code{orig1}}{is \code{ccode1} an originator of the dispute?}
 \item{\code{orig2}}{is \code{ccode2} an originator of the dispute?}
+\item{\code{obsid_start1}}{the ID of the leader at the dispute onset for \code{ccode1}}
+\item{\code{obsid_start2}}{the ID of the leader at the dispute onset for \code{ccode2}}
+\item{\code{obsid_end1}}{the ID of the leader at the dispute conclusion for \code{ccode1}}
+\item{\code{obsid_end2}}{the ID of the leader at the dispute conclusion for \code{ccode2}}
 }
 }
 \usage{

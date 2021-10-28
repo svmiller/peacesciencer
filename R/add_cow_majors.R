@@ -42,7 +42,7 @@ add_cow_majors <- function(data) {
     select(-.data$styear, -.data$endyear) %>%
     mutate(cowmaj = 1) -> major_years
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
 

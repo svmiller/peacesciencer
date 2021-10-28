@@ -257,6 +257,39 @@ add_spells <- function(data, conflict_event_type = "ongoing", ongo = FALSE) {
 
 
 
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "leader_dyad_year") {
+
+    if("dyad" %in% colnames(data)) {
+
+      warning("I see a column here with the name `dyad` and I am going to overwrite it with my own dyadic identifier.")
+
+    }
+
+    data$dyad <- NULL
+    data$dyad <- paste0(data$obsid1,"-",data$obsid2)
+
+    if (c("gmlmidongoing") %in% colnames(data)) {
+      # ^ are the GML mid data in there...
+
+    if (conflict_event_type == "ongoing") {
+
+      data <- ps_spells(data, .data$gmlmidongoing, .data$year, .data$dyad, ongoing = ongo)
+      names(data)[names(data) == "spell"] <- "gmlmidspell"
+
+      data <- ps_spells(data, .data$gmlmidongoing_init, .data$year, .data$dyad, ongoing = ongo)
+      names(data)[names(data) == "spell"] <- "gmlmidinitspell"
+
+    } else { # assuming you want onsets...
+
+      data <- ps_spells(data, .data$gmlmidonset, .data$year, .data$dyad, ongoing = ongo)
+      names(data)[names(data) == "spell"] <- "gmlmidspell"
+
+      data <- ps_spells(data, .data$gmlmidonset_init, .data$year, .data$dyad, ongoing = ongo)
+      names(data)[names(data) == "spell"] <- "gmlmidinitspell"
+
+    }
+    }
+
   } else {
     stop("add_spells() sees nothing that needs spells right now.")
   }

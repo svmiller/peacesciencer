@@ -78,7 +78,7 @@ dyadic_conflict_leader_days %>%
   # The onsets are recoded such that if either side is a 1, it's a new entry for at least one of them and thus a new dyadic onset.
   mutate(gmlmidongoing = 1,
          gmlmidonset = ifelse(gmlmidonset1 == 1 | gmlmidonset2 == 1, 1, 0)) %>%
-  select(dispnum:ccode2, obsid1, obsid2, year, sidea1:orig2, gmlmidongoing, gmlmidonset) -> dyadic_conflict_leader_years
+  select(dispnum:ccode2, obsid1, obsid2, year, sidea1:orig2, gmlmidongoing, gmlmidonset, obsid_start1:obsid_end2) -> dyadic_conflict_leader_years
 
 
 

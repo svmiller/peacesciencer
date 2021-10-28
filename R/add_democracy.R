@@ -41,7 +41,7 @@
 
 add_democracy <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
