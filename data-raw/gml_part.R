@@ -480,6 +480,50 @@ Part %>% select(dispnum:styear, sidea, hiact, orig) %>%
   left_join(gml_part, .) -> gml_part
 
 
+# Can I impute any here?
+
+gml_part %>%
+  filter(styear >= 1870) %>%
+  filter(is.na(obsid_start) | is.na(obsid_end)) %>%
+  write_csv(., "data-raw/scratchpad/still-missing-leaders.csv", na='')
+
+
+# Let's open that and look around...
+# This is the best I can do...
+gml_part %>%
+  mutate(obsid_start = case_when(
+    dispnum == 197 & ccode == 20 & styear == 1920 ~ "CAN-1911",
+    dispnum == 258 & ccode == 530 & styear == 1941 ~ "ETH-1936",
+    # unknown day below, but it's a reasonable inference given our summary.
+    dispnum == 1225 & ccode == 811 & styear == 1953 ~ "CAM-1953",
+    dispnum == 1272 & ccode == 290 & styear == 1918 & stmon == 11 ~ "POL-1918-1",
+    dispnum == 1272 & ccode == 368 & styear == 1918 & stmon == 11 ~ "LIT-1918-2",
+    dispnum == 2006 & ccode == 713 & styear == 1949 & stmon == 9 ~ "TAW-1949",
+    dispnum == 2007 & ccode == 713 & styear == 1949 & stmon == 10 ~ "TAW-1949",
+    dispnum == 2186 & ccode == 732 & styear == 1949 ~ "ROK-1948",
+    dispnum %in% c(3151, 352) & ccode == 652 & styear == 1958 ~ "SYR-1958",
+    dispnum == 3599 & ccode == 305 & styear == 1919 ~ "AUS-1918",
+    TRUE ~ obsid_start
+  ),
+  obsid_end = case_when(
+    dispnum == 111 & ccode == 530 & endyear == 1936 ~ "ETH-1936",
+    dispnum == 258 & ccode == 360 & endyear == 1945 ~ "RUM-1944",
+    dispnum == 258 & ccode == 385 & endyear == 1940 & endmon == 6 ~ "NOR-1940",
+    dispnum == 505 & ccode == 366 & endyear == 1940 & endmon == 6 ~ "EST-1933-2",
+    dispnum == 607 & ccode == 652 & endyear == 1958 & endmon == 4 ~ "SYR-1958",
+    dispnum == 611 & ccode == 817 & endyear == 1975 ~ "RVN-1975",
+    # unknown day below, but our sources suggest we can reasonably impute FIN-1919 here
+    dispnum == 1723 & ccode == 375 & endyear == 1919 & endmon == 7 ~ "FIN-1919",
+    dispnum == 2007 & ccode == 713 & endyear == 1949 & endmon == 11 ~ "TAW-1949",
+    # unknown day below, but our sources suggest we can reasonbly impute FRN-1952-2 here.
+    dispnum == 2022 & ccode == 220 & endyear == 1952 & endmon == 3 ~ "FRN-1952-2",
+    dispnum == 2302 & ccode == 315 & endyear == 1939 ~ "CZE-1938-2",
+    dispnum %in% c(3151, 352) & ccode == 652 & endyear == 1958 ~ "SYR-1958",
+    dispnum == 3405 & ccode == 652 & endyear == 1958 ~ "SYR-1958",
+    TRUE ~ obsid_end
+  )) -> gml_part
+
+
 # For later usage: what disputes have missing leaders?
 gml_part %>%
   group_by(dispnum) %>%
