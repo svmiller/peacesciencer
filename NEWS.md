@@ -9,7 +9,7 @@ This is a leader-intensive update. Additions/new features include:
 - `create_leaderdyadyears()`: create leader dyad-year data (via `archigos`) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in `download_extdata()`. The function returns either all possible Gleditsch-Ward dyadic leader pairings (as implied by the original data) or standardizes the Archigos data to Correlates of War state system member data.
 - `gml_part`: a data set on participant summary information from the GML MID data.
 - `add_gml_mids()` now works with leader-year data. See documentation for more.
-- `add_peace_years()` now works with leader-year data, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
+- `add_spells()` will do more general peace spell calculations, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
 - `add_lwuf()` adds estimates of leader willingness to use force to leader-year analyses.
 - `add_lead()` adds some leader attributes to leader-year analyses.
 - `gml_mid_dirleaderdisps` and `gml_mid_ddlydisps` include data on leader dyads in conflict.

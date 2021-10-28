@@ -47,51 +47,98 @@ add_archigos <- function(data) {
     mutate(year = .pshf_year(date)) %>%
     filter(.data$year >= 1870) %>%
     arrange(date) %>%
-    group_by(.data$ccode, .data$year) %>%
-    mutate(jan1leadid = first(.data$leadid),
-           dec31leadid = last(.data$leadid),
-           leadertransition = ifelse(.data$jan1leadid != .data$dec31leadid, 1, 0),
+    group_by(.data$gwcode, .data$year) %>%
+    mutate(jan1obsid = first(.data$obsid),
+           dec31obsid = last(.data$obsid),
+           leadertransition = ifelse(.data$jan1obsid != .data$dec31obsid, 1, 0),
            n_leaders = n_distinct(.data$leadid),
            irregular = ifelse(.data$leadertransition == 1 & any(.data$exit == "Irregular"), 1, 0)) %>%
-    group_by(.data$ccode, .data$year) %>%
-    select(.data$ccode, .data$year, .data$leadertransition, .data$irregular, .data$n_leaders, .data$jan1leadid, .data$dec31leadid) %>%
-    group_by(.data$ccode, .data$year) %>%
-    slice(1) %>% ungroup() -> hold_this
+    group_by(.data$gwcode, .data$year) %>%
+    select(.data$gwcode, .data$year, .data$leadertransition, .data$irregular, .data$n_leaders, .data$jan1obsid, .data$dec31obsid) %>%
+    group_by(.data$gwcode, .data$year) %>%
+    slice(1) %>% ungroup() -> archigossums
+
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
 
-    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+    if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_system == "cow") {
 
-      stop("add_archigos() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+      archigossums %>%
+        left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) -> hold_this
 
-
-    } else {
+      # Naturally, the different ways of handling Serbia screw things up here.
+      # On June 4, 2006, archigos records a leader transition and a state transition,
+      # from YUG-2003 to SER-2006. CoW would see this as just a leader transition, not
+      # a state transition as well. We can use some rudimentary filter/case_when to fix this
+      # and then remove gwcode later. In this case, CoW's Serbia starts the year with YUG-2003 and
+      # ends it with SER-2006.
 
       hold_this %>%
+        filter(!(.data$gwcode == 340 & .data$year == 2006)) %>%
+        mutate(dec31obsid = case_when(
+          .data$gwcode == 345 & .data$year == 2006 ~ "SER-2006",
+          TRUE ~ .data$dec31obsid
+        )) -> hold_this
+
+
+      hold_this$gwcode <- NULL
+
+
+
+      hold_this %>%
+        rename_at(vars(-.data$year), ~paste0(.,"1")) %>%
+        left_join(data, .,  by=c("ccode1"="ccode1", "year"="year")) %>%
+        left_join(., hold_this  %>%
+                    rename_at(vars(-.data$year), ~paste0(.,"2")), by=c("ccode2"="ccode2", "year"="year")) -> data
+
+
+    } else { # Assuming it's GW..
+
+      archigossums %>%
         rename_at(vars(-.data$year), ~paste0(.,"1")) %>%
         left_join(data, .) %>%
         left_join(., hold_this  %>%
                     rename_at(vars(-.data$year), ~paste0(.,"2"))) -> data
 
-      return(data)
-
     }
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
-    if (!all(i <- c("ccode") %in% colnames(data))) {
+    if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_system == "cow") {
 
-      stop("add_archigos() merges on the Correlates of War codes (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+      archigossums %>%
+        left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) -> hold_this
 
-
-    } else {
+      # Naturally, the different ways of handling Serbia screw things up here.
+      # On June 4, 2006, archigos records a leader transition and a state transition,
+      # from YUG-2003 to SER-2006. CoW would see this as just a leader transition, not
+      # a state transition as well. We can use some rudimentary filter/case_when to fix this
+      # and then remove gwcode later. In this case, CoW's Serbia starts the year with YUG-2003 and
+      # ends it with SER-2006.
 
       hold_this %>%
-        left_join(data, .) -> data
+        filter(!(.data$gwcode == 340 & .data$year == 2006)) %>%
+        mutate(dec31obsid = case_when(
+          .data$gwcode == 345 & .data$year == 2006 ~ "SER-2006",
+          TRUE ~ .data$dec31obsid
+        )) -> hold_this
 
-      return(data)
 
-    }
+      hold_this$gwcode <- NULL
+
+      data %>%
+        left_join(., hold_this, by=c("ccode"="ccode", "year"="year")) -> data
+
+
+    } else { # Assuming it's G-W...
+
+      data %>%
+        left_join(., archigossums) -> data
+
+
+      }
+
+
 
   } else  {
     stop("add_archigos() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
