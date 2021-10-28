@@ -5,7 +5,7 @@
 #' of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
 #' function will keep the observations with the highest estimated duration.
 #'
-#' @return \code{whittle_conflicts_duration()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+#' @return \code{whittle_conflicts_duration()} takes a dyad-year data frame or leader-dyad-year data frame  with a declared conflict attribute type and, grouping by the
 #' dyad and year, returns just those observations that have the highest observed dispute-level fatality.
 #' This will not eliminate all duplicates, far from it, but it's a sensible cut later into the procedure (after whittling onsets in
 #' \code{whittle_conflicts_onsets(), and maybe some other things} the extent to which dispute-level duration
@@ -148,7 +148,50 @@ whittle_conflicts_duration <- function(data, durtype = "mindur") {
 
 
 
-  } else  {
+  } else if(length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "leader_dyad_year" &&  attributes(data)$ps_conflict_type == "gml") {
+
+    data[ , c('styear', 'stmon', 'settle', 'fatality', 'mindur', 'maxdur', 'hiact', 'hostlev', 'recip', 'outcome')] <- list(NULL)
+
+    attr_ps_data_type <- attributes(data)$ps_data_type
+    attr_ps_system <- attributes(data)$ps_system
+    attr_ps_conflict_type <- attributes(data)$ps_conflict_type
+
+    data %>%
+      left_join(., gml_mid_disps ) %>%
+      arrange(.data$ccode1, .data$obsid1, .data$ccode2, .data$obsid2, .data$year) %>%
+      group_by(.data$ccode1, .data$obsid1, .data$ccode2, .data$obsid2, .data$year) %>%
+      mutate(duplicated = ifelse(n() > 1, 1, 0)) -> hold_this
+
+    if (durtype == "mindur") {
+
+      hold_this %>%
+        group_by(.data$ccode1, .data$obsid1, .data$ccode2, .data$obsid2, .data$year, .data$duplicated) %>%
+        # keep highest duration
+        filter(.data$mindur == max(.data$mindur)) %>%
+        arrange(.data$ccode1, .data$obsid1, .data$ccode2, .data$obsid2, .data$year) %>%
+        # practice safe group_by()
+        ungroup() %>%
+        select(-.data$duplicated) -> data
+
+    } else if (durtype == "maxdur") {
+
+      hold_this %>%
+        group_by(.data$ccode1, .data$obsid1, .data$ccode2, .data$obsid2, .data$year, .data$duplicated) %>%
+        # keep highest duration
+        filter(.data$maxdur == max(.data$maxdur)) %>%
+        arrange(.data$ccode1, .data$obsid1, .data$ccode2, .data$obsid2, .data$year) %>%
+        # practice safe group_by()
+        ungroup() %>%
+        select(-.data$duplicated) -> data
+    }
+
+    attr(data, "ps_data_type") <- attr_ps_data_type
+    attr(data, "ps_system") <-  attr_ps_system
+    attr(data, "ps_conflict_type") <-  attr_ps_conflict_type
+
+
+
+  } else {
     stop("whittle_conflicts_duration() doesn't recognize the data supplied to it.")
   }
 

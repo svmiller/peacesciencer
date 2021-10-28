@@ -150,6 +150,11 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
 
   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
 
+    if (!all(i <- c("ccode") %in% colnames(data))) {
+      stop("add_gml_mids() for leader-year data merges on Correlates of War state codes (ccode), which you don't have.")
+
+    }
+
     gml_part %>%
       filter(.data$allmiss_leader_start == 0 & .data$allmiss_leader_end == 0) %>%
       rowwise() %>%
@@ -199,7 +204,12 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
 
   } else  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "leader_year") {
 
-    leaderdays <- create_leaderdays()
+    if (!all(i <- c("ccode") %in% colnames(data))) {
+      stop("add_gml_mids() for leader-year data merges on Correlates of War state codes (ccode), which you don't have.")
+
+    }
+
+    leaderdays <- create_leaderdays(standardize_cow = TRUE)
 
     gml_part %>%
       filter(.data$allmiss_leader_start == 0 & .data$allmiss_leader_end == 0) %>%
@@ -253,7 +263,7 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
 
 
   } else {
-    stop("add_gml_mids() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+    stop("add_gml_mids() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, or dyad_year. Try running create_dyadyears(), create_leaderyears(), or create_stateyears() at the start of the pipe.")
   }
 
   return(data)

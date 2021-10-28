@@ -167,6 +167,37 @@ gw_cow_years %>%
     TRUE ~ ccode
   )) -> gw_cow_years
 
-
+# Riffing after the fact, forgetting what exactly I did here, but remembering now... ignore this all. It's already fixed.
+# This is all the product of the full join.
+# # Discovered this after the fact. We're going to have to do some ad hoc corrections for gwcode as well
+#
+# gw_cow_years %>%
+#   filter(is.na(gwcode)) %>%
+#   group_by(stateabb) %>%
+#   summarize(ccode = max(ccode, na.rm=T),
+#             n = n(), min = min(year), max = max(year))
+#
+# # ^ In this list:
+# # Have to fix Bavaria and add that year. The NA happened because both disagree on the exact day.
+# # Ignore Dominica. It's not in G-W
+# # Ignore Egypt. Both CoW and G-W have conflict accounts for Egyptian statehood. CoW: 1855-1882, 1937-2016. G-W: 1827-1855, 1922-2017.
+# # Fix Estonia to add 1940. The NA happened because both disagree by two weeks of June 1940.
+# # Fix Greece to add 1828. The NA happened because both disagree by three months.
+# # Ignore Grenada. It's not in G-W
+# # Fix Haiti in 1915. The NA happened because both disagree by two weeks.
+# # Fix Jordan in 1946. The NA happened because both disagree by a little over two months.
+# # Fix Mali in 1960. Same basic reasons as above.
+# # Fix Morocco, but just for 1904. That's when G-W has Morocco drop out.
+# # Fix Norway in 1905.
+# # Fix Poland in 1918.
+# # Fix Saudi Arabia, but just for 1932.
+# #
+#
+# gw_cow_years %>%
+#   mutate(gwcode = case_when(
+#     stateabb == "BAV" & year == 1871 ~ 245,
+#
+#     TRUE ~ gwcode
+#   ))
 
 save(gw_cow_years, file="data/gw_cow_years.rda")

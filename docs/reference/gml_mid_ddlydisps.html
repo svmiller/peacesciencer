@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Create leader-dyad-years from the Archigos data — create_leaderdyadyears • peacesciencer</title>
+<title>Directed Leader-Dyadic Dispute-Year Data with No Duplicate Leader-Dyad-Years (GML, v. 2.2.1, Archigos v. 4.1) — gml_mid_ddlydisps • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,11 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Create leader-dyad-years from the Archigos data — create_leaderdyadyears" />
-<meta property="og:description" content="create_leaderdyadyears() allows you to created leader dyad-year data from the
-Archigos data first introduced and described by Goemans et al. (2009)." />
+<meta property="og:title" content="Directed Leader-Dyadic Dispute-Year Data with No Duplicate Leader-Dyad-Years (GML, v. 2.2.1, Archigos v. 4.1) — gml_mid_ddlydisps" />
+<meta property="og:description" content="These are directed leader-dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
+Dispute (MID) project. Data are from version 2.2.1 (GML-MID) and version 4.1 (Archigos).
+These were whittled to where there is no duplicate dyad-years.
+Its primary aim here is merging into a dyad-year data frame." />
 
 
 
@@ -156,70 +158,60 @@ Archigos data first introduced and described by Goemans et al. (2009)." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Create leader-dyad-years from the Archigos data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/create_leaderdyadyears.R'><code>R/create_leaderdyadyears.R</code></a></small>
-    <div class="hidden name"><code>create_leaderdyadyears.Rd</code></div>
+    <h1>Directed Leader-Dyadic Dispute-Year Data with No Duplicate Leader-Dyad-Years (GML, v. 2.2.1, Archigos v. 4.1)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>gml_mid_ddlydisps.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>create_leaderdyadyears()</code> allows you to created leader dyad-year data from the
-Archigos data first introduced and described by Goemans et al. (2009).</p>
+    <p>These are directed leader-dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
+Dispute (MID) project. Data are from version 2.2.1 (GML-MID) and version 4.1 (Archigos).
+These were whittled to where there is no duplicate dyad-years.
+Its primary aim here is merging into a dyad-year data frame.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_leaderdyadyears</span><span class='op'>(</span>directed <span class='op'>=</span> <span class='cn'>TRUE</span>, system <span class='op'>=</span> <span class='st'>"gw"</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='va'>gml_mid_ddlydisps</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>directed</th>
-      <td><p>optional, defaults to TRUE. If TRUE, the function returns so-called
-"directed" leader dyad-year data. If FALSE, the function returns
-non-directed data. The standard here is to drop cases where the country code for the
-second observation is less than the country code for the first observation.</p></td>
-    </tr>
-    <tr>
-      <th>system</th>
-      <td><p>a character specifying whether the user wants Correlates of War
-state-years ("cow") or Gleditsch-Ward ("gw") state-years. Gleditsch-Ward is the
-default.</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p><code>create_leaderdyadyears()</code> takes remote data available for separate download
-and returns a complete leader dyad-year data frame for all leaders, and all possible dyads,
-from 1870 to 2015.</p>
+    <p>A data frame with 10708 observations on the following 12 variables.</p><dl>
+<dt><code>dispnum</code></dt><dd><p>a numeric vector for the dispute number</p></dd>
+<dt><code>ccode1</code></dt><dd><p>a numeric vector for the focal state in the dyad</p></dd>
+<dt><code>ccode2</code></dt><dd><p>a numeric vector for the target state in the dyad</p></dd>
+<dt><code>obsid1</code></dt><dd><p>a character vector for the leader of the focal state in the dyad, if avialable</p></dd>
+<dt><code>obsid2</code></dt><dd><p>a character vector for the leader of the target state in the dyad, if avialable</p></dd>
+<dt><code>year</code></dt><dd><p>a numeric vector for the dispute-year</p></dd>
+<dt><code>gmlmidongoing</code></dt><dd><p>a numeric vector for whether there was a dispute ongoing in that year</p></dd>
+<dt><code>gmlmidonset</code></dt><dd><p>a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)</p></dd>
+<dt><code>sidea1</code></dt><dd><p>is <code>ccode1</code> on side A of the dispute?</p></dd>
+<dt><code>sidea2</code></dt><dd><p>is <code>ccode2</code> on side A of the dispute?</p></dd>
+<dt><code>orig1</code></dt><dd><p>is <code>ccode1</code> an originator of the dispute?</p></dd>
+<dt><code>orig2</code></dt><dd><p>is <code>ccode2</code> an originator of the dispute?</p></dd>
+
+</dl>
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This is a <em>complete</em> and <em>universal</em> leader dyad-year data frame for all possible dyadic
-leader pairings from 1870 to 2015. This has several implications. First: these data are enormous. The
-output is over 2 million rows long! Second: the time required to create these data from scratch would
-take too long for a normal function call. This amounts to an unholy combination of data that are too large
-for CRAN's disk space restrictions (5 MB) and too time-consuming to do from scratch every time. Thus, the
-data are pre-generated and stored remotely. Check <code><a href='download_extdata.html'>download_extdata()</a></code> for more information.</p>
-<p>For now, these data are treated as dyad-year data (check the attributes) so that other functions can work with it.</p>
+    <p>The process of creating these is described at one of the references below. Importantly, these data are somewhat
+"naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
+Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
+action for both was a war. The data are thus similar to what the <code>EUGene</code> program would create for users back in the day. Use these
+data with that limitation in mind.</p>
+<p>Data were created by first selecting on unique onsets. Then, where duplicates remained: retaining highest fatality, highest hostility level,
+highest estimated minimum duration, reciprocated observations over unreciprocated observations, and, finally, the lowest start month.</p>
+<p>Be mindful that Archigos' leader data are nominally denominated in Gleditsch-Ward states, which are standardized to Correlates of War
+state system membership as well as the data can allow. There will be some missing leaders after 1870 because Archigos is ultimately its
+own system.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
+    <p>Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
+URL: <a href='http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/'>http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/</a></p>
+<p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
+Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.</p>
+<p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 <em>Journal of Peace Research</em> 46(2): 269--83.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Steven V. Miller</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># download_extdata()</span>
-<span class='co'># ^ make sure you've run this first.</span>
-<span class='co'># default is directed</span>
-<span class='fu'>create_leaderdyadyears</span><span class='op'>(</span><span class='op'>)</span>
-
-<span class='co'># non-directed</span>
-<span class='fu'>create_leaderdyadyears</span><span class='op'>(</span>directed <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-<span class='op'>}</span>
-
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

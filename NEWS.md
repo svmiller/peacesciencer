@@ -12,6 +12,7 @@ This is a leader-intensive update. Additions/new features include:
 - `add_peace_years()` now works with leader-year data, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
 - `add_lwuf()` adds estimates of leader willingness to use force to leader-year analyses.
 - `add_lead()` adds some leader attributes to leader-year analyses.
+- `gml_mid_dirleaderdisps` and `gml_mid_ddlydisps` include data on leader dyads in conflict.
 
 Other changes include:
 
@@ -23,6 +24,7 @@ its original size. This is a huge reduction in disk space. The original simulati
 - The directed leader dyad-year data is indexed by observation ID and not leader ID, per se. This is because leaders can have multiple terms in office.
 - `add_peace_years()` has been superseded by `add_spells()`. The "superseded" language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. `add_spells()` promises to have greater functionality.
 - `archigos` data's `ccode` has been renamed to `gwcode` to reflect these are actually Gleditsch-Ward state codes.
+- The "whittle" functions now work with leader-dyadic conflict data available in the package.
 
 peacesciencer 0.6.0
 ---------------------------------------------------------------------

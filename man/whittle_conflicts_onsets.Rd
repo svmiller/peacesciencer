@@ -15,7 +15,7 @@ wc_onsets(...)
 \item{...}{optional, only to make the shortcut work}
 }
 \value{
-\code{whittle_conflicts_onsets()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+\code{whittle_conflicts_onsets()} takes a dyad-year data frame or leader-dyad-year data frame  with a declared conflict attribute type and, grouping by the
 dyad and year, returns just those observations with unique onsets where duplicates exist. This will not eliminate all duplicates, far
 from it, but it's a sensible place to start.
 }

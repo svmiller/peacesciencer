@@ -15,7 +15,7 @@ wc_fatality(...)
 \item{...}{optional, only to make the shortcut work}
 }
 \value{
-\code{whittle_conflicts_fatality()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+\code{whittle_conflicts_fatality()} takes a dyad-year data frame or leader-dyad-year data frame with a declared conflict attribute type and, grouping by the
 dyad and year, returns just those observations that have the highest observed dispute-level fatality.
 This will not eliminate all duplicates, far from it, but it's a sensible second cut (after whittling onsets in
 \code{whittle_conflicts_onsets()} the extent to which dispute-level fatality is a good heuristic for dispute-level severity/importance.

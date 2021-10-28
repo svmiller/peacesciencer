@@ -15,7 +15,7 @@ wc_jds(...)
 \item{...}{optional, only to make the shortcut work}
 }
 \value{
-\code{whittle_conflicts_jds()} takes a dyad-year data frame with a declared conflict attribute type and, grouping by the
+\code{whittle_conflicts_jds()} takes a dyad-year data frame or leader-dyad-year data frame with a declared conflict attribute type and, grouping by the
 dyad and year, returns just those observations that have the lowest start month.
 }
 \description{

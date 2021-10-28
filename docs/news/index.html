@@ -170,7 +170,7 @@
 <li>
 <code><a href="../reference/download_extdata.html">download_extdata()</a></code> now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015. The data come in two forms. One is all possible (inter-state, leader-overlap) dyadic leader pairings from 1870 to 2015, as presented in the Archigos data. The second standardizes these data to the CoW state system data.</li>
 <li>
-<code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>: create leader dyad-year data (via <code>archigos</code>) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in <code><a href="../reference/download_extdata.html">download_extdata()</a></code>.</li>
+<code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>: create leader dyad-year data (via <code>archigos</code>) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in <code><a href="../reference/download_extdata.html">download_extdata()</a></code>. The function returns either all possible Gleditsch-Ward dyadic leader pairings (as implied by the original data) or standardizes the Archigos data to Correlates of War state system member data.</li>
 <li>
 <code>gml_part</code>: a data set on participant summary information from the GML MID data.</li>
 <li>
@@ -181,6 +181,8 @@
 <code><a href="../reference/add_lwuf.html">add_lwuf()</a></code> adds estimates of leader willingness to use force to leader-year analyses.</li>
 <li>
 <code><a href="../reference/add_lead.html">add_lead()</a></code> adds some leader attributes to leader-year analyses.</li>
+<li>
+<code>gml_mid_dirleaderdisps</code> and <code>gml_mid_ddlydisps</code> include data on leader dyads in conflict.</li>
 </ul>
 <p>Other changes include:</p>
 <ul>
@@ -193,6 +195,7 @@
 <code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> has been superseded by <code><a href="../reference/add_spells.html">add_spells()</a></code>. The “superseded” language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. <code><a href="../reference/add_spells.html">add_spells()</a></code> promises to have greater functionality.</li>
 <li>
 <code>archigos</code> data’s <code>ccode</code> has been renamed to <code>gwcode</code> to reflect these are actually Gleditsch-Ward state codes.</li>
+<li>The “whittle” functions now work with leader-dyadic conflict data available in the package.</li>
 </ul>
 </div>
     <div id="peacesciencer-060" class="section level2">

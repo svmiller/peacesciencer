@@ -1513,3 +1513,105 @@ NULL
 #' LEAD Data Set." \emph{International Interactions} 41(4): 718--741.
 
 "LEAD"
+
+
+
+
+#' Directed Leader-Dyadic Dispute-Year Data with No Duplicate Leader-Dyad-Years (GML, v. 2.2.1, Archigos v. 4.1)
+#'
+#' These are directed leader-dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
+#'  Dispute (MID) project. Data are from version 2.2.1 (GML-MID) and version 4.1 (Archigos).
+#'  These were whittled to where there is no duplicate dyad-years.
+#'  Its primary aim here is merging into a dyad-year data frame.
+#'
+#'
+#' @format A data frame with 10708 observations on the following 12 variables.
+#' \describe{
+#' \item{\code{dispnum}}{a numeric vector for the dispute number}
+#' \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}
+#' \item{\code{ccode2}}{a numeric vector for the target state in the dyad}
+#' \item{\code{obsid1}}{a character vector for the leader of the focal state in the dyad, if avialable}
+#' \item{\code{obsid2}}{a character vector for the leader of the target state in the dyad, if avialable}
+#' \item{\code{year}}{a numeric vector for the dispute-year}
+#' \item{\code{gmlmidongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
+#' \item{\code{gmlmidonset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}
+#' \item{\code{sidea1}}{is \code{ccode1} on side A of the dispute?}
+#' \item{\code{sidea2}}{is \code{ccode2} on side A of the dispute?}
+#' \item{\code{orig1}}{is \code{ccode1} an originator of the dispute?}
+#' \item{\code{orig2}}{is \code{ccode2} an originator of the dispute?}
+#' }
+#'
+#' @details The process of creating these is described at one of the references below. Importantly, these data are somewhat
+#' "naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
+#' Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
+#' action for both was a war. The data are thus similar to what the \code{EUGene} program would create for users back in the day. Use these
+#' data with that limitation in mind.
+#'
+#' Data were created by first selecting on unique onsets. Then, where duplicates remained: retaining highest fatality, highest hostility level,
+#'  highest estimated minimum duration, reciprocated observations over unreciprocated observations, and, finally, the lowest start month.
+#'
+#'  Be mindful that Archigos' leader data are nominally denominated in Gleditsch-Ward states, which are standardized to Correlates of War
+#'  state system membership as well as the data can allow. There will be some missing leaders after 1870 because Archigos is ultimately its
+#'  own system.
+#'
+#' @references
+#'
+#' Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
+#' URL: \url{http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/}
+#'
+#' Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
+#' Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
+#'
+#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
+#' \emph{Journal of Peace Research} 46(2): 269--83.
+
+"gml_mid_ddlydisps"
+
+
+
+#' Directed Leader-Dyadic Dispute-Year Data (GML, v. 2.2.1, Archigos v. 4.1)
+#'
+#' These are directed leader-dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
+#'  Dispute (MID) project. Data are from version 2.2.1 (GML-MID) and version 4.1 (Archigos). The data are all relevant
+#'  dyadic leader pairings in conflict, allowing users to employ their own case exclusion rules to the data as they see fit.
+#'
+#'
+#' @format A data frame with 11686 observations on the following 12 variables.
+#' \describe{
+#' \item{\code{dispnum}}{a numeric vector for the dispute number}
+#' \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}
+#' \item{\code{ccode2}}{a numeric vector for the target state in the dyad}
+#' \item{\code{obsid1}}{a character vector for the leader of the focal state in the dyad, if avialable}
+#' \item{\code{obsid2}}{a character vector for the leader of the target state in the dyad, if avialable}
+#' \item{\code{year}}{a numeric vector for the dispute-year}
+#' \item{\code{gmlmidongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
+#' \item{\code{gmlmidonset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}
+#' \item{\code{sidea1}}{is \code{ccode1} on side A of the dispute?}
+#' \item{\code{sidea2}}{is \code{ccode2} on side A of the dispute?}
+#' \item{\code{orig1}}{is \code{ccode1} an originator of the dispute?}
+#' \item{\code{orig2}}{is \code{ccode2} an originator of the dispute?}
+#' }
+#'
+#' @details The process of creating these is described at one of the references below. Importantly, these data are somewhat
+#' "naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
+#' Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
+#' action for both was a war. The data are thus similar to what the \code{EUGene} program would create for users back in the day. Use these
+#' data with that limitation in mind.
+#'
+#'
+#'  Be mindful that Archigos' leader data are nominally denominated in Gleditsch-Ward states, which are standardized to Correlates of War
+#'  state system membership as well as the data can allow. There will be some missing leaders after 1870 because Archigos is ultimately its
+#'  own system.
+#'
+#' @references
+#'
+#' Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
+#' URL: \url{http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/}
+#'
+#' Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
+#' Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
+#'
+#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
+#' \emph{Journal of Peace Research} 46(2): 269--83.
+
+"gml_mid_dirleaderdisps"

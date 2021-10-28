@@ -8,7 +8,7 @@ library(lubridate)
 #   unnest(.data$date) %>%
 #   select(ccode, obsid, date, everything()) -> leaderdays
 
-create_leaderdays() -> leaderdays
+create_leaderdays(standardize_cow = TRUE) -> leaderdays
 
 Part <- read_csv("~/Dropbox/projects/mid-project/gml-mid-data/2.2.1/gml-midb-2.2.1.csv") %>%
   mutate(stdate = make_date(styear, stmon, stday),
@@ -220,6 +220,11 @@ unknown_stdates %>%
 unknown_stdates %>% rename(obsid_stmon = obsid, leadid_stmon = leadid) %>% select(-in_archigos) %>%
   left_join(., leaderdays %>% select(ccode, obsid, leadid, date) %>%
               mutate(in_archigos = 1), by=c("ccode"="ccode","stdate3"="date")) -> unknown_stdates
+
+unknown_stdates %>%
+  group_by(dispnum, ccode, stdate3) %>%
+  tally() %>%
+  filter(n > 1)
 # ^ nothing duplicated. huzzah.
 
 # Now, was there a leadership transition at any point...
@@ -287,12 +292,20 @@ unknown_enddates %>%
   left_join(., leaderdays %>% select(ccode, obsid, leadid, date) %>%
               mutate(in_archigos = 1), by=c("ccode"="ccode","enddate2"="date")) -> unknown_enddates
 
+unknown_enddates %>%
+  group_by(dispnum, ccode, enddate2) %>%
+  tally() %>%
+  filter(n > 1)
 # ^ nothing duplicated. That's good.
 
 unknown_enddates %>% rename(obsid_stmon = obsid, leadid_stmon = leadid) %>% select(-in_archigos) %>%
   left_join(., leaderdays %>% select(ccode, obsid, leadid, date) %>%
               mutate(in_archigos = 1), by=c("ccode"="ccode","enddate3"="date")) -> unknown_enddates
 
+unknown_enddates %>%
+  group_by(dispnum, ccode, enddate3) %>%
+  tally() %>%
+  filter(n > 1)
 # ^ nothing duplicated. That's a relief.
 # All right. What do we have...
 
@@ -465,6 +478,7 @@ gml_part %>% select(-last_day_endmon) -> gml_part
 
 Part %>% select(dispnum:styear, sidea, hiact, orig) %>%
   left_join(gml_part, .) -> gml_part
+
 
 # For later usage: what disputes have missing leaders?
 gml_part %>%

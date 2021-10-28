@@ -85,7 +85,7 @@ create_leaderdyadyears <- function(directed = TRUE, system = "gw") {
 
   }
 
-  attr(data, "ps_data_type") = "dyad_year"
+  attr(data, "ps_data_type") = "leader_dyad_year"
   if (system == "cow") {
     attr(data, "ps_system") = "cow"
   } else {
