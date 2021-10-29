@@ -166,7 +166,7 @@ leader-level data provided in peacesciencer" />
 leader-level data provided in <span class="pkg">peacesciencer</span></p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_leaderyears</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"archigos"</span>, standardize_cow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_leaderyears</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"archigos"</span>, standardize_cow <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,7 +177,7 @@ leader-level data provided in <span class="pkg">peacesciencer</span></p>
     </tr>
     <tr>
       <th>standardize_cow</th>
-      <td><p>logical, defaults to TRUE. If TRUE, the function standardizes the leader years to just those that
+      <td><p>logical, defaults to FALSE. If TRUE, the function standardizes the leader years to just those that
 overlap  with state system membership in the Correlates of War state system (see: <code>cow_states</code>). If FALSE, the function
 returns all leader-years as implied by the Archigos data.</p></td>
     </tr>
@@ -199,6 +199,11 @@ will work with other functions in <span class="pkg">peacesciencer</span> that ha
 <code><a href='add_rugged_terrain.html'>add_rugged_terrain()</a></code>). This is declared in the attribute field.</p>
 <p>Many leader ages are known with precision. Many are not recorded in the Archigos data. Knowing well that years are aggregates
 of days, the leader age variable that gets returned in this output should be treated as an approximation of the leader's age.</p>
+<p>If <code>standardize_cow = FALSE</code>, the leader-year data are returned with an internal attribute declaring these to be Gleditsch-Ward
+system data. This is because the Archigos data are nominally denominated in the Gleditsch-Ward system. If <code>standardize_cow = TRUE</code>, the
+leader-year data are returned with an attribute that declares them to be Correlates of War state system data. This attribute matters
+for the other functions in <span class="pkg">peacesciencer</span> that merge in other data sets. Think carefully about what you want here. The default option
+is <code>standardize_cow = FALSE</code>.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
@@ -210,35 +215,9 @@ of days, the leader age variable that gets returned in this output should be tre
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,136 × 7</span>
-#&gt;    obsid     year ccode leader gender leaderage yrinoffice
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869     2 Grant  M             47          1
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870     2 Grant  M             48          2
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871     2 Grant  M             49          3
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872     2 Grant  M             50          4
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873     2 Grant  M             51          5
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874     2 Grant  M             52          6
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875     2 Grant  M             53          7
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876     2 Grant  M             54          8
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877     2 Grant  M             55          9
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877     2 Hayes  M             55          1
-#&gt; <span style='color: #949494;'># … with 16,126 more rows</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='error'>Error in mutate(., year = .pshf_year(.data$date)): could not find function "mutate"</span></div><div class='input'>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span>standardize_cow <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 7</span>
-#&gt;    obsid     year ccode leader gender leaderage yrinoffice
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869     2 Grant  M             47          1
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870     2 Grant  M             48          2
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871     2 Grant  M             49          3
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872     2 Grant  M             50          4
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873     2 Grant  M             51          5
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874     2 Grant  M             52          6
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875     2 Grant  M             53          7
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876     2 Grant  M             54          8
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877     2 Grant  M             55          9
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877     2 Hayes  M             55          1
-#&gt; <span style='color: #949494;'># … with 17,676 more rows</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='error'>Error in mutate(., year = .pshf_year(.data$date)): could not find function "mutate"</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

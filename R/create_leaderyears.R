@@ -18,6 +18,12 @@
 #' Many leader ages are known with precision. Many are not recorded in the Archigos data. Knowing well that years are aggregates
 #' of days, the leader age variable that gets returned in this output should be treated as an approximation of the leader's age.
 #'
+#' If `standardize_cow = FALSE`, the leader-year data are returned with an internal attribute declaring these to be Gleditsch-Ward
+#' system data. This is because the Archigos data are nominally denominated in the Gleditsch-Ward system. If `standardize_cow = TRUE`, the
+#' leader-year data are returned with an attribute that declares them to be Correlates of War state system data. This attribute matters
+#' for the other functions in \pkg{peacesciencer} that merge in other data sets. Think carefully about what you want here. The default option
+#' is `standardize_cow = FALSE`.
+#'
 #' @author Steven V. Miller
 #'
 #' @references
@@ -26,7 +32,7 @@
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 #'
 #' @param system a leader system with which to create leader-years. Right now, only "archigos" is supported.
-#' @param standardize_cow logical, defaults to TRUE. If TRUE, the function standardizes the leader years to just those that
+#' @param standardize_cow logical, defaults to FALSE. If TRUE, the function standardizes the leader years to just those that
 #' overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If FALSE, the function
 #' returns all leader-years as implied by the Archigos data.
 #'
@@ -37,7 +43,7 @@
 #' create_leaderyears(standardize_cow = FALSE)
 #' }
 #'
-create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
+create_leaderyears <- function(system = "archigos", standardize_cow = FALSE) {
 
   if (system == "archigos") {
 
@@ -69,17 +75,17 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
         group_by(.data$ccode, .data$obsid, .data$year) %>%
         slice(1) %>% ungroup() -> data
 
-      #data$date <- NULL
 
 
-    } else {
+
+    } else { # You want G-W data...
 
       leaderdays %>%
         mutate(year = .pshf_year(.data$date)) %>%
         group_by(.data$gwcode, .data$obsid, .data$year) %>%
         slice(1) %>% ungroup() -> data
 
-      #data$date <- NULL
+
 
     }
 
@@ -102,8 +108,10 @@ create_leaderyears <- function(system = "archigos", standardize_cow = TRUE) {
 
   if (standardize_cow == TRUE) {
     attr(data, "ps_system") = "cow"
+    data$gwcode <- NULL
   } else {
     attr(data, "ps_system") = "gw"
+    data$ccode <- NULL
   }
 
 

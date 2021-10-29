@@ -4,12 +4,12 @@
 \alias{create_leaderyears}
 \title{Create leader-years from leader data}
 \usage{
-create_leaderyears(system = "archigos", standardize_cow = TRUE)
+create_leaderyears(system = "archigos", standardize_cow = FALSE)
 }
 \arguments{
 \item{system}{a leader system with which to create leader-years. Right now, only "archigos" is supported.}
 
-\item{standardize_cow}{logical, defaults to TRUE. If TRUE, the function standardizes the leader years to just those that
+\item{standardize_cow}{logical, defaults to FALSE. If TRUE, the function standardizes the leader years to just those that
 overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If FALSE, the function
 returns all leader-years as implied by the Archigos data.}
 }
@@ -33,6 +33,12 @@ will work with other functions in \pkg{peacesciencer} that have support for stat
 
 Many leader ages are known with precision. Many are not recorded in the Archigos data. Knowing well that years are aggregates
 of days, the leader age variable that gets returned in this output should be treated as an approximation of the leader's age.
+
+If \code{standardize_cow = FALSE}, the leader-year data are returned with an internal attribute declaring these to be Gleditsch-Ward
+system data. This is because the Archigos data are nominally denominated in the Gleditsch-Ward system. If \code{standardize_cow = TRUE}, the
+leader-year data are returned with an attribute that declares them to be Correlates of War state system data. This attribute matters
+for the other functions in \pkg{peacesciencer} that merge in other data sets. Think carefully about what you want here. The default option
+is \code{standardize_cow = FALSE}.
 }
 \examples{
 \donttest{

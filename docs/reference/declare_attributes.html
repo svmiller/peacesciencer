@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Directed Leader-Dyadic Dispute-Year Data (GML, v. 2.2.1, Archigos v. 4.1) — gml_mid_dirleaderdisps • peacesciencer</title>
+<title>Declare peacesciencer-specific attributes to data — declare_attributes • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,10 +41,10 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Directed Leader-Dyadic Dispute-Year Data (GML, v. 2.2.1, Archigos v. 4.1) — gml_mid_dirleaderdisps" />
-<meta property="og:description" content="These are directed leader-dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
-Dispute (MID) project. Data are from version 2.2.1 (GML-MID) and version 4.1 (Archigos). The data are all relevant
-dyadic leader pairings in conflict, allowing users to employ their own case exclusion rules to the data as they see fit." />
+<meta property="og:title" content="Declare peacesciencer-specific attributes to data — declare_attributes" />
+<meta property="og:description" content="declare_attributes() allows the user to declare peacesciencer-specific
+attributes to data they bring from outside the package. This allows the user to use package functions
+as shortcuts, where appropriate." />
 
 
 
@@ -157,61 +157,91 @@ dyadic leader pairings in conflict, allowing users to employ their own case excl
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Directed Leader-Dyadic Dispute-Year Data (GML, v. 2.2.1, Archigos v. 4.1)</h1>
-    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>gml_mid_dirleaderdisps.Rd</code></div>
+    <h1>Declare <span class="pkg">peacesciencer</span>-specific attributes to data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/declare_attributes.R'><code>R/declare_attributes.R</code></a></small>
+    <div class="hidden name"><code>declare_attributes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are directed leader-dyadic dispute year data derived from the Gibler-Miller-Little (GML) Militarized Interstate
-Dispute (MID) project. Data are from version 2.2.1 (GML-MID) and version 4.1 (Archigos). The data are all relevant
-dyadic leader pairings in conflict, allowing users to employ their own case exclusion rules to the data as they see fit.</p>
+    <p><code>declare_attributes()</code> allows the user to declare <span class="pkg">peacesciencer</span>-specific
+attributes to data they bring from outside the package. This allows the user to use package functions
+as shortcuts, where appropriate.</p>
     </div>
 
-    <pre class="usage"><span class='va'>gml_mid_dirleaderdisps</span></pre>
+    <pre class="usage"><span class='fu'>declare_attributes</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>data_type</span>, <span class='va'>system</span>, <span class='va'>conflict_type</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>data</th>
+      <td><p>a data frame for which you want <span class="pkg">peacesciencer</span>-specific attributes</p></td>
+    </tr>
+    <tr>
+      <th>data_type</th>
+      <td><p>optional, but a character vector of length 1 coinciding with the type of data the user believes
+the data frame is. Options include: 'dyad_year', 'leader_year', 'leader_dyad_year', or 'state_year'.</p></td>
+    </tr>
+    <tr>
+      <th>system</th>
+      <td><p>optional, but a character vector of length 1 coinciding with the state system of the data. If specified at all,
+must be 'cow' or 'gw'.</p></td>
+    </tr>
+    <tr>
+      <th>conflict_type</th>
+      <td><p>optional, and applicable to just conflict data and the "whittle" class functions in <span class="pkg">peacesciencer</span>. If specified,
+must be a character vector of length 1 that is either 'cow' or 'gml'.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame with 11686 observations on the following 16 variables.</p><dl>
-<dt><code>dispnum</code></dt><dd><p>a numeric vector for the dispute number</p></dd>
-<dt><code>ccode1</code></dt><dd><p>a numeric vector for the focal state in the dyad</p></dd>
-<dt><code>ccode2</code></dt><dd><p>a numeric vector for the target state in the dyad</p></dd>
-<dt><code>obsid1</code></dt><dd><p>a character vector for the leader of the focal state in the dyad, if avialable</p></dd>
-<dt><code>obsid2</code></dt><dd><p>a character vector for the leader of the target state in the dyad, if avialable</p></dd>
-<dt><code>year</code></dt><dd><p>a numeric vector for the dispute-year</p></dd>
-<dt><code>gmlmidongoing</code></dt><dd><p>a numeric vector for whether there was a dispute ongoing in that year</p></dd>
-<dt><code>gmlmidonset</code></dt><dd><p>a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)</p></dd>
-<dt><code>sidea1</code></dt><dd><p>is <code>ccode1</code> on side A of the dispute?</p></dd>
-<dt><code>sidea2</code></dt><dd><p>is <code>ccode2</code> on side A of the dispute?</p></dd>
-<dt><code>orig1</code></dt><dd><p>is <code>ccode1</code> an originator of the dispute?</p></dd>
-<dt><code>orig2</code></dt><dd><p>is <code>ccode2</code> an originator of the dispute?</p></dd>
-<dt><code>obsid_start1</code></dt><dd><p>the ID of the leader at the dispute onset for <code>ccode1</code></p></dd>
-<dt><code>obsid_start2</code></dt><dd><p>the ID of the leader at the dispute onset for <code>ccode2</code></p></dd>
-<dt><code>obsid_end1</code></dt><dd><p>the ID of the leader at the dispute conclusion for <code>ccode1</code></p></dd>
-<dt><code>obsid_end2</code></dt><dd><p>the ID of the leader at the dispute conclusion for <code>ccode2</code></p></dd>
-
-</dl>
-
+    <p><code>declare_attributes()</code> takes a data frame and adds <span class="pkg">peacesciencer</span>-specific attributes to the data frame.
+This will allow the user to take advantage of many of the functions in this package without starting the process with one
+of the "create" functions. If nothing is declared in the function, no attribute is added and the function just returns the original
+data without any change.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The process of creating these is described at one of the references below. Importantly, these data are somewhat
-"naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
-Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
-action for both was a war. The data are thus similar to what the <code>EUGene</code> program would create for users back in the day. Use these
-data with that limitation in mind.</p>
-<p>Be mindful that Archigos' leader data are nominally denominated in Gleditsch-Ward states, which are standardized to Correlates of War
-state system membership as well as the data can allow. There will be some missing leaders after 1870 because Archigos is ultimately its
-own system.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
+    <p>The function's documentation will include what attributes are available to be declared. No doubt, the list of potential
+attributes will grow in time, but the attributes that can be declared are limited to just what I've built into the package to this
+point. Users cannot declare more than one attribute of a given type (i.e. a user cannot declare the system to be both Correlates of War
+and Gleditsch-Ward).</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
-    <p>Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
-URL: <a href='http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/'>http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/</a></p>
-<p>Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
-Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.</p>
-<p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-<em>Journal of Peace Research</em> 46(2): 269--83.</p>
+    <p>Steven V. Miller</p>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>
+<span class='co'># just call `library(tidyverse)` at the top of the your script</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:purrr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    set_names</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:tidyr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    extract</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='input'>
+<span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>ccode <span class='op'>=</span> <span class='fl'>2</span>, year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1816</span><span class='op'>:</span><span class='fl'>1830</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>usa_years</span>
+
+<span class='va'>usa_years</span> <span class='op'>%&gt;%</span> <span class='fu'>declare_attributes</span><span class='op'>(</span>data_type <span class='op'>=</span> <span class='st'>'state_year'</span>, system <span class='op'>=</span> <span class='st'>'cow'</span><span class='op'>)</span>
+</div><div class='output co'>#&gt;    ccode year
+#&gt; 1      2 1816
+#&gt; 2      2 1817
+#&gt; 3      2 1818
+#&gt; 4      2 1819
+#&gt; 5      2 1820
+#&gt; 6      2 1821
+#&gt; 7      2 1822
+#&gt; 8      2 1823
+#&gt; 9      2 1824
+#&gt; 10     2 1825
+#&gt; 11     2 1826
+#&gt; 12     2 1827
+#&gt; 13     2 1828
+#&gt; 14     2 1829
+#&gt; 15     2 1830</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
