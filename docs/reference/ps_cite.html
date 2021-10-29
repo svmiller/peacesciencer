@@ -166,7 +166,7 @@ should include in their papers that incorporate the functions and data in this p
 should include in their papers that incorporate the functions and data in this package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ps_cite</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>ps_cite</span><span class='op'>(</span><span class='va'>x</span>, column <span class='op'>=</span> <span class='st'>"keywords"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,6 +174,12 @@ should include in their papers that incorporate the functions and data in this p
     <tr>
       <th>x</th>
       <td><p>a character vector</p></td>
+    </tr>
+    <tr>
+      <th>column</th>
+      <td><p>a character vector for the particular column of <code>ps_bib</code> the user wants to search. The default here is <code>"keywords"</code>,
+which searches the <code>KEYWORDS</code> column in <code>ps_bib</code> for the most general search. The other option is <code>"bibtexkey"</code>, which will
+search the <code>BIBTEXKEY</code> column in <code>ps_bib</code>. Use the latter option more for pairing with output from <code><a href='ps_version.html'>ps_version()</a></code></p></td>
     </tr>
     </table>
 
@@ -276,6 +282,43 @@ simple pattern-matching is in base R. I assume the user has some familiarity wit
 #&gt;   Volume = {46},
 #&gt;   Year = {2009},
 #&gt;   Keywords = {add_archigos()}
+#&gt; }</div><div class='input'>
+<span class='co'># If you know some of the `BibTeX` keys, you can search there as well.</span>
+<span class='fu'>ps_cite</span><span class='op'>(</span><span class='st'>"gibler"</span>, column <span class='op'>=</span> <span class='st'>"bibtexkey"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; @Book{gibler2009ima,
+#&gt;   Author = {Douglas M. Gibler},
+#&gt;   Publisher = {Washington DC: CQ Press},
+#&gt;   Title = {International Military Alliances, 1648-2008},
+#&gt;   Year = {2009},
+#&gt;   Keywords = {add_cow_alliance()}
+#&gt; }
+#&gt; 
+#&gt; 
+#&gt; @Article{gibleretal2016amid,
+#&gt;   Author = {Douglas M. Gibler and Steven V. Miller and Erin K. Little},
+#&gt;   Journal = {International Studies Quarterly},
+#&gt;   Number = {4},
+#&gt;   Pages = {719--730},
+#&gt;   Title = {An Analysis of the {M}ilitarized {I}nterstate {D}ispute {(MID)} Dataset, 1816-2001},
+#&gt;   Volume = {60},
+#&gt;   Year = {2016},
+#&gt;   Keywords = {add_gml_mids()},
+#&gt;   Owner = {steve},
+#&gt;   Timestamp = {2016.04.20}
+#&gt; }
+#&gt; 
+#&gt; 
+#&gt; @Article{giblermiller2014etts,
+#&gt;   Author = {Gibler, Douglas M. and Steven V. Miller},
+#&gt;   Journal = {Journal of Peace Research},
+#&gt;   Number = {5},
+#&gt;   Pages = {634--646},
+#&gt;   Title = {External Territorial Threat, State Capacity, and Civil War},
+#&gt;   Volume = {51},
+#&gt;   Year = {2014},
+#&gt;   Keywords = {add_rugged_terrain()},
+#&gt;   Owner = {steve},
+#&gt;   Timestamp = {2014.09.04}
 #&gt; }</div><div class='input'>
 </div></pre>
   </div>

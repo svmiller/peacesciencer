@@ -1623,3 +1623,30 @@ NULL
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
 "gml_mid_dirleaderdisps"
+
+
+
+#' The Version Numbers for Data Included in \pkg{peacesciencer}
+#'
+#' This is a simple data set that communicates the version numbers of data included in this package. It's a companion
+#' to the data frame \code{ps_bib}, and other information functions like \code{ps_cite()} and \code{ps_version()}. The latter
+#' uses this data set.
+#'
+#'
+#' @format A data frame the following four variables.
+#' \describe{
+#' \item{\code{category}}{a category for the type of data}
+#' \item{\code{data}}{the name of the particular data source coinciding with the category}
+#' \item{\code{version}}{the version number included in \pkg{peacesciencer} for this data source}
+#' \item{\code{bibtexkey}}{a character key for the \code{BibTeX} key corresponding with an appropriate citation in \code{ps_bib}}
+#' }
+#'
+#' @details
+#'
+#' Version numbers that are years should be understood as data sources with no formal version numbering system, per se. Instead,
+#' they communicate a year of last update. For example, the Correlates of War does not formally version number its state system data
+#' as it does its MID data. Likewise, the Anders et al. (2020) simulations of population and surplus/gross domestic product are not formally
+#' versioned, per se. Instead, the data were published and last updated in 2020.
+
+
+"ps_data_version"

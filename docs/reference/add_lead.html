@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year Data — add_lead • peacesciencer</title>
+<title>Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year or Leader-Dyad-Year Data — add_lead • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year Data — add_lead" />
-<meta property="og:description" content="add_lead() allows you to add some data recorded in the LEAD data to your leader-year data." />
+<meta property="og:title" content="Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year or Leader-Dyad-Year Data — add_lead" />
+<meta property="og:description" content="add_lead() allows you to add some data recorded in the LEAD data to your leader-year or leader-dyad-year data." />
 
 
 
@@ -155,13 +155,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year Data</h1>
+    <h1>Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year or Leader-Dyad-Year Data</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_lead.R'><code>R/add_lead.R</code></a></small>
     <div class="hidden name"><code>add_lead.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_lead()</code> allows you to add some data recorded in the LEAD data to your leader-year data.</p>
+    <p><code>add_lead()</code> allows you to add some data recorded in the LEAD data to your leader-year or leader-dyad-year data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_lead</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
@@ -171,7 +171,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a leader-year data frame</p></td>
+      <td><p>a leader-year or leader-dyad-year data frame</p></td>
     </tr>
     <tr>
       <th>keep</th>
@@ -184,7 +184,9 @@ data to just what the user wants.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_lead()</code> takes a leader-year data frame and adds some data recorded in the LEAD data to it.</p>
+    <p><code>add_lead()</code> takes a leader-year or leader-dyad-year data frame and adds some data recorded in the LEAD data to it.
+For leader-dyad-year data, suffices of "1" and "2" are added to the data to indicate attributes of the first leader (<code>obsid1</code>)
+or the second leader (<code>obsid2</code>), respectively.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015. "Introducing the
@@ -198,39 +200,46 @@ LEAD Data Set." <em>International Interactions</em> 41(4): 718--741.</p>
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:purrr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    set_names</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:tidyr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    extract</span></div><div class='input'>
 <span class='fu'><a href='create_leaderyears.html'>create_leaderyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_lead</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "obsid"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,136 × 19</span>
-#&gt;    obsid     year ccode leader gender leaderage yrinoffice leadid29 leveledu
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869     2 Grant  M             47          1 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870     2 Grant  M             48          2 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871     2 Grant  M             49          3 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872     2 Grant  M             50          4 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873     2 Grant  M             51          5 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874     2 Grant  M             52          6 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875     2 Grant  M             53          7 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876     2 Grant  M             54          8 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877     2 Grant  M             55          9 A2.9-1          2
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877     2 Hayes  M             55          1 A2.9-4          3
-#&gt; <span style='color: #949494;'># … with 16,126 more rows, and 10 more variables: milservice &lt;dbl&gt;,</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "obsid"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 19</span>
+#&gt;    obsid     year gwcode leader gender leaderage yrinoffice leadid29 leveledu
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869      2 Grant  M             47          1 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870      2 Grant  M             48          2 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871      2 Grant  M             49          3 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872      2 Grant  M             50          4 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873      2 Grant  M             51          5 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874      2 Grant  M             52          6 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875      2 Grant  M             53          7 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876      2 Grant  M             54          8 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877      2 Grant  M             55          9 A2.9-1          2
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877      2 Hayes  M             55          1 A2.9-4          3
+#&gt; <span style='color: #949494;'># … with 17,676 more rows, and 10 more variables: milservice &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   combat &lt;dbl&gt;, rebel &lt;dbl&gt;, warwin &lt;dbl&gt;, warloss &lt;dbl&gt;, rebelwin &lt;dbl&gt;,</span>
 #&gt; <span style='color: #949494;'>#   rebelloss &lt;dbl&gt;, yrsexper &lt;dbl&gt;, physhealth &lt;dbl&gt;, mentalhealth &lt;dbl&gt;</span></div><div class='input'>
 <span class='fu'><a href='create_leaderyears.html'>create_leaderyears</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>add_lead</span><span class='op'>(</span>keep <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"yrsexper"</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "obsid"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16,136 × 8</span>
-#&gt;    obsid     year ccode leader gender leaderage yrinoffice yrsexper
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869     2 Grant  M             47          1        0
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870     2 Grant  M             48          2        0
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871     2 Grant  M             49          3        0
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872     2 Grant  M             50          4        0
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873     2 Grant  M             51          5        0
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874     2 Grant  M             52          6        0
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875     2 Grant  M             53          7        0
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876     2 Grant  M             54          8        0
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877     2 Grant  M             55          9        0
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877     2 Hayes  M             55          1       12
-#&gt; <span style='color: #949494;'># … with 16,126 more rows</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = "obsid"</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 8</span>
+#&gt;    obsid     year gwcode leader gender leaderage yrinoffice yrsexper
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869      2 Grant  M             47          1        0
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870      2 Grant  M             48          2        0
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871      2 Grant  M             49          3        0
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872      2 Grant  M             50          4        0
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873      2 Grant  M             51          5        0
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874      2 Grant  M             52          6        0
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875      2 Grant  M             53          7        0
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876      2 Grant  M             54          8        0
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877      2 Grant  M             55          9        0
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877      2 Hayes  M             55          1       12
+#&gt; <span style='color: #949494;'># … with 17,676 more rows</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

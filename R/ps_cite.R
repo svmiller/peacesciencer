@@ -15,6 +15,9 @@
 #' @author Steven V. Miller
 #'
 #' @param x a character vector
+#' @param column a character vector for the particular column of \code{ps_bib} the user wants to search. The default here is `"keywords"`,
+#' which searches the \code{KEYWORDS} column in \code{ps_bib} for the most general search. The other option is `"bibtexkey"`, which will
+#' search the `BIBTEXKEY` column in `ps_bib`. Use the latter option more for pairing with output from \code{ps_version()}
 #'
 #'
 #' @examples
@@ -31,9 +34,21 @@
 #' # You can also get all citations for a particular function
 #' ps_cite("add_archigos()")
 #'
+#' # If you know some of the `BibTeX` keys, you can search there as well.
+#' ps_cite("gibler", column = "bibtexkey")
+#'
 
-ps_cite <- function(x) {
+ps_cite <- function(x, column = "keywords") {
 
-  ps_bib %>% filter(grepl(x, .data$KEYWORDS)) %>% df2bib()
+  if (column == "keywords") {
+
+    ps_bib %>% filter(grepl(x, .data$KEYWORDS)) %>% df2bib()
+
+  } else if (column == "bibtexkey") {
+
+    ps_bib %>% filter(grepl(x, .data$BIBTEXKEY)) %>% df2bib()
+
+
+  }
 
 }

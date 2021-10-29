@@ -11,9 +11,10 @@ This is a leader-intensive update. Additions/new features include:
 - `add_gml_mids()` now works with leader-year data. See documentation for more.
 - `add_spells()` will do more general peace spell calculations, though this package will now depend on v. 1.3.0 of `{stevemisc}`.
 - `add_lwuf()` adds estimates of leader willingness to use force to leader-year and leader-dyad-year analyses.
-- `add_lead()` adds some leader attributes to leader-year analyses.
+- `add_lead()` adds some leader attributes to leader-year or leader-dyad-year analyses.
 - `gml_mid_dirleaderdisps` and `gml_mid_ddlydisps` include data on leader dyads in conflict.
 - `declare_attributes()` allows users to declare package-specific attributes to outside data they bring to the R session. This allows the user to use many of the shortcuts in this package to their data.
+- `ps_version()` will display version information about the data included in this package.
 
 Other changes include:
 

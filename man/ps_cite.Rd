@@ -4,10 +4,14 @@
 \alias{ps_cite}
 \title{Get \code{BibTeX} Entries Associated with \pkg{peacesciencer} Data and Functions}
 \usage{
-ps_cite(x)
+ps_cite(x, column = "keywords")
 }
 \arguments{
 \item{x}{a character vector}
+
+\item{column}{a character vector for the particular column of \code{ps_bib} the user wants to search. The default here is \code{"keywords"},
+which searches the \code{KEYWORDS} column in \code{ps_bib} for the most general search. The other option is \code{"bibtexkey"}, which will
+search the \code{BIBTEXKEY} column in \code{ps_bib}. Use the latter option more for pairing with output from \code{ps_version()}}
 }
 \value{
 \code{ps_cite()} takes a character vector and scans the \code{ps_bib} data in
@@ -37,6 +41,9 @@ ps_cite("alliance")
 
 # You can also get all citations for a particular function
 ps_cite("add_archigos()")
+
+# If you know some of the `BibTeX` keys, you can search there as well.
+ps_cite("gibler", column = "bibtexkey")
 
 }
 \author{

@@ -2,12 +2,12 @@
 % Please edit documentation in R/add_lead.R
 \name{add_lead}
 \alias{add_lead}
-\title{Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year Data}
+\title{Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year or Leader-Dyad-Year Data}
 \usage{
 add_lead(data, keep)
 }
 \arguments{
-\item{data}{a leader-year data frame}
+\item{data}{a leader-year or leader-dyad-year data frame}
 
 \item{keep}{an optional parameter, specified as a character vector, about what leader attributes
 the user wants to return from this function. If \code{keep} is not specified, everything from the
@@ -15,10 +15,12 @@ the user wants to return from this function. If \code{keep} is not specified, ev
 data to just what the user wants.}
 }
 \value{
-\code{add_lead()} takes a leader-year data frame and adds some data recorded in the LEAD data to it.
+\code{add_lead()} takes a leader-year or leader-dyad-year data frame and adds some data recorded in the LEAD data to it.
+For leader-dyad-year data, suffices of "1" and "2" are added to the data to indicate attributes of the first leader (\code{obsid1})
+or the second leader (\code{obsid2}), respectively.
 }
 \description{
-\code{add_lead()} allows you to add some data recorded in the LEAD data to your leader-year data.
+\code{add_lead()} allows you to add some data recorded in the LEAD data to your leader-year or leader-dyad-year data.
 }
 \examples{
 

@@ -36,7 +36,8 @@ test_that("State-year additions do not create duplicates", {
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_democracy()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_gwcode_to_cow()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_nmc()))
-  expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_archigos()))
+  expect_equal(nrow(create_stateyears(system='cow')), nrow(create_stateyears(system = 'cow') %>% add_archigos()))
+  expect_equal(nrow(create_stateyears(system = 'gw')), nrow(create_stateyears(system = 'gw') %>% add_archigos()))
   expect_equal(nrow(create_stateyears()), nrow(create_stateyears() %>% add_minimum_distance()))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system = "gw") %>% add_ucdp_onsets()))
   expect_equal(nrow(create_stateyears(system = "gw")), nrow(create_stateyears(system="gw") %>% add_minimum_distance()))
@@ -49,10 +50,10 @@ test_that("State-year additions do not create duplicates", {
 
 
 test_that("Leader-year additions do not create duplicates", {
-  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_gml_mids()))
-  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_lead()))
-  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_gwcode_to_cow()))
-  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_lwuf()))
-  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_contiguity()))
-  expect_equal(nrow(create_leaderyears()), nrow(create_leaderyears() %>% add_cow_majors()))
+  expect_equal(nrow(create_leaderyears(standardize_cow = TRUE)), nrow(create_leaderyears(standardize_cow = TRUE) %>% add_gml_mids()))
+  expect_equal(nrow(create_leaderyears(standardize_cow = TRUE)), nrow(create_leaderyears(standardize_cow = TRUE) %>% add_lead()))
+  expect_equal(nrow(create_leaderyears(standardize_cow = TRUE)), nrow(create_leaderyears(standardize_cow = TRUE) %>% add_gwcode_to_cow()))
+  expect_equal(nrow(create_leaderyears(standardize_cow = TRUE)), nrow(create_leaderyears(standardize_cow = TRUE) %>% add_lwuf()))
+  expect_equal(nrow(create_leaderyears(standardize_cow = TRUE)), nrow(create_leaderyears(standardize_cow = TRUE) %>% add_contiguity()))
+  expect_equal(nrow(create_leaderyears(standardize_cow = TRUE)), nrow(create_leaderyears(standardize_cow = TRUE) %>% add_cow_majors()))
 })
