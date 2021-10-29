@@ -107,6 +107,9 @@ leader-level data provided in peacesciencer." />
       <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
     </li>
     <li>
+      <a href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
+    </li>
+    <li>
       <a href="../articles/parlor-tricks.html">Various Parlor Tricks in `{peacesciencer}`</a>
     </li>
     <li>
@@ -203,214 +206,37 @@ being mostly for internal uses. Basically, <code><a href='create_leaderyears.htm
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>create_leaderdays</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4,790,695 × 12</span>
-#&gt;    obsid    ccode leadid  leader yrborn gender startdate  enddate    entry exit 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1869     2 81dcc1… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…
-#&gt; <span style='color: #949494;'># … with 4,790,685 more rows, and 2 more variables: exitcode &lt;chr&gt;, date &lt;date&gt;</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4,824,736 × 13</span>
+#&gt;    obsid    gwcode ccode leadid leader yrborn gender startdate  enddate    entry
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #949494;'># … with 4,824,726 more rows, and 3 more variables: exit &lt;chr&gt;, exitcode &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   date &lt;date&gt;</span></div><div class='input'>
 <span class='fu'>create_leaderdays</span><span class='op'>(</span>standardize_cow <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; function (..., list = character(), package = NULL, lib.loc = NULL, 
-#&gt;     verbose = getOption("verbose"), envir = .GlobalEnv, overwrite = TRUE) 
-#&gt; {
-#&gt;     fileExt &lt;- function(x) {
-#&gt;         db &lt;- grepl("\\.[^.]+\\.(gz|bz2|xz)$", x)
-#&gt;         ans &lt;- sub(".*\\.", "", x)
-#&gt;         ans[db] &lt;- sub(".*\\.([^.]+\\.)(gz|bz2|xz)$", "\\1\\2", 
-#&gt;             x[db])
-#&gt;         ans
-#&gt;     }
-#&gt;     my_read_table &lt;- function(...) {
-#&gt;         lcc &lt;- Sys.getlocale("LC_COLLATE")
-#&gt;         on.exit(Sys.setlocale("LC_COLLATE", lcc))
-#&gt;         Sys.setlocale("LC_COLLATE", "C")
-#&gt;         read.table(...)
-#&gt;     }
-#&gt;     names &lt;- c(as.character(substitute(list(...))[-1L]), list)
-#&gt;     if (!is.null(package)) {
-#&gt;         if (!is.character(package)) 
-#&gt;             stop("'package' must be a character string or NULL")
-#&gt;         if (FALSE) {
-#&gt;             if (any(package %in% "base")) 
-#&gt;                 warning("datasets have been moved from package 'base' to package 'datasets'")
-#&gt;             if (any(package %in% "stats")) 
-#&gt;                 warning("datasets have been moved from package 'stats' to package 'datasets'")
-#&gt;             package[package %in% c("base", "stats")] &lt;- "datasets"
-#&gt;         }
-#&gt;     }
-#&gt;     paths &lt;- find.package(package, lib.loc, verbose = verbose)
-#&gt;     if (is.null(lib.loc)) 
-#&gt;         paths &lt;- c(path.package(package, TRUE), if (!length(package)) getwd(), 
-#&gt;             paths)
-#&gt;     paths &lt;- unique(normalizePath(paths[file.exists(paths)]))
-#&gt;     paths &lt;- paths[dir.exists(file.path(paths, "data"))]
-#&gt;     dataExts &lt;- tools:::.make_file_exts("data")
-#&gt;     if (length(names) == 0L) {
-#&gt;         db &lt;- matrix(character(), nrow = 0L, ncol = 4L)
-#&gt;         for (path in paths) {
-#&gt;             entries &lt;- NULL
-#&gt;             packageName &lt;- if (file_test("-f", file.path(path, 
-#&gt;                 "DESCRIPTION"))) 
-#&gt;                 basename(path)
-#&gt;             else "."
-#&gt;             if (file_test("-f", INDEX &lt;- file.path(path, "Meta", 
-#&gt;                 "data.rds"))) {
-#&gt;                 entries &lt;- readRDS(INDEX)
-#&gt;             }
-#&gt;             else {
-#&gt;                 dataDir &lt;- file.path(path, "data")
-#&gt;                 entries &lt;- tools::list_files_with_type(dataDir, 
-#&gt;                   "data")
-#&gt;                 if (length(entries)) {
-#&gt;                   entries &lt;- unique(tools::file_path_sans_ext(basename(entries)))
-#&gt;                   entries &lt;- cbind(entries, "")
-#&gt;                 }
-#&gt;             }
-#&gt;             if (NROW(entries)) {
-#&gt;                 if (is.matrix(entries) &amp;&amp; ncol(entries) == 2L) 
-#&gt;                   db &lt;- rbind(db, cbind(packageName, dirname(path), 
-#&gt;                     entries))
-#&gt;                 else warning(gettextf("data index for package %s is invalid and will be ignored", 
-#&gt;                   sQuote(packageName)), domain = NA, call. = FALSE)
-#&gt;             }
-#&gt;         }
-#&gt;         colnames(db) &lt;- c("Package", "LibPath", "Item", "Title")
-#&gt;         footer &lt;- if (missing(package)) 
-#&gt;             paste0("Use ", sQuote(paste("data(package =", ".packages(all.available = TRUE))")), 
-#&gt;                 "\n", "to list the data sets in all *available* packages.")
-#&gt;         else NULL
-#&gt;         y &lt;- list(title = "Data sets", header = NULL, results = db, 
-#&gt;             footer = footer)
-#&gt;         class(y) &lt;- "packageIQR"
-#&gt;         return(y)
-#&gt;     }
-#&gt;     paths &lt;- file.path(paths, "data")
-#&gt;     for (name in names) {
-#&gt;         found &lt;- FALSE
-#&gt;         for (p in paths) {
-#&gt;             tmp_env &lt;- if (overwrite) 
-#&gt;                 envir
-#&gt;             else new.env()
-#&gt;             if (file_test("-f", file.path(p, "Rdata.rds"))) {
-#&gt;                 rds &lt;- readRDS(file.path(p, "Rdata.rds"))
-#&gt;                 if (name %in% names(rds)) {
-#&gt;                   found &lt;- TRUE
-#&gt;                   if (verbose) 
-#&gt;                     message(sprintf("name=%s:\t found in Rdata.rds", 
-#&gt;                       name), domain = NA)
-#&gt;                   thispkg &lt;- sub(".*/([^/]*)/data$", "\\1", p)
-#&gt;                   thispkg &lt;- sub("_.*$", "", thispkg)
-#&gt;                   thispkg &lt;- paste0("package:", thispkg)
-#&gt;                   objs &lt;- rds[[name]]
-#&gt;                   lazyLoad(file.path(p, "Rdata"), envir = tmp_env, 
-#&gt;                     filter = function(x) x %in% objs)
-#&gt;                   break
-#&gt;                 }
-#&gt;                 else if (verbose) 
-#&gt;                   message(sprintf("name=%s:\t NOT found in names() of Rdata.rds, i.e.,\n\t%s\n", 
-#&gt;                     name, paste(names(rds), collapse = ",")), 
-#&gt;                     domain = NA)
-#&gt;             }
-#&gt;             if (file_test("-f", file.path(p, "Rdata.zip"))) {
-#&gt;                 warning("zipped data found for package ", sQuote(basename(dirname(p))), 
-#&gt;                   ".\nThat is defunct, so please re-install the package.", 
-#&gt;                   domain = NA)
-#&gt;                 if (file_test("-f", fp &lt;- file.path(p, "filelist"))) 
-#&gt;                   files &lt;- file.path(p, scan(fp, what = "", quiet = TRUE))
-#&gt;                 else {
-#&gt;                   warning(gettextf("file 'filelist' is missing for directory %s", 
-#&gt;                     sQuote(p)), domain = NA)
-#&gt;                   next
-#&gt;                 }
-#&gt;             }
-#&gt;             else {
-#&gt;                 files &lt;- list.files(p, full.names = TRUE)
-#&gt;             }
-#&gt;             files &lt;- files[grep(name, files, fixed = TRUE)]
-#&gt;             if (length(files) &gt; 1L) {
-#&gt;                 o &lt;- match(fileExt(files), dataExts, nomatch = 100L)
-#&gt;                 paths0 &lt;- dirname(files)
-#&gt;                 paths0 &lt;- factor(paths0, levels = unique(paths0))
-#&gt;                 files &lt;- files[order(paths0, o)]
-#&gt;             }
-#&gt;             if (length(files)) {
-#&gt;                 for (file in files) {
-#&gt;                   if (verbose) 
-#&gt;                     message("name=", name, ":\t file= ...", .Platform$file.sep, 
-#&gt;                       basename(file), "::\t", appendLF = FALSE, 
-#&gt;                       domain = NA)
-#&gt;                   ext &lt;- fileExt(file)
-#&gt;                   if (basename(file) != paste0(name, ".", ext)) 
-#&gt;                     found &lt;- FALSE
-#&gt;                   else {
-#&gt;                     found &lt;- TRUE
-#&gt;                     zfile &lt;- file
-#&gt;                     zipname &lt;- file.path(dirname(file), "Rdata.zip")
-#&gt;                     if (file.exists(zipname)) {
-#&gt;                       Rdatadir &lt;- tempfile("Rdata")
-#&gt;                       dir.create(Rdatadir, showWarnings = FALSE)
-#&gt;                       topic &lt;- basename(file)
-#&gt;                       rc &lt;- .External(C_unzip, zipname, topic, 
-#&gt;                         Rdatadir, FALSE, TRUE, FALSE, FALSE)
-#&gt;                       if (rc == 0L) 
-#&gt;                         zfile &lt;- file.path(Rdatadir, topic)
-#&gt;                     }
-#&gt;                     if (zfile != file) 
-#&gt;                       on.exit(unlink(zfile))
-#&gt;                     switch(ext, R = , r = {
-#&gt;                       library("utils")
-#&gt;                       sys.source(zfile, chdir = TRUE, envir = tmp_env)
-#&gt;                     }, RData = , rdata = , rda = load(zfile, 
-#&gt;                       envir = tmp_env), TXT = , txt = , tab = , 
-#&gt;                       tab.gz = , tab.bz2 = , tab.xz = , txt.gz = , 
-#&gt;                       txt.bz2 = , txt.xz = assign(name, my_read_table(zfile, 
-#&gt;                         header = TRUE, as.is = FALSE), envir = tmp_env), 
-#&gt;                       CSV = , csv = , csv.gz = , csv.bz2 = , 
-#&gt;                       csv.xz = assign(name, my_read_table(zfile, 
-#&gt;                         header = TRUE, sep = ";", as.is = FALSE), 
-#&gt;                         envir = tmp_env), found &lt;- FALSE)
-#&gt;                   }
-#&gt;                   if (found) 
-#&gt;                     break
-#&gt;                 }
-#&gt;                 if (verbose) 
-#&gt;                   message(if (!found) 
-#&gt;                     "*NOT* ", "found", domain = NA)
-#&gt;             }
-#&gt;             if (found) 
-#&gt;                 break
-#&gt;         }
-#&gt;         if (!found) {
-#&gt;             warning(gettextf("data set %s not found", sQuote(name)), 
-#&gt;                 domain = NA)
-#&gt;         }
-#&gt;         else if (!overwrite) {
-#&gt;             for (o in ls(envir = tmp_env, all.names = TRUE)) {
-#&gt;                 if (exists(o, envir = envir, inherits = FALSE)) 
-#&gt;                   warning(gettextf("an object named %s already exists and will not be overwritten", 
-#&gt;                     sQuote(o)))
-#&gt;                 else assign(o, get(o, envir = tmp_env, inherits = FALSE), 
-#&gt;                   envir = envir)
-#&gt;             }
-#&gt;             rm(tmp_env)
-#&gt;         }
-#&gt;     }
-#&gt;     invisible(names)
-#&gt; }
-#&gt; &lt;bytecode: 0x5631422b8108&gt;
-#&gt; &lt;environment: namespace:utils&gt;
-#&gt; attr(,"ps_data_type")
-#&gt; [1] "leader_day"
-#&gt; attr(,"ps_system")
-#&gt; [1] "cow"</div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,298,380 × 13</span>
+#&gt;    obsid    gwcode ccode leadid leader yrborn gender startdate  enddate    entry
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1869      2     2 81dcc… Grant    <span style='text-decoration: underline;'>1</span>822 M      1869-03-04 1877-03-04 Regu…
+#&gt; <span style='color: #949494;'># … with 5,298,370 more rows, and 3 more variables: exit &lt;chr&gt;, exitcode &lt;chr&gt;,</span>
+#&gt; <span style='color: #949494;'>#   date &lt;date&gt;</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

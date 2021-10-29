@@ -107,6 +107,9 @@ leader-level data provided in peacesciencer" />
       <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
     </li>
     <li>
+      <a href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
+    </li>
+    <li>
       <a href="../articles/parlor-tricks.html">Various Parlor Tricks in `{peacesciencer}`</a>
     </li>
     <li>
@@ -215,9 +218,35 @@ is <code>standardize_cow = FALSE</code>.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># \donttest{</span>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in mutate(., year = .pshf_year(.data$date)): could not find function "mutate"</span></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 7</span>
+#&gt;    obsid     year gwcode leader gender leaderage yrinoffice
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869      2 Grant  M             47          1
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870      2 Grant  M             48          2
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871      2 Grant  M             49          3
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872      2 Grant  M             50          4
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873      2 Grant  M             51          5
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874      2 Grant  M             52          6
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875      2 Grant  M             53          7
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876      2 Grant  M             54          8
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877      2 Grant  M             55          9
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877      2 Hayes  M             55          1
+#&gt; <span style='color: #949494;'># … with 17,676 more rows</span></div><div class='input'>
 <span class='fu'>create_leaderyears</span><span class='op'>(</span>standardize_cow <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='error'>Error in mutate(., year = .pshf_year(.data$date)): could not find function "mutate"</span></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 17,686 × 7</span>
+#&gt;    obsid     year gwcode leader gender leaderage yrinoffice
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869  <span style='text-decoration: underline;'>1</span>869      2 Grant  M             47          1
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869  <span style='text-decoration: underline;'>1</span>870      2 Grant  M             48          2
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869  <span style='text-decoration: underline;'>1</span>871      2 Grant  M             49          3
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869  <span style='text-decoration: underline;'>1</span>872      2 Grant  M             50          4
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869  <span style='text-decoration: underline;'>1</span>873      2 Grant  M             51          5
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869  <span style='text-decoration: underline;'>1</span>874      2 Grant  M             52          6
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869  <span style='text-decoration: underline;'>1</span>875      2 Grant  M             53          7
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869  <span style='text-decoration: underline;'>1</span>876      2 Grant  M             54          8
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869  <span style='text-decoration: underline;'>1</span>877      2 Grant  M             55          9
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1877  <span style='text-decoration: underline;'>1</span>877      2 Hayes  M             55          1
+#&gt; <span style='color: #949494;'># … with 17,676 more rows</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>

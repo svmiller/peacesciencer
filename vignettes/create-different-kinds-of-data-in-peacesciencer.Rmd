@@ -133,7 +133,7 @@ archigos %>%
   rowwise() %>%
   mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
   unnest(date) %>%
-  select(ccode, leadid, date, everything())
+  select(gwcode, obsid, date, everything())
 ```
 
 The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.
@@ -143,10 +143,10 @@ archigos %>%
   rowwise() %>%
   mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
   unnest(date) %>%
-  select(ccode, leadid, date, everything()) %>%
+  select(gwcode, obsid, date, everything()) %>%
   mutate(year = year(date),
          month = month(date)) %>%
-  group_by(ccode, leadid, year, month) %>%
+  group_by(gwcode, obsid, year, month) %>%
   slice(1)
 ```
 
@@ -157,8 +157,8 @@ archigos %>%
   rowwise() %>%
   mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
   unnest(date) %>%
-  select(ccode, leadid, date, everything()) %>%
+  select(gwcode, obsid, date, everything()) %>%
   mutate(year = year(date)) %>%
-  group_by(ccode, leadid, year) %>%
+  group_by(gwcode, obsid, year) %>%
   slice(1)
 ```
