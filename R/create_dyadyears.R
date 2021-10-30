@@ -81,6 +81,10 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
     } else {
       filter(data, .data$ccode2 > .data$ccode1) -> data
     }
+
+    # remove false dyads
+    data %>% anti_join(., false_cow_dyads) -> data
+
     return(data)
 
     } else if(system == "gw") {
@@ -121,6 +125,10 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
       } else {
         filter(data, .data$gwcode2 > .data$gwcode1) -> data
       }
+
+      # remove false dyads
+      data %>% anti_join(., false_gw_dyads) -> data
+
       return(data)
 
     }
