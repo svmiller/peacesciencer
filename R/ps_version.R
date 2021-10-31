@@ -35,6 +35,10 @@
 #' # What can you search for...
 #' unique(ps_data_version$category)
 #'
+#' # will show the data versions for everything
+#' ps_version()
+#'
+#' # will show data versions for particular categories of data
 #' ps_version("democracy")
 #'
 #' ps_version("leaders")

@@ -113,7 +113,7 @@
 
       
 
-      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create Different Kinds of Data in <code>{peacesciencer}</code>
@@ -194,7 +194,8 @@
 <p>Here are all Correlates of War dyad-years from 1816 to 2020.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2,063,670 × 3</span>
+<span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
+<span class="co">#&gt; # A tibble: 2,063,610 × 3</span>
 <span class="co">#&gt;    ccode1 ccode2  year</span>
 <span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1      2     20  1920</span>
@@ -207,11 +208,12 @@
 <span class="co">#&gt;  8      2     20  1927</span>
 <span class="co">#&gt;  9      2     20  1928</span>
 <span class="co">#&gt; 10      2     20  1929</span>
-<span class="co">#&gt; # … with 2,063,660 more rows</span></code></pre></div>
+<span class="co">#&gt; # … with 2,063,600 more rows</span></code></pre></div>
 <p>Here are all Gleditsch-Ward dyad-years with the same temporal domain.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2,029,660 × 3</span>
+<span class="co">#&gt; Joining, by = c("gwcode1", "gwcode2", "year")</span>
+<span class="co">#&gt; # A tibble: 2,029,622 × 3</span>
 <span class="co">#&gt;    gwcode1 gwcode2  year</span>
 <span class="co">#&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;</span>
 <span class="co">#&gt;  1       2      20  1867</span>
@@ -224,7 +226,7 @@
 <span class="co">#&gt;  8       2      20  1874</span>
 <span class="co">#&gt;  9       2      20  1875</span>
 <span class="co">#&gt; 10       2      20  1876</span>
-<span class="co">#&gt; # … with 2,029,650 more rows</span></code></pre></div>
+<span class="co">#&gt; # … with 2,029,612 more rows</span></code></pre></div>
 </div>
 <div id="dyadic-dispute-year-data" class="section level2">
 <h2 class="hasAnchor">
@@ -296,7 +298,7 @@
 <p>I can conjure an application where a user may want to think of daily conflict episodes within the Gleditsch-Ward domain. The UCDP armed conflict data have more precise dates than, say, the Correlates of War MID data, making such an analysis possible. However, there are no conflict data before 1946 and you should reflect that with <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> with something like this. This will require <a href="https://lubridate.tidyverse.org">lubridate</a>.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1946</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1946</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3,870,980 × 3</span>
 <span class="co">#&gt;    gwcode statename                date      </span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;date&gt;    </span>
@@ -318,9 +320,9 @@
 <p>State-months are simple aggregations of state-days. You can accomplish this with a few more extra commands after <code><a href="../reference/create_statedays.html">create_statedays()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">distinct</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 218,194 × 4</span>
 <span class="co">#&gt;    gwcode statename                 year month</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt;</span>
@@ -342,16 +344,16 @@
 <p>There is some assumption about what a “quarter” would look like in a more general context, but it might look something like this. Again, this is an aggregation of <code><a href="../reference/create_statedays.html">create_statedays()</a></code>.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>quarter <span class="op">=</span> <span class="fu">case_when</span><span class="op">(</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>quarter <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
     <span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Q1"</span>,
     <span class="va">month</span> <span class="op">==</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Q2"</span>,
     <span class="va">month</span> <span class="op">==</span> <span class="fl">7</span> <span class="op">~</span> <span class="st">"Q3"</span>,
     <span class="va">month</span> <span class="op">==</span> <span class="fl">10</span> <span class="op">~</span> <span class="st">"Q4"</span>
   <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">distinct</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">quarter</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">quarter</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 72,687 × 4</span>
 <span class="co">#&gt;    gwcode statename                 year quarter</span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  </span>
@@ -390,10 +392,10 @@
 <p>If you want leader-days, here is the simplest path toward it. May this also give an idea of what functions like <code><a href="../reference/create_statedays.html">create_statedays()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> are doing underneath the proverbial hood.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
-  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 5,298,380 × 12</span>
 <span class="co">#&gt;    gwcode obsid    date       leadid  leader yrborn gender startdate  enddate   </span>
 <span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
@@ -412,14 +414,14 @@
 <p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
-  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 177,128 × 14</span>
 <span class="co">#&gt; # Groups:   gwcode, obsid, year, month [177,128]</span>
 <span class="co">#&gt;    gwcode obsid    date       leadid  leader yrborn gender startdate  enddate   </span>
@@ -439,13 +441,13 @@
 <p>And here are leader-years.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
-  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">group_by</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">slice</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 17,686 × 13</span>
 <span class="co">#&gt; # Groups:   gwcode, obsid, year [17,686]</span>
 <span class="co">#&gt;    gwcode obsid    date       leadid  leader yrborn gender startdate  enddate   </span>

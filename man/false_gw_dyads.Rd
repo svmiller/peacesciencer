@@ -18,7 +18,7 @@ false_gw_dyads
 }
 \description{
 This is a simple data set that communicates directed dyads in the Gleditsch-Ward data that appear in the same year,
-but not in any particular day in the year. They are used in anti-join in the \code{create_dyadyears()} function in this package.
+but not in any particular day in the year. They are used in an anti-join in the \code{create_dyadyears()} function in this package.
 }
 \details{
 Think of the directed Suriname and Republic of Vietnam dyad here as illustrative here. The Republic of Vietnam exits the
