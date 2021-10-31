@@ -133,15 +133,15 @@
 <div id="left-outer-join" class="section level2">
 <h2 class="hasAnchor">
 <a href="#left-outer-join" class="anchor"></a>Left (Outer) Join</h2>
-<p>The first type of join is the most important type of join function in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. Indeed, almost every function in this package that deals with adding variables to a type of data created in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> includes it. This is the “left join” (<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> in <a href="https://dplyr.tidyverse.org">dplyr</a>), alternatively known as <a href="https://www.w3schools.com/sql/sql_join_left.asp">the “outer join” or “left outer join” in the SQL context</a>, and is a type of “mutating join” in the <a href="https://tidyverse.tidyverse.org">tidyverse</a> context. In plain English, the <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> assumes two data objects—a “left” object (<code>x</code>) and a “right” object (<code>y</code>)—and returns all rows from the left object (<code>x</code>) with matching information in the right object (<code>y</code>) by a set of common matching keys (or columns in both <code>x</code> and <code>y</code>).</p>
+<p>The first type of join is the most important type of join function in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. Indeed, almost every function in this package that deals with adding variables to a type of data created in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> includes it. This is the “left join” (<code>left_join()</code> in <a href="https://dplyr.tidyverse.org">dplyr</a>), alternatively known as <a href="https://www.w3schools.com/sql/sql_join_left.asp">the “outer join” or “left outer join” in the SQL context</a>, and is a type of “mutating join” in the <a href="https://tidyverse.tidyverse.org">tidyverse</a> context. In plain English, the <code>left_join()</code> assumes two data objects—a “left” object (<code>x</code>) and a “right” object (<code>y</code>)—and returns all rows from the left object (<code>x</code>) with matching information in the right object (<code>y</code>) by a set of common matching keys (or columns in both <code>x</code> and <code>y</code>).</p>
 <p>Here is a simple example of how this works in the <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> context. Assume a simple state-year data set of the United States (<code>ccode: 2</code>), Canada (<code>ccode: 20</code>), and the United Kingdom (<code>ccode: 200</code>) for all years from 2016 to 2020. Recreating this simple kind of data is no problem in R and will serve as our “left object” (<code>x</code>) for this simple example.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># rowwise() is a great trick for nesting sequences in tibbles</span>
   <span class="co"># This parlor trick, for example, generates state-year data out of raw state data in create_stateyears()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># create a sequence as a nested column</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># unnest the column</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">x</span>
 
@@ -166,7 +166,7 @@
 <span class="co">#&gt; 15   200  2020</span></code></pre></div>
 <p>Let’s assume we’re building toward the kind of state-year analysis I describe in <a href="http://svmiller.com/peacesciencer/ms.pdf">the manuscript accompanying this package</a>. For example, the canonical civil conflict analysis by <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/abs/ethnicity-insurgency-and-civil-war/B1D5D0E7C782483C5D7E102A61AD6605">Fearon and Laitin (2003)</a> has an outcome that varies by year, but several independent variables that are time-invariant and serve as variables for making state-to-state comparisons in their model of civil war onset (e.g ethnic fractionalization, religious fractionalization, terrain ruggedness). In a similar manner, we have a basic ranking of the United States, Canada, and the United Kingdom in our case. Minimally, the United States scores “low”, Canada scores “medium”, and the United Kingdom scores “high” on some metric. There is no variation by time in this simple example.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span>,
        ranking <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y</span>
 
 <span class="va">y</span>
@@ -176,10 +176,10 @@
 <span class="co">#&gt; 1     2 low    </span>
 <span class="co">#&gt; 2    20 medium </span>
 <span class="co">#&gt; 3   200 high</span></code></pre></div>
-<p>This is the “right object” (<code>y</code>) that we want to add to the “left object” that serves as our main data frame. Notice that <code>x</code> has no variable for the ranking information we want. It does, however, have matching observations for the state identifiers corresponding with the Correlates of War state codes for the U.S., Canada, and the United Kingdom. The left join (as <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>) merges <code>y</code> into <code>x</code>, returning all rows of <code>x</code> with matching information in <code>y</code> based on columns they share in common (here: <code>ccode</code>).</p>
+<p>This is the “right object” (<code>y</code>) that we want to add to the “left object” that serves as our main data frame. Notice that <code>x</code> has no variable for the ranking information we want. It does, however, have matching observations for the state identifiers corresponding with the Correlates of War state codes for the U.S., Canada, and the United Kingdom. The left join (as <code>left_join()</code>) merges <code>y</code> into <code>x</code>, returning all rows of <code>x</code> with matching information in <code>y</code> based on columns they share in common (here: <code>ccode</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># alternatively, as I tend to do it: x %&gt;% left_join(., y)</span>
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt; # A tibble: 15 × 3</span>
 <span class="co">#&gt;    ccode  year ranking</span>
@@ -201,9 +201,9 @@
 <span class="co">#&gt; 15   200  2020 high</span></code></pre></div>
 <p>This is obviously a very simple example, but it scales well even if there is some additional complexity. For example, let’s assume we added a simple five-year panel of Australia (<code>ccode: 900</code>) to the “left object” (<code>x</code>). However, we have no corresponding information about Australia in the “right object” (<code>y</code>). Here is what the left join would produce under these circumstances.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">900</span>,
+<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">900</span>,
        year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2016</span><span class="op">:</span><span class="fl">2020</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">x</span>
+  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">x</span>
 
 <span class="va">x</span>
 <span class="co">#&gt; # A tibble: 20 × 2</span>
@@ -230,7 +230,7 @@
 <span class="co">#&gt; 19   900  2019</span>
 <span class="co">#&gt; 20   900  2020</span>
 
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt; # A tibble: 20 × 3</span>
 <span class="co">#&gt;    ccode  year ranking</span>
@@ -258,9 +258,9 @@
 <p>Because have no ranking for Australia in this simple example, the left join returns NAs for Australia. The original dimensions of <code>x</code> under these conditions is unaffected.</p>
 <p>What would happen if we had an observation in <code>y</code> that has no corresponding match in <code>x</code>? For example, let’s assume our ranking data also included a ranking for Denmark (<code>ccode: 390</code>), though Denmark does not appear in <code>x</code>. Here is what would happen under these circumstances.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">390</span>,
+<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">390</span>,
        ranking <span class="op">=</span> <span class="st">"high"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y</span>
+  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y</span>
 
 <span class="va">y</span>
 <span class="co">#&gt; # A tibble: 4 × 2</span>
@@ -271,7 +271,7 @@
 <span class="co">#&gt; 3   200 high   </span>
 <span class="co">#&gt; 4   390 high</span>
 
-<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt; # A tibble: 20 × 3</span>
 <span class="co">#&gt;    ccode  year ranking</span>
@@ -300,7 +300,7 @@
 <div id="why-the-left-join-in-particular" class="section level3">
 <h3 class="hasAnchor">
 <a href="#why-the-left-join-in-particular" class="anchor"></a>Why the Left Join, in Particular?</h3>
-<p>An interested user may ask what’s so special about this kind of join that it appears everywhere in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>? One is a matter of taste. I could just as well be doing this explainer piece by reference to the “right join”, the mirror join to “left join.” The right join in <a href="https://dplyr.tidyverse.org">dplyr</a>’s <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join(x,y)</a></code> returns all records from <code>y</code> with matching rows in <code>x</code> by common columns. However, I tend to <a href="http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/#myadvice">think “left-handed”</a> when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it “left” as I add information to it. This approach appears in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> for it.</p>
+<p>An interested user may ask what’s so special about this kind of join that it appears everywhere in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>? One is a matter of taste. I could just as well be doing this explainer piece by reference to the “right join”, the mirror join to “left join.” The right join in <a href="https://dplyr.tidyverse.org">dplyr</a>’s <code>right_join(x,y)</code> returns all records from <code>y</code> with matching rows in <code>x</code> by common columns. However, I tend to <a href="http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/#myadvice">think “left-handed”</a> when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it “left” as I add information to it. This approach to data transformation and it recurs in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> as a result.</p>
 <p>Beyond that matter of taste, the left join is everywhere in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> because the project endeavors hard to recreate the appropriate universe of cases of interest to the user and allow the user to add stuff to it as they see fit. <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> will create the entire universe of state-years from 1816 to the present for a state-year analysis. <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> will create the entire universe of dyad-years from 1816 to the present for a dyad-year analysis. The logic here, as it is implemented in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>’s multiple functions, is the type of data the user wants to create has been created for them. The user does not want to expand the data any further than that, though the user may want to do something like reduce the full universe of 1816-2020 state-years to just 1946-2010. However, this is a universe discarded, not a universe that has been augmented or expanded.</p>
 <p>With that in mind, every function’s user of the left join assumes the data object it receives represents the full universe of cases of interest to the researcher. The left join is just adding information to it, based on matching information in one of its many data sets. When done carefully, the left join is a dutiful way of adding information to a data set without changing the number of rows of the original data set. The number of columns will obviously expand, but the number of rows is unaffected.</p>
 </div>
@@ -345,12 +345,12 @@
 <span class="co">#&gt; 4   390 high</span></code></pre></div>
 <p>Let’s assume, however, we mistakenly entered the United Kingdom twice into <code>y</code>. We know these data are supposed to be simple state-level rankings. Each state is supposed to be in there just once. The United Kingdom appears in there twice.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">200</span>,
+<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">200</span>,
        ranking <span class="op">=</span> <span class="st">"high"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y2</span></code></pre></div>
+  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y2</span></code></pre></div>
 <p>If we were to left join <code>y2</code> into <code>x</code>, we get an unwelcome result. The United Kingdom is duplicated for all yearly observations.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">data.frame</span>
+<code class="sourceCode R"><span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">data.frame</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt;    ccode year ranking</span>
 <span class="co">#&gt; 1      2 2016     low</span>
