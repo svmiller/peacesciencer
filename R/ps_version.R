@@ -45,7 +45,7 @@ ps_version <- function(category) {
   if (missing(category)) {
     ps_data_version -> output
   } else {
-    ps_data_version %>% filter(grepl(x, .data$category)) -> output
+    ps_data_version %>% filter(grepl(category, .data$category)) -> output
   }
 
   return(output)
