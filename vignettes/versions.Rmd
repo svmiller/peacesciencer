@@ -1,0 +1,33 @@
+---
+title: "`{peacesciencer}` Data Versions"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, message=F}
+library(tidyverse)
+library(peacesciencer)
+library(kableExtra)
+```
+
+These are the data versions available in `{peacesciencer}`. Do note the user can find specific data versions with more targeted use of the `ps_version()` function in this package. Without an argument, `ps_version()` produces a data frame of all the data versions in this package. 
+
+
+```{r}
+ps_version() %>%
+  kbl(., caption = "Data Versions in `{peacesciencer}`",
+      align =c("c", "l", "c", "c"))  %>%
+  kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
+```
+
+Users can use the `bibtexkey` information to search [the dataframe of citations](http://svmiller.com/peacesciencer/reference/ps_bib.html) in this package. For example, we can use `ps_cite()` to get a full citation for Carter and Smith's (2020) estimates of leader willingness to use force.
+
+
+```{r}
+ps_cite("cartersmith2020fml", column = "bibtexkey")
+```

@@ -72,6 +72,9 @@
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
+    <li>
+      <a href="../articles/versions.html">`{peacesciencer}` Data Versions</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -132,15 +135,15 @@
 <div id="left-outer-join" class="section level2">
 <h2 class="hasAnchor">
 <a href="#left-outer-join" class="anchor"></a>Left (Outer) Join</h2>
-<p>The first type of join is the most important type of join function in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. Indeed, almost every function in this package that deals with adding variables to a type of data created in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> includes it. This is the “left join” (<code>left_join()</code> in <a href="https://dplyr.tidyverse.org">dplyr</a>), alternatively known as <a href="https://www.w3schools.com/sql/sql_join_left.asp">the “outer join” or “left outer join” in the SQL context</a>, and is a type of “mutating join” in the <a href="https://tidyverse.tidyverse.org">tidyverse</a> context. In plain English, the <code>left_join()</code> assumes two data objects—a “left” object (<code>x</code>) and a “right” object (<code>y</code>)—and returns all rows from the left object (<code>x</code>) with matching information in the right object (<code>y</code>) by a set of common matching keys (or columns in both <code>x</code> and <code>y</code>).</p>
+<p>The first type of join is the most important type of join function in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. Indeed, almost every function in this package that deals with adding variables to a type of data created in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> includes it. This is the “left join” (<code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> in <a href="https://dplyr.tidyverse.org">dplyr</a>), alternatively known as <a href="https://www.w3schools.com/sql/sql_join_left.asp">the “outer join” or “left outer join” in the SQL context</a>, and is a type of “mutating join” in the <a href="https://tidyverse.tidyverse.org">tidyverse</a> context. In plain English, the <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> assumes two data objects—a “left” object (<code>x</code>) and a “right” object (<code>y</code>)—and returns all rows from the left object (<code>x</code>) with matching information in the right object (<code>y</code>) by a set of common matching keys (or columns in both <code>x</code> and <code>y</code>).</p>
 <p>Here is a simple example of how this works in the <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> context. Assume a simple state-year data set of the United States (<code>ccode: 2</code>), Canada (<code>ccode: 20</code>), and the United Kingdom (<code>ccode: 200</code>) for all years from 2016 to 2020. Recreating this simple kind of data is no problem in R and will serve as our “left object” (<code>x</code>) for this simple example.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># rowwise() is a great trick for nesting sequences in tibbles</span>
   <span class="co"># This parlor trick, for example, generates state-year data out of raw state data in create_stateyears()</span>
-  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># create a sequence as a nested column</span>
-  <span class="fu">mutate</span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2020</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># unnest the column</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">x</span>
 
@@ -165,7 +168,7 @@
 <span class="co">#&gt; 15   200  2020</span></code></pre></div>
 <p>Let’s assume we’re building toward the kind of state-year analysis I describe in <a href="http://svmiller.com/peacesciencer/ms.pdf">the manuscript accompanying this package</a>. For example, the canonical civil conflict analysis by <a href="https://www.cambridge.org/core/journals/american-political-science-review/article/abs/ethnicity-insurgency-and-civil-war/B1D5D0E7C782483C5D7E102A61AD6605">Fearon and Laitin (2003)</a> has an outcome that varies by year, but several independent variables that are time-invariant and serve as variables for making state-to-state comparisons in their model of civil war onset (e.g ethnic fractionalization, religious fractionalization, terrain ruggedness). In a similar manner, we have a basic ranking of the United States, Canada, and the United Kingdom in our case. Minimally, the United States scores “low”, Canada scores “medium”, and the United Kingdom scores “high” on some metric. There is no variation by time in this simple example.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span>,
        ranking <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"low"</span>, <span class="st">"medium"</span>, <span class="st">"high"</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y</span>
 
 <span class="va">y</span>
@@ -175,10 +178,10 @@
 <span class="co">#&gt; 1     2 low    </span>
 <span class="co">#&gt; 2    20 medium </span>
 <span class="co">#&gt; 3   200 high</span></code></pre></div>
-<p>This is the “right object” (<code>y</code>) that we want to add to the “left object” that serves as our main data frame. Notice that <code>x</code> has no variable for the ranking information we want. It does, however, have matching observations for the state identifiers corresponding with the Correlates of War state codes for the U.S., Canada, and the United Kingdom. The left join (as <code>left_join()</code>) merges <code>y</code> into <code>x</code>, returning all rows of <code>x</code> with matching information in <code>y</code> based on columns they share in common (here: <code>ccode</code>).</p>
+<p>This is the “right object” (<code>y</code>) that we want to add to the “left object” that serves as our main data frame. Notice that <code>x</code> has no variable for the ranking information we want. It does, however, have matching observations for the state identifiers corresponding with the Correlates of War state codes for the U.S., Canada, and the United Kingdom. The left join (as <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>) merges <code>y</code> into <code>x</code>, returning all rows of <code>x</code> with matching information in <code>y</code> based on columns they share in common (here: <code>ccode</code>).</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># alternatively, as I tend to do it: x %&gt;% left_join(., y)</span>
-<span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt; # A tibble: 15 × 3</span>
 <span class="co">#&gt;    ccode  year ranking</span>
@@ -200,9 +203,9 @@
 <span class="co">#&gt; 15   200  2020 high</span></code></pre></div>
 <p>This is obviously a very simple example, but it scales well even if there is some additional complexity. For example, let’s assume we added a simple five-year panel of Australia (<code>ccode: 900</code>) to the “left object” (<code>x</code>). However, we have no corresponding information about Australia in the “right object” (<code>y</code>). Here is what the left join would produce under these circumstances.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">900</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">900</span>,
        year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2016</span><span class="op">:</span><span class="fl">2020</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">x</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">x</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">x</span>
 
 <span class="va">x</span>
 <span class="co">#&gt; # A tibble: 20 × 2</span>
@@ -229,7 +232,7 @@
 <span class="co">#&gt; 19   900  2019</span>
 <span class="co">#&gt; 20   900  2020</span>
 
-<span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt; # A tibble: 20 × 3</span>
 <span class="co">#&gt;    ccode  year ranking</span>
@@ -257,9 +260,9 @@
 <p>Because have no ranking for Australia in this simple example, the left join returns NAs for Australia. The original dimensions of <code>x</code> under these conditions is unaffected.</p>
 <p>What would happen if we had an observation in <code>y</code> that has no corresponding match in <code>x</code>? For example, let’s assume our ranking data also included a ranking for Denmark (<code>ccode: 390</code>), though Denmark does not appear in <code>x</code>. Here is what would happen under these circumstances.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">390</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">390</span>,
        ranking <span class="op">=</span> <span class="st">"high"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y</span>
 
 <span class="va">y</span>
 <span class="co">#&gt; # A tibble: 4 × 2</span>
@@ -270,7 +273,7 @@
 <span class="co">#&gt; 3   200 high   </span>
 <span class="co">#&gt; 4   390 high</span>
 
-<span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt; # A tibble: 20 × 3</span>
 <span class="co">#&gt;    ccode  year ranking</span>
@@ -299,7 +302,7 @@
 <div id="why-the-left-join-in-particular" class="section level3">
 <h3 class="hasAnchor">
 <a href="#why-the-left-join-in-particular" class="anchor"></a>Why the Left Join, in Particular?</h3>
-<p>An interested user may ask what’s so special about this kind of join that it appears everywhere in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>? One is a matter of taste. I could just as well be doing this explainer piece by reference to the “right join”, the mirror join to “left join.” The right join in <a href="https://dplyr.tidyverse.org">dplyr</a>’s <code>right_join(x,y)</code> returns all records from <code>y</code> with matching rows in <code>x</code> by common columns. However, I tend to <a href="http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/#myadvice">think “left-handed”</a> when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it “left” as I add information to it. This approach to data transformation and it recurs in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> as a result.</p>
+<p>An interested user may ask what’s so special about this kind of join that it appears everywhere in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>? One is a matter of taste. I could just as well be doing this explainer piece by reference to the “right join”, the mirror join to “left join.” The right join in <a href="https://dplyr.tidyverse.org">dplyr</a>’s <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join(x,y)</a></code> returns all records from <code>y</code> with matching rows in <code>x</code> by common columns. However, I tend to <a href="http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/#myadvice">think “left-handed”</a> when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it “left” as I add information to it. This approach to data transformation and it recurs in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> as a result.</p>
 <p>Beyond that matter of taste, the left join is everywhere in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> because the project endeavors hard to recreate the appropriate universe of cases of interest to the user and allow the user to add stuff to it as they see fit. <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> will create the entire universe of state-years from 1816 to the present for a state-year analysis. <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> will create the entire universe of dyad-years from 1816 to the present for a dyad-year analysis. The logic here, as it is implemented in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>’s multiple functions, is the type of data the user wants to create has been created for them. The user does not want to expand the data any further than that, though the user may want to do something like reduce the full universe of 1816-2020 state-years to just 1946-2010. However, this is a universe discarded, not a universe that has been augmented or expanded.</p>
 <p>With that in mind, every function’s use of the left join assumes the data object it receives represents the full universe of cases of interest to the researcher. The left join is just adding information to it, based on matching information in one of its many data sets. When done carefully, the left join is a dutiful way of adding information to a data set without changing the number of rows of the original data set. The number of columns will obviously expand, but the number of rows is unaffected.</p>
 </div>
@@ -345,12 +348,12 @@
 <span class="co">#&gt; 4   390 high</span></code></pre></div>
 <p>Let’s assume, however, we mistakenly entered the United Kingdom twice into <code>y</code>. We know these data are supposed to be simple state-level rankings. Each state is supposed to be in there just once. The United Kingdom appears in there twice.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">200</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode <span class="op">=</span> <span class="fl">200</span>,
        ranking <span class="op">=</span> <span class="st">"high"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y2</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">y</span>, <span class="va">.</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">y2</span></code></pre></div>
 <p>If we were to left join <code>y2</code> into <code>x</code>, we get an unwelcome result. The United Kingdom is duplicated for all yearly observations.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">left_join</span><span class="op">(</span><span class="va">x</span>, <span class="va">y2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">data.frame</span>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y2</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="va">data.frame</span>
 <span class="co">#&gt; Joining, by = "ccode"</span>
 <span class="co">#&gt;    ccode year ranking</span>
 <span class="co">#&gt; 1      2 2016     low</span>
@@ -385,10 +388,10 @@
 <div id="semi-join" class="section level2">
 <h2 class="hasAnchor">
 <a href="#semi-join" class="anchor"></a>Semi-Join</h2>
-<p>The “semi-join” (<code>semi_join()</code> in <a href="https://dplyr.tidyverse.org">dplyr</a>) returns all rows from the left object (<code>x</code>) that have matching values in the right object (<code>y</code>). It is a type of “filtering join”, which affects the observations and not the variables. It appears just twice in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>, serving as a final join in <code><a href="../reference/create_leaderdays.html">create_leaderdays()</a></code> and <code><a href="../reference/create_leaderyears.html">create_leaderyears()</a></code>. In both cases, it serves as a means of standardizing leader data (denominated in the Gleditsch-Ward system) to the Correlates of War system.</p>
+<p>The “semi-join” (<code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join()</a></code> in <a href="https://dplyr.tidyverse.org">dplyr</a>) returns all rows from the left object (<code>x</code>) that have matching values in the right object (<code>y</code>). It is a type of “filtering join”, which affects the observations and not the variables. It appears just twice in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>, serving as a final join in <code><a href="../reference/create_leaderdays.html">create_leaderdays()</a></code> and <code><a href="../reference/create_leaderyears.html">create_leaderyears()</a></code>. In both cases, it serves as a means of standardizing leader data (denominated in the Gleditsch-Ward system) to the Correlates of War system.</p>
 <p>Here is a basic example of what a semi-join is doing in this context, with an illustration of the kind of difficulties that manifest in standardizing Archigos’ leader data to the Correlates of War state system. Assume this simple state system that has just two states—“A” and “B”—over a two-week period at the start of 1975 (Jan. 1, 1975 to Jan. 14, 1975). In this simple system, “A” is a state for the full two week period (Jan. 1-Jan.14) whereas “B” is a state for just the first seven days (Jan. 1-Jan. 7) because, let’s say, A occupied B and ended its statehood. We also happened to have some leader data for these two states. Over this two week period, our leader data suggests A had just one continuous leader—<a href="https://en.wikipedia.org/wiki/Archie_Griffin">“Archie”</a>—whereas B had three. <a href="https://en.wikipedia.org/wiki/Brian_Baschnagel">“Brian”</a> was the leader of B before he retired from office and was replaced by <a href="https://en.wikipedia.org/wiki/Cornelius_Greene">“Cornelius.”</a> However, he was deposed when A invaded B and was replaced by a puppet head of state, <a href="https://en.wikipedia.org/wiki/Pete_Johnson_(American_football)">“Pete.”</a> Our data look like this.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">tibble</span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>,
        stdate <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">01</span><span class="op">)</span>,
        enddate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">14</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">07</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">state_system</span>
 
@@ -399,7 +402,7 @@
 <span class="co">#&gt; 1 A     1975-01-01 1975-01-14</span>
 <span class="co">#&gt; 2 B     1975-01-01 1975-01-07</span>
 
-<span class="fu">tibble</span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>, <span class="st">"B"</span><span class="op">)</span>,
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>code <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"B"</span>, <span class="st">"B"</span><span class="op">)</span>,
        leader <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Archie"</span>, <span class="st">"Brian"</span>, <span class="st">"Cornelius"</span>, <span class="st">"Pete"</span><span class="op">)</span>,
        stdate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">01</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">01</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">04</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">08</span><span class="op">)</span><span class="op">)</span>,
        enddate <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">14</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">04</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">08</span><span class="op">)</span>, <span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="fl">1975</span>, <span class="fl">01</span>, <span class="fl">14</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">leaders</span>
@@ -412,13 +415,13 @@
 <span class="co">#&gt; 2 B     Brian     1975-01-01 1975-01-04</span>
 <span class="co">#&gt; 3 B     Cornelius 1975-01-04 1975-01-08</span>
 <span class="co">#&gt; 4 B     Pete      1975-01-08 1975-01-14</span></code></pre></div>
-<p>We can use some basic <code>rowwise()</code> transformation to recast these data as daily, resulting in state-day data and leader-day data.</p>
+<p>We can use some basic <code><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise()</a></code> transformation to recast these data as daily, resulting in state-day data and leader-day data.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">state_system</span> <span class="op">%&gt;%</span>
-  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">stdate</span>, <span class="va">enddate</span>, by <span class="op">=</span> <span class="st">'1 day'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">stdate</span>, <span class="va">enddate</span>, by <span class="op">=</span> <span class="st">'1 day'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">code</span>, <span class="va">date</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">state_days</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">code</span>, <span class="va">date</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">state_days</span>
 
 <span class="va">state_days</span> <span class="op">%&gt;%</span> <span class="va">data.frame</span>
 <span class="co">#&gt;    code       date</span>
@@ -445,10 +448,10 @@
 <span class="co">#&gt; 21    B 1975-01-07</span>
 
 <span class="va">leaders</span> <span class="op">%&gt;%</span>
-  <span class="fu">rowwise</span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">mutate</span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">stdate</span>, <span class="va">enddate</span>, by <span class="op">=</span> <span class="st">'1 day'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">stdate</span>, <span class="va">enddate</span>, by <span class="op">=</span> <span class="st">'1 day'</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">code</span>, <span class="va">leader</span>, <span class="va">date</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">leader_days</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">code</span>, <span class="va">leader</span>, <span class="va">date</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">leader_days</span>
 
 <span class="va">leader_days</span> <span class="op">%&gt;%</span> <span class="va">data.frame</span>
 <span class="co">#&gt;    code    leader       date</span>
@@ -485,7 +488,7 @@
 <p>If we wanted to standardize these leader-day data to the state system data, we would semi-join the leader-day data (the left object) with the state-day object (the right object), returning just the leader-day data with valid days in the state system data.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">leader_days</span> <span class="op">%&gt;%</span>
-  <span class="fu">semi_join</span><span class="op">(</span><span class="va">.</span>, <span class="va">state_days</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">state_days</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="va">data.frame</span>
 <span class="co">#&gt; Joining, by = c("code", "date")</span>
 <span class="co">#&gt;    code    leader       date</span>
@@ -556,19 +559,19 @@
 <code class="sourceCode R"><span class="va">check_both</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
 
   <span class="va">gw_states</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>data <span class="op">=</span> <span class="st">"G-W"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gwcode</span> <span class="op">%in%</span> <span class="va">x</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">gwrows</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="st">"G-W"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gwcode</span> <span class="op">%in%</span> <span class="va">x</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">gwrows</span>
 
   <span class="va">cow_states</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>startdate <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">styear</span>,<span class="st">"/"</span>,<span class="va">stmonth</span>, <span class="st">"/"</span>, <span class="va">stday</span><span class="op">)</span><span class="op">)</span>,
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>startdate <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">styear</span>,<span class="st">"/"</span>,<span class="va">stmonth</span>, <span class="st">"/"</span>, <span class="va">stday</span><span class="op">)</span><span class="op">)</span>,
            enddate <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">ymd</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">endyear</span>,<span class="st">"/"</span>,<span class="va">endmonth</span>,<span class="st">"/"</span>,<span class="va">endday</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">stateabb</span><span class="op">:</span><span class="va">statenme</span>, <span class="va">startdate</span>, <span class="va">enddate</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">mutate</span><span class="op">(</span>data <span class="op">=</span> <span class="st">"CoW"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">rename</span><span class="op">(</span>statename <span class="op">=</span> <span class="va">statenme</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode</span> <span class="op">%in%</span> <span class="va">x</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">cowrows</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">stateabb</span><span class="op">:</span><span class="va">statenme</span>, <span class="va">startdate</span>, <span class="va">enddate</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>data <span class="op">=</span> <span class="st">"CoW"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>statename <span class="op">=</span> <span class="va">statenme</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode</span> <span class="op">%in%</span> <span class="va">x</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">cowrows</span>
 
-  <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">gwrows</span>, <span class="va">cowrows</span><span class="op">)</span> <span class="op">%&gt;%</span>
-    <span class="fu">select</span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">ccode</span>, <span class="va">stateabb</span>, <span class="fu">everything</span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
+  <span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">gwrows</span>, <span class="va">cowrows</span><span class="op">)</span> <span class="op">%&gt;%</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">ccode</span>, <span class="va">stateabb</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
   <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">dat</span><span class="op">)</span>
 <span class="op">}</span>
@@ -584,12 +587,12 @@
 <p>Notice both Suriname and Republic of Vietnam were both active in 1975. Suriname appears on Nov. 25, 1975 whereas the Republic of Vietnam exits on April 30, 1975. However, there is no daily overlap between the two because they did not exist at any point on the same day in 1975. These are false dyads. <a href="https://github.com/svmiller/peacesciencer/blob/master/R/create_dyadyears.R"><code>anti_join()</code> is used in the <code>create_dyadyears()</code></a> function to remove these observations before presenting them to the user.</p>
 <p>Here is a simple example of what an anti-join is doing with these examples in mind.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">valid_dyads</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="op">(</span>ccode1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span>,
+<code class="sourceCode R"><span class="va">valid_dyads</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>ccode1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2</span>, <span class="fl">20</span>, <span class="fl">200</span><span class="op">)</span>,
                       ccode2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">20</span>, <span class="fl">200</span>, <span class="fl">900</span><span class="op">)</span>,
                       year <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">2016</span>, <span class="fl">2017</span>, <span class="fl">2018</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">valid_dyads</span> <span class="op">%&gt;%</span>
-  <span class="fu">bind_rows</span><span class="op">(</span><span class="va">.</span>, <span class="va">false_cow_dyads</span> <span class="op">%&gt;%</span> <span class="fu">select</span><span class="op">(</span><span class="va">ccode1</span><span class="op">:</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">valid_and_invalid</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind.html">bind_rows</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">false_cow_dyads</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">ccode1</span><span class="op">:</span><span class="va">year</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">valid_and_invalid</span>
 
 <span class="va">valid_and_invalid</span> 
 <span class="co">#&gt; # A tibble: 63 × 3</span>
@@ -609,7 +612,7 @@
 
 <span class="va">valid_and_invalid</span> <span class="op">%&gt;%</span>
   <span class="co"># remove those invalid dyads-years</span>
-  <span class="fu">anti_join</span><span class="op">(</span><span class="va">.</span>, <span class="va">false_cow_dyads</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">false_cow_dyads</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
 <span class="co">#&gt; # A tibble: 3 × 3</span>
 <span class="co">#&gt;   ccode1 ccode2  year</span>
