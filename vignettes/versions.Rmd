@@ -25,7 +25,9 @@ ps_version() %>%
   kable_styling(position = "center", full_width = F, bootstrap_options = "striped")
 ```
 
-Users can use the `bibtexkey` information to search [the dataframe of citations](http://svmiller.com/peacesciencer/reference/ps_bib.html) in this package. For example, we can use `ps_cite()` to get a full citation for Carter and Smith's (2020) estimates of leader willingness to use force.
+Every data set that is used by a function in this package is included in this table (and with the `ps_version()` function). Users can see a category of the type of data (which can be used for more careful searches of the underlying data), a description of the data set, a version number associated with that data set in `{peacesciencer}`, along with a BibTeX key. Users should interpret data versions as years as instances where the data are not formally versioned, per se, and the year corresponds with a year of a last update or a year of publication. For example, [Anders et al. (2020)](https://doi.org/10.1093/isq/sqaa013) released their state-year simulations of population, surplus domestic product, and gross domestic product in 2020. The data are not formally versioned and the year corresponds with, in this case, the publication.
+
+Users can use the BibTeX key (`bibtexkey`) to search [the dataframe of citations](http://svmiller.com/peacesciencer/reference/ps_bib.html) in this package. For example, we can use `ps_cite()` to get a full citation for Carter and Smith's (2020) estimates of leader willingness to use force.
 
 
 ```{r}
