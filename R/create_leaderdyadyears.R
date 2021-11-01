@@ -14,8 +14,6 @@
 #' for CRAN's disk space restrictions (5 MB) and too time-consuming to do from scratch every time. Thus, the
 #' data are pre-generated and stored remotely. Check \code{download_extdata()} for more information.
 #'
-#' For now, these data are treated as dyad-year data (check the attributes) so that other functions can work with it.
-#'
 #' @author Steven V. Miller
 #'
 #' @references
@@ -29,8 +27,8 @@
 #' default.
 #' @param directed optional, defaults to TRUE. If TRUE, the function returns so-called
 #' "directed" leader dyad-year data. If FALSE, the function returns
-#' non-directed data. The standard here is to drop cases where the country code for the
-#' second observation is less than the country code for the first observation.
+#' non-directed data where the state codes for the second leader are all greater than
+#' the state codes for the second leader.
 #'
 #' @examples
 #' \dontrun{
