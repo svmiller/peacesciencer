@@ -11,11 +11,13 @@ knitr::opts_chunk$set(
 
 ```{r setup, message=F}
 library(tidyverse)
+library(lubridate)
+library(peacesciencer)
 ```
 
 Users who may wish to improve their own data management skills in R by looking how `{peacesciencer}` functions are written will see that basic foundation of `{peacesciencer}`'s functions are so-called "join" functions. The "join" functions themselves come in `{dplyr}`, a critical dependency for `{peacesciencer}` and the effective engine of [`{tidyverse}`](https://www.tidyverse.org) (which I suggest for a basic workflow tool, and which the user may already be using). Users who have absolutely no idea what these functions are welcome to find more thorough texts about these different types of joins. Their functionality and terminology have [a clear basis in SQL](https://www.w3schools.com/sql/sql_join.asp), a relational database management system that first appeared in 1974 for data management and data manipulation. My goal here is not to offer a crash course on all these potential "join" functions, though helpful [visual primers are available in R](https://github.com/gadenbuie/tidyexplain) and [SQL](https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/). Instead, I will offer the basic principles these visual primers are communicating as they apply to `{peacesciencer}`.
 
-# Left (Outer) Join
+## Left (Outer) Join
 
 The first type of join is the most important type of join function in `{peacesciencer}`. Indeed, almost every function in this package that deals with adding variables to a type of data created in `{peacesciencer}` includes it. This is the "left join" (`left_join()` in `{dplyr}`), alternatively known as [the "outer join" or "left outer join" in the SQL context](https://www.w3schools.com/sql/sql_join_left.asp), and is a type of "mutating join" in the `{tidyverse}` context. In plain English, the `left_join()` assumes two data objects---a "left" object (`x`) and a "right" object (`y`)---and returns all rows from the left object (`x`) with matching information in the right object (`y`) by a set of common matching keys (or columns in both `x` and `y`).
 
@@ -78,7 +80,7 @@ left_join(x, y)
 
 Notice the output of this left join is identical to the output above. Australia is in `x`, but not in `y`. Thus, the rows for Australia are returned but the absence of ranking information for Australia in `y` means the variable is `NA` for Australia after the merge. Denmark is in `y`, but not `x`. Because the left join returns all rows in `x` with matching information in `y`, the absence of observations for Denmark in `x` means there is nowhere for the ranking information to go in the merge. Thus, Denmark's ranking is effectively ignored.
 
-## Why the Left Join, in Particular?
+### Why the Left Join, in Particular?
 
 An interested user may ask what's so special about this kind of join that it appears everywhere in `{peacesciencer}`? One is a matter of taste. I could just as well be doing this explainer piece by reference to the "right join", the mirror join to "left join." The right join in `{dplyr}`'s `right_join(x,y)` returns all records from `y` with matching rows in `x` by common columns. However, I tend to [think "left-handed"](http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/#myadvice) when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it "left" as I add information to it. This approach to data transformation and it recurs in `{peacesciencer}` as a result.
 
@@ -86,7 +88,7 @@ Beyond that matter of taste, the left join is everywhere in `{peacesciencer}` be
 
 With that in mind, every function's user of the left join assumes the data object it receives represents the full universe of cases of interest to the researcher. The left join is just adding information to it, based on matching information in one of its many data sets. When done carefully, the left join is a dutiful way of adding information to a data set without changing the number of rows of the original data set. The number of columns will obviously expand, but the number of rows is unaffected.
 
-## Potential Problems of the Left Join
+### Potential Problems of the Left Join
 
 "When done carefully" is doing some heavy-lifting in that last sentence. So, let me explain some situations where the left join will produce problems for the researcher (even if the join itself is doing what it is supposed to do from an operational standpoint).
 
@@ -119,3 +121,97 @@ left_join(x, y2) %>% data.frame
 It doesn't matter that the duplicate ranking in `y2` for the UK was the same. It would be messier, sure, if the ranking was different for the duplicate observation, but it matters more here that it was duplicated. In a panel like this, a user who is not careful will have the effect of overweighting those observations that duplicate. In a simple example like this, subsetting to just complete cases (i.e. Australia has no ranking), the UK is 50% of all observations despite the fact it should just be a third of observations. That's not ideal for a researcher.
 
 `{peacesciencer}` goes above and beyond to make sure this doesn't happen in the data it creates. Functions are [aggressively tested to make sure nothing duplicates](https://github.com/svmiller/peacesciencer/blob/master/tests/testthat/test_nodamnduplicates.R), and various parlor tricks (prominently [group-by](https://dplyr.tidyverse.org/reference/group_by.html) [slices](https://dplyr.tidyverse.org/reference/slice.html)) are used internally to cull those duplicate observations. The release of a function that makes prominent use of the left join is done with the assurance it doesn't create a duplicate. No matter, this is the biggest peril of the left join for a researcher who may want to duplicate what `{peacesciencer}` does on their own. Always inspect the data you merge, and the output.
+
+
+## Semi-Join
+
+The "semi-join" (`semi_join()` in `{dplyr}`) returns all rows from the left object (`x`) that has matching values in the right object (`y`). It is a type of "filtering join", which affects the observations and not the variables. It appears just twice in `{peacesciencer}`, serving as a final join in `create_leaderdays()` and `create_leaderyears()`. In both cases, it serves as a means of standardizing leader data (denominated in the Gleditsch-Ward system) to the Correlates of War system.
+
+Here is a basic example of what a semi-join is doing in this context, with an illustration of the kind of difficulties that manifest in standardizing Archigos' leader data to the Correlates of War state system. Assume this simple state system that has just two states---"A" and "B"---over a two-week period at the start of 1975 (Jan. 1, 1975 to Jan. 14, 1975). In this simple system, "A" is a state for the full two week period (Jan. 1-Jan.14) whereas "B" is a state for just the first seven days (Jan. 1-Jan. 7) because, let's say, A occupied B and ended its statehood. We also happened to have some leader data for these two states. Over this two week period, our leader data suggests A had just one continuous leader---["Archie"](https://en.wikipedia.org/wiki/Archie_Griffin)---whereas B had three. ["Brian"](https://en.wikipedia.org/wiki/Brian_Baschnagel) was the leader of B before he retired from office and was replaced by ["Cornelius."](https://en.wikipedia.org/wiki/Cornelius_Greene) However, he was deposed when A invaded B and was replaced by a puppet head of state, ["Pete."](https://en.wikipedia.org/wiki/Pete_Johnson_(American_football)) Our data look like this.
+
+```{r}
+tibble(code = c("A", "B"),
+       stdate = make_date(1975, 01, 01),
+       enddate = c(make_date(1975, 01, 14), make_date(1975, 01, 07))) -> state_system
+
+state_system
+
+tibble(code = c("A", "B", "B", "B"),
+       leader = c("Archie", "Brian", "Cornelius", "Pete"),
+       stdate = c(make_date(1975, 01, 01), make_date(1975, 01, 01), make_date(1975, 01, 04), make_date(1975, 01, 08)),
+       enddate = c(make_date(1975, 01, 14), make_date(1975, 01, 04), make_date(1975, 01, 08), make_date(1975, 01, 14))) -> leaders
+
+leaders
+```
+
+We can use some basic `rowwise()` transformation to recast these data as daily, resulting in state-day data and leader-day data.
+
+```{r}
+state_system %>%
+  rowwise() %>%
+  mutate(date = list(seq(stdate, enddate, by = '1 day'))) %>%
+  unnest(date) %>%
+  select(code, date) -> state_days
+
+state_days %>% data.frame
+
+leaders %>%
+  rowwise() %>%
+  mutate(date = list(seq(stdate, enddate, by = '1 day'))) %>%
+  unnest(date) %>%
+  select(code, leader, date) -> leader_days
+
+leader_days %>% data.frame
+```
+
+If we wanted to standardize these leader-day data to the state system data, we would semi-join the leader-day data (the left object) with the state-day object (the right object), returning just the leader-day data with valid days in the state system data.
+
+```{r}
+leader_days %>%
+  semi_join(., state_days) %>%
+  data.frame
+```
+
+Notice that Pete drops from these data because, in this simple example, Pete was a puppet head of state installed by Archie when state A invaded and occupied B. The semi-join here is simply standardizing the leader data to the state system data, which is effectively what's happening with the semi-joins in `create_leaderdays()` (and its aggregation function: `create_leaderyears()`).
+
+## Anti-Join
+
+The anti-join is another type of filtering join, returning all rows from the left object (`x`) with*out* a match in the right object (`y`). This type of join appears just once in `{peacesciencer}`. Prominently, `{peacesciencer}` prepares and presents two data sets in this package---`false_cow_dyads` and `false_gw_dyads`---that represent directed dyad-years in the Correlates of War and Gleditsch-Ward systems that were active in the same year, but never at the same time on the same year.
+
+Here are those dyads for context.
+
+```{r}
+false_cow_dyads
+
+false_gw_dyads
+```
+
+These were created by [two](https://github.com/svmiller/peacesciencer/blob/master/data-raw/false_cow_dyads.R) [scripts](https://github.com/svmiller/peacesciencer/blob/master/data-raw/false_gw_dyads.R) that, for each year in the respective state system data, creates every possible *daily* dyadic pairing and truncates the dyads to just those that had at least one day of overlap. This is a computationally demanding procedure compared to what `{peacesciencer}` does (which creates every possible dyadic pair in a given year, given the state system data supplied to it). However, it creates the possibility of same false dyads in a given year that showed no overlap.
+
+Consider the case of Suriname (115) and the Republic of Vietnam (817) in 1975 as illustrative here.
+
+```{r}
+check_both <- function(x) {
+
+  gw_states %>%
+    mutate(data = "G-W") %>%
+    filter(gwcode %in% x) -> gwrows
+
+  cow_states %>%
+    mutate(startdate = ymd(paste0(styear,"/",stmonth, "/", stday)),
+           enddate = ymd(paste0(endyear,"/",endmonth,"/",endday))) %>%
+    select(stateabb:statenme, startdate, enddate) %>%
+    mutate(data = "CoW") %>%
+    rename(statename = statenme) %>%
+    filter(ccode %in% x) -> cowrows
+
+  dat <- bind_rows(gwrows, cowrows) %>%
+    select(gwcode, ccode, stateabb, everything())
+
+  return(dat)
+}
+
+check_both(c(115, 817))
+```
+
+Notice both Suriname and Republic of Vietnam were both active in 1975. Suriname appears on Nov. 25, 1975 whereas the Republic of Vietnam exits on April 30, 1975. However, there is no daily overlap between the two because they did not exist at any point on the same day in 1975. These are false dyads. [`anti_join()` is used in the `create_dyadyears()`](https://github.com/svmiller/peacesciencer/blob/master/R/create_dyadyears.R) function to remove these observations before presenting them to the user.
