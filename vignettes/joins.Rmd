@@ -231,5 +231,4 @@ valid_and_invalid
 valid_and_invalid %>%
   # remove those invalid dyads-years
   anti_join(., false_cow_dyads)
-
 ```
