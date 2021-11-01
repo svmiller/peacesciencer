@@ -215,3 +215,21 @@ check_both(c(115, 817))
 ```
 
 Notice both Suriname and Republic of Vietnam were both active in 1975. Suriname appears on Nov. 25, 1975 whereas the Republic of Vietnam exits on April 30, 1975. However, there is no daily overlap between the two because they did not exist at any point on the same day in 1975. These are false dyads. [`anti_join()` is used in the `create_dyadyears()`](https://github.com/svmiller/peacesciencer/blob/master/R/create_dyadyears.R) function to remove these observations before presenting them to the user.
+
+Here is a simple example of what an anti-join is doing with these examples in mind.
+
+```{r}
+valid_dyads <- tibble(ccode1 = c(2, 20, 200),
+                      ccode2 = c(20, 200, 900),
+                      year = c(2016, 2017, 2018))
+
+valid_dyads %>%
+  bind_rows(., false_cow_dyads %>% select(ccode1:year)) -> valid_and_invalid
+
+valid_and_invalid 
+
+valid_and_invalid %>%
+  # remove those invalid dyads-years
+  anti_join(., false_cow_dyads)
+
+```
