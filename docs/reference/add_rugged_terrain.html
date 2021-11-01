@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add rugged terrain information to a dyad-year or state-year data frame — add_rugged_terrain • peacesciencer</title>
+<title>Add rugged terrain information to a data frame — add_rugged_terrain • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add rugged terrain information to a dyad-year or state-year data frame — add_rugged_terrain" />
+<meta property="og:title" content="Add rugged terrain information to a data frame — add_rugged_terrain" />
 <meta property="og:description" content="add_rugged_terrain() allows you to add information, however crude,
-about the &quot;ruggedness&quot; of a state's terrain to your dyad-year or state-year data." />
+about the &quot;ruggedness&quot; of a state's terrain to your (dyad-year, leader-year, leader-dyad-year, state-year) data." />
 
 
 
@@ -115,9 +115,6 @@ about the &quot;ruggedness&quot; of a state's terrain to your dyad-year or state
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
-    <li>
-      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -159,14 +156,14 @@ about the &quot;ruggedness&quot; of a state's terrain to your dyad-year or state
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add rugged terrain information to a dyad-year or state-year data frame</h1>
+    <h1>Add rugged terrain information to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_rugged_terrain.R'><code>R/add_rugged_terrain.R</code></a></small>
     <div class="hidden name"><code>add_rugged_terrain.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>add_rugged_terrain()</code> allows you to add information, however crude,
-about the "ruggedness" of a state's terrain to your dyad-year or state-year data.</p>
+about the "ruggedness" of a state's terrain to your (dyad-year, leader-year, leader-dyad-year, state-year) data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_rugged_terrain</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
@@ -176,19 +173,19 @@ about the "ruggedness" of a state's terrain to your dyad-year or state-year data
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_rugged_terrain()</code> takes a dyad-year data frame or state-year
+    <p><code>add_rugged_terrain()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year)
 data frame, whether the primary state identifiers are from the Correlates of War
 system or the Gleditsch-Ward system, and returns information about the
 "ruggedness" of the state's terrain. The two indicators returned are the
 "terrain ruggedness index" calculated by Nunn and Puga (2012) and a logarithmic
 transformation of how mountainous the state is (as calculated by Gibler and Miller, 2014).
-The dyad-year data get four additional columns (i.e. both indicators for both states
+The dyad-year (leader-dyad-year) data get four additional columns (i.e. both indicators for both states
 in the dyad) whereas the state-year data get just the two additional columns.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -201,7 +198,7 @@ of these types have been either cross-sectional snapshots or for making state-to
 after World War II (think of your prominent civil war studies here). Be mindful about what you expect
 to get from these data.</p>
 <p>The underlying data have both Gleditsch-Ward codes and Correlates of War codes. The merge it makes depends
-on what you declare as the "master" system at the top of the pipe (i.e. in <code><a href='create_dyadyears.html'>create_dyadyears()</a></code> or
+on what you declare as the "master" system at the top of the pipe (e.g.. in <code><a href='create_dyadyears.html'>create_dyadyears()</a></code> or
 <code><a href='create_stateyears.html'>create_stateyears()</a></code>). If, for example, you run <code><a href='create_stateyears.html'>create_stateyears(system="cow")</a></code> and follow
 it with <code><a href='add_gwcode_to_cow.html'>add_gwcode_to_cow()</a></code>, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
 codes. You can see the script mechanics to see how this is achieved.</p>

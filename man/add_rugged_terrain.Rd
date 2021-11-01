@@ -2,26 +2,26 @@
 % Please edit documentation in R/add_rugged_terrain.R
 \name{add_rugged_terrain}
 \alias{add_rugged_terrain}
-\title{Add rugged terrain information to a dyad-year or state-year data frame}
+\title{Add rugged terrain information to a data frame}
 \usage{
 add_rugged_terrain(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_rugged_terrain()} takes a dyad-year data frame or state-year
+\code{add_rugged_terrain()} takes a (dyad-year, leader-year, leader-dyad-year, state-year)
 data frame, whether the primary state identifiers are from the Correlates of War
 system or the Gleditsch-Ward system, and returns information about the
 "ruggedness" of the state's terrain. The two indicators returned are the
 "terrain ruggedness index" calculated by Nunn and Puga (2012) and a logarithmic
 transformation of how mountainous the state is (as calculated by Gibler and Miller, 2014).
-The dyad-year data get four additional columns (i.e. both indicators for both states
+The dyad-year (leader-dyad-year) data get four additional columns (i.e. both indicators for both states
 in the dyad) whereas the state-year data get just the two additional columns.
 }
 \description{
 \code{add_rugged_terrain()} allows you to add information, however crude,
-about the "ruggedness" of a state's terrain to your dyad-year or state-year data.
+about the "ruggedness" of a state's terrain to your (dyad-year, leader-year, leader-dyad-year, state-year) data.
 }
 \details{
 Please see the information for the underlying data \code{rugged}, and the
@@ -34,7 +34,7 @@ after World War II (think of your prominent civil war studies here). Be mindful 
 to get from these data.
 
 The underlying data have both Gleditsch-Ward codes and Correlates of War codes. The merge it makes depends
-on what you declare as the "master" system at the top of the pipe (i.e. in \code{create_dyadyears()} or
+on what you declare as the "master" system at the top of the pipe (e.g.. in \code{create_dyadyears()} or
 \code{create_stateyears()}). If, for example, you run \code{create_stateyears(system="cow")} and follow
 it with \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
 codes. You can see the script mechanics to see how this is achieved.

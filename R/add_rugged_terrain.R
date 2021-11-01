@@ -1,15 +1,15 @@
-#' Add rugged terrain information to a dyad-year or state-year data frame
+#' Add rugged terrain information to a data frame
 #'
 #' @description \code{add_rugged_terrain()} allows you to add information, however crude,
-#' about the "ruggedness" of a state's terrain to your dyad-year or state-year data.
+#' about the "ruggedness" of a state's terrain to your (dyad-year, leader-year, leader-dyad-year, state-year) data.
 #'
-#' @return \code{add_rugged_terrain()} takes a dyad-year data frame or state-year
+#' @return \code{add_rugged_terrain()} takes a (dyad-year, leader-year, leader-dyad-year, state-year)
 #' data frame, whether the primary state identifiers are from the Correlates of War
 #' system or the Gleditsch-Ward system, and returns information about the
 #' "ruggedness" of the state's terrain. The two indicators returned are the
 #' "terrain ruggedness index" calculated by Nunn and Puga (2012) and a logarithmic
 #' transformation of how mountainous the state is (as calculated by Gibler and Miller, 2014).
-#' The dyad-year data get four additional columns (i.e. both indicators for both states
+#' The dyad-year (leader-dyad-year) data get four additional columns (i.e. both indicators for both states
 #' in the dyad) whereas the state-year data get just the two additional columns.
 #'
 #' @details Please see the information for the underlying data \code{rugged}, and the
@@ -22,14 +22,14 @@
 #' to get from these data.
 #'
 #' The underlying data have both Gleditsch-Ward codes and Correlates of War codes. The merge it makes depends
-#' on what you declare as the "master" system at the top of the pipe (i.e. in \code{create_dyadyears()} or
+#' on what you declare as the "master" system at the top of the pipe (e.g.. in \code{create_dyadyears()} or
 #' \code{create_stateyears()}). If, for example, you run \code{create_stateyears(system="cow")} and follow
 #' it with \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
 #' codes. You can see the script mechanics to see how this is achieved.
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
 #' @references
 #'
@@ -64,7 +64,7 @@
 
 add_rugged_terrain <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 

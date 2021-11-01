@@ -2,24 +2,25 @@
 % Please edit documentation in R/add_contiguity.R
 \name{add_contiguity}
 \alias{add_contiguity}
-\title{Add Correlates of War direct contiguity information to a dyad-year or state-year data frame}
+\title{Add Correlates of War direct contiguity information to a data frame}
 \usage{
 add_contiguity(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame}
+\item{data}{a dyad-year data frame (either "directed" or "non-directed"),
+a state-year data frame, a leader-year data frame, or leader dyad-year data frame}
 }
 \value{
-\code{add_contiguity()} takes a dyad-year data frame and adds information
+\code{add_contiguity()} takes a data frame and adds information
 about the contiguity relationship based on the "master records" for the
-Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year, the function
+Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year (or leader dyad-year), the function
 returns the lowest contiguity type observed in the dyad-year (if contiguity is observed at all).
-If the data are state-year, the data return the total number of land and sea borders calculated
+If the data are state-year (or leader-year), the data return the total number of land and sea borders calculated
 from these master records.
 }
 \description{
 \code{add_contiguity()} allows you to add Correlates of War contiguity
-data to a dyad-year or state-year data frame.
+data to a dyad-year, leader-year, or leader-dyad-year, or state-year data frame.
 }
 \details{
 The contiguity codes in the dyad-year data range from 0 to 5. 1 = direct land contiguity. 2 =
@@ -45,6 +46,9 @@ For additional clarity, the "master records" produce duplicates for cases when
 the contiguity relationship changed in a given year. This function returns the
 \emph{minimum} contiguity relationship observed in that given year. There should be no
 duplicates in the returned output.
+
+Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.
 }
 \examples{
 

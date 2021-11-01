@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame — add_gml_mids • peacesciencer</title>
+<title>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to a data frame — add_gml_mids • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame — add_gml_mids" />
-<meta property="og:description" content="add_gml_mids() merges in GML's MID data to a dyad-year, state-year, or leader-year data frame. The current version
+<meta property="og:title" content="Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to a data frame — add_gml_mids" />
+<meta property="og:description" content="add_gml_mids() merges in GML's MID data to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The current version
 of the GML MID data is 2.2.1." />
 
 
@@ -115,9 +115,6 @@ of the GML MID data is 2.2.1." />
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
-    <li>
-      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -159,13 +156,13 @@ of the GML MID data is 2.2.1." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame</h1>
+    <h1>Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_gml_mids.R'><code>R/add_gml_mids.R</code></a></small>
     <div class="hidden name"><code>add_gml_mids.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_gml_mids()</code> merges in GML's MID data to a dyad-year, state-year, or leader-year data frame. The current version
+    <p><code>add_gml_mids()</code> merges in GML's MID data to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The current version
 of the GML MID data is 2.2.1.</p>
     </div>
 
@@ -176,7 +173,7 @@ of the GML MID data is 2.2.1.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed"), a state-year data frame, or a leader-year data frame</p></td>
+      <td><p>a dyad-year data frame (either "directed" or "non-directed"), a state-year data frame, a leader-dyad-year, or a leader-year data frame</p></td>
     </tr>
     <tr>
       <th>keep</th>
@@ -191,7 +188,7 @@ The user is free to keep or discard anything else they see fit.</p>
     </tr>
     <tr>
       <th>init</th>
-      <td><p>how should initiators be coded? Applicable only to state-year and leader-year data. This parameter accepts one of
+      <td><p>how should initiators be coded? Applicable only to state-year, leader-dyad-year, and leader-year data. This parameter accepts one of
 three possible values (<code>"sidea-orig"</code>, <code>"sidea-with-joiners"</code>, <code>"sidea-all-joiners"</code>). <code>"sidea-orig"</code> = a state initiates a MID (which
 appears as a summary return in the output) if the state was on Side A at the onset of the dispute. <code>"sidea-with-joiners"</code> = a state
 initiates a MID (which appears as a summary return in the output) if the state was on Side A at the onset of the dispute or if the
@@ -203,17 +200,18 @@ default is  <code>"sidea-all-joiners"</code>.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_gml_mids()</code> takes a dyad-year or state-year data frame and adds dyad-year dispute information
-from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
-and assorted participant- and dispute-level summaries. If the data are state-year or leader-year, the function returns information about ongoing
-disputes (and onsets) and whether there were any ongoing disputes (and onsets) the state (or leader) initiated.</p>
+    <p><code>add_gml_mids()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds
+dispute information from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
+and assorted participant- and dispute-level summaries. If the data are leader-dyad-year, these are carefully matched to leaders as well.
+If the data are state-year or leader-year, the function returns information about ongoing disputes (and onsets) and
+whether there were any ongoing disputes (and onsets) the state (or leader) initiated.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
 for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
 had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
 This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
-data frame.</p>
+data frame. This holds for leader-dyad-years as well.</p>
 <p>Determining "initiation" for state-year summaries of inter-state disputes since there is an implied directionality of "initiation."
 In about half of all cases, this is straightforward. You can use the participant summaries and determine that if the dispute
 was bilateral and the dispute did not escalate beyond an attack, the state on Side A initiated the dispute. For multilateral MIDs, these

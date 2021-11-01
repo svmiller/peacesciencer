@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add fractionalization/polarization estimates from CREG to your dyad-year or state-year data — add_creg_fractionalization • peacesciencer</title>
+<title>Add fractionalization/polarization estimates from CREG to a data frame — add_creg_fractionalization • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add fractionalization/polarization estimates from CREG to your dyad-year or state-year data — add_creg_fractionalization" />
+<meta property="og:title" content="Add fractionalization/polarization estimates from CREG to a data frame — add_creg_fractionalization" />
 <meta property="og:description" content="add_creg_fractionalization() allows you to add information
 about the fractionalization/polarization of a state's ethnic and religious groups to your dyad-year
 or state-year data." />
@@ -116,9 +116,6 @@ or state-year data." />
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
-    <li>
-      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -160,7 +157,7 @@ or state-year data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add fractionalization/polarization estimates from CREG to your dyad-year or state-year data</h1>
+    <h1>Add fractionalization/polarization estimates from CREG to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_creg_fractionalization.R'><code>R/add_creg_fractionalization.R</code></a></small>
     <div class="hidden name"><code>add_creg_fractionalization.Rd</code></div>
     </div>
@@ -178,19 +175,19 @@ or state-year data.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_creg_fractionalization()</code> takes a dyad-year data frame or state-year
-data frame, whether the primary state identifiers are from the Correlates of War
-system or the Gleditsch-Ward system, and returns information about the
+    <p><code>add_creg_fractionalization()</code> takes a dyad-year, leader-year, leader-dyad-year, or state-data frame,
+whether the primary state identifiers are from the Correlates of War system or the Gleditsch-Ward system, and
+returns information about the
 fractionalization and polarization of the state(s) in a given year. The function returns four additional
-columns when the data are state-year and returns eight additional columns when the data are dyad-year.
+columns when the data are state-year and returns eight additional columns when the data are state-year (or leader-year).
 The columns returned are the fractionalization of ethnic groups, the polarization of ethnic groups, the
-fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year,
+fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year (or leader-dyad-year),
 the return doubles because it provides information for both states in the dyad.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -207,6 +204,8 @@ on what you declare as the "master" system at the top of the pipe (i.e. in <code
 <code><a href='create_stateyears.html'>create_stateyears()</a></code>). If, for example, you run <code><a href='create_stateyears.html'>create_stateyears(system="cow")</a></code> and follow
 it with <code><a href='add_gwcode_to_cow.html'>add_gwcode_to_cow()</a></code>, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
 codes. You can see the script mechanics to see how this is achieved.</p>
+<p>Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and Romain Wacziarg. 2003.

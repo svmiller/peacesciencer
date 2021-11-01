@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War major power information to a dyad-year or state-year data frame — add_cow_majors • peacesciencer</title>
+<title>Add Correlates of War major power information to a data frame — add_cow_majors • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Correlates of War major power information to a dyad-year or state-year data frame — add_cow_majors" />
+<meta property="og:title" content="Add Correlates of War major power information to a data frame — add_cow_majors" />
 <meta property="og:description" content="add_cow_majors() allows you to add Correlates of War major power variables
-to a dyad-year or state-year data frame." />
+to a dyad-year, leader-year, leader dyad-year, or state-year data frame." />
 
 
 
@@ -115,9 +115,6 @@ to a dyad-year or state-year data frame." />
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
-    <li>
-      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -159,14 +156,14 @@ to a dyad-year or state-year data frame." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War major power information to a dyad-year or state-year data frame</h1>
+    <h1>Add Correlates of War major power information to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_cow_majors.R'><code>R/add_cow_majors.R</code></a></small>
     <div class="hidden name"><code>add_cow_majors.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>add_cow_majors()</code> allows you to add Correlates of War major power variables
-to a dyad-year or state-year data frame.</p>
+to a dyad-year, leader-year, leader dyad-year, or state-year data frame.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_cow_majors</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
@@ -176,23 +173,25 @@ to a dyad-year or state-year data frame.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_cow_majors()</code> takes a dyad-year data frame or state-year data frame and adds information
-about major power status for the given state or dyad in that year. If the data are dyad-year, the function
+    <p><code>add_cow_majors()</code> takes a data frame and adds information
+about major power status for the given state or dyad in that year. If the data are dyad-year (or leader dyad-year), the function
 returns two columns for whether the first state (i.e. <code>ccode1</code>) or the second state (i.e. <code>ccode2</code>) are major powers
 in the given year, according to the Correlates of War. 1 = is a major power. 0 = is not a major
-power. If the data are state-year, the functions returns just one column (<code>cowmaj</code>) for whether the
-state was a major power in a given dyad-year.</p>
+power. If the data are state-year (or leader-year), the functions returns just one column (<code>cowmaj</code>) for whether the
+state was a major power in a given state-year.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>The function leans on attributes of the data that are provided by the <code>create_dyadyear()</code> or
 <code>create_stateyear()</code> function. Make sure that function (or data created by that function) appear at the top
 of the proverbial pipe.</p>
+<p>Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Correlates of War Project. 2017. "State System Membership List, v2016." Online, <a href='https://correlatesofwar.org/data-sets/state-system-membership'>https://correlatesofwar.org/data-sets/state-system-membership</a></p>

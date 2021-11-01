@@ -2,15 +2,15 @@
 % Please edit documentation in R/add_democracy.R
 \name{add_democracy}
 \alias{add_democracy}
-\title{Add democracy information to dyad-year or state-year data.}
+\title{Add democracy information to a data frame}
 \usage{
 add_democracy(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_democracy()} takes a dyad-year data frame or state-year data frame and adds information
+\code{add_democracy()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds information
 about the level of democracy for the state or two states in the dyad in a given year. If the data are dyad-year, the function
 adds six total columns for the first state (i.e. \code{ccode1} or \code{gwcode1}) and the second state (i.e. \code{ccode2} or \code{gwcode2})
 about the level of democracy measured by the Varieties of Democracy project (\code{v2x_polyarchy}), the Polity project (\code{polity2}), and
@@ -18,12 +18,15 @@ Xavier Marquez' \code{QuickUDS} extensions/estimates. If the data are state-year
 to the original data that contain that same information for a given state in a given year.
 }
 \description{
-\code{add_democracy()} allows you to add estimates of democracy to either dyad-year or state-year data.
+\code{add_democracy()} allows you to add estimates of democracy to your data.
 }
 \details{
 The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
 \code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
 of the proverbial pipe.
+
+Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.
 }
 \examples{
 

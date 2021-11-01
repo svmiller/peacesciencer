@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add democracy information to dyad-year or state-year data. — add_democracy • peacesciencer</title>
+<title>Add democracy information to a data frame — add_democracy • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,8 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add democracy information to dyad-year or state-year data. — add_democracy" />
-<meta property="og:description" content="add_democracy() allows you to add estimates of democracy to either dyad-year or state-year data." />
+<meta property="og:title" content="Add democracy information to a data frame — add_democracy" />
+<meta property="og:description" content="add_democracy() allows you to add estimates of democracy to your data." />
 
 
 
@@ -114,9 +114,6 @@
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
-    <li>
-      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -158,13 +155,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add democracy information to dyad-year or state-year data.</h1>
+    <h1>Add democracy information to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_democracy.R'><code>R/add_democracy.R</code></a></small>
     <div class="hidden name"><code>add_democracy.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_democracy()</code> allows you to add estimates of democracy to either dyad-year or state-year data.</p>
+    <p><code>add_democracy()</code> allows you to add estimates of democracy to your data.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_democracy</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
@@ -174,13 +171,13 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_democracy()</code> takes a dyad-year data frame or state-year data frame and adds information
+    <p><code>add_democracy()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds information
 about the level of democracy for the state or two states in the dyad in a given year. If the data are dyad-year, the function
 adds six total columns for the first state (i.e. <code>ccode1</code> or <code>gwcode1</code>) and the second state (i.e. <code>ccode2</code> or <code>gwcode2</code>)
 about the level of democracy measured by the Varieties of Democracy project (<code>v2x_polyarchy</code>), the Polity project (<code>polity2</code>), and
@@ -191,6 +188,8 @@ to the original data that contain that same information for a given state in a g
     <p>The function leans on attributes of the data that are provided by the <code>create_dyadyear()</code> or
 <code>create_stateyear()</code> function. Make sure that function (or data created by that function) appear at the top
 of the proverbial pipe.</p>
+<p>Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. ”V-Dem Codebook v10” Varieties of Democracy (V-Dem) Project.</p>

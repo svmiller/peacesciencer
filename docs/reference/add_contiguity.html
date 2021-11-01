@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War direct contiguity information to a dyad-year or state-year data frame — add_contiguity • peacesciencer</title>
+<title>Add Correlates of War direct contiguity information to a data frame — add_contiguity • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Correlates of War direct contiguity information to a dyad-year or state-year data frame — add_contiguity" />
+<meta property="og:title" content="Add Correlates of War direct contiguity information to a data frame — add_contiguity" />
 <meta property="og:description" content="add_contiguity() allows you to add Correlates of War contiguity
-data to a dyad-year or state-year data frame." />
+data to a dyad-year, leader-year, or leader-dyad-year, or state-year data frame." />
 
 
 
@@ -115,9 +115,6 @@ data to a dyad-year or state-year data frame." />
     <li>
       <a href="../articles/state-systems.html">A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`</a>
     </li>
-    <li>
-      <a href="../articles/times.html">Run Times (and Tips) for Various Functions in `{peacesciencer}`</a>
-    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -159,14 +156,14 @@ data to a dyad-year or state-year data frame." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War direct contiguity information to a dyad-year or state-year data frame</h1>
+    <h1>Add Correlates of War direct contiguity information to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_contiguity.R'><code>R/add_contiguity.R</code></a></small>
     <div class="hidden name"><code>add_contiguity.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>add_contiguity()</code> allows you to add Correlates of War contiguity
-data to a dyad-year or state-year data frame.</p>
+data to a dyad-year, leader-year, or leader-dyad-year, or state-year data frame.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_contiguity</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
@@ -176,17 +173,18 @@ data to a dyad-year or state-year data frame.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame</p></td>
+      <td><p>a dyad-year data frame (either "directed" or "non-directed"),
+a state-year data frame, a leader-year data frame, or leader dyad-year data frame</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_contiguity()</code> takes a dyad-year data frame and adds information
+    <p><code>add_contiguity()</code> takes a data frame and adds information
 about the contiguity relationship based on the "master records" for the
-Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year, the function
+Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year (or leader dyad-year), the function
 returns the lowest contiguity type observed in the dyad-year (if contiguity is observed at all).
-If the data are state-year, the data return the total number of land and sea borders calculated
+If the data are state-year (or leader-year), the data return the total number of land and sea borders calculated
 from these master records.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -211,6 +209,8 @@ is why <span class="pkg">peacesciencer</span> does not do this.</p>
 the contiguity relationship changed in a given year. This function returns the
 <em>minimum</em> contiguity relationship observed in that given year. There should be no
 duplicates in the returned output.</p>
+<p>Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman

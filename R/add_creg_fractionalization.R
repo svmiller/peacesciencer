@@ -1,16 +1,16 @@
-#' Add fractionalization/polarization estimates from CREG to your dyad-year or state-year data
+#' Add fractionalization/polarization estimates from CREG to a data frame
 #'
 #' @description \code{add_creg_fractionalization()} allows you to add information
 #' about the fractionalization/polarization of a state's ethnic and religious groups to your dyad-year
 #' or state-year data.
 #'
-#' @return \code{add_creg_fractionalization()} takes a dyad-year data frame or state-year
-#' data frame, whether the primary state identifiers are from the Correlates of War
-#' system or the Gleditsch-Ward system, and returns information about the
+#' @return \code{add_creg_fractionalization()} takes a dyad-year, leader-year, leader-dyad-year, or state-data frame,
+#' whether the primary state identifiers are from the Correlates of War system or the Gleditsch-Ward system, and
+#' returns information about the
 #' fractionalization and polarization of the state(s) in a given year. The function returns four additional
-#' columns when the data are state-year and returns eight additional columns when the data are dyad-year.
+#' columns when the data are state-year and returns eight additional columns when the data are state-year (or leader-year).
 #' The columns returned are the fractionalization of ethnic groups, the polarization of ethnic groups, the
-#' fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year,
+#' fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year (or leader-dyad-year),
 #' the return doubles because it provides information for both states in the dyad.
 #'
 #' @details Please see the information for the underlying data \code{creg}, and the
@@ -29,9 +29,12 @@
 #' it with \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
 #' codes. You can see the script mechanics to see how this is achieved.
 #'
+#' Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+#' as approximations for leaders in a given state-year.
+#'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
 #' @references
 #'
@@ -63,7 +66,7 @@
 
 add_creg_fractionalization <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
@@ -124,7 +127,7 @@ add_creg_fractionalization <- function(data) {
     }
 
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
@@ -165,7 +168,7 @@ add_creg_fractionalization <- function(data) {
     }
   }
   else  {
-    stop("add_creg_fractionalization() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+    stop("add_creg_fractionalization() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, leader_dyad_year, or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
 
   }
 }

@@ -2,21 +2,21 @@
 % Please edit documentation in R/add_creg_fractionalization.R
 \name{add_creg_fractionalization}
 \alias{add_creg_fractionalization}
-\title{Add fractionalization/polarization estimates from CREG to your dyad-year or state-year data}
+\title{Add fractionalization/polarization estimates from CREG to a data frame}
 \usage{
 add_creg_fractionalization(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_creg_fractionalization()} takes a dyad-year data frame or state-year
-data frame, whether the primary state identifiers are from the Correlates of War
-system or the Gleditsch-Ward system, and returns information about the
+\code{add_creg_fractionalization()} takes a dyad-year, leader-year, leader-dyad-year, or state-data frame,
+whether the primary state identifiers are from the Correlates of War system or the Gleditsch-Ward system, and
+returns information about the
 fractionalization and polarization of the state(s) in a given year. The function returns four additional
-columns when the data are state-year and returns eight additional columns when the data are dyad-year.
+columns when the data are state-year and returns eight additional columns when the data are state-year (or leader-year).
 The columns returned are the fractionalization of ethnic groups, the polarization of ethnic groups, the
-fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year,
+fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year (or leader-dyad-year),
 the return doubles because it provides information for both states in the dyad.
 }
 \description{
@@ -40,6 +40,9 @@ on what you declare as the "master" system at the top of the pipe (i.e. in \code
 \code{create_stateyears()}). If, for example, you run \code{create_stateyears(system="cow")} and follow
 it with \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
 codes. You can see the script mechanics to see how this is achieved.
+
+Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+as approximations for leaders in a given state-year.
 }
 \examples{
 

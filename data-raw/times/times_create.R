@@ -10,6 +10,11 @@ create_bench <- microbenchmark::microbenchmark(
   `create_statedays()` = create_statedays(),
   `create_stateyears()` = create_stateyears(),
   `create_dyadyears()` = create_dyadyears(),
+  `create_leaderdays()` = create_leaderdays(),
+  `create_leaderdays(standardize_cow = TRUE)` = create_leaderdays(standardize_cow = TRUE),
+  `create_leaderyears()` = create_leaderyears(),
+  `create_leaderyears(standardize_cow = TRUE)` = create_leaderyears(),
+  `create_leaderdyadyears()` = create_leaderdyadyears(),
   unit = "s",
   times = 100)
 

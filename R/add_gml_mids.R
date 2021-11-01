@@ -1,18 +1,19 @@
-#' Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to dyad-year, state-year, or leader-year data frame
+#' Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to a data frame
 #'
-#' @description \code{add_gml_mids()} merges in GML's MID data to a dyad-year, state-year, or leader-year data frame. The current version
+#' @description \code{add_gml_mids()} merges in GML's MID data to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The current version
 #' of the GML MID data is 2.2.1.
 #'
-#' @return \code{add_gml_mids()} takes a dyad-year or state-year data frame and adds dyad-year dispute information
-#' from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
-#' and assorted participant- and dispute-level summaries. If the data are state-year or leader-year, the function returns information about ongoing
-#' disputes (and onsets) and whether there were any ongoing disputes (and onsets) the state (or leader) initiated.
+#' @return \code{add_gml_mids()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds
+#' dispute information from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
+#' and assorted participant- and dispute-level summaries. If the data are leader-dyad-year, these are carefully matched to leaders as well.
+#' If the data are state-year or leader-year, the function returns information about ongoing disputes (and onsets) and
+#' whether there were any ongoing disputes (and onsets) the state (or leader) initiated.
 #'
 #' @details Dyads are capable of having multiple disputes in a given year, which can create a problem
 #' for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
 #' had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
 #' This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
-#' data frame.
+#' data frame. This holds for leader-dyad-years as well.
 #'
 #' Determining "initiation" for state-year summaries of inter-state disputes since there is an implied directionality of "initiation."
 #' In about half of all cases, this is straightforward. You can use the participant summaries and determine that if the dispute
@@ -34,7 +35,7 @@
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed"), a state-year data frame, or a leader-year data frame
+#' @param data a dyad-year data frame (either "directed" or "non-directed"), a state-year data frame, a leader-dyad-year, or a leader-year data frame
 #' @param keep an optional parameter, specified as a character vector, applicable to just the dyad-year data, and
 #' passed to the function in a \code{select(one_of(.))} wrapper. This
 #' allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
@@ -45,7 +46,7 @@
 #'
 #' If \code{keep} is not specified in the function, the ensuing output returns everything.
 #'
-#' @param init how should initiators be coded? Applicable only to state-year and leader-year data. This parameter accepts one of
+#' @param init how should initiators be coded? Applicable only to state-year, leader-dyad-year, and leader-year data. This parameter accepts one of
 #' three possible values (\code{"sidea-orig"}, \code{"sidea-with-joiners"}, \code{"sidea-all-joiners"}). \code{"sidea-orig"} = a state initiates a MID (which
 #' appears as a summary return in the output) if the state was on Side A at the onset of the dispute. \code{"sidea-with-joiners"} = a state
 #' initiates a MID (which appears as a summary return in the output) if the state was on Side A at the onset of the dispute or if the
