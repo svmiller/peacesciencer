@@ -38,9 +38,10 @@
 #'
 #' @examples
 #' \donttest{
-#' create_leaderyears()
-#'
+#' # standardize_cow = FALSE is default
 #' create_leaderyears(standardize_cow = FALSE)
+#'
+#' create_leaderyears(standardize_cow = TRUE)
 #' }
 #'
 create_leaderyears <- function(system = "archigos", standardize_cow = FALSE) {

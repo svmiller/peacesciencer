@@ -4,7 +4,7 @@
 \alias{create_leaderdays}
 \title{Create leader-days from leader data}
 \usage{
-create_leaderdays(system = "archigos", standardize_cow = TRUE)
+create_leaderdays(system = "archigos", standardize_cow = FALSE)
 }
 \arguments{
 \item{system}{a leader system with which to create leader-days. Right now, only "archigos" is supported.}
@@ -30,7 +30,7 @@ being mostly for internal uses. Basically, \code{create_leaderyears()} effective
 \donttest{
 create_leaderdays()
 
-create_leaderdays(standardize_cow = FALSE)
+create_leaderdays(standardize_cow = TRUE)
 }
 
 }

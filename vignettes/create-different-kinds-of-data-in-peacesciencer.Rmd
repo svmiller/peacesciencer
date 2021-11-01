@@ -120,45 +120,56 @@ create_statedays(system = "gw") %>%
 
 ## Leader-Day (Leader-Month, Leader-Year) Data
 
-`{peacesciencer}` does not have leader-level units of analysis, but these can be easily created with the modified Archigos (`archigos`) data in `{peacesciencer}`. The data are version 4.1.
+`{peacesciencer}` has leader-level units of analysis as well, which can be easily created with the modified Archigos (`archigos`) data in `{peacesciencer}`. The data are version 4.1.
 
 ```{r}
 archigos
 ```
 
-If you want leader-days, here is the simplest path toward it. May this also give an idea of what functions like `create_statedays()` and `create_stateyears()` are doing underneath the proverbial hood.
+`create_leaderdays()` will create leader-day data from `archigos`.
 
 ```{r}
-archigos %>%
-  rowwise() %>%
-  mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
-  unnest(date) %>%
-  select(gwcode, obsid, date, everything())
+create_leaderdays()
 ```
 
-The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.
+I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently `create_stateyears()` and `create_dyadyears()`), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. You could just as well standardize the leader-day data to the Correlates of War system with the `standardize_cow` argument. By default, it's `FALSE`. You can set it to `TRUE` to standardize Archigos to the Correlates of War system.
 
 ```{r}
-archigos %>%
-  rowwise() %>%
-  mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
-  unnest(date) %>%
-  select(gwcode, obsid, date, everything()) %>%
+create_leaderdays(standardize_cow = TRUE)
+```
+
+
+The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can create something like leader-months.
+
+```{r}
+create_leaderdays() %>%
   mutate(year = year(date),
          month = month(date)) %>%
   group_by(gwcode, obsid, year, month) %>%
   slice(1)
 ```
 
-And here are leader-years.
+And here are leader-years, which is pre-packaged as a `{peacesciencer}` function. The package also adds some information about leader gender, an approximation of the leader's age that year (i.e. `year - yrborn`), and a running count (starting a 1) for the leader's tenure (in years).
 
 ```{r}
-archigos %>%
-  rowwise() %>%
-  mutate(date = list(seq(startdate, enddate, by="1 day"))) %>%
-  unnest(date) %>%
-  select(gwcode, obsid, date, everything()) %>%
-  mutate(year = year(date)) %>%
-  group_by(gwcode, obsid, year) %>%
-  slice(1)
+create_leaderyears()
+```
+
+## Leader Dyad-Year Data
+
+`{peacesciencer}` can also create leader dyad-year data by way of `create_leaderdyadyears()`. You can see [some of the underlying code that is creating these data](https://github.com/svmiller/peacesciencer/blob/master/data-raw/cow_dir_leader_dyad_years.R). It's a lot of code, it would take a lot of time to run from scratch, and the ensuing output is too large to store as an R data object in the package because CRAN hard-caps package size at 5 MB. Instead, users who want these data should first run `download_extdata()` when they *first* install or update the package. Therein, they can run `create_leaderdyadyears()` to create the full universe of leader dyad-year data.
+
+```{r}
+# create_leaderdyadyears() is effectively doing this.
+# Let's do the G-W leader dyad-year data for illustration's sake.
+# Do note: `download_extdata()` will download these data and stick them in the package directory
+# Thus, it is *not* downloading the data fresh each time.
+
+readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds")) %>%
+  declare_attributes(data_type = "leader_dyad_year", system = "gw")
+
+# ^ compare with:
+# download_extdata()
+# create_leaderdyadyears()
+
 ```

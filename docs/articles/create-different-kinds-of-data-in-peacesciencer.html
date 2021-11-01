@@ -113,7 +113,7 @@
 
       
 
-      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create Different Kinds of Data in <code>{peacesciencer}</code>
@@ -372,7 +372,7 @@
 <div id="leader-day-leader-month-leader-year-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#leader-day-leader-month-leader-year-data" class="anchor"></a>Leader-Day (Leader-Month, Leader-Year) Data</h2>
-<p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> does not have leader-level units of analysis, but these can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The data are version 4.1.</p>
+<p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> has leader-level units of analysis as well, which can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The data are version 4.1.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span>
 <span class="co">#&gt; # A tibble: 3,409 × 11</span>
@@ -389,81 +389,114 @@
 <span class="co">#&gt;  9 USA-1…      2 81dd231… Roose…   1858 M      1901-09-14 1909-03-04 Regu… Regu…</span>
 <span class="co">#&gt; 10 USA-1…      2 81dd231… Taft     1857 M      1909-03-04 1913-03-04 Regu… Regu…</span>
 <span class="co">#&gt; # … with 3,399 more rows, and 1 more variable: exitcode &lt;chr&gt;</span></code></pre></div>
-<p>If you want leader-days, here is the simplest path toward it. May this also give an idea of what functions like <code><a href="../reference/create_statedays.html">create_statedays()</a></code> and <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> are doing underneath the proverbial hood.</p>
+<p><code><a href="../reference/create_leaderdays.html">create_leaderdays()</a></code> will create leader-day data from <code>archigos</code>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 5,298,380 × 12</span>
-<span class="co">#&gt;    gwcode obsid    date       leadid  leader yrborn gender startdate  enddate   </span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
-<span class="co">#&gt;  1      2 USA-1869 1869-03-04 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  2      2 USA-1869 1869-03-05 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  3      2 USA-1869 1869-03-06 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  4      2 USA-1869 1869-03-07 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  5      2 USA-1869 1869-03-08 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  6      2 USA-1869 1869-03-09 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  7      2 USA-1869 1869-03-10 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  8      2 USA-1869 1869-03-11 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  9      2 USA-1869 1869-03-12 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt; 10      2 USA-1869 1869-03-13 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt; # … with 5,298,370 more rows, and 3 more variables: entry &lt;chr&gt;, exit &lt;chr&gt;,</span>
-<span class="co">#&gt; #   exitcode &lt;chr&gt;</span></code></pre></div>
-<p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can also create leader-years or leader-months. Here are leader-months.</p>
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 5,298,380 × 4</span>
+<span class="co">#&gt;    obsid    gwcode leader date      </span>
+<span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;    </span>
+<span class="co">#&gt;  1 USA-1869      2 Grant  1869-03-04</span>
+<span class="co">#&gt;  2 USA-1869      2 Grant  1869-03-05</span>
+<span class="co">#&gt;  3 USA-1869      2 Grant  1869-03-06</span>
+<span class="co">#&gt;  4 USA-1869      2 Grant  1869-03-07</span>
+<span class="co">#&gt;  5 USA-1869      2 Grant  1869-03-08</span>
+<span class="co">#&gt;  6 USA-1869      2 Grant  1869-03-09</span>
+<span class="co">#&gt;  7 USA-1869      2 Grant  1869-03-10</span>
+<span class="co">#&gt;  8 USA-1869      2 Grant  1869-03-11</span>
+<span class="co">#&gt;  9 USA-1869      2 Grant  1869-03-12</span>
+<span class="co">#&gt; 10 USA-1869      2 Grant  1869-03-13</span>
+<span class="co">#&gt; # … with 5,298,370 more rows</span></code></pre></div>
+<p>I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> and <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. You could just as well standardize the leader-day data to the Correlates of War system with the <code>standardize_cow</code> argument. By default, it’s <code>FALSE</code>. You can set it to <code>TRUE</code> to standardize Archigos to the Correlates of War system.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span>standardize_cow <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = c("gwcode", "year")</span>
+<span class="co">#&gt; Joining, by = c("ccode", "date")</span>
+<span class="co">#&gt; # A tibble: 4,824,736 × 4</span>
+<span class="co">#&gt;    obsid    ccode leader date      </span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;    </span>
+<span class="co">#&gt;  1 USA-1869     2 Grant  1869-03-04</span>
+<span class="co">#&gt;  2 USA-1869     2 Grant  1869-03-05</span>
+<span class="co">#&gt;  3 USA-1869     2 Grant  1869-03-06</span>
+<span class="co">#&gt;  4 USA-1869     2 Grant  1869-03-07</span>
+<span class="co">#&gt;  5 USA-1869     2 Grant  1869-03-08</span>
+<span class="co">#&gt;  6 USA-1869     2 Grant  1869-03-09</span>
+<span class="co">#&gt;  7 USA-1869     2 Grant  1869-03-10</span>
+<span class="co">#&gt;  8 USA-1869     2 Grant  1869-03-11</span>
+<span class="co">#&gt;  9 USA-1869     2 Grant  1869-03-12</span>
+<span class="co">#&gt; 10 USA-1869     2 Grant  1869-03-13</span>
+<span class="co">#&gt; # … with 4,824,726 more rows</span></code></pre></div>
+<p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can create something like leader-months.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 177,128 × 14</span>
+<span class="co">#&gt; # A tibble: 177,128 × 6</span>
 <span class="co">#&gt; # Groups:   gwcode, obsid, year, month [177,128]</span>
-<span class="co">#&gt;    gwcode obsid    date       leadid  leader yrborn gender startdate  enddate   </span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
-<span class="co">#&gt;  1      2 USA-1869 1869-03-04 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  2      2 USA-1869 1869-04-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  3      2 USA-1869 1869-05-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  4      2 USA-1869 1869-06-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  5      2 USA-1869 1869-07-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  6      2 USA-1869 1869-08-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  7      2 USA-1869 1869-09-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  8      2 USA-1869 1869-10-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  9      2 USA-1869 1869-11-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt; 10      2 USA-1869 1869-12-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt; # … with 177,118 more rows, and 5 more variables: entry &lt;chr&gt;, exit &lt;chr&gt;,</span>
-<span class="co">#&gt; #   exitcode &lt;chr&gt;, year &lt;dbl&gt;, month &lt;dbl&gt;</span></code></pre></div>
-<p>And here are leader-years.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">archigos</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rowwise.html">rowwise</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>date <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="va">startdate</span>, <span class="va">enddate</span>, by<span class="op">=</span><span class="st">"1 day"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">unnest</span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">date</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 17,686 × 13</span>
-<span class="co">#&gt; # Groups:   gwcode, obsid, year [17,686]</span>
-<span class="co">#&gt;    gwcode obsid    date       leadid  leader yrborn gender startdate  enddate   </span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;    &lt;date&gt;     &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;    </span>
-<span class="co">#&gt;  1      2 USA-1869 1869-03-04 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  2      2 USA-1869 1870-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  3      2 USA-1869 1871-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  4      2 USA-1869 1872-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  5      2 USA-1869 1873-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  6      2 USA-1869 1874-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  7      2 USA-1869 1875-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  8      2 USA-1869 1876-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt;  9      2 USA-1869 1877-01-01 81dcc1… Grant    1822 M      1869-03-04 1877-03-04</span>
-<span class="co">#&gt; 10      2 USA-1877 1877-03-04 81dcc1… Hayes    1822 M      1877-03-04 1881-03-04</span>
-<span class="co">#&gt; # … with 17,676 more rows, and 4 more variables: entry &lt;chr&gt;, exit &lt;chr&gt;,</span>
-<span class="co">#&gt; #   exitcode &lt;chr&gt;, year &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;    obsid    gwcode leader date        year month</span>
+<span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 USA-1869      2 Grant  1869-03-04  1869     3</span>
+<span class="co">#&gt;  2 USA-1869      2 Grant  1869-04-01  1869     4</span>
+<span class="co">#&gt;  3 USA-1869      2 Grant  1869-05-01  1869     5</span>
+<span class="co">#&gt;  4 USA-1869      2 Grant  1869-06-01  1869     6</span>
+<span class="co">#&gt;  5 USA-1869      2 Grant  1869-07-01  1869     7</span>
+<span class="co">#&gt;  6 USA-1869      2 Grant  1869-08-01  1869     8</span>
+<span class="co">#&gt;  7 USA-1869      2 Grant  1869-09-01  1869     9</span>
+<span class="co">#&gt;  8 USA-1869      2 Grant  1869-10-01  1869    10</span>
+<span class="co">#&gt;  9 USA-1869      2 Grant  1869-11-01  1869    11</span>
+<span class="co">#&gt; 10 USA-1869      2 Grant  1869-12-01  1869    12</span>
+<span class="co">#&gt; # … with 177,118 more rows</span></code></pre></div>
+<p>And here are leader-years, which is pre-packaged as a <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> function. The package also adds some information about leader gender, an approximation of the leader’s age that year (i.e. <code>year - yrborn</code>), and a running count (starting a 1) for the leader’s tenure (in years).</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderyears.html">create_leaderyears</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = c("gwcode", "year")</span>
+<span class="co">#&gt; # A tibble: 17,686 × 7</span>
+<span class="co">#&gt;    obsid     year gwcode leader gender leaderage yrinoffice</span>
+<span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;      &lt;dbl&gt;      &lt;int&gt;</span>
+<span class="co">#&gt;  1 USA-1869  1869      2 Grant  M             47          1</span>
+<span class="co">#&gt;  2 USA-1869  1870      2 Grant  M             48          2</span>
+<span class="co">#&gt;  3 USA-1869  1871      2 Grant  M             49          3</span>
+<span class="co">#&gt;  4 USA-1869  1872      2 Grant  M             50          4</span>
+<span class="co">#&gt;  5 USA-1869  1873      2 Grant  M             51          5</span>
+<span class="co">#&gt;  6 USA-1869  1874      2 Grant  M             52          6</span>
+<span class="co">#&gt;  7 USA-1869  1875      2 Grant  M             53          7</span>
+<span class="co">#&gt;  8 USA-1869  1876      2 Grant  M             54          8</span>
+<span class="co">#&gt;  9 USA-1869  1877      2 Grant  M             55          9</span>
+<span class="co">#&gt; 10 USA-1877  1877      2 Hayes  M             55          1</span>
+<span class="co">#&gt; # … with 17,676 more rows</span></code></pre></div>
+</div>
+<div id="leader-dyad-year-data" class="section level2">
+<h2 class="hasAnchor">
+<a href="#leader-dyad-year-data" class="anchor"></a>Leader Dyad-Year Data</h2>
+<p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> can also create leader dyad-year data by way of <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>. You can see <a href="https://github.com/svmiller/peacesciencer/blob/master/data-raw/cow_dir_leader_dyad_years.R">some of the underlying code that is creating these data</a>. It’s a lot of code, it would take a lot of time to run from scratch, and the ensuing output is too large to store as an R data object in the package because CRAN hard-caps package size at 5 MB. Instead, users who want these data should first run <code><a href="../reference/download_extdata.html">download_extdata()</a></code> when they <em>first</em> install or update the package. Therein, they can run <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code> to create the full universe of leader dyad-year data.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># create_leaderdyadyears() is effectively doing this.</span>
+<span class="co"># Let's do the G-W leader dyad-year data for illustration's sake.</span>
+<span class="co"># Do note: `download_extdata()` will download these data and stick them in the package directory</span>
+<span class="co"># Thus, it is *not* downloading the data fresh each time.</span>
+
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/declare_attributes.html">declare_attributes</a></span><span class="op">(</span>data_type <span class="op">=</span> <span class="st">"leader_dyad_year"</span>, system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2,400,858 × 11</span>
+<span class="co">#&gt;     year obsid1   obsid2   gwcode1 gwcode2 gender1 gender2 leaderage1 leaderage2</span>
+<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  1870 USA-1869 COS-1870       2      94 M       M               48         39</span>
+<span class="co">#&gt;  2  1870 USA-1869 VEN-1870       2     101 M       M               48         41</span>
+<span class="co">#&gt;  3  1870 USA-1869 ECU-1869       2     130 M       M               48         49</span>
+<span class="co">#&gt;  4  1870 USA-1869 BRA-1840       2     140 M       M               48         45</span>
+<span class="co">#&gt;  5  1870 USA-1869 POR-1861       2     235 M       M               48         32</span>
+<span class="co">#&gt;  6  1870 USA-1869 BAV-1864       2     245 M       M               48         39</span>
+<span class="co">#&gt;  7  1870 USA-1869 GMY-1858       2     255 M       M               48         73</span>
+<span class="co">#&gt;  8  1870 USA-1869 AUH-1848       2     300 M       M               48         40</span>
+<span class="co">#&gt;  9  1870 USA-1869 MNG-1860       2     341 M       M               48         29</span>
+<span class="co">#&gt; 10  1870 USA-1869 GRC-1863       2     350 M       M               48         25</span>
+<span class="co">#&gt; # … with 2,400,848 more rows, and 2 more variables: yrinoffice1 &lt;int&gt;,</span>
+<span class="co">#&gt; #   yrinoffice2 &lt;int&gt;</span>
+
+<span class="co"># ^ compare with:</span>
+<span class="co"># download_extdata()</span>
+<span class="co"># create_leaderdyadyears()</span></code></pre></div>
 </div>
   </div>
 

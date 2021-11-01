@@ -26,10 +26,10 @@
 #' \donttest{
 #' create_leaderdays()
 #'
-#' create_leaderdays(standardize_cow = FALSE)
+#' create_leaderdays(standardize_cow = TRUE)
 #' }
 #'
-create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
+create_leaderdays <- function(system = "archigos", standardize_cow = FALSE) {
 
   if (system == "archigos") {
 
@@ -39,6 +39,8 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
       mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
       unnest(.data$date) %>%
       mutate(year = .pshf_year(.data$date)) -> leaderdays
+
+    leaderdays <- subset(leaderdays, select=c("obsid", "gwcode", "leader", "year", "date"))
 
     # I need to do some ad hoc corrections here
     # There are pieces of the gw_cow_years data frame where G-W says the state doesn't exist but it appears in the CoW data.
@@ -50,19 +52,18 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
     # You'll also miss that G-W has Saudi Arabia start in 1932, but CoW has it at 1927.
     # Archigos has leader data for the Saudis to 1927, so you'll want that.
 
-
-    leaderdays %>%
-      left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) %>%
-      select(.data$obsid, .data$gwcode, .data$ccode, everything()) -> leaderdays
-
-    leaderdays %>%
-      mutate(ccode = case_when(
-        .data$gwcode == 600 & (.data$year >= 1905 & .data$year <= 1912) ~ 600,
-        .data$gwcode == 670 & (.data$year >= 1927 & .data$year <= 1932) ~ 670,
-        TRUE ~ .data$ccode
-      )) -> leaderdays
-
     if (standardize_cow == TRUE) {
+
+      leaderdays %>%
+        left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) %>%
+        select(.data$obsid, .data$gwcode, .data$ccode, everything()) -> leaderdays
+
+      leaderdays %>%
+        mutate(ccode = case_when(
+          .data$gwcode == 600 & (.data$year >= 1905 & .data$year <= 1912) ~ 600,
+          .data$gwcode == 670 & (.data$year >= 1927 & .data$year <= 1932) ~ 670,
+          TRUE ~ .data$ccode
+        )) -> leaderdays
 
       cow_states %>%
         mutate(stdate = as.Date(paste0(.data$styear, "/", .data$stmonth, "/", .data$stday)),
@@ -75,6 +76,7 @@ create_leaderdays <- function(system = "archigos", standardize_cow = TRUE) {
         semi_join(leaderdays, .) -> data
 
       data$year <- NULL
+      data$gwcode <- NULL
 
 
     } else if (standardize_cow == FALSE) {

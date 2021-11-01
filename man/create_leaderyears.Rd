@@ -42,9 +42,10 @@ is \code{standardize_cow = FALSE}.
 }
 \examples{
 \donttest{
-create_leaderyears()
-
+# standardize_cow = FALSE is default
 create_leaderyears(standardize_cow = FALSE)
+
+create_leaderyears(standardize_cow = TRUE)
 }
 
 }
