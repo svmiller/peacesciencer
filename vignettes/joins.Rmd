@@ -15,7 +15,7 @@ library(tidyverse)
 
 Users who may wish to improve their own data management skills in R by looking how `{peacesciencer}` functions are written will see that basic foundation of `{peacesciencer}`'s functions are so-called "join" functions. The "join" functions themselves come in `{dplyr}`, a critical dependency for `{peacesciencer}` and the effective engine of [`{tidyverse}`](https://www.tidyverse.org) (which I suggest for a basic workflow tool, and which the user may already be using). Users who have absolutely no idea what these functions are welcome to find more thorough texts about these different types of joins. Their functionality and terminology have [a clear basis in SQL](https://www.w3schools.com/sql/sql_join.asp), a relational database management system that first appeared in 1974 for data management and data manipulation. My goal here is not to offer a crash course on all these potential "join" functions, though helpful [visual primers are available in R](https://github.com/gadenbuie/tidyexplain) and [SQL](https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/). Instead, I will offer the basic principles these visual primers are communicating as they apply to `{peacesciencer}`.
 
-## Left (Outer) Join
+# Left (Outer) Join
 
 The first type of join is the most important type of join function in `{peacesciencer}`. Indeed, almost every function in this package that deals with adding variables to a type of data created in `{peacesciencer}` includes it. This is the "left join" (`left_join()` in `{dplyr}`), alternatively known as [the "outer join" or "left outer join" in the SQL context](https://www.w3schools.com/sql/sql_join_left.asp), and is a type of "mutating join" in the `{tidyverse}` context. In plain English, the `left_join()` assumes two data objects---a "left" object (`x`) and a "right" object (`y`)---and returns all rows from the left object (`x`) with matching information in the right object (`y`) by a set of common matching keys (or columns in both `x` and `y`).
 
@@ -78,7 +78,7 @@ left_join(x, y)
 
 Notice the output of this left join is identical to the output above. Australia is in `x`, but not in `y`. Thus, the rows for Australia are returned but the absence of ranking information for Australia in `y` means the variable is `NA` for Australia after the merge. Denmark is in `y`, but not `x`. Because the left join returns all rows in `x` with matching information in `y`, the absence of observations for Denmark in `x` means there is nowhere for the ranking information to go in the merge. Thus, Denmark's ranking is effectively ignored.
 
-### Why the Left Join, in Particular?
+## Why the Left Join, in Particular?
 
 An interested user may ask what's so special about this kind of join that it appears everywhere in `{peacesciencer}`? One is a matter of taste. I could just as well be doing this explainer piece by reference to the "right join", the mirror join to "left join." The right join in `{dplyr}`'s `right_join(x,y)` returns all records from `y` with matching rows in `x` by common columns. However, I tend to [think "left-handed"](http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/#myadvice) when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it "left" as I add information to it. This approach to data transformation and it recurs in `{peacesciencer}` as a result.
 
@@ -86,7 +86,7 @@ Beyond that matter of taste, the left join is everywhere in `{peacesciencer}` be
 
 With that in mind, every function's user of the left join assumes the data object it receives represents the full universe of cases of interest to the researcher. The left join is just adding information to it, based on matching information in one of its many data sets. When done carefully, the left join is a dutiful way of adding information to a data set without changing the number of rows of the original data set. The number of columns will obviously expand, but the number of rows is unaffected.
 
-### Potential Problems of the Left Join
+## Potential Problems of the Left Join
 
 "When done carefully" is doing some heavy-lifting in that last sentence. So, let me explain some situations where the left join will produce problems for the researcher (even if the join itself is doing what it is supposed to do from an operational standpoint).
 
