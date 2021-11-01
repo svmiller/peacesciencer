@@ -4,10 +4,10 @@
 \alias{ps_version}
 \title{Get Version Information About Data Included in \pkg{peacesciencer}}
 \usage{
-ps_version(category)
+ps_version(cat)
 }
 \arguments{
-\item{category}{a category of data type the user wants, as a character}
+\item{cat}{a category of data type the user wants, as a character}
 }
 \value{
 \code{ps_version()} takes a character vector and scans the \code{ps_data_version} data in

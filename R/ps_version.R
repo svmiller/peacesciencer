@@ -28,7 +28,7 @@
 #'
 #' @author Steven V. Miller
 #'
-#' @param category a category of data type the user wants, as a character
+#' @param cat a category of data type the user wants, as a character
 #'
 #' @examples
 #'
@@ -44,12 +44,12 @@
 #' ps_version("leaders")
 #'
 
-ps_version <- function(category) {
+ps_version <- function(cat) {
 
-  if (missing(category)) {
+  if (missing(cat)) {
     ps_data_version -> output
   } else {
-    ps_data_version %>% filter(grepl(category, .data$category)) -> output
+    ps_data_version %>% filter(grepl(cat, .data$category)) -> output
   }
 
   return(output)
