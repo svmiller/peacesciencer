@@ -10,6 +10,16 @@
 #'
 #' @details Data are from version 5.0 of the data.
 #'
+#' This function will also work with leader-dyad-years, though users should be careful with leader-level
+#' applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
+#' likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular
+#' leader-dyad. The ATOP alliance data are not communicated with time measurements more granular than
+#' the year, at least for dyad-years. The alliance-level data provided by ATOP do have termination dates, but I am unaware
+#' how well these start and termination dates coincide with particular members joining after the fact or exiting early. The alliance
+#' phase data appear to communicate that "phases" are understood as beginning/ending when the underlying document is amended in such a
+#' way that it affects one of their variable codings, but this may or may not because of a signatory joining after the fact or exiting
+#' early. More guidance will be useful going forward, but use these data for leader-level analyses with that in mind.
+#'
 #'
 #' @author Steven V. Miller
 #'
@@ -30,7 +40,7 @@
 
 add_atop_alliance <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
 
       stop("add_atop_alliance() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")

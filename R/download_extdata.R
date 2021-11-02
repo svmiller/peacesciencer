@@ -6,7 +6,8 @@
 #'
 #' ## Correlates of War Dyadic Trade Data Set (v. 4.0)
 #'
-#' These are directed dyad-year-level data for national trade from the Correlates of War project.
+#' These are directed dyad-year-level data for dyadic trade from the Correlates of War project. The trade values presented here
+#' have been rounded to three decimal points to conserve space. The data downloaded by this function are about 4.1 megabytes in size.
 #'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
@@ -21,7 +22,8 @@
 #' ## Directed Leader Dyad-Year Data, 1870-2015 (CoW States)
 #'
 #' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
-#' data are standardized to just those observations where both leaders and states appear in the CoW state system data.
+#' data are standardized to just those observations where both leaders and states appear in the CoW state system data. The
+#' data downloaded by this function are about 1.9 megabytes in size.
 #'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
@@ -42,7 +44,7 @@
 #'
 #' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
 #' data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
-#' system).
+#' system). The data downloaded by this function are about 2.1 megabytes in size.
 #'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|

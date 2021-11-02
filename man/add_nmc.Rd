@@ -17,7 +17,7 @@ military capabilities provided by the Correlates of War project. If the data are
 to the original data that contain that same information for a given state in a given year.
 }
 \description{
-\code{add_nmc()} allows you to add the Correlates of War National Material Capabilities data to dyad-year or state-year data.
+\code{add_nmc()} allows you to add the Correlates of War National Material Capabilities data to your data.
 }
 \details{
 The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or

@@ -21,6 +21,16 @@ data to a dyad-year data frame.
 }
 \details{
 Data are from version 5.0 of the data.
+
+This function will also work with leader-dyad-years, though users should be careful with leader-level
+applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
+likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular
+leader-dyad. The ATOP alliance data are not communicated with time measurements more granular than
+the year, at least for dyad-years. The alliance-level data provided by ATOP do have termination dates, but I am unaware
+how well these start and termination dates coincide with particular members joining after the fact or exiting early. The alliance
+phase data appear to communicate that "phases" are understood as beginning/ending when the underlying document is amended in such a
+way that it affects one of their variable codings, but this may or may not because of a signatory joining after the fact or exiting
+early. More guidance will be useful going forward, but use these data for leader-level analyses with that in mind.
 }
 \examples{
 

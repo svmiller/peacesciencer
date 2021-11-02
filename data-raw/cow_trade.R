@@ -29,8 +29,8 @@ cow_trade_ndy %>%
 cow_trade_ndy %>% mutate_at(vars(flow1:smoothflow2), ~round(.)) -> cow_trade_ndy
 
 
-save(cow_trade_ndy, file="data/cow_trade_ndy.rda")
-tools::resaveRdaFiles("data/cow_trade_ndy.rda")
+# save(cow_trade_ndy, file="data/cow_trade_ndy.rda")
+# tools::resaveRdaFiles("data/cow_trade_ndy.rda")
 # ^ I tried...
 
 # I'mma try the DDY version now...
@@ -42,7 +42,15 @@ cow_trade_ndy %>%
          flow2 = flow1,
          smoothflow1 = smoothflow2,
          smoothflow2 = smoothflow1) %>%
-  bind_rows(., cow_trade_ndy) ->cow_trade_ddy
+  bind_rows(., cow_trade_ndy) -> cow_trade_ddy
+
+cow_trade_ddy %>%
+  arrange(ccode1, ccode2, year) %>%
+  select(ccode1, ccode2, year, flow1, flow2, smoothflow1, smoothflow2) -> cow_trade_ddy
+
+
+cow_trade_ddy %>%
+  mutate_at(vars(flow1:smoothflow2), ~round(., 3)) -> cow_trade_ddy
 
 saveRDS(cow_trade_ddy, file="~/Dropbox/svmiller.github.io/R/peacesciencer/cow_trade_ddy.rds")
 

@@ -1,6 +1,6 @@
 #' Add Correlates of War National Military Capabilities Data
 #'
-#' @description \code{add_nmc()} allows you to add the Correlates of War National Material Capabilities data to dyad-year or state-year data.
+#' @description \code{add_nmc()} allows you to add the Correlates of War National Material Capabilities data to your data.
 #'
 #'
 #' @return \code{add_nmc()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds information

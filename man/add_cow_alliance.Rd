@@ -22,6 +22,12 @@ data to a dyad-year data frame
 \details{
 Duplicates in the original directed dyad-year alliance data were pre-processed. Check
 \code{cow_alliance} for more information.
+
+This function will also work with leader-dyad-years, though users should be careful with leader-level
+applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
+likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular
+leader-dyad. The Correlates of War's alliance data are not communicated with time measurements more granular than
+the year. Apply these data to leader-level analyses with that in mind.
 }
 \examples{
 

@@ -9,8 +9,8 @@ create_leaderdyadyears(directed = TRUE, system = "gw")
 \arguments{
 \item{directed}{optional, defaults to TRUE. If TRUE, the function returns so-called
 "directed" leader dyad-year data. If FALSE, the function returns
-non-directed data. The standard here is to drop cases where the country code for the
-second observation is less than the country code for the first observation.}
+non-directed data where the state codes for the second leader are all greater than
+the state codes for the second leader.}
 
 \item{system}{a character specifying whether the user wants Correlates of War
 state-years ("cow") or Gleditsch-Ward ("gw") state-years. Gleditsch-Ward is the
@@ -32,8 +32,6 @@ output is over 2 million rows long! Second: the time required to create these da
 take too long for a normal function call. This amounts to an unholy combination of data that are too large
 for CRAN's disk space restrictions (5 MB) and too time-consuming to do from scratch every time. Thus, the
 data are pre-generated and stored remotely. Check \code{download_extdata()} for more information.
-
-For now, these data are treated as dyad-year data (check the attributes) so that other functions can work with it.
 }
 \examples{
 \dontrun{

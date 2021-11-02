@@ -11,6 +11,12 @@
 #' @details Duplicates in the original directed dyad-year alliance data were pre-processed. Check
 #' \code{cow_alliance} for more information.
 #'
+#' This function will also work with leader-dyad-years, though users should be careful with leader-level
+#' applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
+#' likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular
+#' leader-dyad. The Correlates of War's alliance data are not communicated with time measurements more granular than
+#' the year. Apply these data to leader-level analyses with that in mind.
+#'
 #' @author Steven V. Miller
 #'
 #' @param data a dyad-year data frame (either "directed" or "non-directed")
@@ -29,7 +35,7 @@
 
 add_cow_alliance <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
 
       stop("add_cow_alliance() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")

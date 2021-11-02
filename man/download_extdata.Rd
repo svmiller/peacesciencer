@@ -23,7 +23,8 @@ some extra data and store it in the package.
 Running \code{download_extdata()} returns the following data that will be stored in the package's \code{extdata} directory.
 \subsection{Correlates of War Dyadic Trade Data Set (v. 4.0)}{
 
-These are directed dyad-year-level data for national trade from the Correlates of War project.\tabular{ll}{
+These are directed dyad-year-level data for dyadic trade from the Correlates of War project. The trade values presented here
+have been rounded to three decimal points to conserve space. The data downloaded by this function are about 4.1 megabytes in size.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{ccode1} \tab a numeric vector for the Correlates of War state code for the first state \cr
    \code{ccode2} \tab a numeric vector for the Correlates of War state code for the second state \cr
@@ -39,7 +40,8 @@ These are directed dyad-year-level data for national trade from the Correlates o
 \subsection{Directed Leader Dyad-Year Data, 1870-2015 (CoW States)}{
 
 These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
-data are standardized to just those observations where both leaders and states appear in the CoW state system data.\tabular{ll}{
+data are standardized to just those observations where both leaders and states appear in the CoW state system data. The
+data downloaded by this function are about 1.9 megabytes in size.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
@@ -60,7 +62,7 @@ data are standardized to just those observations where both leaders and states a
 
 These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
 data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
-system).\tabular{ll}{
+system). The data downloaded by this function are about 2.1 megabytes in size.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
