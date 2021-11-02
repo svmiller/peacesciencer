@@ -7,8 +7,8 @@
 \format{
 A data frame the following four variables.
 \describe{
-\item{\code{ccode1}}{a numeric vector for the Gleditsch-Ward state code for the first state}
-\item{\code{ccode2}}{a numeric vector for the Gleditsch-Ward state code for the second state}
+\item{\code{gwcode1}}{a numeric vector for the Gleditsch-Ward state code for the first state}
+\item{\code{gwcode2}}{a numeric vector for the Gleditsch-Ward state code for the second state}
 \item{\code{year}}{a numeric vector for the year}
 \item{\code{in_ps}}{a constant that equals 1 if these data would appear in \code{create_dyadyears()} if you were not careful to remove them.}
 }

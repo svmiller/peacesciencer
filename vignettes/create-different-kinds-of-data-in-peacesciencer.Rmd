@@ -132,10 +132,10 @@ archigos
 create_leaderdays()
 ```
 
-I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently `create_stateyears()` and `create_dyadyears()`), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. You could just as well standardize the leader-day data to the Correlates of War system with the `standardize_cow` argument. By default, it's `FALSE`. You can set it to `TRUE` to standardize Archigos to the Correlates of War system.
+I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently `create_stateyears()` and `create_dyadyears()`), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. Moreover, the leader data isn't exactly tethered to the Gleditsch-Ward state system for dates either (e.g. there are leader entries for Gleditsch-Ward states that aren't in the system yet). In a case like this, you can standardize these leader data to either the Correlates of War system or the Gleditsch-Ward system with the `standardize` argument. By default, the option here is "none" (i.e. return all available leader days recorded in the Archigos data). "cow" or "gw" standardizes the leader data to Correlates of War state system membership or Gleditsch-Ward state system membership, respectively.
 
 ```{r}
-create_leaderdays(standardize_cow = TRUE)
+create_leaderdays(standardize = "cow")
 ```
 
 

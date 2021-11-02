@@ -210,7 +210,7 @@ add_gml_mids <- function(data, keep, init = "sidea-all-joiners") {
 
     }
 
-    leaderdays <- create_leaderdays(standardize_cow = TRUE)
+    leaderdays <- create_leaderdays(standardize = "cow")
 
     gml_part %>%
       filter(.data$allmiss_leader_start == 0 & .data$allmiss_leader_end == 0) %>%

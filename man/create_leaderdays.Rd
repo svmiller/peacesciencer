@@ -4,14 +4,16 @@
 \alias{create_leaderdays}
 \title{Create leader-days from leader data}
 \usage{
-create_leaderdays(system = "archigos", standardize_cow = FALSE)
+create_leaderdays(system = "archigos", standardize = "none")
 }
 \arguments{
 \item{system}{a leader system with which to create leader-days. Right now, only "archigos" is supported.}
 
-\item{standardize_cow}{logical, defaults to TRUE. If TRUE, the function standardizes the leader-days to just those that
-overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If FALSE, the function
-returns all leader-days as implied by the Archigos data.}
+\item{standardize}{a character vector of length one: "cow", "gw", or "none". If "cow", the function standardizes the leader-days to
+just those that overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If "gw", the function
+standardizes the leader-days to just those that overlap with the state system dates of the Gleditsch-Ward date (see: \code{gw_states}). If
+"none", the function returns all leader-days as presented in Archigos (which is nominally denominated in Gleditsch-Ward state system codes,
+if not necessarily Gleditsch-Ward state system dates). Default is "none".}
 }
 \value{
 \code{create_leaderdays()} takes leader-level data available in \pkg{peacesciencer}
@@ -30,7 +32,7 @@ being mostly for internal uses. Basically, \code{create_leaderyears()} effective
 \donttest{
 create_leaderdays()
 
-create_leaderdays(standardize_cow = TRUE)
+create_leaderdays(standardize = "gw")
 }
 
 }

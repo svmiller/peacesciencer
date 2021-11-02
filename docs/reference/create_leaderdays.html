@@ -169,7 +169,7 @@ leader-level data provided in peacesciencer." />
 leader-level data provided in <span class="pkg">peacesciencer</span>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_leaderdays</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"archigos"</span>, standardize_cow <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_leaderdays</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"archigos"</span>, standardize <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -179,10 +179,12 @@ leader-level data provided in <span class="pkg">peacesciencer</span>.</p>
       <td><p>a leader system with which to create leader-days. Right now, only "archigos" is supported.</p></td>
     </tr>
     <tr>
-      <th>standardize_cow</th>
-      <td><p>logical, defaults to TRUE. If TRUE, the function standardizes the leader-days to just those that
-overlap  with state system membership in the Correlates of War state system (see: <code>cow_states</code>). If FALSE, the function
-returns all leader-days as implied by the Archigos data.</p></td>
+      <th>standardize</th>
+      <td><p>a character vector of length one: "cow", "gw", or "none". If "cow", the function standardizes the leader-days to
+just those that overlap  with state system membership in the Correlates of War state system (see: <code>cow_states</code>). If "gw", the function
+standardizes the leader-days to just those that overlap with the state system dates of the Gleditsch-Ward date (see: <code>gw_states</code>). If
+"none", the function returns all leader-days as presented in Archigos (which is nominally denominated in Gleditsch-Ward state system codes,
+if not necessarily Gleditsch-Ward state system dates). Default is "none".</p></td>
     </tr>
     </table>
 
@@ -220,21 +222,21 @@ being mostly for internal uses. Basically, <code><a href='create_leaderyears.htm
 #&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869      2 Grant  1869-03-12
 #&gt; <span style='color: #BCBCBC;'>10</span> USA-1869      2 Grant  1869-03-13
 #&gt; <span style='color: #949494;'># … with 5,298,370 more rows</span></div><div class='input'>
-<span class='fu'>create_leaderdays</span><span class='op'>(</span>standardize_cow <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "year")</span></div><div class='output co'>#&gt; <span class='message'>Joining, by = c("ccode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 4,824,736 × 4</span>
-#&gt;    obsid    ccode leader date      
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>    
-#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869     2 Grant  1869-03-04
-#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869     2 Grant  1869-03-05
-#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869     2 Grant  1869-03-06
-#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869     2 Grant  1869-03-07
-#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869     2 Grant  1869-03-08
-#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869     2 Grant  1869-03-09
-#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869     2 Grant  1869-03-10
-#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869     2 Grant  1869-03-11
-#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869     2 Grant  1869-03-12
-#&gt; <span style='color: #BCBCBC;'>10</span> USA-1869     2 Grant  1869-03-13
-#&gt; <span style='color: #949494;'># … with 4,824,726 more rows</span></div><div class='input'><span class='co'># }</span>
+<span class='fu'>create_leaderdays</span><span class='op'>(</span>standardize <span class='op'>=</span> <span class='st'>"gw"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Joining, by = c("gwcode", "date")</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 5,181,021 × 4</span>
+#&gt;    obsid    gwcode leader date      
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;date&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'> 1</span> USA-1869      2 Grant  1869-03-04
+#&gt; <span style='color: #BCBCBC;'> 2</span> USA-1869      2 Grant  1869-03-05
+#&gt; <span style='color: #BCBCBC;'> 3</span> USA-1869      2 Grant  1869-03-06
+#&gt; <span style='color: #BCBCBC;'> 4</span> USA-1869      2 Grant  1869-03-07
+#&gt; <span style='color: #BCBCBC;'> 5</span> USA-1869      2 Grant  1869-03-08
+#&gt; <span style='color: #BCBCBC;'> 6</span> USA-1869      2 Grant  1869-03-09
+#&gt; <span style='color: #BCBCBC;'> 7</span> USA-1869      2 Grant  1869-03-10
+#&gt; <span style='color: #BCBCBC;'> 8</span> USA-1869      2 Grant  1869-03-11
+#&gt; <span style='color: #BCBCBC;'> 9</span> USA-1869      2 Grant  1869-03-12
+#&gt; <span style='color: #BCBCBC;'>10</span> USA-1869      2 Grant  1869-03-13
+#&gt; <span style='color: #949494;'># … with 5,181,011 more rows</span></div><div class='input'><span class='co'># }</span>
 
 </div></pre>
   </div>
