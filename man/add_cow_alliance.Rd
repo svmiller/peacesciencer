@@ -2,12 +2,12 @@
 % Please edit documentation in R/add_cow_alliance.R
 \name{add_cow_alliance}
 \alias{add_cow_alliance}
-\title{Add Correlates of War alliance data to a dyad-year data frame}
+\title{Add Correlates of War alliance data to a data frame}
 \usage{
 add_cow_alliance(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed")}
+\item{data}{a dyad-year or leader-dyad-year data frame (either "directed" or "non-directed")}
 }
 \value{
 \code{add_cow_alliance()} takes a dyad-year data frame and adds information about

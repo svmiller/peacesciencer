@@ -1,15 +1,15 @@
 globalVariables(c('.', 'capitals', 'cow_ddy'))
 
-#' Add capital-to-capital distance to a dyad-year or state-year data frame
+#' Add capital-to-capital distance to a data frame
 #'
 #' @description \code{add_capital_distance()} allows you to add capital-to-capital
-#' distance to a dyad-year or state-year data frame. The capitals are coded in the
+#' distance to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The capitals are coded in the
 #' \code{cow_capitals} and \code{gw_capitals}
 #' data frames, along with their latitudes and longitudes. The distance variable that
 #' emerges \code{capdist} is calculated using the "Vincenty" method (i.e. "as the crow
 #' flies") and is expressed in kilometers.
 #'
-#' @return \code{add_capital_distance()} takes a dyad-year or state-year data frame and adds the
+#' @return \code{add_capital_distance()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds the
 #' capital-to-capital distance between the first state and the second state (in dyad-year data) or the minimum
 #' capital-to-capital distance for a given state in a given year. A minor
 #' note about this function: cases of capital transition are recorded in the
@@ -17,13 +17,12 @@ globalVariables(c('.', 'capitals', 'cow_ddy'))
 #' merging into a dyad-year data frame), the Jan. 1 capital is used for calculating
 #' distances.
 #'
-#' @details The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-#' \code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-#' of the proverbial pipe.
+#' @details The function leans on attributes of the data that are provided by one of the "create" functions
+#' in this package (e.g. \code{create_dyadyear()} or \code{create_stateyear()}).
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed") or state-year data frame
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
 #' @examples
 #'
@@ -116,7 +115,7 @@ globalVariables(c('.', 'capitals', 'cow_ddy'))
 
 add_capital_distance <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 
@@ -171,7 +170,7 @@ add_capital_distance <- function(data) {
     }
 
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
 

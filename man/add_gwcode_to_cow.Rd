@@ -2,15 +2,16 @@
 % Please edit documentation in R/add_gwcode_to_cow.R
 \name{add_gwcode_to_cow}
 \alias{add_gwcode_to_cow}
-\title{Add Gleditsch-Ward state system codes to dyad-year or state-year data with Correlates of War state codes.}
+\title{Add Gleditsch-Ward state system codes to your data with Correlates of War state codes.}
 \usage{
 add_gwcode_to_cow(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_gwcode_to_cow()} takes a dyad-year data frame or state-year data frame that already has Correlates of War
+\code{add_gwcode_to_cow()} takes a (dyad-year, leader-year, leader-dyad-year, state-year)
+data frame that already has Correlates of War
 state system codes and adds their corollary Gleditsch-Ward codes.
 }
 \description{

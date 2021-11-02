@@ -2,15 +2,15 @@
 % Please edit documentation in R/add_capital_distance.R
 \name{add_capital_distance}
 \alias{add_capital_distance}
-\title{Add capital-to-capital distance to a dyad-year or state-year data frame}
+\title{Add capital-to-capital distance to a data frame}
 \usage{
 add_capital_distance(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or state-year data frame}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_capital_distance()} takes a dyad-year or state-year data frame and adds the
+\code{add_capital_distance()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds the
 capital-to-capital distance between the first state and the second state (in dyad-year data) or the minimum
 capital-to-capital distance for a given state in a given year. A minor
 note about this function: cases of capital transition are recorded in the
@@ -20,16 +20,15 @@ distances.
 }
 \description{
 \code{add_capital_distance()} allows you to add capital-to-capital
-distance to a dyad-year or state-year data frame. The capitals are coded in the
+distance to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The capitals are coded in the
 \code{cow_capitals} and \code{gw_capitals}
 data frames, along with their latitudes and longitudes. The distance variable that
 emerges \code{capdist} is calculated using the "Vincenty" method (i.e. "as the crow
 flies") and is expressed in kilometers.
 }
 \details{
-The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-\code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.
+The function leans on attributes of the data that are provided by one of the "create" functions
+in this package (e.g. \code{create_dyadyear()} or \code{create_stateyear()}).
 }
 \examples{
 

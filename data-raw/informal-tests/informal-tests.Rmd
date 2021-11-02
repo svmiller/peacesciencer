@@ -1,0 +1,95 @@
+---
+title: "More Tests"
+author: "steve"
+date: "`r Sys.Date() `"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Check if Stuff is Already Downloaded
+
+```{r}
+library(tidyverse)
+library(peacesciencer)
+library(testthat)
+download_extdata()
+```
+
+## Create Some Data
+
+```{r}
+cow_leaderyears <- create_leaderyears(standardize_cow = TRUE)
+gw_leaderyears <- create_leaderyears(standardize_cow = FALSE)
+
+cow_leaderdyadyears <- create_leaderdyadyears(system = 'cow')
+gw_leaderdyadyears <- create_leaderdyadyears(system = 'gw')
+
+cow_leadermids <- cow_leaderyears %>% add_gml_mids() %>% filter(year %in% c(1875:2010))
+cow_leaderdyadmids <- cow_leaderdyadyears %>% add_gml_mids() %>% filter(year %in% c(1875:2010))
+```
+
+## Run Some Tests
+
+These are tests that add data based on what's stored remotely. I don't trust CRAN to do these tests well---and already so much is tested---so I'll communicate the results of those tests here. The leader-year tests are here too. While these could be done as part of the formal testing process, they would also take forever and the time from `devtools::check()` to `devtools::release()` is already like half an hour or more. In due time, these leader-year tests could---and probably should---go into the formal testing procedure.
+
+```{r}
+test_that("Dyad-year additions do not create duplicates", {
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_trade()))
+})
+```
+
+
+```{r}
+test_that("Leader-year additions do not create duplicates", {
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_capital_distance()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_capital_distance()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_contiguity()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_cow_majors()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_cow_trade()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_creg_fractionalization()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_creg_fractionalization()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_democracy()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_democracy()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_gml_mids()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_minimum_distance()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_minimum_distance()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_nmc()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_rugged_terrain()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_rugged_terrain()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_sdp_gdp()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_sdp_gdp()))
+  expect_equal(nrow(cow_leadermids), nrow(cow_leadermids %>% add_spells()))
+  expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %>% add_gwcode_to_cow()))
+  expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %>% add_ccode_to_gw()))
+})
+```
+
+
+```{r}
+test_that("Leader-dyad-year additions do not create duplicates", {
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_capital_distance()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_capital_distance()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_contiguity()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_cow_majors()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_cow_trade()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_creg_fractionalization()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_creg_fractionalization()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_democracy()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_democracy()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_gml_mids()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_minimum_distance()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_minimum_distance()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_nmc()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_rugged_terrain()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_rugged_terrain()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_sdp_gdp()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_sdp_gdp()))
+  expect_equal(nrow(cow_leaderdyadmids), nrow(cow_leaderdyadmids %>% add_spells()))
+  expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %>% add_gwcode_to_cow()))
+  expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %>% add_ccode_to_gw()))
+})
+```

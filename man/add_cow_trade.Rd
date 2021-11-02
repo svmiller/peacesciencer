@@ -2,30 +2,33 @@
 % Please edit documentation in R/add_cow_trade.R
 \name{add_cow_trade}
 \alias{add_cow_trade}
-\title{Add Correlates of War trade data to a dyad-year or state-year data frame}
+\title{Add Correlates of War trade data to a data frame}
 \usage{
 add_cow_trade(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_cow_trade()} takes a dyad-year data frame or state-year data frame and
-adds information about the volume of trade in that given dyad-year or state-year. For the state-year
-data, these are minimally the sum of all imports and the sum of all exports. For dyad-year data,
+\code{add_cow_trade()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and
+adds information about the volume of trade in that given dyad-year or state-year. For the state-year (leader-year)
+data, these are minimally the sum of all imports and the sum of all exports. For dyad-year (leader-dyad-year) data,
 this function returns the value of imports in current million USD in the first country from
 the second country (and vice-versa) along with their "smooth" equivalents.
 }
 \description{
-\code{add_cow_trade()} allows you to add Correlates of War alliance
-data to a dyad-year data frame
+\code{add_cow_trade()} allows you to add Correlates of War trade data to your
+(dyad-year, leader-year, leader-dyad-year, state-year) data frame
 }
 \details{
-For the dyad-year data, there must be some kind of information loss in order to work within the
+For the dyad-year (and leader-dyad-year) data, there must be some kind of information loss in order to work within the
 limited space available to this package. This package loads a truncated version of the data in which the trade
-values are rounded to integers in order to greatly reduce the disk space for this package. I do not think this
+values are rounded to three decimal points in order to greatly reduce the disk space for this package. I do not think this
 to be terribly problematic, though I admit I do not like it. If this is a problem for your research question,
-you may want to consider not using this function for dyad-year data.
+you may want to consider not using this function for dyad-year or leader-dyad-year data.
+
+Be mindful that the data are fundamentally state-year or dyad-year and that extensions to leader-level data should be understood
+as approximations for leaders (leader-dyads) in a given state-year (dyad-year).
 }
 \examples{
 # just call `library(tidyverse)` at the top of the your script

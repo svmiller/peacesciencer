@@ -1,4 +1,4 @@
-#' Add Correlates of War alliance data to a dyad-year data frame
+#' Add Correlates of War alliance data to a data frame
 #'
 #' @description \code{add_cow_alliance()} allows you to add Correlates of War alliance
 #' data to a dyad-year data frame
@@ -19,7 +19,7 @@
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed")
+#' @param data a dyad-year or leader-dyad-year data frame (either "directed" or "non-directed")
 #'
 #' @references
 #'

@@ -2,15 +2,15 @@
 % Please edit documentation in R/add_ccode_to_gw.R
 \name{add_ccode_to_gw}
 \alias{add_ccode_to_gw}
-\title{Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes.}
+\title{Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.}
 \usage{
 add_ccode_to_gw(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_ccode_to_gw()} takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
+\code{add_ccode_to_gw()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame that already has Gleditsch-Ward
 state system codes and adds their corollary Correlates of War codes.
 }
 \description{

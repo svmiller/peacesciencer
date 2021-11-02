@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes. — add_ccode_to_gw • peacesciencer</title>
+<title>Add Correlates of War state system codes to your data with Gleditsch-Ward state codes. — add_ccode_to_gw • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,7 +41,7 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes. — add_ccode_to_gw" />
+<meta property="og:title" content="Add Correlates of War state system codes to your data with Gleditsch-Ward state codes. — add_ccode_to_gw" />
 <meta property="og:description" content="add_ccode_to_gw() allows you to match, as well as one can, Correlates of War system membership data
 with Gleditsch-Ward system data." />
 
@@ -159,7 +159,7 @@ with Gleditsch-Ward system data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes.</h1>
+    <h1>Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_ccode_to_gw.R'><code>R/add_ccode_to_gw.R</code></a></small>
     <div class="hidden name"><code>add_ccode_to_gw.Rd</code></div>
     </div>
@@ -176,13 +176,13 @@ with Gleditsch-Ward system data.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_ccode_to_gw()</code> takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
+    <p><code>add_ccode_to_gw()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame that already has Gleditsch-Ward
 state system codes and adds their corollary Correlates of War codes.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 

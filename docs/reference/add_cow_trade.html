@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add Correlates of War trade data to a dyad-year or state-year data frame — add_cow_trade • peacesciencer</title>
+<title>Add Correlates of War trade data to a data frame — add_cow_trade • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add Correlates of War trade data to a dyad-year or state-year data frame — add_cow_trade" />
-<meta property="og:description" content="add_cow_trade() allows you to add Correlates of War alliance
-data to a dyad-year data frame" />
+<meta property="og:title" content="Add Correlates of War trade data to a data frame — add_cow_trade" />
+<meta property="og:description" content="add_cow_trade() allows you to add Correlates of War trade data to your
+(dyad-year, leader-year, leader-dyad-year, state-year) data frame" />
 
 
 
@@ -159,14 +159,14 @@ data to a dyad-year data frame" />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add Correlates of War trade data to a dyad-year or state-year data frame</h1>
+    <h1>Add Correlates of War trade data to a data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_cow_trade.R'><code>R/add_cow_trade.R</code></a></small>
     <div class="hidden name"><code>add_cow_trade.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>add_cow_trade()</code> allows you to add Correlates of War alliance
-data to a dyad-year data frame</p>
+    <p><code>add_cow_trade()</code> allows you to add Correlates of War trade data to your
+(dyad-year, leader-year, leader-dyad-year, state-year) data frame</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_cow_trade</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
@@ -176,24 +176,26 @@ data to a dyad-year data frame</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_cow_trade()</code> takes a dyad-year data frame or state-year data frame and
-adds information about the volume of trade in that given dyad-year or state-year. For the state-year
-data, these are minimally the sum of all imports and the sum of all exports. For dyad-year data,
+    <p><code>add_cow_trade()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and
+adds information about the volume of trade in that given dyad-year or state-year. For the state-year (leader-year)
+data, these are minimally the sum of all imports and the sum of all exports. For dyad-year (leader-dyad-year) data,
 this function returns the value of imports in current million USD in the first country from
 the second country (and vice-versa) along with their "smooth" equivalents.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>For the dyad-year data, there must be some kind of information loss in order to work within the
+    <p>For the dyad-year (and leader-dyad-year) data, there must be some kind of information loss in order to work within the
 limited space available to this package. This package loads a truncated version of the data in which the trade
-values are rounded to integers in order to greatly reduce the disk space for this package. I do not think this
+values are rounded to three decimal points in order to greatly reduce the disk space for this package. I do not think this
 to be terribly problematic, though I admit I do not like it. If this is a problem for your research question,
-you may want to consider not using this function for dyad-year data.</p>
+you may want to consider not using this function for dyad-year or leader-dyad-year data.</p>
+<p>Be mindful that the data are fundamentally state-year or dyad-year and that extensions to leader-level data should be understood
+as approximations for leaders (leader-dyads) in a given state-year (dyad-year).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."

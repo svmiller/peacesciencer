@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Add minimum distance data to a dyad-year or state-year data frame — add_minimum_distance • peacesciencer</title>
+<title>Add minimum distance data to your data frame — add_minimum_distance • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,9 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="Add minimum distance data to a dyad-year or state-year data frame — add_minimum_distance" />
+<meta property="og:title" content="Add minimum distance data to your data frame — add_minimum_distance" />
 <meta property="og:description" content="add_minimum_distance() allows you to add the minimum
-distance (in kilometers) to a dyad-year or state-year data frame. These estimates
+distance (in kilometers) to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. These estimates
 are recorded in the cow_mindist and gw_mindist data that come with this package. The
 data are current as of the end of 2019." />
 
@@ -161,14 +161,14 @@ data are current as of the end of 2019." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Add minimum distance data to a dyad-year or state-year data frame</h1>
+    <h1>Add minimum distance data to your data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/add_minimum_distance.R'><code>R/add_minimum_distance.R</code></a></small>
     <div class="hidden name"><code>add_minimum_distance.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p><code>add_minimum_distance()</code> allows you to add the minimum
-distance (in kilometers) to a dyad-year or state-year data frame. These estimates
+distance (in kilometers) to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. These estimates
 are recorded in the <code>cow_mindist</code> and <code>gw_mindist</code> data that come with this package. The
 data are current as of the end of 2019.</p>
     </div>
@@ -180,20 +180,19 @@ data are current as of the end of 2019.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed") or state-year data frame</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_minimum_distance()</code> takes a dyad-year or state-year data frame and adds the
+    <p><code>add_minimum_distance()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds the
 minimum distance between the first state and the second state (in dyad-year data) or the minimum
 minimum (sic) distance for a given state in a given year.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function leans on attributes of the data that are provided by the <code>create_dyadyear()</code> or
-<code>create_stateyear()</code> function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.</p>
+    <p>The function leans on attributes of the data that are provided by one of the "create" functions
+in this package (e.g. <code>create_dyadyear()</code> or <code>create_stateyear()</code>).</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Schvitz, Guy et al. 2021. "Mapping The International System, 1886-2017: The <code>CShapes</code> 2.0 Dataset."

@@ -1,10 +1,10 @@
-#' Add Correlates of War state system codes to dyad-year or state-year data with Gleditsch-Ward state codes.
+#' Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.
 #'
 #' @description \code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates of War system membership data
 #' with Gleditsch-Ward system data.
 #'
 #'
-#' @return \code{add_ccode_to_gw()} takes a dyad-year data frame or state-year data frame that already has Gleditsch-Ward
+#' @return \code{add_ccode_to_gw()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame that already has Gleditsch-Ward
 #' state system codes and adds their corollary Correlates of War codes.
 #'
 #' @details The \code{data-raw} directory on the project's Github contains more information about the underlying data that assists
@@ -22,7 +22,7 @@
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed") or a state-year data frame.
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
 #'
 #' @examples
@@ -37,9 +37,20 @@
 #'
 add_ccode_to_gw <- function(data) {
 
+  if (any(i <- c("ccode1", "ccode2", "ccode") %in% colnames(data))) {
+
+    stop("Your data already appear to have Correlates of War state codes in it.")
+
+  }
+
+  if (length(attributes(data)$ps_system) == 0 | attributes(data)$ps_system != "gw") {
+    warning("The state system data here do not appear to be Gleditsch-Ward, or at least not declared as such. The function will still run, but you may want to inspect the output.")
+
+  }
+
   gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year) -> hold_this
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "dyad_year") {
+  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
     if (!all(i <- c("gwcode1", "gwcode2") %in% colnames(data))) {
 
@@ -60,7 +71,7 @@ add_ccode_to_gw <- function(data) {
 
 
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     if (!all(i <- c("gwcode") %in% colnames(data))) {
 
