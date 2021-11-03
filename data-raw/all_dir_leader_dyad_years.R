@@ -16,8 +16,11 @@ library(tictoc)
 #   left_join(., state_days) %>%
 #   mutate(in_cow = ifelse(is.na(in_cow), 0, in_cow)) -> leader_days
 
-leader_days <- create_leaderdays(standardize_cow = FALSE)
+leader_days <- create_leaderdays(standardize = "none")
 
+archigos %>%
+  select(obsid, startdate, enddate) %>%
+  left_join(leader_days, .) -> leader_days
 
 
 nmin4_cores  <- parallel::detectCores()-4
@@ -31,6 +34,7 @@ doParallel::registerDoParallel(cl = nmin4_cores)
 foreach::getDoParRegistered()
 
 tic()
+
 dir_leader_dyad_years <- foreach(
   i = 1870:2015
 ) %dopar% {
@@ -40,14 +44,12 @@ dir_leader_dyad_years <- foreach(
 
   leader_days %>%
     filter(year(date) == i) %>%
-    select(ccode, obsid, startdate, enddate) %>%
+    select(gwcode, obsid, startdate, enddate) %>%
     expand(obsid1 = obsid, obsid2 = obsid,
            date=seq(as.Date(start_date), as.Date(end_date), by="1 day")) %>%
     filter(obsid1 != obsid2) -> hold_this
 
-  # scrub cases of intra-state dyads
-  # these happen because of a leader change in the year.
-  # mercifully, we can make this easy because iso3c-ish codes start every obsid
+
   hold_this %>% filter(str_sub(obsid1, 1, 3) != str_sub(obsid2, 1, 3)) -> hold_this
 
 
@@ -65,16 +67,7 @@ dir_leader_dyad_years <- foreach(
     filter((date >= startdate1) & (date <= enddate1) &
              (date >= startdate2) & (date <= enddate2)) %>%
     select(-date) %>%
-    # mutate(bothincow = ifelse(in_cow1 == 1 & in_cow2 == 1, 1, 0)) %>%
-    # group_by(obsid1, obsid2) %>%
-    # mutate(bothincow = max(bothincow)) %>%
-    #
-    # group_by(obsid1) %>%
-    # mutate(in_cow1max = max(in_cow1)) %>%
-    # filter()
-    #select(-in_cow1, -in_cow2) %>%
-
-    distinct() %>% #ungroup() %>%
+    distinct() %>%
     mutate(year = i) %>%
     select(year, everything()) -> hold_this
 
@@ -86,56 +79,6 @@ parallel::stopCluster(cl = my.cluster)
 dir_leader_dyad_years %>%
   bind_rows(.) -> dir_leader_dyad_years
 
-
-
-# dir_leader_dyad_years <- as_tibble()
-#
-# tic()
-# for (i in 1870:2015) {
-#   print(paste0("Starting year: ", i))
-#   start_date <- paste(i, "01", "01", sep="-")
-#   end_date <- paste(i, "12", "31", sep="-")
-#
-#   leader_days %>%
-#     filter(year(date) == i) %>%
-#     select(gwcode, obsid, startdate, enddate) %>%
-#     expand(obsid1 = obsid, obsid2 = obsid,
-#            date=seq(as.Date(start_date), as.Date(end_date), by="1 day")) %>%
-#     filter(obsid1 != obsid2) -> hold_this
-#
-#   hold_this %>%
-#     left_join(., archigos %>% select(gwcode, obsid, startdate, enddate), by=c("obsid1"="obsid")) %>%
-#     rename(gwcode1 = gwcode,
-#            startdate1 = startdate,
-#            enddate1 = enddate) %>%
-#     left_join(., archigos %>% select(gwcode, obsid, startdate, enddate), by=c("obsid2"="obsid")) %>%
-#     rename(gwcode2 = gwcode,
-#            startdate2 = startdate,
-#            enddate2 = enddate) -> hold_this
-#
-#   hold_this %>%
-#     filter((date >= startdate1) & (date <= enddate1) &
-#              (date >= startdate2) & (date <= enddate2)) %>%
-#     select(-date) %>%
-#     # mutate(bothincow = ifelse(in_cow1 == 1 & in_cow2 == 1, 1, 0)) %>%
-#     # group_by(obsid1, obsid2) %>%
-#     # mutate(bothincow = max(bothincow)) %>%
-#     #
-#     # group_by(obsid1) %>%
-#     # mutate(in_cow1max = max(in_cow1)) %>%
-#     # filter()
-#     #select(-in_cow1, -in_cow2) %>%
-#
-#     distinct() %>% #ungroup() %>%
-#     mutate(year = i) %>%
-#     select(year, everything()) -> hold_this
-#
-#   dir_leader_dyad_years <- bind_rows(dir_leader_dyad_years, hold_this)
-# }
-# toc()
-# 488.09 sec elapsed
-
-# Add in some gwcodes now
 
 dir_leader_dyad_years %>%
   left_join(., leader_days %>% select(obsid, gwcode) %>% rename(obsid1 = obsid) %>% distinct()) %>%
@@ -157,15 +100,17 @@ dir_leader_dyad_years %>%
          leaderage2 = year - yrborn2) %>%
   select(-yrborn1, -yrborn2) -> dir_leader_dyad_years
 
-leaderyears <- create_leaderyears(standardize_cow = FALSE)
+
+
+leader_years <- create_leaderyears(standardize = "none")
 
 dir_leader_dyad_years %>%
-  left_join(., leaderyears %>% select(obsid, year, yrinoffice) %>% rename(obsid1 = obsid)) %>%
+  left_join(., leader_years %>% select(obsid, year, yrinoffice) %>% rename(obsid1 = obsid)) %>%
   rename(yrinoffice1 = yrinoffice) %>%
-  left_join(., leaderyears %>% select(obsid, year, yrinoffice) %>% rename(obsid2 = obsid)) %>%
+  left_join(., leader_years %>% select(obsid, year, yrinoffice) %>% rename(obsid2 = obsid)) %>%
   rename(yrinoffice2 = yrinoffice) %>%
   select(-startdate1:-enddate1, -startdate2, -enddate2) -> dir_leader_dyad_years
 
-gw_dir_leader_dyad_years <- dir_leader_dyad_years
+all_dir_leader_dyad_years <- dir_leader_dyad_years
 
-saveRDS(gw_dir_leader_dyad_years, "~/Dropbox/svmiller.github.io/R/peacesciencer/gw_dir_leader_dyad_years.rds")
+saveRDS(all_dir_leader_dyad_years, "~/Dropbox/svmiller.github.io/R/peacesciencer/all_dir_leader_dyad_years.rds")
