@@ -10,7 +10,7 @@ declare_attributes(data, data_type, system, conflict_type)
 \item{data}{a data frame for which you want \pkg{peacesciencer}-specific attributes}
 
 \item{data_type}{optional, but a character vector of length 1 coinciding with the type of data the user believes
-the data frame is. Options include: 'dyad_year', 'leader_year', 'leader_dyad_year', or 'state_year'.}
+the data frame is. Options include: 'dyad_year', 'leader_day', 'leader_year', 'leader_dyad_year', 'state_day', or 'state_year'.}
 
 \item{system}{optional, but a character vector of length 1 coinciding with the state system of the data. If specified at all,
 must be 'cow' or 'gw'.}

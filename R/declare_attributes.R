@@ -18,7 +18,7 @@
 #'
 #' @param data a data frame for which you want \pkg{peacesciencer}-specific attributes
 #' @param data_type optional, but a character vector of length 1 coinciding with the type of data the user believes
-#' the data frame is. Options include: 'dyad_year', 'leader_year', 'leader_dyad_year', or 'state_year'.
+#' the data frame is. Options include: 'dyad_year', 'leader_day', 'leader_year', 'leader_dyad_year', 'state_day', or 'state_year'.
 #' @param system optional, but a character vector of length 1 coinciding with the state system of the data. If specified at all,
 #' must be 'cow' or 'gw'.
 #' @param conflict_type optional, and applicable to just conflict data and the "whittle" class functions in \pkg{peacesciencer}. If specified,
@@ -41,13 +41,13 @@ declare_attributes <- function(data, data_type, system, conflict_type) {
 
   if (!missing(data_type)) {
     if(length(data_type) > 1) {
-      stop("You cannot specify more than one data type. Pick one of 'dyad_year', 'leader_year', 'leader_dyad_year', or 'state_year'.")
+      stop("You cannot specify more than one data type. Pick one of 'dyad_year', 'leader_day', 'leader_year', 'leader_dyad_year', 'state_day', or 'state_year'.")
     }
 
 
-    if (!(data_type %in% c("dyad_year", "leader_dyad_year", "leader_year", "state_year")))
+    if (!(data_type %in% c("dyad_year", "leader_dyad_year", "leader_day", "leader_year", "state_day", "state_year")))
     {
-      stop("Right now, {peacesciencer} only recognizes the following data types: 'dyad_year', 'leader_year', 'leader_dyad_year', 'state_year'.")
+      stop("Right now, {peacesciencer} only recognizes the following data types: 'dyad_year', 'leader_day', 'leader_year', 'leader_dyad_year', 'state_day', 'state_year'.")
     } else {
 
     attr(data, "ps_data_type") <- data_type

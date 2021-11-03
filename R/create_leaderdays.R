@@ -44,7 +44,8 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       rowwise() %>%
       mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
       unnest(.data$date) %>%
-      mutate(year = .pshf_year(.data$date)) -> leaderdays
+      mutate(year = .pshf_year(.data$date),
+             yrinoffice = (year - .pshf_year(.data$startdate)) + 1) -> leaderdays
 
     if (standardize == "gw") {
 
@@ -56,7 +57,7 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       attr(data, "ps_data_type") = "leader_day"
       attr(data, "ps_system") = "gw"
 
-      data <- subset(data, select=c("obsid", "gwcode", "leader", "date"))
+      data <- subset(data, select=c("obsid", "gwcode", "leader", "date", "yrinoffice"))
 
     } else if (standardize == "cow") {
       # I need to do some ad hoc corrections here
@@ -89,7 +90,7 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       attr(data, "ps_data_type") = "leader_day"
       attr(data, "ps_system") = "cow"
 
-      data <- subset(data, select=c("obsid", "ccode", "leader", "date"))
+      data <- subset(data, select=c("obsid", "ccode", "leader", "date", "yrinoffice"))
 
     } else { # assuming standardize = "none"
 
@@ -98,7 +99,7 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       attr(data, "ps_data_type") = "leader_day"
       attr(data, "ps_system") = "gw"
 
-      data <- subset(data, select=c("obsid", "gwcode", "leader", "date"))
+      data <- subset(data, select=c("obsid", "gwcode", "leader", "date", "yrinoffice"))
 
     }
 
