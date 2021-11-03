@@ -16,6 +16,7 @@ This is a leader-intensive update. Additions/new features include:
 - `declare_attributes()` allows users to declare package-specific attributes to outside data they bring to the R session. This allows the user to use many of the shortcuts in this package to their data.
 - `ps_version()` will display version information about the data included in this package.
 - `false_cow_dyads` and `false_gw_dyads` list a handful of dyads that appear in the same year, but never on the same day in the year. They're used for anti-joining in `create_dyadyears()`.
+- `leader_codes` matches, as well as one can, leader/observation codes in Archigos 4.1, Archigos 2.9, and the LEAD data.
 
 Other changes include:
 
