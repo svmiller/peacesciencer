@@ -5,10 +5,9 @@
 \alias{lwuf}
 \title{Leader Willingness to Use Force}
 \format{
-A data frame with 3042 observations on the following 10 variables.
+A data frame with 3409 observations on the following 9 variables.
 \describe{
 \item{\code{obsid}}{an observational ID from \code{archigos}}
-\item{\code{leadid29}}{a leader ID, as previously used by Archigos before version 4}
 \item{\code{theta1_mean}}{the mean simulated M1 theta, as estimated by Carter and Smith (2020)}
 \item{\code{theta1_sd}}{the standard deviation of simulated M1 thetas}
 \item{\code{theta2_mean}}{the mean simulated M2 theta, as estimated by Carter and Smith (2020)}

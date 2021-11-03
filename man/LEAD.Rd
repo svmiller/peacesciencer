@@ -5,10 +5,9 @@
 \alias{LEAD}
 \title{(An Abbreviation of) The LEAD Data Set}
 \format{
-A data frame with 3042 observations on the following 13 variables.
+A data frame with 3409 observations on the following 12 variables.
 \describe{
 \item{\code{obsid}}{an observational ID from \code{archigos}}
-\item{\code{leadid29}}{a leader ID, as previously used by Archigos before version 4}
 \item{\code{leveledu}}{0 = primary, 1 = secondary, 2 = university, 3 = graduate}
 \item{\code{milservice}}{did leader have prior military service?}
 \item{\code{combat}}{did leader have prior combat experience in military service?}

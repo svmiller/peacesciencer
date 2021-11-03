@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>(An Abbreviation of) The LEAD Data Set — LEAD • peacesciencer</title>
+<title>A Data Set of Leader Codes Across Archigos 4.1, Archigos 2.9, and the LEAD Data — leader_codes • peacesciencer</title>
 
 
 <!-- jquery -->
@@ -41,9 +41,8 @@
   <link href="../extra.css" rel="stylesheet">
   
 
-<meta property="og:title" content="(An Abbreviation of) The LEAD Data Set — LEAD" />
-<meta property="og:description" content="These are an abbreviated version of the LEAD Data Set, incorporating variables that I think are most interesting
-or potentially useful from these data." />
+<meta property="og:title" content="A Data Set of Leader Codes Across Archigos 4.1, Archigos 2.9, and the LEAD Data — leader_codes" />
+<meta property="og:description" content="This is a simple data set that matches, as well as one can, leader codes across Archigos 4.1, Archigos 2.9, and the LEAD data set." />
 
 
 
@@ -159,45 +158,35 @@ or potentially useful from these data." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>(An Abbreviation of) The LEAD Data Set</h1>
+    <h1>A Data Set of Leader Codes Across Archigos 4.1, Archigos 2.9, and the LEAD Data</h1>
     <small class="dont-index">Source: <a href='https://github.com/svmiller/peacesciencer/blob/master/R/data.R'><code>R/data.R</code></a></small>
-    <div class="hidden name"><code>LEAD.Rd</code></div>
+    <div class="hidden name"><code>leader_codes.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>These are an abbreviated version of the LEAD Data Set, incorporating variables that I think are most interesting
-or potentially useful from these data.</p>
+    <p>This is a simple data set that matches, as well as one can, leader codes across Archigos 4.1, Archigos 2.9, and the LEAD data set.</p>
     </div>
 
-    <pre class="usage"><span class='va'>LEAD</span></pre>
+    <pre class="usage"><span class='va'>leader_codes</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 3409 observations on the following 12 variables.</p><dl>
-<dt><code>obsid</code></dt><dd><p>an observational ID from <code>archigos</code></p></dd>
-<dt><code>leveledu</code></dt><dd><p>0 = primary, 1 = secondary, 2 = university, 3 = graduate</p></dd>
-<dt><code>milservice</code></dt><dd><p>did leader have prior military service?</p></dd>
-<dt><code>combat</code></dt><dd><p>did leader have prior combat experience in military service?</p></dd>
-<dt><code>rebel</code></dt><dd><p>was leader previously part of a rebel group?</p></dd>
-<dt><code>warwin</code></dt><dd><p>was leader previously part of a winning war effort as part of military service?</p></dd>
-<dt><code>warloss</code></dt><dd><p>was leader previously part of a losing war effort as part of military service?</p></dd>
-<dt><code>rebelwin</code></dt><dd><p>was leader previously part of a winning war effort as part of a rebel group?</p></dd>
-<dt><code>rebelloss</code></dt><dd><p>was leader previously part of a losing war effort as part of a rebel group?</p></dd>
-<dt><code>yrsexper</code></dt><dd><p>previous years of experience in politics before becoming a leader</p></dd>
-<dt><code>physhealth</code></dt><dd><p>does leader have physical health issues?</p></dd>
-<dt><code>mentalhealth</code></dt><dd><p>does leader have mental health issues?</p></dd>
+    <p>A data frame the following four variables.</p><dl>
+<dt><code>obsid</code></dt><dd><p>the observation ID in the Archigos data</p></dd>
+<dt><code>leadid</code></dt><dd><p>the leader ID in version 4.1 of the Archigos data</p></dd>
+<dt><code>leadid29</code></dt><dd><p>the leader ID in version 2.9 of the Archigos data</p></dd>
+<dt><code>leaderid</code></dt><dd><p>the leader ID in the LEAD data</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Data are ported from Ellis et al. (2015). Users who want more of these variables included in <span class="pkg">peacesciencer</span> should
-raise an issue on Github.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015. "Introducing the
-LEAD Data Set." <em>International Interactions</em> 41(4): 718--741.</p>
+    <p>These data treat version 4.1 of the Archigos data as the gospel leader data (if you will) for which  the observation ID (<code>obsid</code>)
+is the master code indicating a leader tenure period. It also builds in an assumption that various observations that duplicate in the
+LEAD data should not have duplicated. This concerns Francisco Aguilar Barquer (who appears twice), Emile Reuter (who appears twice),
+and Gunnar Thoroddsen (who appears three times) in the LEAD data despite having uninterrupted tenures in office. None of the covariates
+associated with these leaders change in the LEAD data, which is why I assume they were duplicates.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

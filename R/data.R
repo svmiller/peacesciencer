@@ -1394,10 +1394,9 @@ NULL
 #' These are the estimates of leader willingness to use force as estimated by Carter and Smith (2020).
 #'
 #'
-#' @format A data frame with 3042 observations on the following 10 variables.
+#' @format A data frame with 3409 observations on the following 9 variables.
 #' \describe{
 #' \item{\code{obsid}}{an observational ID from \code{archigos}}
-#' \item{\code{leadid29}}{a leader ID, as previously used by Archigos before version 4}
 #' \item{\code{theta1_mean}}{the mean simulated M1 theta, as estimated by Carter and Smith (2020)}
 #' \item{\code{theta1_sd}}{the standard deviation of simulated M1 thetas}
 #' \item{\code{theta2_mean}}{the mean simulated M2 theta, as estimated by Carter and Smith (2020)}
@@ -1487,10 +1486,9 @@ NULL
 #' or potentially useful from these data.
 #'
 #'
-#' @format A data frame with 3042 observations on the following 13 variables.
+#' @format A data frame with 3409 observations on the following 12 variables.
 #' \describe{
 #' \item{\code{obsid}}{an observational ID from \code{archigos}}
-#' \item{\code{leadid29}}{a leader ID, as previously used by Archigos before version 4}
 #' \item{\code{leveledu}}{0 = primary, 1 = secondary, 2 = university, 3 = graduate}
 #' \item{\code{milservice}}{did leader have prior military service?}
 #' \item{\code{combat}}{did leader have prior combat experience in military service?}
@@ -1698,3 +1696,28 @@ NULL
 #'
 
 "false_gw_dyads"
+
+
+
+#' A Data Set of Leader Codes Across Archigos 4.1, Archigos 2.9, and the LEAD Data
+#'
+#' This is a simple data set that matches, as well as one can, leader codes across Archigos 4.1, Archigos 2.9, and the LEAD data set.
+#'
+#'
+#' @format A data frame the following four variables.
+#' \describe{
+#' \item{\code{obsid}}{the observation ID in the Archigos data}
+#' \item{\code{leadid}}{the leader ID in version 4.1 of the Archigos data}
+#' \item{\code{leadid29}}{the leader ID in version 2.9 of the Archigos data}
+#' \item{\code{leaderid}}{the leader ID in the LEAD data}
+#' }
+#'
+#' @details
+#'
+#' These data treat version 4.1 of the Archigos data as the gospel leader data (if you will) for which  the observation ID (`obsid`)
+#' is the master code indicating a leader tenure period. It also builds in an assumption that various observations that duplicate in the
+#' LEAD data should not have duplicated. This concerns Francisco Aguilar Barquer (who appears twice), Emile Reuter (who appears twice),
+#' and Gunnar Thoroddsen (who appears three times) in the LEAD data despite having uninterrupted tenures in office. None of the covariates
+#' associated with these leaders change in the LEAD data, which is why I assume they were duplicates.
+
+"leader_codes"
