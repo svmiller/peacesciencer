@@ -66,7 +66,7 @@ create_leaderyears <- function(system = "archigos", standardize = "none") {
       mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
       unnest(.data$date) %>%
       mutate(year = .pshf_year(.data$date),
-             yrinoffice = (year - .pshf_year(.data$startdate)) + 1) -> leaderdays
+             yrinoffice = (.data$year - .pshf_year(.data$startdate)) + 1) -> leaderdays
 
     if (standardize == "gw") {
 
@@ -74,7 +74,7 @@ create_leaderyears <- function(system = "archigos", standardize = "none") {
 
       leaderdays %>%
         semi_join(., gw_statedays) %>%
-        mutate(leaderage = year - yrborn) %>%
+        mutate(leaderage = .data$year - .data$yrborn) %>%
         distinct(.data$obsid,  .data$leader, .data$gwcode, .data$gender, .data$leaderage, .data$year, .data$yrinoffice) -> data
 
       attr(data, "ps_data_type") = "leader_year"
@@ -109,7 +109,7 @@ create_leaderyears <- function(system = "archigos", standardize = "none") {
 
       leaderdays %>%
         semi_join(., cow_statedays)  %>%
-        mutate(leaderage = year - yrborn) %>%
+        mutate(leaderage = .data$year - .data$yrborn) %>%
         distinct(.data$obsid,  .data$leader, .data$ccode, .data$gender, .data$leaderage, .data$year, .data$yrinoffice) -> data
 
       attr(data, "ps_data_type") = "leader_year"
@@ -120,7 +120,7 @@ create_leaderyears <- function(system = "archigos", standardize = "none") {
     } else { # assuming standardize = "none"
 
       leaderdays %>%
-        mutate(leaderage = year - yrborn) %>%
+        mutate(leaderage = .data$year - .data$yrborn) %>%
         distinct(.data$obsid,  .data$leader, .data$gwcode, .data$gender, .data$leaderage, .data$year, .data$yrinoffice) -> data
 
       attr(data, "ps_data_type") = "leader_year"

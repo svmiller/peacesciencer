@@ -41,7 +41,7 @@ have been rounded to three decimal points to conserve space. The data downloaded
 
 These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
 data are standardized to just those observations where both leaders and states appear in the CoW state system data. The
-data downloaded by this function are about 1.9 megabytes in size.\tabular{ll}{
+data downloaded by this function are about 2 megabytes in size.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
@@ -62,7 +62,7 @@ data downloaded by this function are about 1.9 megabytes in size.\tabular{ll}{
 
 These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
 data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
-system). The data downloaded by this function are about 2.1 megabytes in size.\tabular{ll}{
+system). The data downloaded by this function are about 2.2 megabytes in size.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr

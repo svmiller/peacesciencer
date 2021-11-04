@@ -45,7 +45,7 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
       unnest(.data$date) %>%
       mutate(year = .pshf_year(.data$date),
-             yrinoffice = (year - .pshf_year(.data$startdate)) + 1) -> leaderdays
+             yrinoffice = (.data$year - .pshf_year(.data$startdate)) + 1) -> leaderdays
 
     if (standardize == "gw") {
 
