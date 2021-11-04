@@ -22,8 +22,8 @@ download_extdata()
 ## Create Some Data
 
 ```{r}
-cow_leaderyears <- create_leaderyears(standardize_cow = TRUE)
-gw_leaderyears <- create_leaderyears(standardize_cow = FALSE)
+cow_leaderyears <- create_leaderyears(standardize = "cow")
+gw_leaderyears <- create_leaderyears(standardize = "gw")
 
 cow_leaderdyadyears <- create_leaderdyadyears(system = 'cow')
 gw_leaderdyadyears <- create_leaderdyadyears(system = 'gw')

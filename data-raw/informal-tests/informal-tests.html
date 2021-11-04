@@ -11,7 +11,7 @@
 
 <meta name="author" content="steve" />
 
-<meta name="date" content="2021-11-02" />
+<meta name="date" content="2021-11-04" />
 
 <title>More Tests</title>
 
@@ -165,9 +165,9 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
-<h4 class="author">Handsome B. Wonderful</h4>
-<h4 class="date">2021-11-02</h4>
+<h1 class="title toc-ignore">More Tests</h1>
+<h4 class="author">steve</h4>
+<h4 class="date">2021-11-04</h4>
 
 </div>
 
@@ -185,19 +185,19 @@ pre code {
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <pre class="r"><code>library(peacesciencer)
 library(testthat)</code></pre>
-<pre><code>##
+<pre><code>## 
 ## Attaching package: &#39;testthat&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
-##
+## 
 ##     matches</code></pre>
 <pre><code>## The following object is masked from &#39;package:purrr&#39;:
-##
+## 
 ##     is_null</code></pre>
 <pre><code>## The following objects are masked from &#39;package:readr&#39;:
-##
+## 
 ##     edition_get, local_edition</code></pre>
 <pre><code>## The following object is masked from &#39;package:tidyr&#39;:
-##
+## 
 ##     matches</code></pre>
 <pre class="r"><code>download_extdata()</code></pre>
 <pre><code>## cow_trade_ddy.rds is in /extdata in the package directory.</code></pre>
@@ -208,11 +208,11 @@ library(testthat)</code></pre>
 </div>
 <div id="create-some-data" class="section level2">
 <h2>Create Some Data</h2>
-<pre class="r"><code>cow_leaderyears &lt;- create_leaderyears(standardize_cow = TRUE)</code></pre>
+<pre class="r"><code>cow_leaderyears &lt;- create_leaderyears(standardize = &quot;cow&quot;)</code></pre>
 <pre><code>## Joining, by = c(&quot;gwcode&quot;, &quot;year&quot;)</code></pre>
 <pre><code>## Joining, by = c(&quot;ccode&quot;, &quot;date&quot;)</code></pre>
-<pre class="r"><code>gw_leaderyears &lt;- create_leaderyears(standardize_cow = FALSE)</code></pre>
-<pre><code>## Joining, by = c(&quot;gwcode&quot;, &quot;year&quot;)</code></pre>
+<pre class="r"><code>gw_leaderyears &lt;- create_leaderyears(standardize = &quot;gw&quot;)</code></pre>
+<pre><code>## Joining, by = c(&quot;gwcode&quot;, &quot;date&quot;)</code></pre>
 <pre class="r"><code>cow_leaderdyadyears &lt;- create_leaderdyadyears(system = &#39;cow&#39;)
 gw_leaderdyadyears &lt;- create_leaderdyadyears(system = &#39;gw&#39;)
 
@@ -230,7 +230,7 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
 <pre class="r"><code>test_that(&quot;Dyad-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %&gt;% add_cow_trade()))
 })</code></pre>
-<pre><code>## Test passed 🥇</code></pre>
+<pre><code>## Test passed 😀</code></pre>
 <pre class="r"><code>test_that(&quot;Leader-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %&gt;% add_capital_distance()))
   expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %&gt;% add_capital_distance()))
@@ -253,7 +253,7 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
   expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %&gt;% add_gwcode_to_cow()))
   expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %&gt;% add_ccode_to_gw()))
 })</code></pre>
-<pre><code>## Test passed 🎊</code></pre>
+<pre><code>## Test passed 😀</code></pre>
 <pre class="r"><code>test_that(&quot;Leader-dyad-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %&gt;% add_capital_distance()))
   expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %&gt;% add_capital_distance()))
@@ -276,7 +276,7 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
   expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %&gt;% add_gwcode_to_cow()))
   expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %&gt;% add_ccode_to_gw()))
 })</code></pre>
-<pre><code>## Test passed 😸</code></pre>
+<pre><code>## Test passed 🎉</code></pre>
 </div>
 
 
