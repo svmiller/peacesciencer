@@ -183,8 +183,10 @@ pre code {
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="r"><code>library(peacesciencer)
-library(testthat)</code></pre>
+<pre class="r"><code>library(peacesciencer)</code></pre>
+<pre><code>## {peacesciencer} includes additional remote data for separate download. Please type ?download_extdata() for more information.
+## This message disappears on load when these data are downloaded and in the package&#39;s `extdata` directory.</code></pre>
+<pre class="r"><code>library(testthat)</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;testthat&#39;</code></pre>
 <pre><code>## The following object is masked from &#39;package:dplyr&#39;:
@@ -200,9 +202,12 @@ library(testthat)</code></pre>
 ## 
 ##     matches</code></pre>
 <pre class="r"><code>download_extdata()</code></pre>
-<pre><code>## cow_trade_ddy.rds is in /extdata in the package directory.</code></pre>
-<pre><code>## cow_dir_leader_dyad_years.rds is in /extdata in the package directory.</code></pre>
-<pre><code>## gw_dir_leader_dyad_years.rds is in /extdata in the package directory.</code></pre>
+<pre><code>## Downloading cow_trade_ddy.rds from http://svmiller.com/R/peacesciencer.</code></pre>
+<pre><code>## cow_trade_ddy.rds downloaded and moved to /extdata directory in the package.</code></pre>
+<pre><code>## Downloading cow_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.</code></pre>
+<pre><code>## cow_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.</code></pre>
+<pre><code>## Downloading gw_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.</code></pre>
+<pre><code>## gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.</code></pre>
 <pre><code>## Check the contents of the /extdata directory below:
 ## /home/steve/R/x86_64-pc-linux-gnu-library/4.0/peacesciencer/extdata</code></pre>
 </div>
@@ -230,7 +235,7 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
 <pre class="r"><code>test_that(&quot;Dyad-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %&gt;% add_cow_trade()))
 })</code></pre>
-<pre><code>## Test passed 😀</code></pre>
+<pre><code>## Test passed 🎊</code></pre>
 <pre class="r"><code>test_that(&quot;Leader-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %&gt;% add_capital_distance()))
   expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %&gt;% add_capital_distance()))
@@ -276,7 +281,7 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
   expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %&gt;% add_gwcode_to_cow()))
   expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %&gt;% add_ccode_to_gw()))
 })</code></pre>
-<pre><code>## Test passed 🎉</code></pre>
+<pre><code>## Test passed 😸</code></pre>
 </div>
 
 
