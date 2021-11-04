@@ -60,6 +60,41 @@
 #' | `yrinoffice1` | a running count for the tenure of `obsid1`, starting at 1. |
 #' | `yrinoffice2` | a running count for the tenure of `obsid2`, starting at 1. |
 #'
+#' ## Chance-Corrected Measures of Foreign Policy Similarity (FPSIM, v. 2)
+#'
+#' The FPSIM data set provides measures of foreign policy similarity of dyads based on alliance ties
+#' (Correlates of War, version 4.1) and UN General Assembly voting (Voeten, version 17)
+#' for all members of the Correlates of War state system. The alliance data cover the time period from 1816 to 2012,
+#' and the UN voting data from 1946 to 2015. The similarity measures include various versions of Ritter and Signorino's
+#' S (weighted/non-weighted by material capabilities; squared/absolute distance metrics) as well as the
+#' chance-corrected measures Cohen's Kappa and Scott's Pi. The measures based on alliance data come in two versions:
+#' one is based on valued alliance ties and the other is based on binary alliance ties. Data were last updated on December 7, 2017,
+#' and this description was effectively plagiarized from Frank Haege's Dataverse.
+#'
+#' These data are directed dyad-years with 17 columns and 1,872,198 observations. They will almost certainly be the largest data set
+#' I nudge/ask you to download remotely. The file containing this information is 18.6 MB in size. To reduce size further, these
+#' decimal points have also been rounded to three spots.
+#'
+#' | COLUMN | DESCRIPTION |
+#' | -------| ------------|
+#' | `year` | the year |
+#' | `ccode1` | the Correlates of War state code for the first state |
+#' | `ccode2` | the Correlates of War state code for the second state |
+#' | `srsvas` | unweighted S (squared distances, valued alliance data) |
+#' | `srswvas` | weighted S (squared distances, valued alliance data) |
+#' | `srsvaa` | unweighted S (absolute distances, valued alliance data) |
+#' | `srswvaa` | weighted S (absolute distances, valued alliance data) |
+#' | `kappava` | Kappa (squared distances, valued alliance data) |
+#' | `piva` | Pi (suared distances, valued alliance data) |
+#' | `srsba` | Unweighted S (binary alliance data) |
+#' | `srswba` | Weighted S (binary alliance data) |
+#' | `kappaba` | Kappa (binary alliance data) |
+#' | `piba` | Pi denominator (binary alliance data) |
+#' | `srsvvs` | Unweighted S (squared distances, valued UN voting data) |
+#' | `srsvva` | Unweighted S (absolute distances, valued UN voting data) |
+#' | `kappavv` | Kappa (squared distances, valued UN voting data) |
+#' | `pivv` | Pi (squared distances, valued UN voting data) |
+#'
 #'
 #' @description \code{download_extdata()} leverages R's \code{inst} directory flexibility to allow you to download
 #' some extra data and store it in the package.
@@ -81,6 +116,9 @@
 #'
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
+#'
+#' Haege, Frank. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
+#' \emph{Political Analysis} 19(3): 287-305.
 #'
 #' @examples
 #'
