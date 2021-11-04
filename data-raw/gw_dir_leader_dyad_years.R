@@ -4,8 +4,8 @@ library(peacesciencer)
 library(lubridate)
 library(tictoc)
 
-# Create CoW-standardized leader-days ----
-leader_days <- create_leaderdays(standardize = "cow")
+# Create Gleditsch-Ward-standardized leader-days ----
+leader_days <- create_leaderdays(standardize = "gw")
 
 ## * Add in some other information ----
 archigos %>%
@@ -59,11 +59,11 @@ dir_leader_dyad_years_list <- foreach(
 
   # Finally, for this object we created.
   hold_this %>%
-    # filter out missing ccodes, which will coincide with leaders who took office some point *in* the year
+    # filter out missing gwcodes, which will coincide with leaders who took office some point *in* the year
     # For example, leader_days has Canal take over in Haiti on April 23, 1876.
     # The expansion a few clicks above created Jan. 1-April 22 days for him, but he'll have no corresponding
     # information in the leader_days data. This is a quick way of getting those out of here.
-    filter(!is.na(ccode1) & !is.na(ccode2)) %>%
+    filter(!is.na(gwcode1) & !is.na(gwcode2)) %>%
     # filter out dates that don't coincide with the leader tenure
     # Btw, the above *should* have done this as well and this step is unnecessary
     # However, I'd rather be safe than sorry.
@@ -104,9 +104,9 @@ dir_leader_dyad_years %>%
          leaderage2 = year - yrborn2) -> dir_leader_dyad_years
 
 dir_leader_dyad_years %>%
-  select(year, obsid1, obsid2, ccode1, ccode2, gender1, gender2, leaderage1, leaderage2, yrinoffice1, yrinoffice2) -> dir_leader_dyad_years
+  select(year, obsid1, obsid2, gwcode1, gwcode2, gender1, gender2, leaderage1, leaderage2, yrinoffice1, yrinoffice2) -> dir_leader_dyad_years
 
 
-cow_dir_leader_dyad_years <- dir_leader_dyad_years
+gw_dir_leader_dyad_years <- dir_leader_dyad_years
 
-saveRDS(cow_dir_leader_dyad_years, "~/Dropbox/svmiller.github.io/R/peacesciencer/cow_dir_leader_dyad_years.rds")
+saveRDS(gw_dir_leader_dyad_years, "~/Dropbox/svmiller.github.io/R/peacesciencer/gw_dir_leader_dyad_years.rds")

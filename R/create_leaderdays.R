@@ -79,8 +79,13 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
 
       leaderdays %>%
         mutate(ccode = case_when(
+          # A few ad hoc corrections here. First CoW, has these state periods for Morocco and Saudi Arabia where G-W does not
           .data$gwcode == 600 & (.data$year >= 1905 & .data$year <= 1912) ~ 600,
           .data$gwcode == 670 & (.data$year >= 1927 & .data$year <= 1932) ~ 670,
+          # Next, we need to get more granular with the transitions in 1990 for Yemen and Germany
+          # Saleh al-hashidi and Kohl presided over both transitions, though CoW sees the implications differently for the state system
+          .data$obsid == "YEM-1978" & .data$date >= "1990-05-22" ~ 679,
+          .data$obsid == "GFR-1982" & .data$date >= "1990-10-03" ~ 255,
           TRUE ~ .data$ccode
         )) -> leaderdays
 

@@ -4,18 +4,6 @@ library(peacesciencer)
 library(lubridate)
 library(tictoc)
 
-
-# archigos %>%
-#   rowwise() %>%
-#   mutate(date = list(seq(startdate, enddate, by = "1 day"))) %>%
-#   unnest(date) -> leader_days
-#
-# state_days <- create_statedays() %>% select(-statenme) %>% mutate(in_cow = 1)
-#
-# leader_days %>%
-#   left_join(., state_days) %>%
-#   mutate(in_cow = ifelse(is.na(in_cow), 0, in_cow)) -> leader_days
-
 leader_days <- create_leaderdays(standardize = "none")
 
 archigos %>%
@@ -73,7 +61,6 @@ dir_leader_dyad_years <- foreach(
 
 }
 toc()
-# 52.803 sec elapsed
 parallel::stopCluster(cl = my.cluster)
 
 dir_leader_dyad_years %>%
