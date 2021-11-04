@@ -60,6 +60,14 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       data <- subset(data, select=c("obsid", "gwcode", "leader", "date", "yrinoffice"))
 
     } else if (standardize == "cow") {
+
+      cow_statedays <- create_statedays()
+
+
+      leaderdays %>%
+        left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) %>%
+        select(.data$obsid, .data$gwcode, .data$ccode, everything()) -> leaderdays
+
       # I need to do some ad hoc corrections here
       # There are pieces of the gw_cow_years data frame where G-W says the state doesn't exist but it appears in the CoW data.
       # Because G-W is the "master" here, this is going to happen.
@@ -69,13 +77,8 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
       # If you want to standardize to CoW, you're going to miss that.
       # You'll also miss that G-W has Saudi Arabia start in 1932, but CoW has it at 1927.
       # Archigos has leader data for the Saudis to 1927, so you'll want that.
-
-      cow_statedays <- create_statedays()
-
-
-      leaderdays %>%
-        left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) %>%
-        select(.data$obsid, .data$gwcode, .data$ccode, everything()) -> leaderdays
+      # Additionally,  we need to get more granular with the transitions in 1990 for Yemen and Germany.
+      # Saleh al-hashidi and Kohl presided over both transitions, though CoW sees the implications differently for the state system
 
       leaderdays %>%
         mutate(ccode = case_when(
@@ -85,7 +88,9 @@ create_leaderdays <- function(system = "archigos", standardize = "none") {
           # Next, we need to get more granular with the transitions in 1990 for Yemen and Germany
           # Saleh al-hashidi and Kohl presided over both transitions, though CoW sees the implications differently for the state system
           .data$obsid == "YEM-1978" & .data$date >= "1990-05-22" ~ 679,
+          .data$obsid == "YEM-1978" & .data$date < "1990-05-22" ~ 678,
           .data$obsid == "GFR-1982" & .data$date >= "1990-10-03" ~ 255,
+          .data$obsid == "GFR-1982" & .data$date < "1990-10-03" ~ 260,
           TRUE ~ .data$ccode
         )) -> leaderdays
 
