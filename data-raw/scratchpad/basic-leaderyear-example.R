@@ -1,7 +1,7 @@
 library(tidyverse)
 library(peacesciencer)
 
-create_leaderyears(standardize_cow = TRUE) %>%
+create_leaderyears(standardize = "cow") %>%
   add_gml_mids() %>%
   filter(between(year, 1875, 2010)) %>%
   add_spells() %>%
