@@ -210,3 +210,52 @@ create_stateyears(system = 'gw') %>%
   # UCDP has an intra-state conflict to the level of war early into its existence. CoW does not.
   filter(gwcode == 750)
 ```
+
+
+## Measure Leader Tenure in Days
+
+`create_leaderyears()`, by default, returns an estimate of leader-tenure as the unique calendar year for the leader. I think of this is a reasonable thing to include, and benchmarking to years is doing some internal lifting elsewhere in the function that generates leader-year data from leader-day data in Archigos. However, it can lead some peculiar observations that may not square with how we knee-jerk think about leader tenure.
+
+I will illustrate what I mean by this with the case of Jimmy Carter from leader-year data standardized to Correlates of War state system membership.
+
+```{r}
+leader_years <- create_leaderyears(standardize = 'cow')
+
+leader_years %>% filter(obsid == "USA-1977")
+```
+
+Jimmy Carter took office in January 1977 (year 1) and had a tenure through 1978 (year 2), 1979 (year 3), 1980 (year 4), and exited office in January 1981 (year 5). We know presidents in the American context have four-year terms. This output suggests five years.
+
+If this is that problematic for the research design, especially one that may be interested in what happens to leader behavior after a certain amount of time in office, a user can do something like generate estimates of leader tenure in a given year to the day. Basically, once the core leader-year are generated, the user can use the `create_leaderdays()` function and summarize leader tenure in the year as the minimum number of days the leader was in office in the year and the maximum number of days the leader was in office in the year.
+
+```{r}
+# don't standardize the leader-days for this use, just to be safe.
+create_leaderdays(standardize = 'none') %>% 
+  # extract year from date
+  mutate(year = lubridate::year(date)) %>%
+  # group by leader
+  group_by(obsid) %>%
+  # count days in office, for leader tenure
+  mutate(daysinoffice = seq(1:n())) %>%
+  # group-by leader and year
+  group_by(obsid, year) %>%
+  # how long was the minimum (maximum) days in office for the leader in the year?
+  summarize(min_daysoffice = min(daysinoffice),
+            max_dayoffice = max(daysinoffice)) %>%
+  #practice safe group-by, and assign to object
+  ungroup() -> leader_tenures
+
+# add this information to our data
+leader_years %>%
+  left_join(., leader_tenures) -> leader_years
+```
+
+Here's what this would look like in the case of Jimmy Carter.
+
+```{r}
+leader_years %>% filter(obsid == "USA-1977")
+```
+
+This measure might be more useful. Basically, Jimmy Carter was a new leader in 1977 (`min_daysoffice = 1`). By 1978, he had almost a year under his belt (i.e. Jan. 1, 1978 was his 347th day in office). By time he left office in 1981, he had completed 1,462 days on the job.
+
+`create_leaderyears()` elects to not create this information for the user. No matter, it does not take much effort for the user to create it if this is the kind of information they wanted.

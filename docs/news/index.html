@@ -173,7 +173,7 @@
 <li>
 <code><a href="../reference/download_extdata.html">download_extdata()</a></code> now also downloads directed leader dyad-year data for all directed leader dyad-years from 1870 to 2015. The data come in two forms. One is all possible (inter-state, leader-overlap) dyadic leader pairings from 1870 to 2015, as presented in the Archigos data. The second standardizes these data to the CoW state system data.</li>
 <li>
-<code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>: create leader dyad-year data (via <code>archigos</code>) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in <code><a href="../reference/download_extdata.html">download_extdata()</a></code>. The function returns either all possible Gleditsch-Ward dyadic leader pairings (as implied by the original data) or standardizes the Archigos data to Correlates of War state system member data.</li>
+<code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>: create leader dyad-year data (via <code>archigos</code>) for all leader dyad-year combinations from 1870 to 2015. This function leans on remote data available for download in <code><a href="../reference/download_extdata.html">download_extdata()</a></code>. The function returns either all possible Gleditsch-Ward dyadic leader pairings (standardized to Gleditsch-Ward state system dates) or standardizes the Archigos data to Correlates of War state system member data.</li>
 <li>
 <code>gml_part</code>: a data set on participant summary information from the GML MID data.</li>
 <li>
@@ -192,6 +192,8 @@
 <code><a href="../reference/ps_version.html">ps_version()</a></code> will display version information about the data included in this package.</li>
 <li>
 <code>false_cow_dyads</code> and <code>false_gw_dyads</code> list a handful of dyads that appear in the same year, but never on the same day in the year. They’re used for anti-joining in <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>.</li>
+<li>
+<code>leader_codes</code> matches, as well as one can, leader/observation codes in Archigos 4.1, Archigos 2.9, and the LEAD data.</li>
 </ul>
 <p>Other changes include:</p>
 <ul>

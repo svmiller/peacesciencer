@@ -411,7 +411,7 @@
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span>standardize <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("gwcode", "year")</span>
 <span class="co">#&gt; Joining, by = c("ccode", "date")</span>
-<span class="co">#&gt; # A tibble: 4,824,736 × 5</span>
+<span class="co">#&gt; # A tibble: 4,824,967 × 5</span>
 <span class="co">#&gt;    obsid    ccode leader date       yrinoffice</span>
 <span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;          &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 USA-1869     2 Grant  1869-03-04          1</span>
@@ -424,7 +424,7 @@
 <span class="co">#&gt;  8 USA-1869     2 Grant  1869-03-11          1</span>
 <span class="co">#&gt;  9 USA-1869     2 Grant  1869-03-12          1</span>
 <span class="co">#&gt; 10 USA-1869     2 Grant  1869-03-13          1</span>
-<span class="co">#&gt; # … with 4,824,726 more rows</span></code></pre></div>
+<span class="co">#&gt; # … with 4,824,957 more rows</span></code></pre></div>
 <p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can create something like leader-months.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -477,21 +477,21 @@
 
 <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/declare_attributes.html">declare_attributes</a></span><span class="op">(</span>data_type <span class="op">=</span> <span class="st">"leader_dyad_year"</span>, system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2,400,858 × 11</span>
+<span class="co">#&gt; # A tibble: 2,336,990 × 11</span>
 <span class="co">#&gt;     year obsid1   obsid2   gwcode1 gwcode2 gender1 gender2 leaderage1 leaderage2</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1870 USA-1869 COS-1870       2      94 M       M               48         39</span>
-<span class="co">#&gt;  2  1870 USA-1869 VEN-1870       2     101 M       M               48         41</span>
-<span class="co">#&gt;  3  1870 USA-1869 ECU-1869       2     130 M       M               48         49</span>
-<span class="co">#&gt;  4  1870 USA-1869 BRA-1840       2     140 M       M               48         45</span>
-<span class="co">#&gt;  5  1870 USA-1869 POR-1861       2     235 M       M               48         32</span>
-<span class="co">#&gt;  6  1870 USA-1869 BAV-1864       2     245 M       M               48         39</span>
-<span class="co">#&gt;  7  1870 USA-1869 GMY-1858       2     255 M       M               48         73</span>
-<span class="co">#&gt;  8  1870 USA-1869 AUH-1848       2     300 M       M               48         40</span>
-<span class="co">#&gt;  9  1870 USA-1869 MNG-1860       2     341 M       M               48         29</span>
-<span class="co">#&gt; 10  1870 USA-1869 GRC-1863       2     350 M       M               48         25</span>
-<span class="co">#&gt; # … with 2,400,848 more rows, and 2 more variables: yrinoffice1 &lt;int&gt;,</span>
-<span class="co">#&gt; #   yrinoffice2 &lt;int&gt;</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  1870 AFG-1868 AUH-1848     700     300 M       M               45         40</span>
+<span class="co">#&gt;  2  1870 AFG-1868 BAV-1864     700     245 M       M               45         39</span>
+<span class="co">#&gt;  3  1870 AFG-1868 BRA-1840     700     140 M       M               45         45</span>
+<span class="co">#&gt;  4  1870 AFG-1868 CHN-1861     700     710 M       M               45         35</span>
+<span class="co">#&gt;  5  1870 AFG-1868 COS-1870     700      94 M       M               45         39</span>
+<span class="co">#&gt;  6  1870 AFG-1868 ECU-1869     700     130 M       M               45         49</span>
+<span class="co">#&gt;  7  1870 AFG-1868 GMY-1858     700     255 M       M               45         73</span>
+<span class="co">#&gt;  8  1870 AFG-1868 GRC-1863     700     350 M       M               45         25</span>
+<span class="co">#&gt;  9  1870 AFG-1868 IRN-1848     700     630 M       M               45         39</span>
+<span class="co">#&gt; 10  1870 AFG-1868 JPN-1868     700     740 M       M               45         18</span>
+<span class="co">#&gt; # … with 2,336,980 more rows, and 2 more variables: yrinoffice1 &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   yrinoffice2 &lt;dbl&gt;</span>
 
 <span class="co"># ^ compare with:</span>
 <span class="co"># download_extdata()</span>
