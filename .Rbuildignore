@@ -14,3 +14,4 @@ vignettes
 ^Makefile$
 ^user-guide$
 LICENSE*
+^.*\.rds
