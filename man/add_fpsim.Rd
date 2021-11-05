@@ -4,7 +4,7 @@
 \alias{add_fpsim}
 \title{Add dyadic foreign policy similarity measures to your data}
 \usage{
-add_fpsim(data)
+add_fpsim(data, keep)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
