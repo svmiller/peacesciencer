@@ -75,7 +75,7 @@
 #'
 #' }
 
-add_fpsim <- function(data) {
+add_fpsim <- function(data, keep) {
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
@@ -101,7 +101,7 @@ add_fpsim <- function(data) {
           fpsim_data <- fpsim_data
         }
 
-
+        fpsim_data %>%
           left_join(data, .) -> data
 
         return(data)
