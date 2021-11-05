@@ -7,7 +7,7 @@
 add_gml_mids(data, keep, init = "sidea-all-joiners")
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed"), a state-year data frame, a leader-dyad-year, or a leader-year data frame}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 
 \item{keep}{an optional parameter, specified as a character vector, applicable to just the dyad-year data, and
 passed to the function in a \code{select(one_of(.))} wrapper. This
@@ -39,29 +39,51 @@ whether there were any ongoing disputes (and onsets) the state (or leader) initi
 of the GML MID data is 2.2.1.
 }
 \details{
-Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
-data frame. This holds for leader-dyad-years as well.
+Dyads are capable of having multiple disputes in a given year, which can
+create a problem for merging into a complete dyad-year data frame.
+Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113,
+MID#0306), as illustrative of the problem. This merging process employs
+several rules to whittle down these duplicate dyad-years for merging
+into a dyad-year data frame.
 
-Determining "initiation" for state-year summaries of inter-state disputes since there is an implied directionality of "initiation."
-In about half of all cases, this is straightforward. You can use the participant summaries and determine that if the dispute
-was bilateral and the dispute did not escalate beyond an attack, the state on Side A initiated the dispute. For multilateral MIDs, these
-conditions still hold at least for originators. However, there is \emph{considerable} difficulty for cases where 1) participant-level summaries
-suggested actions at the level of clash or higher, 2) the participant was a joiner and not an originator. The effort required to
-flesh this out is enormous, and perhaps forthcoming in a future update.
+The function will also return a message to the user about the
+case-exclusion rules that went into this process. Users who are
+interested in implementing their own case-exclusion rules should
+look up the "whittle" class of functions also provided in this
+package.
+
+Determining "initiation" for state-year summaries of inter-state disputes
+since there is an implied directionality of "initiation." In about half
+of all cases, this is straightforward. You can use the participant
+summaries and determine that if the dispute was bilateral and the dispute
+did not escalate beyond an attack, the state on Side A initiated the
+dispute. For multilateral MIDs, these conditions still hold at least
+for originators. However, there is \emph{considerable} difficulty for cases
+where 1) participant-level summaries suggested actions at the level of
+clash or higher, 2) the participant was a joiner and not an originator.
+The effort required to flesh this out is enormous, and perhaps
+forthcoming in a future update.
 
 \code{add_gml_mids()} allows you to make one of three judgment
-calls here (see the arguments section of the documentation). If it were my call to make, I would say you should probably use the option
-\code{"sidea-all-joiners"}. My review of the MID data with Doug Gibler suggests most states that join a dispute are not roped into
-a conflict (i.e. targeted by some other state) after the first incident. They routinely initiate their entry into the conflict, which is
-what this concept of "initiation" is supposed to capture in the literature. There are no doubt cases where some third state is brought into
-the dispute by the actions of some other state even as the original MID coding rules place a high barrier on coding that type of dispute entry.
-However, the time required to individually assess whether a state initiated their entry into a MID under something other than the
-simplest of cases (e.g. bilateral cases where the highest participant action fell short of a clash) would be too time-consuming. It would
-require an audit of almost half of all participant-level summaries in the data. In a forthcoming publication, Gibler and Miller offer
-excellent coverage here with a new data set on militarized events. However, this would include only confrontations after World War II.
+calls here (see the arguments section of the documentation).
+If it were my call to make, I would say you should probably use the option
+\code{"sidea-all-joiners"}. My review of the MID data with Doug Gibler
+suggests most states that join a dispute are not roped into a conflict
+(i.e. targeted by some other state) after the first incident. They
+routinely initiate their entry into the conflict, which is
+what this concept of "initiation" is supposed to capture in the
+literature. There are no doubt cases where some third state is brought into
+the dispute by the actions of some other state even as the original MID
+coding rules place a high barrier on coding that type of dispute entry.
+However, the time required to individually assess whether a state initiated
+their entry into a MID under something other than the simplest of cases
+(e.g. bilateral cases where the highest participant action fell short of
+a clash) would be too time-consuming. It would require an audit of almost
+half of all participant-level summaries in the data. In a forthcoming
+publication, Gibler and Miller offer excellent coverage here with a
+new data set on militarized events. However, this would include only
+confrontations after World War II.
 }
 \examples{
 

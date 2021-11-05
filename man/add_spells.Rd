@@ -18,42 +18,62 @@ See Details section for more.}
 are all treated as failures. Defaults to FALSE.}
 }
 \value{
-\code{add_spells()} takes a dyad-year, leader-year, or  state-year data frame and adds spells for ongoing
-conflicts. Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
-Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data supported in this function include the UCDP
-armed conflict data and the CoW intra-state war data. Leader-year conflict data supported include the GML MID data.
+\code{add_spells()} takes a dyad-year, leader-year, or  state-year data
+frame and adds spells for ongoing conflicts. Dyadic conflict data supported
+include the Correlates of War (CoW) Militarized Interstate Dispute (MID)
+data set and the Gibler-Miller-Little (GML) corrections to CoW-MID.
+State-level conflict data supported in this function include the UCDP
+armed conflict data and the CoW intra-state war data. Leader-year
+conflict data supported include the GML MID data.
 }
 \description{
-\code{add_spells()} calculates "spells" in your state-year, leader-year, or dyad-year data. The application here is
-mostly concerned with things like "peace spells" between conflicts in a given cross-sectional unit (e.g. a state or dyad).
+\code{add_spells()} calculates "spells" in your state-year, leader-year,
+or dyad-year data. The application here is mostly concerned with
+things like "peace spells" between conflicts in a given cross-sectional
+unit (e.g. a state or dyad).
 }
 \details{
-The function internally uses \code{ps_spells()} from \pkg{stevemisc}. In the interest of full disclosure,
-\code{ps_spells()} leans heavily on \code{add_duration()} from \pkg{spduration}. I optimized some code for performance.
+The function internally uses \code{ps_spells()} from \pkg{stevemisc}. In
+the interest of full disclosure, \code{ps_spells()} leans heavily on
+\code{add_duration()} from \pkg{spduration}. I optimized some code
+for performance.
 
-Thinking of an application like peace-years, \code{add_spells()} will only calculate the peace years and will
-leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend
-manually creating splines or square/cube terms because it creates more problems in adjusting for
-temporal dependence in model predictions. In a regression formula in R,
-you can specify the Carter and Signorino (2010) approach as
-\code{... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)} (assuming you ran \code{add_spells()} on a dyad-year data frame
-including the Gibler-Miller-Little conflict data).
-The Beck et al. cubic splines approach is \code{... + splines::bs(gmlmidspell, 4)}. This function includes
-the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions,
-given R's functionality.
+Thinking of an application like peace-years, \code{add_spells()} will
+only calculate the peace years and will leave the temporal dependence
+adjustment to the taste of the researcher. Importantly, I do not recommend
+manually creating splines or square/cube terms because it creates more
+problems in adjusting for temporal dependence in model predictions.
+In a regression formula in R, you can specify the Carter and Signorino
+(2010) approach as
+\code{... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)} (assuming
+you ran \code{add_spells()} on a dyad-year data frame including the
+Gibler-Miller-Little conflict data). The Beck et al. cubic splines approach
+is \code{... + splines::bs(gmlmidspell, 4)}. This function includes the
+spell and three splines (hence the 4 in the command). Either approach
+makes for easier model predictions, given R's functionality.
 
-Thinking of our dyadic analyses of conflict, I've always understood that something like "peace-years" should be calculated on the
-ongoing event and not the onset of the event. Think of something like the Iran-Iraq War (MID#2115) as illustrative here. The MID (which
-became a war) started in 1980 and ended in 1988. There are no other bilateral incidents between Iran-Iraq independent of the war, per
-Correlates of War coding rules. If peace years are calculated at the "onset" of the event, it would list peace-years between the two countries
-from 1981 to 1988. I've never understood that to make sense, but still I've seen others insist this is the correct way to do it.
-\code{add_peace_years()} would force the calculation on the ongoing event, which I still maintain is correct. \code{add_spells()} will
-allow you to calculate on onsets, even if ongoing events are the default.
+Thinking of our dyadic analyses of conflict, I've always understood
+that something like "peace-years" should be calculated on the ongoing
+event and not the onset of the event. Think of something like the
+Iran-Iraq War (MID#2115) as illustrative here. The MID (which became
+a war) started in 1980 and ended in 1988. There are no other bilateral
+incidents between Iran-Iraq independent of the war, per Correlates of War
+coding rules. If peace years are calculated at the "onset" of the event,
+it would list peace-years between the two countries from 1981 to 1988.
+I've never understood that to make sense, but still I've seen others insist
+this is the correct way to do it. \code{add_peace_years()} would force the
+calculation on the ongoing event, which I still maintain is correct.
+\code{add_spells()} will allow you to calculate on onsets, even if
+ongoing events are the default.
 
-The underlying function for \code{add_spells()} will stop without a return if there are NAs bracketing observed events. The surest way
-this will happen is if you're doing something like a dyad-year analysis of inter-state conflicts from 1816 to 2010, but \code{create_dyadyears()}
-created observations from 2011 to 2020 for you as well. Remove those before using this function and confine the temporal domain to just
-those time-units (e.g. years) for which there is observed event data. See what I do in the example below.
+The underlying function for \code{add_spells()} will stop without a return
+if there are NAs bracketing observed events. The surest way
+this will happen is if you're doing something like a dyad-year analysis
+of inter-state conflicts from 1816 to 2010, but \code{create_dyadyears()}
+created observations from 2011 to 2020 for you as well. Remove those
+before using this function and confine the temporal domain to just those
+time-units (e.g. years) for which there is observed event data.
+See what I do in the example below.
 }
 \examples{
 

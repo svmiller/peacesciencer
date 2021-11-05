@@ -55,7 +55,7 @@ Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg
 Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.
 
 Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace
-agreements. Journal of Peace Research 56(4): 589-603.
+agreements. \emph{Journal of Peace Research} 56(4): 589-603.
 }
 \author{
 Steven V. Miller

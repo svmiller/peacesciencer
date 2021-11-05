@@ -43,7 +43,7 @@
 
 <meta property="og:title" content="Add Alliance Treaty Obligations and Provisions (ATOP) alliance data to a dyad-year data frame — add_atop_alliance" />
 <meta property="og:description" content="add_atop_alliance() allows you to add Alliance Treaty Obligations and Provisions (ATOP)
-data to a dyad-year data frame." />
+data to a (dyad-year, leader-dyad-year) data frame." />
 
 
 
@@ -166,7 +166,7 @@ data to a dyad-year data frame." />
 
     <div class="ref-description">
     <p><code>add_atop_alliance()</code> allows you to add Alliance Treaty Obligations and Provisions (ATOP)
-data to a dyad-year data frame.</p>
+data to a (dyad-year, leader-dyad-year) data frame.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_atop_alliance</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span></pre>
@@ -176,19 +176,19 @@ data to a dyad-year data frame.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>a dyad-year data frame (either "directed" or "non-directed")</p></td>
+      <td><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_atop_alliance()</code> takes a dyad-year data frame and adds information about
+    <p><code>add_atop_alliance()</code> takes a (dyad-year, leader-dyad-year) data frame and adds information about
 the alliance pledge in that given dyad-year from the ATOP data. These include whether there was an alliance
 with a defense pledge, an offense pledge, neutrality pledge, non-aggression pledge, or pledge for consultation
 in time of crisis.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Data are from version 5.0 of the data.</p>
+    <p>Data are from version 5.0 of ATOP.</p>
 <p>This function will also work with leader-dyad-years, though users should be careful with leader-level
 applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
 likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular

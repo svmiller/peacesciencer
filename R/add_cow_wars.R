@@ -1,34 +1,43 @@
 #' Add Correlates of War war data to dyad-year or state-year data frame.
 #'
-#' @description \code{add_cow_wars()} allows you to add UCDP Armed Conflict data to a state-year data frame
+#' @description \code{add_cow_wars()} allows you to Correlates of War data to a
+#' dyad-year or state-year data frame
 #'
-#' @return \code{add_cow_wars()} takes a dyad-year or state-year data frame and returns information about
-#' wars from either the inter-state or intra-state war data set from the Correlates of War.
-#' The function works for state-year data when the user wants information about extra-state wars or
-#' intra-state wars. The function works for dyad-year data when the user wants information about
+#' @return \code{add_cow_wars()} takes a dyad-year or state-year data frame and
+#' returns information about wars from either the inter-state or intra-state war
+#' data set from the Correlates of War. The function works for state-year data
+#' when the user wants information about extra-state wars or intra-state wars.
+#' The function works for dyad-year data when the user wants information about
 #' inter-state wars.
 #'
-#' @details Intra-state war data are coerced into true state-year data by first selecting the duplicate state-years on unique onsets,
-#' then whichever war was the deadliest. The inter-state war data work functionally the same way.
+#' @details
 #'
-#' On intra-state wars: the \code{primary_state} is used to identify the government principally fighting the domestic non-state actor over
-#' central control over local issues. Internationalized civil wars are included in the data, but not for outside actors that intervene on
-#' behalf of the government or rebel group.
+#' Intra-state war data are coerced into true state-year data by first
+#' selecting the duplicate state-years on unique onsets, then whichever
+#' war was the deadliest. The inter-state war data work functionally the same way.
 #'
-#' Extra-state war functionality is not available right now as I try to figure out the demand for its use.
+#' On intra-state wars: the \code{primary_state} is used to identify the government
+#' principally fighting the domestic non-state actor over central control over
+#' local issues. Internationalized civil wars are included in the data, but not
+#' for outside actors that intervene on behalf of the government or rebel group.
+#'
+#' Extra-state war functionality is not available right now as I try to
+#' figure out the demand for its use.
 #'
 #' @author Steven V. Miller
 #'
-#' @param data state-year data frame
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #' @param type the type of war you want to add. Options include "inter" or "intra".
 #' @param intratype the types of armed conflicts the user wants to consider, specified as a character vector.
 #' Options include "local issues" and "central control". Applicable only if \code{type} is "intra".
 #'
 #' @references
 #'
-#' Dixon, Jeffrey, and Meredith Sarkees. 2016. A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014. Thousand Oaks, CA: Sage.
+#' Dixon, Jeffrey, and Meredith Sarkees. 2016. *A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014.*
+#' Thousand Oaks, CA: Sage.
 #'
-#' Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
+#' Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010.
+#' *Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.*
 #' Washington DC: CQ Press.
 #'
 #' @examples

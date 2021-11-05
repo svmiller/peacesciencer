@@ -18,18 +18,27 @@ state system codes and adds their corollary Correlates of War codes.
 with Gleditsch-Ward system data.
 }
 \details{
-The \code{data-raw} directory on the project's Github contains more information about the underlying data that assists
-in merging in these codes.
+The \code{data-raw} directory on the project's Github contains
+more information about the underlying data that assists in merging in
+these codes.
 
-The user will invariably need to be careful and ask why they want these data included. The issue here is that both have a different
-composition and the merging process will not (and cannot) be perfect. We can note that a case like Gran Colombia is not too difficult to handle (i.e.
-CoW does not have this entity and none of the splinter states conflict with CoW's coding). However, there is greater weirdness with a case like the unification of
-West Germany and East Germany. Herein, Correlates of War treats the unification as the reappearance of the original Germany whereas
-Gleditsch-Ward treat the unification as an incorporation of East Germany into West Germany. The script will \emph{not} create state-year or dyad-year duplicates
-for the Gleditsch-Ward codes. The size of the original data remain unchanged. However, there will be some year duplicates for various
-Correlates of War codes (prominently Serbia and Yugoslavia in 2006). Use with care. You can also use
-the \code{countrycode} package. Whether you use this function or the \code{countrycode} package, do \emph{not} do this kind of merging without assessing
-the output.
+The user will invariably need to be careful and ask why they want these
+data included. The issue here is that both have a different composition
+and the merging process will not (and cannot) be perfect. We can note
+that a case like Gran Colombia is not too difficult to handle (i.e.
+CoW does not have this entity and none of the splinter states conflict
+with CoW's coding). However, there is greater weirdness with a case like
+the unification of West Germany and East Germany. Herein, Correlates of
+War treats the unification as the reappearance of the original Germany
+whereas Gleditsch-Ward treat the unification as an incorporation of
+East Germany into West Germany. The script will \emph{not} create state-year
+or dyad-year duplicates for the Gleditsch-Ward codes. The size of the
+original data remain unchanged. However, there will be some year
+duplicates for various Correlates of War codes (prominently Serbia
+and Yugoslavia in 2006). Use with care. You can also use the
+\pkg{countrycode} package. Whether you use this function or the
+\pkg{countrycode} package, do \emph{not} do this kind of merging without
+assessing the output.
 }
 \examples{
 \donttest{

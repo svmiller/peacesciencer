@@ -5,16 +5,17 @@
 #'
 #'
 #' @return \code{add_cow_majors()} takes a data frame and adds information
-#' about major power status for the given state or dyad in that year. If the data are dyad-year (or leader dyad-year), the function
-#' returns two columns for whether the first state (i.e. \code{ccode1}) or the second state (i.e. \code{ccode2}) are major powers
-#' in the given year, according to the Correlates of War. 1 = is a major power. 0 = is not a major
-#' power. If the data are state-year (or leader-year), the functions returns just one column (\code{cowmaj}) for whether the
+#' about major power status for the given state or dyad in that year. If the
+#' data are dyad-year (or leader dyad-year), the function returns two
+#' columns for whether the first state (i.e. \code{ccode1}) or the second
+#' state (i.e. \code{ccode2}) are major powers in the given year, according
+#' to the Correlates of War. 1 = is a major power. 0 = is not a major
+#' power. If the data are state-year (or leader-year), the functions
+#' returns just one column (\code{cowmaj}) for whether the
 #' state was a major power in a given state-year.
 #'
 #'
-#' @details The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-#' \code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-#' of the proverbial pipe.
+#' @details
 #'
 #' Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
 #' as approximations for leaders in a given state-year.
@@ -23,7 +24,10 @@
 #'
 #' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
-#' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership}
+#' @references
+#'
+#' Correlates of War Project. 2017. "State System Membership List, v2016."
+#' Online, \url{https://correlatesofwar.org/data-sets/state-system-membership}
 #'
 #' @examples
 #'

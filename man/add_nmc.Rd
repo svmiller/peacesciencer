@@ -11,19 +11,18 @@ add_nmc(data)
 }
 \value{
 \code{add_nmc()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds information
-about the national material capabilities for the state or two states in the dyad in a given year. If the data are dyad-year (or leader-dyad-year),
-the function adds 12 total columns for the first state (i.e. \code{ccode1}) and the second state (i.e. \code{ccode2}) for all estimates of national
-military capabilities provided by the Correlates of War project. If the data are state-year (or leader-year), the function returns six additional columns
+about the national material capabilities for the state or two states in the dyad in a given year.
+If the data are dyad-year (or leader-dyad-year),
+the function adds 12 total columns for the first state (i.e. \code{ccode1}) and the
+second state (i.e. \code{ccode2}) for all estimates of national
+military capabilities provided by the Correlates of War project. If the data are
+state-year (or leader-year), the function returns six additional columns
 to the original data that contain that same information for a given state in a given year.
 }
 \description{
 \code{add_nmc()} allows you to add the Correlates of War National Material Capabilities data to your data.
 }
 \details{
-The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-\code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.
-
 Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
 as approximations for leaders in a given state-year.
 }
@@ -39,9 +38,13 @@ create_stateyears() \%>\% add_nmc()
 
 }
 \references{
-Singer, J. David, Stuart Bremer, and John Stuckey. (1972). "Capability Distribution, Uncertainty, and Major Power War, 1820-1965." in Bruce Russett (ed) Peace, War, and Numbers, Beverly Hills: Sage, 19-48.
+Singer, J. David, Stuart Bremer, and John Stuckey. (1972).
+"Capability Distribution, Uncertainty, and Major Power War, 1820-1965." in
+Bruce Russett (ed) \emph{Peace, War, and Numbers}, Beverly Hills: Sage, 19-48.
 
-Singer, J. David. 1987. "Reconstructing the Correlates of War Dataset on Material Capabilities of States, 1816-1985" International Interactions, 14: 115-32.
+Singer, J. David. 1987. "Reconstructing the Correlates of War Dataset on
+Material Capabilities of States, 1816-1985."
+\emph{International Interactions} 14(1): 115-32.
 }
 \author{
 Steven V. Miller

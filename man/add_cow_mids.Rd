@@ -23,15 +23,23 @@ If \code{keep} is not specified in the function, the ensuing output returns ever
 from the CoW-MID data.
 }
 \description{
-\code{add_cow_mids()} merges in CoW's MID data to a dyad-year data frame. The current version
-of the CoW-MID data is version 5.0.
+\code{add_cow_mids()} merges in CoW's MID data to a dyad-year data frame.
+The version of the CoW-MID data in this package is version 5.0.
 }
 \details{
-Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
-data frame.
+Dyads are capable of having multiple disputes in a given year, which can
+create a problem for merging into a complete dyad-year data frame.
+Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113,
+MID#0306), as illustrative of the problem. This merging process employs
+several rules to whittle down these duplicate dyad-years for merging
+into a dyad-year data frame.
+
+The function will also return a message to the user about the
+case-exclusion rules that went into this process. Users who are
+interested in implementing their own case-exclusion rules should
+look up the "whittle" class of functions also provided in this
+package.
 }
 \examples{
 

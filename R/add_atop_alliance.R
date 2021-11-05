@@ -1,14 +1,14 @@
 #' Add Alliance Treaty Obligations and Provisions (ATOP) alliance data to a dyad-year data frame
 #'
 #' @description \code{add_atop_alliance()} allows you to add Alliance Treaty Obligations and Provisions (ATOP)
-#' data to a dyad-year data frame.
+#' data to a (dyad-year, leader-dyad-year) data frame.
 #'
-#' @return \code{add_atop_alliance()} takes a dyad-year data frame and adds information about
+#' @return \code{add_atop_alliance()} takes a (dyad-year, leader-dyad-year) data frame and adds information about
 #' the alliance pledge in that given dyad-year from the ATOP data. These include whether there was an alliance
 #' with a defense pledge, an offense pledge, neutrality pledge, non-aggression pledge, or pledge for consultation
 #' in time of crisis.
 #'
-#' @details Data are from version 5.0 of the data.
+#' @details Data are from version 5.0 of ATOP.
 #'
 #' This function will also work with leader-dyad-years, though users should be careful with leader-level
 #' applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
@@ -23,7 +23,7 @@
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed")
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
 #' @references
 #'
@@ -53,12 +53,12 @@ add_atop_alliance <- function(data) {
     }
 
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type == "state_year") {
+  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
 
     stop("Right now, there is only support for dyad-year data.")
 
   } else  {
-    stop("add_atop_alliance() requires a data/tibble with attributes$ps_data_type of dyad_year. Try running create_dyadyears() at the start of the pipe.")
+    stop("add_atop_alliance() requires a data/tibble with attributes$ps_data_type of dyad_year or leader_dyad_year. Try running create_dyadyears() or create_leaderdyadyears() at the start of the pipe.")
   }
 
   return(data)

@@ -42,8 +42,10 @@
   
 
 <meta property="og:title" content="Add "Spells" to Data — add_spells" />
-<meta property="og:description" content="add_spells() calculates &quot;spells&quot; in your state-year, leader-year, or dyad-year data. The application here is
-mostly concerned with things like &quot;peace spells&quot; between conflicts in a given cross-sectional unit (e.g. a state or dyad)." />
+<meta property="og:description" content="add_spells() calculates &quot;spells&quot; in your state-year, leader-year,
+or dyad-year data. The application here is mostly concerned with
+things like &quot;peace spells&quot; between conflicts in a given cross-sectional
+unit (e.g. a state or dyad)." />
 
 
 
@@ -165,8 +167,10 @@ mostly concerned with things like &quot;peace spells&quot; between conflicts in 
     </div>
 
     <div class="ref-description">
-    <p><code>add_spells()</code> calculates "spells" in your state-year, leader-year, or dyad-year data. The application here is
-mostly concerned with things like "peace spells" between conflicts in a given cross-sectional unit (e.g. a state or dyad).</p>
+    <p><code>add_spells()</code> calculates "spells" in your state-year, leader-year,
+or dyad-year data. The application here is mostly concerned with
+things like "peace spells" between conflicts in a given cross-sectional
+unit (e.g. a state or dyad).</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_spells</span><span class='op'>(</span><span class='va'>data</span>, conflict_event_type <span class='op'>=</span> <span class='st'>"ongoing"</span>, ongo <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -194,35 +198,53 @@ are all treated as failures. Defaults to FALSE.</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>add_spells()</code> takes a dyad-year, leader-year, or  state-year data frame and adds spells for ongoing
-conflicts. Dyadic conflict data supported include the Correlates of War (CoW) Militarized Interstate Dispute (MID) data set and the
-Gibler-Miller-Little (GML) corrections to CoW-MID. State-level conflict data supported in this function include the UCDP
-armed conflict data and the CoW intra-state war data. Leader-year conflict data supported include the GML MID data.</p>
+    <p><code>add_spells()</code> takes a dyad-year, leader-year, or  state-year data
+frame and adds spells for ongoing conflicts. Dyadic conflict data supported
+include the Correlates of War (CoW) Militarized Interstate Dispute (MID)
+data set and the Gibler-Miller-Little (GML) corrections to CoW-MID.
+State-level conflict data supported in this function include the UCDP
+armed conflict data and the CoW intra-state war data. Leader-year
+conflict data supported include the GML MID data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function internally uses <code>ps_spells()</code> from <span class="pkg">stevemisc</span>. In the interest of full disclosure,
-<code>ps_spells()</code> leans heavily on <code>add_duration()</code> from <span class="pkg">spduration</span>. I optimized some code for performance.</p>
-<p>Thinking of an application like peace-years, <code>add_spells()</code> will only calculate the peace years and will
-leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend
-manually creating splines or square/cube terms because it creates more problems in adjusting for
-temporal dependence in model predictions. In a regression formula in R,
-you can specify the Carter and Signorino (2010) approach as
-<code>... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)</code> (assuming you ran <code>add_spells()</code> on a dyad-year data frame
-including the Gibler-Miller-Little conflict data).
-The Beck et al. cubic splines approach is <code>... + splines::bs(gmlmidspell, 4)</code>. This function includes
-the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions,
-given R's functionality.</p>
-<p>Thinking of our dyadic analyses of conflict, I've always understood that something like "peace-years" should be calculated on the
-ongoing event and not the onset of the event. Think of something like the Iran-Iraq War (MID#2115) as illustrative here. The MID (which
-became a war) started in 1980 and ended in 1988. There are no other bilateral incidents between Iran-Iraq independent of the war, per
-Correlates of War coding rules. If peace years are calculated at the "onset" of the event, it would list peace-years between the two countries
-from 1981 to 1988. I've never understood that to make sense, but still I've seen others insist this is the correct way to do it.
-<code><a href='add_peace_years.html'>add_peace_years()</a></code> would force the calculation on the ongoing event, which I still maintain is correct. <code>add_spells()</code> will
-allow you to calculate on onsets, even if ongoing events are the default.</p>
-<p>The underlying function for <code>add_spells()</code> will stop without a return if there are NAs bracketing observed events. The surest way
-this will happen is if you're doing something like a dyad-year analysis of inter-state conflicts from 1816 to 2010, but <code><a href='create_dyadyears.html'>create_dyadyears()</a></code>
-created observations from 2011 to 2020 for you as well. Remove those before using this function and confine the temporal domain to just
-those time-units (e.g. years) for which there is observed event data. See what I do in the example below.</p>
+    <p>The function internally uses <code>ps_spells()</code> from <span class="pkg">stevemisc</span>. In
+the interest of full disclosure, <code>ps_spells()</code> leans heavily on
+<code>add_duration()</code> from <span class="pkg">spduration</span>. I optimized some code
+for performance.</p>
+<p>Thinking of an application like peace-years, <code>add_spells()</code> will
+only calculate the peace years and will leave the temporal dependence
+adjustment to the taste of the researcher. Importantly, I do not recommend
+manually creating splines or square/cube terms because it creates more
+problems in adjusting for temporal dependence in model predictions.
+In a regression formula in R, you can specify the Carter and Signorino
+(2010) approach as
+<code>... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)</code> (assuming
+you ran <code>add_spells()</code> on a dyad-year data frame including the
+Gibler-Miller-Little conflict data). The Beck et al. cubic splines approach
+is <code>... + splines::bs(gmlmidspell, 4)</code>. This function includes the
+spell and three splines (hence the 4 in the command). Either approach
+makes for easier model predictions, given R's functionality.</p>
+<p>Thinking of our dyadic analyses of conflict, I've always understood
+that something like "peace-years" should be calculated on the ongoing
+event and not the onset of the event. Think of something like the
+Iran-Iraq War (MID#2115) as illustrative here. The MID (which became
+a war) started in 1980 and ended in 1988. There are no other bilateral
+incidents between Iran-Iraq independent of the war, per Correlates of War
+coding rules. If peace years are calculated at the "onset" of the event,
+it would list peace-years between the two countries from 1981 to 1988.
+I've never understood that to make sense, but still I've seen others insist
+this is the correct way to do it. <code><a href='add_peace_years.html'>add_peace_years()</a></code> would force the
+calculation on the ongoing event, which I still maintain is correct.
+<code>add_spells()</code> will allow you to calculate on onsets, even if
+ongoing events are the default.</p>
+<p>The underlying function for <code>add_spells()</code> will stop without a return
+if there are NAs bracketing observed events. The surest way
+this will happen is if you're doing something like a dyad-year analysis
+of inter-state conflicts from 1816 to 2010, but <code><a href='create_dyadyears.html'>create_dyadyears()</a></code>
+created observations from 2011 to 2020 for you as well. Remove those
+before using this function and confine the temporal domain to just those
+time-units (e.g. years) for which there is observed event data.
+See what I do in the example below.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Beger, Andreas, Daina Chiba, Daniel W. Hill, Jr, Nils W. Metternich, Shahryar Minhas and Michael D. Ward. 2018.

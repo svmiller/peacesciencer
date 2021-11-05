@@ -42,7 +42,8 @@ create_stateyears(system ="gw") \%>\% add_minimum_distance()
 Schvitz, Guy et al. 2021. "Mapping The International System, 1886-2017: The \code{CShapes} 2.0 Dataset."
 \emph{Journal of Conflict Resolution}. \url{https://journals.sagepub.com/doi/full/10.1177/00220027211013563}
 
-Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24.
+Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package."
+\emph{The R Journal} 2(1): 18-24.
 }
 \author{
 Steven V. Miller

@@ -41,9 +41,12 @@ create_stateyears() \%>\% add_igos()
 
 }
 \references{
-Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, Anne Spencer Jamison, “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
+Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, and Anne Spencer Jamison. 2020.
+"Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets."
+\emph{Journal of Peace Research} 57(3): 492-503.
 
-Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.
+Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization
+in the Global System, 1815-1964." \emph{International Organization} 24: 239-87.
 }
 \author{
 Steven V. Miller

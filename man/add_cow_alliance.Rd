@@ -21,7 +21,7 @@ data to a dyad-year data frame
 }
 \details{
 Duplicates in the original directed dyad-year alliance data were pre-processed. Check
-\code{cow_alliance} for more information.
+\code{cow_alliance} in the package's \code{data-raw} directory on Github for more information.
 
 This function will also work with leader-dyad-years, though users should be careful with leader-level
 applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even

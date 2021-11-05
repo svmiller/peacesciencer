@@ -42,8 +42,8 @@
   
 
 <meta property="og:title" content="Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame — add_cow_mids" />
-<meta property="og:description" content="add_cow_mids() merges in CoW's MID data to a dyad-year data frame. The current version
-of the CoW-MID data is version 5.0." />
+<meta property="og:description" content="add_cow_mids() merges in CoW's MID data to a dyad-year data frame.
+The version of the CoW-MID data in this package is version 5.0." />
 
 
 
@@ -165,8 +165,8 @@ of the CoW-MID data is version 5.0." />
     </div>
 
     <div class="ref-description">
-    <p><code>add_cow_mids()</code> merges in CoW's MID data to a dyad-year data frame. The current version
-of the CoW-MID data is version 5.0.</p>
+    <p><code>add_cow_mids()</code> merges in CoW's MID data to a dyad-year data frame.
+The version of the CoW-MID data in this package is version 5.0.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_cow_mids</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
@@ -196,11 +196,18 @@ The user is free to keep or discard anything else they see fit.</p>
 from the CoW-MID data.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-This merging process employs several rules to whittle down these duplicate dyad-years for merging into a dyad-year
-data frame.</p>
+    <p>Dyads are capable of having multiple disputes in a given year, which can
+create a problem for merging into a complete dyad-year data frame.
+Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113,
+MID#0306), as illustrative of the problem. This merging process employs
+several rules to whittle down these duplicate dyad-years for merging
+into a dyad-year data frame.</p>
+<p>The function will also return a message to the user about the
+case-exclusion rules that went into this process. Users who are
+interested in implementing their own case-exclusion rules should
+look up the "whittle" class of functions also provided in this
+package.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     <p>Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens

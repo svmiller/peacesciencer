@@ -10,12 +10,25 @@
 #' Xavier Marquez' \code{QuickUDS} extensions/estimates. If the data are state-year, the function returns three additional columns
 #' to the original data that contain that same information for a given state in a given year.
 #'
-#' @details The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-#' \code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-#' of the proverbial pipe.
+#' @details
 #'
-#' Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
-#' as approximations for leaders in a given state-year.
+#' Be mindful that the data are fundamentally state-year and that extensions to
+#' leader-level data should be understood as approximations for leaders in a
+#' given state-year.
+#'
+#' A vignette on the package's website talks about how these data are here
+#' primarily to encourage you to maximize the number of observations in the
+#' analysis to follow. Xavier Marquez' `QuickUDS` estimates have the best
+#' coverage. If democracy is ultimately a control variable, or otherwise a
+#' variable not of huge concern for the analysis (i.e. the user has no
+#' particular stake on the best measurement of democracy or the best
+#' conceptualization and operationalization of "democracy"), please
+#' use Marquez' estimates instead of Polity or V-dem. If the user is
+#' doing an analysis of inter-state conflict, and across the standard
+#' post-1816 domain in conflict studies,  *definitely* don't use
+#' the Polity data because the extent of its missingness is both large and
+#' unnecessary. Please read the vignette describing these issues
+#' here: \url{http://svmiller.com/peacesciencer/articles/democracy.html}
 #'
 #'
 #' @author Steven V. Miller

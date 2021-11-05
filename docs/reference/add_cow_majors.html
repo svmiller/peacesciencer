@@ -183,21 +183,22 @@ to a dyad-year, leader-year, leader dyad-year, or state-year data frame.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>add_cow_majors()</code> takes a data frame and adds information
-about major power status for the given state or dyad in that year. If the data are dyad-year (or leader dyad-year), the function
-returns two columns for whether the first state (i.e. <code>ccode1</code>) or the second state (i.e. <code>ccode2</code>) are major powers
-in the given year, according to the Correlates of War. 1 = is a major power. 0 = is not a major
-power. If the data are state-year (or leader-year), the functions returns just one column (<code>cowmaj</code>) for whether the
+about major power status for the given state or dyad in that year. If the
+data are dyad-year (or leader dyad-year), the function returns two
+columns for whether the first state (i.e. <code>ccode1</code>) or the second
+state (i.e. <code>ccode2</code>) are major powers in the given year, according
+to the Correlates of War. 1 = is a major power. 0 = is not a major
+power. If the data are state-year (or leader-year), the functions
+returns just one column (<code>cowmaj</code>) for whether the
 state was a major power in a given state-year.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function leans on attributes of the data that are provided by the <code>create_dyadyear()</code> or
-<code>create_stateyear()</code> function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.</p>
-<p>Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
+    <p>Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
 as approximations for leaders in a given state-year.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
-    <p>Correlates of War Project. 2017. "State System Membership List, v2016." Online, <a href='https://correlatesofwar.org/data-sets/state-system-membership'>https://correlatesofwar.org/data-sets/state-system-membership</a></p>
+    <p>Correlates of War Project. 2017. "State System Membership List, v2016."
+Online, <a href='https://correlatesofwar.org/data-sets/state-system-membership'>https://correlatesofwar.org/data-sets/state-system-membership</a></p>
     <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
 
     <p>Steven V. Miller</p>

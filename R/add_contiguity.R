@@ -5,18 +5,20 @@
 #'
 #' @return \code{add_contiguity()} takes a data frame and adds information
 #' about the contiguity relationship based on the "master records" for the
-#' Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year (or leader dyad-year), the function
-#' returns the lowest contiguity type observed in the dyad-year (if contiguity is observed at all).
-#' If the data are state-year (or leader-year), the data return the total number of land and sea borders calculated
-#' from these master records.
+#' Correlates of War direct contiguity data (v. 3.2). If the data are dyad-year
+#' (or leader dyad-year), the function returns the lowest contiguity type
+#' observed in the dyad-year (if contiguity is observed at all). If the data
+#' are state-year (or leader-year), the data return the total number of
+#' land and sea borders calculated from these master records.
 #'
 #'
 #'
-#' @details The contiguity codes in the dyad-year data range from 0 to 5. 1 = direct land contiguity. 2 =
-#' separated by 12 miles of water or fewer (a la Stannis Baratheon). 3 = separated by
-#' 24 miles of water or fewer (but more than 12 miles). 4 = separated by 150 miles
-#' of water or fewer (but more than 24 miles). 5 = separated by 400 miles of water
-#' or fewer (but more than 150 miles).
+#' @details The contiguity codes in the dyad-year data range from 0 to 5.
+#' 1 = direct land contiguity. 2 = separated by 12 miles of water or
+#' fewer (a la Stannis Baratheon). 3 = separated by 24 miles of water or
+#' fewer (but more than 12 miles). 4 = separated by 150 miles
+#' of water or fewer (but more than 24 miles). 5 = separated by 400 miles
+#' of water or fewer (but more than 150 miles).
 #'
 #' Importantly, 0 are the dyads that are not contiguous at all in the CoW contiguity data.
 #' This is a conscious decision on my part as I do not think of the CoW's contiguity data
@@ -36,13 +38,13 @@
 #' *minimum* contiguity relationship observed in that given year. There should be no
 #' duplicates in the returned output.
 #'
-#' Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
-#' as approximations for leaders in a given state-year.
+#' Be mindful that the data are fundamentally state-year and that extensions to
+#' leader-level data should be understood as approximations for leaders in a
+#' given state-year.
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed"),
-#' a state-year data frame, a leader-year data frame, or leader dyad-year data frame
+#' @param data a data frame with appropriate \pkg{peacesciencer} attributes
 #'
 #' @references Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
 #' (2002). "The Correlates of War Project Direct Contiguity Data, Version 3." Conflict

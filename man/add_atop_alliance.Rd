@@ -7,20 +7,20 @@
 add_atop_alliance(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed")}
+\item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_atop_alliance()} takes a dyad-year data frame and adds information about
+\code{add_atop_alliance()} takes a (dyad-year, leader-dyad-year) data frame and adds information about
 the alliance pledge in that given dyad-year from the ATOP data. These include whether there was an alliance
 with a defense pledge, an offense pledge, neutrality pledge, non-aggression pledge, or pledge for consultation
 in time of crisis.
 }
 \description{
 \code{add_atop_alliance()} allows you to add Alliance Treaty Obligations and Provisions (ATOP)
-data to a dyad-year data frame.
+data to a (dyad-year, leader-dyad-year) data frame.
 }
 \details{
-Data are from version 5.0 of the data.
+Data are from version 5.0 of ATOP.
 
 This function will also work with leader-dyad-years, though users should be careful with leader-level
 applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even

@@ -13,7 +13,7 @@
 #' maximalist definitions of "direct contiguity" to focus on just the land-contiguous. This function
 #' is inclusive of any type of contiguity relationship.
 #'
-#' As of the slated release of version 0.5, \code{filter_prd()} is a shortcut for \code{add_contiguity()}
+#' As of version 0.5, \code{filter_prd()} is a shortcut for \code{add_contiguity()}
 #' and/or \code{add_cow_majors()} if the function is executed in the absence of the data needed to create
 #' politically relevant dyads. See the example below for what this means.
 #'

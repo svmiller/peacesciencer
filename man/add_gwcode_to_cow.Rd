@@ -19,17 +19,25 @@ state system codes and adds their corollary Gleditsch-Ward codes.
 with Correlates of War state system membership data.
 }
 \details{
-The \code{data-raw} directory on the project's Github contains more information about the underlying data that assists
-in merging in these codes.
+The \code{data-raw} directory on the project's Github contains more
+information about the underlying data that assists in merging in these
+codes.
 
-The user will invariably need to be careful and ask why they want these data included. The issue here is that both have a different
-composition and the merging process will not (and cannot) be perfect. We can note that a case like Serbia/Yugoslavia is not too difficult
-to handle (since "Serbia" never overlaps with "Yugoslavia" in the Gleditsch-Ward data and Correlates of War understands Serbia as the
-predecessor state, dominant state, and successor state to Yugoslavia). However, there is greater weirdness with a case like Yemen/Yemen
-Arab Republic. The script will \emph{not} create state-year or dyad-year duplicates for the Correlates of War codes. The size of the original data
-remain unchanged. However, there will be some year duplicates for various Gleditsch-Ward codes (e.g. Yemen, again). Use with care. You can also use
-the \code{countrycode} package. Whether you use this function or the \code{countrycode} package, do \emph{not} do this kind of merging without assessing
-the output.
+The user will invariably need to be careful and ask why they want
+these data included. The issue here is that both have a different
+composition and the merging process will not (and cannot) be perfect.
+We can note that a case like Serbia/Yugoslavia is not too difficult
+to handle (since "Serbia" never overlaps with "Yugoslavia" in the
+Gleditsch-Ward data and Correlates of War understands Serbia as the
+predecessor state, dominant state, and successor state to Yugoslavia).
+However, there is greater weirdness with a case like Yemen/Yemen
+Arab Republic. The script will \emph{not} create state-year or dyad-year
+duplicates for the Correlates of War codes. The size of the original data
+remain unchanged. However, there will be some year duplicates for various
+Gleditsch-Ward codes (e.g. Yemen, again). Use with care. You can also use
+the \pkg{countrycode} package. Whether you use this function or the
+\pkg{countrycode} package, do \emph{not} do this kind of merging without
+assessing the output.
 }
 \examples{
 # just call `library(tidyverse)` at the top of the your script
