@@ -14,7 +14,7 @@
 #' type and, grouping by the dyad and year, returns just those observations
 #' that have militarized actions on both sides of the conflict. This will not
 #' eliminate all duplicates, far from it, but it's a sensible cut later into
-#' the procedure (after whittling onsets in \code{whittle_conflicts_onsets()}}
+#' the procedure (after whittling onsets in \code{whittle_conflicts_onsets()}
 #' the extent to which dispute-level reciprocation is a heuristic for
 #' dispute-level severity/importance (after some other considerations).
 #'

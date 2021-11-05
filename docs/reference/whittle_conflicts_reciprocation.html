@@ -205,7 +205,9 @@ frame or leader-dyad-year data frame with a declared conflict attribute
 type and, grouping by the dyad and year, returns just those observations
 that have militarized actions on both sides of the conflict. This will not
 eliminate all duplicates, far from it, but it's a sensible cut later into
-the procedure (after whittling onsets in <code><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets()</a></code></p>
+the procedure (after whittling onsets in <code><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets()</a></code>
+the extent to which dispute-level reciprocation is a heuristic for
+dispute-level severity/importance (after some other considerations).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Dyads are capable of having multiple disputes in a given year,
@@ -247,7 +249,14 @@ URL: <a href='http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dya
 <span class='co'># \donttest{</span>
 <span class='co'># just call `library(tidyverse)` at the top of the your script</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='va'>gml_dirdisp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>whittle_conflicts_reciprocation</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘magrittr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    equals, is_less_than, not</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:purrr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    set_names</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:tidyr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    extract</span></div><div class='input'><span class='va'>gml_dirdisp</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>whittle_conflicts_reciprocation</span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 9,640 × 39</span>
 #&gt;    dispnum ccode1 ccode2  year midongoing midonset sidea1 sidea2 revstate1
 #&gt;      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
