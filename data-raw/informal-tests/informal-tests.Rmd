@@ -39,6 +39,7 @@ These are tests that add data based on what's stored remotely. I don't trust CRA
 ```{r}
 test_that("Dyad-year additions do not create duplicates", {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_cow_trade()))
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %>% add_fpsim()))
 })
 ```
 

@@ -11,7 +11,7 @@
 
 <meta name="author" content="steve" />
 
-<meta name="date" content="2021-11-04" />
+<meta name="date" content="2021-11-05" />
 
 <title>More Tests</title>
 
@@ -167,7 +167,7 @@ pre code {
 
 <h1 class="title toc-ignore">More Tests</h1>
 <h4 class="author">steve</h4>
-<h4 class="date">2021-11-04</h4>
+<h4 class="date">2021-11-05</h4>
 
 </div>
 
@@ -208,6 +208,8 @@ pre code {
 <pre><code>## cow_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.</code></pre>
 <pre><code>## Downloading gw_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.</code></pre>
 <pre><code>## gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.</code></pre>
+<pre><code>## Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.</code></pre>
+<pre><code>## dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.</code></pre>
 <pre><code>## Check the contents of the /extdata directory below:
 ## /home/steve/R/x86_64-pc-linux-gnu-library/4.0/peacesciencer/extdata</code></pre>
 </div>
@@ -234,8 +236,9 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
 <p>These are tests that add data based on what’s stored remotely. I don’t trust CRAN to do these tests well—and already so much is tested—so I’ll communicate the results of those tests here. The leader-year tests are here too. While these could be done as part of the formal testing process, they would also take forever and the time from <code>devtools::check()</code> to <code>devtools::release()</code> is already like half an hour or more. In due time, these leader-year tests could—and probably should—go into the formal testing procedure.</p>
 <pre class="r"><code>test_that(&quot;Dyad-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_ddy), nrow(cow_ddy %&gt;% add_cow_trade()))
+  expect_equal(nrow(cow_ddy), nrow(cow_ddy %&gt;% add_fpsim()))
 })</code></pre>
-<pre><code>## Test passed 🎊</code></pre>
+<pre><code>## Test passed 🌈</code></pre>
 <pre class="r"><code>test_that(&quot;Leader-year additions do not create duplicates&quot;, {
   expect_equal(nrow(cow_leaderyears), nrow(cow_leaderyears %&gt;% add_capital_distance()))
   expect_equal(nrow(gw_leaderyears), nrow(gw_leaderyears %&gt;% add_capital_distance()))
@@ -281,7 +284,7 @@ cow_leadermids &lt;- cow_leaderyears %&gt;% add_gml_mids() %&gt;% filter(year %i
   expect_equal(nrow(cow_leaderdyadyears), nrow(cow_leaderdyadyears %&gt;% add_gwcode_to_cow()))
   expect_equal(nrow(gw_leaderdyadyears), nrow(gw_leaderdyadyears %&gt;% add_ccode_to_gw()))
 })</code></pre>
-<pre><code>## Test passed 😸</code></pre>
+<pre><code>## Test passed 🎉</code></pre>
 </div>
 
 
