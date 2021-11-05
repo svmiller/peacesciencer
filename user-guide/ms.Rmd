@@ -1,5 +1,5 @@
 ---
-title: "`{peacesciencer}`:  A User’s  Guide  for  Quantitative  Peace Science in R"
+title: "`{peacesciencer}`: An R Package for Quantitative Peace Science Research"
 thanks: "Replication files are available on the author's Github account (https://github.com/svmiller/peacesciencer). **Current version**: `r format(Sys.time(), '%B %d, %Y')`; **Corresponding author**: steven.v.miller@gmail.com."
 author:
 - name: Steven V. Miller

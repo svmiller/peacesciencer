@@ -1,0 +1,62 @@
+---
+# output: 
+#   stevetemplates::cover_letter:
+#     latex_engine: xelatex 
+geometry: margin=1in
+header-includes:
+  - \linespread{1.05}
+
+author: "&nbsp;"
+address: ""
+email: ""
+url: ""
+phone: ""
+fontsize: 11pt
+mainfont: cochineal
+monofont: Fira Code
+
+fontawesome: TRUE
+date: "`r format(Sys.time(), '%e %B %Y')`"
+greetings: "Dear Editor and Reviewers,"
+bibliography: "`r paste0(Sys.getenv('HOME'),'/Dropbox/master.bib')`"
+biblio-style: apsr
+---
+
+```{r setup, include=F}
+
+
+```
+
+
+
+I thank you all for the opportunity to submit revisions of my manuscript "Asfsfssdfsafdsafs3fs" for possible inclusion in *Conflict Management and Peace Science* (*CMPS*). I thank the two reviewers and the editorial team for the helpful comments as well.
+
+# Comments to the Editorial Team
+
+The editorial team noted 
+
+Enclosed are the revised manuscript and appendix. I thank the editorial team and the reviewers for their helpful comments and for further consideration of my revisions.
+
+Best regards,
+
+```{r eval=F, echo=FALSE, out.width='30%'}
+# knitr::include_graphics('john-hancock.png')
+# ^ put your signature here as a PNG or something.
+```
+
+The Author
+
+\newpage
+
+# Reviewer #1's Comments
+
+Reviewer #1 (R1) had the following comments on the original version of the manuscript.
+
+\newpage
+
+
+# Reviewer #2's Comments
+
+I thank Reviewer #2 (R2) for 
+
+\newpage

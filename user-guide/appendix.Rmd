@@ -1,0 +1,89 @@
+---
+title: "APPENDIX: `{peacesciencer}`: An R Package for Quantitative Peace Science Research"
+# author:
+# - name: Steven V. Miller
+#   affiliation: Clemson University
+#   email: svmille@clemson.edu
+# thanks: "This is a work in progress. Feedback welcome: svmille@clemson.edu."
+bibliography: "`r paste0(Sys.getenv('HOME'),'/Dropbox/master.bib')`"
+biblio-style: apsr
+geometry: margin=1in
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+fontsize: 11pt
+keywords: "software, statistical analysis, peace science, reproducibility"
+endnotes: FALSE
+csl: inst/jpr.csl
+mainfont: cochineal
+sansfont: Linux Biolinum O
+sansitup: FALSE
+params:
+  anonymous: ""
+  doublespacing: ""
+  removetitleabstract: ""
+appendix: TRUE
+appendixletter: "A"
+anonymous: "`r params$anonymous`"
+doublespacing: "`r params$doublespacing`"
+removetitleabstract: "`r params$removetitleabstract`"
+linkcolor: black
+header-includes:
+  - \usepackage{longtable}
+  - \usepackage{csquotes}
+  - \LTcapwidth=.95\textwidth
+  - \linespread{1.05}
+  - \usepackage{hyperref}
+  - \usepackage{setspace}
+  - \renewcommand{\thepage}{A-\arabic{page}}
+---
+
+```{r setup, include=FALSE}
+is_docx <- knitr::pandoc_to("docx")
+is_latex <- knitr::pandoc_to("latex")
+
+table_format <- ifelse(is_docx, "huxtable", 'default')
+
+# I don't know how Texas Instruments smart this is, but p-sure default DPI is 96.
+# That's not a problem for LaTeX, but it looks not-so-great for Word.
+# For Word, let's up that to 600. This should allow for cross-referencing 
+# in {bookdown} while allowing for conditional DPI
+
+if (is_latex) {
+  conditional_dpi <- 96
+  return(conditional_dpi)
+} else {
+  conditional_dpi <- 600
+  return(conditional_dpi)
+} 
+
+knitr::opts_chunk$set(echo = FALSE,
+                      message=FALSE, warning=FALSE,
+                      fig.path='doc/figs/',
+                      cache.path = 'doc/_cache/',
+                      fig.width = 8.5, dpi = conditional_dpi,
+                      fig.process = function(x) {
+                      x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+                      x2 = paste0(stringr::str_extract(x2, '.*/'), 
+                                  "appendix-", 
+                                  stringr::str_remove(x2, ".*/"))
+                      if (file.rename(x, x2)) x2 else x
+                      })
+
+
+library(tidyverse)
+
+options(knitr.kable.NA = '')
+```
+
+\tableofcontents
+\newpage
+
+
+# A Section with a Citation to Get Started
+
+@miller2017etjc
+
+\newpage
+
+# References
+
+\setlength{\parskip}{6pt}
