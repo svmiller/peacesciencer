@@ -15,26 +15,36 @@ wc_stmon(...)
 \item{...}{optional, only to make the shortcut work}
 }
 \value{
-\code{whittle_conflicts_startmonth()} takes a dyad-year data frame or leader-dyad-year data frame  with a declared conflict attribute type and, grouping by the
-dyad and year, returns just those observations that have the lowest start month.
+\code{whittle_conflicts_startmonth()} takes a dyad-year
+data frame or leader-dyad-year data frame  with a declared conflict
+attribute type and, grouping by the dyad and year, returns just
+those observations that have the lowest start month.
 }
 \description{
-\code{whittle_conflicts_startmonth()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
+\code{whittle_conflicts_startmonth()} is in a class of
+do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular
 function will keep the observations that have the lowest start month.
 }
 \details{
-Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
-merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
+Dyads are capable of having multiple disputes in a given year,
+which can create a problem for merging into a complete dyad-year
+data frame. Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306),
+as illustrative of the problem. The default process in \pkg{peacesciencer}
+employs several rules to whittle down these duplicate dyad-years for
+merging into a dyad-year data frame. These are available in
+\code{add_cow_mids()} and \code{add_gml_mids()}.
 
-This really should be one of the last exclusion rules a researcher uses. There is no substantive reason to
-assume the lower start month matters for the cause of isolating "serious" or "severe" disputes in the presence
-of duplicates. It's really just a way of isolating which duplicated observation happened first where remaining duplicates are
-otherwise very similar to each other.
+This really should be one of the last exclusion rules a researcher uses.
+There is no substantive reason to assume the lower start month matters
+for the cause of isolating "serious" or "severe" disputes in the presence
+of duplicates. It's really just a way of isolating which duplicated
+observation happened first where remaining duplicates are otherwise
+very similar to each other.
 
 \code{wc_stmon()} is a simple, less wordy, shortcut for the same function.
 }

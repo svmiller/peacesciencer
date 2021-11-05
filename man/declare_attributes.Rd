@@ -19,21 +19,39 @@ must be 'cow' or 'gw'.}
 must be a character vector of length 1 that is either 'cow' or 'gml'.}
 }
 \value{
-\code{declare_attributes()} takes a data frame and adds \pkg{peacesciencer}-specific attributes to the data frame.
-This will allow the user to take advantage of many of the functions in this package without starting the process with one
-of the "create" functions. If nothing is declared in the function, no attribute is added and the function just returns the original
+\code{declare_attributes()} takes a data frame and
+adds \pkg{peacesciencer}-specific attributes to the data frame.
+This will allow the user to take advantage of many of the
+functions in this package without starting the process with one
+of the "create" functions. If nothing is declared in the function,
+no attribute is added and the function just returns the original
 data without any change.
 }
 \description{
-\code{declare_attributes()} allows the user to declare \pkg{peacesciencer}-specific
-attributes to data they bring from outside the package. This allows the user to use package functions
-as shortcuts, where appropriate.
+\code{declare_attributes()} allows the user to
+declare \pkg{peacesciencer}-specific attributes to data they
+bring from outside the package. This allows the user to use
+package functions as shortcuts, where appropriate.
 }
 \details{
-The function's documentation will include what attributes are available to be declared. No doubt, the list of potential
-attributes will grow in time, but the attributes that can be declared are limited to just what I've built into the package to this
-point. Users cannot declare more than one attribute of a given type (i.e. a user cannot declare the system to be both Correlates of War
+The function's documentation will include what attributes
+are available to be declared. No doubt, the list of potential
+attributes will grow in time, but the attributes that can be declared
+are limited to just what I've built into the package to this
+point. Users cannot declare more than one attribute of a given
+type (i.e. a user cannot declare the system to be both Correlates of War
 and Gleditsch-Ward).
+
+The idea here is, basically, to allow the user to use functions in
+\pkg{peacesciencer} for data they have created or have acquired from
+elsewhere. However, this functions provides \emph{no} assurances about quality
+control in the various merges built elsewhere into this package. This package
+aggressively tests functions for data generated in-house. If your outside
+data have merges, the various "add" functions may not perfectly perform. There
+is no real way I can control for this since the data are coming from outside
+the package and not through one of the "create" functions. In your particular
+case, that may not be much of a problem. However, it's the user's
+responsibility to do their own quality control in this situation.
 }
 \examples{
 

@@ -15,36 +15,52 @@ wc_recip(...)
 \item{...}{optional, only to make the shortcut work}
 }
 \value{
-\code{whittle_conflicts_reciprocation()} takes a dyad-year data frame or leader-dyad-year data frame with
-a declared conflict attribute type and, grouping by the
-dyad and year, returns just those observations that have militarized actions on both sides of the conflict.
-This will not eliminate all duplicates, far from it, but it's a sensible cut later into the procedure (after whittling onsets in
-\code{whittle_conflicts_onsets(), and maybe some other things} the extent to which dispute-level reciprocation
-is a heuristic for dispute-level severity/importance (after some other considerations).
+\code{whittle_conflicts_reciprocation()} takes a dyad-year data
+frame or leader-dyad-year data frame with a declared conflict attribute
+type and, grouping by the dyad and year, returns just those observations
+that have militarized actions on both sides of the conflict. This will not
+eliminate all duplicates, far from it, but it's a sensible cut later into
+the procedure (after whittling onsets in \code{whittle_conflicts_onsets()}}
+the extent to which dispute-level reciprocation is a heuristic for
+dispute-level severity/importance (after some other considerations).
 }
 \description{
-\code{whittle_conflicts_reciprocation()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations that are reciprocated (i.e. have militarized actions on both sides of the conflict).
+\code{whittle_conflicts_reciprocation()} is in a class of
+do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular function will
+keep the observations that are reciprocated (i.e. have militarized actions
+on both sides of the conflict).
 }
 \details{
-Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
-merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
+Dyads are capable of having multiple disputes in a given year,
+which can create a problem for merging into a complete dyad-year
+data frame. Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306),
+as illustrative of the problem. The default process in \pkg{peacesciencer}
+employs several rules to whittle down these duplicate dyad-years for
+merging into a dyad-year data frame. These are available in
+\code{add_cow_mids()} and \code{add_gml_mids()}.
 
-Scholars are free to use this as a heuristic for whittling conflict-year data to be coerced into true dyad-year data, but
-I would be remiss if I did not offer a caveat about the reciprocation variable in inter-state dispute data. Namely, it is noisy
-and is not doing what scholars often think it's doing in the inter-state dispute data. Reciprocation is observed only
-when there is a militarized action on both sides of the conflict. By definition, someone on Side A will have a militarized
-action. Not every state on Side B does. However, scholars should \emph{not} interpret that as the absence of militarized responses.
-In a forthcoming article in \emph{Journal of Conflict Resolution}, Doug Gibler and I make the case that reciprocation
-isn't a useful variable to maintain at all because it can only invite errors (as is often the case in the CoW-MID data) and
-will obscure the fact that states that are attacked by another side routinely fight back. On many
-occasions, they also successfully repel the attack. Scholars who uncritically use this variable, certainly for hypothesis-testing on
-audience costs, are borrowing trouble with this measure.
+Scholars are free to use this as a heuristic for whittling conflict-year
+data to be coerced into true dyad-year data, but I would be remiss if I
+did not offer a caveat about the reciprocation variable in inter-state
+dispute data. Namely, it is noisy and is not doing what scholars often
+think it's doing in the inter-state dispute data. Reciprocation is observed
+only when there is a militarized action on both sides of the conflict.
+By definition, someone on Side A will have a militarized action. Not every
+state on Side B does. However, scholars should \emph{not} interpret that as
+the absence of militarized responses. In a forthcoming article in
+\emph{Journal of Conflict Resolution}, Doug Gibler and I make the case that
+reciprocation isn't a useful variable to maintain at all because it
+can only invite errors (as is often the case in the CoW-MID data) and
+will obscure the fact that states that are attacked by another side
+routinely fight back. On many occasions, they also successfully repel
+the attack. Scholars who uncritically use this variable, certainly for
+hypothesis-testing on audience costs, are borrowing trouble with
+this measure.
 
 \code{wc_recip()} is a simple, less wordy, shortcut for the same function.
 }

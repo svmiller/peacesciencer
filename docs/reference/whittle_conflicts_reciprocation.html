@@ -42,10 +42,14 @@
   
 
 <meta property="og:title" content="Whittle Duplicate Conflict-Years by Conflict Reciprocation — whittle_conflicts_reciprocation" />
-<meta property="og:description" content="whittle_conflicts_reciprocation() is in a class of do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations that are reciprocated (i.e. have militarized actions on both sides of the conflict)." />
+<meta property="og:description" content="whittle_conflicts_reciprocation() is in a class of
+do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular function will
+keep the observations that are reciprocated (i.e. have militarized actions
+on both sides of the conflict)." />
 
 
 
@@ -167,10 +171,14 @@ function will keep the observations that are reciprocated (i.e. have militarized
     </div>
 
     <div class="ref-description">
-    <p><code>whittle_conflicts_reciprocation()</code> is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations that are reciprocated (i.e. have militarized actions on both sides of the conflict).</p>
+    <p><code>whittle_conflicts_reciprocation()</code> is in a class of
+do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular function will
+keep the observations that are reciprocated (i.e. have militarized actions
+on both sides of the conflict).</p>
     </div>
 
     <pre class="usage"><span class='fu'>whittle_conflicts_reciprocation</span><span class='op'>(</span><span class='va'>data</span><span class='op'>)</span>
@@ -192,29 +200,39 @@ function will keep the observations that are reciprocated (i.e. have militarized
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>whittle_conflicts_reciprocation()</code> takes a dyad-year data frame or leader-dyad-year data frame with
-a declared conflict attribute type and, grouping by the
-dyad and year, returns just those observations that have militarized actions on both sides of the conflict.
-This will not eliminate all duplicates, far from it, but it's a sensible cut later into the procedure (after whittling onsets in
-<code>whittle_conflicts_onsets(), and maybe some other things</code> the extent to which dispute-level reciprocation
-is a heuristic for dispute-level severity/importance (after some other considerations).</p>
+    <p><code>whittle_conflicts_reciprocation()</code> takes a dyad-year data
+frame or leader-dyad-year data frame with a declared conflict attribute
+type and, grouping by the dyad and year, returns just those observations
+that have militarized actions on both sides of the conflict. This will not
+eliminate all duplicates, far from it, but it's a sensible cut later into
+the procedure (after whittling onsets in <code><a href='whittle_conflicts_onsets.html'>whittle_conflicts_onsets()</a></code></p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-The default process in <span class="pkg">peacesciencer</span> employs several rules to whittle down these duplicate dyad-years for
-merging into a dyad-year data frame. These are available in <code><a href='add_cow_mids.html'>add_cow_mids()</a></code> and <code><a href='add_gml_mids.html'>add_gml_mids()</a></code>.</p>
-<p>Scholars are free to use this as a heuristic for whittling conflict-year data to be coerced into true dyad-year data, but
-I would be remiss if I did not offer a caveat about the reciprocation variable in inter-state dispute data. Namely, it is noisy
-and is not doing what scholars often think it's doing in the inter-state dispute data. Reciprocation is observed only
-when there is a militarized action on both sides of the conflict. By definition, someone on Side A will have a militarized
-action. Not every state on Side B does. However, scholars should <em>not</em> interpret that as the absence of militarized responses.
-In a forthcoming article in <em>Journal of Conflict Resolution</em>, Doug Gibler and I make the case that reciprocation
-isn't a useful variable to maintain at all because it can only invite errors (as is often the case in the CoW-MID data) and
-will obscure the fact that states that are attacked by another side routinely fight back. On many
-occasions, they also successfully repel the attack. Scholars who uncritically use this variable, certainly for hypothesis-testing on
-audience costs, are borrowing trouble with this measure.</p>
+    <p>Dyads are capable of having multiple disputes in a given year,
+which can create a problem for merging into a complete dyad-year
+data frame. Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306),
+as illustrative of the problem. The default process in <span class="pkg">peacesciencer</span>
+employs several rules to whittle down these duplicate dyad-years for
+merging into a dyad-year data frame. These are available in
+<code><a href='add_cow_mids.html'>add_cow_mids()</a></code> and <code><a href='add_gml_mids.html'>add_gml_mids()</a></code>.</p>
+<p>Scholars are free to use this as a heuristic for whittling conflict-year
+data to be coerced into true dyad-year data, but I would be remiss if I
+did not offer a caveat about the reciprocation variable in inter-state
+dispute data. Namely, it is noisy and is not doing what scholars often
+think it's doing in the inter-state dispute data. Reciprocation is observed
+only when there is a militarized action on both sides of the conflict.
+By definition, someone on Side A will have a militarized action. Not every
+state on Side B does. However, scholars should <em>not</em> interpret that as
+the absence of militarized responses. In a forthcoming article in
+<em>Journal of Conflict Resolution</em>, Doug Gibler and I make the case that
+reciprocation isn't a useful variable to maintain at all because it
+can only invite errors (as is often the case in the CoW-MID data) and
+will obscure the fact that states that are attacked by another side
+routinely fight back. On many occasions, they also successfully repel
+the attack. Scholars who uncritically use this variable, certainly for
+hypothesis-testing on audience costs, are borrowing trouble with
+this measure.</p>
 <p><code>wc_recip()</code> is a simple, less wordy, shortcut for the same function.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

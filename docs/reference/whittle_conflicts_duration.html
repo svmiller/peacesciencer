@@ -42,10 +42,13 @@
   
 
 <meta property="og:title" content="Whittle Duplicate Conflict-Years by Conflict Duration — whittle_conflicts_duration" />
-<meta property="og:description" content="whittle_conflicts_duration() is in a class of do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations with the highest estimated duration." />
+<meta property="og:description" content="whittle_conflicts_duration() is in a class of
+do-it-yourself functions for coercing (i.e. &quot;whittling&quot;) conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular function will
+keep the observations with the highest estimated duration." />
 
 
 
@@ -167,10 +170,13 @@ function will keep the observations with the highest estimated duration." />
     </div>
 
     <div class="ref-description">
-    <p><code>whittle_conflicts_duration()</code> is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-function will keep the observations with the highest estimated duration.</p>
+    <p><code>whittle_conflicts_duration()</code> is in a class of
+do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular function will
+keep the observations with the highest estimated duration.</p>
     </div>
 
     <pre class="usage"><span class='fu'>whittle_conflicts_duration</span><span class='op'>(</span><span class='va'>data</span>, durtype <span class='op'>=</span> <span class='st'>"mindur"</span><span class='op'>)</span>
@@ -196,25 +202,35 @@ function will keep the observations with the highest estimated duration.</p>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>whittle_conflicts_duration()</code> takes a dyad-year data frame or leader-dyad-year data frame  with a declared conflict attribute type and, grouping by the
-dyad and year, returns just those observations that have the highest observed dispute-level fatality.
-This will not eliminate all duplicates, far from it, but it's a sensible cut later into the procedure (after whittling onsets in
-<code>whittle_conflicts_onsets(), and maybe some other things</code> the extent to which dispute-level duration
+    <p><code>whittle_conflicts_duration()</code> takes a dyad-year data frame
+or leader-dyad-year data frame  with a declared conflict attribute type
+and, grouping by the dyad and year, returns just those observations that
+have the highest observed dispute-level fatality. This will not eliminate
+all duplicates, far from it, but it's a sensible cut later into the
+procedure (after whittling onsets in <code>whittle_conflicts_onsets(),
+and maybe some other things</code> the extent to which dispute-level duration
 is a heuristic for dispute-level severity/importance.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-The default process in <span class="pkg">peacesciencer</span> employs several rules to whittle down these duplicate dyad-years for
-merging into a dyad-year data frame. These are available in <code><a href='add_cow_mids.html'>add_cow_mids()</a></code> and <code><a href='add_gml_mids.html'>add_gml_mids()</a></code>.</p>
-<p>Some conflicts can be of an unknown length and often come with estimates of a minimum duration
-and a maximum duration. This will concern the <code>durtype</code> parameter in this function. In many/most conflicts,
-certainly thinking of the inter-state dispute data, dates are known with precision (to the day) and the
-estimate of minimum conflict duration is equal to the estimate of maximum conflict duration. For some conflicts,
-the estimates will vary. This does importantly imply that using this particular whittle function with the
-default (<code>mindur</code>) will produce different results than using this particular whittle function and asking
-to retain the highest maximum duration (<code>maxdur</code>). Use the function with that in mind.</p>
+    <p>Dyads are capable of having multiple disputes in a given year,
+which can create a problem for merging into a complete dyad-year
+data frame. Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306),
+as illustrative of the problem. The default process in <span class="pkg">peacesciencer</span>
+employs several rules to whittle down these duplicate dyad-years for
+merging into a dyad-year data frame. These are available in
+<code><a href='add_cow_mids.html'>add_cow_mids()</a></code> and <code><a href='add_gml_mids.html'>add_gml_mids()</a></code>.</p>
+<p>Some conflicts can be of an unknown length and often come with estimates
+of a minimum duration and a maximum duration. This will concern the
+<code>durtype</code> parameter in this function. In many/most conflicts,
+certainly thinking of the inter-state dispute data, dates are known with
+precision (to the day) and the estimate of minimum conflict duration is
+equal to the estimate of maximum conflict duration. For some conflicts,
+the estimates will vary. This does importantly imply that using this
+particular whittle function with the default (<code>mindur</code>) will produce
+different results than using this particular whittle function and asking
+to retain the highest maximum duration (<code>maxdur</code>). Use the function
+with that in mind.</p>
 <p><code>wc_duration()</code> is a simple, less wordy, shortcut for the same function.</p>
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 

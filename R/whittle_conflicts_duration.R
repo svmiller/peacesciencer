@@ -1,29 +1,42 @@
 #' Whittle Duplicate Conflict-Years by Conflict Duration
 #'
-#' @description  \code{whittle_conflicts_duration()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-#' data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-#' of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
-#' function will keep the observations with the highest estimated duration.
+#' @description  \code{whittle_conflicts_duration()} is in a class of
+#' do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+#' data with cross-sectional units to unique conflict-year data by
+#' cross-sectional unit. The inspiration here is clearly the problem
+#' of whittling dyadic dispute-year data into true dyad-year data (like in
+#' the Gibler-Miller-Little conflict data). This particular function will
+#'  keep the observations with the highest estimated duration.
 #'
-#' @return \code{whittle_conflicts_duration()} takes a dyad-year data frame or leader-dyad-year data frame  with a declared conflict attribute type and, grouping by the
-#' dyad and year, returns just those observations that have the highest observed dispute-level fatality.
-#' This will not eliminate all duplicates, far from it, but it's a sensible cut later into the procedure (after whittling onsets in
-#' \code{whittle_conflicts_onsets(), and maybe some other things} the extent to which dispute-level duration
+#' @return \code{whittle_conflicts_duration()} takes a dyad-year data frame
+#' or leader-dyad-year data frame  with a declared conflict attribute type
+#' and, grouping by the dyad and year, returns just those observations that
+#' have the highest observed dispute-level fatality. This will not eliminate
+#' all duplicates, far from it, but it's a sensible cut later into the
+#' procedure (after whittling onsets in \code{whittle_conflicts_onsets(),
+#' and maybe some other things} the extent to which dispute-level duration
 #' is a heuristic for dispute-level severity/importance.
 #'
-#' @details Dyads are capable of having multiple disputes in a given year, which can create a problem
-#' for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-#' had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-#' The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
-#' merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
+#' @details Dyads are capable of having multiple disputes in a given year,
+#' which can create a problem for merging into a complete dyad-year
+#' data frame. Consider the case of France and Italy in 1860, which
+#' had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306),
+#' as illustrative of the problem. The default process in \pkg{peacesciencer}
+#' employs several rules to whittle down these duplicate dyad-years for
+#' merging into a dyad-year data frame. These are available in
+#' \code{add_cow_mids()} and \code{add_gml_mids()}.
 #'
-#' Some conflicts can be of an unknown length and often come with estimates of a minimum duration
-#' and a maximum duration. This will concern the \code{durtype} parameter in this function. In many/most conflicts,
-#' certainly thinking of the inter-state dispute data, dates are known with precision (to the day) and the
-#' estimate of minimum conflict duration is equal to the estimate of maximum conflict duration. For some conflicts,
-#' the estimates will vary. This does importantly imply that using this particular whittle function with the
-#' default (\code{mindur}) will produce different results than using this particular whittle function and asking
-#' to retain the highest maximum duration (\code{maxdur}). Use the function with that in mind.
+#' Some conflicts can be of an unknown length and often come with estimates
+#' of a minimum duration and a maximum duration. This will concern the
+#' \code{durtype} parameter in this function. In many/most conflicts,
+#' certainly thinking of the inter-state dispute data, dates are known with
+#' precision (to the day) and the estimate of minimum conflict duration is
+#' equal to the estimate of maximum conflict duration. For some conflicts,
+#' the estimates will vary. This does importantly imply that using this
+#' particular whittle function with the default (\code{mindur}) will produce
+#' different results than using this particular whittle function and asking
+#' to retain the highest maximum duration (\code{maxdur}). Use the function
+#' with that in mind.
 #'
 #' \code{wc_duration()} is a simple, less wordy, shortcut for the same function.
 #'

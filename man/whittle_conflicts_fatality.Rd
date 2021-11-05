@@ -15,28 +15,41 @@ wc_fatality(...)
 \item{...}{optional, only to make the shortcut work}
 }
 \value{
-\code{whittle_conflicts_fatality()} takes a dyad-year data frame or leader-dyad-year data frame with a declared conflict attribute type and, grouping by the
-dyad and year, returns just those observations that have the highest observed dispute-level fatality.
-This will not eliminate all duplicates, far from it, but it's a sensible second cut (after whittling onsets in
-\code{whittle_conflicts_onsets()} the extent to which dispute-level fatality is a good heuristic for dispute-level severity/importance.
+\code{whittle_conflicts_fatality()} takes a dyad-year data frame
+or leader-dyad-year data frame with a declared conflict attribute type
+and, grouping by the dyad and year, returns just those observations
+that have the highest observed dispute-level fatality. This will not
+eliminate all duplicates, far from it, but it's a sensible second cut
+(after whittling onsets in \code{whittle_conflicts_onsets()} the extent
+to which dispute-level fatality is a good heuristic for dispute-level
+severity/importance.
 }
 \description{
-\code{whittle_conflicts_fatality()} is in a class of do-it-yourself functions for coercing (i.e. "whittling") conflict-year
-data with cross-sectional units to unique conflict-year data by cross-sectional unit. The inspiration here is clearly the problem
-of whittling dyadic dispute-year data into true dyad-year data (like in the Gibler-Miller-Little conflict data). This particular
+\code{whittle_conflicts_fatality()} is in a class of
+do-it-yourself functions for coercing (i.e. "whittling") conflict-year
+data with cross-sectional units to unique conflict-year data by
+cross-sectional unit. The inspiration here is clearly the problem
+of whittling dyadic dispute-year data into true dyad-year data (like in
+the Gibler-Miller-Little conflict data). This particular
 function will keep the observations with the highest observed fatality.
 }
 \details{
-Dyads are capable of having multiple disputes in a given year, which can create a problem
-for merging into a complete dyad-year data frame. Consider the case of France and Italy in 1860, which
-had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306), as illustrative of the problem.
-The default process in \pkg{peacesciencer} employs several rules to whittle down these duplicate dyad-years for
-merging into a dyad-year data frame. These are available in \code{add_cow_mids()} and \code{add_gml_mids()}.
+Dyads are capable of having multiple disputes in a given year,
+which can create a problem for merging into a complete dyad-year
+data frame. Consider the case of France and Italy in 1860, which
+had three separate dispute onsets that year (MID#0112, MID#0113, MID#0306),
+as illustrative of the problem. The default process in \pkg{peacesciencer}
+employs several rules to whittle down these duplicate dyad-years for
+merging into a dyad-year data frame. These are available in
+\code{add_cow_mids()} and \code{add_gml_mids()}.
 
-As of writing, the Correlates of War and Gibler-Miller-Little conflict data record some -9s for fatalities. In those cases,
-dispute-level fatality is momentarily recoded to be .5 (i.e. fatal, but without too many fatalities). This is a missing data problem
-that Gibler and Miller correct in a forthcoming publication in \emph{Journal of Conflict Resolution}. Until then, this function makes
-that kind of determination about disputes with missing fatalities.
+As of writing, the Correlates of War and Gibler-Miller-Little conflict
+data record some -9s for fatalities. In those cases, dispute-level
+fatality is momentarily recoded to be .5 (i.e. fatal, but without too
+many fatalities). This is a missing data problem that Gibler and Miller
+correct in a forthcoming publication in \emph{Journal of Conflict Resolution}.
+Until then, this function makes that kind of determination about
+disputes with missing fatalities.
 
 \code{wc_fatality()} is a simple, less wordy, shortcut for the same function.
 }

@@ -1,18 +1,24 @@
 #' Show Duplicate Observations in Your Dyad-Year or State-Year Data Frame
 #'
-#' @description \code{show_duplicates()} shows which data are duplicated in data generated in \pkg{peacesciencer}. It's a
-#' useful diagnostic tool for users doing some do-it-yourself functions with \pkg{peacesciencer}.
+#' @description \code{show_duplicates()} shows which data are duplicated
+#' in data generated in \pkg{peacesciencer}. It's a useful diagnostic tool
+#' for users doing some do-it-yourself functions with \pkg{peacesciencer}.
 #'
 #'
-#' @return \code{show_duplicates()} takes a dyad-year data frame or state-year data frame generated in \pkg{peacesciencer} and
-#' shows what observations are duplicated by unique combination of dyad-year or state-year, contingent on what was supplied to it.
+#' @return \code{show_duplicates()} takes a dyad-year data frame or
+#' state-year data frame generated in \pkg{peacesciencer} and
+#' shows what observations are duplicated by unique combination of
+#' dyad-year or state-year, contingent on what was supplied to it.
 #'
-#' @details The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-#' \code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-#' of the proverbial pipe.
+#' @details The function leans on attributes of the data that are
+#' provided by the \code{create_dyadyear()} or \code{create_stateyear()}
+#' function. Make sure that function (or data created by that function)
+#' appear at the top of the proverbial pipe.
 #'
-#' The data returned will also have a new column called \code{duplicated}. Thus, an implicit assumption in this function is the
-#' user does not have a column in the data with this name that is of interest to the user. It will be overwritten.
+#' The data returned will also have a new column called \code{duplicated}.
+#' Thus, an implicit assumption in this function is the user does not have
+#' a column in the data with this name that is of interest to the user.
+#' It will be overwritten.
 #'
 #'
 #' @author Steven V. Miller

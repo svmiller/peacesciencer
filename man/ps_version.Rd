@@ -10,31 +10,40 @@ ps_version(cat)
 \item{cat}{a category of data type the user wants, as a character}
 }
 \value{
-\code{ps_version()} takes a character vector and scans the \code{ps_data_version} data in
-this package to return information about the particular data versions included in \pkg{peacesciencer} as well as a suggested
-citation key for scanning \code{ps_cite()}. If no category is specified for searching, it just returns all version
-information for all data included in functions in this package.
+\code{ps_version()} takes a character vector and scans the
+\code{ps_data_version} data in this package to return information about
+the particular data versions included in \pkg{peacesciencer} as well as a
+suggested citation key for scanning \code{ps_cite()}. If no category is
+specified for searching, it just returns all version information for
+all data included in functions in this package.
 }
 \description{
-\code{ps_version()} allows the user to see version information about data
-included in \pkg{peacesciencer}.
+\code{ps_version()} allows the user to see version information
+about data included in \pkg{peacesciencer}.
 }
 \details{
-The base functionality here is simple pattern-matching on keywords in \code{ps_data_version}. This
-simple pattern-matching is in base R. I assume the user has some familiarity with the types of data included in
+The base functionality here is simple pattern-matching on keywords
+in \code{ps_data_version}. This simple pattern-matching is in base R. I
+assume the user has some familiarity with the types of data included in
 this package.
 
-The searching is done by category included in the \code{ps_data_version} data. Users may want to just minimally run
-\code{ps_version()} with no argument specified to see for themselves what's in it. Typing \code{unique(ps_data_version$category)}
-may also get them started.
+The searching is done by category included in the \code{ps_data_version} data.
+Users may want to just minimally run \code{ps_version()} with no argument
+specified to see for themselves what's in it. Typing
+\code{unique(ps_data_version$category)} may also get them started.
 
-The user can consider this a companion function to \code{ps_cite()}. Whereas \code{ps_cite()} will return the appropriate citation
-to use in the bibliography, it may not tell them the version number at all. For example, the classic and suggested citations for
-the Correlates of War National Material Capabilities data are too Singer et al. (1972) and Singer (1987), though the data included
-in this package are about 30 years older than the most recent citation of the two.
+The user can consider this a companion function to \code{ps_cite()}.
+Whereas \code{ps_cite()} will return the appropriate citation
+to use in the bibliography, it may not tell them the version number at all.
+For example, the classic and suggested citations for the Correlates of War
+National Material Capabilities data are too Singer et al. (1972) and Singer
+(1987), though the data included in this package are about 30 years older
+than the most recent citation of the two.
 
-The information communicated here can/should be included alongside a parenthetical citation. For example, the contiguity data are
-quite a bit more current than the suggested citation to Stinnett et al. (2002). Thus, a user may want to cite the data in their paper
+The information communicated here can/should be included alongside a
+parenthetical citation. For example, the contiguity data are
+quite a bit more current than the suggested citation to Stinnett et al.
+(2002). Thus, a user may want to cite the data in their paper
 as something like (Stinnett et al. 2002, v. 3.2).
 }
 \examples{
