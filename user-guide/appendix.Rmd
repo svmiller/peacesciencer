@@ -22,6 +22,7 @@ params:
   removetitleabstract: ""
 appendix: TRUE
 appendixletter: "A"
+pandocparas: TRUE
 anonymous: "`r params$anonymous`"
 doublespacing: "`r params$doublespacing`"
 removetitleabstract: "`r params$removetitleabstract`"
@@ -81,6 +82,17 @@ options(knitr.kable.NA = '')
 # A Section with a Citation to Get Started
 
 @miller2017etjc
+
+# Vignette: A Discussion of Various Joins in `{peacesciencer}`
+
+```{r child = '../vignettes/joins.Rmd', echo=TRUE}
+```
+
+# Vignette: `{peacesciencer}` Data Versions
+
+```{r child = '../vignettes/versions.Rmd', echo=TRUE}
+```
+
 
 \newpage
 

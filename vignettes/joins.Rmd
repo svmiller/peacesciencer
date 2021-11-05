@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup, message=F}
+```{r vig-joins-setup, message=F}
 library(tidyverse)
 library(lubridate)
 library(peacesciencer)
@@ -26,7 +26,8 @@ Here is a simple example of how this works in the `{peacesciencer}` context. Ass
 ```{r}
 tibble(ccode = c(2, 20, 200)) %>%
   # rowwise() is a great trick for nesting sequences in tibbles
-  # This parlor trick, for example, generates state-year data out of raw state data in create_stateyears()
+  # This parlor trick, for example, generates state-year data out of raw state 
+  # data in create_stateyears()
   rowwise() %>%
   # create a sequence as a nested column
   mutate(year = list(seq(2016, 2020))) %>%
@@ -132,14 +133,17 @@ Here is a basic example of what a semi-join is doing in this context, with an il
 ```{r}
 tibble(code = c("A", "B"),
        stdate = make_date(1975, 01, 01),
-       enddate = c(make_date(1975, 01, 14), make_date(1975, 01, 07))) -> state_system
+       enddate = c(make_date(1975, 01, 14), 
+                   make_date(1975, 01, 07))) -> state_system
 
 state_system
 
 tibble(code = c("A", "B", "B", "B"),
        leader = c("Archie", "Brian", "Cornelius", "Pete"),
-       stdate = c(make_date(1975, 01, 01), make_date(1975, 01, 01), make_date(1975, 01, 04), make_date(1975, 01, 08)),
-       enddate = c(make_date(1975, 01, 14), make_date(1975, 01, 04), make_date(1975, 01, 08), make_date(1975, 01, 14))) -> leaders
+       stdate = c(make_date(1975, 01, 01), make_date(1975, 01, 01), 
+                  make_date(1975, 01, 04), make_date(1975, 01, 08)),
+       enddate = c(make_date(1975, 01, 14), make_date(1975, 01, 04), 
+                   make_date(1975, 01, 08), make_date(1975, 01, 14))) -> leaders
 
 leaders
 ```
