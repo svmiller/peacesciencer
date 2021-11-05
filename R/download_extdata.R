@@ -44,7 +44,8 @@
 #'
 #' These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
 #' data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
-#' system). The data downloaded by this function are about 2.2 megabytes in size.
+#' system), but standardizes leader dyad-years to Gleditsch-Ward state system dates. The data downloaded by this function
+#' are about 2.2 megabytes in size.
 #'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
@@ -66,10 +67,10 @@
 #' (Correlates of War, version 4.1) and UN General Assembly voting (Voeten, version 17)
 #' for all members of the Correlates of War state system. The alliance data cover the time period from 1816 to 2012,
 #' and the UN voting data from 1946 to 2015. The similarity measures include various versions of Ritter and Signorino's
-#' S (weighted/non-weighted by material capabilities; squared/absolute distance metrics) as well as the
-#' chance-corrected measures Cohen's Kappa and Scott's Pi. The measures based on alliance data come in two versions:
+#' "S" (weighted/non-weighted by material capabilities; squared/absolute distance metrics) as well as the
+#' chance-corrected measures Cohen's (1960) kappa and Scott's (1955) pi. The measures based on alliance data come in two versions:
 #' one is based on valued alliance ties and the other is based on binary alliance ties. Data were last updated on December 7, 2017,
-#' and this description was effectively plagiarized from Frank Haege's Dataverse.
+#' and this description was effectively plagiarized (with his blessing) from Frank Haege's Dataverse.
 #'
 #' These data are directed dyad-years with 17 columns and 1,872,198 observations. They will almost certainly be the largest data set
 #' I nudge/ask you to download remotely. The file containing this information is 18.6 MB in size. To reduce size further, these
@@ -162,6 +163,16 @@ download_extdata <- function(overwrite = FALSE) {
       message("gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
     }
 
+    # dyadic foreign policy similarity data now...
+    if(file.exists(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))) {
+      message("dyadic_fp_similarity.rds is in /extdata in the package directory.")
+    } else {
+      message("Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.")
+      dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
+      saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
+      message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
+    }
+
 
   } else if (overwrite == TRUE){
     message("Downloading cow_trade_ddy.rds from http://svmiller.com/R/peacesciencer.")
@@ -178,6 +189,11 @@ download_extdata <- function(overwrite = FALSE) {
     gw_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
     saveRDS(gw_dir_leader_dyad_years, paste0(extdata_dir,"/gw_dir_leader_dyad_years.rds"))
     message("gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
+
+    message("Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.")
+    dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
+    saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
+    message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
 
 
   } else {

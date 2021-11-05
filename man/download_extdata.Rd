@@ -62,7 +62,8 @@ data downloaded by this function are about 2 megabytes in size.\tabular{ll}{
 
 These are all directed leader dyad-year data from 1870-2015. Data come from the Archigos data (version 4.1). The
 data represent every possible dyadic leader-pairing in the Archigos data (which is denominated in the Gleditsch-Ward
-system). The data downloaded by this function are about 2.2 megabytes in size.\tabular{ll}{
+system), but standardizes leader dyad-years to Gleditsch-Ward state system dates. The data downloaded by this function
+are about 2.2 megabytes in size.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
    \code{year} \tab the year \cr
    \code{obsid1} \tab the unique Archigos (v. 4.1) observation ID for the first leader \cr
@@ -75,6 +76,42 @@ system). The data downloaded by this function are about 2.2 megabytes in size.\t
    \code{leaderage2} \tab the approximate age (i.e. \code{year - yrborn}) for \code{obsid2} in the year \cr
    \code{yrinoffice1} \tab a running count for the tenure of \code{obsid1}, starting at 1. \cr
    \code{yrinoffice2} \tab a running count for the tenure of \code{obsid2}, starting at 1. \cr
+}
+
+}
+
+\subsection{Chance-Corrected Measures of Foreign Policy Similarity (FPSIM, v. 2)}{
+
+The FPSIM data set provides measures of foreign policy similarity of dyads based on alliance ties
+(Correlates of War, version 4.1) and UN General Assembly voting (Voeten, version 17)
+for all members of the Correlates of War state system. The alliance data cover the time period from 1816 to 2012,
+and the UN voting data from 1946 to 2015. The similarity measures include various versions of Ritter and Signorino's
+"S" (weighted/non-weighted by material capabilities; squared/absolute distance metrics) as well as the
+chance-corrected measures Cohen's (1960) kappa and Scott's (1955) pi. The measures based on alliance data come in two versions:
+one is based on valued alliance ties and the other is based on binary alliance ties. Data were last updated on December 7, 2017,
+and this description was effectively plagiarized (with his blessing) from Frank Haege's Dataverse.
+
+These data are directed dyad-years with 17 columns and 1,872,198 observations. They will almost certainly be the largest data set
+I nudge/ask you to download remotely. The file containing this information is 18.6 MB in size. To reduce size further, these
+decimal points have also been rounded to three spots.\tabular{ll}{
+   COLUMN \tab DESCRIPTION \cr
+   \code{year} \tab the year \cr
+   \code{ccode1} \tab the Correlates of War state code for the first state \cr
+   \code{ccode2} \tab the Correlates of War state code for the second state \cr
+   \code{srsvas} \tab unweighted S (squared distances, valued alliance data) \cr
+   \code{srswvas} \tab weighted S (squared distances, valued alliance data) \cr
+   \code{srsvaa} \tab unweighted S (absolute distances, valued alliance data) \cr
+   \code{srswvaa} \tab weighted S (absolute distances, valued alliance data) \cr
+   \code{kappava} \tab Kappa (squared distances, valued alliance data) \cr
+   \code{piva} \tab Pi (suared distances, valued alliance data) \cr
+   \code{srsba} \tab Unweighted S (binary alliance data) \cr
+   \code{srswba} \tab Weighted S (binary alliance data) \cr
+   \code{kappaba} \tab Kappa (binary alliance data) \cr
+   \code{piba} \tab Pi denominator (binary alliance data) \cr
+   \code{srsvvs} \tab Unweighted S (squared distances, valued UN voting data) \cr
+   \code{srsvva} \tab Unweighted S (absolute distances, valued UN voting data) \cr
+   \code{kappavv} \tab Kappa (squared distances, valued UN voting data) \cr
+   \code{pivv} \tab Pi (squared distances, valued UN voting data) \cr
 }
 
 }
@@ -95,6 +132,9 @@ Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: E
 
 Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 \emph{Journal of Peace Research} 46(2): 269--83.
+
+Haege, Frank. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
+\emph{Political Analysis} 19(3): 287-305.
 }
 \author{
 Steven V. Miller
