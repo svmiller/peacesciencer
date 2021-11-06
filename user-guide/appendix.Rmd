@@ -27,6 +27,8 @@ anonymous: "`r params$anonymous`"
 doublespacing: "`r params$doublespacing`"
 removetitleabstract: "`r params$removetitleabstract`"
 linkcolor: black
+nocite: |
+  @cartersmith2020fml, @andersetal2020bbgb
 header-includes:
   - \usepackage{longtable}
   - \usepackage{csquotes}
@@ -79,9 +81,9 @@ options(knitr.kable.NA = '')
 \newpage
 
 
-# A Section with a Citation to Get Started
+# Workflow Citations
 
-@miller2017etjc
+Let's start with @wickhametal2019wt and @arelbundock2021m. I know I've used others (e.g. bookdown). I'll just have to get on those when the time comes.
 
 # Vignette: A Discussion of Various Joins in `{peacesciencer}`
 
@@ -92,6 +94,7 @@ options(knitr.kable.NA = '')
 
 ```{r child = '../vignettes/versions.Rmd', echo=TRUE}
 ```
+
 
 
 \newpage
