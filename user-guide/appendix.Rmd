@@ -83,7 +83,11 @@ options(knitr.kable.NA = '')
 
 # Workflow Citations
 
-Let's start with @wickhametal2019wt and @arelbundock2021m. I know I've used others (e.g. bookdown). I'll just have to get on those when the time comes.
+The following tools and libraries were integral to the creation of the manuscript and I want to at least acknowledge them here. Wickham et al.'s [-@wickhametal2019wt] `{tidyverse}` was the primary toolkit for most data transformation techniques outlined here, and indeed forms the implicit foundation of the package itself.[^aboutotherpackages] Regression tables were formatted in `{modelsummary}` [@arelbundock2021m], which itself uses and suggests `{kableExtra}` as a back-end for presentation [@zhu2021k]. The document itself is a dynamic document using familiar R Markdown syntax [@xieetal2020rmc], knitted to various outputs [@xie2015ddrk], using `{bookdown}` for additional functionality [@xie2016b].
+
+I offer these citations first as an acknowledgement of these important contributions to our collective research productivity. Space restrictions in our journal preclude us from citing these important tools, even if they are truly ancillary to the product they help produce. No matter, I intend to put this appendix on my website to give Google Scholar the opportunity to find these citations and count them toward the *h*-indexes of the researchers responsible for these important tools.
+
+[^aboutotherpackages]: The appendix will reference component packages of `{tidyverse}`, but follows the encouragement of @wickhametal2019wt to cite the overall suite of packages outlined in @wickhametal2019wt rather than reference the packages individually.
 
 # Vignette: A Discussion of Various Joins in `{peacesciencer}`
 
