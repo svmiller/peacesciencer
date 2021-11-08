@@ -42,8 +42,8 @@
   
 
 <meta property="og:title" content="Add dyadic foreign policy similarity measures to your data — add_fpsim" />
-<meta property="og:description" content="add_fpsim() allows you to add a variety of dyadic foreign policy similarity measures to your
-(dyad-year, leader-dyad-year) data frame" />
+<meta property="og:description" content="add_fpsim() allows you to add a variety of dyadic foreign policy
+similarity measures to your (dyad-year, leader-dyad-year) data frame" />
 
 
 
@@ -165,8 +165,8 @@
     </div>
 
     <div class="ref-description">
-    <p><code>add_fpsim()</code> allows you to add a variety of dyadic foreign policy similarity measures to your
-(dyad-year, leader-dyad-year) data frame</p>
+    <p><code>add_fpsim()</code> allows you to add a variety of dyadic foreign policy
+similarity measures to your (dyad-year, leader-dyad-year) data frame</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_fpsim</span><span class='op'>(</span><span class='va'>data</span>, <span class='va'>keep</span><span class='op'>)</span></pre>
@@ -180,10 +180,11 @@
     </tr>
     <tr>
       <th>keep</th>
-      <td><p>an optional parameter, specified as a character vector, about what
-dyadic foreign policy similarity measure(s) the user wants returned from this function. If
-<code>keep</code> is not specified, the function returns all 14 dyadic foreign policy similiarity measures
-calculated by Haege (2011). Otherwise, the function subsets the underlying data to just what the
+      <td><p>an optional parameter, specified as a character vector, about
+what dyadic foreign policy similarity measure(s) the user wants returned
+from this function. If <code>keep</code> is not specified, the function returns all
+14 dyadic foreign policy similarity measures calculated by Haege (2011).
+Otherwise, the function subsets the underlying data to just what the
 user wants and merges in that.</p></td>
     </tr>
     </table>
@@ -191,25 +192,80 @@ user wants and merges in that.</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p><code>add_fpsim()</code> takes a (dyad-year, leader-dyad-year) data frame and
-adds information about the dyadic foreign policy similarity, based on several measures calculated and offered by Frank Haege.</p>
+adds information about the dyadic foreign policy similarity, based on
+several measures calculated and offered by Frank Haege.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>For the dyad-year (and leader-dyad-year) data, there must be some kind of information loss in order to reduce the disk space
-data like these command. In this case, all calculations are rounded to three decimal spots. I do not think this to be terribly
-problematic, though I admit I do not like it. If this is a problem for your research question (though I can't imagine it would be),
-you may want to consider not using this function for dyad-year or leader-dyad-year data.</p>
-<p>Be mindful that the data are fundamentally dyad-year and that extensions to leader-level data should be understood
-as approximations for leaders-dyads in a given dyad-year.</p>
-<p>The data this function uses are directed dyad-year and the merge is a left-join, making this function agnostic about
-whether your dyad-year (or leader-dyad-year) data are directed or non-directed.</p>
+    <p>For the dyad-year (and leader-dyad-year) data, there must be some kind of
+information loss in order to reduce the disk space data like these command.
+In this case, all calculations are rounded to three decimal spots. I do
+not think this to be terribly problematic, though I admit I do not like it.
+If this is a problem for your research question (though I can't imagine it
+would be), you may want to consider not using this function for dyad-year
+or leader-dyad-year data.</p>
+<p>Be mindful that the data are fundamentally dyad-year and that extensions to
+leader-level data should be understood as approximations for leaders-dyads
+in a given dyad-year.</p>
+<p>The data this function uses are directed dyad-year and the merge is a
+left-join, making this function agnostic about whether your dyad-year
+(or leader-dyad-year) data are directed or non-directed.</p>
+<p>Haege's (2011) article reads at first glance as agnostic about which of
+these particular measures you should consider a "preferred" or "default"
+measure of dyadic foreign policy similarity. Indeed, the 2011
+publication in <em>Political Analysis</em> mostly drives the point home that
+S has important limitations and the multiple variants Haege calculates
+are not substitutable. This means a user interested in measuring
+dyadic foreign policy similarity might have to cycle through all
+of them to assess their varying effects whereas a user interested
+in this as just a control variable for the model can (probably)
+get by with picking just one and not belaboring the measure
+any further.</p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Suggested Defaults</h3>
+
+
+<p>An evaluation of the data, the article, and an email exchange
+with the author leads to the following points the user should
+consider. What follows is a rationale for why users should consider
+kappa a default measure for dyadic foreign policy similarity, though
+why the "valued" equivalent for the alliance data is an inadvisable
+default. The example at the end of the document offers the operational
+"nudge" for what the user should want from this function.</p><ul>
+<li><p>The choice of measure will in part depend on the temporal
+domain. If the user has just a post-WWII sample, the UN voting measures
+offer better coverage. We're all partial to the alliance data, though,
+because of its 19th century coverage.</p></li>
+<li><p>Haege implores the use of chance-corrected measures, like Cohen's (1960)
+kappa or Scott's (1955) pi. Of the two, Haege suggests kappa over pi. The
+rationale is the user would need to build in a very strong assumption that
+the baseline propensity of forming a tie in the dyad is the same for
+both members of the dyad to make Scott's (1955) pi as appropriate an estimate
+as Cohen's (1960) kappa even as both have the important chance correction.</p></li>
+<li><p>The choice of squared versus absolute distances is arbitrary. Users
+probably do not think about the differences, or know about the differences.
+"S" was usually calculated with absolute differences in software packages,
+though this was never usually belabored to the user. Comparability with "S"
+might be an argument in favor of absolute distance as a default, but keep
+in mind that squared distances are much more commonly used in most other
+types of distance and association metrics.</p></li>
+<li><p>The choice of binary or valued is also a design choice for the user to
+consider on the full merits, though the practice of valuing alliance ties
+on a quantitative scale builds in strong assumptions about the scale of
+alliance strength as presented in something like the Correlates of War
+or ATOP typology. "S" has traditionally done this by default, which is
+another reason its application in a lot of quantitative peace science
+research is suspect.</p></li>
+</ul>
+
+
     <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
     
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>The Main Source of the Data</h3>
 
 
-<p>For any use of these data whatsoever, please cite Haege (2011). Data are version 2.0.</p><ul>
-<li><p>Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
+<p>For any use of these data whatsoever, please cite Haege (2011).
+Data are version 2.0.</p><ul>
+<li><p>Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of
+Foreign Policy Similarity for Chance Agreement."
 <em>Political Analysis</em> 19(3): 287-305.</p></li>
 </ul>
 
@@ -217,27 +273,37 @@ whether your dyad-year (or leader-dyad-year) data are directed or non-directed.<
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Citations for the Particular Similarity Measure You Choose</h3>
 
 
-<p>Additional citations depend on what particular measure of similarity you're using,
-either Signorino and Ritter's (1999) "S", Cohen's (1960) kappa and Scott's (1955) pi. Haege (2011) is
-part of a chorus arguing against the use of "S", though "S" measures are included in these data if you elect
-to ignore the chorus and use this mesure. Haege (2011) instead argues for a chance-corrected measure of dyadic
-foreign policy similarity, either Cohen's (1960) kappa or Scott's (1955) pi.</p><ul>
-<li><p>Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales." <em>Educational and Psychological Measurement</em> 20(1): 37-46.</p></li>
-<li><p>Scott, William A. 1955. "Reliability of Content Analysis: The Case of Nominal Scale Coding." <em>Public Opinion Quarterly</em> 19(3): 321--5.</p></li>
-<li><p>Signorino, Curtis S. and Jeffrey M. Ritter. "Tau-b or Not Tau-B: Measuring the Similarity of Foreign Policy Positions." 43(1): 115--44.</p></li>
+<p>Additional citations depend on what particular measure of similarity you're
+using, either Signorino and Ritter's (1999) "S", Cohen's (1960) kappa and
+Scott's (1955) pi. Haege (2011) is part of a chorus arguing against the use
+of "S", though "S" measures are included in these data if you elect to
+ignore the chorus and use this measure. Haege (2011) instead argues for a
+chance-corrected measure of dyadic foreign policy similarity, either
+Cohen's (1960) kappa or Scott's (1955) pi.</p><ul>
+<li><p>Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales."
+<em>Educational and Psychological Measurement</em> 20(1): 37-46.</p></li>
+<li><p>Scott, William A. 1955. "Reliability of Content Analysis: The Case of
+Nominal Scale Coding." <em>Public Opinion Quarterly</em> 19(3): 321--5.</p></li>
+<li><p>Signorino, Curtis S. and Jeffrey M. Ritter. "Tau-b or Not Tau-B: Measuring
+the Similarity of Foreign Policy Positions." 43(1): 115--44.</p></li>
 </ul>
 
 
 <h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Citations for the Underlying Data Informing the Similarity Measure</h3>
 
 
-<p>Haege (2011) also suggests you cite the underlying data informing the similarity measure, whether it is UN voting or alliances. In his case,
-he recommended a Voeten citation from 2013 and the alliance data proper. In the case of the alliances, I know Gibler's (2009)
-book is recommended even if the alliance data have since been updated (and reflected in this measure). In the UN voting data, my
-understanding is the 2017 paper in <em>Journal of Conflict Resolution</em> is also the preferred citation.</p><ul>
-<li><p>Bailey, Michael A., Anton Strezhnev, and Erik Voeten. 2017. "Estimating the Dynamic State Preferences from United Nations Voting Data."
+<p>Haege (2011) also suggests you cite the underlying data informing the
+similarity measure, whether it is UN voting or alliances. In his case,
+he recommended a Voeten citation from 2013 and the alliance data proper.
+In the case of the alliances, I know Gibler's (2009) book is recommended
+even if the alliance data have since been updated (and reflected in this
+measure). In the UN voting data, my understanding is the 2017 paper in
+<em>Journal of Conflict Resolution</em> is also the preferred citation.</p><ul>
+<li><p>Bailey, Michael A., Anton Strezhnev, and Erik Voeten. 2017.
+"Estimating the Dynamic State Preferences from United Nations Voting Data."
 <em>Journal of Conflict Resolution</em> 61(2): 430--456.</p></li>
-<li><p>Gibler, Douglas M. 2009. <em>International Military Alliances, 1648-2008</em>. Washington DC: CQ Press.</p></li>
+<li><p>Gibler, Douglas M. 2009. <em>International Military Alliances, 1648-2008</em>.
+Washington DC: CQ Press.</p></li>
 </ul>
 
 
@@ -247,13 +313,16 @@ understanding is the 2017 paper in <em>Journal of Conflict Resolution</em> is al
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='co'># just call `library(tidyverse)` at the top of the your script</span>
+<span class='co'># just call `library(tidyverse)` at the top of the your script.</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://magrittr.tidyverse.org'>magrittr</a></span><span class='op'>)</span>
-<span class='co'># The function below works, but depends on running `download_extdata()` beforehand.</span>
+<span class='co'># The function below works, but depends on</span>
+<span class='co'># running `download_extdata()` beforehand.</span>
 <span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_fpsim</span><span class='op'>(</span><span class='op'>)</span>
 
-<span class='co'># Select just kappa and pi from binary alliance data</span>
-<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_fpsim</span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"kappaba"</span>, <span class='st'>"piba"</span><span class='op'>)</span><span class='op'>)</span>
+<span class='co'># Select just the two kappa measures that are suggested defaults.</span>
+<span class='co'># `kappaba`: kappa for binary alliance data if you have pre-WWII data.</span>
+<span class='co'># `kappavv`: kappa for UN voting data if you just post-WWII data.</span>
+<span class='va'>cow_ddy</span> <span class='op'>%&gt;%</span> <span class='fu'>add_fpsim</span><span class='op'>(</span>keep<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"kappaba"</span>, <span class='st'>"kappavv"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='op'>}</span>
 </div></pre>

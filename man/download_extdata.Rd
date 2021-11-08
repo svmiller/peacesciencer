@@ -118,7 +118,7 @@ decimal points have also been rounded to three spots.\tabular{ll}{
    \code{srsvaa} \tab unweighted S (absolute distances, valued alliance data) \cr
    \code{srswvaa} \tab weighted S (absolute distances, valued alliance data) \cr
    \code{kappava} \tab Kappa (squared distances, valued alliance data) \cr
-   \code{piva} \tab Pi (suared distances, valued alliance data) \cr
+   \code{piva} \tab Pi (squared distances, valued alliance data) \cr
    \code{srsba} \tab Unweighted S (binary alliance data) \cr
    \code{srswba} \tab Weighted S (binary alliance data) \cr
    \code{kappaba} \tab Kappa (binary alliance data) \cr

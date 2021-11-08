@@ -9,78 +9,148 @@ add_fpsim(data, keep)
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 
-\item{keep}{an optional parameter, specified as a character vector, about what
-dyadic foreign policy similarity measure(s) the user wants returned from this function. If
-\code{keep} is not specified, the function returns all 14 dyadic foreign policy similiarity measures
-calculated by Haege (2011). Otherwise, the function subsets the underlying data to just what the
+\item{keep}{an optional parameter, specified as a character vector, about
+what dyadic foreign policy similarity measure(s) the user wants returned
+from this function. If \code{keep} is not specified, the function returns all
+14 dyadic foreign policy similarity measures calculated by Haege (2011).
+Otherwise, the function subsets the underlying data to just what the
 user wants and merges in that.}
 }
 \value{
 \code{add_fpsim()} takes a (dyad-year, leader-dyad-year) data frame and
-adds information about the dyadic foreign policy similarity, based on several measures calculated and offered by Frank Haege.
+adds information about the dyadic foreign policy similarity, based on
+several measures calculated and offered by Frank Haege.
 }
 \description{
-\code{add_fpsim()} allows you to add a variety of dyadic foreign policy similarity measures to your
-(dyad-year, leader-dyad-year) data frame
+\code{add_fpsim()} allows you to add a variety of dyadic foreign policy
+similarity measures to your (dyad-year, leader-dyad-year) data frame
 }
 \details{
-For the dyad-year (and leader-dyad-year) data, there must be some kind of information loss in order to reduce the disk space
-data like these command. In this case, all calculations are rounded to three decimal spots. I do not think this to be terribly
-problematic, though I admit I do not like it. If this is a problem for your research question (though I can't imagine it would be),
-you may want to consider not using this function for dyad-year or leader-dyad-year data.
+For the dyad-year (and leader-dyad-year) data, there must be some kind of
+information loss in order to reduce the disk space data like these command.
+In this case, all calculations are rounded to three decimal spots. I do
+not think this to be terribly problematic, though I admit I do not like it.
+If this is a problem for your research question (though I can't imagine it
+would be), you may want to consider not using this function for dyad-year
+or leader-dyad-year data.
 
-Be mindful that the data are fundamentally dyad-year and that extensions to leader-level data should be understood
-as approximations for leaders-dyads in a given dyad-year.
+Be mindful that the data are fundamentally dyad-year and that extensions to
+leader-level data should be understood as approximations for leaders-dyads
+in a given dyad-year.
 
-The data this function uses are directed dyad-year and the merge is a left-join, making this function agnostic about
-whether your dyad-year (or leader-dyad-year) data are directed or non-directed.
+The data this function uses are directed dyad-year and the merge is a
+left-join, making this function agnostic about whether your dyad-year
+(or leader-dyad-year) data are directed or non-directed.
+
+Haege's (2011) article reads at first glance as agnostic about which of
+these particular measures you should consider a "preferred" or "default"
+measure of dyadic foreign policy similarity. Indeed, the 2011
+publication in \emph{Political Analysis} mostly drives the point home that
+S has important limitations and the multiple variants Haege calculates
+are not substitutable. This means a user interested in measuring
+dyadic foreign policy similarity might have to cycle through all
+of them to assess their varying effects whereas a user interested
+in this as just a control variable for the model can (probably)
+get by with picking just one and not belaboring the measure
+any further.
+\subsection{Suggested Defaults}{
+
+An evaluation of the data, the article, and an email exchange
+with the author leads to the following points the user should
+consider. What follows is a rationale for why users should consider
+kappa a default measure for dyadic foreign policy similarity, though
+why the "valued" equivalent for the alliance data is an inadvisable
+default. The example at the end of the document offers the operational
+"nudge" for what the user should want from this function.
+\itemize{
+\item The choice of measure will in part depend on the temporal
+domain. If the user has just a post-WWII sample, the UN voting measures
+offer better coverage. We're all partial to the alliance data, though,
+because of its 19th century coverage.
+\item Haege implores the use of chance-corrected measures, like Cohen's (1960)
+kappa or Scott's (1955) pi. Of the two, Haege suggests kappa over pi. The
+rationale is the user would need to build in a very strong assumption that
+the baseline propensity of forming a tie in the dyad is the same for
+both members of the dyad to make Scott's (1955) pi as appropriate an estimate
+as Cohen's (1960) kappa even as both have the important chance correction.
+\item The choice of squared versus absolute distances is arbitrary. Users
+probably do not think about the differences, or know about the differences.
+"S" was usually calculated with absolute differences in software packages,
+though this was never usually belabored to the user. Comparability with "S"
+might be an argument in favor of absolute distance as a default, but keep
+in mind that squared distances are much more commonly used in most other
+types of distance and association metrics.
+\item The choice of binary or valued is also a design choice for the user to
+consider on the full merits, though the practice of valuing alliance ties
+on a quantitative scale builds in strong assumptions about the scale of
+alliance strength as presented in something like the Correlates of War
+or ATOP typology. "S" has traditionally done this by default, which is
+another reason its application in a lot of quantitative peace science
+research is suspect.
+}
+}
 }
 \examples{
 \dontrun{
-# just call `library(tidyverse)` at the top of the your script
+# just call `library(tidyverse)` at the top of the your script.
 library(magrittr)
-# The function below works, but depends on running `download_extdata()` beforehand.
+# The function below works, but depends on
+# running `download_extdata()` beforehand.
 cow_ddy \%>\% add_fpsim()
 
-# Select just kappa and pi from binary alliance data
-cow_ddy \%>\% add_fpsim(keep=c("kappaba", "piba"))
+# Select just the two kappa measures that are suggested defaults.
+# `kappaba`: kappa for binary alliance data if you have pre-WWII data.
+# `kappavv`: kappa for UN voting data if you just post-WWII data.
+cow_ddy \%>\% add_fpsim(keep=c("kappaba", "kappavv"))
 
 }
 }
 \references{
 \subsection{The Main Source of the Data}{
 
-For any use of these data whatsoever, please cite Haege (2011). Data are version 2.0.
+For any use of these data whatsoever, please cite Haege (2011).
+Data are version 2.0.
 \itemize{
-\item Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
+\item Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of
+Foreign Policy Similarity for Chance Agreement."
 \emph{Political Analysis} 19(3): 287-305.
 }
 }
 
 \subsection{Citations for the Particular Similarity Measure You Choose}{
 
-Additional citations depend on what particular measure of similarity you're using,
-either Signorino and Ritter's (1999) "S", Cohen's (1960) kappa and Scott's (1955) pi. Haege (2011) is
-part of a chorus arguing against the use of "S", though "S" measures are included in these data if you elect
-to ignore the chorus and use this mesure. Haege (2011) instead argues for a chance-corrected measure of dyadic
-foreign policy similarity, either Cohen's (1960) kappa or Scott's (1955) pi.
+Additional citations depend on what particular measure of similarity you're
+using, either Signorino and Ritter's (1999) "S", Cohen's (1960) kappa and
+Scott's (1955) pi. Haege (2011) is part of a chorus arguing against the use
+of "S", though "S" measures are included in these data if you elect to
+ignore the chorus and use this measure. Haege (2011) instead argues for a
+chance-corrected measure of dyadic foreign policy similarity, either
+Cohen's (1960) kappa or Scott's (1955) pi.
 \itemize{
-\item Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales." \emph{Educational and Psychological Measurement} 20(1): 37-46.
-\item Scott, William A. 1955. "Reliability of Content Analysis: The Case of Nominal Scale Coding." \emph{Public Opinion Quarterly} 19(3): 321--5.
-\item Signorino, Curtis S. and Jeffrey M. Ritter. "Tau-b or Not Tau-B: Measuring the Similarity of Foreign Policy Positions." 43(1): 115--44.
+\item Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales."
+\emph{Educational and Psychological Measurement} 20(1): 37-46.
+\item Scott, William A. 1955. "Reliability of Content Analysis: The Case of
+Nominal Scale Coding." \emph{Public Opinion Quarterly} 19(3): 321--5.
+\item Signorino, Curtis S. and Jeffrey M. Ritter. "Tau-b or Not Tau-B: Measuring
+the Similarity of Foreign Policy Positions." 43(1): 115--44.
 }
 }
 
 \subsection{Citations for the Underlying Data Informing the Similarity Measure}{
 
-Haege (2011) also suggests you cite the underlying data informing the similarity measure, whether it is UN voting or alliances. In his case,
-he recommended a Voeten citation from 2013 and the alliance data proper. In the case of the alliances, I know Gibler's (2009)
-book is recommended even if the alliance data have since been updated (and reflected in this measure). In the UN voting data, my
-understanding is the 2017 paper in \emph{Journal of Conflict Resolution} is also the preferred citation.
+Haege (2011) also suggests you cite the underlying data informing the
+similarity measure, whether it is UN voting or alliances. In his case,
+he recommended a Voeten citation from 2013 and the alliance data proper.
+In the case of the alliances, I know Gibler's (2009) book is recommended
+even if the alliance data have since been updated (and reflected in this
+measure). In the UN voting data, my understanding is the 2017 paper in
+\emph{Journal of Conflict Resolution} is also the preferred citation.
 \itemize{
-\item Bailey, Michael A., Anton Strezhnev, and Erik Voeten. 2017. "Estimating the Dynamic State Preferences from United Nations Voting Data."
+\item Bailey, Michael A., Anton Strezhnev, and Erik Voeten. 2017.
+"Estimating the Dynamic State Preferences from United Nations Voting Data."
 \emph{Journal of Conflict Resolution} 61(2): 430--456.
-\item Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}. Washington DC: CQ Press.
+\item Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}.
+Washington DC: CQ Press.
 }
 }
 }

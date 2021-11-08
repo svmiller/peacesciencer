@@ -99,7 +99,7 @@
 #' | `srsvaa` | unweighted S (absolute distances, valued alliance data) |
 #' | `srswvaa` | weighted S (absolute distances, valued alliance data) |
 #' | `kappava` | Kappa (squared distances, valued alliance data) |
-#' | `piva` | Pi (suared distances, valued alliance data) |
+#' | `piva` | Pi (squared distances, valued alliance data) |
 #' | `srsba` | Unweighted S (binary alliance data) |
 #' | `srswba` | Weighted S (binary alliance data) |
 #' | `kappaba` | Kappa (binary alliance data) |
