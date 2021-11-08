@@ -96,7 +96,7 @@ based on alliance ties (Correlates of War, version 4.1) and UN General
 Assembly voting (Voeten, version 17) for all members of the Correlates of
 War state system. The alliance data cover the time period from 1816 to 2012,
 and the UN voting data from 1946 to 2015. The similarity measures include
-various versions of Ritter and Signorino's "S" (weighted/non-weighted by
+various versions of Ritter and Signorino's \emph{S} (weighted/non-weighted by
 material capabilities; squared/absolute distance metrics) as well as the
 chance-corrected measures Cohen's (1960) kappa and Scott's (1955) pi. The
 measures based on alliance data come in two versions: one is based on valued
@@ -113,18 +113,18 @@ decimal points have also been rounded to three spots.\tabular{ll}{
    \code{year} \tab the year \cr
    \code{ccode1} \tab the Correlates of War state code for the first state \cr
    \code{ccode2} \tab the Correlates of War state code for the second state \cr
-   \code{srsvas} \tab unweighted S (squared distances, valued alliance data) \cr
-   \code{srswvas} \tab weighted S (squared distances, valued alliance data) \cr
-   \code{srsvaa} \tab unweighted S (absolute distances, valued alliance data) \cr
-   \code{srswvaa} \tab weighted S (absolute distances, valued alliance data) \cr
+   \code{srsvas} \tab unweighted \emph{S} (squared distances, valued alliance data) \cr
+   \code{srswvas} \tab weighted \emph{S} (squared distances, valued alliance data) \cr
+   \code{srsvaa} \tab unweighted \emph{S} (absolute distances, valued alliance data) \cr
+   \code{srswvaa} \tab weighted \emph{S} (absolute distances, valued alliance data) \cr
    \code{kappava} \tab Kappa (squared distances, valued alliance data) \cr
    \code{piva} \tab Pi (squared distances, valued alliance data) \cr
-   \code{srsba} \tab Unweighted S (binary alliance data) \cr
-   \code{srswba} \tab Weighted S (binary alliance data) \cr
+   \code{srsba} \tab Unweighted \emph{S} (binary alliance data) \cr
+   \code{srswba} \tab Weighted \emph{S} (binary alliance data) \cr
    \code{kappaba} \tab Kappa (binary alliance data) \cr
    \code{piba} \tab Pi denominator (binary alliance data) \cr
-   \code{srsvvs} \tab Unweighted S (squared distances, valued UN voting data) \cr
-   \code{srsvva} \tab Unweighted S (absolute distances, valued UN voting data) \cr
+   \code{srsvvs} \tab Unweighted \emph{S} (squared distances, valued UN voting data) \cr
+   \code{srsvva} \tab Unweighted \emph{S} (absolute distances, valued UN voting data) \cr
    \code{kappavv} \tab Kappa (squared distances, valued UN voting data) \cr
    \code{pivv} \tab Pi (squared distances, valued UN voting data) \cr
 }

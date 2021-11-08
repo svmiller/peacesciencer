@@ -33,7 +33,7 @@
 #' these particular measures you should consider a "preferred" or "default"
 #' measure of dyadic foreign policy similarity. Indeed, the 2011
 #' publication in *Political Analysis* mostly drives the point home that
-#' S has important limitations and the multiple variants Haege calculates
+#' *S* has important limitations and the multiple variants Haege calculates
 #' are not substitutable. This means a user interested in measuring
 #' dyadic foreign policy similarity might have to cycle through all
 #' of them to assess their varying effects whereas a user interested
@@ -45,7 +45,7 @@
 #'
 #' An evaluation of the data, the article, and an email exchange
 #' with the author leads to the following points the user should
-#' consider. What follows is a rationale for why users should consider
+#' consider. What follows is a rationale for why users should think of
 #' kappa a default measure for dyadic foreign policy similarity, though
 #' why the "valued" equivalent for the alliance data is an inadvisable
 #' default. The example at the end of the document offers the operational
@@ -63,8 +63,8 @@
 #' as Cohen's (1960) kappa even as both have the important chance correction.
 #' - The choice of squared versus absolute distances is arbitrary. Users
 #' probably do not think about the differences, or know about the differences.
-#' "S" was usually calculated with absolute differences in software packages,
-#' though this was never usually belabored to the user. Comparability with "S"
+#' *S* was usually calculated with absolute differences in software packages,
+#' though this was never usually belabored to the user. Comparability with *S*
 #' might be an argument in favor of absolute distance as a default, but keep
 #' in mind that squared distances are much more commonly used in most other
 #' types of distance and association metrics.
@@ -72,7 +72,7 @@
 #' consider on the full merits, though the practice of valuing alliance ties
 #' on a quantitative scale builds in strong assumptions about the scale of
 #' alliance strength as presented in something like the Correlates of War
-#' or ATOP typology. "S" has traditionally done this by default, which is
+#' or ATOP typology. *S* has traditionally done this by default, which is
 #' another reason its application in a lot of quantitative peace science
 #' research is suspect.
 #'
@@ -101,9 +101,9 @@
 #' ## Citations for the Particular Similarity Measure You Choose
 #'
 #' Additional citations depend on what particular measure of similarity you're
-#' using, either Signorino and Ritter's (1999) "S", Cohen's (1960) kappa and
+#' using, either Signorino and Ritter's (1999) *S*, Cohen's (1960) kappa and
 #' Scott's (1955) pi. Haege (2011) is part of a chorus arguing against the use
-#' of "S", though "S" measures are included in these data if you elect to
+#' of *S*, though *S* measures are included in these data if you elect to
 #' ignore the chorus and use this measure. Haege (2011) instead argues for a
 #' chance-corrected measure of dyadic foreign policy similarity, either
 #' Cohen's (1960) kappa or Scott's (1955) pi.

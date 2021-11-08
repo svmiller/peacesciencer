@@ -75,7 +75,7 @@
 #' Assembly voting (Voeten, version 17) for all members of the Correlates of
 #' War state system. The alliance data cover the time period from 1816 to 2012,
 #' and the UN voting data from 1946 to 2015. The similarity measures include
-#' various versions of Ritter and Signorino's "S" (weighted/non-weighted by
+#' various versions of Ritter and Signorino's *S* (weighted/non-weighted by
 #' material capabilities; squared/absolute distance metrics) as well as the
 #' chance-corrected measures Cohen's (1960) kappa and Scott's (1955) pi. The
 #' measures based on alliance data come in two versions: one is based on valued
@@ -94,18 +94,18 @@
 #' | `year` | the year |
 #' | `ccode1` | the Correlates of War state code for the first state |
 #' | `ccode2` | the Correlates of War state code for the second state |
-#' | `srsvas` | unweighted S (squared distances, valued alliance data) |
-#' | `srswvas` | weighted S (squared distances, valued alliance data) |
-#' | `srsvaa` | unweighted S (absolute distances, valued alliance data) |
-#' | `srswvaa` | weighted S (absolute distances, valued alliance data) |
+#' | `srsvas` | unweighted *S* (squared distances, valued alliance data) |
+#' | `srswvas` | weighted *S* (squared distances, valued alliance data) |
+#' | `srsvaa` | unweighted *S* (absolute distances, valued alliance data) |
+#' | `srswvaa` | weighted *S* (absolute distances, valued alliance data) |
 #' | `kappava` | Kappa (squared distances, valued alliance data) |
 #' | `piva` | Pi (squared distances, valued alliance data) |
-#' | `srsba` | Unweighted S (binary alliance data) |
-#' | `srswba` | Weighted S (binary alliance data) |
+#' | `srsba` | Unweighted *S* (binary alliance data) |
+#' | `srswba` | Weighted *S* (binary alliance data) |
 #' | `kappaba` | Kappa (binary alliance data) |
 #' | `piba` | Pi denominator (binary alliance data) |
-#' | `srsvvs` | Unweighted S (squared distances, valued UN voting data) |
-#' | `srsvva` | Unweighted S (absolute distances, valued UN voting data) |
+#' | `srsvvs` | Unweighted *S* (squared distances, valued UN voting data) |
+#' | `srsvva` | Unweighted *S* (absolute distances, valued UN voting data) |
 #' | `kappavv` | Kappa (squared distances, valued UN voting data) |
 #' | `pivv` | Pi (squared distances, valued UN voting data) |
 #'
