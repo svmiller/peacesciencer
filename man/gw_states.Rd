@@ -21,10 +21,18 @@ gw_states
 These are the independent states in Gleditsch and Ward's data.
 }
 \details{
-Data originally provided by Gleditsch with no column names. Column names were added before some light re-cleaning in order
-to generate these data.
+Data originally provided by Gleditsch with no column names. Column names
+were added before some light re-cleaning in order to generate these data.
+"Wuerttemberg" and "Cote D'Ivoire" in the \code{statename} column needed to be
+renamed to ensure maximal compliance with CRAN, which raises notes for
+every non-ASCII character that appears in its package. I do not think this
+to be problematic at all and, after all, state names should never be
+a basis for something like a match or merge you would do in
+\pkg{countrycode}.
 }
 \references{
-Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" International Interactions 25(4): 393--413.
+Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of
+Independent States since the Congress of Vienna."
+\emph{International Interactions} 25(4): 393--413.
 }
 \keyword{datasets}

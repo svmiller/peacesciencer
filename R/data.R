@@ -377,10 +377,22 @@ NULL
 #' \item{\code{enddate}}{the end date in the data}
 #' }
 #'
-#' @details Data originally provided by Gleditsch with no column names. Column names were added before some light re-cleaning in order
-#' to generate these data.
+#' @details
 #'
-#' @references Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of Independent States since the Congress of Vienna" International Interactions 25(4): 393--413.
+#' Data originally provided by Gleditsch with no column names. Column names
+#' were added before some light re-cleaning in order to generate these data.
+#' "Wuerttemberg" and "Cote D'Ivoire" in the `statename` column needed to be
+#' renamed to ensure maximal compliance with CRAN, which raises notes for
+#' every non-ASCII character that appears in its package. I do not think this
+#' to be problematic at all and, after all, state names should never be
+#' a basis for something like a match or merge you would do in
+#' \pkg{countrycode}.
+#'
+#' @references
+#'
+#' Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of
+#' Independent States since the Congress of Vienna."
+#' *International Interactions* 25(4): 393--413.
 #'
 "gw_states"
 

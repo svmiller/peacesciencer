@@ -122,5 +122,14 @@ cow_gw_years %>%
   group_by(ccode, year) %>%
   slice(1) -> cow_gw_years
 
+# Forgot to do this the first time around
+cow_gw_years %>% ungroup() -> cow_gw_years
+
+# In case this doesn't register...
+cow_gw_years %>%
+  mutate(gw_statename = case_when(
+    gwcode == 437 ~ "Cote D'Ivoire",
+    gwcode == 271 ~ "Wuerttemberg",
+    TRUE ~ gw_statename)) -> cow_gw_years
 
 save(cow_gw_years, file="data/cow_gw_years.rda")

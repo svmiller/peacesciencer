@@ -1,4 +1,4 @@
-cow_ddy <- create_dyadyears()
+cow_ddy <- create_dyadyears(system = 'cow')
 
 save(cow_ddy, file= "data/cow_ddy.rda")
 

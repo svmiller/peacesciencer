@@ -200,4 +200,10 @@ gw_cow_years %>%
 #     TRUE ~ gwcode
 #   ))
 
+# In case this doesn't register...
+gw_cow_years %>%
+  mutate(gw_statename = case_when(gwcode == 437 ~ "Cote D'Ivoire",
+                                  gwcode == 271 ~ "Wuerttemberg",
+                                  TRUE ~ gw_statename)) -> gw_cow_years
+
 save(gw_cow_years, file="data/gw_cow_years.rda")
