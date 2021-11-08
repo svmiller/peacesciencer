@@ -120,7 +120,7 @@
 \newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
-\title{\texttt{\{peacesciencer\}}: A User's Guide for Quantitative Peace Science in R\thanks{Replication files are available on the author's Github account (\url{https://github.com/svmiller/peacesciencer}). \textbf{Current version}: June 21, 2021; \textbf{Corresponding author}: \href{mailto:steven.v.miller@gmail.com}{\nolinkurl{steven.v.miller@gmail.com}}.}}
+\title{\texttt{\{peacesciencer\}}: An R Package for Quantitative Peace Science Research\thanks{Replication files are available on the author's Github account (\url{https://github.com/svmiller/peacesciencer}). \textbf{Current version}: November 08, 2021; \textbf{Corresponding author}: \href{mailto:steven.v.miller@gmail.com}{\nolinkurl{steven.v.miller@gmail.com}}.}}
 \author{true}
 \date{}
 
@@ -156,7 +156,7 @@
 \makeatother
 
 
-\title{\texttt{\{peacesciencer\}}: A User's Guide for Quantitative Peace Science in R\thanks{Replication files are available on the author's Github account (\url{https://github.com/svmiller/peacesciencer}). \textbf{Current version}: June 21, 2021; \textbf{Corresponding author}: \href{mailto:steven.v.miller@gmail.com}{\nolinkurl{steven.v.miller@gmail.com}}.}  }
+\title{\texttt{\{peacesciencer\}}: An R Package for Quantitative Peace Science Research\thanks{Replication files are available on the author's Github account (\url{https://github.com/svmiller/peacesciencer}). \textbf{Current version}: November 08, 2021; \textbf{Corresponding author}: \href{mailto:steven.v.miller@gmail.com}{\nolinkurl{steven.v.miller@gmail.com}}.}  }
 
 \date{}
 
@@ -199,7 +199,7 @@
             bookmarks=true,
             pdfauthor={Steven V. Miller (Clemson University)},
              pdfkeywords = {software, statistical analysis, peace science, reproducibility},
-            pdftitle={\texttt{\{peacesciencer\}}: A User's Guide for Quantitative Peace Science in R},
+            pdftitle={\texttt{\{peacesciencer\}}: An R Package for Quantitative Peace Science Research},
             colorlinks=true,
             citecolor=blue,
             urlcolor=blue,
@@ -244,6 +244,8 @@
 \usepackage[normalem]{ulem}
 \usepackage{makecell}
 \usepackage{xcolor}
+\usepackage{siunitx}
+\newcolumntype{d}{S[input-symbols = ()]}
 
 \newtheorem{hypothesis}{Hypothesis}
 
@@ -252,7 +254,7 @@
 % really wish we'd knock this shit off with moving tables/figures to back of document
 % but, alas...
 
-
+% 
 \begin{document}
 
 % \textsf{\textbf{This is sans-serif bold text.}}
@@ -552,32 +554,32 @@ Table \ref{tab:tab-dd} is a formatted version of the results of a logistic regre
 \toprule
 \textbf{ } & \textbf{Model 1}\\
 \midrule
-Land Contiguity & 1.044*\\
- & (0.057)\\
-Dyadic CINC Proportion (Lower/Higher) & 0.444*\\
- & (0.036)\\
-CoW Major Power in Dyad & 0.145*\\
- & \vphantom{1} (0.058)\\
-Defense Pact & -0.102+\\
- & (0.058)\\
-Dyadic Democracy (Weak-Link) & -0.509*\\
- & (0.052)\\
-Dyadic GDP per Capita (Weak-Link) & 0.262*\\
- & (0.050)\\
-Dyadic Militarization (Minimum) & 0.267*\\
- & (0.023)\\
-t & -0.148*\\
- & (0.005)\\
-t\textasciicircum{}2 & 0.002*\\
- & \vphantom{1} (0.000)\\
-t\textasciicircum{}3 & 0.000*\\
- & (0.000)\\
-Intercept & -3.055*\\
- & (0.064)\\
+Land Contiguity & \num{1.044}*\\
+ & (\num{0.057})\\
+Dyadic CINC Proportion (Lower/Higher) & \num{0.444}*\\
+ & (\num{0.036})\\
+CoW Major Power in Dyad & \num{0.145}*\\
+ & \vphantom{1} (\num{0.058})\\
+Defense Pact & \num{-0.102}+\\
+ & (\num{0.058})\\
+Dyadic Democracy (Weak-Link) & \num{-0.509}*\\
+ & (\num{0.052})\\
+Dyadic GDP per Capita (Weak-Link) & \num{0.262}*\\
+ & (\num{0.050})\\
+Dyadic Militarization (Minimum) & \num{0.267}*\\
+ & (\num{0.023})\\
+t & \num{-0.148}*\\
+ & (\num{0.005})\\
+t\textasciicircum2 & \num{0.002}*\\
+ & \vphantom{1} (\num{0.000})\\
+t\textasciicircum3 & \num{0.000}*\\
+ & (\num{0.000})\\
+Intercept & \num{-3.055}*\\
+ & (\num{0.064})\\
 \midrule
-Num.Obs. & 106937\\
+Num.Obs. & \num{106937}\\
 \bottomrule
-\multicolumn{2}{l}{\textsuperscript{} + p $<$ 0.1, * p $<$ 0.05}\\
+\multicolumn{2}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05}\\
 \end{tabular}
 \end{table}
 
@@ -619,30 +621,30 @@ Finally, we can add some covariates of interest to these data. \texttt{add\_peac
 \toprule
 \textbf{ } & \textbf{All UCDP Conflicts} & \textbf{Wars Only}\\
 \midrule
-Population Size (Lagged) & 0.229* & 0.272*\\
- & (0.067) & (0.106)\\
-Extended UDS Democracy Score (Lagged) & 0.257 & -0.085\\
- & (0.181) & (0.270)\\
-Extended UDS Democracy Score\textasciicircum{}2 (Lagged) & -0.726* & -0.761*\\
- & (0.211) & (0.352)\\
-\% Mountainous Terrain (Logged) & 0.055 & 0.342*\\
- & (0.067) & (0.112)\\
-Ethnic Fractionalization & 0.442 & 0.333\\
- & (0.358) & (0.554)\\
-Religious Fractionalization & -0.389 & -0.281\\
- & (0.402) & (0.593)\\
-t & -0.074+ & -0.111*\\
- & (0.039) & (0.056)\\
-t\textasciicircum{}2 & 0.004* & 0.005+\\
- & (0.002) & (0.003)\\
-t\textasciicircum{}3 & 0.000* & 0.000+\\
- & (0.000) & (0.000)\\
-Intercept & -5.097* & -6.590*\\
- & (1.351) & (2.084)\\
+Population Size (Lagged) & \num{0.229}* & \num{0.272}*\\
+ & (\num{0.067}) & (\num{0.106})\\
+Extended UDS Democracy Score (Lagged) & \num{0.257} & \num{-0.085}\\
+ & (\num{0.181}) & (\num{0.270})\\
+Extended UDS Democracy Score\textasciicircum2 (Lagged) & \num{-0.726}* & \num{-0.761}*\\
+ & (\num{0.211}) & (\num{0.352})\\
+\% Mountainous Terrain (Logged) & \num{0.055} & \num{0.342}*\\
+ & (\num{0.067}) & (\num{0.112})\\
+Ethnic Fractionalization & \num{0.442} & \num{0.333}\\
+ & (\num{0.358}) & (\num{0.554})\\
+Religious Fractionalization & \num{-0.389} & \num{-0.281}\\
+ & (\num{0.402}) & (\num{0.593})\\
+t & \num{-0.074}+ & \num{-0.111}*\\
+ & (\num{0.039}) & (\num{0.056})\\
+t\textasciicircum2 & \num{0.004}* & \num{0.005}+\\
+ & (\num{0.002}) & (\num{0.003})\\
+t\textasciicircum3 & \num{0.000}* & \num{0.000}+\\
+ & (\num{0.000}) & (\num{0.000})\\
+Intercept & \num{-5.097}* & \num{-6.590}*\\
+ & (\num{1.351}) & (\num{2.084})\\
 \midrule
-Num.Obs. & 8192 & 8192\\
+Num.Obs. & \num{8192} & \num{8192}\\
 \bottomrule
-\multicolumn{3}{l}{\textsuperscript{} + p $<$ 0.1, * p $<$ 0.05}\\
+\multicolumn{3}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05}\\
 \end{tabular}
 \end{table}
 
