@@ -11,7 +11,7 @@ rmarkdown::render("ms.Rmd",
                               ps_manuals = "http://svmiller.com/peacesciencer/reference",
                               ps_github = "https://github.com/svmiller/peacesciencer/"),
                   bookdown::pdf_document2(template = stevetemplates::templ_article2(),
-                                          keep_tex = TRUE,
+                                          keep_tex = FALSE,
                                           latex_engine = "xelatex", dev="cairo_pdf",
                                           toc = FALSE, number_sections = FALSE))
 

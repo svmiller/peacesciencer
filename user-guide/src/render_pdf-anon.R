@@ -11,6 +11,7 @@ rmarkdown::render("ms.Rmd", output_file="doc/ms-anon.pdf",
                               ps_manuals = "[LINK REDACTED FOR PEER REVIEW]",
                               ps_github = "[LINK REDACTED FOR PEER REVIEW]"),
                   bookdown::pdf_document2(template = stevetemplates::templ_article2(),
+                                          keep_tex = FALSE,
                                           latex_engine = "xelatex", dev= "cairo_pdf",
                                           toc = FALSE, number_sections = FALSE))
 

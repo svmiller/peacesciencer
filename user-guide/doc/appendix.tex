@@ -1,0 +1,1035 @@
+% ARTICLE 2 ----
+% This is just here so I know exactly what I'm looking at in Rstudio when messing with stuff.
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  11pt,
+]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+  \setmainfont[]{cochineal}
+  \setsansfont[]{Linux Biolinum O}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}
+    }
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1 \everypar{\setlength{\hangindent}{\cslhangindent}}\ignorespaces\fi
+  % set entry spacing
+  \ifnum #2 > 0
+  \setlength{\parskip}{#2\baselineskip}
+  \fi
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+
+
+\title{APPENDIX: \texttt{\{peacesciencer\}}: An R Package for Quantitative Peace Science Research}
+\author{}
+\date{November 08, 2021}
+
+% Jesus, okay, everything above this comment is default Pandoc LaTeX template. -----
+% ----------------------------------------------------------------------------------
+% I think I had assumed beamer and LaTex were somehow different templates.
+
+
+\usepackage{kantlipsum}
+
+\usepackage{abstract}
+\renewcommand{\abstractname}{}    % clear the title
+\renewcommand{\absnamepos}{empty} % originally center
+
+\renewenvironment{abstract}
+ {{%
+    \setlength{\leftmargin}{0mm}
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \relax}
+ {\endlist}
+
+\makeatletter
+\def\@maketitle{%
+  \newpage
+%  \null
+%  \vskip 2em%
+%  \begin{center}%
+  \let \footnote \thanks
+      {\fontsize{18}{20}\selectfont\raggedright  \setlength{\parindent}{0pt} \@title \par}
+    }
+%\fi
+\makeatother
+
+
+\title{APPENDIX: \texttt{\{peacesciencer\}}: An R Package for Quantitative Peace Science Research }
+
+\date{}
+
+\usepackage{titlesec}
+
+% 
+\titleformat*{\section}{\large\bfseries}
+\titleformat*{\subsection}{\normalsize\itshape} % \small\uppercase
+\titleformat*{\subsubsection}{\normalsize\itshape}
+\titleformat*{\paragraph}{\normalsize\itshape}
+\titleformat*{\subparagraph}{\normalsize\itshape}
+
+% add some other packages ----------
+
+% \usepackage{multicol}
+% This should regulate where figures float
+% See: https://tex.stackexchange.com/questions/2275/keeping-tables-figures-close-to-where-they-are-mentioned
+\usepackage[section]{placeins}
+
+
+
+\makeatletter
+\@ifpackageloaded{hyperref}{}{%
+\ifxetex
+  \PassOptionsToPackage{hyphens}{url}\usepackage[setpagesize=false, % page size defined by xetex
+              unicode=false, % unicode breaks when used with xetex
+              xetex]{hyperref}
+\else
+  \PassOptionsToPackage{hyphens}{url}\usepackage[draft,unicode=true]{hyperref}
+\fi
+}
+
+\@ifpackageloaded{color}{
+    \PassOptionsToPackage{usenames,dvipsnames}{color}
+}{%
+    \usepackage[usenames,dvipsnames]{color}
+}
+\makeatother
+\hypersetup{breaklinks=true,
+            bookmarks=true,
+            pdfauthor={},
+             pdfkeywords = {software, statistical analysis, peace science, reproducibility},
+            pdftitle={APPENDIX: \texttt{\{peacesciencer\}}: An R Package for Quantitative Peace Science Research},
+            colorlinks=true,
+            citecolor=blue,
+            urlcolor=blue,
+            linkcolor=black,
+            pdfborder={0 0 0}}
+\urlstyle{same}  % don't use monospace font for urls
+
+% Add an option for endnotes. -----
+
+
+\renewcommand*\thetable{A.\arabic{table}}
+\renewcommand*\thefigure{A.\arabic{figure}}
+
+% This will better treat References as a section when using natbib
+% https://tex.stackexchange.com/questions/49962/bibliography-title-fontsize-problem-with-bibtex-and-the-natbib-package
+
+% set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+\usepackage{longtable}
+\usepackage{csquotes}
+\LTcapwidth=.95\textwidth
+\linespread{1.05}
+\usepackage{hyperref}
+\usepackage{setspace}
+\renewcommand{\thepage}{A-\arabic{page}}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+
+\newtheorem{hypothesis}{Hypothesis}
+
+
+% trick for moving figures to back of document
+% really wish we'd knock this shit off with moving tables/figures to back of document
+% but, alas...
+
+% 
+\begin{document}
+
+% \textsf{\textbf{This is sans-serif bold text.}}
+% \textbf{\textsf{This is bold sans-serif text.}}
+
+
+% \maketitle
+
+{% \usefont{T1}{pnc}{m}{n}
+\setlength{\parindent}{0pt}
+\thispagestyle{plain}
+{%\fontsize{18}{20}\selectfont\raggedright
+\maketitle  % title \par
+
+}
+
+
+
+
+{
+   \vskip 13.5pt\relax \normalsize\fontsize{11}{12}
+    
+
+}
+
+}
+
+
+
+
+
+
+\vskip -8.5pt
+
+
+ % removetitleabstract
+
+
+
+% We'll put doublespacing here
+% Remember to cut it out later before bib
+\tableofcontents
+\newpage
+
+\hypertarget{workflow-citations}{%
+\section{Workflow Citations}\label{workflow-citations}}
+
+The following tools and libraries were integral to the creation of the manuscript and I want to at least acknowledge them here. Wickham et al.'s (2019) \texttt{\{tidyverse\}} was the primary toolkit for most data transformation techniques outlined here, and indeed forms the implicit foundation of the package itself.\footnote{The appendix will reference component packages of \texttt{\{tidyverse\}}, but follows the encouragement of Wickham et al. (2019) to cite the overall suite of packages outlined in Wickham et al. (2019) rather than reference the packages individually.} Regression tables were formatted in \texttt{\{modelsummary\}} (Arel-Bundock, 2021), which itself uses and suggests \texttt{\{kableExtra\}} as a back-end for presentation (Zhu, 2021). The document itself is a dynamic document using familiar R Markdown syntax (Xie, Dervieux \& Riederer, 2020), knitted to various outputs (Xie, 2015), using \texttt{\{bookdown\}} for additional functionality (Xie, 2016).
+
+I offer these citations first as an acknowledgment of these important contributions to our collective research productivity. Space restrictions in our journal preclude us from citing these important tools, even if they are truly ancillary to the product they help produce. No matter, I intend to put this appendix on my website to give Google Scholar the opportunity to find these citations and count them toward the \emph{h}-indexes of the researchers responsible for these important tools.
+
+\hypertarget{vignette-a-discussion-of-various-joins-in-peacesciencer}{%
+\section{\texorpdfstring{Vignette: A Discussion of Various Joins in \texttt{\{peacesciencer\}}}{Vignette: A Discussion of Various Joins in \{peacesciencer\}}}\label{vignette-a-discussion-of-various-joins-in-peacesciencer}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(lubridate)}
+\FunctionTok{library}\NormalTok{(peacesciencer)}
+\end{Highlighting}
+\end{Shaded}
+
+Users who may wish to improve their own data management skills in R by looking how \texttt{\{peacesciencer\}} functions are written will see that basic foundation of \texttt{\{peacesciencer\}}'s functions are so-called ``join'' functions. The ``join'' functions themselves come in \texttt{\{dplyr\}}, a critical dependency for \texttt{\{peacesciencer\}} and the effective engine of \href{https://www.tidyverse.org}{\texttt{\{tidyverse\}}} (which I suggest for a basic workflow tool, and which the user may already be using). Users who have absolutely no idea what these functions are welcome to find more thorough texts about these different types of joins. Their functionality and terminology have \href{https://www.w3schools.com/sql/sql_join.asp}{a clear basis in SQL}, a relational database management system that first appeared in 1974 for data management and data manipulation. My goal here is not to offer a crash course on all these potential ``join'' functions, though helpful \href{https://github.com/gadenbuie/tidyexplain}{visual primers are available in R} and \href{https://blog.codinghorror.com/a-visual-explanation-of-sql-joins/}{SQL}. Instead, I will offer the basic principles these visual primers are communicating as they apply to \texttt{\{peacesciencer\}}.
+
+\hypertarget{left-outer-join}{%
+\subsection{Left (Outer) Join}\label{left-outer-join}}
+
+The first type of join is the most important type of join function in \texttt{\{peacesciencer\}}. Indeed, almost every function in this package that deals with adding variables to a type of data created in \texttt{\{peacesciencer\}} includes it. This is the ``left join'' (\texttt{left\_join()} in \texttt{\{dplyr\}}), alternatively known as \href{https://www.w3schools.com/sql/sql_join_left.asp}{the ``outer join'' or ``left outer join'' in the SQL context}, and is a type of ``mutating join'' in the \texttt{\{tidyverse\}} context. In plain English, the \texttt{left\_join()} assumes two data objects---a ``left'' object (\texttt{x}) and a ``right'' object (\texttt{y})---and returns all rows from the left object (\texttt{x}) with matching information in the right object (\texttt{y}) by a set of common matching keys (or columns in both \texttt{x} and \texttt{y}).
+
+Here is a simple example of how this works in the \texttt{\{peacesciencer\}} context. Assume a simple state-year data set of the United States (\texttt{ccode:\ 2}), Canada (\texttt{ccode:\ 20}), and the United Kingdom (\texttt{ccode:\ 200}) for all years from 2016 to 2020. Recreating this simple kind of data is no problem in R and will serve as our ``left object'' (\texttt{x}) for this simple example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{ccode =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{200}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# rowwise() is a great trick for nesting sequences in tibbles}
+  \CommentTok{\# This parlor trick, for example, generates state{-}year data out of raw state }
+  \CommentTok{\# data in create\_stateyears()}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# create a sequence as a nested column}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{year =} \FunctionTok{list}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{2016}\NormalTok{, }\DecValTok{2020}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# unnest the column}
+  \FunctionTok{unnest}\NormalTok{(year) }\OtherTok{{-}\textgreater{}}\NormalTok{ x}
+
+\NormalTok{x}
+\CommentTok{\#\textgreater{} \# A tibble: 15 x 2}
+\CommentTok{\#\textgreater{}    ccode  year}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{}  1     2  2016}
+\CommentTok{\#\textgreater{}  2     2  2017}
+\CommentTok{\#\textgreater{}  3     2  2018}
+\CommentTok{\#\textgreater{}  4     2  2019}
+\CommentTok{\#\textgreater{}  5     2  2020}
+\CommentTok{\#\textgreater{}  6    20  2016}
+\CommentTok{\#\textgreater{}  7    20  2017}
+\CommentTok{\#\textgreater{}  8    20  2018}
+\CommentTok{\#\textgreater{}  9    20  2019}
+\CommentTok{\#\textgreater{} 10    20  2020}
+\CommentTok{\#\textgreater{} 11   200  2016}
+\CommentTok{\#\textgreater{} 12   200  2017}
+\CommentTok{\#\textgreater{} 13   200  2018}
+\CommentTok{\#\textgreater{} 14   200  2019}
+\CommentTok{\#\textgreater{} 15   200  2020}
+\end{Highlighting}
+\end{Shaded}
+
+Let's assume we're building toward the kind of state-year analysis I describe in \href{http://svmiller.com/peacesciencer/ms.pdf}{the manuscript accompanying this package}. For example, the canonical civil conflict analysis by \href{https://www.cambridge.org/core/journals/american-political-science-review/article/abs/ethnicity-insurgency-and-civil-war/B1D5D0E7C782483C5D7E102A61AD6605}{Fearon and Laitin (2003)} has an outcome that varies by year, but several independent variables that are time-invariant and serve as variables for making state-to-state comparisons in their model of civil war onset (e.g ethnic fractionalization, religious fractionalization, terrain ruggedness). In a similar manner, we have a basic ranking of the United States, Canada, and the United Kingdom in our case. Minimally, the United States scores ``low'', Canada scores ``medium'', and the United Kingdom scores ``high'' on some metric. There is no variation by time in this simple example.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{ccode =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{200}\NormalTok{),}
+       \AttributeTok{ranking =} \FunctionTok{c}\NormalTok{(}\StringTok{"low"}\NormalTok{, }\StringTok{"medium"}\NormalTok{, }\StringTok{"high"}\NormalTok{)) }\OtherTok{{-}\textgreater{}}\NormalTok{ y}
+
+\NormalTok{y}
+\CommentTok{\#\textgreater{} \# A tibble: 3 x 2}
+\CommentTok{\#\textgreater{}   ccode ranking}
+\CommentTok{\#\textgreater{}   \textless{}dbl\textgreater{} \textless{}chr\textgreater{}  }
+\CommentTok{\#\textgreater{} 1     2 low    }
+\CommentTok{\#\textgreater{} 2    20 medium }
+\CommentTok{\#\textgreater{} 3   200 high}
+\end{Highlighting}
+\end{Shaded}
+
+This is the ``right object'' (\texttt{y}) that we want to add to the ``left object'' that serves as our main data frame. Notice that \texttt{x} has no variable for the ranking information we want. It does, however, have matching observations for the state identifiers corresponding with the Correlates of War state codes for the U.S., Canada, and the United Kingdom. The left join (as \texttt{left\_join()}) merges \texttt{y} into \texttt{x}, returning all rows of \texttt{x} with matching information in \texttt{y} based on columns they share in common (here: \texttt{ccode}).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# alternatively, as I tend to do it: x \%\textgreater{}\% left\_join(., y)}
+\FunctionTok{left\_join}\NormalTok{(x, y)}
+\CommentTok{\#\textgreater{} \# A tibble: 15 x 3}
+\CommentTok{\#\textgreater{}    ccode  year ranking}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{} \textless{}chr\textgreater{}  }
+\CommentTok{\#\textgreater{}  1     2  2016 low    }
+\CommentTok{\#\textgreater{}  2     2  2017 low    }
+\CommentTok{\#\textgreater{}  3     2  2018 low    }
+\CommentTok{\#\textgreater{}  4     2  2019 low    }
+\CommentTok{\#\textgreater{}  5     2  2020 low    }
+\CommentTok{\#\textgreater{}  6    20  2016 medium }
+\CommentTok{\#\textgreater{}  7    20  2017 medium }
+\CommentTok{\#\textgreater{}  8    20  2018 medium }
+\CommentTok{\#\textgreater{}  9    20  2019 medium }
+\CommentTok{\#\textgreater{} 10    20  2020 medium }
+\CommentTok{\#\textgreater{} 11   200  2016 high   }
+\CommentTok{\#\textgreater{} 12   200  2017 high   }
+\CommentTok{\#\textgreater{} 13   200  2018 high   }
+\CommentTok{\#\textgreater{} 14   200  2019 high   }
+\CommentTok{\#\textgreater{} 15   200  2020 high}
+\end{Highlighting}
+\end{Shaded}
+
+This is obviously a very simple example, but it scales well even if there is some additional complexity. For example, let's assume we added a simple five-year panel of Australia (\texttt{ccode:\ 900}) to the ``left object'' (\texttt{x}). However, we have no corresponding information about Australia in the ``right object'' (\texttt{y}). Here is what the left join would produce under these circumstances.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{ccode =} \DecValTok{900}\NormalTok{,}
+       \AttributeTok{year =} \FunctionTok{c}\NormalTok{(}\DecValTok{2016}\SpecialCharTok{:}\DecValTok{2020}\NormalTok{)) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(x, .) }\OtherTok{{-}\textgreater{}}\NormalTok{ x}
+
+\NormalTok{x}
+\CommentTok{\#\textgreater{} \# A tibble: 20 x 2}
+\CommentTok{\#\textgreater{}    ccode  year}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{}  1     2  2016}
+\CommentTok{\#\textgreater{}  2     2  2017}
+\CommentTok{\#\textgreater{}  3     2  2018}
+\CommentTok{\#\textgreater{}  4     2  2019}
+\CommentTok{\#\textgreater{}  5     2  2020}
+\CommentTok{\#\textgreater{}  6    20  2016}
+\CommentTok{\#\textgreater{}  7    20  2017}
+\CommentTok{\#\textgreater{}  8    20  2018}
+\CommentTok{\#\textgreater{}  9    20  2019}
+\CommentTok{\#\textgreater{} 10    20  2020}
+\CommentTok{\#\textgreater{} 11   200  2016}
+\CommentTok{\#\textgreater{} 12   200  2017}
+\CommentTok{\#\textgreater{} 13   200  2018}
+\CommentTok{\#\textgreater{} 14   200  2019}
+\CommentTok{\#\textgreater{} 15   200  2020}
+\CommentTok{\#\textgreater{} 16   900  2016}
+\CommentTok{\#\textgreater{} 17   900  2017}
+\CommentTok{\#\textgreater{} 18   900  2018}
+\CommentTok{\#\textgreater{} 19   900  2019}
+\CommentTok{\#\textgreater{} 20   900  2020}
+
+\FunctionTok{left\_join}\NormalTok{(x, y)}
+\CommentTok{\#\textgreater{} \# A tibble: 20 x 3}
+\CommentTok{\#\textgreater{}    ccode  year ranking}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{} \textless{}chr\textgreater{}  }
+\CommentTok{\#\textgreater{}  1     2  2016 low    }
+\CommentTok{\#\textgreater{}  2     2  2017 low    }
+\CommentTok{\#\textgreater{}  3     2  2018 low    }
+\CommentTok{\#\textgreater{}  4     2  2019 low    }
+\CommentTok{\#\textgreater{}  5     2  2020 low    }
+\CommentTok{\#\textgreater{}  6    20  2016 medium }
+\CommentTok{\#\textgreater{}  7    20  2017 medium }
+\CommentTok{\#\textgreater{}  8    20  2018 medium }
+\CommentTok{\#\textgreater{}  9    20  2019 medium }
+\CommentTok{\#\textgreater{} 10    20  2020 medium }
+\CommentTok{\#\textgreater{} 11   200  2016 high   }
+\CommentTok{\#\textgreater{} 12   200  2017 high   }
+\CommentTok{\#\textgreater{} 13   200  2018 high   }
+\CommentTok{\#\textgreater{} 14   200  2019 high   }
+\CommentTok{\#\textgreater{} 15   200  2020 high   }
+\CommentTok{\#\textgreater{} 16   900  2016 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 17   900  2017 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 18   900  2018 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 19   900  2019 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 20   900  2020 \textless{}NA\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Because have no ranking for Australia in this simple example, the left join returns NAs for Australia. The original dimensions of \texttt{x} under these conditions is unaffected.
+
+What would happen if we had an observation in \texttt{y} that has no corresponding match in \texttt{x}? For example, let's assume our ranking data also included a ranking for Denmark (\texttt{ccode:\ 390}), though Denmark does not appear in \texttt{x}. Here is what would happen under these circumstances.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{ccode =} \DecValTok{390}\NormalTok{,}
+       \AttributeTok{ranking =} \StringTok{"high"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(y, .) }\OtherTok{{-}\textgreater{}}\NormalTok{ y}
+
+\NormalTok{y}
+\CommentTok{\#\textgreater{} \# A tibble: 4 x 2}
+\CommentTok{\#\textgreater{}   ccode ranking}
+\CommentTok{\#\textgreater{}   \textless{}dbl\textgreater{} \textless{}chr\textgreater{}  }
+\CommentTok{\#\textgreater{} 1     2 low    }
+\CommentTok{\#\textgreater{} 2    20 medium }
+\CommentTok{\#\textgreater{} 3   200 high   }
+\CommentTok{\#\textgreater{} 4   390 high}
+
+\FunctionTok{left\_join}\NormalTok{(x, y)}
+\CommentTok{\#\textgreater{} \# A tibble: 20 x 3}
+\CommentTok{\#\textgreater{}    ccode  year ranking}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{} \textless{}chr\textgreater{}  }
+\CommentTok{\#\textgreater{}  1     2  2016 low    }
+\CommentTok{\#\textgreater{}  2     2  2017 low    }
+\CommentTok{\#\textgreater{}  3     2  2018 low    }
+\CommentTok{\#\textgreater{}  4     2  2019 low    }
+\CommentTok{\#\textgreater{}  5     2  2020 low    }
+\CommentTok{\#\textgreater{}  6    20  2016 medium }
+\CommentTok{\#\textgreater{}  7    20  2017 medium }
+\CommentTok{\#\textgreater{}  8    20  2018 medium }
+\CommentTok{\#\textgreater{}  9    20  2019 medium }
+\CommentTok{\#\textgreater{} 10    20  2020 medium }
+\CommentTok{\#\textgreater{} 11   200  2016 high   }
+\CommentTok{\#\textgreater{} 12   200  2017 high   }
+\CommentTok{\#\textgreater{} 13   200  2018 high   }
+\CommentTok{\#\textgreater{} 14   200  2019 high   }
+\CommentTok{\#\textgreater{} 15   200  2020 high   }
+\CommentTok{\#\textgreater{} 16   900  2016 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 17   900  2017 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 18   900  2018 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 19   900  2019 \textless{}NA\textgreater{}   }
+\CommentTok{\#\textgreater{} 20   900  2020 \textless{}NA\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+Notice the output of this left join is identical to the output above. Australia is in \texttt{x}, but not in \texttt{y}. Thus, the rows for Australia are returned but the absence of ranking information for Australia in \texttt{y} means the variable is \texttt{NA} for Australia after the merge. Denmark is in \texttt{y}, but not \texttt{x}. Because the left join returns all rows in \texttt{x} with matching information in \texttt{y}, the absence of observations for Denmark in \texttt{x} means there is nowhere for the ranking information to go in the merge. Thus, Denmark's ranking is effectively ignored.
+
+\hypertarget{why-the-left-join-in-particular}{%
+\subsubsection{Why the Left Join, in Particular?}\label{why-the-left-join-in-particular}}
+
+An interested user may ask what's so special about this kind of join that it appears everywhere in \texttt{\{peacesciencer\}}? One is a matter of taste. I could just as well be doing this vignette by reference to the ``right join'', the mirror join to ``left join.'' The right join in \texttt{\{dplyr\}}'s \texttt{right\_join(x,y)} returns all records from \texttt{y} with matching rows in \texttt{x} by common columns, though the equivalency would depend on reversing the order of \texttt{x} and \texttt{y} (i.e.~\texttt{left\_join(x,\ y)} produces the same information as \texttt{right\_join(y,\ x)}). The arrangement of columns would differ in the \texttt{left\_join()} and \texttt{right\_join()} in this simple application even if the same underlying information is there. Ultimately, I tend to \href{http://svmiller.com/blog/2021/01/a-tutorial-on-the-join-family-in-r/\#myadvice}{think ``left-handed''} when it comes to data management and instruct my students to do the same when I introduce them to data transformation in R. I like the intuition, especially in the pipe-based workflow, to start with a master data object at the top of the pipe and keep it ``left'' as I add information to it. It has the benefit of keeping the units of analysis (e.g.~state-years in this simple setup) as the first columns the user sees as well. This is my preferred approach to data transformation and it recurs in \texttt{\{peacesciencer\}} as a result.
+
+Beyond that matter of taste, the left join is everywhere in \texttt{\{peacesciencer\}} because the project endeavors hard to recreate the appropriate universe of cases of interest to the user and allow the user to add stuff to it as they see fit. \texttt{create\_stateyears()} will create the entire universe of state-years from 1816 to the present for a state-year analysis. \texttt{create\_dyadyears()} will create the entire universe of dyad-years from 1816 to the present for a dyad-year analysis. The logic here, as it is implemented in \texttt{\{peacesciencer\}}'s multiple functions, is the type of data the user wants to create has been created for them. The user does not want to expand the data any further than that, though the user may want to do something like reduce the full universe of 1816-2020 state-years to just 1946-2010. However, this is a universe discarded, not a universe that has been augmented or expanded.
+
+With that in mind, every function's use of the left join assumes the data object it receives represents the full universe of cases of interest to the researcher. The left join is just adding information to it, based on matching information in one of its many data sets. When done carefully, the left join is a dutiful way of adding information to a data set without changing the number of rows of the original data set. The number of columns will obviously expand, but the number of rows is unaffected.
+
+\hypertarget{potential-problems-of-the-left-join}{%
+\subsubsection{Potential Problems of the Left Join}\label{potential-problems-of-the-left-join}}
+
+``When done carefully'' is doing some heavy-lifting in that last sentence. So, let me explain some situations where the left join will produce problems for the researcher (even if the join itself is doing what it is supposed to do from an operational standpoint).
+
+The first is less of a problem, at least as I have implemented in \texttt{\{peacesciencer\}}, but more of a caution. In the above example, our panel consists of just the U.S., Canada, the United Kingdom, and Australia. We happen to have a ranking for Denmark, but Denmark wasn't in our panel of (effectively, exclusively) Anglophone states. Therefore, no row is created for Denmark. If it were that important that the left join create those rows for Denmark, we should have had it in the first place. In this case, the left join is behaving as it should. We should have had Denmark in the panel before trying to match information to it.
+
+\texttt{\{peacesciencer\}} circumvents this issue by creating universal data (e.g.~all state-years, all dyad-years, all available leader-years) that the user is free to subset as they see fit. Users should run one of the ``create'' functions (e.g.~\texttt{create\_stateyears()}, \texttt{create\_dyadyears()}) at the top of their script before adding information to it because the left join, as implemented everywhere in this package, is building in an assumption that the universe of cases of interest to the user is represented in the ``left object'' for a left outer join. Basically, do not expect the left join to create new rows in \texttt{x} in a situation where there is a state represented in \texttt{y} but not in \texttt{x}. It will not. This type of join assumes the universe of cases of interest to the researcher already appear in the ``left object.''
+
+The second situation is a bigger problem. Sometimes, often when \href{http://svmiller.com/peacesciencer/articles/state-systems.html}{bouncing between information denominated in Correlates of War states and Gleditsch-Ward states}, there is an unwanted duplicate observation in the data frame to be merged into the primary data of interest to the user. Let's go back to our simple example of \texttt{x} and \texttt{y} here. Everything here performs nicely, though Australia (in \texttt{x}) has no ranking and Denmark (in \texttt{y}) is not in our panel of state-years because it wasn't part of the original universe of cases of interest to us.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\CommentTok{\#\textgreater{} \# A tibble: 20 x 2}
+\CommentTok{\#\textgreater{}    ccode  year}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{}  1     2  2016}
+\CommentTok{\#\textgreater{}  2     2  2017}
+\CommentTok{\#\textgreater{}  3     2  2018}
+\CommentTok{\#\textgreater{}  4     2  2019}
+\CommentTok{\#\textgreater{}  5     2  2020}
+\CommentTok{\#\textgreater{}  6    20  2016}
+\CommentTok{\#\textgreater{}  7    20  2017}
+\CommentTok{\#\textgreater{}  8    20  2018}
+\CommentTok{\#\textgreater{}  9    20  2019}
+\CommentTok{\#\textgreater{} 10    20  2020}
+\CommentTok{\#\textgreater{} 11   200  2016}
+\CommentTok{\#\textgreater{} 12   200  2017}
+\CommentTok{\#\textgreater{} 13   200  2018}
+\CommentTok{\#\textgreater{} 14   200  2019}
+\CommentTok{\#\textgreater{} 15   200  2020}
+\CommentTok{\#\textgreater{} 16   900  2016}
+\CommentTok{\#\textgreater{} 17   900  2017}
+\CommentTok{\#\textgreater{} 18   900  2018}
+\CommentTok{\#\textgreater{} 19   900  2019}
+\CommentTok{\#\textgreater{} 20   900  2020}
+\NormalTok{y}
+\CommentTok{\#\textgreater{} \# A tibble: 4 x 2}
+\CommentTok{\#\textgreater{}   ccode ranking}
+\CommentTok{\#\textgreater{}   \textless{}dbl\textgreater{} \textless{}chr\textgreater{}  }
+\CommentTok{\#\textgreater{} 1     2 low    }
+\CommentTok{\#\textgreater{} 2    20 medium }
+\CommentTok{\#\textgreater{} 3   200 high   }
+\CommentTok{\#\textgreater{} 4   390 high}
+\end{Highlighting}
+\end{Shaded}
+
+Let's assume, however, we mistakenly entered the United Kingdom twice into \texttt{y}. We know these data are supposed to be simple state-level rankings. Each state is supposed to be in there just once. The United Kingdom appears in there twice.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{ccode =} \DecValTok{200}\NormalTok{,}
+       \AttributeTok{ranking =} \StringTok{"high"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(y, .) }\OtherTok{{-}\textgreater{}}\NormalTok{ y2}
+\end{Highlighting}
+\end{Shaded}
+
+If we were to left join \texttt{y2} into \texttt{x}, we get an unwelcome result. The United Kingdom is duplicated for all yearly observations.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{left\_join}\NormalTok{(x, y2) }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ data.frame}
+\CommentTok{\#\textgreater{}    ccode year ranking}
+\CommentTok{\#\textgreater{} 1      2 2016     low}
+\CommentTok{\#\textgreater{} 2      2 2017     low}
+\CommentTok{\#\textgreater{} 3      2 2018     low}
+\CommentTok{\#\textgreater{} 4      2 2019     low}
+\CommentTok{\#\textgreater{} 5      2 2020     low}
+\CommentTok{\#\textgreater{} 6     20 2016  medium}
+\CommentTok{\#\textgreater{} 7     20 2017  medium}
+\CommentTok{\#\textgreater{} 8     20 2018  medium}
+\CommentTok{\#\textgreater{} 9     20 2019  medium}
+\CommentTok{\#\textgreater{} 10    20 2020  medium}
+\CommentTok{\#\textgreater{} 11   200 2016    high}
+\CommentTok{\#\textgreater{} 12   200 2016    high}
+\CommentTok{\#\textgreater{} 13   200 2017    high}
+\CommentTok{\#\textgreater{} 14   200 2017    high}
+\CommentTok{\#\textgreater{} 15   200 2018    high}
+\CommentTok{\#\textgreater{} 16   200 2018    high}
+\CommentTok{\#\textgreater{} 17   200 2019    high}
+\CommentTok{\#\textgreater{} 18   200 2019    high}
+\CommentTok{\#\textgreater{} 19   200 2020    high}
+\CommentTok{\#\textgreater{} 20   200 2020    high}
+\CommentTok{\#\textgreater{} 21   900 2016    \textless{}NA\textgreater{}}
+\CommentTok{\#\textgreater{} 22   900 2017    \textless{}NA\textgreater{}}
+\CommentTok{\#\textgreater{} 23   900 2018    \textless{}NA\textgreater{}}
+\CommentTok{\#\textgreater{} 24   900 2019    \textless{}NA\textgreater{}}
+\CommentTok{\#\textgreater{} 25   900 2020    \textless{}NA\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+It doesn't matter that the duplicate ranking in \texttt{y2} for the UK was the same. It would be messier, sure, if the ranking was different for the duplicate observation, but it matters more here that it was duplicated. In a panel like this, a user who is not careful will have the effect of overweighting those observations that duplicate. In a simple example like this, subsetting to just complete cases (i.e.~Australia has no ranking), the UK is 50\% of all observations despite the fact it should just be a third of observations. That's not ideal for a researcher.
+
+\texttt{\{peacesciencer\}} goes above and beyond to make sure this doesn't happen in the data it creates. Functions are \href{https://github.com/svmiller/peacesciencer/blob/master/tests/testthat/test_nodamnduplicates.R}{aggressively tested to make sure nothing duplicates}, and various parlor tricks (prominently \href{https://dplyr.tidyverse.org/reference/group_by.html}{group-by} \href{https://dplyr.tidyverse.org/reference/slice.html}{slices}) are used internally to cull those duplicate observations. The release of a function that makes prominent use of the left join is done with the assurance it doesn't create a duplicate. No matter, this is the biggest peril of the left join for a researcher who may want to duplicate what \texttt{\{peacesciencer\}} does on their own. Always inspect the data you merge, and the output.
+
+\hypertarget{semi-join}{%
+\subsection{Semi-Join}\label{semi-join}}
+
+The ``semi-join'' (\texttt{semi\_join()} in \texttt{\{dplyr\}}) returns all rows from the left object (\texttt{x}) that have matching values in the right object (\texttt{y}). It is a type of ``filtering join'', which affects the observations and not the variables. It appears just twice in \texttt{\{peacesciencer\}}, serving as a final join in \texttt{create\_leaderdays()} and \texttt{create\_leaderyears()}. In both cases, it serves as a means of standardizing leader data (denominated in the Gleditsch-Ward system, if not necessarily Gleditsch-Ward system dates) to the Correlates of War or Gleditsch-Ward system.
+
+Here is a basic example of what a semi-join is doing in this context, with an illustration of the kind of difficulties that manifest in standardizing Archigos' leader data to the Correlates of War state system. Assume this simple state system that has just two states---``A'' and ``B''---over a two-week period at the start of 1975 (Jan.~1, 1975 to Jan.~14, 1975). In this simple system, ``A'' is a state for the full two week period (Jan.~1-Jan.14) whereas ``B'' is a state for just the first seven days (Jan.~1-Jan.~7) because, let's say, A occupied B and ended its statehood. We also happened to have some leader data for these two states. Over this two week period, our leader data suggests A had just one continuous leader---\href{https://en.wikipedia.org/wiki/Archie_Griffin}{``Archie''}---whereas B had three. \href{https://en.wikipedia.org/wiki/Brian_Baschnagel}{``Brian''} was the leader of B before he retired from office and was replaced by \href{https://en.wikipedia.org/wiki/Cornelius_Greene}{``Cornelius.''} However, he was deposed when A invaded B and was replaced by a puppet head of state, \href{https://en.wikipedia.org/wiki/Pete_Johnson_(American_football)}{``Pete.''} Our data look like this.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{code =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{),}
+       \AttributeTok{stdate =} \FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{01}\NormalTok{),}
+       \AttributeTok{enddate =} \FunctionTok{c}\NormalTok{(}\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{14}\NormalTok{), }
+                   \FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{07}\NormalTok{))) }\OtherTok{{-}\textgreater{}}\NormalTok{ state\_system}
+
+\NormalTok{state\_system}
+\CommentTok{\#\textgreater{} \# A tibble: 2 x 3}
+\CommentTok{\#\textgreater{}   code  stdate     enddate   }
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{} \textless{}date\textgreater{}     \textless{}date\textgreater{}    }
+\CommentTok{\#\textgreater{} 1 A     1975{-}01{-}01 1975{-}01{-}14}
+\CommentTok{\#\textgreater{} 2 B     1975{-}01{-}01 1975{-}01{-}07}
+
+\FunctionTok{tibble}\NormalTok{(}\AttributeTok{code =} \FunctionTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"B"}\NormalTok{, }\StringTok{"B"}\NormalTok{),}
+       \AttributeTok{leader =} \FunctionTok{c}\NormalTok{(}\StringTok{"Archie"}\NormalTok{, }\StringTok{"Brian"}\NormalTok{, }\StringTok{"Cornelius"}\NormalTok{, }\StringTok{"Pete"}\NormalTok{),}
+       \AttributeTok{stdate =} \FunctionTok{c}\NormalTok{(}\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{01}\NormalTok{), }\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{01}\NormalTok{), }
+                  \FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{04}\NormalTok{), }\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{08}\NormalTok{)),}
+       \AttributeTok{enddate =} \FunctionTok{c}\NormalTok{(}\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{14}\NormalTok{), }\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{04}\NormalTok{), }
+                   \FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{08}\NormalTok{), }\FunctionTok{make\_date}\NormalTok{(}\DecValTok{1975}\NormalTok{, }\DecValTok{01}\NormalTok{, }\DecValTok{14}\NormalTok{))) }\OtherTok{{-}\textgreater{}}\NormalTok{ leaders}
+
+\NormalTok{leaders}
+\CommentTok{\#\textgreater{} \# A tibble: 4 x 4}
+\CommentTok{\#\textgreater{}   code  leader    stdate     enddate   }
+\CommentTok{\#\textgreater{}   \textless{}chr\textgreater{} \textless{}chr\textgreater{}     \textless{}date\textgreater{}     \textless{}date\textgreater{}    }
+\CommentTok{\#\textgreater{} 1 A     Archie    1975{-}01{-}01 1975{-}01{-}14}
+\CommentTok{\#\textgreater{} 2 B     Brian     1975{-}01{-}01 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 3 B     Cornelius 1975{-}01{-}04 1975{-}01{-}08}
+\CommentTok{\#\textgreater{} 4 B     Pete      1975{-}01{-}08 1975{-}01{-}14}
+\end{Highlighting}
+\end{Shaded}
+
+We can use some basic \texttt{rowwise()} transformation to recast these data as daily, resulting in state-day data and leader-day data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{state\_system }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =} \FunctionTok{list}\NormalTok{(}\FunctionTok{seq}\NormalTok{(stdate, enddate, }\AttributeTok{by =} \StringTok{\textquotesingle{}1 day\textquotesingle{}}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unnest}\NormalTok{(date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(code, date) }\OtherTok{{-}\textgreater{}}\NormalTok{ state\_days}
+
+\NormalTok{state\_days }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ data.frame}
+\CommentTok{\#\textgreater{}    code       date}
+\CommentTok{\#\textgreater{} 1     A 1975{-}01{-}01}
+\CommentTok{\#\textgreater{} 2     A 1975{-}01{-}02}
+\CommentTok{\#\textgreater{} 3     A 1975{-}01{-}03}
+\CommentTok{\#\textgreater{} 4     A 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 5     A 1975{-}01{-}05}
+\CommentTok{\#\textgreater{} 6     A 1975{-}01{-}06}
+\CommentTok{\#\textgreater{} 7     A 1975{-}01{-}07}
+\CommentTok{\#\textgreater{} 8     A 1975{-}01{-}08}
+\CommentTok{\#\textgreater{} 9     A 1975{-}01{-}09}
+\CommentTok{\#\textgreater{} 10    A 1975{-}01{-}10}
+\CommentTok{\#\textgreater{} 11    A 1975{-}01{-}11}
+\CommentTok{\#\textgreater{} 12    A 1975{-}01{-}12}
+\CommentTok{\#\textgreater{} 13    A 1975{-}01{-}13}
+\CommentTok{\#\textgreater{} 14    A 1975{-}01{-}14}
+\CommentTok{\#\textgreater{} 15    B 1975{-}01{-}01}
+\CommentTok{\#\textgreater{} 16    B 1975{-}01{-}02}
+\CommentTok{\#\textgreater{} 17    B 1975{-}01{-}03}
+\CommentTok{\#\textgreater{} 18    B 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 19    B 1975{-}01{-}05}
+\CommentTok{\#\textgreater{} 20    B 1975{-}01{-}06}
+\CommentTok{\#\textgreater{} 21    B 1975{-}01{-}07}
+
+\NormalTok{leaders }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{rowwise}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{date =} \FunctionTok{list}\NormalTok{(}\FunctionTok{seq}\NormalTok{(stdate, enddate, }\AttributeTok{by =} \StringTok{\textquotesingle{}1 day\textquotesingle{}}\NormalTok{))) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{unnest}\NormalTok{(date) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(code, leader, date) }\OtherTok{{-}\textgreater{}}\NormalTok{ leader\_days}
+
+\NormalTok{leader\_days }\SpecialCharTok{\%\textgreater{}\%}\NormalTok{ data.frame}
+\CommentTok{\#\textgreater{}    code    leader       date}
+\CommentTok{\#\textgreater{} 1     A    Archie 1975{-}01{-}01}
+\CommentTok{\#\textgreater{} 2     A    Archie 1975{-}01{-}02}
+\CommentTok{\#\textgreater{} 3     A    Archie 1975{-}01{-}03}
+\CommentTok{\#\textgreater{} 4     A    Archie 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 5     A    Archie 1975{-}01{-}05}
+\CommentTok{\#\textgreater{} 6     A    Archie 1975{-}01{-}06}
+\CommentTok{\#\textgreater{} 7     A    Archie 1975{-}01{-}07}
+\CommentTok{\#\textgreater{} 8     A    Archie 1975{-}01{-}08}
+\CommentTok{\#\textgreater{} 9     A    Archie 1975{-}01{-}09}
+\CommentTok{\#\textgreater{} 10    A    Archie 1975{-}01{-}10}
+\CommentTok{\#\textgreater{} 11    A    Archie 1975{-}01{-}11}
+\CommentTok{\#\textgreater{} 12    A    Archie 1975{-}01{-}12}
+\CommentTok{\#\textgreater{} 13    A    Archie 1975{-}01{-}13}
+\CommentTok{\#\textgreater{} 14    A    Archie 1975{-}01{-}14}
+\CommentTok{\#\textgreater{} 15    B     Brian 1975{-}01{-}01}
+\CommentTok{\#\textgreater{} 16    B     Brian 1975{-}01{-}02}
+\CommentTok{\#\textgreater{} 17    B     Brian 1975{-}01{-}03}
+\CommentTok{\#\textgreater{} 18    B     Brian 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 19    B Cornelius 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 20    B Cornelius 1975{-}01{-}05}
+\CommentTok{\#\textgreater{} 21    B Cornelius 1975{-}01{-}06}
+\CommentTok{\#\textgreater{} 22    B Cornelius 1975{-}01{-}07}
+\CommentTok{\#\textgreater{} 23    B Cornelius 1975{-}01{-}08}
+\CommentTok{\#\textgreater{} 24    B      Pete 1975{-}01{-}08}
+\CommentTok{\#\textgreater{} 25    B      Pete 1975{-}01{-}09}
+\CommentTok{\#\textgreater{} 26    B      Pete 1975{-}01{-}10}
+\CommentTok{\#\textgreater{} 27    B      Pete 1975{-}01{-}11}
+\CommentTok{\#\textgreater{} 28    B      Pete 1975{-}01{-}12}
+\CommentTok{\#\textgreater{} 29    B      Pete 1975{-}01{-}13}
+\CommentTok{\#\textgreater{} 30    B      Pete 1975{-}01{-}14}
+\end{Highlighting}
+\end{Shaded}
+
+If we wanted to standardize these leader-day data to the state system data, we would semi-join the leader-day data (the left object) with the state-day object (the right object), returning just the leader-day data with valid days in the state system data.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{leader\_days }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{semi\_join}\NormalTok{(., state\_days) }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{  data.frame}
+\CommentTok{\#\textgreater{}    code    leader       date}
+\CommentTok{\#\textgreater{} 1     A    Archie 1975{-}01{-}01}
+\CommentTok{\#\textgreater{} 2     A    Archie 1975{-}01{-}02}
+\CommentTok{\#\textgreater{} 3     A    Archie 1975{-}01{-}03}
+\CommentTok{\#\textgreater{} 4     A    Archie 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 5     A    Archie 1975{-}01{-}05}
+\CommentTok{\#\textgreater{} 6     A    Archie 1975{-}01{-}06}
+\CommentTok{\#\textgreater{} 7     A    Archie 1975{-}01{-}07}
+\CommentTok{\#\textgreater{} 8     A    Archie 1975{-}01{-}08}
+\CommentTok{\#\textgreater{} 9     A    Archie 1975{-}01{-}09}
+\CommentTok{\#\textgreater{} 10    A    Archie 1975{-}01{-}10}
+\CommentTok{\#\textgreater{} 11    A    Archie 1975{-}01{-}11}
+\CommentTok{\#\textgreater{} 12    A    Archie 1975{-}01{-}12}
+\CommentTok{\#\textgreater{} 13    A    Archie 1975{-}01{-}13}
+\CommentTok{\#\textgreater{} 14    A    Archie 1975{-}01{-}14}
+\CommentTok{\#\textgreater{} 15    B     Brian 1975{-}01{-}01}
+\CommentTok{\#\textgreater{} 16    B     Brian 1975{-}01{-}02}
+\CommentTok{\#\textgreater{} 17    B     Brian 1975{-}01{-}03}
+\CommentTok{\#\textgreater{} 18    B     Brian 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 19    B Cornelius 1975{-}01{-}04}
+\CommentTok{\#\textgreater{} 20    B Cornelius 1975{-}01{-}05}
+\CommentTok{\#\textgreater{} 21    B Cornelius 1975{-}01{-}06}
+\CommentTok{\#\textgreater{} 22    B Cornelius 1975{-}01{-}07}
+\end{Highlighting}
+\end{Shaded}
+
+Notice that Pete drops from these data because, in this simple example, Pete was a puppet head of state installed by Archie when state A invaded and occupied B. The semi-join here is simply standardizing the leader data to the state system data, which is effectively what's happening with the semi-joins in \texttt{create\_leaderdays()} (and its aggregation function: \texttt{create\_leaderyears()}).
+
+\hypertarget{anti-join}{%
+\subsection{Anti-Join}\label{anti-join}}
+
+The anti-join is another type of filtering join, returning all rows from the left object (\texttt{x}) with\emph{out} a match in the right object (\texttt{y}). This type of join appears just once in \texttt{\{peacesciencer\}}. Prominently, \texttt{\{peacesciencer\}} prepares and presents two data sets in this package---\texttt{false\_cow\_dyads} and \texttt{false\_gw\_dyads}---that represent directed dyad-years in the Correlates of War and Gleditsch-Ward systems that were active in the same year, but never at the same time on the same year.
+
+Here are those dyads for context.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{false\_cow\_dyads}
+\CommentTok{\#\textgreater{} \# A tibble: 60 x 4}
+\CommentTok{\#\textgreater{}    ccode1 ccode2  year in\_ps}
+\CommentTok{\#\textgreater{}     \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}int\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1    115    817  1975     1}
+\CommentTok{\#\textgreater{}  2    210    255  1945     1}
+\CommentTok{\#\textgreater{}  3    211    255  1945     1}
+\CommentTok{\#\textgreater{}  4    223    678  1990     1}
+\CommentTok{\#\textgreater{}  5    223    680  1990     1}
+\CommentTok{\#\textgreater{}  6    255    210  1945     1}
+\CommentTok{\#\textgreater{}  7    255    211  1945     1}
+\CommentTok{\#\textgreater{}  8    255    260  1990     1}
+\CommentTok{\#\textgreater{}  9    255    265  1990     1}
+\CommentTok{\#\textgreater{} 10    255    290  1945     1}
+\CommentTok{\#\textgreater{} \# ... with 50 more rows}
+
+\NormalTok{false\_gw\_dyads}
+\CommentTok{\#\textgreater{} \# A tibble: 38 x 4}
+\CommentTok{\#\textgreater{}    gwcode1 gwcode2  year in\_ps}
+\CommentTok{\#\textgreater{}      \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}int\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1      99     100  1830     1}
+\CommentTok{\#\textgreater{}  2      99     211  1830     1}
+\CommentTok{\#\textgreater{}  3     100      99  1830     1}
+\CommentTok{\#\textgreater{}  4     100     615  1830     1}
+\CommentTok{\#\textgreater{}  5     115     817  1975     1}
+\CommentTok{\#\textgreater{}  6     211      99  1830     1}
+\CommentTok{\#\textgreater{}  7     211     615  1830     1}
+\CommentTok{\#\textgreater{}  8     255     850  1945     1}
+\CommentTok{\#\textgreater{}  9     300     305  1918     1}
+\CommentTok{\#\textgreater{} 10     300     345  1918     1}
+\CommentTok{\#\textgreater{} \# ... with 28 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+These were created by \href{https://github.com/svmiller/peacesciencer/blob/master/data-raw/false_cow_dyads.R}{two} \href{https://github.com/svmiller/peacesciencer/blob/master/data-raw/false_gw_dyads.R}{scripts} that, for each year in the respective state system data, creates every possible \emph{daily} dyadic pairing and truncates the dyads to just those that had at least one day of overlap. This is a computationally demanding procedure compared to what \texttt{\{peacesciencer\}} does (which creates every possible dyadic pair in a given year, given the state system data supplied to it). However, it creates the possibility of same false dyads in a given year that showed no overlap.
+
+Consider the case of Suriname (115) and the Republic of Vietnam (817) in 1975 as illustrative here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{check\_both }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x) \{}
+
+\NormalTok{  gw\_states }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{data =} \StringTok{"G{-}W"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(gwcode }\SpecialCharTok{\%in\%}\NormalTok{ x) }\OtherTok{{-}\textgreater{}}\NormalTok{ gwrows}
+
+\NormalTok{  cow\_states }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{startdate =} \FunctionTok{ymd}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(styear,}\StringTok{"/"}\NormalTok{,stmonth, }\StringTok{"/"}\NormalTok{, stday)),}
+           \AttributeTok{enddate =} \FunctionTok{ymd}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(endyear,}\StringTok{"/"}\NormalTok{,endmonth,}\StringTok{"/"}\NormalTok{,endday))) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(stateabb}\SpecialCharTok{:}\NormalTok{statenme, startdate, enddate) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{mutate}\NormalTok{(}\AttributeTok{data =} \StringTok{"CoW"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{rename}\NormalTok{(}\AttributeTok{statename =}\NormalTok{ statenme) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{filter}\NormalTok{(ccode }\SpecialCharTok{\%in\%}\NormalTok{ x) }\OtherTok{{-}\textgreater{}}\NormalTok{ cowrows}
+
+\NormalTok{  dat }\OtherTok{\textless{}{-}} \FunctionTok{bind\_rows}\NormalTok{(gwrows, cowrows) }\SpecialCharTok{\%\textgreater{}\%}
+    \FunctionTok{select}\NormalTok{(gwcode, ccode, stateabb, }\FunctionTok{everything}\NormalTok{())}
+
+  \FunctionTok{return}\NormalTok{(dat)}
+\NormalTok{\}}
+
+\FunctionTok{check\_both}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{115}\NormalTok{, }\DecValTok{817}\NormalTok{))}
+\CommentTok{\#\textgreater{} \# A tibble: 4 x 7}
+\CommentTok{\#\textgreater{}   gwcode ccode stateabb statename            startdate  enddate    data }
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{} \textless{}dbl\textgreater{} \textless{}chr\textgreater{}    \textless{}chr\textgreater{}                \textless{}date\textgreater{}     \textless{}date\textgreater{}     \textless{}chr\textgreater{}}
+\CommentTok{\#\textgreater{} 1    115    NA SUR      Surinam              1975{-}11{-}25 2017{-}12{-}31 G{-}W  }
+\CommentTok{\#\textgreater{} 2    817    NA RVN      Vietnam, Republic of 1954{-}05{-}01 1975{-}04{-}30 G{-}W  }
+\CommentTok{\#\textgreater{} 3     NA   115 SUR      Suriname             1975{-}11{-}25 2016{-}12{-}31 CoW  }
+\CommentTok{\#\textgreater{} 4     NA   817 RVN      Republic of Vietnam  1954{-}06{-}04 1975{-}04{-}30 CoW}
+\end{Highlighting}
+\end{Shaded}
+
+Notice both Suriname and Republic of Vietnam were both active in 1975. Suriname appears on Nov.~25, 1975 whereas the Republic of Vietnam exits on April 30, 1975. However, there is no daily overlap between the two because they did not exist at any point on the same day in 1975. These are false dyads. \href{https://github.com/svmiller/peacesciencer/blob/master/R/create_dyadyears.R}{\texttt{anti\_join()} is used in the \texttt{create\_dyadyears()}} function to remove these observations before presenting them to the user.
+
+Here is a simple example of what an anti-join is doing with these examples in mind.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{valid\_dyads }\OtherTok{\textless{}{-}} \FunctionTok{tibble}\NormalTok{(}\AttributeTok{ccode1 =} \FunctionTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{20}\NormalTok{, }\DecValTok{200}\NormalTok{),}
+                      \AttributeTok{ccode2 =} \FunctionTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{, }\DecValTok{200}\NormalTok{, }\DecValTok{900}\NormalTok{),}
+                      \AttributeTok{year =} \FunctionTok{c}\NormalTok{(}\DecValTok{2016}\NormalTok{, }\DecValTok{2017}\NormalTok{, }\DecValTok{2018}\NormalTok{))}
+
+\NormalTok{valid\_dyads }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{bind\_rows}\NormalTok{(., false\_cow\_dyads }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(ccode1}\SpecialCharTok{:}\NormalTok{year)) }\OtherTok{{-}\textgreater{}}\NormalTok{ valid\_and\_invalid}
+
+\NormalTok{valid\_and\_invalid }
+\CommentTok{\#\textgreater{} \# A tibble: 63 x 3}
+\CommentTok{\#\textgreater{}    ccode1 ccode2  year}
+\CommentTok{\#\textgreater{}     \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{}  1      2     20  2016}
+\CommentTok{\#\textgreater{}  2     20    200  2017}
+\CommentTok{\#\textgreater{}  3    200    900  2018}
+\CommentTok{\#\textgreater{}  4    115    817  1975}
+\CommentTok{\#\textgreater{}  5    210    255  1945}
+\CommentTok{\#\textgreater{}  6    211    255  1945}
+\CommentTok{\#\textgreater{}  7    223    678  1990}
+\CommentTok{\#\textgreater{}  8    223    680  1990}
+\CommentTok{\#\textgreater{}  9    255    210  1945}
+\CommentTok{\#\textgreater{} 10    255    211  1945}
+\CommentTok{\#\textgreater{} \# ... with 53 more rows}
+
+\NormalTok{valid\_and\_invalid }\SpecialCharTok{\%\textgreater{}\%}
+  \CommentTok{\# remove those invalid dyads{-}years}
+  \FunctionTok{anti\_join}\NormalTok{(., false\_cow\_dyads)}
+\CommentTok{\#\textgreater{} \# A tibble: 3 x 3}
+\CommentTok{\#\textgreater{}   ccode1 ccode2  year}
+\CommentTok{\#\textgreater{}    \textless{}dbl\textgreater{}  \textless{}dbl\textgreater{} \textless{}dbl\textgreater{}}
+\CommentTok{\#\textgreater{} 1      2     20  2016}
+\CommentTok{\#\textgreater{} 2     20    200  2017}
+\CommentTok{\#\textgreater{} 3    200    900  2018}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{vignette-peacesciencer-data-versions}{%
+\section{\texorpdfstring{Vignette: \texttt{\{peacesciencer\}} Data Versions}{Vignette: \{peacesciencer\} Data Versions}}\label{vignette-peacesciencer-data-versions}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\FunctionTok{library}\NormalTok{(peacesciencer)}
+\FunctionTok{library}\NormalTok{(kableExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+These are the data versions available in \texttt{\{peacesciencer\}}. Do note the user can find specific data versions with more targeted use of the \texttt{ps\_version()} function in this package. Without an argument, \texttt{ps\_version()} produces a data frame of all the data versions in this package.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ps\_version}\NormalTok{() }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kbl}\NormalTok{(., }\AttributeTok{caption =} \StringTok{"Data Versions in \textasciigrave{}\{peacesciencer\}\textasciigrave{}"}\NormalTok{,}
+      \AttributeTok{align =}\FunctionTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{, }\StringTok{"l"}\NormalTok{, }\StringTok{"c"}\NormalTok{, }\StringTok{"c"}\NormalTok{), }
+      \AttributeTok{booktabs =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{longtable =} \ConstantTok{TRUE}\NormalTok{)  }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{kable\_styling}\NormalTok{(}\AttributeTok{position =} \StringTok{"center"}\NormalTok{, }\AttributeTok{full\_width =}\NormalTok{ F, }
+                \AttributeTok{bootstrap\_options =} \StringTok{"striped"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{row\_spec}\NormalTok{(}\DecValTok{0}\NormalTok{, }\AttributeTok{bold=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[t]{clcc}
+\caption{\label{tab:unnamed-chunk-20}Data Versions in `{peacesciencer}`}\\
+\toprule
+\textbf{category} & \textbf{data} & \textbf{version} & \textbf{bibtexkey}\\
+\midrule
+states & Correlates of War State System Membership & 2016 & cowstates2016\\
+leaders & LEAD & 2015 & ellisetal2015lead\\
+leaders & Archigos & 4.1 & goemansetal2009ia\\
+alliance & ATOP & 5 & leedsetal2002atop\\
+democracy & Polity & 2017 & marshalletal2017p\\
+\addlinespace
+democracy & \{QuickUDS\} & 0.2.3 & marquez2016qme\\
+democracy & V-Dem & 10 & coppedgeetal2020vdem\\
+capitals & \{peacesciencer\} & 2020 & peacesciencer-package\\
+contiguity & Correlates of War Direct Contiguity & 3.2 & stinnettetal2002cow\\
+igo & Correlates of War IGOs & 3 & pevehouseetal2020tow\\
+\addlinespace
+majors & Correlates of War & 2016 & cowstates2016\\
+conflict\_interstate & Correlates of War Militarized Interstate Disputes & 5 & palmeretal2021mid5\\
+distance & \{Cshapes\} & 2 & schvitz2021mis\\
+capabilities & Correlates of War National Material Capabilities & 5 & singer1987rcwd\\
+gdp & SDP & 2020 & andersetal2020bbgb\\
+\addlinespace
+sdp & SDP & 2020 & andersetal2020bbgb\\
+population & SDP & 2020 & andersetal2020bbgb\\
+trade & Correlates of War Trade & 4 & barbierietal2009td\\
+conflict\_intrastate & Correlates of War Intra-State War & 4.1 & dixonsarkees2016giw\\
+conflict\_interstate & Correlates of War Inter-State War & 4 & sarkeeswayman2010rw\\
+\addlinespace
+fractionalization & CREG & 2012 & nardulli2012creg\\
+polarization & CREG & 2012 & nardulli2012creg\\
+conflict\_interstate & Gibler-Miller-Little (GML) & 2.2.1 & gibleretal2016amid\\
+states & Gleditsch-Ward & 2017 & gledtischward1999rlis\\
+leaders & Leader Willingness to Use Force & 2020 & cartersmith2020fml\\
+\addlinespace
+terrain & Ruggedness & 2012 & nunnpuga2012r\\
+terrain & \% Mountainous & 2014 & giblermiller2014etts\\
+rivalries & Thompson and Dreyer & 2012 & thompsondreyer2012hir\\
+conflict\_intrastate & UCDP Armed Conflicts & 20.1 & gleditschetal2002ac\\
+conflict\_intrastate & UCDP Onsets & 19.1 & pettersson2019ov\\
+\addlinespace
+dyadic\_similarity & FPSIM & 2 & haege2011cc\\
+\bottomrule
+\end{longtable}
+
+Every data set that is used by a function in this package is included in this table (and with the \texttt{ps\_version()} function). Users can see a category of the type of data (which can be used for more careful searches of the underlying data), a description of the data set, a version number associated with that data set in \texttt{\{peacesciencer\}}, along with a BibTeX key. Users should interpret data versions as years as instances where the data are not formally versioned, per se, and the year corresponds with a year of a last update or a year of publication. For example, \href{https://doi.org/10.1093/isq/sqaa013}{Anders et al.~(2020)} released their state-year simulations of population, surplus domestic product, and gross domestic product in 2020. The data are not formally versioned and the year corresponds with, in this case, the publication.
+
+Users can use the BibTeX key (\texttt{bibtexkey}) to search \href{http://svmiller.com/peacesciencer/reference/ps_bib.html}{the dataframe of citations} in this package. For example, we can use \texttt{ps\_cite()} to get a full citation for Carter and Smith's (2020) estimates of leader willingness to use force.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ps\_cite}\NormalTok{(}\StringTok{"cartersmith2020fml"}\NormalTok{, }\AttributeTok{column =} \StringTok{"bibtexkey"}\NormalTok{)}
+\CommentTok{\#\textgreater{} @Article\{cartersmith2020fml,}
+\CommentTok{\#\textgreater{}   Author = \{Jeff Carter and Charles E. Smith\},}
+\CommentTok{\#\textgreater{}   Journal = \{American Political Science Review\},}
+\CommentTok{\#\textgreater{}   Number = \{4\},}
+\CommentTok{\#\textgreater{}   Pages = \{1352{-}{-}1358\},}
+\CommentTok{\#\textgreater{}   Title = \{A Framework for Measuring Leaders’ Willingness to Use Force\},}
+\CommentTok{\#\textgreater{}   Volume = \{114\},}
+\CommentTok{\#\textgreater{}   Year = \{2020\},}
+\CommentTok{\#\textgreater{}   Keywords = \{lwuf, add\_lwuf()\}}
+\CommentTok{\#\textgreater{} \}}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{create\_dyadyears}\NormalTok{(}\AttributeTok{system =} \StringTok{\textquotesingle{}gw\textquotesingle{}}\NormalTok{)}
+\CommentTok{\#\textgreater{} \# A tibble: 2,029,622 x 3}
+\CommentTok{\#\textgreater{}    gwcode1 gwcode2  year}
+\CommentTok{\#\textgreater{}      \textless{}dbl\textgreater{}   \textless{}dbl\textgreater{} \textless{}int\textgreater{}}
+\CommentTok{\#\textgreater{}  1       2      20  1867}
+\CommentTok{\#\textgreater{}  2       2      20  1868}
+\CommentTok{\#\textgreater{}  3       2      20  1869}
+\CommentTok{\#\textgreater{}  4       2      20  1870}
+\CommentTok{\#\textgreater{}  5       2      20  1871}
+\CommentTok{\#\textgreater{}  6       2      20  1872}
+\CommentTok{\#\textgreater{}  7       2      20  1873}
+\CommentTok{\#\textgreater{}  8       2      20  1874}
+\CommentTok{\#\textgreater{}  9       2      20  1875}
+\CommentTok{\#\textgreater{} 10       2      20  1876}
+\CommentTok{\#\textgreater{} \# ... with 2,029,612 more rows}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\setlength{\parskip}{6pt}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\hypertarget{ref-andersetal2020bbgb}{}%
+Anders, Therese, Christopher J Fariss \& Jonathan N Markowitz (2020) Bread before guns or butter: Introducing surplus domestic product (SDP). \emph{International Studies Quarterly} 64(2): 392--405.
+
+\leavevmode\hypertarget{ref-arelbundock2021m}{}%
+Arel-Bundock, Vincent (2021) \emph{Modelsummary: Summary Tables and Plots for Statistical Models and Data: Beautiful, Customizable, and Publication-Ready} (\url{https://CRAN.R-project.org/package=modelsummary}).
+
+\leavevmode\hypertarget{ref-cartersmith2020fml}{}%
+Carter, Jeff \& Charles E Smith (2020) A framework for measuring leaders' willingness to use force. \emph{American Political Science Review} 114(4): 1352--1358.
+
+\leavevmode\hypertarget{ref-wickhametal2019wt}{}%
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D'Agostino McGowan, Romain François, Garrett Grolemund, Alex Hayes, Lionel Henry, Jim Hester, Max Kuhn, Thomas Lin Pedersen, Evan Miller, Stephan Milton Bache, Kirill Müller, Jeroen Ooms, David Robinson, Dana Paige Seidel, Vitalie Spinu, Kohske Takahashi, Davis Vaughan, Claus Wilke, Kara Woo \& Hiroaki Yutani (2019) Welcome to the {tidyverse}. \emph{Journal of Open Source Software} 4(43): 1686.
+
+\leavevmode\hypertarget{ref-xie2015ddrk}{}%
+Xie, Yihui (2015) \emph{Dynamic Documents with {R} and Knitr}. Chapman; Hall/CRC.
+
+\leavevmode\hypertarget{ref-xie2016b}{}%
+Xie, Yihui (2016) \emph{Bookdown: Authoring Books and Technical Documents with {R} Markdown}. Boca Raton, Florida: Chapman; Hall/CRC (\url{https://bookdown.org/yihui/bookdown}).
+
+\leavevmode\hypertarget{ref-xieetal2020rmc}{}%
+Xie, Yihui, Christophe Dervieux \& Emily Riederer (2020) \emph{R Markdown Cookbook}. Boca Raton, Florida: Chapman; Hall/CRC (\url{https://bookdown.org/yihui/rmarkdown-cookbook}).
+
+\leavevmode\hypertarget{ref-zhu2021k}{}%
+Zhu, Hao (2021) \emph{kableExtra: Construct Complex Table with {``Kable''} and Pipe Syntax} (\url{https://CRAN.R-project.org/package=kableExtra}).
+
+\end{CSLReferences}
+
+\end{document}
