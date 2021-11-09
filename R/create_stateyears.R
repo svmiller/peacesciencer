@@ -87,6 +87,12 @@ create_stateyears <- function(system = "cow", mry = TRUE, subset_years) {
   }
 
 
+  if (!missing(subset_years)) {
+    data <- subset(data, data$year %in% subset_years)
+  } else {
+    data <- data
+  }
+
 
   return(data)
 }

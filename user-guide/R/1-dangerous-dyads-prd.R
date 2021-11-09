@@ -3,13 +3,21 @@ library(peacesciencer)
 library(stevemisc)
 
 
-create_dyadyears(directed = FALSE, mry = FALSE) %>%
+create_dyadyears(directed = FALSE, subset_years = c(1816:2010)) %>%
+  # subset data to politically relevant dyads (PRDs), pipe to next function
   filter_prd() %>%
+  # add conflict information from GML-MID data, pipe to next function
   add_gml_mids(keep = NULL) %>%
+  # add peace years, pipe to next function
   add_peace_years() %>%
+  # add capabilities data, pipe to next function
   add_nmc() %>%
+  # add some estimates about democracy for each state, pipe to next function
   add_democracy() %>%
+  # add information about alliance commitments in dyad-year
   add_cow_alliance() %>%
+  # finish with information about population and GDP/SDP
+  # and then assign to object, called, minimally, 'Data'
   add_sdp_gdp() -> Data
 
 

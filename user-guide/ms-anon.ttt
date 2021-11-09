@@ -65,30 +65,30 @@
 \toprule
 \textbf{ } & \textbf{Model 1}\\
 \midrule
-Land Contiguity & \num{1.044}*\\
- & (\num{0.057})\\
-Dyadic CINC Proportion (Lower/Higher) & \num{0.444}*\\
+Land Contiguity & \num{1.062}*\\
+ & \vphantom{1} (\num{0.057})\\
+Dyadic CINC Proportion (Lower/Higher) & \num{0.453}*\\
  & (\num{0.036})\\
-CoW Major Power in Dyad & \num{0.145}*\\
- & \vphantom{1} (\num{0.058})\\
-Defense Pact & \num{-0.102}+\\
+CoW Major Power in Dyad & \num{0.144}*\\
+ & (\num{0.057})\\
+Defense Pact & \num{-0.119}*\\
  & (\num{0.058})\\
-Dyadic Democracy (Weak-Link) & \num{-0.509}*\\
+Dyadic Democracy (Weak-Link) & \num{-0.493}*\\
  & (\num{0.052})\\
-Dyadic GDP per Capita (Weak-Link) & \num{0.262}*\\
- & (\num{0.050})\\
-Dyadic Militarization (Minimum) & \num{0.267}*\\
+Dyadic GDP per Capita (Weak-Link) & \num{0.293}*\\
+ & (\num{0.051})\\
+Dyadic Militarization (Minimum) & \num{0.263}*\\
  & (\num{0.023})\\
-t & \num{-0.148}*\\
+t & \num{-0.146}*\\
  & (\num{0.005})\\
 t\textasciicircum2 & \num{0.002}*\\
  & \vphantom{1} (\num{0.000})\\
 t\textasciicircum3 & \num{0.000}*\\
  & (\num{0.000})\\
-Intercept & \num{-3.055}*\\
- & (\num{0.064})\\
+Intercept & \num{-3.045}*\\
+ & (\num{0.063})\\
 \midrule
-Num.Obs. & \num{106937}\\
+Num.Obs. & \num{103919}\\
 \bottomrule
 \multicolumn{2}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05}\\
 \end{tabular}
@@ -103,6 +103,8 @@ Num.Obs. & \num{106937}\\
 \toprule
 \textbf{ } & \textbf{All UCDP Conflicts} & \textbf{Wars Only}\\
 \midrule
+GDP per Capita (Lagged) & \num{-0.285}* & \num{-0.343}*\\
+ & (\num{0.110}) & (\num{0.172})\\
 Population Size (Lagged) & \num{0.229}* & \num{0.272}*\\
  & (\num{0.067}) & (\num{0.106})\\
 Extended UDS Democracy Score (Lagged) & \num{0.257} & \num{-0.085}\\
@@ -121,7 +123,7 @@ t\textasciicircum2 & \num{0.004}* & \num{0.005}+\\
  & (\num{0.002}) & (\num{0.003})\\
 t\textasciicircum3 & \num{0.000}* & \num{0.000}+\\
  & (\num{0.000}) & (\num{0.000})\\
-Intercept & \num{-5.097}* & \num{-6.590}*\\
+Intercept & \num{-5.098}* & \num{-6.591}*\\
  & (\num{1.351}) & (\num{2.084})\\
 \midrule
 Num.Obs. & \num{8192} & \num{8192}\\

@@ -2,8 +2,7 @@ library(tidyverse)
 library(peacesciencer)
 library(stevemisc)
 
-create_stateyears(system = 'gw') %>%
-  filter(year %in% c(1946:2019)) %>%
+create_stateyears(system = 'gw', subset_years = c(1946:2019)) %>%
   add_ucdp_acd(type=c("intrastate"), only_wars = FALSE) %>%
   add_peace_years() %>%
   add_democracy() %>%
@@ -11,8 +10,7 @@ create_stateyears(system = 'gw') %>%
   add_sdp_gdp() %>%
   add_rugged_terrain() -> Data
 
-create_stateyears(system = 'gw') %>%
-  filter(year %in% c(1946:2019)) %>%
+create_stateyears(system = 'gw', subset_years = c(1946:2019)) %>%
   add_ucdp_acd(type=c("intrastate"), only_wars = TRUE) %>%
   add_peace_years() %>%
   rename_at(vars(ucdpongoing:ucdpspell), ~paste0("war_", .)) %>%
