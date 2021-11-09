@@ -73,6 +73,7 @@ knitr::opts_chunk$set(echo = FALSE,
 
 
 library(tidyverse)
+library(peacesciencer)
 
 options(knitr.kable.NA = '')
 ```
@@ -101,6 +102,11 @@ I offer these citations first as an acknowledgment of these important contributi
 ```
 
 \newpage
+
+
+```{r, echo=TRUE}
+create_dyadyears(system = 'gw')
+```
 
 # References
 

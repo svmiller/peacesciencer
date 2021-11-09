@@ -26,17 +26,20 @@ params:
 anonymous: "`r params$anonymous`"
 doublespacing: "`r params$doublespacing`"
 removetitleabstract: "`r params$removetitleabstract`"
-alwaays_allow_html: TRUE
+#always_allow_html: TRUE
 header-includes:
   - \usepackage{longtable}
   - \usepackage{booktabs}
+  - \usepackage{csquotes}
   - \LTcapwidth=.95\textwidth
   - \linespread{1.05}
   - \usepackage{hyperref}
   - \usepackage{setspace}
-  - \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
-  - \usepackage{colortbl}
-  - \arrayrulecolor{black}
+#  - \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
+#  - \usepackage{colortbl}
+#  - \arrayrulecolor{black}
+#  - \usepackage{threeparttable}
+#  - \usepackage{threeparttablex}
 #  - \midrule\relax
 ---
 
@@ -44,6 +47,9 @@ header-includes:
 is_docx <- knitr::pandoc_to("docx")
 is_latex <- knitr::pandoc_to("latex")
 is_html <- knitr::pandoc_to("html")
+
+table_format <- ifelse(is_docx, "huxtable", 'default')
+
 
 # I don't know how Texas Instruments smart this is, but p-sure default DPI is 96.
 # That's not a problem for LaTeX, but it looks not-so-great for Word.
@@ -59,8 +65,10 @@ if (is_latex) {
 } 
 
 
-knitr::opts_chunk$set(echo = FALSE, cache = FALSE,
+knitr::opts_chunk$set(cache = FALSE,
                       message=FALSE, warning=FALSE,
+                      collapse = TRUE,
+                      comment = "#>",
                       fig.path='doc/figs/',
                       cache.path = 'doc/_cache/',
                       fig.width = 8.5, dpi = conditional_dpi,
@@ -73,11 +81,12 @@ knitr::opts_chunk$set(echo = FALSE, cache = FALSE,
 # library(dplyr)
 # library(magrittr)
 library(tidyverse)
-library(stevemisc)
-library(modelsummary)
-library(huxtable)
-library(kableExtra)
 library(peacesciencer)
+library(stevemisc)
+
+library(modelsummary)
+library(kableExtra)
+
 
 allrds <- list.files(pattern = ".rds", path = "data") %>%
   stringr::str_remove(., ".rds")
@@ -86,7 +95,6 @@ for(i in allrds) {
       filepath <- file.path(paste0("data/",i,".rds"))
       assign(i, readRDS(filepath))
     }
-
 ```
 
 # Introduction
@@ -105,7 +113,7 @@ For one, researchers invest too much time in the construction of a data set that
 
 Second, researchers also invest too much time in retracing steps for peace science analyses for new projects. Assume  a researcher who had finished a state-year analysis on the correlates of civil conflict onset a couple years ago and wants to start a new project that analyzes the same outcome from a different angle (or perhaps using newer data). Under these conditions, a researcher will have to find where they stored that replication code and copy-paste it into a new directory for the new project. They may then have to change the name of some files, change some code to account for potentially new column names in the newer data, and troubleshoot instances where their old code does not perform as it once did. At its worst, this process may lead to some errors by the researcher. At best, this is tedium that spends the researcher's time they would rather invest in analyzing the data. The lion's share of `{peacesciencer}`'s functionality is both creating the units of analysis for the researcher and merging in different forms of data in wide use in the peace science community so that the researcher can spend less of their time on tedium.
 
-Third, the creation of the data and the analysis of the data are increasingly becoming one continuous process. Not too long ago, it used to be the case that researchers had to download a data set, or create one from scratch (possibly in a spreadsheet or through a program like EUGene). After downloading or constructing the data, the researcher then opened a specialty program for statistical analysis (e.g. SAS, SPSS, Stata) to recode raw data into a form suitable for analysis before running a statistical model that regresses some outcome on a set of covariates. Current research practices still resemble this process, but the steps between them are no longer as large as they were in the past. Software options exist that allow the researcher to load data, create data, clean data, analyze data, and present the results of the analysis all within one program. `{peacesciencer}`, by itself, does not do all these things, but it seamlessly connects the beginning of the research process to the end of the research process without needing to leave the increasingly popular R programming language and Rstudio (its free-for-use integrated desktop environment [IDE]).
+Third, the creation of the data and the analysis of the data are increasingly becoming one continuous process. Not too long ago, it used to be the case that researchers had to download a data set, or create one from scratch (possibly in a spreadsheet or through a program like EUGene). After downloading or constructing the data, the researcher then opened a specialty program for statistical analysis (e.g. SAS, SPSS, Stata) to recode raw data into a form suitable for analysis before running a statistical model that regresses some outcome on a set of covariates. Current research practices still resemble this process, but the steps between them are no longer as large as they were in the past. Software options exist that allow the researcher to load data, create data, clean data, analyze data, and present the results of the analysis all within one program. `{peacesciencer}`, by itself, does not do all these things, but it seamlessly connects the beginning of the research process to the end of the research process without needing to leave the increasingly popular R programming language and Rstudio (its free-for-use integrated development environment [IDE]).
 
 <!-- [^arelbundock] -->
 
@@ -119,32 +127,141 @@ Finally, the creation and presentation of data in peace science should be 100% r
 
 # What is Included in `{peacesciencer}`
 
-`{peacesciencer}` comes with a fully developed suite of built-in functions for generating the most widespread forms of peace science data. Each function uses raw or pre-processed data included in `{peacesciencer}`. For example, `create_dyadyears()` transforms the raw state system membership data for either the Correlates of War or Gleditsch-Ward system into the full universe of post-1816 dyad-years. `add_gml_mids()` uses a dyadic dispute-year version of the MID data offered by @gibleretal2016amid, which, as the `data-raw` directory on the project's Github shows, is itself derived from the dispute-level and participant-level versions of the data. `{peacesciencer}` also has some data innovations. It has an original data set on capital-to-capital distances, calculating for distance in kilometers between state capitals using the "Vincenty" method (i.e. "as the crow flies") that also accounts for instances when capitals moved (e.g. Brazil in 1960, Burundi in 2018). It also features an innovation of democracy data, providing reasonable estimates of democracy using the @marquez2016qme method of extending the Unified Democracy Scores (UDS) data [@pemsteinetal2010dc].[^demvig] As of writing, `{peacesciencer}` comes with the following functionality described in Table \@ref(tab:tab-functionality).
+`{peacesciencer}` comes with a fully developed suite of built-in functions for generating some of the most widespread forms of peace science data and populating the data with important variables that recur in many quantitative analyses. The core functionality of `{peacesciencer}` reduces to two broad categories of functions. These categories are functions that create the base data of interest to a researcher and functions, called after the base data are created, that add variables of interest to the data frame or subset the base data to a handful of rows that the researcher deems appropriate for analysis. Table \@ref(tab:tab-createfunctions) and Table \@ref(tab:tab-addfunctions) list these core functions as of version 0.7, the version of this package slated for release alongside the manuscript.
 
-[^demvig]: `{peacesciencer}` comes with a vignette that explains just how much unnecessary missingess pervades data on democracy and how this might adversely affect inferences of inter-state or intra-state conflict.
+Table \@ref(tab:tab-createfunctions) are functions that crease base data frames for a researcher starting an original project. They serve as functions that communicate the units of analysis supported in this package and that the package is capable of generating for an interested user. For example, `create_stateyears()` will generate the full universe of state-years from the Correlates of War [@cowstates2016, v. 2016] or Gleditsch-Ward [@gledtischward1999rlis, v.2017] system, encompassing all state-years to the most recently concluded calendar year, depending on the arguments supplied to the user in the function. `create_leaderyears()` will generate the full universe of leader-years from the Archigos leader data [@goemansetal2009ia, v. 4.1], optionally standardizing leader-years to the Gleditsch-Ward or Correlates of War state system data. As of version 0.7, `{peacesciencer}` is capable of creating full dyad-year data, leader-day data, leader-dyad-year data, leader-year data, state-day data, and state-year data.[^leaderdyadyear] A vignette on the package's website shows how users can create other forms of data from these functions as well (e.g. leader-months, state-quarters).
 
-```{r tab-functionality, echo=F, eval=T}
+[^leaderdyadyear]: Leader-dyad-year data are too time-consuming to calculate each time and too size-prohibitive to include in the package. These data can be downloaded through `download_extdata()` for much easier use.
+
+```{r tab-createfunctions, echo=F}
+
+tribble(~func, ~description,
+        "create_dyadyears()", "Create dyad-years from state system membership data",
+        "create_leaderdays()", "Create leader-day data from Archigos",
+        "create_leaderdyadyears()", "Create leader-dyad-years data from Archigos",
+        "create_leaderyears()", "Create leader-years data from Archigos",
+        "create_statedays()", "Create state-days from state system membership data",
+        "create_stateyears()", "Create state-years from state system membership data",
+) -> create_functions
+
+if (is_latex) {
+kable(create_functions, booktabs = TRUE, longtable = TRUE,
+    caption = "Functions that Create Base Data",
+    align = c("l","l"),
+    linesep = "",
+    col.names = c("Function", "Description"))  %>%
+   row_spec(0, bold=TRUE) %>%
+    column_spec(1, monospace = TRUE)
+} else {
+  kable(create_functions, booktabs = TRUE, longtable = TRUE,
+    caption = "Functions that Create Base Data",
+    align = c("l","l"),
+    linesep = "",
+    col.names = c("Function", "Description"))  %>%
+   row_spec(0, bold=TRUE) %>%
+    column_spec(1, monospace = TRUE)
+}
+
+
+```
+
+
+Table \@ref(tab:tab-addfunctions) lists the main functions in `{peacesciencer}` that add information or subset the number of rows of the data to just those of interest to the user, describing these functions and listing whether they are applicable to dyad-year (`D`), leader-year (`L`), leader-dyad-year (`LD`), state-year (`S`) data or specialty functions applicable to just the dyadic conflict data (`C`).[^whittle] All these functions use raw or pre-processed data included in the package. For example, `add_gml_mids()` uses a dyadic dispute-year version of the MID data offered by Gibler et al. [-@gibleretal2016amid, v. 2.2.1] and merges in information about whether there was an ongoing MID or MID onset in a dyad-year, leader-year, leader-dyad-year, or state-year. `{peacesciencer}` also has some data innovations included in these functions. For example, `add_capital_distance()` calculates distance between state capitals in kilometers using the Vincenty method (i.e. "as the crow flies") based on an original data set of state capitals that accounts for instances when capitals moved (e.g. Brazil in 1960, Burundi in 2018). `add_democracy()` does more than just add Polity data to a data set. The data underpinning the function feature an innovation in democracy data, providing reasonable estimates of democracy using the @marquez2016qme method of extending the Unified Democracy Scores (UDS) data [@pemsteinetal2010dc] in addition to Polity estimates [@marshalletal2017p, v. 2017] and V-Dem estimates [@coppedgeetal2020vdem, v. 10].[^demvig]
+
+[^demvig]: `{peacesciencer}` comes with a vignette that explains just how much unnecessary missingness pervades data on democracy in the absence of an innovation like this, and how this missingness might adversely affect inferences of inter-state or intra-state conflict.
+
+[^whittle]: The "whittle" (`wc_`) class of functions are a suite of functions that whittle dyadic dispute-years to true dyad-year data. They are effectively used in `add_cow_mids()` and `add_gml_mids()` for dyad-year data, but are offered here to allow users to employ their own case exclusion rules to create their own dyad-year conflict data. A vignette on `{peacesciencer}`'s website explains these case exclusion rules in some detail.
+
+```{r tab-addfunctions, echo=F}
+
+tribble(~func, ~type, ~description,
+        "add_archigos()", "D,S", "Add Archigos political leader information to a data frame",
+        "add_atop_alliance()", "D, LD", "Add Alliance Treaty Obligations and Provisions (ATOP) alliance data to a data frame",
+        "add_capital_distance()", "D, L, LD, S", "Add capital-to-capital distance to a data frame",
+        "add_ccode_to_gw()", "D, L, LD, S", "Match CoW state codes to G-W state codes",
+        "add_contiguity()", "D, L, LD, S", "Add CoW direct contiguity information to a data frame",
+        "add_cow_alliance()", "D, LD", "Add CoW alliance data to a data frame",
+        "add_cow_majors()", "D, L, LD, S", "Add CoW major power information to a data frame",
+        "add_cow_mids()", "D", "Add CoW-MID data to a dyad-year data frame",
+        "add_cow_trade()", "D, L, LD, S", "Add CoW trade data to a data frame",
+        "add_cow_wars()", "D, S", "Add CoW war data to a dyad-year or state-year data frame",
+        "add_creg_fractionalization()", "D, L, LD, S", "Add fractionalization/polarization estimates from CREG to a data frame",
+        "add_democracy()", "D, L, LD, S", "Add democracy information to a data frame",
+        "add_fpsim()", "D, LD", "Add dyadic foreign policy similarity measures to a data frame",
+        "add_gml_mids()", "D, L, LD, S", "Add GML MID data to a data frame",
+        "add_gwcode_to_cow()", "D, L, LD, S", "Match G-W state codes to CoW state codes",
+        "add_igos()", "D, S", "Add CoW IGO data to a data frame",
+        "add_lead()", "L, LD", "Add leader experience/attributes (LEAD) to data",
+        "add_lwuf()", "L, LD", "Add leader willingness to use force estimates to data",
+        "add_minimum_distance()", "D, L, LD, S", "Add minimum distance data to data frame",
+        "add_nmc()", "D, L, LD, S", "Add minimum distance estimates (in km) to data frame",
+        "add_peace_years()", "D, S", "Add 'peace years' to dyad-year/state-year conflict data",
+        "add_rugged_terrain()", "D, L, LD, S", "Add rugged terrain information to a data frame",
+        "add_sdp_gdp()", "D, L, LD, S", "Add (surplus, gross) domestic product data to a data frame",
+        "add_spells()", "D, L, LD, S", "Add duration 'spells' to a data frame",
+        "add_strategic_rivalries()", "D, S", "Add strategic rivalry information to a data frame",
+        "add_ucdp_acd()", "S", "Add UCDP Armed Conflict Data to state-year data frame",
+        "add_ucdp_onsets", "S", "Add UCDP onsets to state-year data",
+        "filter_prd()", "D, LD", "Filter dyad-year data to just politically relevant dyads",
+        "wc_duration()", "C", "Whittle Duplicate Conflict-Years by (Minimum or Maximum) Conflict Duration",
+        "wc_fatality()", "C", "Whittle Duplicate Conflict-Years by Highest Fatality",
+        "wc_hostility()", "C", "Whittle Duplicate Conflict-Years by Highest Hostility",
+        "wc_jds()", "C", "Whittle Duplicate Conflict-Years by Just Dropping Something",
+        "wc_onsets()", "C", "Whittle Uniqute Conflict Onset-Years from Conflict-Year Data",
+        "wc_recip()", "C", "Whittle Duplicate Conflict-Years by Conflict Reciprocation",
+        "wc_stmon()", "C", "Whittle Duplicate Conflict-Years by Lowest Start Month"
+) -> add_functions
+
+if (is_latex) {
+kable(add_functions, booktabs = TRUE, longtable = TRUE,
+    caption = "Functions that Add Data",
+    align = c("l", "c", "l"),
+    linesep = "",
+   col.names = c("Function", "Type", "Description"))  %>%
+    kable_styling(font_size = 9) %>%
+   row_spec(0, bold=TRUE) %>%
+    column_spec(1, monospace = TRUE) %>%
+    column_spec(3, width="30em")
+} else {
+  kable(add_functions, booktabs = TRUE, longtable = TRUE,
+    caption = "Functions that Add Data",
+    align = c("l", "c", "l"),
+    linesep = "",
+    col.names = c("Function",  "Type", "Description"))  %>%
+   row_spec(0, bold=TRUE) %>%
+    column_spec(1, monospace = TRUE)
+}
+
+
+```
+
+<!-- Each function uses raw or pre-processed data included in `{peacesciencer}`. For example, `create_dyadyears()` transforms the raw state system membership data for either the Correlates of War or Gleditsch-Ward system into the full universe of post-1816 dyad-years. `add_gml_mids()` uses a dyadic dispute-year version of the MID data offered by @gibleretal2016amid, which, as the `data-raw` directory on the project's Github shows, is itself derived from the dispute-level and participant-level versions of the data.  -->
+
+```{r tab-functionality, echo=F, eval=F}
 tribble(~data, ~description, ~type, ~func,
-        "(CoW, G-W) Dyad-Year Data", "Create dyad-years from state system membership data", "", "create_dyadyears()",
-        "(CoW, G-W) State-Year Data", "Create state-years from state system membership data", "", "create_stateyears()",
-        "(CoW, G-W) State-Day Data", "Create state-days from state system membership data", "", "create_statedays()",
-        "Archigos (v. 4.1)", "Add Archigos political leader information", "D, S", "add_archigos()",
+        "(CoW, G-W) Dyad-Year Data", "Create dyad-years from state system membership data", " ", "create_dyadyears()",
+        "(CoW, G-W) State-Year Data", "Create state-years from state system membership data", " ", "create_stateyears()",
+        "(CoW, G-W) State-Day Data", "Create state-days from state system membership data", " ", "create_statedays()",
+        "Archigos Leader-Day Data", "Create leader-day data from Archigos", " ", "create_leaderdays()",
+        "Archigos Leader-Year Data", "Create leader-year data from Archigos", " ", "create_leadeyears()",
+        "Archigos Leader-Dyad-Year Data", "Create leader-dyad-year data from Archigos", " ", "create_leaderdyadyears()",
+        "Archigos", "Add Archigos political leader information", "D, S", "add_archigos()",
         "ATOP Alliances (v. 5.0)", "Add ATOP alliance data", "D", "add_atop_alliance()",
         "Capital-to-Capital Distances", "Add capital-to-capital distance", "D, S", "add_capital_distance()",
         "Convert CoW codes to G-W codes", "Add matching CoW codes for G-W states by year", "D, S", "add_ccode_to_gw()",
         "Convert G-W codes to CoW codes", "Add matching G-W codes for CoW states by year", "D, S", "add_gwcode_to_cow()",
-        "CoW National Capabilities (v. 5.0)", "Adds capabilities of states by year", "D, S", "add_nmc()",
-        "CoW Direct Contiguity (v. 3.2)", "Adds contiguity information by year", "D, S", "add_contiguity()",
-        "CoW Alliances (v. 4.1)", "Adds CoW alliance data by year", "D", "add_cow_alliance()",
-        "CoW IGOs (v. 3.0)", "Adds CoW IGO data by year", "D, S", "add_igos()",
-        "CoW Major Powers (v. 2016)", "Adds CoW major power by year", "D, S", "add_cow_majors()",
-        "CoW MIDs (v. 5.0)", "Add CoW MID information to data", "D", "add_cow_mids()",
-        "CoW Trade Data (v. 4.0)", "Add CoW trade information to data", "D, S", "add_cow_trade()",
+        "CoW National Capabilities", "Adds capabilities of states by year", "D, S", "add_nmc()",
+        "CoW Direct Contiguity", "Adds contiguity information by year", "D, S", "add_contiguity()",
+        "CoW Alliances", "Adds CoW alliance data by year", "D", "add_cow_alliance()",
+        "CoW IGOs", "Adds CoW IGO data by year", "D, S", "add_igos()",
+        "CoW Major Powers", "Adds CoW major power by year", "D, S", "add_cow_majors()",
+        "CoW MIDs", "Add CoW MID information to data", "D", "add_cow_mids()",
+        "CoW Trade Data", "Add CoW trade information to data", "D, S", "add_cow_trade()",
         "CoW Wars", "Add CoW inter-state (v. 4.0) and intra-state (v. 4.1) war data", "D", "add_cow_wars()",
-        "CREG (v. 1.02)", "Add ethnic/religious fractionalization/polarization by year", "D, S", "add_creg_fractionalization()",
+        "CREG", "Add ethnic/religious fractionalization/polarization by year", "D, S", "add_creg_fractionalization()",
         "Democracy", "Add Polity (v. 2017), V-Dem (v. 10), and Marquez' (2016) UDS extensions", "D,S", "add_democracy()",
-        "GML MIDs (v. 2.1.1)", "Add Gibler-Miller-Little MIDs to data", "D", "add_gml_mids()",
-        "Minimum Distance (v. 2016)", "Adds minimum distance data by year", "D, S", "add_minimum_distance()",
+        "GML MIDs", "Add Gibler-Miller-Little MIDs to data", "D", "add_gml_mids()",
+        "Minimum Distance", "Adds minimum distance data by year", "D, S", "add_minimum_distance()",
         "Peace Years", "Calculate peace years for various disputes", "D, S", "add_peace_years()",
         "Rugged/Mountainous Terrain", "Add 'ruggedness'/'mountainous' terrain data by year", "D, S", "add_rugged_terrain()",
         "(Surplus/Gross) Domestic Product", "Add Anders et al. (2020) GDP/SDP simulations by year", "D, S", "add_sdp_gdp()",
@@ -155,18 +272,38 @@ tribble(~data, ~description, ~type, ~func,
 # tribble(~data, ~description, ~type, ~func,
 #         "(CoW, G-W)", "Create dyad-years", "", "stuff") -> included
 
+# if (is_latex) {
+# kable(included, #booktabs = FALSE, longtable = TRUE,
+#     caption = "Features of \\{peacesciencer\\}",
+#     align = c("l","l","c", "c"),
+#     col.names = c("Data", "Description", "Type", "Function")) %>%
+#   kable_styling(font_size = 8) %>%
+#   row_spec(0, bold=TRUE) %>%
+#   column_spec(4, monospace = TRUE) %>%
+#   column_spec(c(1,2,3), border_left = FALSE) %>%
+#   row_spec((head(c(1:nrow(included)), -1)), extra_latex_after = "\\arrayrulecolor{white}") %>%
+#   row_spec((included %>% 
+#              nrow()), extra_latex_after = "\\arrayrulecolor{black}")
+# } else {
+#   kable(included,
+#     caption = "Features of \\{peacesciencer\\}",
+#     align = c("l","l","c", "c"),
+#     col.names = c("Data", "Description", "Type", "Function")) %>%
+#   # kable_styling(font_size = 7) %>%
+#   row_spec(0, bold=TRUE) %>%
+#   column_spec(4, monospace = TRUE) 
+# }
+
+
 if (is_latex) {
-kable(included, #booktabs = FALSE, longtable = TRUE,
-    caption = "Features of \\{peacesciencer\\}",
+kable(included, booktabs = TRUE, longtable = FALSE,
+    caption = "Features of This Package",
     align = c("l","l","c", "c"),
-    col.names = c("Data", "Description", "Type", "Function")) %>%
-  kable_styling(font_size = 8) %>%
-  row_spec(0, bold=TRUE) %>%
-  column_spec(4, monospace = TRUE) %>%
-  column_spec(c(1,2,3), border_left = FALSE) %>%
-  row_spec((head(c(1:nrow(included)), -1)), extra_latex_after = "\\arrayrulecolor{white}") %>%
-  row_spec((included %>% 
-             nrow()), extra_latex_after = "\\arrayrulecolor{black}")
+    linesep = "",
+    col.names = c("Data", "Description", "Type", "Function"))  %>%
+   kable_styling(font_size = 8) %>%
+   row_spec(0, bold=TRUE) %>%
+    column_spec(4, monospace = TRUE)
 } else {
   kable(included,
     caption = "Features of \\{peacesciencer\\}",
@@ -179,19 +316,19 @@ kable(included, #booktabs = FALSE, longtable = TRUE,
 
 ```
 
-`{peacesciencer}`'s coverage focuses mostly on data that are released as standalone data sets for download, especially those in the Correlates of War or Gleditsch-Ward ecosystem of data. Data that can be obtained from a stable advanced programming interface---like the World Bank, for example---can be obtained through those other means [e.g. @arelbundock2021w]. Its coverage will assuredly expand with new additions of interest to the peace science community.
+`{peacesciencer}`'s coverage focuses mostly on data that are released as standalone data sets for download, especially those in the Correlates of War or Gleditsch-Ward ecosystem of data. Data that can be obtained from a stable advanced programming interface---like the World Bank, for example---can be obtained through those other means [e.g. @arelbundock2021w]. Its coverage will assuredly expand with new additions of interest to the peace science community, though the package already offers a lot to meet researcher needs.
 
 # How to Install `{peacesciencer}`
 
-`{peacesciencer}` is a package for the R programming language. This assumes at least some familiarity with the R programming language. Users should have at least version 3.5 of R, which should not be an issue since the most recent version---as of writing---is 4.1.0. `{peacesciencer}` is designed to be as user-friendly as possible. Those proficient in R, those just learning R, and those with no experience in R should be able to pick up its use fairly quickly.
+`{peacesciencer}` is a package for the R programming language. This assumes at least some familiarity with the R programming language. Users should have at least version 3.5 of R, which should not be an issue since the most recent version---as of writing---is 4.1.2. `{peacesciencer}` is designed to be as user-friendly as possible. Those proficient in R, those just learning R, and those with no experience in R should be able to pick up its use fairly quickly.
 
-`{peacesciencer}`'s functions work out of the box, though it works best with one additional package.  This is `{tidyverse}`, itself a suit of packages that share a common form and design [@wickhamgrolemund2017rds]. `{peacesciencer}` functions make considerable use of the component packages of `{tidyverse}` but installing and loading `{tidyverse}` will allow the researcher to make quicker use of `{peacesciencer}`'s functionality. A user can open an R session and install both packages as follows.
+`{peacesciencer}`'s functions work out of the box, though users should find their experience augmented by two additional downloads. First, RStudio offers an IDE that serves as a user-friendly graphical user interface (GUI) over what is, at its core, a programming language with a command-line interface. Rstudio's design will make it much easier for users to experiment with `{peacesciencer}`'s functionality and read its documentation to assist them with the user of these functions. The second additional download is `{tidyverse}`, itself a suit of packages that share a common form and design [@wickhametal2019wt]. `{peacesciencer}` functions make considerable use of the component packages of `{tidyverse}` but installing and loading `{tidyverse}` will allow the researcher to make quicker use of `{peacesciencer}`'s functionality. A user can open an R session by way of Rstudio and install both packages as follows.
 
 ```r
 install.packages(c("tidyverse", "peacesciencer"))
 ```
 
-R packages once installed need to be loaded with every R session. The user can load both with the `library()` function in R.
+R packages once installed need to be loaded with every R session (i.e. every time the user opens RStudio). The user can load both with the `library()` function in R.
 
 ```r
 library(tidyverse)
@@ -202,13 +339,41 @@ Thereafter, a researcher can start using `{peacesciencer}` to create the kind of
 
 # A Tutorial on How to Use `{peacesciencer}`
 
+I encourage users who are using `{peacesciencer}` for the first time, especially those who are learning R for the first time because of their interest in this package, to approach the package with an idea of the kind of data they want to create for the sake of a project. The core functionality of `{peacesciencer}` begins with the creation of a data frame, after which can be populated with various indicators of interest. No matter, the suggested use of `{peacesciencer}` begins with the creation of a data frame. To start, assume a new user without much familiarity with the R programming language installed Rstudio, `{tidyverse}`, and `{peacesciencer}` with the idea of using `{peacesciencer}` to help them start a new research project that seeks to explain civil conflict onset across state-years. Toward that end, they have identified their unit of analysis is state-year and can be created with the `create_stateyears()`. To get started, I encourage entering the following command in the console in Rstudio.
+
+```{r, eval=F, echo=T}
+?create_stateyears()
+```
+
+This will open a documentation file for this function, which is itself quite verbose and informative for the user about what the function is doing. In this case, the documentation file will show there are three arguments in this function, each with built-in defaults. This function will allow the user to choose a state system for which they want state-years (`system`, which accepts either "cow" or "gw" for CoW state system data or Gleditsch-Ward state system data and defaults to CoW), whether they want to extend the state system to the most recently concluded calendar year (`mry`, which defaults to TRUE), and whether they may want to additionally subset the years to a more narrow temporal domain they may already have in mind (`subset_years`, which defaults to no subset of the data, returning all possible state-years). If the user simply ran the function with no overrides, the function would return all Correlates of War state-years from 1816 to the most recent year (2020, as of writing).
+
+```{r}
+create_stateyears()
+```
+
+A user who approaches `{peacesciencer}` with a project in mind will see they can better tailor this function to what they want. Their interest in a state-year analysis of civil conflict will likely gravitate them toward the Gleditsch-Ward state system data, since that is the state system that serves as the basis of the UCDP armed conflict data. They will also know they have no use for pre-1946 observations since civil conflict data, certainly UCDP's suite of data, has coverage only from 1946 forward. Thus, the user can supply some additional arguments to tailor the creation of data to just what they want (here: all Gleditsch-Ward state-years from 1946 to 2019).
+
+```{r}
+create_stateyears(system = 'gw', subset_years = c(1946:2019))
+```
+
+Another reader may be interested in using `{peacesciencer}` for a research project using a leader-year unit of analysis, which can be created with `create_leaderyears()`. Users can read more about what this function is doing by consulting the documentation file in R with the following command.
+
+```{r, eval=F, echo=T}
+?create_leaderyears()
+```
+
+This function has three arguments denoting the leader system to inform the creation of the leader-year data (i.e. Archigos) and two other arguments: `standardize` and `subset_years`. The `standardize` arguments, which when it defaults to "none", returns all leader-years as presented in the raw Archigos data. Archigos' leader data are nominally denominated in the Gleditsch-Ward state system data, if not necessarily Gleditsch-Ward state system dates (e.g. Archigos often has leader entries prior to state system entry). Thus, the user can standardize leader-year data to Gleditsch-Ward state system dates of CoW state system dates. Finally, the user can subset the leader-year data to a more narrow temporal domain that may interest them with the `subset_years` function. If a user is interested in creating a base data of leader-years for an analysis of inter-state conflict initiation with the GML MID data, they can create the data that interests them with the following function. Notice how `create_leaderyears()` also returns information about the leader too, like the leader's approximate age that year, their gender, and information about their tenure.
+
+```{r}
+create_leaderyears(standardize = "cow", subset_years = c(1870:2010))
+```
+
+
 `{peacesciencer}` has a simple "pipe"-based workflow. The top of the "pipe" is the first function to create the data. These options include `create_dyadyears()`, `create_stateyears()`, and `create_statedays()`. All options include two arguments: `system` and `mry`. `system` takes one of two values---"cow" or "gw"---for what state system membership data the user wants. If `system` is not specified, the function defaults to Correlates of War system membership data given the prominence of the Correlates of War project in the conflict data ecosystem. `mry`---short for "most recent year"---determines whether or not the function extends the membership data to the most recently concluded calendar year. The function defaults to `TRUE` in the absence of a user-specified override, meaning the data returned will include all relevant state-year data from 1816 to (as of writing) 2020 even though the Correlates of War state system data were last updated at the end of 2016 (and the Gleditsch-Ward system were last updated at the end of 2017). `create_dyadyears()` has a third argument---`directed`---that determines whether the user wants directed dyad-year data or non-directed dyad-year data. The function defaults to `TRUE`, returning directed dyad-year data.
 
 The following example creates a full state-year data frame of Gleditsch-Ward states from 1816 to 2020.
 
-```{r, echo=T, eval=F}
-create_stateyears(system = 'gw')
-```
 
 The below example would create a full non-directed dyad-year data frame of Correlates of War states from 1816 to 2016, the last year of record in the Correlates of War state system membership data.
 
@@ -284,7 +449,7 @@ Data %>%
 
 Table \@ref(tab:tab-dd) is a formatted version of the results of a logistic regression model of conflict onset using these "dangerous dyads" indicators. Users typically do not end their analysis here---often looking for new predictors of conflict onset with these covariates in mind---but `{peacesciencer}` greatly reduces the time and energy researchers must invest into cleaning and processing data for analysis.
 
-```{r tab-dd, eval=T}
+```{r tab-dd, eval=T, echo=F}
 
 table_format <- ifelse(is_docx, "huxtable", 'default')
 
@@ -352,7 +517,7 @@ create_stateyears(system = 'gw') %>%
 
 
 
-```{r tab-cw, eval=T}
+```{r tab-cw, eval=T, echo=F}
 
 table_format <- ifelse(is_docx, "huxtable", 'default')
 
