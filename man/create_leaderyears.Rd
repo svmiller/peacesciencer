@@ -4,16 +4,28 @@
 \alias{create_leaderyears}
 \title{Create leader-years from leader data}
 \usage{
-create_leaderyears(system = "archigos", standardize = "none")
+create_leaderyears(system = "archigos", standardize = "none", subset_years)
 }
 \arguments{
-\item{system}{a leader system with which to create leader-years. Right now, only "archigos" is supported.}
+\item{system}{a leader system with which to create leader-years.
+Right now, only "archigos" is supported.}
 
-\item{standardize}{a character vector of length one: "cow", "gw", or "none". If "cow", the function standardizes the leader-days to
-just those that overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If "gw", the function
-standardizes the leader-days to just those that overlap with the state system dates of the Gleditsch-Ward date (see: \code{gw_states}). If
-"none", the function returns all leader-days as presented in Archigos (which is nominally denominated in Gleditsch-Ward state system codes,
-if not necessarily Gleditsch-Ward state system dates). Default is "none".}
+\item{standardize}{a character vector of length one: "cow", "gw", or "none".
+If "cow", the function standardizes the leader-years to just those that
+overlap  with state system membership in the Correlates of War state
+system (see: \code{cow_states}). If "gw", the function standardizes the
+leader-years to just those that overlap with the state system dates of
+the Gleditsch-Ward date (see: \code{gw_states}). If "none", the function
+returns all leader-years as presented in Archigos (which is nominally
+denominated in Gleditsch-Ward state system codes, if not necessarily
+Gleditsch-Ward state system dates). Default is "none".}
+
+\item{subset_years}{and optional character vector for subsetting the years
+returned to just some temporal domain of interest to the user. For example,
+\code{c(2000:2005)} would subset the data to just all leader-years in 2000, 2001,
+2002, 2003, 2004, and 2005 Be advised that it's easiest to subset the data after
+the full universe of leader-year data have been created. It is also agnostic
+about what was supplied to the \code{standardize} argument.}
 }
 \value{
 \code{create_leaderyears()} takes leader-level data available in \pkg{peacesciencer}

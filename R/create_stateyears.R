@@ -23,6 +23,14 @@
 #' to the end of 2017. When \code{mry == TRUE}, the function returns more recent years
 #' (e.g. 2018, 2019) under the assumption that states alive at the end of 2017 are still alive
 #' today. Use with some care.
+#' @param subset_years and optional character vector for subsetting the years
+#' returned to just some temporal domain of interest to the user. For example,
+#' `c(1816:1820)` would subset the data to just all state-years in 1816, 1817,
+#' 1818, 1819, and 1820. Be advised that it's easiest to subset the data after
+#' the full universe of state-year data have been created. This means you could,
+#' if you choose, effectively overwrite `mry = TRUE` with this argument since
+#' the `mry` argument is applied at the expansion of the state system data
+#' into state-year data.
 #'
 #' @examples
 #'
@@ -36,7 +44,7 @@
 #' create_stateyears(system="gw", mry=FALSE)
 #'
 #'
-create_stateyears <- function(system = "cow", mry = TRUE) {
+create_stateyears <- function(system = "cow", mry = TRUE, subset_years) {
 
   if (system == "cow") {
     if (mry == TRUE) {
@@ -57,8 +65,6 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
     attr(data, "ps_data_type") = "state_year"
     attr(data, "ps_system") = "cow"
 
-    return(data)
-
   } else if(system == "gw") {
     if (mry == TRUE) {
       mry <- as.numeric(format(Sys.Date(), "%Y"))-1
@@ -78,7 +84,9 @@ create_stateyears <- function(system = "cow", mry = TRUE) {
     attr(data, "ps_data_type") = "state_year"
     attr(data, "ps_system") = "gw"
 
-    return(data)
-
   }
+
+
+
+  return(data)
 }

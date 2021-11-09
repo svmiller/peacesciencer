@@ -37,12 +37,23 @@
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 #'
-#' @param system a leader system with which to create leader-years. Right now, only "archigos" is supported.
-#' @param standardize a character vector of length one: "cow", "gw", or "none". If "cow", the function standardizes the leader-days to
-#' just those that overlap  with state system membership in the Correlates of War state system (see: \code{cow_states}). If "gw", the function
-#' standardizes the leader-days to just those that overlap with the state system dates of the Gleditsch-Ward date (see: \code{gw_states}). If
-#' "none", the function returns all leader-days as presented in Archigos (which is nominally denominated in Gleditsch-Ward state system codes,
-#' if not necessarily Gleditsch-Ward state system dates). Default is "none".
+#' @param system a leader system with which to create leader-years.
+#' Right now, only "archigos" is supported.
+#' @param standardize a character vector of length one: "cow", "gw", or "none".
+#' If "cow", the function standardizes the leader-years to just those that
+#' overlap  with state system membership in the Correlates of War state
+#' system (see: \code{cow_states}). If "gw", the function standardizes the
+#' leader-years to just those that overlap with the state system dates of
+#' the Gleditsch-Ward date (see: \code{gw_states}). If "none", the function
+#' returns all leader-years as presented in Archigos (which is nominally
+#' denominated in Gleditsch-Ward state system codes, if not necessarily
+#' Gleditsch-Ward state system dates). Default is "none".
+#' @param subset_years and optional character vector for subsetting the years
+#' returned to just some temporal domain of interest to the user. For example,
+#' `c(2000:2005)` would subset the data to just all leader-years in 2000, 2001,
+#' 2002, 2003, 2004, and 2005 Be advised that it's easiest to subset the data after
+#' the full universe of leader-year data have been created. It is also agnostic
+#' about what was supplied to the `standardize` argument.
 #'
 #' @examples
 #' \donttest{
@@ -52,7 +63,7 @@
 #' create_leaderyears(standardize = 'gw')
 #' }
 #'
-create_leaderyears <- function(system = "archigos", standardize = "none") {
+create_leaderyears <- function(system = "archigos", standardize = "none", subset_years) {
 
   if (!(standardize %in% c("none", "cow", "gw")) | length(standardize) > 1) {
 
@@ -145,6 +156,13 @@ create_leaderyears <- function(system = "archigos", standardize = "none") {
 
     stop("Right now, only the Archigos leader data are supported.")
 
+  }
+
+
+  if (!missing(subset_years)) {
+    data <- subset(data, data$year %in% subset_years)
+  } else {
+    data <- data
   }
 
   return(data)

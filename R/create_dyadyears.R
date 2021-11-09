@@ -28,6 +28,14 @@
 #' non-directed data. In non-directed data, France-Germany and Germany-France in the same year
 #' are the same observation. The standard here is to drop cases where the country code for the
 #' second observation is less than the country code for the first observation.
+#' @param subset_years and optional character vector for subsetting the years
+#' returned to just some temporal domain of interest to the user. For example,
+#' `c(1816:1820)` would subset the data to just all dyad-years in 1816, 1817,
+#' 1818, 1819, and 1820. Be advised that it's easiest to subset the data after
+#' the full universe of dyad-year data have been created. This means you could,
+#' if you choose, effectively overwrite `mry = TRUE` with this argument since
+#' the `mry` argument is applied at the expansion of the state system data,
+#' which occurs at the start of the function.
 #'
 #' @examples
 #' \donttest{
@@ -44,7 +52,7 @@
 #' create_dyadyears(system="gw", mry=FALSE, directed = FALSE)
 #' }
 #'
-create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
+create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE, subset_years) {
 
   if (system == "cow") {
     if (mry == TRUE) {
@@ -78,14 +86,14 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
 
     if (directed == TRUE) {
 
+      data -> data
+
     } else {
       filter(data, .data$ccode2 > .data$ccode1) -> data
     }
 
     # remove false dyads
     data %>% anti_join(., false_cow_dyads) -> data
-
-    return(data)
 
     } else if(system == "gw") {
       gw_states$styear <- .pshf_year(gw_states$startdate)
@@ -122,6 +130,8 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
 
       if (directed == TRUE) {
 
+        data -> data
+
       } else {
         filter(data, .data$gwcode2 > .data$gwcode1) -> data
       }
@@ -129,8 +139,13 @@ create_dyadyears <- function(system = "cow", mry = TRUE, directed = TRUE) {
       # remove false dyads
       data %>% anti_join(., false_gw_dyads) -> data
 
-      return(data)
-
     }
 
+  if (!missing(subset_years)) {
+    data <- subset(data, data$year %in% subset_years)
+  } else {
+    data <- data
+  }
+
+  return(data)
 }

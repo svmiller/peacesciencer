@@ -4,7 +4,7 @@
 \alias{create_stateyears}
 \title{Create state-years from state system membership data}
 \usage{
-create_stateyears(system = "cow", mry = TRUE)
+create_stateyears(system = "cow", mry = TRUE, subset_years)
 }
 \arguments{
 \item{system}{a character specifying whether the user wants Correlates of War
@@ -17,6 +17,15 @@ most recently concluded calendar year. For example, the Gleditsch-Ward data exte
 to the end of 2017. When \code{mry == TRUE}, the function returns more recent years
 (e.g. 2018, 2019) under the assumption that states alive at the end of 2017 are still alive
 today. Use with some care.}
+
+\item{subset_years}{and optional character vector for subsetting the years
+returned to just some temporal domain of interest to the user. For example,
+\code{c(1816:1820)} would subset the data to just all state-years in 1816, 1817,
+1818, 1819, and 1820. Be advised that it's easiest to subset the data after
+the full universe of state-year data have been created. This means you could,
+if you choose, effectively overwrite \code{mry = TRUE} with this argument since
+the \code{mry} argument is applied at the expansion of the state system data
+into state-year data.}
 }
 \value{
 \code{create_stateyears()} takes state system membership data provided

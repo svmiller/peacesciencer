@@ -136,23 +136,26 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/ps_version.html">ps_version</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Data Versions in `{peacesciencer}`"</span>,
-      align <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span><span class="op">)</span>, booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
+      align <span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"c"</span>, <span class="st">"l"</span>, <span class="st">"c"</span>, <span class="st">"c"</span><span class="op">)</span>, 
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, 
+                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/row_spec.html">row_spec</a></span><span class="op">(</span><span class="fl">0</span>, bold<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <table class="table table table-striped">
 <caption>
 Data Versions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>
 </caption>
 <thead><tr>
-<th style="text-align:center;">
+<th style="text-align:center;font-weight: bold;">
 category
 </th>
-<th style="text-align:left;">
+<th style="text-align:left;font-weight: bold;">
 data
 </th>
-<th style="text-align:center;">
+<th style="text-align:center;font-weight: bold;">
 version
 </th>
-<th style="text-align:center;">
+<th style="text-align:center;font-weight: bold;">
 bibtexkey
 </th>
 </tr></thead>
@@ -288,7 +291,7 @@ stinnettetal2002cow
 igo
 </td>
 <td style="text-align:left;">
-Correlates of War International Governmental Organizations (IGOs)
+Correlates of War IGOs
 </td>
 <td style="text-align:center;">
 3
@@ -602,7 +605,7 @@ haege2011cc
 <span class="co">#&gt;   Journal = {American Political Science Review},</span>
 <span class="co">#&gt;   Number = {4},</span>
 <span class="co">#&gt;   Pages = {1352--1358},</span>
-<span class="co">#&gt;   Title = {A Framework for Measuring Leaders’ Willingness to Use Force},</span>
+<span class="co">#&gt;   Title = {A Framework for Measuring Leaders' Willingness to Use Force},</span>
 <span class="co">#&gt;   Volume = {114},</span>
 <span class="co">#&gt;   Year = {2020},</span>
 <span class="co">#&gt;   Keywords = {lwuf, add_lwuf()}</span>

@@ -173,7 +173,7 @@ Gleditsch-Ward (<code>gw</code>) system membership data. The function leans on i
 data provided in the package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>create_dyadyears</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"cow"</span>, mry <span class='op'>=</span> <span class='cn'>TRUE</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_dyadyears</span><span class='op'>(</span>system <span class='op'>=</span> <span class='st'>"cow"</span>, mry <span class='op'>=</span> <span class='cn'>TRUE</span>, directed <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='va'>subset_years</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -201,6 +201,17 @@ Germany-France (255-220) are observationally different. If FALSE, the function r
 non-directed data. In non-directed data, France-Germany and Germany-France in the same year
 are the same observation. The standard here is to drop cases where the country code for the
 second observation is less than the country code for the first observation.</p></td>
+    </tr>
+    <tr>
+      <th>subset_years</th>
+      <td><p>and optional character vector for subsetting the years
+returned to just some temporal domain of interest to the user. For example,
+<code><a href='https://rdrr.io/r/base/c.html'>c(1816:1820)</a></code> would subset the data to just all dyad-years in 1816, 1817,
+1818, 1819, and 1820. Be advised that it's easiest to subset the data after
+the full universe of dyad-year data have been created. This means you could,
+if you choose, effectively overwrite <code>mry = TRUE</code> with this argument since
+the <code>mry</code> argument is applied at the expansion of the state system data,
+which occurs at the start of the function.</p></td>
     </tr>
     </table>
 

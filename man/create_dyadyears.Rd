@@ -4,7 +4,7 @@
 \alias{create_dyadyears}
 \title{Create dyad-years from state system membership data}
 \usage{
-create_dyadyears(system = "cow", mry = TRUE, directed = TRUE)
+create_dyadyears(system = "cow", mry = TRUE, directed = TRUE, subset_years)
 }
 \arguments{
 \item{system}{a character specifying whether the user wants Correlates of War
@@ -24,6 +24,15 @@ Germany-France (255-220) are observationally different. If FALSE, the function r
 non-directed data. In non-directed data, France-Germany and Germany-France in the same year
 are the same observation. The standard here is to drop cases where the country code for the
 second observation is less than the country code for the first observation.}
+
+\item{subset_years}{and optional character vector for subsetting the years
+returned to just some temporal domain of interest to the user. For example,
+\code{c(1816:1820)} would subset the data to just all dyad-years in 1816, 1817,
+1818, 1819, and 1820. Be advised that it's easiest to subset the data after
+the full universe of dyad-year data have been created. This means you could,
+if you choose, effectively overwrite \code{mry = TRUE} with this argument since
+the \code{mry} argument is applied at the expansion of the state system data,
+which occurs at the start of the function.}
 }
 \value{
 \code{create_dyadyears()} takes state system membership data provided

@@ -34,6 +34,7 @@ its original size. This is a huge reduction in disk space.
 - `archigos` data's `ccode` has been renamed to `gwcode` to reflect these are actually Gleditsch-Ward state codes.
 - The "whittle" functions now work with leader-dyadic conflict data available in the package.
 - The package has started taking inventory of non-ASCII characters that appear in the package (e.g. spelling "Wuerttemberg" with the U-umlaut) and replacing them. This is not a functionality issue at all. The problem is CRAN raises a note for every single non-ASCII character it sees and I'd like to avoid the CRAN hammer if I can.
+- `create_leaderyears()`, `create_dyadyears()`, and `create_stateyears()` have a built-in argument for subsetting the years returned by the function (`subset_years`). Use to your discretion.
 
 peacesciencer 0.6.0
 ---------------------------------------------------------------------
