@@ -167,8 +167,8 @@ img {
 
 <style>
 
-@import url('https://fonts.googleapis.com/css?family=PT+Serif:300,300i'); 
-@import url('https://fonts.googleapis.com/css?family=PT+Sans:300,300i,400,400i,600,600i,700,700i'); 
+@import url('https://fonts.googleapis.com/css?family=PT+Serif:300,300i');
+@import url('https://fonts.googleapis.com/css?family=PT+Sans:300,300i,400,400i,600,600i,700,700i');
 
 p {
     text-align: justify;
@@ -232,6 +232,52 @@ div.level2 h2 {
     font-style: italic;
     font-size: 20px;
 }
+
+
+table {
+	margin: 0 auto 30px auto;
+	font-family: "PT Serif", "Palatino", "Palatino Linotype", serif;
+}
+
+table th, table td {
+	padding-left: 10px;
+  padding-right: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+table caption {
+	font-family: "PT Serif", "Palatino", "Palatino Linotype", serif;
+	font-weight: bold;
+
+}
+
+table thead tr th {
+	font-weight: normal;
+	/* font-style: italic; */
+	border-top: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+table tbody tr:last-child td {
+
+border-bottom: 1px solid #000000;
+
+}
+
+table td {
+  font-family: "PT Serif", "Palatino", "Palatino Linotype", serif;
+}
+
+.table table {
+  font-family: "PT Serif", "Palatino", "Palatino Linotype", serif;
+}
+
+.table table caption {
+  font-family: "PT Serif", "Palatino", "Palatino Linotype", serif;
+	font-weight: bold;
+}
+
 
 </style>
 </head>
@@ -765,7 +811,7 @@ Whittle Duplicate Conflict-Years by Lowest Start Month
 </div>
 <div id="a-tutorial-on-how-to-use-peacesciencer" class="section level1">
 <h1>A Tutorial on How to Use <code>{peacesciencer}</code></h1>
-<p>I encourage users who are using <code>{peacesciencer}</code> for the first time, especially those who are learning R for the first time because of their interest in this package, to approach the package with an idea of the kind of data they want to create for the sake of a project. The core functionality of <code>{peacesciencer}</code> begins with the creation of a data frame, after which can be populated with various indicators of interest. No matter, the suggested use of <code>{peacesciencer}</code> begins with the creation of a data frame. To start, assume a new user without much familiarity with the R programming language installed Rstudio, <code>{tidyverse}</code>, and <code>{peacesciencer}</code> with the idea of using <code>{peacesciencer}</code> to help them start a new research project that seeks to explain civil conflict onset across state-years. Toward that end, they have identified their unit of analysis is state-year and can be created with the <code>create_stateyears()</code>. To get started, I encourage entering the following command in the console in Rstudio.</p>
+<p>I encourage users who are using <code>{peacesciencer}</code> for the first time, especially those who are learning R for the first time because of their interest in this package, to approach <code>{peacesciencer}</code> with an idea of the kind of data they want to create for the sake of a project. The core functionality of <code>{peacesciencer}</code> begins with the creation of a data frame, after which can be populated with various indicators of interest. No matter, the suggested use of <code>{peacesciencer}</code> begins with the creation of a data frame. To start, assume a new user without much familiarity with the R programming language installed Rstudio, <code>{tidyverse}</code>, and <code>{peacesciencer}</code> with the idea of using <code>{peacesciencer}</code> to help them start a new research project that seeks to explain civil conflict onset across state-years. Toward that end, they have identified their unit of analysis is state-year and can be created with the <code>create_stateyears()</code>. To get started, I encourage entering the following command in the console in Rstudio.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>?<span class="fu">create_stateyears</span>()</span></code></pre></div>
 <p>This will open a documentation file for this function, which is itself quite verbose and informative for the user about what the function is doing. In this case, the documentation file will show there are three arguments in this function, each with built-in defaults. This function will allow the user to choose a state system for which they want state-years (<code>system</code>, which accepts either “cow” or “gw” for CoW state system data or Gleditsch-Ward state system data and defaults to CoW), whether they want to extend the state system to the most recently concluded calendar year (<code>mry</code>, which defaults to TRUE), and whether they may want to additionally subset the years to a more narrow temporal domain they may already have in mind (<code>subset_years</code>, which defaults to no subset of the data, returning all possible state-years). If the user simply ran the function with no overrides, the function would return all Correlates of War state-years from 1816 to the most recent year (2020, as of writing).</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_stateyears</span>()</span>
@@ -818,8 +864,8 @@ Whittle Duplicate Conflict-Years by Lowest Start Month
 <span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10 USA-1877     2 Hayes  M       1878          2        56</span></span>
 <span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 15,064 more rows</span></span></code></pre></div>
 <p>Researchers using <code>{peacesciencer}</code> to create data for their research project should start with one of these “create” functions. Whether state-year, dyad-year, or a leader-level analysis, these functions will create the full universe of cases of interest to a researcher for the unit of analysis that serves as the core of their project.</p>
-<div id="adding-information-to-data-created-in-peacesciencer" class="section level2">
-<h2>Adding Information to Data Created in <code>{peacesciencer}</code></h2>
+<div id="creating-dyad-year-data-and-adding-dyad-year-data-in-peacesciencer" class="section level2">
+<h2>Creating Dyad-Year Data and Adding Dyad-Year Data in <code>{peacesciencer}</code></h2>
 <p>After creating the base data of interest to their project, researchers can begin to add information they want with the suite of functions outlined in Table <a href="#tab:tab-addfunctions">2</a>. For example, researcher interested in a dyad-year analysis of inter-state disputes can create a non-directed dyad-year data set from 1816 to 2010 in <code>{peacesciencer}</code> with the <code>create_dyadyears()</code> function, one of the aforementioned “create” function. The following would create the base data of interest to the user (i.e. all non-directed dyad-years from 1816 to 2010).</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dyadyears</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>, <span class="at">subset_years =</span> <span class="fu">c</span>(<span class="dv">1816</span><span class="sc">:</span><span class="dv">2010</span>))</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 842,655 × 3</span></span>
@@ -878,15 +924,15 @@ Whittle Duplicate Conflict-Years by Lowest Start Month
 <span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  9      2     20  1928        1       1       0     1           0             0</span></span>
 <span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 10      2     20  1929        1       1       0     1           0             0</span></span>
 <span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # … with 112,272 more rows</span></span></code></pre></div>
-<p>Users can also calculate peace-years for these conflicts with <code>add_peace_years()</code> by using the pipe to pass forward the data set and applying the <code>add_peace_years()</code> function to it.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
+<p>Users can also calculate peace-years for these conflicts with <code>add_spells()</code> by using the pipe to pass forward the data set and applying the <code>add_spells()</code> function to it.<a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a></p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># create base data, and pipe (%&gt;%) to next function</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">create_dyadyears</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>, <span class="at">subset_years =</span> <span class="fu">c</span>(<span class="dv">1816</span><span class="sc">:</span><span class="dv">2010</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># subset data to politically relevant dyads (PRDs), pipe to next function</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_prd</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add conflict information from GML-MID data, pipe to next function</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_gml_mids</span>(<span class="at">keep =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add peace years</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_peace_years</span>()</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add peace years (&quot;spells&quot;)</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_spells</span>()</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; # A tibble: 112,282 × 10</span></span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    ccode1 ccode2  year conttype cowmaj1 cowmaj2   prd gmlmidonset gmlmidongoing</span></span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
@@ -908,8 +954,8 @@ Whittle Duplicate Conflict-Years by Lowest Start Month
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter_prd</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add conflict information from GML-MID data, pipe to next function</span></span>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_gml_mids</span>(<span class="at">keep =</span> <span class="cn">NULL</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add peace years, pipe to next function</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_peace_years</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add peace years (&quot;spells&quot;), pipe to next function</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_spells</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add capabilities data, pipe to next function</span></span>
 <span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_nmc</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># add some estimates about democracy for each state, pipe to next function</span></span>
@@ -1139,13 +1185,13 @@ Num.Obs.
 </tfoot>
 </table>
 </div>
-<div id="a-basic-replication-of-fearon-and-laitin-2003-in-peacesciencer" class="section level2">
-<h2>A Basic Replication of Fearon and Laitin (2003) in <code>{peacesciencer}</code></h2>
-<p><code>{peacesciencer}</code> is capable of generating data for replications of analyses at multiple levels beyond dyad-year, including leader-year, leader-dyad-year, and state-year. Suppose a researcher wants to create a state-year data frame to conduct an analysis of civil conflict onset analogous to Fearon and Laitin’s <span class="citation">(2003)</span> well-cited analysis of civil conflict onset, but using UCDP conflict data and the Gleditsch-Ward state system for creating the appropriate universe of state-years. The pipe-based workflow will start with <code>create_stateyears(system = &#39;gw&#39;, subset_years = c(1946:2019))</code>, creating the full universe of Gleditsch-Ward state years and subsetting them to just 1946-2019 (because the UCDP data included in <code>{peacesciencer}</code> include just the observations in that time frame). Next, we can use the <code>add_ucdp_acd()</code> function to return information about ongoing UCDP conflicts and onsets for these states. <code>add_ucdp_acd()</code> takes three arguments: <code>type</code>, <code>issue</code>, and <code>only_wars</code>. <code>type</code> is an optional argument for the type of armed conflicts for which the researcher wants information. Options include “extrasystemic”, “interstate”, “intrastate”, and “II” (short for “internationalized intrastate”). If no <code>type</code> is specified, the function returns information about ongoing disputes and onsets for all states for all tyeps of conflict. If the user wants information about multiple types of conflict–say: intra-state wars and internationalized intra-state wars—they can specify that as a character vector (e.g. <code>type = c(&quot;intrastate&quot;, &quot;II&quot;)</code>). <code>issue</code> is another optional argument for what issue types of conflicts the user wants beyond the type of armed conflict. Options include “territory”, “government”, and “both”. If no <code>issue</code> is specified, the function returns information for all conflicts irregarding the particular issue. <code>only_wars</code> is an argument that subsets the data to just those with the intensity levels of “war” when <code>only_wars = TRUE</code>. The argument defaults to <code>FALSE</code>, returning information about conflicts with at least 25 deaths in addition to the conflicts with more than 1,000 deaths. In this application, <code>add_ucdp_acd(type = &quot;intrastate&quot;, only_wars = FALSE))</code> returns state-year information about ongoing intra-state conflicts over any issue and at either of UCDP’s severity thresholds.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
+<div id="creating-state-year-data-and-adding-state-year-data-in-peacesciencer" class="section level2">
+<h2>Creating State-Year Data and Adding State-Year Data in <code>{peacesciencer}</code></h2>
+<p><code>{peacesciencer}</code> is capable of generating data for replications of analyses at multiple levels beyond dyad-year. Suppose a researcher wants to create a state-year data frame to conduct an analysis of civil conflict onset analogous to Fearon and Laitin’s <span class="citation">(2003)</span> well-cited analysis of civil conflict onset, but using UCDP conflict data and the Gleditsch-Ward state system for creating the appropriate universe of state-years. The pipe-based workflow will start with <code>create_stateyears(system = &#39;gw&#39;, subset_years = c(1946:2019))</code>, creating the full universe of Gleditsch-Ward state years and subsetting them to just 1946-2019 (because the UCDP data included in <code>{peacesciencer}</code> include just the observations in that time frame). Next, we can use the <code>add_ucdp_acd()</code> function to return information about ongoing UCDP conflicts and onsets for these states. <code>add_ucdp_acd()</code> takes three arguments: <code>type</code>, <code>issue</code>, and <code>only_wars</code>. <code>type</code> is an optional argument for the type of armed conflicts for which the researcher wants information. Options include “extrasystemic”, “interstate”, “intrastate”, and “II” (short for “internationalized intrastate”). If no <code>type</code> is specified, the function returns information about ongoing disputes and onsets for all states for all tyeps of conflict. If the user wants information about multiple types of conflict–say: intra-state wars and internationalized intra-state wars—they can specify that as a character vector (e.g. <code>type = c(&quot;intrastate&quot;, &quot;II&quot;)</code>). <code>issue</code> is another optional argument for what issue types of conflicts the user wants beyond the type of armed conflict. Options include “territory”, “government”, and “both”. If no <code>issue</code> is specified, the function returns information for all conflicts irregarding the particular issue. <code>only_wars</code> is an argument that subsets the data to just those with the intensity levels of “war” when <code>only_wars = TRUE</code>. The argument defaults to <code>FALSE</code>, returning information about conflicts with at least 25 deaths in addition to the conflicts with more than 1,000 deaths. In this application, <code>add_ucdp_acd(type = &quot;intrastate&quot;, only_wars = FALSE))</code> returns state-year information about ongoing intra-state conflicts over any issue and at either of UCDP’s severity thresholds.<a href="#fn6" class="footnote-ref" id="fnref6"><sup>6</sup></a></p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_stateyears</span>(<span class="at">system =</span> <span class="st">&#39;gw&#39;</span>, <span class="at">subset_years =</span> <span class="fu">c</span>(<span class="dv">1946</span><span class="sc">:</span><span class="dv">2019</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1946</span><span class="sc">:</span><span class="dv">2019</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_ucdp_acd</span>(<span class="at">type=</span><span class="st">&quot;intrastate&quot;</span>, <span class="at">only_wars =</span> <span class="cn">FALSE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_peace_years</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_spells</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_democracy</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_creg_fractionalization</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_sdp_gdp</span>() <span class="sc">%&gt;%</span></span>
@@ -1154,7 +1200,7 @@ Num.Obs.
 <p><code>{peacesciencer}</code>’s tight integration with the <code>{tidyverse}</code> permits wide flexibility for the researcher. For example, assume the researcher wants to discern the estimated effect of the same set of covariates on intra-state conflicts at the threshold of war and those intra-state conflicts at or below the threshold of war. The first call included all conflicts with at least 25 deaths, per the UCDP’s inclusion rules, and the peace years were calculated for those as well. If the researcher wants a new set of conflicts with a new set of peace years, it would be a simple matter of repeating the pipe-based workflow, but altering the argument in <code>add_ucdp_acd()</code> to be <code>only_wars = TRUE</code>. <code>{peacesciencer}</code> would then calculate the peace years for those (<code>add_peace_years()</code>). To avoid confusion with the overlapping column names, the researcher can use some <code>{tidyverse}</code> verbs to rename all those conflict variables to have a distinct prefix of <code>war_</code> (i.e. <code>rename_at(vars(ucdpongoing:ucdpspell), ~paste0(&quot;war_&quot;, .))</code>) before finally joining these data into the master data frame (i.e. <code>left_join(Data, .) -&gt; Data</code>). Table <a href="#tab:tab-cw">4</a> shows the fruits of the data <code>{peacesciencer}</code> generated after some post-processing for lagging important variables.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_stateyears</span>(<span class="at">system =</span> <span class="st">&#39;gw&#39;</span>, <span class="at">subset_years =</span> <span class="fu">c</span>(<span class="dv">1946</span><span class="sc">:</span><span class="dv">2019</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_ucdp_acd</span>(<span class="at">type=</span><span class="st">&quot;intrastate&quot;</span>, <span class="at">only_wars =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_peace_years</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_spells</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename_at</span>(<span class="fu">vars</span>(ucdpongoing<span class="sc">:</span>ucdpspell), <span class="sc">~</span><span class="fu">paste0</span>(<span class="st">&quot;war_&quot;</span>, .)) <span class="sc">%&gt;%</span></span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(Data, .) <span class="ot">-&gt;</span> Data</span></code></pre></div>
 <table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
@@ -1426,6 +1472,289 @@ Num.Obs.
 </tfoot>
 </table>
 </div>
+<div id="creating-leader-year-data-and-adding-leader-year-data-in-peacesciencer" class="section level2">
+<h2>Creating Leader-Year Data and Adding Leader-Year Data in <code>{peacesciencer}</code></h2>
+<p><code>{peacesciencer}</code> also has support for newer levels of analysis in the peace science community, prominently leader-levels of analysis. There has been considerable emphasis in peace science research to emphasize that state leaders, not “states”, make foreign policy decisions that may lead to war. Understanding the attributes of leaders themselves are critical to the core research questions of the community <span class="citation">(Goemans, Gleditsch &amp; Chiozza, 2009; Horowitz &amp; Stam, 2014; Ellis, Horowitz &amp; Stam, 2015)</span> and <code>{peacesciencer}</code> wants to help researchers toward that end.</p>
+<p>Table <a href="#tab:tab-addfunctions">2</a> shows there are some dedicated functions for populating leader-level data with leader-specific information, in addition to adding state-year-level information (e.g. democracy, capabilities) to leader-level data. Table <a href="#tab:tab-createfunctions">1</a> shows support for creating leader-level data that are standardized to either the CoW or G-W state system data. Suppose a researcher wanted to create leader-year data, standardized to CoW system dates, for an analysis of inter-state dispute initiation analogous to <span class="citation">Horowitz &amp; Stam (2014)</span>. The user would first start with creating the base data (<code>create_leaderyears(standardize = &quot;cow&quot;, subset_years=c(1875:2010))</code>), which also generates some leader attributes (e.g. estimated leader age, year in office, and leader gender). From there, they would add information about leader conflict behavior in the year with <code>add_gml_mids()</code> and calculate peace-years with the <code>add_spells()</code> function.<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a> <code>add_lead()</code> will add a battery of leader experience and attributes variables from data created by <span class="citation">Ellis, Horowitz &amp; Stam (2015)</span>, including whether the leader had military experience, combat experience, was a rebel fighter, and many more. Finally, <code>add_nmc()</code> and <code>add_democracy()</code> will add state-year estimates of national capabilities and democracy for assisting in making state-to-state comparisons, even for leader-level analyses.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">create_leaderyears</span>(<span class="at">standardize =</span> <span class="st">&quot;cow&quot;</span>, <span class="at">subset_years=</span><span class="fu">c</span>(<span class="dv">1875</span><span class="sc">:</span><span class="dv">2010</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_gml_mids</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_spells</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_lead</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">milservice_nocombat =</span> <span class="fu">ifelse</span>(milservice <span class="sc">==</span> <span class="dv">1</span> <span class="sc">&amp;</span> combat <span class="sc">==</span> <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_nmc</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_democracy</span>() <span class="ot">-&gt;</span> Data</span></code></pre></div>
+<table style="NAborder-bottom: 0; width: auto !important; margin-left: auto; margin-right: auto;" class="table">
+<caption>
+<span id="tab:tab-ly">Table 5: </span>A Leader-Year Analysis of Inter-State Dispute Initiation in {peacesciencer}
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;font-weight: bold;">
+</th>
+<th style="text-align:center;font-weight: bold;">
+Model 1
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Male Leader
+</td>
+<td style="text-align:center;">
+−0.752*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.206)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Leader Age
+</td>
+<td style="text-align:center;">
+0.010*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.002)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Leader Tenure (in Years)
+</td>
+<td style="text-align:center;">
+0.027*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Military Service (No Combat)
+</td>
+<td style="text-align:center;">
+0.332*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.084)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Military Serivce (with Combat)
+</td>
+<td style="text-align:center;">
+0.132
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.090)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Previous Rebel Experience
+</td>
+<td style="text-align:center;">
+0.287*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.069)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Prior War Win
+</td>
+<td style="text-align:center;">
+0.033
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.107)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Prior War Loss
+</td>
+<td style="text-align:center;">
+0.090
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.106)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Prior Rebel Win
+</td>
+<td style="text-align:center;">
+−0.136
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.102)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Prior Rebel Loss
+</td>
+<td style="text-align:center;">
+0.328*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.142)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Extended UDS Democracy Score
+</td>
+<td style="text-align:center;">
+−0.180*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.037)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+CINC
+</td>
+<td style="text-align:center;">
+11.858*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.626)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+t
+</td>
+<td style="text-align:center;">
+−0.247*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.028)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+t^2
+</td>
+<td style="text-align:center;">
+0.010*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+t^3
+</td>
+<td style="text-align:center;">
+0.000+
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+</td>
+<td style="text-align:center;">
+(0.000)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Intercept
+</td>
+<td style="text-align:center;">
+−1.816*
+</td>
+</tr>
+<tr>
+<td style="text-align:left;box-shadow: 0px 1pxwidth: 8cm; ">
+</td>
+<td style="text-align:center;box-shadow: 0px 1px">
+(0.243)
+</td>
+</tr>
+<tr>
+<td style="text-align:left;width: 8cm; ">
+Num.Obs.
+</td>
+<td style="text-align:center;">
+13839
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr>
+<td style="padding: 0; " colspan="100%">
+<sup></sup> + p &lt; 0.1, * p &lt; 0.05
+</td>
+</tr>
+</tfoot>
+</table>
+</div>
 </div>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
@@ -1481,6 +1810,9 @@ Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I Lindberg, Jan Te
 <div id="ref-cowstates2016" class="csl-entry">
 Correlates of War (2011) State system membership list, v2016 (<a href="http://correlatesofwar.org">http://correlatesofwar.org</a>).
 </div>
+<div id="ref-ellisetal2015lead" class="csl-entry">
+Ellis, Cali Mortenson, Michael C Horowitz &amp; Allan C Stam (2015) Introducing the <span>LEAD</span> data set. <em>International Interactions</em> 41(4): 718–741.
+</div>
 <div id="ref-fearonlaitin2003eicw" class="csl-entry">
 Fearon, James D &amp; David D Laitin (2003) Ethnicity, insurgency, and civil war. <em>American Political Science Review</em> 97(1): 75–90.
 </div>
@@ -1495,6 +1827,9 @@ Gleditsch, Kristian S &amp; Michael D Ward (1999) A revised list of independent 
 </div>
 <div id="ref-goemansetal2009ia" class="csl-entry">
 Goemans, Henk E, Kristian Skrede Gleditsch &amp; Giacomo Chiozza (2009) Introducing <span>A</span>rchigos: A dataset on political leaders. <em>Journal of Peace Research</em> 46(2): 269–83.
+</div>
+<div id="ref-horowitzstam2014hpme" class="csl-entry">
+Horowitz, Michael C &amp; Allan C Stam (2014) How prior military experience influences the future militarized behavior of leaders. <em>International Organization</em> 68(3): 527–559.
 </div>
 <div id="ref-lemkereed2001rprd" class="csl-entry">
 Lemke, Douglas &amp; William Reed (2001) The relevance of politically relevant dyads. <em>Journal of Conflict Resolution</em> 45(1): 126–144.
@@ -1523,8 +1858,9 @@ Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino 
 <li id="fn2"><p>The “whittle” (<code>wc_</code>) class of functions are a suite of functions that whittle dyadic dispute-years to true dyad-year data. They are effectively used in <code>add_cow_mids()</code> and <code>add_gml_mids()</code> for dyad-year data, but are offered here to allow users to employ their own case exclusion rules to create their own dyad-year conflict data. A vignette on <code>{peacesciencer}</code>’s website explains these case exclusion rules in some detail.<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 <li id="fn3"><p><code>{peacesciencer}</code> comes with a vignette that explains just how much unnecessary missingness pervades data on democracy in the absence of an innovation like this, and how this missingness might adversely affect inferences of inter-state or intra-state conflict.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 <li id="fn4"><p><code>keep = NULL</code> in this context will focus the information returned to just the information about ongoing conflicts and onsets, discarding potentially unwanted columns about things like Side A, hostility levels, and other information included in the data set. Type <code>?add_gml_mids()</code> for more information.<a href="#fnref4" class="footnote-back">↩︎</a></p></li>
-<li id="fn5"><p><code>add_peace_years()</code> will only calculate the peace years—titled, in this case, <code>gmlmidspell</code>—and will leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend manually creating splines or square/cube terms because it creates more problems in adjusting for temporal dependence in model predictions. In a regression formula in R, you can specify the <span class="citation">Carter &amp; Signorino (2010)</span> approach as <code>... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)</code>. The <span class="citation">Beck, Katz &amp; Tucker (1998)</span> cubic splines approach is <code>... + splines::bs(gmlmidspell, 4)</code>. This function includes the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions, given R’s functionality.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
+<li id="fn5"><p><code>add_spells()</code> will only calculate the peace years—titled, in this case, <code>gmlmidspell</code>—and will leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend manually creating splines or square/cube terms because it creates more problems in adjusting for temporal dependence in model predictions. In a regression formula in R, you can specify the <span class="citation">Carter &amp; Signorino (2010)</span> approach as <code>... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)</code>. The <span class="citation">Beck, Katz &amp; Tucker (1998)</span> cubic splines approach is <code>... + splines::bs(gmlmidspell, 4)</code>. This function includes the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions, given R’s functionality.<a href="#fnref5" class="footnote-back">↩︎</a></p></li>
 <li id="fn6"><p>The function also returns some background information of interest to the researcher, including the maximum intensity observed and the IDs associated with all ongoing conflicts in the state that year.<a href="#fnref6" class="footnote-back">↩︎</a></p></li>
+<li id="fn7"><p>The documentation for <code>add_gml_mids()</code>, along with the <code>data-raw</code> directory on Github, provides ample explanation for how inter-state conflicts in the GML conflict data are connected to specific leaders. Since inter-state dispute data can have missing days, connecting leaders to dispute onsets involves some important archival research that is only possible because of the information collected by <span class="citation">Gibler, Miller &amp; Little (2016)</span> over 10 years of scholarship. The documentation also considers the multiple ways in which users can more flexibly code the concept of “initiation” based on participant-level summaries. The default coding of initiation, based on this exhaustive archival work, is to code a leader initiating a dispute if they were on Side A or joined the conflict at any point after the onset of the dispute. Users can change this to focus on just Side A, or just originators on Side A. This is the <code>init</code> argument in <code>add_gml_mids()</code>.<a href="#fnref7" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
 <!--bookdown:body:end-->

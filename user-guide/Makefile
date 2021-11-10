@@ -58,3 +58,6 @@ data/modCW.rds: R/3-gw-civil-conflict-onset.R
 data/modDD.rds: R/1-dangerous-dyads-prd.R
 	Rscript -e 'source("R/1-dangerous-dyads-prd.R")'
 
+
+data/modLY.rds: R/4-cow-leader-year-initiation.R
+	Rscript -e 'source("R/4-cow-leader-year-initiation.R")'

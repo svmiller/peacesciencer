@@ -77,7 +77,6 @@ knitr::opts_chunk$set(cache = FALSE,
                       if (file.rename(x, x2)) x2 else x
                       })
 
-
 # library(dplyr)
 # library(magrittr)
 library(tidyverse)
@@ -221,7 +220,7 @@ kable(add_functions, booktabs = TRUE, longtable = TRUE,
     kable_styling(font_size = 9) %>%
    row_spec(0, bold=TRUE) %>%
     column_spec(1, monospace = TRUE) %>%
-    column_spec(3, width="30em")
+    column_spec(3, width="20em")
 } else {
   kable(add_functions, booktabs = TRUE, longtable = TRUE,
     caption = "Functions that Add Data",
@@ -229,7 +228,7 @@ kable(add_functions, booktabs = TRUE, longtable = TRUE,
     linesep = "",
     col.names = c("Function",  "Type", "Description"))  %>%
    row_spec(0, bold=TRUE) %>%
-    column_spec(1, monospace = TRUE)
+    column_spec(1, monospace = TRUE) 
 }
 
 
@@ -324,13 +323,13 @@ kable(included, booktabs = TRUE, longtable = FALSE,
 
 `{peacesciencer}`'s functions work out of the box, though users should find their experience augmented by two additional downloads. First, RStudio offers an IDE that serves as a user-friendly graphical user interface (GUI) over what is, at its core, a programming language with a command-line interface. Rstudio's design will make it much easier for users to experiment with `{peacesciencer}`'s functionality and read its documentation to assist them with the user of these functions. The second additional download is `{tidyverse}`, itself a suit of packages that share a common form and design [@wickhametal2019wt]. `{peacesciencer}` functions make considerable use of the component packages of `{tidyverse}` but installing and loading `{tidyverse}` will allow the researcher to make quicker use of `{peacesciencer}`'s functionality. A user can open an R session by way of Rstudio and install both packages as follows.
 
-```r
+```{r, echo=T, eval=FALSE}
 install.packages(c("tidyverse", "peacesciencer"))
 ```
 
 R packages once installed need to be loaded with every R session (i.e. every time the user opens RStudio). The user can load both with the `library()` function in R.
 
-```r
+```{r, echo=T, eval=FALSE}
 library(tidyverse)
 library(peacesciencer)
 ```
@@ -339,7 +338,7 @@ Thereafter, a researcher can start using `{peacesciencer}` to create the kind of
 
 # A Tutorial on How to Use `{peacesciencer}`
 
-I encourage users who are using `{peacesciencer}` for the first time, especially those who are learning R for the first time because of their interest in this package, to approach the package with an idea of the kind of data they want to create for the sake of a project. The core functionality of `{peacesciencer}` begins with the creation of a data frame, after which can be populated with various indicators of interest. No matter, the suggested use of `{peacesciencer}` begins with the creation of a data frame. To start, assume a new user without much familiarity with the R programming language installed Rstudio, `{tidyverse}`, and `{peacesciencer}` with the idea of using `{peacesciencer}` to help them start a new research project that seeks to explain civil conflict onset across state-years. Toward that end, they have identified their unit of analysis is state-year and can be created with the `create_stateyears()`. To get started, I encourage entering the following command in the console in Rstudio.
+I encourage users who are using `{peacesciencer}` for the first time, especially those who are learning R for the first time because of their interest in this package, to approach `{peacesciencer}` with an idea of the kind of data they want to create for the sake of a project. The core functionality of `{peacesciencer}` begins with the creation of a data frame, after which can be populated with various indicators of interest. No matter, the suggested use of `{peacesciencer}` begins with the creation of a data frame. To start, assume a new user without much familiarity with the R programming language installed Rstudio, `{tidyverse}`, and `{peacesciencer}` with the idea of using `{peacesciencer}` to help them start a new research project that seeks to explain civil conflict onset across state-years. Toward that end, they have identified their unit of analysis is state-year and can be created with the `create_stateyears()`. To get started, I encourage entering the following command in the console in Rstudio.
 
 ```{r, eval=F, echo=T}
 ?create_stateyears()
@@ -372,7 +371,7 @@ create_leaderyears(standardize = "cow", subset_years = c(1870:2010))
 
 Researchers using `{peacesciencer}` to create data for their research project should start with one of these "create" functions. Whether state-year, dyad-year, or a leader-level analysis, these functions will create the full universe of cases of interest to a researcher for the unit of analysis that serves as the core of their project.
 
-## Adding Information to Data Created in `{peacesciencer}`
+## Creating Dyad-Year Data and Adding Dyad-Year Data in `{peacesciencer}`
 
 After creating the base data of interest to their project, researchers can begin to add information they want with the suite of functions outlined in Table \@ref(tab:tab-addfunctions). For example, researcher interested in a dyad-year analysis of inter-state disputes can create a non-directed dyad-year data set from 1816 to 2010 in `{peacesciencer}` with the `create_dyadyears()` function, one of the aforementioned "create" function. The following would create the base data of interest to the user (i.e. all non-directed dyad-years from 1816 to 2010).
 
@@ -407,9 +406,9 @@ create_dyadyears(directed = FALSE, subset_years = c(1816:2010)) %>%
   add_gml_mids(keep = NULL) 
 ```
 
-Users can also calculate peace-years for these conflicts with `add_peace_years()` by using the pipe to pass forward the data set and applying the `add_peace_years()` function to it.[^onpy]
+Users can also calculate peace-years for these conflicts with `add_spells()` by using the pipe to pass forward the data set and applying the `add_spells()` function to it.[^onpy]
 
-[^onpy]: `add_peace_years()` will only calculate the peace years---titled, in this case, `gmlmidspell`---and will leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend manually creating splines or square/cube terms because it creates more problems in adjusting for temporal dependence in model predictions. In a regression formula in R, you can specify the @cartersignorino2010bf approach as `... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)`. The @becketal1998tts cubic splines approach is `... + splines::bs(gmlmidspell, 4)`. This function includes the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions, given R's functionality.
+[^onpy]: `add_spells()` will only calculate the peace years---titled, in this case, `gmlmidspell`---and will leave the temporal dependence adjustment to the taste of the researcher. Importantly, I do not recommend manually creating splines or square/cube terms because it creates more problems in adjusting for temporal dependence in model predictions. In a regression formula in R, you can specify the @cartersignorino2010bf approach as `... + gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3)`. The @becketal1998tts cubic splines approach is `... + splines::bs(gmlmidspell, 4)`. This function includes the spell and three splines (hence the 4 in the command). Either approach makes for easier model predictions, given R's functionality.
 
 ```{r}
 # create base data, and pipe (%>%) to next function
@@ -418,8 +417,8 @@ create_dyadyears(directed = FALSE, subset_years = c(1816:2010)) %>%
   filter_prd() %>%
   # add conflict information from GML-MID data, pipe to next function
   add_gml_mids(keep = NULL) %>%
-  # add peace years
-  add_peace_years()
+  # add peace years ("spells")
+  add_spells()
 ```
 
 Researchers should see that `{peacesciencer}`'s functionality can scale up nicely from there. For example, the following would round out the kind of information necessary to replicate Bremer's [-@bremer1992ddc] famous "dangerous dyads" analysis by adding information about national material capabilities for both states in the dyad (`add_nmc()`), estimates of democracy for both states in the dyad (`add_democracy()`), information about alliance commitments in the dyad-year (`add_cow_alliance()`), and finishing with information about estimated population size and (surplus, gross) domestic product based on simulations reported by @andersetal2020bbgb. Whereas `add_sdp_gdp()` is the last command in the pipe-based workflow, the `{peacesciencer}` call ends by assigning to an object called `Data`. This type of assignment is done with the "right hand" assignment operator (i.e. `->`).
@@ -431,8 +430,8 @@ create_dyadyears(directed = FALSE, subset_years = c(1816:2010)) %>%
   filter_prd() %>%
   # add conflict information from GML-MID data, pipe to next function
   add_gml_mids(keep = NULL) %>%
-  # add peace years, pipe to next function
-  add_peace_years() %>%
+  # add peace years ("spells"), pipe to next function
+  add_spells() %>%
   # add capabilities data, pipe to next function
   add_nmc() %>%
   # add some estimates about democracy for each state, pipe to next function
@@ -507,9 +506,9 @@ if (!is_docx) {
 } 
 ```
 
-## A Basic Replication of Fearon and Laitin (2003) in `{peacesciencer}`
+## Creating State-Year Data and Adding State-Year Data in `{peacesciencer}`
 
-`{peacesciencer}` is capable of generating data for replications of analyses at multiple levels beyond dyad-year, including leader-year, leader-dyad-year, and state-year. Suppose a researcher wants to create a state-year data frame to conduct an analysis of civil conflict onset analogous to Fearon and Laitin's [-@fearonlaitin2003eicw] well-cited analysis of civil conflict onset, but using UCDP conflict data and the Gleditsch-Ward state system for creating the appropriate universe of state-years. The pipe-based workflow will start with `create_stateyears(system = 'gw', subset_years = c(1946:2019))`, creating the full universe of Gleditsch-Ward state years and subsetting them to just 1946-2019 (because the UCDP data included in `{peacesciencer}` include just the observations in that time frame). Next, we can use the `add_ucdp_acd()` function to return information about ongoing UCDP conflicts and onsets for these states. `add_ucdp_acd()` takes three arguments: `type`, `issue`, and `only_wars`. `type` is an optional argument for the type of armed conflicts for which the researcher wants information. Options include "extrasystemic", "interstate", "intrastate", and "II" (short for "internationalized intrastate"). If no `type` is specified, the function returns information about ongoing disputes and onsets for all states for all tyeps of conflict. If the user wants information about multiple types of conflict--say: intra-state wars and internationalized intra-state wars---they can specify that as a character vector (e.g. `type = c("intrastate", "II")`). `issue` is another optional argument for what issue types of conflicts the user wants beyond the type of armed conflict. Options include "territory", "government", and "both". If no `issue` is specified, the function returns information for all conflicts irregarding the particular issue. `only_wars` is an argument that subsets the data to just those with the intensity levels of "war" when `only_wars = TRUE`. The argument defaults to `FALSE`, returning information about conflicts with at least 25 deaths in addition to the conflicts with more than 1,000 deaths. In this application, `add_ucdp_acd(type = "intrastate", only_wars = FALSE))` returns state-year information about ongoing intra-state conflicts over any issue and at either of UCDP's severity thresholds.[^adducdpacdalso]
+`{peacesciencer}` is capable of generating data for replications of analyses at multiple levels beyond dyad-year. Suppose a researcher wants to create a state-year data frame to conduct an analysis of civil conflict onset analogous to Fearon and Laitin's [-@fearonlaitin2003eicw] well-cited analysis of civil conflict onset, but using UCDP conflict data and the Gleditsch-Ward state system for creating the appropriate universe of state-years. The pipe-based workflow will start with `create_stateyears(system = 'gw', subset_years = c(1946:2019))`, creating the full universe of Gleditsch-Ward state years and subsetting them to just 1946-2019 (because the UCDP data included in `{peacesciencer}` include just the observations in that time frame). Next, we can use the `add_ucdp_acd()` function to return information about ongoing UCDP conflicts and onsets for these states. `add_ucdp_acd()` takes three arguments: `type`, `issue`, and `only_wars`. `type` is an optional argument for the type of armed conflicts for which the researcher wants information. Options include "extrasystemic", "interstate", "intrastate", and "II" (short for "internationalized intrastate"). If no `type` is specified, the function returns information about ongoing disputes and onsets for all states for all tyeps of conflict. If the user wants information about multiple types of conflict--say: intra-state wars and internationalized intra-state wars---they can specify that as a character vector (e.g. `type = c("intrastate", "II")`). `issue` is another optional argument for what issue types of conflicts the user wants beyond the type of armed conflict. Options include "territory", "government", and "both". If no `issue` is specified, the function returns information for all conflicts irregarding the particular issue. `only_wars` is an argument that subsets the data to just those with the intensity levels of "war" when `only_wars = TRUE`. The argument defaults to `FALSE`, returning information about conflicts with at least 25 deaths in addition to the conflicts with more than 1,000 deaths. In this application, `add_ucdp_acd(type = "intrastate", only_wars = FALSE))` returns state-year information about ongoing intra-state conflicts over any issue and at either of UCDP's severity thresholds.[^adducdpacdalso]
 
 [^adducdpacdalso]: The function also returns some background information of interest to the researcher, including the maximum intensity observed and the IDs associated with all ongoing conflicts in the state that year.
 
@@ -517,7 +516,7 @@ if (!is_docx) {
 create_stateyears(system = 'gw', subset_years = c(1946:2019)) %>%
   filter(year %in% c(1946:2019)) %>%
   add_ucdp_acd(type="intrastate", only_wars = FALSE) %>%
-  add_peace_years() %>%
+  add_spells() %>%
   add_democracy() %>%
   add_creg_fractionalization() %>%
   add_sdp_gdp() %>%
@@ -532,7 +531,7 @@ Finally, we can add some covariates of interest to these data. `add_peace_years(
 ```{r, echo=T, eval=F}
 create_stateyears(system = 'gw', subset_years = c(1946:2019)) %>%
   add_ucdp_acd(type="intrastate", only_wars = TRUE) %>%
-  add_peace_years() %>%
+  add_spells() %>%
   rename_at(vars(ucdpongoing:ucdpspell), ~paste0("war_", .)) %>%
   left_join(Data, .) -> Data
 ```
@@ -579,6 +578,67 @@ if (!is_docx) {
 } 
 ```
 
+## Creating Leader-Year Data and Adding Leader-Year Data in `{peacesciencer}`
+
+`{peacesciencer}` also has support for newer levels of analysis in the peace science community, prominently leader-levels of analysis. There has been considerable emphasis in peace science research to emphasize that state leaders, not "states", make foreign policy decisions that may lead to war. Understanding the attributes of leaders themselves are critical to the core research questions of the community [@ellisetal2015lead; @goemansetal2009ia; @horowitzstam2014hpme] and `{peacesciencer}` wants to help researchers toward that end.
+
+Table \@ref(tab:tab-addfunctions) shows there are some dedicated functions for populating leader-level data with leader-specific information, in addition to adding state-year-level information (e.g. democracy, capabilities) to leader-level data.  Table \@ref(tab:tab-createfunctions) shows support for creating leader-level data that are standardized to either the CoW or G-W state system data. Suppose a researcher wanted to create leader-year data, standardized to CoW system dates, for an analysis of inter-state dispute initiation analogous to @horowitzstam2014hpme. The user would first start with creating the base data (`create_leaderyears(standardize = "cow", subset_years=c(1875:2010))`), which also generates some leader attributes (e.g. estimated leader age, year in office, and leader gender). From there, they would add information about leader conflict behavior in the year with `add_gml_mids()` and calculate peace-years with the `add_spells()` function.[^oninitiation] `add_lead()` will add a battery of leader experience and attributes variables from data created by @ellisetal2015lead, including whether the leader had military experience, combat experience, was a rebel fighter, and many more. Finally, `add_nmc()` and `add_democracy()` will add state-year estimates of national capabilities and democracy for assisting in making state-to-state comparisons, even for leader-level analyses.
+
+```{r, eval=F}
+create_leaderyears(standardize = "cow", subset_years=c(1875:2010)) %>%
+  add_gml_mids() %>%
+  add_spells() %>%
+  add_lead() %>%
+  mutate(milservice_nocombat = ifelse(milservice == 1 & combat == 0, 1, 0)) %>%
+  add_nmc() %>%
+  add_democracy() -> Data
+
+```
+
+[^oninitiation]: The documentation for `add_gml_mids()`, along with the `data-raw` directory on Github, provides ample explanation for how inter-state conflicts in the GML conflict data are connected to specific leaders. Since inter-state dispute data can have missing days, connecting leaders to dispute onsets involves some important archival research that is only possible because of the information collected by @gibleretal2016amid over 10 years of scholarship. The documentation also considers the multiple ways in which users can more flexibly code the concept of "initiation" based on participant-level summaries. The default coding of initiation, based on this exhaustive archival work, is to code a leader initiating a dispute if they were on Side A or joined the conflict at any point after the onset of the dispute. Users can change this to focus on just Side A, or just originators on Side A. This is the `init` argument in `add_gml_mids()`.
+
+
+```{r tab-ly, eval=T, echo=F}
+
+table_format <- ifelse(is_docx, "huxtable", 'default')
+
+modelsummary(modLY, output=table_format,
+             title = 'A Leader-Year Analysis of Inter-State Dispute Initiation in \\{peacesciencer\\}',
+             stars = c('*' = .05, '+' = .1), gof_omit = "IC|F|Log.|R2$",
+             coef_map = c("genderM" = "Male Leader", 
+                          "leaderage" = "Leader Age", 
+                          "yrinoffice" = "Leader Tenure (in Years)",
+                          "milservice_nocombat" = "Military Service (No Combat)", 
+                          "combat" = "Military Serivce (with Combat)", 
+                          "rebel" = "Previous Rebel Experience", 
+                          "warwin" = "Prior War Win",
+                          "warloss" = "Prior War Loss",
+                          "rebelwin" = "Prior Rebel Win",
+                          "rebelloss" = "Prior Rebel Loss",
+                          "xm_qudsest" = "Extended UDS Democracy Score",
+                          "cinc" = "CINC",
+                          "gmlmidinitspell" = "t",
+                          "I(gmlmidinitspell^2)" = "t^2",
+                          "I(gmlmidinitspell^3)" = "t^3",
+                          "(Intercept)" = "Intercept"),
+             align=c("lc")) -> tab_modLY
+
+
+if (!is_docx) {
+  tab_modLY %>%
+  row_spec(0, bold=TRUE) %>%
+  column_spec(1, width = "8cm")
+} else {
+  tab_modLY %>%
+  set_font_size(10) %>%
+  set_left_padding(1) %>%
+  set_top_padding(1) %>%
+  set_bottom_padding(1) %>%
+  set_right_padding(1) %>%
+  set_bold(., 1, 1:2, TRUE) %>%
+  as_flextable()
+} 
+```
 
 
 # Conclusion

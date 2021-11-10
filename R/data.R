@@ -120,13 +120,25 @@ NULL
 #'
 #' @references
 #'
-#' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. ”V-Dem Codebook v10” Varieties of Democracy (V-Dem) Project.
+#' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
+#' Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
+#' Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
+#' Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
+#' Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
+#' Valeriya Mechkova, Johannes von Römer, Aksel Sundtrom, Eitan Tzelgov,
+#' Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
+#' "V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
 #'
-#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime Characteristics and Transitions, 1800-2017." Center for Systemic Peace.
+#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017.
+#' "Polity IV Project: Political Regime Characteristics and Transitions,
+#' 1800-2017." Center for Systemic Peace.
 #'
-#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). \doi{10.2139/ssrn.2753830}
+#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy
+#' Scores" (March 23, 2016).  \doi{10.2139/ssrn.2753830}
 #'
-#' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type. Political Analysis 18 (4): 426-449.
+#' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. "Democratic
+#' Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
+#' *Political Analysis* 18(4): 426-449.
 #'
 "ccode_democracy"
 
@@ -1217,13 +1229,25 @@ NULL
 #'
 #' @references
 #'
-#' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. ”V-Dem Codebook v10” Varieties of Democracy (V-Dem) Project.
+#' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
+#' Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
+#' Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
+#' Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
+#' Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
+#' Valeriya Mechkova, Johannes von Römer, Aksel Sundtrom, Eitan Tzelgov,
+#' Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
+#' "V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
 #'
-#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime Characteristics and Transitions, 1800-2017." Center for Systemic Peace.
+#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017.
+#' "Polity IV Project: Political Regime Characteristics and Transitions,
+#' 1800-2017." Center for Systemic Peace.
 #'
-#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016). \doi{10.2139/ssrn.2753830}
+#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy
+#' Scores" (March 23, 2016).  \doi{10.2139/ssrn.2753830}
 #'
-#' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type. Political Analysis 18 (4): 426-449.
+#' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. "Democratic
+#' Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
+#' *Political Analysis* 18(4): 426-449.
 #'
 "gwcode_democracy"
 
@@ -1257,7 +1281,7 @@ NULL
 #' }
 #'
 #' @details See \code{data-raw} directory for how these data were generated. In the Guinnea-Bissau Civil War (1998, 1999),
-#' the "Mané Junta" were changed to just "Mane Junta" to coincide with CRAN's character requirements.
+#' the "Mane Junta" have the accented-e scrubbed to coincide with CRAN's character requirements.
 #'
 #' @references
 #'

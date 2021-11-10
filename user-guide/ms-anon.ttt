@@ -13,7 +13,7 @@
 \end{longtable}
 \efloatseparator
  
-\begin{longtable}[t]{>{}lc>{\raggedright\arraybackslash}p{30em}}
+\begin{longtable}[t]{>{}lc>{\raggedright\arraybackslash}p{20em}}
 \caption{\label{tab:tab-addfunctions}Functions that Add Data}\\
 \toprule
 \textbf{Function} & \textbf{Type} & \textbf{Description}\\
@@ -129,6 +129,54 @@ Intercept & \num{-5.098}* & \num{-6.591}*\\
 Num.Obs. & \num{8192} & \num{8192}\\
 \bottomrule
 \multicolumn{3}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05}\\
+\end{tabular}
+\end{table}
+\efloatseparator
+ 
+\begin{table}
+
+\caption{\label{tab:tab-ly}A Leader-Year Analysis of Inter-State Dispute Initiation in \{peacesciencer\}}
+\centering
+\begin{tabular}[t]{>{\raggedright\arraybackslash}p{8cm}c}
+\toprule
+\textbf{ } & \textbf{Model 1}\\
+\midrule
+Male Leader & \num{-0.752}*\\
+ & (\num{0.206})\\
+Leader Age & \num{0.010}*\\
+ & (\num{0.002})\\
+Leader Tenure (in Years) & \num{0.027}*\\
+ & \vphantom{1} (\num{0.004})\\
+Military Service (No Combat) & \num{0.332}*\\
+ & (\num{0.084})\\
+Military Serivce (with Combat) & \num{0.132}\\
+ & (\num{0.090})\\
+Previous Rebel Experience & \num{0.287}*\\
+ & (\num{0.069})\\
+Prior War Win & \num{0.033}\\
+ & (\num{0.107})\\
+Prior War Loss & \num{0.090}\\
+ & (\num{0.106})\\
+Prior Rebel Win & \num{-0.136}\\
+ & (\num{0.102})\\
+Prior Rebel Loss & \num{0.328}*\\
+ & (\num{0.142})\\
+Extended UDS Democracy Score & \num{-0.180}*\\
+ & (\num{0.037})\\
+CINC & \num{11.858}*\\
+ & (\num{0.626})\\
+t & \num{-0.247}*\\
+ & (\num{0.028})\\
+t\textasciicircum2 & \num{0.010}*\\
+ & (\num{0.004})\\
+t\textasciicircum3 & \num{0.000}+\\
+ & (\num{0.000})\\
+Intercept & \num{-1.816}*\\
+ & (\num{0.243})\\
+\midrule
+Num.Obs. & \num{13839}\\
+\bottomrule
+\multicolumn{2}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05}\\
 \end{tabular}
 \end{table}
 \efloatseparator

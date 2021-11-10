@@ -1,36 +1,50 @@
 #' Add fractionalization/polarization estimates from CREG to a data frame
 #'
-#' @description \code{add_creg_fractionalization()} allows you to add information
-#' about the fractionalization/polarization of a state's ethnic and religious groups to your dyad-year
-#' or state-year data.
+#' @description
 #'
-#' @return \code{add_creg_fractionalization()} takes a dyad-year, leader-year, leader-dyad-year, or state-data frame,
-#' whether the primary state identifiers are from the Correlates of War system or the Gleditsch-Ward system, and
-#' returns information about the
-#' fractionalization and polarization of the state(s) in a given year. The function returns four additional
-#' columns when the data are state-year and returns eight additional columns when the data are state-year (or leader-year).
-#' The columns returned are the fractionalization of ethnic groups, the polarization of ethnic groups, the
-#' fractionalization of religious groups, and the polarization of religious groups. When the data are dyad-year (or leader-dyad-year),
-#' the return doubles because it provides information for both states in the dyad.
+#' \code{add_creg_fractionalization()} allows you to add information about the
+#' fractionalization/polarization of a state's ethnic and religious groups to
+#' your data.
 #'
-#' @details Please see the information for the underlying data \code{creg}, and the
-#' associated R script in the \code{data-raw} directory, to see how these data are generated.
+#' @return \code{add_creg_fractionalization()} takes a dyad-year, leader-year,
+#' leader-dyad-year, or state-data frame, whether the primary state
+#' identifiers are from the Correlates of War system or the Gleditsch-Ward
+#' system, and  returns information about the fractionalization and
+#' polarization of the state(s) in a given year. The function returns four
+#' additional columns when the data are state-year and returns eight
+#' additional columns when the data are state-year (or leader-year).
+#' The columns returned are the fractionalization of ethnic groups, the
+#' polarization of ethnic groups, the fractionalization of religious groups,
+#' and the polarization of religious groups. When the data are dyad-year
+#' (or leader-dyad-year), the return doubles because it provides information
+#' for both states in the dyad.
 #'
-#' The \code{creg} data have a few duplicates. When standardizing to true CoW codes, the duplicates
-#' concern Serbia/Yugoslavia in 1991 and 1992 as well as Russia/the Soviet Union in 1991. When standardizing
-#' to true Gleditsch-Ward codes, the duplicates concern Serbia/Yugoslavia in 1991 and Russia/Soviet Union
-#' in 1991. In those cases, the function does a group-by arrange for the more fractionalized/polarized estimate
-#' under the (reasonable, I think) assumption that these are estimates prior to the dissolution of those states.
-#' If this is problematic, feel free to consult the underlying data and merge those in manually.
+#' @details Please see the information for the underlying data \code{creg},
+#' and the associated R script in the \code{data-raw} directory, to see how
+#' these data are generated.
 #'
-#' The underlying data have both Gleditsch-Ward codes and Correlates of War codes. The merge it makes depends
-#' on what you declare as the "master" system at the top of the pipe (i.e. in \code{create_dyadyears()} or
-#' \code{create_stateyears()}). If, for example, you run \code{create_stateyears(system="cow")} and follow
-#' it with \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
-#' codes. You can see the script mechanics to see how this is achieved.
+#' The \code{creg} data have a few duplicates. When standardizing to true CoW
+#' codes, the duplicates concern Serbia/Yugoslavia in 1991 and 1992 as well as
+#' Russia/the Soviet Union in 1991. When standardizing to true Gleditsch-Ward
+#' codes, the duplicates concern Serbia/Yugoslavia in 1991 and Russia/Soviet
+#' Union in 1991. In those cases, the function does a group-by arrange for
+#' the more fractionalized/polarized estimate under the (reasonable, I think)
+#' assumption that these are estimates prior to the dissolution of those
+#' states. If this is problematic, feel free to consult the underlying data
+#' and merge those in manually.
 #'
-#' Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
-#' as approximations for leaders in a given state-year.
+#' The underlying data have both Gleditsch-Ward codes and Correlates of War
+#' codes. The merge it makes depends on what you declare as the "master"
+#' system at the top of the pipe (i.e. in \code{create_dyadyears()} or
+#' \code{create_stateyears()}). If, for example, you run
+#' \code{create_stateyears(system="cow")} and follow it with
+#' \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War
+#' codes and not the Gleditsch-Ward codes. You can see the script mechanics
+#' to see how this is achieved.
+#'
+#' Be mindful that the data are fundamentally state-year and that extensions
+#' to leader-level data should be understood as approximations for leaders
+#' in a given state-year.
 #'
 #' @author Steven V. Miller
 #'

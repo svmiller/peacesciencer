@@ -10,12 +10,17 @@ add_democracy(data)
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_democracy()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds information
-about the level of democracy for the state or two states in the dyad in a given year. If the data are dyad-year, the function
-adds six total columns for the first state (i.e. \code{ccode1} or \code{gwcode1}) and the second state (i.e. \code{ccode2} or \code{gwcode2})
-about the level of democracy measured by the Varieties of Democracy project (\code{v2x_polyarchy}), the Polity project (\code{polity2}), and
-Xavier Marquez' \code{QuickUDS} extensions/estimates. If the data are state-year, the function returns three additional columns
-to the original data that contain that same information for a given state in a given year.
+\code{add_democracy()} takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame and adds information about the level of democracy
+for the state or two states in the dyad in a given year. If the data are
+dyad-year or leader-dyad-year, the function adds six total columns for
+the first state  (i.e. \code{ccode1} or \code{gwcode1}) and the second state (i.e.
+\code{ccode2} or  \code{gwcode2}) about the level of democracy measured by the
+Varieties of  Democracy project (\code{v2x_polyarchy}), the Polity project
+(\code{polity2}), and Xavier Marquez' \code{QuickUDS} extensions/estimates. If the
+data are state-year or leader-year, the function returns three additional
+columns to the original data that contain that same information for a given
+state in a given year.
 }
 \description{
 \code{add_democracy()} allows you to add estimates of democracy to your data.
@@ -51,13 +56,25 @@ create_stateyears(system="cow") \%>\% add_democracy()
 
 }
 \references{
-Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg, Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn, Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerløw, Valeriya Mechkova, Johannes von Römer, Aksel Sundtröm, Eitan Tzelgov, Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020. ”V-Dem Codebook v10” Varieties of Democracy (V-Dem) Project.
+Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
+Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
+Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
+Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
+Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
+Valeriya Mechkova, Johannes von Römer, Aksel Sundtrom, Eitan Tzelgov,
+Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
+"V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
 
-Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017. "Polity IV Project: Political Regime Characteristics and Transitions, 1800-2017." Center for Systemic Peace.
+Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017.
+"Polity IV Project: Political Regime Characteristics and Transitions,
+1800-2017." Center for Systemic Peace.
 
-Marquez, Xavier, "A Quick Method for Extending the Unified Democracy Scores" (March 23, 2016).  \doi{10.2139/ssrn.2753830}
+Marquez, Xavier, "A Quick Method for Extending the Unified Democracy
+Scores" (March 23, 2016).  \doi{10.2139/ssrn.2753830}
 
-Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type. Political Analysis 18 (4): 426-449.
+Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. "Democratic
+Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
+\emph{Political Analysis} 18(4): 426-449.
 }
 \author{
 Steven V. Miller
