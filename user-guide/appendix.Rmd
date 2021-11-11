@@ -92,7 +92,7 @@ I offer these citations first as an acknowledgment of these important contributi
 
 # Vignette: "Create Different Kinds of Data in `{peacesciencer}`
 
-```{r child = '../vignettes/create-different-kinds-of-data-in-peacesciencer.Rmd', echo=TRUE}
+```{r child = '../vignettes/different-data-types.Rmd', echo=TRUE}
 ```
 
 # Vignette: A Discussion of Various Joins in `{peacesciencer}`

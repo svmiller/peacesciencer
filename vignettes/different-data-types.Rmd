@@ -51,6 +51,41 @@ Here are all Gleditsch-Ward dyad-years with the same temporal domain.
 create_dyadyears(system = "gw")
 ```
 
+### Major vs. Major Dyad-Years
+
+Consider this section of the vignette as a comparison to the kind of dyad-year data that EUGene would create for a user, apparently on request. EUGene would apparently create these types of dyad-years as specific dyad-year types whereas `{peacesciencer}` treats them as case exclusions you can do after the fact given other functionality in the package. For example, here are just major vs. major dyads. For simplicity's sake, these will all be directed dyad-years at their core (and captured with `cow_ddy` in the package as a shortcut).
+
+```{r}
+cow_ddy %>% add_cow_majors() %>%
+  filter(cowmaj1 == 1 & cowmaj2 == 1)
+```
+
+### Major vs. Any State Dyad-Years
+
+These are all dyad-years where any state is a major power.
+
+```{r}
+cow_ddy %>% add_cow_majors() %>%
+  filter(cowmaj1 == 1 | cowmaj2 == 1)
+```
+
+### All Contiguous Dyad-Years
+
+These are all dyad-years separated by 400 miles of water or fewer, though the documentation for `add_contiguity()` cautions that users should be at least a little critical of the contiguity data.
+
+```{r}
+cow_ddy %>% add_contiguity() %>%
+  filter(conttype %in% c(1:5))
+```
+
+### All Dyad-Years Within a Set Distance
+
+These are all dyad-years with a minimum distance of some user-specified threshold (in kilometers). This function will lean on `add_minimum_distance()`, which does have the side effect of truncating the left bound of the temporal domain to---as of right now---1886. These are all Correlates of War dyad-years from 1886 to 2019 separated by 1,000 kilometers or fewer.
+
+```{r}
+cow_ddy %>% add_minimum_distance() %>%
+  filter(mindist <= 1000)
+```
 
 ## Dyadic Dispute-Year Data
 
@@ -162,10 +197,11 @@ create_leaderyears()
 ```{r}
 # create_leaderdyadyears() is effectively doing this.
 # Let's do the G-W leader dyad-year data for illustration's sake.
-# Do note: `download_extdata()` will download these data and stick them in the package directory
+# `download_extdata()` will download these data into the package directory.
 # Thus, it is *not* downloading the data fresh each time.
 
-readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds")) %>%
+the_url <- "http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"
+readRDS(url(the_url)) %>%
   declare_attributes(data_type = "leader_dyad_year", system = "gw")
 
 # ^ compare with:
