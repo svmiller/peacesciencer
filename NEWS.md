@@ -1,4 +1,4 @@
-peacesciencer 0.7.0 (in development)
+peacesciencer 0.7.0
 ---------------------------------------------------------------------
 
 This is a leader-intensive update. Additions/new features include:
