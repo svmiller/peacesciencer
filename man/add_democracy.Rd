@@ -61,7 +61,7 @@ Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
 Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
 Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
 Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
-Valeriya Mechkova, Johannes von Römer, Aksel Sundtrom, Eitan Tzelgov,
+Valeriya Mechkova, Johannes von Romer, Aksel Sundtrom, Eitan Tzelgov,
 Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
 "V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
 

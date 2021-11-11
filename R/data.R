@@ -125,7 +125,7 @@ NULL
 #' Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
 #' Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
 #' Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
-#' Valeriya Mechkova, Johannes von Römer, Aksel Sundtrom, Eitan Tzelgov,
+#' Valeriya Mechkova, Johannes von Romer, Aksel Sundtrom, Eitan Tzelgov,
 #' Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
 #' "V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
 #'
@@ -638,7 +638,7 @@ NULL
 #' \item{\code{atop_offense}}{a numeric vector that equals 1 if there was an alliance observed with a offense pledge}
 #' \item{\code{atop_neutral}}{a numeric vector that equals 1 if there was an alliance observed with a neutrality pledge}
 #' \item{\code{atop_nonagg}}{a numeric vector that equals 1 if there was an alliance observed with a non-aggression pledge}
-#' \item{\code{atop_consul}}{a numeric vector that equals 1 if there was an alliance obeserved with a consultation pledge}
+#' \item{\code{atop_consul}}{a numeric vector that equals 1 if there was an alliance observed with a consultation pledge}
 #' }
 #' @details The \code{data-raw} directory on the project's Github shows how the data were processed.
 #'
@@ -670,24 +670,32 @@ NULL
 #' \item{\code{exit}}{a character vector for the leader's exit type}
 #' \item{\code{exitcode}}{a character vector for more information about the leader's exit type}
 #' }
-#' @details Space considerations mean I can only offer a few columns from the overall data. Archigos data are rich with information. Consult
-#' the raw data available on Hein Goeman's website for more.
+#' @details Space considerations mean I can only offer a few columns from the
+#' overall data. Archigos data are rich with information. Consult the raw data
+#' available on Hein Goeman's website for more.
 #'
-#' To best conform with data requirements on CRAN, a few leader names were renamed if they included irregular
-#' characters (e.g. umlauts or accents). These leaders are "(Juan Orlando) Hernández" (`HON-2014`),
-#' "(Antonio) Saca González" (`SAL-2004`), "Julián Trujillo Largacha" (`COL-1878`), "César Gaviria Trujillo"
-#' (`COL-1990`), "Gabriel García Moreno" (`ECU-1869`), "Marcos A. Morínigo" (`PAR-1894-1`), "Higinio Morínigo" (`PAR-1940`),
-#' "Sebastián Piñera" (`CHL-2010`), "Sauli Niinistö" (`FIN-2012`), "Louis Gerhard De Geer" (`SWD-1876`),
-#' "Stefan Löfven" (`SWD-2014`), "Lars Løkke Rasmussen" (`DEN-2009`, `DEN-2015`), and "Fernando de Araújo"
-#' (`ETM-2008-1`). None of these names contain these special characters in the data here.
+#' To best conform with data requirements on CRAN, a few leader names were
+#' renamed if they included irregular characters (e.g. umlauts or accents).
+#' These leaders, in these particular applications, hav been renamed to "(Juan
+#' Orlando) Hernandez" (`HON-2014`), "(Antonio) Saca Gonzalez" (`SAL-2004`),
+#' "Julian Trujillo Largacha" (`COL-1878`), "Cesar Gaviria Trujillo"
+#' (`COL-1990`), "Gabriel Garcia Moreno" (`ECU-1869`), "Marcos A. Morinigo"
+#' (`PAR-1894-1`), "Higinio Morinigo" (`PAR-1940`), "Sebastian Pinera"
+#' (`CHL-2010`), "Sauli Niinisto" (`FIN-2012`), "Louis Gerhard De Geer"
+#' (`SWD-1876`), "Stefan Lofven" (`SWD-2014`), "Lars Lokke Rasmussen"
+#' (`DEN-2009`, `DEN-2015`), and "Fernando de Araujo" (`ETM-2008-1`). None of
+#' these names contain these special characters in the data here.
 #'
-#' For clarity's sake, I renamed the `ccode` column in the raw data to be `gwcode`. This is because it may deceive the user peeking into
-#' the data that these are not Correlates of War state codes, but Gleditsch-Ward state codes.
+#' For clarity's sake, I renamed the `ccode` column in the raw data to be
+#' `gwcode`. This is because it may deceive the user peeking into the data
+#' that these are not Correlates of War state codes, but Gleditsch-Ward
+#' state codes.
 #'
 #' @references
 #'
-#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-#' \emph{Journal of Peace Research} 46(2): 269--83.
+#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing
+#' Archigos: A Dataset of Political Leaders" \emph{Journal of Peace Research}
+#' 46(2): 269--83.
 #'
 #' @md
 
@@ -785,10 +793,10 @@ NULL
 #'
 #' @references
 #'
-#' Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002)
+#' Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Havard Strand (2002)
 #' Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.
 #'
-#' Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace
+#' Pettersson, Therese; Stina Hogbladh & Magnus Oberg (2019). Organized violence, 1989-2018 and peace
 #' agreements. Journal of Peace Research 56(4): 589-603.
 
 "ucdp_onsets"
@@ -821,10 +829,10 @@ NULL
 #'
 #' @references
 #'
-#' Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Håvard Strand (2002)
+#' Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Havard Strand (2002)
 #' Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.
 #'
-#' Pettersson, Therese; Stina Högbladh & Magnus Öberg (2019). Organized violence, 1989-2018 and peace
+#' Pettersson, Therese; Stina Hogbladh & Magnus Oberg (2019). Organized violence, 1989-2018 and peace
 #' agreements. Journal of Peace Research 56(4): 589-603.
 
 "ucdp_acd"
@@ -1234,7 +1242,7 @@ NULL
 #' Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
 #' Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
 #' Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
-#' Valeriya Mechkova, Johannes von Römer, Aksel Sundtrom, Eitan Tzelgov,
+#' Valeriya Mechkova, Johannes von Romer, Aksel Sundtrom, Eitan Tzelgov,
 #' Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
 #' "V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
 #'

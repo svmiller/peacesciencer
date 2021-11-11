@@ -8,7 +8,7 @@
 #' the Correlates of War International Governmental Organizations data. If the data are dyad-year, the function returns
 #' the original data with just one additional column for the total number of mutual IGOs for which both members of the dyad
 #' are full members. If the data are state-year, the function returns the original data with four additional columns. These are
-#' the number oF IGOs for which the state is a full member, the number of IGOs for which the state is an associate member, the
+#' the number of IGOs for which the state is a full member, the number of IGOs for which the state is an associate member, the
 #' number of IGOs for which the state is an observer, and the number of IGOs for which the state is involved in any way (i.e. the
 #' sum of the other three columns).
 #'
