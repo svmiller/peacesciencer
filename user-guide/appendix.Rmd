@@ -90,9 +90,19 @@ I offer these citations first as an acknowledgment of these important contributi
 
 [^aboutotherpackages]: The appendix will reference component packages of `{tidyverse}`, but follows the encouragement of @wickhametal2019wt to cite the overall suite of packages outlined in @wickhametal2019wt rather than reference the packages individually.
 
+# Vignette: "Create Different Kinds of Data in `{peacesciencer}`
+
+```{r child = '../vignettes/create-different-kinds-of-data-in-peacesciencer.Rmd', echo=TRUE}
+```
+
 # Vignette: A Discussion of Various Joins in `{peacesciencer}`
 
 ```{r child = '../vignettes/joins.Rmd', echo=TRUE}
+```
+
+# Vignette: Various Parlor Tricks in `{peacesciencer}`
+
+```{r child = '../vignettes/parlor-tricks.Rmd', echo=TRUE}
 ```
 
 

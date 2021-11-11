@@ -13,7 +13,7 @@ This tutorial is a companion to [the user guide](https://github.com/svmiller/pea
 
 This vignette will lean on the `{tidyverse}` package, which will be included in almost anything you should do (optimally) with `{peacesciencer}`. I will also load `{lubridate}`. Internal functions in `{peacesciencer}` use `{lubridate}`---it is a formal dependency of `{peacesciencer}`---but users may want to load it for doing some additional stuff outside of `{peacesciencer}`.
 
-```{r setup}
+```{r different-kinds-of-data-setup}
 library(tidyverse)
 library(peacesciencer)
 library(lubridate)

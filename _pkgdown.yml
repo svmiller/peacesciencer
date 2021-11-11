@@ -65,7 +65,7 @@ navbar:
       text: "What’s Included?"
       href: "reference/index.html"
     user-guide:
-      text: "User Guide"
+      text: "Manuscript"
       menu:
       - text: HTML
         href: ms.html

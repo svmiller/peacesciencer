@@ -523,7 +523,6 @@ if (!is_docx) {
 ```{r, echo=T, eval=F}
 # Create a set of state-year data for a civil conflict analysis.
 create_stateyears(system = 'gw', subset_years = c(1946:2019)) %>%
-  filter(year %in% c(1946:2019)) %>%
   add_ucdp_acd(type="intrastate", only_wars = FALSE) %>%
   add_spells() %>%
   add_democracy() %>%
@@ -650,9 +649,9 @@ if (!is_docx) {
 } 
 ```
 
-# A Comparison with Other Alternative Approaches
+# A Comparison with Other Approaches
 
-`{peacesciencer}` is not the only software available to peace science researchers who want to reduce the time and energy required to faithfully recreate data from scratch. Alternatives exist, some more inaccessible than others. NewGene, for example, is a stand-alone software program for Microsoft Windows and Mac that can create various types of data of interest to international relations scholars [@bennettetal2019n]. NewGene is itself the evolution of EUGene, which served conflict researchers well for over a decade [@bennettstam2000e]. Finally, peace scientists well-versed in Structured Query Language (SQL) could use one of several "join" transformations---e.g. "cross join", "inner join", "left join"---to create dyad-year data from state system data, even if this might amount to a detour in the peace scientist's research agenda for this particular task.[^joins] A comparison of `{peacesciencer}` with EUGene and NewGene suggests the following benefits of the package while emphasizing areas where other options may have some advantages.
+`{peacesciencer}` is not the only software available to peace science researchers who want to reduce the time and energy required to faithfully recreate data from scratch. Alternatives exist, some more inaccessible than others. NewGene, for example, is a stand-alone software program for Microsoft Windows and Mac that can create various types of data of interest to international relations scholars [@bennettetal2019n]. NewGene is itself the evolution of EUGene, which served conflict researchers well for over a decade [@bennettstam2000e]. Finally, peace scientists well-versed in Structured Query Language (SQL) could use one of several "join" transformations to create dyad-year data from state system data, even if this might amount to a detour in the peace scientist's research agenda for this particular task.[^joins] A comparison of `{peacesciencer}` with EUGene and NewGene suggests the following benefits of the package while emphasizing areas where other options may have some advantages.
 
 [^joins]: That said, `{peacesciencer}` makes ample use of SQL-like "joins" for the construction of base data and functions that merge data into base data created in the package. A discussion of these joins appears as a vignette on the package's website.
 

@@ -1,12 +1,13 @@
 # Specify a few variables to avoid repetition downstream
 
-OUTPUTS= ../docs/ms.pdf doc/ms-anon.pdf ../docs/ms.html doc/abstract.pdf inst/refs.bib
-RDS=  data/modDD.rds data/modCW.rds
+OUTPUTS= ../docs/ms.pdf doc/ms-anon.pdf ../docs/ms.html doc/abstract.pdf inst/refs.bib doc/appendix.pdf
+RDS=  data/modDD.rds data/modCW.rds data/modLY.rds
 
 # Specify the primary targets: the outputs
 # Also have a clean option for testing
 
 all: $(OUTPUTS)
+data: $(RDS)
 refs: inst/refs.bib
 
 clean:
@@ -48,16 +49,11 @@ inst/refs.bib: ms.Rmd
 
 # Specify what to do for each target .rds
 
-data/modCW.rds: R/3-gw-civil-conflict-onset.R
-	Rscript -e 'source("R/3-gw-civil-conflict-onset.R")'
-
-
-#data/Times.rds: R/2-dangerous-dyads-prd-times.R
-#	Rscript -e 'source("R/2-dangerous-dyads-prd-times.R")'
+data/modCW.rds: R/2-gw-civil-conflict-onset.R
+	Rscript -e 'source("R/2-gw-civil-conflict-onset.R")'
 
 data/modDD.rds: R/1-dangerous-dyads-prd.R
 	Rscript -e 'source("R/1-dangerous-dyads-prd.R")'
 
-
-data/modLY.rds: R/4-cow-leader-year-initiation.R
-	Rscript -e 'source("R/4-cow-leader-year-initiation.R")'
+data/modLY.rds: R/3-cow-leader-year-initiation.R
+	Rscript -e 'source("R/3-cow-leader-year-initiation.R")'
