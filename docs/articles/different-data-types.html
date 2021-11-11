@@ -58,10 +58,10 @@
       <a href="../articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
     </li>
     <li>
-      <a href="../articles/create-different-kinds-of-data-in-peacesciencer.html">Create Different Kinds of Data in `{peacesciencer}`</a>
+      <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
     </li>
     <li>
-      <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
+      <a href="../articles/different-data-types.html">Create Different Kinds of Data in `{peacesciencer}`</a>
     </li>
     <li>
       <a href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
@@ -113,15 +113,15 @@
 
       
 
-      </header><script src="create-different-kinds-of-data-in-peacesciencer_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
+      </header><script src="different-data-types_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create Different Kinds of Data in <code>{peacesciencer}</code>
 </h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/svmiller/peacesciencer/blob/master/vignettes/create-different-kinds-of-data-in-peacesciencer.Rmd"><code>vignettes/create-different-kinds-of-data-in-peacesciencer.Rmd</code></a></small>
-      <div class="hidden name"><code>create-different-kinds-of-data-in-peacesciencer.Rmd</code></div>
+      <small class="dont-index">Source: <a href="https://github.com/svmiller/peacesciencer/blob/master/vignettes/different-data-types.Rmd"><code>vignettes/different-data-types.Rmd</code></a></small>
+      <div class="hidden name"><code>different-data-types.Rmd</code></div>
 
     </div>
 
@@ -225,12 +225,102 @@
 <span class="co">#&gt;  9       2      20  1875</span>
 <span class="co">#&gt; 10       2      20  1876</span>
 <span class="co">#&gt; # … with 2,029,612 more rows</span></code></pre></div>
+<div id="major-vs--major-dyad-years" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-vs--major-dyad-years" class="anchor"></a>Major vs. Major Dyad-Years</h3>
+<p>Consider this section of the vignette as a comparison to the kind of dyad-year data that EUGene would create for a user, apparently on request. EUGene would apparently create these types of dyad-years as specific dyad-year types whereas <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> treats them as case exclusions you can do after the fact given other functionality in the package. For example, here are just major vs. major dyads. For simplicity’s sake, these will all be directed dyad-years at their core (and captured with <code>cow_ddy</code> in the package as a shortcut).</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cowmaj1</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">cowmaj2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6,140 × 5</span>
+<span class="co">#&gt;    ccode1 ccode2  year cowmaj1 cowmaj2</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;  1      2    200  1898       1       1</span>
+<span class="co">#&gt;  2      2    200  1899       1       1</span>
+<span class="co">#&gt;  3      2    200  1900       1       1</span>
+<span class="co">#&gt;  4      2    200  1901       1       1</span>
+<span class="co">#&gt;  5      2    200  1902       1       1</span>
+<span class="co">#&gt;  6      2    200  1903       1       1</span>
+<span class="co">#&gt;  7      2    200  1904       1       1</span>
+<span class="co">#&gt;  8      2    200  1905       1       1</span>
+<span class="co">#&gt;  9      2    200  1906       1       1</span>
+<span class="co">#&gt; 10      2    200  1907       1       1</span>
+<span class="co">#&gt; # … with 6,130 more rows</span></code></pre></div>
+</div>
+<div id="major-vs--any-state-dyad-years" class="section level3">
+<h3 class="hasAnchor">
+<a href="#major-vs--any-state-dyad-years" class="anchor"></a>Major vs. Any State Dyad-Years</h3>
+<p>These are all dyad-years where any state is a major power.</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cowmaj1</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">cowmaj2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 183,722 × 5</span>
+<span class="co">#&gt;    ccode1 ccode2  year cowmaj1 cowmaj2</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;  1      2     20  1920       1       0</span>
+<span class="co">#&gt;  2      2     20  1921       1       0</span>
+<span class="co">#&gt;  3      2     20  1922       1       0</span>
+<span class="co">#&gt;  4      2     20  1923       1       0</span>
+<span class="co">#&gt;  5      2     20  1924       1       0</span>
+<span class="co">#&gt;  6      2     20  1925       1       0</span>
+<span class="co">#&gt;  7      2     20  1926       1       0</span>
+<span class="co">#&gt;  8      2     20  1927       1       0</span>
+<span class="co">#&gt;  9      2     20  1928       1       0</span>
+<span class="co">#&gt; 10      2     20  1929       1       0</span>
+<span class="co">#&gt; # … with 183,712 more rows</span></code></pre></div>
+</div>
+<div id="all-contiguous-dyad-years" class="section level3">
+<h3 class="hasAnchor">
+<a href="#all-contiguous-dyad-years" class="anchor"></a>All Contiguous Dyad-Years</h3>
+<p>These are all dyad-years separated by 400 miles of water or fewer, though the documentation for <code><a href="../reference/add_contiguity.html">add_contiguity()</a></code> cautions that users should be at least a little critical of the contiguity data.</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_contiguity.html">add_contiguity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">conttype</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
+<span class="co">#&gt; # A tibble: 82,440 × 4</span>
+<span class="co">#&gt;    ccode1 ccode2  year conttype</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt;  1      2     20  1920        1</span>
+<span class="co">#&gt;  2      2     20  1921        1</span>
+<span class="co">#&gt;  3      2     20  1922        1</span>
+<span class="co">#&gt;  4      2     20  1923        1</span>
+<span class="co">#&gt;  5      2     20  1924        1</span>
+<span class="co">#&gt;  6      2     20  1925        1</span>
+<span class="co">#&gt;  7      2     20  1926        1</span>
+<span class="co">#&gt;  8      2     20  1927        1</span>
+<span class="co">#&gt;  9      2     20  1928        1</span>
+<span class="co">#&gt; 10      2     20  1929        1</span>
+<span class="co">#&gt; # … with 82,430 more rows</span></code></pre></div>
+</div>
+<div id="all-dyad-years-within-a-set-distance" class="section level3">
+<h3 class="hasAnchor">
+<a href="#all-dyad-years-within-a-set-distance" class="anchor"></a>All Dyad-Years Within a Set Distance</h3>
+<p>These are all dyad-years with a minimum distance of some user-specified threshold (in kilometers). This function will lean on <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code>, which does have the side effect of truncating the left bound of the temporal domain to—as of right now—1886. These are all Correlates of War dyad-years from 1886 to 2019 separated by 1,000 kilometers or fewer.</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mindist</span> <span class="op">&lt;=</span> <span class="fl">1000</span><span class="op">)</span>
+<span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
+<span class="co">#&gt; # A tibble: 167,532 × 4</span>
+<span class="co">#&gt;    ccode1 ccode2  year mindist</span>
+<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
+<span class="co">#&gt;  1      2     20  1921       0</span>
+<span class="co">#&gt;  2      2     20  1922       0</span>
+<span class="co">#&gt;  3      2     20  1923       0</span>
+<span class="co">#&gt;  4      2     20  1924       0</span>
+<span class="co">#&gt;  5      2     20  1925       0</span>
+<span class="co">#&gt;  6      2     20  1926       0</span>
+<span class="co">#&gt;  7      2     20  1927       0</span>
+<span class="co">#&gt;  8      2     20  1928       0</span>
+<span class="co">#&gt;  9      2     20  1929       0</span>
+<span class="co">#&gt; 10      2     20  1930       0</span>
+<span class="co">#&gt; # … with 167,522 more rows</span></code></pre></div>
+</div>
 </div>
 <div id="dyadic-dispute-year-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#dyadic-dispute-year-data" class="anchor"></a>Dyadic Dispute-Year Data</h2>
 <p>Dyadic dispute-year data come pre-processed in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. <a href="http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html">Another vignette</a> show how these are transformed to true dyad-year data, but they are also available for analysis. For example, the (directed) dyadic dispute-year Gibler-Miller-Little (GML) MID data are available as <code>gml_dirdisp</code>. Here, we can add information to these dyadic dispute-years to identify contiguity relationships and Correlates of War major status.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gml_dirdisp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_contiguity.html">add_contiguity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
 <span class="co">#&gt; # A tibble: 10,276 × 42</span>
@@ -260,7 +350,7 @@
 <a href="#state-day-data" class="anchor"></a>State-Day Data</h2>
 <p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> comes with a <code><a href="../reference/create_statedays.html">create_statedays()</a></code> function. This is admittedly more proof of concept as it is <em>really</em> difficult to conjure too many <em>daily</em> data sets in peace science, certainly with coverage into the 19th century. No matter, <code><a href="../reference/create_statedays.html">create_statedays()</a></code> will create these data. It too has the same <code>system</code> and <code>mry</code> arguments (and same defaults) as <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</p>
 <p>Here are all Correlates of War state-days from 1816 to 2020.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6,061,091 × 3</span>
 <span class="co">#&gt;    ccode statenme                 date      </span>
@@ -277,7 +367,7 @@
 <span class="co">#&gt; 10     2 United States of America 1816-01-10</span>
 <span class="co">#&gt; # … with 6,061,081 more rows</span></code></pre></div>
 <p>Here are all Gleditsch-Ward state-days with the same temporal domain.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 6,638,781 × 3</span>
 <span class="co">#&gt;    gwcode statename                date      </span>
@@ -294,7 +384,7 @@
 <span class="co">#&gt; 10      2 United States of America 1816-01-10</span>
 <span class="co">#&gt; # … with 6,638,771 more rows</span></code></pre></div>
 <p>I can conjure an application where a user may want to think of daily conflict episodes within the Gleditsch-Ward domain. The UCDP armed conflict data have more precise dates than, say, the Correlates of War MID data, making such an analysis possible. However, there are no conflict data before 1946 and you should reflect that with <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> with something like this. This will require <a href="https://lubridate.tidyverse.org">lubridate</a>.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1946</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 3,870,980 × 3</span>
@@ -316,7 +406,7 @@
 <h2 class="hasAnchor">
 <a href="#state-month-data" class="anchor"></a>State-Month Data</h2>
 <p>State-months are simple aggregations of state-days. You can accomplish this with a few more extra commands after <code><a href="../reference/create_statedays.html">create_statedays()</a></code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -340,7 +430,7 @@
 <h2 class="hasAnchor">
 <a href="#state-quarter-data" class="anchor"></a>State-Quarter Data</h2>
 <p>There is some assumption about what a “quarter” would look like in a more general context, but it might look something like this. Again, this is an aggregation of <code><a href="../reference/create_statedays.html">create_statedays()</a></code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -371,7 +461,7 @@
 <h2 class="hasAnchor">
 <a href="#leader-day-leader-month-leader-year-data" class="anchor"></a>Leader-Day (Leader-Month, Leader-Year) Data</h2>
 <p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> has leader-level units of analysis as well, which can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The data are version 4.1.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span>
 <span class="co">#&gt; # A tibble: 3,409 × 11</span>
 <span class="co">#&gt;    obsid  gwcode leadid   leader yrborn gender startdate  enddate    entry exit </span>
@@ -388,7 +478,7 @@
 <span class="co">#&gt; 10 USA-1…      2 81dd231… Taft     1857 M      1909-03-04 1913-03-04 Regu… Regu…</span>
 <span class="co">#&gt; # … with 3,399 more rows, and 1 more variable: exitcode &lt;chr&gt;</span></code></pre></div>
 <p><code><a href="../reference/create_leaderdays.html">create_leaderdays()</a></code> will create leader-day data from <code>archigos</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 5,298,380 × 5</span>
 <span class="co">#&gt;    obsid    gwcode leader date       yrinoffice</span>
@@ -405,7 +495,7 @@
 <span class="co">#&gt; 10 USA-1869      2 Grant  1869-03-13          1</span>
 <span class="co">#&gt; # … with 5,298,370 more rows</span></code></pre></div>
 <p>I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> and <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. Moreover, the leader data isn’t exactly tethered to the Gleditsch-Ward state system for dates either (e.g. there are leader entries for Gleditsch-Ward states that aren’t in the system yet). In a case like this, you can standardize these leader data to either the Correlates of War system or the Gleditsch-Ward system with the <code>standardize</code> argument. By default, the option here is “none” (i.e. return all available leader days recorded in the Archigos data). “cow” or “gw” standardizes the leader data to Correlates of War state system membership or Gleditsch-Ward state system membership, respectively.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span>standardize <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("gwcode", "year")</span>
 <span class="co">#&gt; Joining, by = c("ccode", "date")</span>
@@ -424,7 +514,7 @@
 <span class="co">#&gt; 10 USA-1869     2 Grant  1869-03-13          1</span>
 <span class="co">#&gt; # … with 4,824,957 more rows</span></code></pre></div>
 <p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can create something like leader-months.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -446,7 +536,7 @@
 <span class="co">#&gt; 10 USA-1869      2 Grant  1869-12-01          1  1869    12</span>
 <span class="co">#&gt; # … with 177,118 more rows</span></code></pre></div>
 <p>And here are leader-years, which is pre-packaged as a <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> function. The package also adds some information about leader gender, an approximation of the leader’s age that year (i.e. <code>year - yrborn</code>), and a running count (starting a 1) for the leader’s tenure (in years).</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderyears.html">create_leaderyears</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 17,686 × 7</span>
 <span class="co">#&gt;    obsid    gwcode leader gender  year yrinoffice leaderage</span>
@@ -467,13 +557,14 @@
 <h2 class="hasAnchor">
 <a href="#leader-dyad-year-data" class="anchor"></a>Leader Dyad-Year Data</h2>
 <p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> can also create leader dyad-year data by way of <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>. You can see <a href="https://github.com/svmiller/peacesciencer/blob/master/data-raw/cow_dir_leader_dyad_years.R">some of the underlying code that is creating these data</a>. It’s a lot of code, it would take a lot of time to run from scratch, and the ensuing output is too large to store as an R data object in the package because CRAN hard-caps package size at 5 MB. Instead, users who want these data should first run <code><a href="../reference/download_extdata.html">download_extdata()</a></code> when they <em>first</em> install or update the package. Therein, they can run <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code> to create the full universe of leader dyad-year data.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create_leaderdyadyears() is effectively doing this.</span>
 <span class="co"># Let's do the G-W leader dyad-year data for illustration's sake.</span>
-<span class="co"># Do note: `download_extdata()` will download these data and stick them in the package directory</span>
+<span class="co"># `download_extdata()` will download these data into the package directory.</span>
 <span class="co"># Thus, it is *not* downloading the data fresh each time.</span>
 
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="st">"http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">the_url</span> <span class="op">&lt;-</span> <span class="st">"http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"</span>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="va">the_url</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/declare_attributes.html">declare_attributes</a></span><span class="op">(</span>data_type <span class="op">=</span> <span class="st">"leader_dyad_year"</span>, system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
 <span class="co">#&gt; # A tibble: 2,336,990 × 11</span>
 <span class="co">#&gt;     year obsid1   obsid2   gwcode1 gwcode2 gender1 gender2 leaderage1 leaderage2</span>

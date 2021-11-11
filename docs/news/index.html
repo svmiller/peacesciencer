@@ -73,7 +73,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.6.9999</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
       </span>
     </div>
 
@@ -99,10 +99,10 @@
       <a href="../articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
     </li>
     <li>
-      <a href="../articles/create-different-kinds-of-data-in-peacesciencer.html">Create Different Kinds of Data in `{peacesciencer}`</a>
+      <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
     </li>
     <li>
-      <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
+      <a href="../articles/different-data-types.html">Create Different Kinds of Data in `{peacesciencer}`</a>
     </li>
     <li>
       <a href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
@@ -207,7 +207,7 @@
 <code><a href="../reference/create_leaderyears.html">create_leaderyears()</a></code> works on the observation ID and not the leader ID. Observation IDs are unique to each leader-period, but leader IDs are not.</li>
 <li>The directed leader dyad-year data is indexed by observation ID and not leader ID, per se. This is because leaders can have multiple terms in office.</li>
 <li>
-<code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> has been superseded by <code><a href="../reference/add_spells.html">add_spells()</a></code>. The “superseded” language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. <code><a href="../reference/add_spells.html">add_spells()</a></code> promises to have greater functionality.</li>
+<code><a href="../reference/add_peace_years.html">add_peace_years()</a></code> has been superseded by <code><a href="../reference/add_spells.html">add_spells()</a></code>. The “superseded” language communicates the function will still work as it has for previous releases, for data types supported by the function, though its development will stop. <code><a href="../reference/add_spells.html">add_spells()</a></code> promises to have greater functionality. Communicating these changes via badges brings in <a href="https://lifecycle.r-lib.org/">lifecycle</a> as an imported package.</li>
 <li>
 <code>archigos</code> data’s <code>ccode</code> has been renamed to <code>gwcode</code> to reflect these are actually Gleditsch-Ward state codes.</li>
 <li>The “whittle” functions now work with leader-dyadic conflict data available in the package.</li>
