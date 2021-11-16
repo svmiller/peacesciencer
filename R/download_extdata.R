@@ -94,6 +94,7 @@
 #' | `year` | the year |
 #' | `ccode1` | the Correlates of War state code for the first state |
 #' | `ccode2` | the Correlates of War state code for the second state |
+#' | `taub` | Tau-b (valued alliance data) |
 #' | `srsvas` | unweighted *S* (squared distances, valued alliance data) |
 #' | `srswvas` | weighted *S* (squared distances, valued alliance data) |
 #' | `srsvaa` | unweighted *S* (absolute distances, valued alliance data) |

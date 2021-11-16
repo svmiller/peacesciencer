@@ -108,27 +108,34 @@ cow_ddy \%>\% add_fpsim(keep=c("kappaba", "kappavv"))
 \references{
 \subsection{The Main Source of the Data}{
 
-For any use of these data whatsoever, please cite Haege (2011).
-Data are version 2.0.
+For any use of these data whatsoever (except for Tau-b), please cite
+Haege (2011). Data are version 2.0.
 \itemize{
 \item Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of
 Foreign Policy Similarity for Chance Agreement."
 \emph{Political Analysis} 19(3): 287-305.
 }
+
+Tau-b is calculated by me and not Haege, and no additional citation (beyond
+citing the package) is necessary.
 }
 
 \subsection{Citations for the Particular Similarity Measure You Choose}{
 
 Additional citations depend on what particular measure of similarity you're
-using, either Signorino and Ritter's (1999) \emph{S}, Cohen's (1960) kappa and
-Scott's (1955) pi. Haege (2011) is part of a chorus arguing against the use
-of \emph{S}, though \emph{S} measures are included in these data if you elect to
-ignore the chorus and use this measure. Haege (2011) instead argues for a
-chance-corrected measure of dyadic foreign policy similarity, either
-Cohen's (1960) kappa or Scott's (1955) pi.
+using, whether Kendall's (1938) Tau-b, Signorino and Ritter's (1999) \emph{S},
+Cohen's (1960) kappa and Scott's (1955) pi. Haege (2011) is part of a chorus
+arguing against the use of \emph{S}, though \emph{S} measures are included in these
+data if you elect to ignore the chorus and use this measure. Likewise, Tau-b
+is in here, though it is not a good measure of dyadic foreign policy
+similarity for reasons that Signorino and Ritter (1999) mention.
+Haege (2011) argues for a chance-corrected measure of dyadic foreign policy
+similarity, either Cohen's (1960) kappa or Scott's (1955) pi.
 \itemize{
 \item Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales."
 \emph{Educational and Psychological Measurement} 20(1): 37-46.
+\item Kendall, M.G. 1938. "A New Measure of Rank Correlation."
+\emph{Biometrika} 30(1/2): 81--93.
 \item Scott, William A. 1955. "Reliability of Content Analysis: The Case of
 Nominal Scale Coding." \emph{Public Opinion Quarterly} 19(3): 321--5.
 \item Signorino, Curtis S. and Jeffrey M. Ritter. "Tau-b or Not Tau-B: Measuring

@@ -113,6 +113,7 @@ decimal points have also been rounded to three spots.\tabular{ll}{
    \code{year} \tab the year \cr
    \code{ccode1} \tab the Correlates of War state code for the first state \cr
    \code{ccode2} \tab the Correlates of War state code for the second state \cr
+   \code{taub} \tab Tau-b (valued alliance data) \cr
    \code{srsvas} \tab unweighted \emph{S} (squared distances, valued alliance data) \cr
    \code{srswvas} \tab weighted \emph{S} (squared distances, valued alliance data) \cr
    \code{srsvaa} \tab unweighted \emph{S} (absolute distances, valued alliance data) \cr

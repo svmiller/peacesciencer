@@ -91,25 +91,33 @@
 #'
 #' ## The Main Source of the Data
 #'
-#' For any use of these data whatsoever, please cite Haege (2011).
-#' Data are version 2.0.
+#' For any use of these data whatsoever (except for Tau-b), please cite
+#' Haege (2011). Data are version 2.0.
 #'
 #' - Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of
 #' Foreign Policy Similarity for Chance Agreement."
 #' *Political Analysis* 19(3): 287-305.
 #'
+#' Tau-b is calculated by me and not Haege, and no additional citation (beyond
+#' citing the package) is necessary.
+#'
 #' ## Citations for the Particular Similarity Measure You Choose
 #'
 #' Additional citations depend on what particular measure of similarity you're
-#' using, either Signorino and Ritter's (1999) *S*, Cohen's (1960) kappa and
-#' Scott's (1955) pi. Haege (2011) is part of a chorus arguing against the use
-#' of *S*, though *S* measures are included in these data if you elect to
-#' ignore the chorus and use this measure. Haege (2011) instead argues for a
-#' chance-corrected measure of dyadic foreign policy similarity, either
-#' Cohen's (1960) kappa or Scott's (1955) pi.
+#' using, whether Kendall's (1938) Tau-b, Signorino and Ritter's (1999) *S*,
+#' Cohen's (1960) kappa and Scott's (1955) pi. Haege (2011) is part of a chorus
+#' arguing against the use of *S*, though *S* measures are included in these
+#' data if you elect to ignore the chorus and use this measure. Likewise, Tau-b
+#' is in here, though it is not a good measure of dyadic foreign policy
+#' similarity for reasons that Signorino and Ritter (1999) mention.
+#' Haege (2011) argues for a chance-corrected measure of dyadic foreign policy
+#' similarity, either Cohen's (1960) kappa or Scott's (1955) pi.
 #'
 #' - Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales."
 #' *Educational and Psychological Measurement* 20(1): 37-46.
+#'
+#' - Kendall, M.G. 1938. "A New Measure of Rank Correlation."
+#' *Biometrika* 30(1/2): 81--93.
 #'
 #' - Scott, William A. 1955. "Reliability of Content Analysis: The Case of
 #' Nominal Scale Coding." *Public Opinion Quarterly* 19(3): 321--5.
