@@ -100,9 +100,21 @@ I offer these citations first as an acknowledgment of these important contributi
 ```{r child = '../vignettes/joins.Rmd', echo=TRUE}
 ```
 
+
+# Vignette: How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data
+
+```{r child = '../vignettes/coerce-dispute-year-dyad-year.Rmd', echo=TRUE}
+```
+
+
 # Vignette: Various Parlor Tricks in `{peacesciencer}`
 
 ```{r child = '../vignettes/parlor-tricks.Rmd', echo=TRUE}
+```
+
+# Vignette: A Discussion of Correlates of War and Gleditsch-Ward Systems and `{peacesciencer}`
+
+```{r child = '../vignettes/state-systems.Rmd', echo=TRUE}
 ```
 
 

@@ -1,3 +1,10 @@
+peacesciencer 0.8.0
+--------------------------------------------------------------------
+
+- Clarify `add_cow_mids()` and `add_gml_mids()` about the default case-exclusion rules for dyadic analyses.
+
+
+
 peacesciencer 0.7.0
 ---------------------------------------------------------------------
 

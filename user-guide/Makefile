@@ -27,7 +27,7 @@ doc/memo.docx: memo.Rmd
 	Rscript -e 'rmarkdown::render("memo.Rmd", output_file="doc/memo.docx", bookdown::word_document2(reference_docx = stevetemplates::templ_word(), toc = FALSE, number_sections = FALSE))'
 
 doc/memo.pdf: memo.Rmd
-	Rscript -e 'rmarkdown::render("memo.Rmd", output_file="doc/memo.pdf", rmarkdown::pdf_document(template = stevetemplates::templ_cover_letter(), citation_package = "natbib", latex_engine = "xelatex"))'
+	Rscript -e 'rmarkdown::render("memo.Rmd", output_file="doc/memo.pdf", bookdown::pdf_document2(template = stevetemplates::templ_cover_letter(), citation_package = "natbib", latex_engine = "xelatex",  number_sections = FALSE))'
 
 ../docs/ms.pdf:	ms.Rmd $(RDS)
 	Rscript -e 'source("src/render_pdf.R")'
