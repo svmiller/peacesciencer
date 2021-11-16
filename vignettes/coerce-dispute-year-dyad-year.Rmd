@@ -238,7 +238,7 @@ We had started with 498 duplicate directed dyad-years in the dyadic dispute-year
 hold_this %>%
   group_by(ccode1, ccode2, year) %>%
   filter(n() > 1) %>% filter(ccode2 > ccode1) %>%
-  select(dispnum:disponset, fatality1:hiact2, fatality:maxdur) %>%
+  select(dispnum:disponset, hiact1:hiact2, fatality:maxdur) %>%
   kbl(., caption = "Duplicate Non-Directed Dyad-Years Still Remaining",
       booktabs = TRUE, longtable = TRUE)  %>%
   kable_styling(position = "center", full_width = F,
@@ -271,7 +271,7 @@ We're down to just three duplicate dyad-years now. The only reason MID#4428 and 
 hold_this %>%
   group_by(ccode1, ccode2, year) %>%
   filter(n() > 1) %>% filter(ccode2 > ccode1) %>%
-  select(dispnum:disponset, fatality1:hiact2, fatality:maxdur) %>%
+  select(dispnum:disponset, hiact1:hiact2, fatality:maxdur) %>%
   kbl(., caption = "Duplicate Non-Directed Dyad-Years Still Remaining",
       booktabs = TRUE, longtable = TRUE)  %>%
   kable_styling(position = "center", full_width = F, 
