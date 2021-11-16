@@ -89,6 +89,9 @@
 #' information is 18.6 MB in size. To reduce size further, these
 #' decimal points have also been rounded to three spots.
 #'
+#' Haege generated all estimates of dyadic foreign policy similarity, except
+#' for the `taub` column. That was generated separately, by me.
+#'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
 #' | `year` | the year |
