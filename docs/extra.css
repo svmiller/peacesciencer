@@ -1,3 +1,5 @@
+
+
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Titillium+Web:300,300i,400,400i,600,600i,700,700i');
 @import url('https://fonts.googleapis.com/css?family=Fira+Code:400');
@@ -46,6 +48,20 @@ code {
 
 /* Updates with boot 5 */
 
-.container .me-auto {
+.navbar-light .navbar-brand {
   color: #fff;
 }
+
+.navbar-light .navbar-nav .nav-link {
+    color: #fff;
+}
+
+
+nav .text-muted {
+    color: #ffffff !important;
+    font-weight: bold;
+    padding: 0.2em 0.6em 0.3em;
+    background: #999;
+    border-radius: 5px;
+}
+
