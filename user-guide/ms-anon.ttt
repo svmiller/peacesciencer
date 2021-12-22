@@ -37,7 +37,7 @@
 \ttfamily{add\_lead()} & L, LD & Add leader experience/attributes (LEAD) to data\\
 \ttfamily{add\_lwuf()} & L, LD & Add leader willingness to use force estimates to data\\
 \ttfamily{add\_minimum\_distance()} & D, L, LD, S & Add minimum distance data to data frame\\
-\ttfamily{add\_nmc()} & D, L, LD, S & Add minimum distance estimates (in km) to data frame\\
+\ttfamily{add\_nmc()} & D, L, LD, S & Add Correlates of War National Military Capabilities data\\
 \ttfamily{add\_peace\_years()} & D, S & Add 'peace years' to dyad-year/state-year conflict data\\
 \ttfamily{add\_rugged\_terrain()} & D, L, LD, S & Add rugged terrain information to a data frame\\
 \ttfamily{add\_sdp\_gdp()} & D, L, LD, S & Add (surplus, gross) domestic product data to a data frame\\

@@ -22,7 +22,7 @@ A data frame with 15171 observations on the following 9 variables.
 cow_nmc
 }
 \description{
-These are version 5.0 of the Correlates of War National Military Capabilities data. Data omit
+These are version 6.0 of the Correlates of War National Military Capabilities data. Data omit
 the state abbreviation and version identifier for consideration.
 }
 \details{

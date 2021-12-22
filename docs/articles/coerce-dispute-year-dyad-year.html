@@ -4,14 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="peacesciencer">
 <title>How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data • peacesciencer</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.0.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.0.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data">
 <meta property="og:description" content="peacesciencer">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -19,126 +19,90 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-primary"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">peacesciencer</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.9</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">What’s Included?</a>
 </li>
-<li>
-  <a href="../reference/index.html">What’s Included?</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
-    </li>
-    <li>
-      <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/different-data-types.html">Create Different Kinds of Data in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/parlor-tricks.html">Various Parlor Tricks in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/state-systems.html">A Discussion of the Two State Systems (CoW, G-W) in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/versions.html">`{peacesciencer}` Data Versions</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Manuscript
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../ms.html">HTML</a>
-    </li>
-    <li>
-      <a href="../ms.pdf">PDF</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/svmiller/peacesciencer/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-</div>
-<!--/.nav-collapse -->
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
+    <a class="dropdown-item" href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/different-data-types.html">Create Different Kinds of Data in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/parlor-tricks.html">Various Parlor Tricks in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/state-systems.html">A Discussion of the Two State Systems (CoW, G-W) in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/versions.html">`{peacesciencer}` Data Versions</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-manuscript">Manuscript</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-manuscript">
+    <a class="dropdown-item" href="../ms.html">HTML</a>
+    <a class="dropdown-item" href="../ms.pdf">PDF</a>
+  </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/svmiller/peacesciencer/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
-
-      </header><script src="coerce-dispute-year-dyad-year_files/header-attrs-2.11/header-attrs.js"></script><script src="coerce-dispute-year-dyad-year_files/kePrint-0.0.1/kePrint.js"></script><link href="coerce-dispute-year-dyad-year_files/lightable-0.0.1/lightable.css" rel="stylesheet">
+    
+  </div>
+</nav><div class="container template-article">
+<script src="coerce-dispute-year-dyad-year_files/kePrint-0.0.1/kePrint.js"></script><link href="coerce-dispute-year-dyad-year_files/lightable-0.0.1/lightable.css" rel="stylesheet">
 <div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>How <code>{peacesciencer}</code> Coerces Dispute-Year Data into Dyad-Year Data</h1>
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/svmiller/peacesciencer/blob/master/vignettes/coerce-dispute-year-dyad-year.Rmd"><code>vignettes/coerce-dispute-year-dyad-year.Rmd</code></a></small>
-      <div class="hidden name"><code>coerce-dispute-year-dyad-year.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/svmiller/peacesciencer/blob/HEAD/vignettes/coerce-dispute-year-dyad-year.Rmd" class="external-link"><code>vignettes/coerce-dispute-year-dyad-year.Rmd</code></a></small>
+      <div class="d-none name"><code>coerce-dispute-year-dyad-year.Rmd</code></div>
     </div>
 
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.4     ✓ dplyr   1.0.7</span>
-<span class="co">#&gt; ✓ tidyr   1.1.4     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   2.0.2     ✓ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/">kableExtra</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">ggplot2</span> 3.3.5     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">purrr  </span> 0.3.4</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tibble </span> 3.1.4     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">dplyr  </span> 1.0.7</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tidyr  </span> 1.1.4     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">stringr</span> 1.4.0</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">readr  </span> 2.0.2     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">forcats</span> 0.5.1</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span>
+<span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/" class="external-link">kableExtra</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'kableExtra'</span>
 <span class="co">#&gt; The following object is masked from 'package:dplyr':</span>
@@ -147,66 +111,66 @@
 <p>Dyad-year models—whether directed or non-directed—seek to explain variation in conflict onset by reference to some covariates of interest. This unit of analysis in these models is the dyad-year (e.g. USA-Canada, 1920; USA-Canada, 1921) and not the <em>dispute</em>-year. A researcher who is not careful about the difference will end up with duplicate dyad-year observations for dyads in which there were multiple confrontations ongoing in a calendar year.</p>
 <p>Here is my favorite case in point: the Italy-France dyad in 1860. This dyad not only had three unique disputes occurring in 1860, they also had three unique <em>onsets</em> that year. Two were even wars even as France was a passive participant in those. Heck, they even all started effectively at the same time, but concerned different components of the wars of Italian unification happening at that time. A researcher should be mindful about this: their unit of analysis is supposed to be the dyad-year, not the dispute-year. Not knowing the difference is the difference of having three Italy-France observations for 1860 or just one. The researcher who has a dyad-year design wants the latter, not the former.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"~/Dropbox/data/cow/mid/5/MIDB 5.0.dta"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dispnum</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">112</span>, <span class="fl">113</span>, <span class="fl">306</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">sidea</span>, <span class="va">fatality</span>, <span class="va">hiact</span>, <span class="va">hostlev</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 8 × 13</span>
+<code class="sourceCode R"><span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html" class="external-link">read_dta</a></span><span class="op">(</span><span class="st">"~/Dropbox/data/cow/mid/5/MIDB 5.0.dta"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">dispnum</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">112</span>, <span class="fl">113</span>, <span class="fl">306</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">sidea</span>, <span class="va">fatality</span>, <span class="va">hiact</span>, <span class="va">hostlev</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 8 × 13</span></span>
 <span class="co">#&gt;   dispnum stabb ccode stday stmon styear endday endmon endyear sidea fatality</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1     112 ITA     325     7     9   1860     29      9    1860     1        4</span>
-<span class="co">#&gt; 2     112 FRN     220    10     9   1860     29      9    1860     0        0</span>
-<span class="co">#&gt; 3     112 PAP     327     7     9   1860     29      9    1860     0        5</span>
-<span class="co">#&gt; 4     113 ITA     325    18     9   1860     13      2    1861     1        5</span>
-<span class="co">#&gt; 5     113 FRN     220    13    11   1860     19      1    1861     0        0</span>
-<span class="co">#&gt; 6     113 SIC     329    18     9   1860     13      2    1861     0        4</span>
-<span class="co">#&gt; 7     306 ITA     325    17     9   1860     19      1    1861     0       -9</span>
-<span class="co">#&gt; 8     306 FRN     220    17     9   1860     19      1    1861     1       -9</span>
-<span class="co">#&gt; # … with 2 more variables: hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;</span></code></pre></div>
-<p>This means a researcher must make careful design decisions about which cases to exclude from their data. There is no correct answer here, per se. There is good reason theoretically to employ certain case exclusion rules before others, which is what <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> will do by default in the <code><a href="../reference/add_cow_mids.html">add_cow_mids()</a></code> and <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> functions. This vignette will explain what <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> does by default. Users who want to employ their own case exclusion rules are free to use the “whittle” class of functions (e.g. <code><a href="../reference/whittle_conflicts_onsets.html">whittle_conflicts_onsets()</a></code>, <code><a href="../reference/whittle_conflicts_fatality.html">whittle_conflicts_fatality()</a></code>) on the dyadic dispute-year data included in this package. I will start with version 5.0 of the CoW-MID data and the dyadic dispute-year data I created from it.</p>
-<div id="converting-cow-mid-dyadic-dispute-year-data-into-dyad-year-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#converting-cow-mid-dyadic-dispute-year-data-into-dyad-year-data" class="anchor"></a>Converting CoW-MID Dyadic Dispute-Year Data into Dyad-Year Data</h2>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>     112 ITA     325     7     9   <span style="text-decoration: underline;">1</span>860     29      9    <span style="text-decoration: underline;">1</span>860     1        4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>     112 FRN     220    10     9   <span style="text-decoration: underline;">1</span>860     29      9    <span style="text-decoration: underline;">1</span>860     0        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>     112 PAP     327     7     9   <span style="text-decoration: underline;">1</span>860     29      9    <span style="text-decoration: underline;">1</span>860     0        5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>     113 ITA     325    18     9   <span style="text-decoration: underline;">1</span>860     13      2    <span style="text-decoration: underline;">1</span>861     1        5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>     113 FRN     220    13    11   <span style="text-decoration: underline;">1</span>860     19      1    <span style="text-decoration: underline;">1</span>861     0        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">6</span>     113 SIC     329    18     9   <span style="text-decoration: underline;">1</span>860     13      2    <span style="text-decoration: underline;">1</span>861     0        4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">7</span>     306 ITA     325    17     9   <span style="text-decoration: underline;">1</span>860     19      1    <span style="text-decoration: underline;">1</span>861     0       -<span style="color: #BB0000;">9</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">8</span>     306 FRN     220    17     9   <span style="text-decoration: underline;">1</span>860     19      1    <span style="text-decoration: underline;">1</span>861     1       -<span style="color: #BB0000;">9</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2 more variables: hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;</span></span></code></pre></div>
+<p>This means a researcher must make careful design decisions about which cases to exclude from their data. There is no correct answer here, per se. There is good reason theoretically to employ certain case exclusion rules before others, which is what <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> will do by default in the <code><a href="../reference/add_cow_mids.html">add_cow_mids()</a></code> and <code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> functions. This vignette will explain what <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> does by default. Users who want to employ their own case exclusion rules are free to use the “whittle” class of functions (e.g. <code><a href="../reference/whittle_conflicts_onsets.html">whittle_conflicts_onsets()</a></code>, <code><a href="../reference/whittle_conflicts_fatality.html">whittle_conflicts_fatality()</a></code>) on the dyadic dispute-year data included in this package. I will start with version 5.0 of the CoW-MID data and the dyadic dispute-year data I created from it.</p>
+<div class="section level2">
+<h2 id="converting-cow-mid-dyadic-dispute-year-data-into-dyad-year-data">Converting CoW-MID Dyadic Dispute-Year Data into Dyad-Year Data<a class="anchor" aria-label="anchor" href="#converting-cow-mid-dyadic-dispute-year-data-into-dyad-year-data"></a>
+</h2>
 <p>First, let’s identify where there are dyad-year duplicates in the data.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># make it non-directed for ease of presentation</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode2</span> <span class="op">&gt;</span> <span class="va">ccode1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,
-            mids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="va">dispnum</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode2</span> <span class="op">&gt;</span> <span class="va">ccode1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span>,
+            mids <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="va">dispnum</span>, collapse <span class="op">=</span> <span class="st">", "</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="op">-</span><span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> 
 <span class="co">#&gt; `summarise()` has grouped output by 'ccode1', 'ccode2'. You can override using the `.groups` argument.</span>
-<span class="co">#&gt; # A tibble: 498 × 5</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 498 × 5</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year     n mids                            </span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                           </span>
-<span class="co">#&gt;  1    200    365  1920     6 186, 197, 1133, 2363, 2364, 2604</span>
-<span class="co">#&gt;  2      2    365  1958     5 125, 173, 608, 2215, 2216       </span>
-<span class="co">#&gt;  3    651    666  1959     5 3375, 3405, 3419, 3421, 3430    </span>
-<span class="co">#&gt;  4    651    666  1960     5 3375, 3405, 3419, 3422, 3430    </span>
-<span class="co">#&gt;  5    652    666  1955     5 3404, 3405, 3416, 3417, 3418    </span>
-<span class="co">#&gt;  6      2    365  1962     4 61, 1353, 2219, 3361            </span>
-<span class="co">#&gt;  7      2    365  1967     4 345, 2930, 2931, 2934           </span>
-<span class="co">#&gt;  8    200    365  1919     4 197, 2363, 2604, 2605           </span>
-<span class="co">#&gt;  9    651    666  1958     4 3375, 3405, 3419, 3420          </span>
-<span class="co">#&gt; 10    652    666  1954     4 3403, 3404, 3415, 3417          </span>
-<span class="co">#&gt; # … with 488 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                           </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>    200    365  <span style="text-decoration: underline;">1</span>920     6 186, 197, 1133, 2363, 2364, 2604</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2    365  <span style="text-decoration: underline;">1</span>958     5 125, 173, 608, 2215, 2216       </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    651    666  <span style="text-decoration: underline;">1</span>959     5 3375, 3405, 3419, 3421, 3430    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    651    666  <span style="text-decoration: underline;">1</span>960     5 3375, 3405, 3419, 3422, 3430    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    652    666  <span style="text-decoration: underline;">1</span>955     5 3404, 3405, 3416, 3417, 3418    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2    365  <span style="text-decoration: underline;">1</span>962     4 61, 1353, 2219, 3361            </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2    365  <span style="text-decoration: underline;">1</span>967     4 345, 2930, 2931, 2934           </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    200    365  <span style="text-decoration: underline;">1</span>919     4 197, 2363, 2604, 2605           </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    651    666  <span style="text-decoration: underline;">1</span>958     4 3375, 3405, 3419, 3420          </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    652    666  <span style="text-decoration: underline;">1</span>954     4 3403, 3404, 3415, 3417          </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 488 more rows</span></span></code></pre></div>
 <p>The absolute most in the data is the United Kingdom-Soviet Union dyad, which had six conflicts ongoing and/or initiated in 1920. Next most is a tie between the United States-Soviet Union dyad in 1958, the Egypt-Israel dyad (1959, 1960), and the Syria-Israel dyad (1955). All told, there are 498 dyad-years that duplicate in the dyadic dispute-year data. We need to whittle those down to where there is no more than one dyad-year in these data.</p>
-<div id="first-select-unique-onsets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#first-select-unique-onsets" class="anchor"></a>First: Select Unique Onsets</h3>
+<div class="section level3">
+<h3 id="first-select-unique-onsets">First: Select Unique Onsets<a class="anchor" aria-label="anchor" href="#first-select-unique-onsets"></a>
+</h3>
 <p>The primary aim is to preserve the unique onsets. The case of the United States-United Kingdom dyad in 1903 will illustrate what’s at stake here. Here, the United States and United Kingdom had three MIDs ongoing in 1903. Two (MID#0002 and MID#0254) began in 1902. The third, MID#3301, is a new onset. In this case, we want to remove the observation for MID#0002 and MID#0254 and keep the observation for MID3301.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">200</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1903</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, 
+<code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">200</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1903</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, 
       caption <span class="op">=</span> <span class="st">"United States-United Kingdom Dyadic Dispute-Years in 1903"</span>,
-      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
                 bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
-<table class="table table table-striped">
+<table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 United States-United Kingdom Dyadic Dispute-Years in 1903
 </caption>
@@ -293,43 +257,43 @@ disponset
 </tr>
 </tbody>
 </table>
-<p>Here’s how <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> does this first cut. Grouping by dyad-year (i.e. <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by(ccode1, ccode2, year)</a></code>), it creates a new variable that equals 1 if the number of rows by dyad-year is more than 1. Maintaining the same grouped structure, it calculates the standard deviation of the the <code>disponset</code> variable. Cases where no standard deviation could be calculate are cases where the dyad-year does not duplicate and these are assigned as 0. Next, it creates a simple <code>removeme</code> column that equals 1 if 1) it’s a duplicated dyad-year, and 2) it’s not a unique onset, and 3) the standard deviation is greater than 0 (i.e. there is at least one onset in that dyad-year). It then removes cases where <code>removeme == 1</code>.</p>
+<p>Here’s how <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> does this first cut. Grouping by dyad-year (i.e. <code>group_by(ccode1, ccode2, year)</code>), it creates a new variable that equals 1 if the number of rows by dyad-year is more than 1. Maintaining the same grouped structure, it calculates the standard deviation of the the <code>disponset</code> variable. Cases where no standard deviation could be calculate are cases where the dyad-year does not duplicate and these are assigned as 0. Next, it creates a simple <code>removeme</code> column that equals 1 if 1) it’s a duplicated dyad-year, and 2) it’s not a unique onset, and 3) the standard deviation is greater than 0 (i.e. there is at least one onset in that dyad-year). It then removes cases where <code>removeme == 1</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">cow_mid_dirdisps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Remove anything that's not a unique MID onset</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">disponset</span><span class="op">)</span>,
-         sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span>, <span class="fl">0</span>, <span class="va">sd</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>removeme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">duplicated</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">disponset</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">sd</span> <span class="op">&gt;</span> <span class="fl">0</span>, 
-                           <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">removeme</span> <span class="op">!=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">disponset</span><span class="op">)</span>,
+         sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span>, <span class="fl">0</span>, <span class="va">sd</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>removeme <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">duplicated</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">disponset</span> <span class="op">==</span> <span class="fl">0</span> <span class="op">&amp;</span> <span class="va">sd</span> <span class="op">&gt;</span> <span class="fl">0</span>, 
+                           <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">removeme</span> <span class="op">!=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="co"># remove detritus</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">removeme</span>, <span class="op">-</span><span class="va">sd</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">removeme</span>, <span class="op">-</span><span class="va">sd</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># practice safe group_by()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 
 <span class="co"># ^ The `hold_this` naming convention is my favorite for intermediate objects.</span>
 <span class="co"># It's also a bad idea to overwrite data objects that come in this package.</span></code></pre></div>
 <p>Observe how it fixed that USA-United Kingdom observation in 1903.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">200</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1903</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 6</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">2</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">200</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1903</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 6</span></span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year dispongoing disponset</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    3301      2    200  1903           1         1</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    <span style="text-decoration: underline;">3</span>301      2    200  <span style="text-decoration: underline;">1</span>903           1         1</span></code></pre></div>
 <p>It did not fix the Italy-France problem from 1860, but that’s because all three dispute-years were onsets that year.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">220</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">325</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1860</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"France-Italy Dyadic Dispute-Years in 1903"</span>,
-      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">220</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">325</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1860</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"France-Italy Dyadic Dispute-Years in 1903"</span>,
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
                 bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
-<table class="table table table-striped">
+<table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 France-Italy Dyadic Dispute-Years in 1903
 </caption>
@@ -418,20 +382,20 @@ disponset
 </table>
 <p>This just tells us we’re not done, but we knew we wouldn’t be. We need more exclusion rules to whittle down the data.</p>
 </div>
-<div id="second-keep-the-highest-dispute-level-fatality" class="section level3">
-<h3 class="hasAnchor">
-<a href="#second-keep-the-highest-dispute-level-fatality" class="anchor"></a>Second: Keep the Highest Dispute-Level Fatality</h3>
+<div class="section level3">
+<h3 id="second-keep-the-highest-dispute-level-fatality">Second: Keep the Highest Dispute-Level Fatality<a class="anchor" aria-label="anchor" href="#second-keep-the-highest-dispute-level-fatality"></a>
+</h3>
 <p>If presented the opportunity to keep one dispute and drop another where two appear in a year, researchers will likely prefer the more “serious” one rather than the one that might have been a simple threat to use or show of force. Consider this Russia-Ottoman Empire (Turkey) dyad-year in 1853. There are two unique onsets between the two that year. One (MID#0057) became the Crimean War, an important conflict! The other (MID#0126) was an apparent show of force with no fatalities. Under those conditions, it’s an easy call to keep the one with more fatalities.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">365</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">640</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1853</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span>, <span class="va">fatality1</span><span class="op">:</span><span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, 
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">365</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">640</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1853</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span>, <span class="va">fatality1</span><span class="op">:</span><span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, 
       caption <span class="op">=</span> <span class="st">"Russia-Ottoman Empire Dyadic Dispute-Years in 1853"</span>,
-      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, 
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, 
                 bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
-<table class="table table table-striped">
+<table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Russia-Ottoman Empire Dyadic Dispute-Years in 1853
 </caption>
@@ -537,45 +501,45 @@ hiact2
 <p>There is one limitation with CoW-MID data toward this end. We obviously know CoW-MID only assigns fatalities at the end of the dispute to the participants, so we’d have no way of knowing a priori how many fatalities in that Russia-Turkey dyad were in 1853. We could have a situation like Belgium-Germany in 1939-1940. In that case, the highest action in which Belgium engaged against Germany in 1939 was a mobilization and the war that momentarily eliminated Belgium from the international system happened the next year. We also don’t know to what extent Turkey was responsible for Russia’s fatalities. The Crimean War was a multilateral war pitting the Russians against the United Kingdom, Austria-Hungary, Italy, Turkey, and France.</p>
 <p>Thus, what follows is crude, but still useful. We’ll use the dispute-level fatality information as a stand-in here and keep the duplicate dyad-year observation with the highest fatality score. We’ll also need to take inventory of how to handle the cases where <code>fatality == -9</code>. In a forthcoming data release, we find that cases of missing fatalities in the CoW-MID data mean that there were fatalities in more than half of the cases. Some were even wars! However, we’d have no way of knowing this from CoW-MID. We’ll be safe and recode -9 to be .5, indicating more than 0 fatalities but “less” than the fatality level of 1 (1-25 deaths) in that CoW-MID can at least confidently say the latter happened.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fatality <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">fatality</span> <span class="op">==</span> <span class="op">-</span><span class="fl">9</span>, <span class="fl">.5</span>, <span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>fatality <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">fatality</span> <span class="op">==</span> <span class="op">-</span><span class="fl">9</span>, <span class="fl">.5</span>, <span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="co"># Keep the highest fatality</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">fatality</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>fatality <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">fatality</span> <span class="op">==</span> <span class="fl">.5</span>, <span class="op">-</span><span class="fl">9</span>, <span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">fatality</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>fatality <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">fatality</span> <span class="op">==</span> <span class="fl">.5</span>, <span class="op">-</span><span class="fl">9</span>, <span class="va">fatality</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># practice safe group_by()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 <span class="co">#&gt; Joining, by = "dispnum"</span></code></pre></div>
 <p>This will fix the Russia-Turkey-1853 problem.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">365</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">640</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1853</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 20</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">365</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">640</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1853</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 20</span></span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year dispongoing disponset sidea1 sidea2 fatality1</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1      57    365    640  1853           1         1      1      0         6</span>
-<span class="co">#&gt; # … with 11 more variables: fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   orig2 &lt;dbl&gt;, duplicated &lt;dbl&gt;, fatality &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>      57    365    640  <span style="text-decoration: underline;">1</span>853           1         1      1      0         6</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 11 more variables: fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   orig2 &lt;dbl&gt;, duplicated &lt;dbl&gt;, fatality &lt;dbl&gt;</span></span></code></pre></div>
 <p>It won’t fix cases where there were multiple disputes initiated in the same year in the dyad, but no one died. There are lot of these. So, we’ll need more case exclusion rules.</p>
 </div>
-<div id="third-keep-the-highest-dispute-level-hostility" class="section level3">
-<h3 class="hasAnchor">
-<a href="#third-keep-the-highest-dispute-level-hostility" class="anchor"></a>Third: Keep the Highest Dispute-Level Hostility</h3>
+<div class="section level3">
+<h3 id="third-keep-the-highest-dispute-level-hostility">Third: Keep the Highest Dispute-Level Hostility<a class="anchor" aria-label="anchor" href="#third-keep-the-highest-dispute-level-hostility"></a>
+</h3>
 <p>The next case exclusion rule will want to continue isolating those serious MIDs from MIDs of lesser severity. Consider this case of India and Pakistan in 1963.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">750</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">770</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1963</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"India-Pakistan Dyadic Dispute-Years in 1963"</span>,
-      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">750</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">770</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1963</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"India-Pakistan Dyadic Dispute-Years in 1963"</span>,
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
                 bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
-<table class="table table table-striped">
+<table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 India-Pakistan Dyadic Dispute-Years in 1963
 </caption>
@@ -672,91 +636,91 @@ hiact2
 <p>These are two unique MID onsets in 1963 and neither was fatal, meaning this duplicate dyad-year is still here. However, MID#2630 was just a threat to use force whereas MID#1317 had an occupation of territory (by Pakistan against India). The former is a threat. The latter is a use. MID#2630 has a higher hostility level and that is the MID we’ll want to keep. The same caveat applies, as it did with fatalities, so we’ll have to use the dispute-level hostility variable as a plug-in here.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">hostlev</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">hostlev</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Keep the highest hostlev</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">hostlev</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">hostlev</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">hostlev</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">hostlev</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># practice safe group_by()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 <span class="co">#&gt; Joining, by = "dispnum"</span></code></pre></div>
 <p>This will at least fix that India-Pakistan observation in 1963, and others like it.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">750</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">770</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1963</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 9</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">750</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">770</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1963</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 9</span></span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year disponset fatality1 fatality2 hiact1 hiact2</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    1317    750    770  1963         1         0         0      0     14</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    <span style="text-decoration: underline;">1</span>317    750    770  <span style="text-decoration: underline;">1</span>963         1         0         0      0     14</span></code></pre></div>
 </div>
-<div id="fourth-keep-the-highest-dispute-level-minimum-then-maximum-duration" class="section level3">
-<h3 class="hasAnchor">
-<a href="#fourth-keep-the-highest-dispute-level-minimum-then-maximum-duration" class="anchor"></a>Fourth: Keep the Highest Dispute-Level (Minimum, Then Maximum) Duration</h3>
+<div class="section level3">
+<h3 id="fourth-keep-the-highest-dispute-level-minimum-then-maximum-duration">Fourth: Keep the Highest Dispute-Level (Minimum, Then Maximum) Duration<a class="anchor" aria-label="anchor" href="#fourth-keep-the-highest-dispute-level-minimum-then-maximum-duration"></a>
+</h3>
 <p>At this point, we still have duplicate dyad-years remaining in these data, but we’ve selected on cases that are fairly similar to each other (at least given the dispute- and participant-level data that are available). The duplicates that remain will be unique onsets with the same fatality levels and hostility levels. The next available measure that approximates dispute severity is duration. Consider this duplicate observation of Colombia-Peru in 1852 and the corresponding MIDs (MID#1506 and MID#1523).</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html">read_dta</a></span><span class="op">(</span><span class="st">"~/Dropbox/data/cow/mid/5/MIDB 5.0.dta"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">dispnum</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1506</span>, <span class="fl">1523</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">sidea</span>, <span class="va">fatality</span>, <span class="va">hiact</span>, <span class="va">hostlev</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 7 × 13</span>
+<code class="sourceCode R"><span class="fu">haven</span><span class="fu">::</span><span class="fu"><a href="https://haven.tidyverse.org/reference/read_dta.html" class="external-link">read_dta</a></span><span class="op">(</span><span class="st">"~/Dropbox/data/cow/mid/5/MIDB 5.0.dta"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">dispnum</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1506</span>, <span class="fl">1523</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">sidea</span>, <span class="va">fatality</span>, <span class="va">hiact</span>, <span class="va">hostlev</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 7 × 13</span></span>
 <span class="co">#&gt;   dispnum stabb ccode stday stmon styear endday endmon endyear sidea fatality</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    1506 VEN     101    -9    10   1852     -9     11    1852     1        0</span>
-<span class="co">#&gt; 2    1506 CHL     155    14     9   1852     -9     11    1852     0        0</span>
-<span class="co">#&gt; 3    1506 PER     135    -9     8   1852     -9     11    1852     0        0</span>
-<span class="co">#&gt; 4    1506 COL     100    -9     8   1852     -9     11    1852     1        0</span>
-<span class="co">#&gt; 5    1523 PER     135    -9     3   1852     18      7    1852     0        0</span>
-<span class="co">#&gt; 6    1523 CHL     155     2     6   1852      2      6    1852     1        0</span>
-<span class="co">#&gt; 7    1523 COL     100    -9     3   1852     18      7    1852     1        0</span>
-<span class="co">#&gt; # … with 2 more variables: hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    <span style="text-decoration: underline;">1</span>506 VEN     101    -<span style="color: #BB0000;">9</span>    10   <span style="text-decoration: underline;">1</span>852     -<span style="color: #BB0000;">9</span>     11    <span style="text-decoration: underline;">1</span>852     1        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">2</span>    <span style="text-decoration: underline;">1</span>506 CHL     155    14     9   <span style="text-decoration: underline;">1</span>852     -<span style="color: #BB0000;">9</span>     11    <span style="text-decoration: underline;">1</span>852     0        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">3</span>    <span style="text-decoration: underline;">1</span>506 PER     135    -<span style="color: #BB0000;">9</span>     8   <span style="text-decoration: underline;">1</span>852     -<span style="color: #BB0000;">9</span>     11    <span style="text-decoration: underline;">1</span>852     0        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">4</span>    <span style="text-decoration: underline;">1</span>506 COL     100    -<span style="color: #BB0000;">9</span>     8   <span style="text-decoration: underline;">1</span>852     -<span style="color: #BB0000;">9</span>     11    <span style="text-decoration: underline;">1</span>852     1        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">5</span>    <span style="text-decoration: underline;">1</span>523 PER     135    -<span style="color: #BB0000;">9</span>     3   <span style="text-decoration: underline;">1</span>852     18      7    <span style="text-decoration: underline;">1</span>852     0        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">6</span>    <span style="text-decoration: underline;">1</span>523 CHL     155     2     6   <span style="text-decoration: underline;">1</span>852      2      6    <span style="text-decoration: underline;">1</span>852     1        0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">7</span>    <span style="text-decoration: underline;">1</span>523 COL     100    -<span style="color: #BB0000;">9</span>     3   <span style="text-decoration: underline;">1</span>852     18      7    <span style="text-decoration: underline;">1</span>852     1        0</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2 more variables: hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;</span></span></code></pre></div>
 <p>These MIDs look fairly similar. They both started the same year. They both have the same level of fatalities (none). They both have the same hostility level (a show of force). It would be tough to read tea leaves to argue that an alert (<code>hiact: 8</code>) is “greater” than a show of force (<code>hiact: 7</code>) even as 8 &gt; 7 (i.e. CoW-MID action codes have never been truly ordinal). Further, they’re both multilateral MIDs. MID#1506 pit Venezuela and Colombia against Chile and Peru whereas MID#1523 pit Chile and Colombia against Peru. Both even unhelpfully have some unknown duration to them. There are -9s in start days in both.</p>
 <p>However, MID#1523 has the highest <em>minimum</em> duration. It lasted at least 110 days (and as many as 140) whereas MID#1506 has a minimum duration of 63 days (and a maximum duration of 122 days). Under those conditions, we will keep the one with the minimum duration and then, where duplicates still remain, keep the one with the highest maximum duration.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">mindur</span>, <span class="va">maxdur</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">mindur</span>, <span class="va">maxdur</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Keep the highest mindur</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mindur</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">mindur</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mindur</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">mindur</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Keep the highest maxdur</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">maxdur</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">maxdur</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">maxdur</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">maxdur</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># practice safe group_by()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 <span class="co">#&gt; Joining, by = "dispnum"</span></code></pre></div>
 <p>This will fix that Colombia-Peru problem in 1852.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">135</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">100</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1852</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1 × 9</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode1</span> <span class="op">==</span> <span class="fl">135</span> <span class="op">&amp;</span> <span class="va">ccode2</span> <span class="op">==</span> <span class="fl">100</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">==</span> <span class="fl">1852</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">year</span>, <span class="va">disponset</span>, <span class="va">fatality1</span>, <span class="va">fatality2</span>, <span class="va">hiact1</span>, <span class="va">hiact2</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 1 × 9</span></span>
 <span class="co">#&gt;   dispnum ccode1 ccode2  year disponset fatality1 fatality2 hiact1 hiact2</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt; 1    1523    135    100  1852         1         0         0      0      8</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">1</span>    <span style="text-decoration: underline;">1</span>523    135    100  <span style="text-decoration: underline;">1</span>852         1         0         0      0      8</span></code></pre></div>
 </div>
-<div id="final-case-exclusions-for-the-cow-mid-data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#final-case-exclusions-for-the-cow-mid-data" class="anchor"></a>Final Case Exclusions for the CoW-MID Data</h3>
+<div class="section level3">
+<h3 id="final-case-exclusions-for-the-cow-mid-data">Final Case Exclusions for the CoW-MID Data<a class="anchor" aria-label="anchor" href="#final-case-exclusions-for-the-cow-mid-data"></a>
+</h3>
 <p>We had started with 498 duplicate directed dyad-years in the dyadic dispute-year data. We’re now down to just 24 directed (12 non-directed) dyad-years. A glance at these remaining observations suggest the substance here is very similar. For example, MID#4428 and MID#4430 are both one-day border fortifications between Kyrgyzstan and Uzbekistan in 2005. MID#2171 and MID#2172 are both one-day threats to use force between Cyprus and Turkey in 1965.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode2</span> <span class="op">&gt;</span> <span class="va">ccode1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span>, <span class="va">hiact1</span><span class="op">:</span><span class="va">hiact2</span>, <span class="va">fatality</span><span class="op">:</span><span class="va">maxdur</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Duplicate Non-Directed Dyad-Years Still Remaining"</span>,
-      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode2</span> <span class="op">&gt;</span> <span class="va">ccode1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span>, <span class="va">hiact1</span><span class="op">:</span><span class="va">hiact2</span>, <span class="va">fatality</span><span class="op">:</span><span class="va">maxdur</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Duplicate Non-Directed Dyad-Years Still Remaining"</span>,
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,
                 bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
-<table class="table table table-striped">
+<table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Duplicate Non-Directed Dyad-Years Still Remaining
 </caption>
@@ -1258,32 +1222,32 @@ maxdur
 </tbody>
 </table>
 <p>The final case exclusion rules will round us home. First, a few of these duplicate dyad-years feature a case where one dispute was reciprocated and the other was not. For example, MID#4428 was a mutual border fortification while MID#4430 was just one border fortification directed by Kyrgyzstan against Uzbekistan. Thus, we should keep the one that involved at least two codable incidents rather than the MID in which there was just one codable incident.</p>
-<p>A reader may object here that reciprocation should feature higher in the proverbial chain, given its prominence in the audience cost literature. I caution that we should not do this. Gibler and Miller (also with Little) have driven home that the reciprocation variable is an information-poor variable. It only minimally tells you that Side B in a MID initiated a militarized incident or was involved in an attack in which there was no clear initiator. In our review of the conflict data, we find that attacks or ambushes initiated by Side A are countered when they happen more than half the time. Further, inferences made from the reciprocation variable are among the most sensitive to the errors we report in the CoW-MID data. For that reason, we discourage researchers from using this variable for their analyses and, for this application, it’s why <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> uses the dispute-level reciprocation variable near the bottom of the rung in its case exclusions.</p>
+<p>A reader may object here that reciprocation should feature higher in the proverbial chain, given its prominence in the audience cost literature. I caution that we should not do this. Gibler and Miller (also with Little) have driven home that the reciprocation variable is an information-poor variable. It only minimally tells you that Side B in a MID initiated a militarized incident or was involved in an attack in which there was no clear initiator. In our review of the conflict data, we find that attacks or ambushes initiated by Side A are countered when they happen more than half the time. Further, inferences made from the reciprocation variable are among the most sensitive to the errors we report in the CoW-MID data. For that reason, we discourage researchers from using this variable for their analyses and, for this application, it’s why <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> uses the dispute-level reciprocation variable near the bottom of the rung in its case exclusions.</p>
 <p>Still, here’s how to do that.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">recip</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">recip</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Keep the reciprocated ones, where non-reciprocated ones exist</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">recip</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">recip</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">recip</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">recip</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># practice safe group_by()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 <span class="co">#&gt; Joining, by = "dispnum"</span></code></pre></div>
-<p>We’re down to just three duplicate dyad-years now. The only reason MID#4428 and MID#4430 are both still there is CoW-MID has MID#4428 as unreciprocated at the dispute-level while it also has a militarized incident for Side B in the dispute. This is a CoW-MID issue and not a <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> issue.</p>
+<p>We’re down to just three duplicate dyad-years now. The only reason MID#4428 and MID#4430 are both still there is CoW-MID has MID#4428 as unreciprocated at the dispute-level while it also has a militarized incident for Side B in the dispute. This is a CoW-MID issue and not a <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> issue.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">ccode2</span> <span class="op">&gt;</span> <span class="va">ccode1</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span>, <span class="va">hiact1</span><span class="op">:</span><span class="va">hiact2</span>, <span class="va">fatality</span><span class="op">:</span><span class="va">maxdur</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Duplicate Non-Directed Dyad-Years Still Remaining"</span>,
-      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, 
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">ccode2</span> <span class="op">&gt;</span> <span class="va">ccode1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span><span class="op">:</span><span class="va">disponset</span>, <span class="va">hiact1</span><span class="op">:</span><span class="va">hiact2</span>, <span class="va">fatality</span><span class="op">:</span><span class="va">maxdur</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Duplicate Non-Directed Dyad-Years Still Remaining"</span>,
+      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, 
                 bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></code></pre></div>
-<table class="table table table-striped">
+<table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Duplicate Non-Directed Dyad-Years Still Remaining
 </caption>
@@ -1558,59 +1522,56 @@ maxdur
 </table>
 <p>All three are effectively identical MIDs. They start the same year. They have the same fatality-level, hostility-level, duration, and both are either are reciprocated or not-reciprocated (that MID#4428/MID#4430 issue notwithstanding). Thus, we will select the one that has the lowest start month.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">stmon</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">.</span>, <span class="va">cow_mid_disps</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">dispnum</span>, <span class="va">stmon</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>duplicated <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span>, <span class="va">duplicated</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># Keep the reciprocated ones, where non-reciprocated ones exist</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">stmon</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">stmon</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">stmon</span> <span class="op">==</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">min</a></span><span class="op">(</span><span class="va">stmon</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="co"># practice safe group_by()</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">hold_this</span>
 <span class="co">#&gt; Joining, by = "dispnum"</span>
 <span class="co"># And we're done</span></code></pre></div>
 <p>And this is enough to eliminate duplicate dyad-years.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">hold_this</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> 
-<span class="co">#&gt; # A tibble: 0 × 25</span>
-<span class="co">#&gt; # Groups:   ccode1, ccode2, year [0]</span>
-<span class="co">#&gt; # … with 25 variables: dispnum &lt;dbl&gt;, ccode1 &lt;dbl&gt;, ccode2 &lt;dbl&gt;, year &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   dispongoing &lt;dbl&gt;, disponset &lt;dbl&gt;, sidea1 &lt;dbl&gt;, sidea2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   fatality1 &lt;dbl&gt;, fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   orig2 &lt;dbl&gt;, duplicated &lt;dbl&gt;, fatality &lt;dbl&gt;, hostlev &lt;dbl&gt;, mindur &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   maxdur &lt;dbl&gt;, recip &lt;dbl&gt;, stmon &lt;dbl&gt;</span></code></pre></div>
+<code class="sourceCode R"><span class="va">hold_this</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">ccode1</span>, <span class="va">ccode2</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html" class="external-link">n</a></span><span class="op">(</span><span class="op">)</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> 
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 0 × 25</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># Groups:   ccode1, ccode2, year [0]</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 25 variables: dispnum &lt;dbl&gt;, ccode1 &lt;dbl&gt;, ccode2 &lt;dbl&gt;, year &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   dispongoing &lt;dbl&gt;, disponset &lt;dbl&gt;, sidea1 &lt;dbl&gt;, sidea2 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   fatality1 &lt;dbl&gt;, fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   orig2 &lt;dbl&gt;, duplicated &lt;dbl&gt;, fatality &lt;dbl&gt;, hostlev &lt;dbl&gt;, mindur &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   maxdur &lt;dbl&gt;, recip &lt;dbl&gt;, stmon &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Steve Miller.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Steve Miller.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>

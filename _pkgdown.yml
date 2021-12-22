@@ -1,8 +1,17 @@
 url: http://svmiller.com
 
 template:
-  params:
-    bootswatch: cerulean
+  bootstrap: 5
+  # bslib:
+  #   bg: "#ffffff"
+  #   fg: "#111111"
+  #   primary: "#2fa4e7" #306cc9
+  #   nav-tabs-link-active-color: "#ffffff"
+  #   nav-link-color: "#ffffff"
+  bootswatch: cerulean
+  #theme: arrow-light
+  # params:
+  #   bootswatch: cerulean
 
 
 figures:
@@ -57,6 +66,8 @@ reference:
   - has_keyword("datasets")
 
 navbar:
+  bg: primary
+  type: light
   structure:
     left:  [home, reference, articles, user-guide, news]
     right: [github]

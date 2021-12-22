@@ -17,7 +17,7 @@
 #' the year, at least for dyad-years. The alliance-level data provided by ATOP do have termination dates, but I am unaware
 #' how well these start and termination dates coincide with particular members joining after the fact or exiting early. The alliance
 #' phase data appear to communicate that "phases" are understood as beginning/ending when the underlying document is amended in such a
-#' way that it affects one of their variable codings, but this may or may not because of a signatory joining after the fact or exiting
+#' way that it affects one of their variable codings, but this may or may not be because of a signatory joining after the fact or exiting
 #' early. More guidance will be useful going forward, but use these data for leader-level analyses with that in mind.
 #'
 #'

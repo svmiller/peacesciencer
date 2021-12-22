@@ -4,14 +4,14 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="peacesciencer">
 <title>Create Different Kinds of Data in `{peacesciencer}` • peacesciencer</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.0.2/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.0.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Create Different Kinds of Data in `{peacesciencer}`">
 <meta property="og:description" content="peacesciencer">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -19,544 +19,508 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">peacesciencer</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.7.0</span>
-      </span>
-    </div>
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
+    
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-primary"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../index.html">peacesciencer</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.9</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-2">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item">
+  <a class="nav-link" href="../reference/index.html">What’s Included?</a>
 </li>
-<li>
-  <a href="../reference/index.html">What’s Included?</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
-    </li>
-    <li>
-      <a href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/different-data-types.html">Create Different Kinds of Data in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/parlor-tricks.html">Various Parlor Tricks in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/state-systems.html">A Discussion of the Two State Systems (CoW, G-W) in `{peacesciencer}`</a>
-    </li>
-    <li>
-      <a href="../articles/versions.html">`{peacesciencer}` Data Versions</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Manuscript
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../ms.html">HTML</a>
-    </li>
-    <li>
-      <a href="../ms.pdf">PDF</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
-      </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/svmiller/peacesciencer/">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-</div>
-<!--/.nav-collapse -->
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/coerce-dispute-year-dyad-year.html">How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data</a>
+    <a class="dropdown-item" href="../articles/democracy.html">Fixing Unnecessary Missingness in Democracy Scores in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/different-data-types.html">Create Different Kinds of Data in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/joins.html">A Discussion of Various Joins in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/parlor-tricks.html">Various Parlor Tricks in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/state-systems.html">A Discussion of the Two State Systems (CoW, G-W) in `{peacesciencer}`</a>
+    <a class="dropdown-item" href="../articles/versions.html">`{peacesciencer}` Data Versions</a>
   </div>
-<!--/.container -->
+</li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-manuscript">Manuscript</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-manuscript">
+    <a class="dropdown-item" href="../ms.html">HTML</a>
+    <a class="dropdown-item" href="../ms.pdf">PDF</a>
+  </div>
+</li>
+<li class="nav-item">
+  <a class="nav-link" href="../news/index.html">Changelog</a>
+</li>
+      </ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/svmiller/peacesciencer/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.navbar -->
 
-      
+    
+  </div>
+</nav><div class="container template-article">
 
-      </header><script src="different-data-types_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Create Different Kinds of Data in <code>{peacesciencer}</code>
-</h1>
+<div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Create Different Kinds of Data in `{peacesciencer}`</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/svmiller/peacesciencer/blob/master/vignettes/different-data-types.Rmd"><code>vignettes/different-data-types.Rmd</code></a></small>
-      <div class="hidden name"><code>different-data-types.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/svmiller/peacesciencer/blob/HEAD/vignettes/different-data-types.Rmd" class="external-link"><code>vignettes/different-data-types.Rmd</code></a></small>
+      <div class="d-none name"><code>different-data-types.Rmd</code></div>
     </div>
 
     
     
-<p>This tutorial is a companion to <a href="https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf">the user guide</a>, which shows how to create different kinds of data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. However, space considerations (for ideal publication in a peer-reviewed journal) preclude the full “knitting” experience (i.e. giving the user a preview of what the data look like). What follows is a brief guide that expands on the tutorial section of that user guide for creating different kinds of data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>.</p>
-<p>This vignette will lean on the <a href="https://tidyverse.tidyverse.org">tidyverse</a> package, which will be included in almost anything you should do (optimally) with <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. I will also load <a href="https://lubridate.tidyverse.org">lubridate</a>. Internal functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> use <a href="https://lubridate.tidyverse.org">lubridate</a>—it is a formal dependency of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>—but users may want to load it for doing some additional stuff outside of <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>.</p>
+<p>This tutorial is a companion to <a href="https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf" class="external-link">the user guide</a>, which shows how to create different kinds of data in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>. However, space considerations (for ideal publication in a peer-reviewed journal) preclude the full “knitting” experience (i.e. giving the user a preview of what the data look like). What follows is a brief guide that expands on the tutorial section of that user guide for creating different kinds of data in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>.</p>
+<p>This vignette will lean on the <a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a> package, which will be included in almost anything you should do (optimally) with <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>. I will also load <a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a>. Internal functions in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> use <a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a>—it is a formal dependency of <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>—but users may want to load it for doing some additional stuff outside of <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.4     ✓ dplyr   1.0.7</span>
-<span class="co">#&gt; ✓ tidyr   1.1.4     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   2.0.2     ✓ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org">lubridate</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Attaching packages</span> ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">ggplot2</span> 3.3.5     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">purrr  </span> 0.3.4</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tibble </span> 3.1.4     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">dplyr  </span> 1.0.7</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">tidyr  </span> 1.1.4     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">stringr</span> 1.4.0</span>
+<span class="co">#&gt; <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">readr  </span> 2.0.2     <span style="color: #00BB00;">✓</span> <span style="color: #0000BB;">forcats</span> 0.5.1</span>
+<span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span>
+<span class="co">#&gt; <span style="color: #BB0000;">x</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'lubridate'</span>
 <span class="co">#&gt; The following objects are masked from 'package:base':</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt;     date, intersect, setdiff, union</span></code></pre></div>
-<div id="state-year-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#state-year-data" class="anchor"></a>State-Year Data</h2>
-<p>The most basic form of data <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> creates is state-year, by way of <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> has two arguments: <code>system</code> and <code>mry</code>. <code>system</code> takes either “cow” or “gw”, depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to “cow” in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. <code>mry</code> takes a logical (<code>TRUE</code> or <code>FALSE</code>), depending on whether the user wants the function to extend to the most recently concluded calendar year (2020). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition to the state system since these data sets were last updated. <code>mry</code> defaults to <code>TRUE</code> in the absence of a user-specified override.</p>
+<div class="section level2">
+<h2 id="state-year-data">State-Year Data<a class="anchor" aria-label="anchor" href="#state-year-data"></a>
+</h2>
+<p>The most basic form of data <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> creates is state-year, by way of <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> has two arguments: <code>system</code> and <code>mry</code>. <code>system</code> takes either “cow” or “gw”, depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to “cow” in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. <code>mry</code> takes a logical (<code>TRUE</code> or <code>FALSE</code>), depending on whether the user wants the function to extend to the most recently concluded calendar year (2020). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition to the state system since these data sets were last updated. <code>mry</code> defaults to <code>TRUE</code> in the absence of a user-specified override.</p>
 <p>This will create Correlates of War state-year data from 1816 to 2020.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_stateyears.html">create_stateyears</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 16,731 × 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 16,731 × 3</span></span>
 <span class="co">#&gt;    ccode statenme                  year</span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;                    &lt;int&gt;</span>
-<span class="co">#&gt;  1     2 United States of America  1816</span>
-<span class="co">#&gt;  2     2 United States of America  1817</span>
-<span class="co">#&gt;  3     2 United States of America  1818</span>
-<span class="co">#&gt;  4     2 United States of America  1819</span>
-<span class="co">#&gt;  5     2 United States of America  1820</span>
-<span class="co">#&gt;  6     2 United States of America  1821</span>
-<span class="co">#&gt;  7     2 United States of America  1822</span>
-<span class="co">#&gt;  8     2 United States of America  1823</span>
-<span class="co">#&gt;  9     2 United States of America  1824</span>
-<span class="co">#&gt; 10     2 United States of America  1825</span>
-<span class="co">#&gt; # … with 16,721 more rows</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     2 United States of America  <span style="text-decoration: underline;">1</span>816</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 United States of America  <span style="text-decoration: underline;">1</span>817</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     2 United States of America  <span style="text-decoration: underline;">1</span>818</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     2 United States of America  <span style="text-decoration: underline;">1</span>819</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     2 United States of America  <span style="text-decoration: underline;">1</span>820</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     2 United States of America  <span style="text-decoration: underline;">1</span>821</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     2 United States of America  <span style="text-decoration: underline;">1</span>822</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2 United States of America  <span style="text-decoration: underline;">1</span>823</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     2 United States of America  <span style="text-decoration: underline;">1</span>824</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 United States of America  <span style="text-decoration: underline;">1</span>825</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 16,721 more rows</span></span></code></pre></div>
 <p>This will create Gleditsch-Ward state-year data from 1816 to 2017.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_stateyears.html">create_stateyears</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span>, mry <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 17,767 × 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 17,767 × 3</span></span>
 <span class="co">#&gt;    gwcode statename                 year</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;int&gt;</span>
-<span class="co">#&gt;  1      2 United States of America  1816</span>
-<span class="co">#&gt;  2      2 United States of America  1817</span>
-<span class="co">#&gt;  3      2 United States of America  1818</span>
-<span class="co">#&gt;  4      2 United States of America  1819</span>
-<span class="co">#&gt;  5      2 United States of America  1820</span>
-<span class="co">#&gt;  6      2 United States of America  1821</span>
-<span class="co">#&gt;  7      2 United States of America  1822</span>
-<span class="co">#&gt;  8      2 United States of America  1823</span>
-<span class="co">#&gt;  9      2 United States of America  1824</span>
-<span class="co">#&gt; 10      2 United States of America  1825</span>
-<span class="co">#&gt; # … with 17,757 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2 United States of America  <span style="text-decoration: underline;">1</span>817</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2 United States of America  <span style="text-decoration: underline;">1</span>818</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2 United States of America  <span style="text-decoration: underline;">1</span>819</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2 United States of America  <span style="text-decoration: underline;">1</span>820</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2 United States of America  <span style="text-decoration: underline;">1</span>821</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2 United States of America  <span style="text-decoration: underline;">1</span>822</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>823</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>824</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>825</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 17,757 more rows</span></span></code></pre></div>
 </div>
-<div id="dyad-year-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dyad-year-data" class="anchor"></a>Dyad-Year Data</h2>
-<p><code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> is one of the most useful functions in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>, transforming the raw Correlates of War state system data (<code>cow_states</code> in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>) or Gleditsch-Ward state system data (<code>gw_states</code>) into all possible dyad-years. It has three arguments. <code>system</code> and <code>mry</code> operate the same as they do in <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. There is an additional argument—<code>directed</code>—that also takes a logical (<code>TRUE</code> or <code>FALSE</code>). The default here is <code>TRUE</code>, returning <em>directed</em> dyad-year data (useful for dyadic conflict analyses where the initiator/target distinction matters). <code>FALSE</code> returns <em>non-directed</em> dyad-year data, useful for cases where the initiator/target distinction does not matter and the researcher cares more about the presence or absence of a conflict. The convention for non-directed dyad-year data is that <code>ccode2 &gt; ccode1</code> and the underlying code of <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> simply takes the directed dyad-year data and lops it in half with that rule.</p>
+<div class="section level2">
+<h2 id="dyad-year-data">Dyad-Year Data<a class="anchor" aria-label="anchor" href="#dyad-year-data"></a>
+</h2>
+<p><code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> is one of the most useful functions in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>, transforming the raw Correlates of War state system data (<code>cow_states</code> in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>) or Gleditsch-Ward state system data (<code>gw_states</code>) into all possible dyad-years. It has three arguments. <code>system</code> and <code>mry</code> operate the same as they do in <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. There is an additional argument—<code>directed</code>—that also takes a logical (<code>TRUE</code> or <code>FALSE</code>). The default here is <code>TRUE</code>, returning <em>directed</em> dyad-year data (useful for dyadic conflict analyses where the initiator/target distinction matters). <code>FALSE</code> returns <em>non-directed</em> dyad-year data, useful for cases where the initiator/target distinction does not matter and the researcher cares more about the presence or absence of a conflict. The convention for non-directed dyad-year data is that <code>ccode2 &gt; ccode1</code> and the underlying code of <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> simply takes the directed dyad-year data and lops it in half with that rule.</p>
 <p>Here are all Correlates of War dyad-years from 1816 to 2020.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
-<span class="co">#&gt; # A tibble: 2,063,610 × 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,063,610 × 3</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1      2     20  1920</span>
-<span class="co">#&gt;  2      2     20  1921</span>
-<span class="co">#&gt;  3      2     20  1922</span>
-<span class="co">#&gt;  4      2     20  1923</span>
-<span class="co">#&gt;  5      2     20  1924</span>
-<span class="co">#&gt;  6      2     20  1925</span>
-<span class="co">#&gt;  7      2     20  1926</span>
-<span class="co">#&gt;  8      2     20  1927</span>
-<span class="co">#&gt;  9      2     20  1928</span>
-<span class="co">#&gt; 10      2     20  1929</span>
-<span class="co">#&gt; # … with 2,063,600 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2     20  <span style="text-decoration: underline;">1</span>921</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2     20  <span style="text-decoration: underline;">1</span>922</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2     20  <span style="text-decoration: underline;">1</span>923</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2     20  <span style="text-decoration: underline;">1</span>924</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2     20  <span style="text-decoration: underline;">1</span>925</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2     20  <span style="text-decoration: underline;">1</span>926</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,063,600 more rows</span></span></code></pre></div>
 <p>Here are all Gleditsch-Ward dyad-years with the same temporal domain.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("gwcode1", "gwcode2", "year")</span>
-<span class="co">#&gt; # A tibble: 2,029,622 × 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,029,622 × 3</span></span>
 <span class="co">#&gt;    gwcode1 gwcode2  year</span>
-<span class="co">#&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;int&gt;</span>
-<span class="co">#&gt;  1       2      20  1867</span>
-<span class="co">#&gt;  2       2      20  1868</span>
-<span class="co">#&gt;  3       2      20  1869</span>
-<span class="co">#&gt;  4       2      20  1870</span>
-<span class="co">#&gt;  5       2      20  1871</span>
-<span class="co">#&gt;  6       2      20  1872</span>
-<span class="co">#&gt;  7       2      20  1873</span>
-<span class="co">#&gt;  8       2      20  1874</span>
-<span class="co">#&gt;  9       2      20  1875</span>
-<span class="co">#&gt; 10       2      20  1876</span>
-<span class="co">#&gt; # … with 2,029,612 more rows</span></code></pre></div>
-<div id="major-vs--major-dyad-years" class="section level3">
-<h3 class="hasAnchor">
-<a href="#major-vs--major-dyad-years" class="anchor"></a>Major vs. Major Dyad-Years</h3>
-<p>Consider this section of the vignette as a comparison to the kind of dyad-year data that EUGene would create for a user, apparently on request. EUGene would apparently create these types of dyad-years as specific dyad-year types whereas <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> treats them as case exclusions you can do after the fact given other functionality in the package. For example, here are just major vs. major dyads. For simplicity’s sake, these will all be directed dyad-years at their core (and captured with <code>cow_ddy</code> in the package as a shortcut).</p>
+<span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>       2      20  <span style="text-decoration: underline;">1</span>867</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>       2      20  <span style="text-decoration: underline;">1</span>868</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>       2      20  <span style="text-decoration: underline;">1</span>869</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>       2      20  <span style="text-decoration: underline;">1</span>870</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       2      20  <span style="text-decoration: underline;">1</span>871</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>       2      20  <span style="text-decoration: underline;">1</span>872</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       2      20  <span style="text-decoration: underline;">1</span>873</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       2      20  <span style="text-decoration: underline;">1</span>874</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       2      20  <span style="text-decoration: underline;">1</span>875</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       2      20  <span style="text-decoration: underline;">1</span>876</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,029,612 more rows</span></span></code></pre></div>
+<div class="section level3">
+<h3 id="major-vs--major-dyad-years">Major vs. Major Dyad-Years<a class="anchor" aria-label="anchor" href="#major-vs--major-dyad-years"></a>
+</h3>
+<p>Consider this section of the vignette as a comparison to the kind of dyad-year data that EUGene would create for a user, apparently on request. EUGene would apparently create these types of dyad-years as specific dyad-year types whereas <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> treats them as case exclusions you can do after the fact given other functionality in the package. For example, here are just major vs. major dyads. For simplicity’s sake, these will all be directed dyad-years at their core (and captured with <code>cow_ddy</code> in the package as a shortcut).</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cowmaj1</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">cowmaj2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6,140 × 5</span>
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cowmaj1</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">&amp;</span> <span class="va">cowmaj2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,140 × 5</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year cowmaj1 cowmaj2</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      2    200  1898       1       1</span>
-<span class="co">#&gt;  2      2    200  1899       1       1</span>
-<span class="co">#&gt;  3      2    200  1900       1       1</span>
-<span class="co">#&gt;  4      2    200  1901       1       1</span>
-<span class="co">#&gt;  5      2    200  1902       1       1</span>
-<span class="co">#&gt;  6      2    200  1903       1       1</span>
-<span class="co">#&gt;  7      2    200  1904       1       1</span>
-<span class="co">#&gt;  8      2    200  1905       1       1</span>
-<span class="co">#&gt;  9      2    200  1906       1       1</span>
-<span class="co">#&gt; 10      2    200  1907       1       1</span>
-<span class="co">#&gt; # … with 6,130 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2    200  <span style="text-decoration: underline;">1</span>898       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2    200  <span style="text-decoration: underline;">1</span>899       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2    200  <span style="text-decoration: underline;">1</span>900       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2    200  <span style="text-decoration: underline;">1</span>901       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2    200  <span style="text-decoration: underline;">1</span>902       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2    200  <span style="text-decoration: underline;">1</span>903       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2    200  <span style="text-decoration: underline;">1</span>904       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2    200  <span style="text-decoration: underline;">1</span>905       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2    200  <span style="text-decoration: underline;">1</span>906       1       1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2    200  <span style="text-decoration: underline;">1</span>907       1       1</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 6,130 more rows</span></span></code></pre></div>
 </div>
-<div id="major-vs--any-state-dyad-years" class="section level3">
-<h3 class="hasAnchor">
-<a href="#major-vs--any-state-dyad-years" class="anchor"></a>Major vs. Any State Dyad-Years</h3>
+<div class="section level3">
+<h3 id="major-vs--any-state-dyad-years">Major vs. Any State Dyad-Years<a class="anchor" aria-label="anchor" href="#major-vs--any-state-dyad-years"></a>
+</h3>
 <p>These are all dyad-years where any state is a major power.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">cowmaj1</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">cowmaj2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 183,722 × 5</span>
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">cowmaj1</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">|</span> <span class="va">cowmaj2</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 183,722 × 5</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year cowmaj1 cowmaj2</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      2     20  1920       1       0</span>
-<span class="co">#&gt;  2      2     20  1921       1       0</span>
-<span class="co">#&gt;  3      2     20  1922       1       0</span>
-<span class="co">#&gt;  4      2     20  1923       1       0</span>
-<span class="co">#&gt;  5      2     20  1924       1       0</span>
-<span class="co">#&gt;  6      2     20  1925       1       0</span>
-<span class="co">#&gt;  7      2     20  1926       1       0</span>
-<span class="co">#&gt;  8      2     20  1927       1       0</span>
-<span class="co">#&gt;  9      2     20  1928       1       0</span>
-<span class="co">#&gt; 10      2     20  1929       1       0</span>
-<span class="co">#&gt; # … with 183,712 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2     20  <span style="text-decoration: underline;">1</span>921       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2     20  <span style="text-decoration: underline;">1</span>922       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2     20  <span style="text-decoration: underline;">1</span>923       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2     20  <span style="text-decoration: underline;">1</span>924       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2     20  <span style="text-decoration: underline;">1</span>925       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2     20  <span style="text-decoration: underline;">1</span>926       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928       1       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929       1       0</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 183,712 more rows</span></span></code></pre></div>
 </div>
-<div id="all-contiguous-dyad-years" class="section level3">
-<h3 class="hasAnchor">
-<a href="#all-contiguous-dyad-years" class="anchor"></a>All Contiguous Dyad-Years</h3>
+<div class="section level3">
+<h3 id="all-contiguous-dyad-years">All Contiguous Dyad-Years<a class="anchor" aria-label="anchor" href="#all-contiguous-dyad-years"></a>
+</h3>
 <p>These are all dyad-years separated by 400 miles of water or fewer, though the documentation for <code><a href="../reference/add_contiguity.html">add_contiguity()</a></code> cautions that users should be at least a little critical of the contiguity data.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_contiguity.html">add_contiguity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">conttype</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/add_contiguity.html">add_contiguity</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">conttype</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
-<span class="co">#&gt; # A tibble: 82,440 × 4</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 82,440 × 4</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year conttype</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;int&gt;    &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      2     20  1920        1</span>
-<span class="co">#&gt;  2      2     20  1921        1</span>
-<span class="co">#&gt;  3      2     20  1922        1</span>
-<span class="co">#&gt;  4      2     20  1923        1</span>
-<span class="co">#&gt;  5      2     20  1924        1</span>
-<span class="co">#&gt;  6      2     20  1925        1</span>
-<span class="co">#&gt;  7      2     20  1926        1</span>
-<span class="co">#&gt;  8      2     20  1927        1</span>
-<span class="co">#&gt;  9      2     20  1928        1</span>
-<span class="co">#&gt; 10      2     20  1929        1</span>
-<span class="co">#&gt; # … with 82,430 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2     20  <span style="text-decoration: underline;">1</span>921        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2     20  <span style="text-decoration: underline;">1</span>922        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2     20  <span style="text-decoration: underline;">1</span>923        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2     20  <span style="text-decoration: underline;">1</span>924        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2     20  <span style="text-decoration: underline;">1</span>925        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2     20  <span style="text-decoration: underline;">1</span>926        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928        1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929        1</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 82,430 more rows</span></span></code></pre></div>
 </div>
-<div id="all-dyad-years-within-a-set-distance" class="section level3">
-<h3 class="hasAnchor">
-<a href="#all-dyad-years-within-a-set-distance" class="anchor"></a>All Dyad-Years Within a Set Distance</h3>
+<div class="section level3">
+<h3 id="all-dyad-years-within-a-set-distance">All Dyad-Years Within a Set Distance<a class="anchor" aria-label="anchor" href="#all-dyad-years-within-a-set-distance"></a>
+</h3>
 <p>These are all dyad-years with a minimum distance of some user-specified threshold (in kilometers). This function will lean on <code><a href="../reference/add_minimum_distance.html">add_minimum_distance()</a></code>, which does have the side effect of truncating the left bound of the temporal domain to—as of right now—1886. These are all Correlates of War dyad-years from 1886 to 2019 separated by 1,000 kilometers or fewer.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">mindist</span> <span class="op">&lt;=</span> <span class="fl">1000</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/add_minimum_distance.html">add_minimum_distance</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">mindist</span> <span class="op">&lt;=</span> <span class="fl">1000</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
-<span class="co">#&gt; # A tibble: 167,532 × 4</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 167,532 × 4</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year mindist</span>
-<span class="co">#&gt;     &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      2     20  1921       0</span>
-<span class="co">#&gt;  2      2     20  1922       0</span>
-<span class="co">#&gt;  3      2     20  1923       0</span>
-<span class="co">#&gt;  4      2     20  1924       0</span>
-<span class="co">#&gt;  5      2     20  1925       0</span>
-<span class="co">#&gt;  6      2     20  1926       0</span>
-<span class="co">#&gt;  7      2     20  1927       0</span>
-<span class="co">#&gt;  8      2     20  1928       0</span>
-<span class="co">#&gt;  9      2     20  1929       0</span>
-<span class="co">#&gt; 10      2     20  1930       0</span>
-<span class="co">#&gt; # … with 167,522 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>921       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2     20  <span style="text-decoration: underline;">1</span>922       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2     20  <span style="text-decoration: underline;">1</span>923       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2     20  <span style="text-decoration: underline;">1</span>924       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2     20  <span style="text-decoration: underline;">1</span>925       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2     20  <span style="text-decoration: underline;">1</span>926       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2     20  <span style="text-decoration: underline;">1</span>927       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>928       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>929       0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>930       0</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 167,522 more rows</span></span></code></pre></div>
 </div>
 </div>
-<div id="dyadic-dispute-year-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#dyadic-dispute-year-data" class="anchor"></a>Dyadic Dispute-Year Data</h2>
-<p>Dyadic dispute-year data come pre-processed in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. <a href="http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html">Another vignette</a> show how these are transformed to true dyad-year data, but they are also available for analysis. For example, the (directed) dyadic dispute-year Gibler-Miller-Little (GML) MID data are available as <code>gml_dirdisp</code>. Here, we can add information to these dyadic dispute-years to identify contiguity relationships and Correlates of War major status.</p>
+<div class="section level2">
+<h2 id="dyadic-dispute-year-data">Dyadic Dispute-Year Data<a class="anchor" aria-label="anchor" href="#dyadic-dispute-year-data"></a>
+</h2>
+<p>Dyadic dispute-year data come pre-processed in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>. <a href="http://svmiller.com/peacesciencer/articles/coerce-dispute-year-dyad-year.html">Another vignette</a> show how these are transformed to true dyad-year data, but they are also available for analysis. For example, the (directed) dyadic dispute-year Gibler-Miller-Little (GML) MID data are available as <code>gml_dirdisp</code>. Here, we can add information to these dyadic dispute-years to identify contiguity relationships and Correlates of War major status.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gml_dirdisp</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_contiguity.html">add_contiguity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">gml_dirdisp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/add_contiguity.html">add_contiguity</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/add_cow_majors.html">add_cow_majors</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
-<span class="co">#&gt; # A tibble: 10,276 × 42</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 10,276 × 42</span></span>
 <span class="co">#&gt;    dispnum ccode1 ccode2  year midongoing midonset sidea1 sidea2 revstate1</span>
-<span class="co">#&gt;      &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1       2      2    200  1902          1        1      1      0         1</span>
-<span class="co">#&gt;  2       2    200      2  1902          1        1      0      1         1</span>
-<span class="co">#&gt;  3       3    300    345  1913          1        1      1      0         1</span>
-<span class="co">#&gt;  4       3    345    300  1913          1        1      0      1         0</span>
-<span class="co">#&gt;  5       4    200    339  1946          1        1      0      1         0</span>
-<span class="co">#&gt;  6       4    339    200  1946          1        1      1      0         0</span>
-<span class="co">#&gt;  7       7    200    651  1951          1        1      1      0         0</span>
-<span class="co">#&gt;  8       7    200    651  1952          1        0      1      0         0</span>
-<span class="co">#&gt;  9       7    651    200  1951          1        1      0      1         1</span>
-<span class="co">#&gt; 10       7    651    200  1952          1        0      0      1         1</span>
-<span class="co">#&gt; # … with 10,266 more rows, and 33 more variables: revstate2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   revtype11 &lt;dbl&gt;, revtype12 &lt;dbl&gt;, revtype21 &lt;dbl&gt;, revtype22 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   fatality1 &lt;dbl&gt;, fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   orig2 &lt;dbl&gt;, hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;, mindur &lt;dbl&gt;, maxdur &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   outcome &lt;dbl&gt;, settle &lt;dbl&gt;, fatality &lt;dbl&gt;, fatalpre &lt;dbl&gt;, stmon &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   endmon &lt;dbl&gt;, recip &lt;dbl&gt;, numa &lt;dbl&gt;, numb &lt;dbl&gt;, ongo2010 &lt;dbl&gt;, …</span></code></pre></div>
+<span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>       2      2    200  <span style="text-decoration: underline;">1</span>902          1        1      1      0         1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>       2    200      2  <span style="text-decoration: underline;">1</span>902          1        1      0      1         1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>       3    300    345  <span style="text-decoration: underline;">1</span>913          1        1      1      0         1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>       3    345    300  <span style="text-decoration: underline;">1</span>913          1        1      0      1         0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>       4    200    339  <span style="text-decoration: underline;">1</span>946          1        1      0      1         0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>       4    339    200  <span style="text-decoration: underline;">1</span>946          1        1      1      0         0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>       7    200    651  <span style="text-decoration: underline;">1</span>951          1        1      1      0         0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       7    200    651  <span style="text-decoration: underline;">1</span>952          1        0      1      0         0</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       7    651    200  <span style="text-decoration: underline;">1</span>951          1        1      0      1         1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       7    651    200  <span style="text-decoration: underline;">1</span>952          1        0      0      1         1</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 10,266 more rows, and 33 more variables: revstate2 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   revtype11 &lt;dbl&gt;, revtype12 &lt;dbl&gt;, revtype21 &lt;dbl&gt;, revtype22 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   fatality1 &lt;dbl&gt;, fatality2 &lt;dbl&gt;, fatalpre1 &lt;dbl&gt;, fatalpre2 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   hiact1 &lt;dbl&gt;, hiact2 &lt;dbl&gt;, hostlev1 &lt;dbl&gt;, hostlev2 &lt;dbl&gt;, orig1 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   orig2 &lt;dbl&gt;, hiact &lt;dbl&gt;, hostlev &lt;dbl&gt;, mindur &lt;dbl&gt;, maxdur &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   outcome &lt;dbl&gt;, settle &lt;dbl&gt;, fatality &lt;dbl&gt;, fatalpre &lt;dbl&gt;, stmon &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   endmon &lt;dbl&gt;, recip &lt;dbl&gt;, numa &lt;dbl&gt;, numb &lt;dbl&gt;, ongo2010 &lt;dbl&gt;, …</span></span></code></pre></div>
 <p>Users interested in the Correlates of War MID data will have this available for use as <code>cow_mid_dirdisps</code>. Future updates may change the object names for better standardization, but this is how it is now.</p>
 </div>
-<div id="state-day-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#state-day-data" class="anchor"></a>State-Day Data</h2>
-<p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> comes with a <code><a href="../reference/create_statedays.html">create_statedays()</a></code> function. This is admittedly more proof of concept as it is <em>really</em> difficult to conjure too many <em>daily</em> data sets in peace science, certainly with coverage into the 19th century. No matter, <code><a href="../reference/create_statedays.html">create_statedays()</a></code> will create these data. It too has the same <code>system</code> and <code>mry</code> arguments (and same defaults) as <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</p>
+<div class="section level2">
+<h2 id="state-day-data">State-Day Data<a class="anchor" aria-label="anchor" href="#state-day-data"></a>
+</h2>
+<p><a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> comes with a <code><a href="../reference/create_statedays.html">create_statedays()</a></code> function. This is admittedly more proof of concept as it is <em>really</em> difficult to conjure too many <em>daily</em> data sets in peace science, certainly with coverage into the 19th century. No matter, <code><a href="../reference/create_statedays.html">create_statedays()</a></code> will create these data. It too has the same <code>system</code> and <code>mry</code> arguments (and same defaults) as <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</p>
 <p>Here are all Correlates of War state-days from 1816 to 2020.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6,061,091 × 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,061,091 × 3</span></span>
 <span class="co">#&gt;    ccode statenme                 date      </span>
-<span class="co">#&gt;    &lt;dbl&gt; &lt;chr&gt;                    &lt;date&gt;    </span>
-<span class="co">#&gt;  1     2 United States of America 1816-01-01</span>
-<span class="co">#&gt;  2     2 United States of America 1816-01-02</span>
-<span class="co">#&gt;  3     2 United States of America 1816-01-03</span>
-<span class="co">#&gt;  4     2 United States of America 1816-01-04</span>
-<span class="co">#&gt;  5     2 United States of America 1816-01-05</span>
-<span class="co">#&gt;  6     2 United States of America 1816-01-06</span>
-<span class="co">#&gt;  7     2 United States of America 1816-01-07</span>
-<span class="co">#&gt;  8     2 United States of America 1816-01-08</span>
-<span class="co">#&gt;  9     2 United States of America 1816-01-09</span>
-<span class="co">#&gt; 10     2 United States of America 1816-01-10</span>
-<span class="co">#&gt; # … with 6,061,081 more rows</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     2 United States of America 1816-01-01</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2 United States of America 1816-01-02</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     2 United States of America 1816-01-03</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     2 United States of America 1816-01-04</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     2 United States of America 1816-01-05</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     2 United States of America 1816-01-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     2 United States of America 1816-01-07</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2 United States of America 1816-01-08</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     2 United States of America 1816-01-09</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 United States of America 1816-01-10</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 6,061,081 more rows</span></span></code></pre></div>
 <p>Here are all Gleditsch-Ward state-days with the same temporal domain.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6,638,781 × 3</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,638,781 × 3</span></span>
 <span class="co">#&gt;    gwcode statename                date      </span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;date&gt;    </span>
-<span class="co">#&gt;  1      2 United States of America 1816-01-01</span>
-<span class="co">#&gt;  2      2 United States of America 1816-01-02</span>
-<span class="co">#&gt;  3      2 United States of America 1816-01-03</span>
-<span class="co">#&gt;  4      2 United States of America 1816-01-04</span>
-<span class="co">#&gt;  5      2 United States of America 1816-01-05</span>
-<span class="co">#&gt;  6      2 United States of America 1816-01-06</span>
-<span class="co">#&gt;  7      2 United States of America 1816-01-07</span>
-<span class="co">#&gt;  8      2 United States of America 1816-01-08</span>
-<span class="co">#&gt;  9      2 United States of America 1816-01-09</span>
-<span class="co">#&gt; 10      2 United States of America 1816-01-10</span>
-<span class="co">#&gt; # … with 6,638,771 more rows</span></code></pre></div>
-<p>I can conjure an application where a user may want to think of daily conflict episodes within the Gleditsch-Ward domain. The UCDP armed conflict data have more precise dates than, say, the Correlates of War MID data, making such an analysis possible. However, there are no conflict data before 1946 and you should reflect that with <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> with something like this. This will require <a href="https://lubridate.tidyverse.org">lubridate</a>.</p>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America 1816-01-01</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2 United States of America 1816-01-02</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2 United States of America 1816-01-03</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2 United States of America 1816-01-04</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2 United States of America 1816-01-05</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2 United States of America 1816-01-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2 United States of America 1816-01-07</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America 1816-01-08</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America 1816-01-09</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America 1816-01-10</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 6,638,771 more rows</span></span></code></pre></div>
+<p>I can conjure an application where a user may want to think of daily conflict episodes within the Gleditsch-Ward domain. The UCDP armed conflict data have more precise dates than, say, the Correlates of War MID data, making such an analysis possible. However, there are no conflict data before 1946 and you should reflect that with <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> with something like this. This will require <a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1946</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3,870,980 × 3</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1946</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,870,980 × 3</span></span>
 <span class="co">#&gt;    gwcode statename                date      </span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;date&gt;    </span>
-<span class="co">#&gt;  1      2 United States of America 1946-01-01</span>
-<span class="co">#&gt;  2      2 United States of America 1946-01-02</span>
-<span class="co">#&gt;  3      2 United States of America 1946-01-03</span>
-<span class="co">#&gt;  4      2 United States of America 1946-01-04</span>
-<span class="co">#&gt;  5      2 United States of America 1946-01-05</span>
-<span class="co">#&gt;  6      2 United States of America 1946-01-06</span>
-<span class="co">#&gt;  7      2 United States of America 1946-01-07</span>
-<span class="co">#&gt;  8      2 United States of America 1946-01-08</span>
-<span class="co">#&gt;  9      2 United States of America 1946-01-09</span>
-<span class="co">#&gt; 10      2 United States of America 1946-01-10</span>
-<span class="co">#&gt; # … with 3,870,970 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America 1946-01-01</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2 United States of America 1946-01-02</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2 United States of America 1946-01-03</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2 United States of America 1946-01-04</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2 United States of America 1946-01-05</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2 United States of America 1946-01-06</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2 United States of America 1946-01-07</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America 1946-01-08</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America 1946-01-09</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America 1946-01-10</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,870,970 more rows</span></span></code></pre></div>
 </div>
-<div id="state-month-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#state-month-data" class="anchor"></a>State-Month Data</h2>
+<div class="section level2">
+<h2 id="state-month-data">State-Month Data<a class="anchor" aria-label="anchor" href="#state-month-data"></a>
+</h2>
 <p>State-months are simple aggregations of state-days. You can accomplish this with a few more extra commands after <code><a href="../reference/create_statedays.html">create_statedays()</a></code>.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
-         month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 218,194 × 4</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+         month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 218,194 × 4</span></span>
 <span class="co">#&gt;    gwcode statename                 year month</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1      2 United States of America  1816     1</span>
-<span class="co">#&gt;  2      2 United States of America  1816     2</span>
-<span class="co">#&gt;  3      2 United States of America  1816     3</span>
-<span class="co">#&gt;  4      2 United States of America  1816     4</span>
-<span class="co">#&gt;  5      2 United States of America  1816     5</span>
-<span class="co">#&gt;  6      2 United States of America  1816     6</span>
-<span class="co">#&gt;  7      2 United States of America  1816     7</span>
-<span class="co">#&gt;  8      2 United States of America  1816     8</span>
-<span class="co">#&gt;  9      2 United States of America  1816     9</span>
-<span class="co">#&gt; 10      2 United States of America  1816    10</span>
-<span class="co">#&gt; # … with 218,184 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     2</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816    10</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 218,184 more rows</span></span></code></pre></div>
 </div>
-<div id="state-quarter-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#state-quarter-data" class="anchor"></a>State-Quarter Data</h2>
+<div class="section level2">
+<h2 id="state-quarter-data">State-Quarter Data<a class="anchor" aria-label="anchor" href="#state-quarter-data"></a>
+</h2>
 <p>There is some assumption about what a “quarter” would look like in a more general context, but it might look something like this. Again, this is an aggregation of <code><a href="../reference/create_statedays.html">create_statedays()</a></code>.</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
-         month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>quarter <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+         month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>quarter <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span>
     <span class="va">month</span> <span class="op">==</span> <span class="fl">1</span> <span class="op">~</span> <span class="st">"Q1"</span>,
     <span class="va">month</span> <span class="op">==</span> <span class="fl">4</span> <span class="op">~</span> <span class="st">"Q2"</span>,
     <span class="va">month</span> <span class="op">==</span> <span class="fl">7</span> <span class="op">~</span> <span class="st">"Q3"</span>,
     <span class="va">month</span> <span class="op">==</span> <span class="fl">10</span> <span class="op">~</span> <span class="st">"Q4"</span>
-  <span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">quarter</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 72,687 × 4</span>
+  <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">quarter</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 72,687 × 4</span></span>
 <span class="co">#&gt;    gwcode statename                 year quarter</span>
-<span class="co">#&gt;     &lt;dbl&gt; &lt;chr&gt;                    &lt;dbl&gt; &lt;chr&gt;  </span>
-<span class="co">#&gt;  1      2 United States of America  1816 Q1     </span>
-<span class="co">#&gt;  2      2 United States of America  1816 Q2     </span>
-<span class="co">#&gt;  3      2 United States of America  1816 Q3     </span>
-<span class="co">#&gt;  4      2 United States of America  1816 Q4     </span>
-<span class="co">#&gt;  5      2 United States of America  1817 Q1     </span>
-<span class="co">#&gt;  6      2 United States of America  1817 Q2     </span>
-<span class="co">#&gt;  7      2 United States of America  1817 Q3     </span>
-<span class="co">#&gt;  8      2 United States of America  1817 Q4     </span>
-<span class="co">#&gt;  9      2 United States of America  1818 Q1     </span>
-<span class="co">#&gt; 10      2 United States of America  1818 Q2     </span>
-<span class="co">#&gt; # … with 72,677 more rows</span></code></pre></div>
+<span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816 Q1     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816 Q2     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816 Q3     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816 Q4     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>      2 United States of America  <span style="text-decoration: underline;">1</span>817 Q1     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>      2 United States of America  <span style="text-decoration: underline;">1</span>817 Q2     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>      2 United States of America  <span style="text-decoration: underline;">1</span>817 Q3     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>817 Q4     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>818 Q1     </span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>818 Q2     </span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 72,677 more rows</span></span></code></pre></div>
 </div>
-<div id="leader-day-leader-month-leader-year-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#leader-day-leader-month-leader-year-data" class="anchor"></a>Leader-Day (Leader-Month, Leader-Year) Data</h2>
-<p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> has leader-level units of analysis as well, which can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a>. The data are version 4.1.</p>
+<div class="section level2">
+<h2 id="leader-day-leader-month-leader-year-data">Leader-Day (Leader-Month, Leader-Year) Data<a class="anchor" aria-label="anchor" href="#leader-day-leader-month-leader-year-data"></a>
+</h2>
+<p><a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> has leader-level units of analysis as well, which can be easily created with the modified Archigos (<code>archigos</code>) data in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>. The data are version 4.1.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">archigos</span>
-<span class="co">#&gt; # A tibble: 3,409 × 11</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,409 × 11</span></span>
 <span class="co">#&gt;    obsid  gwcode leadid   leader yrborn gender startdate  enddate    entry exit </span>
-<span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt; &lt;chr&gt;</span>
-<span class="co">#&gt;  1 USA-1…      2 81dcc17… Grant    1822 M      1869-03-04 1877-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  2 USA-1…      2 81dcc17… Hayes    1822 M      1877-03-04 1881-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  3 USA-1…      2 81dcf24… Garfi…   1831 M      1881-03-04 1881-09-19 Regu… Irre…</span>
-<span class="co">#&gt;  4 USA-1…      2 81dcf24… Arthur   1829 M      1881-09-19 1885-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  5 USA-1…      2 34fb155… Cleve…   1837 M      1885-03-04 1889-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  6 USA-1…      2 81dcf24… Harri…   1833 M      1889-03-04 1893-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  7 USA-1…      2 34fb155… Cleve…   1837 M      1893-03-04 1897-03-04 Regu… Regu…</span>
-<span class="co">#&gt;  8 USA-1…      2 81dcf24… McKin…   1843 M      1897-03-04 1901-09-14 Regu… Irre…</span>
-<span class="co">#&gt;  9 USA-1…      2 81dd231… Roose…   1858 M      1901-09-14 1909-03-04 Regu… Regu…</span>
-<span class="co">#&gt; 10 USA-1…      2 81dd231… Taft     1857 M      1909-03-04 1913-03-04 Regu… Regu…</span>
-<span class="co">#&gt; # … with 3,399 more rows, and 1 more variable: exitcode &lt;chr&gt;</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> USA-1…      2 81dcc17… Grant    <span style="text-decoration: underline;">1</span>822 M      1869-03-04 1877-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> USA-1…      2 81dcc17… Hayes    <span style="text-decoration: underline;">1</span>822 M      1877-03-04 1881-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> USA-1…      2 81dcf24… Garfi…   <span style="text-decoration: underline;">1</span>831 M      1881-03-04 1881-09-19 Regu… Irre…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> USA-1…      2 81dcf24… Arthur   <span style="text-decoration: underline;">1</span>829 M      1881-09-19 1885-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> USA-1…      2 34fb155… Cleve…   <span style="text-decoration: underline;">1</span>837 M      1885-03-04 1889-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> USA-1…      2 81dcf24… Harri…   <span style="text-decoration: underline;">1</span>833 M      1889-03-04 1893-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> USA-1…      2 34fb155… Cleve…   <span style="text-decoration: underline;">1</span>837 M      1893-03-04 1897-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> USA-1…      2 81dcf24… McKin…   <span style="text-decoration: underline;">1</span>843 M      1897-03-04 1901-09-14 Regu… Irre…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> USA-1…      2 81dd231… Roose…   <span style="text-decoration: underline;">1</span>858 M      1901-09-14 1909-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> USA-1…      2 81dd231… Taft     <span style="text-decoration: underline;">1</span>857 M      1909-03-04 1913-03-04 Regu… Regu…</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,399 more rows, and 1 more variable: exitcode &lt;chr&gt;</span></span></code></pre></div>
 <p><code><a href="../reference/create_leaderdays.html">create_leaderdays()</a></code> will create leader-day data from <code>archigos</code>.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 5,298,380 × 5</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 5,298,380 × 5</span></span>
 <span class="co">#&gt;    obsid    gwcode leader date       yrinoffice</span>
-<span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 USA-1869      2 Grant  1869-03-04          1</span>
-<span class="co">#&gt;  2 USA-1869      2 Grant  1869-03-05          1</span>
-<span class="co">#&gt;  3 USA-1869      2 Grant  1869-03-06          1</span>
-<span class="co">#&gt;  4 USA-1869      2 Grant  1869-03-07          1</span>
-<span class="co">#&gt;  5 USA-1869      2 Grant  1869-03-08          1</span>
-<span class="co">#&gt;  6 USA-1869      2 Grant  1869-03-09          1</span>
-<span class="co">#&gt;  7 USA-1869      2 Grant  1869-03-10          1</span>
-<span class="co">#&gt;  8 USA-1869      2 Grant  1869-03-11          1</span>
-<span class="co">#&gt;  9 USA-1869      2 Grant  1869-03-12          1</span>
-<span class="co">#&gt; 10 USA-1869      2 Grant  1869-03-13          1</span>
-<span class="co">#&gt; # … with 5,298,370 more rows</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> USA-1869      2 Grant  1869-03-04          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> USA-1869      2 Grant  1869-03-05          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> USA-1869      2 Grant  1869-03-06          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> USA-1869      2 Grant  1869-03-07          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> USA-1869      2 Grant  1869-03-08          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> USA-1869      2 Grant  1869-03-09          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> USA-1869      2 Grant  1869-03-10          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> USA-1869      2 Grant  1869-03-11          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> USA-1869      2 Grant  1869-03-12          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> USA-1869      2 Grant  1869-03-13          1</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 5,298,370 more rows</span></span></code></pre></div>
 <p>I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> and <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code>), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. Moreover, the leader data isn’t exactly tethered to the Gleditsch-Ward state system for dates either (e.g. there are leader entries for Gleditsch-Ward states that aren’t in the system yet). In a case like this, you can standardize these leader data to either the Correlates of War system or the Gleditsch-Ward system with the <code>standardize</code> argument. By default, the option here is “none” (i.e. return all available leader days recorded in the Archigos data). “cow” or “gw” standardizes the leader data to Correlates of War state system membership or Gleditsch-Ward state system membership, respectively.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span>standardize <span class="op">=</span> <span class="st">"cow"</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("gwcode", "year")</span>
 <span class="co">#&gt; Joining, by = c("ccode", "date")</span>
-<span class="co">#&gt; # A tibble: 4,824,967 × 5</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 4,824,967 × 5</span></span>
 <span class="co">#&gt;    obsid    ccode leader date       yrinoffice</span>
-<span class="co">#&gt;    &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;          &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 USA-1869     2 Grant  1869-03-04          1</span>
-<span class="co">#&gt;  2 USA-1869     2 Grant  1869-03-05          1</span>
-<span class="co">#&gt;  3 USA-1869     2 Grant  1869-03-06          1</span>
-<span class="co">#&gt;  4 USA-1869     2 Grant  1869-03-07          1</span>
-<span class="co">#&gt;  5 USA-1869     2 Grant  1869-03-08          1</span>
-<span class="co">#&gt;  6 USA-1869     2 Grant  1869-03-09          1</span>
-<span class="co">#&gt;  7 USA-1869     2 Grant  1869-03-10          1</span>
-<span class="co">#&gt;  8 USA-1869     2 Grant  1869-03-11          1</span>
-<span class="co">#&gt;  9 USA-1869     2 Grant  1869-03-12          1</span>
-<span class="co">#&gt; 10 USA-1869     2 Grant  1869-03-13          1</span>
-<span class="co">#&gt; # … with 4,824,957 more rows</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> USA-1869     2 Grant  1869-03-04          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> USA-1869     2 Grant  1869-03-05          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> USA-1869     2 Grant  1869-03-06          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> USA-1869     2 Grant  1869-03-07          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> USA-1869     2 Grant  1869-03-08          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> USA-1869     2 Grant  1869-03-09          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> USA-1869     2 Grant  1869-03-10          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> USA-1869     2 Grant  1869-03-11          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> USA-1869     2 Grant  1869-03-12          1</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> USA-1869     2 Grant  1869-03-13          1</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 4,824,957 more rows</span></span></code></pre></div>
 <p>The user may want to think about some additional post-processing on top of this, but this is enough to get started. From there, the same process that creates state-months can create something like leader-months.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
-         month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 177,128 × 7</span>
-<span class="co">#&gt; # Groups:   gwcode, obsid, year, month [177,128]</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderdays.html">create_leaderdays</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
+         month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">obsid</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">)</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 177,128 × 7</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># Groups:   gwcode, obsid, year, month [177,128]</span></span>
 <span class="co">#&gt;    obsid    gwcode leader date       yrinoffice  year month</span>
-<span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;          &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 USA-1869      2 Grant  1869-03-04          1  1869     3</span>
-<span class="co">#&gt;  2 USA-1869      2 Grant  1869-04-01          1  1869     4</span>
-<span class="co">#&gt;  3 USA-1869      2 Grant  1869-05-01          1  1869     5</span>
-<span class="co">#&gt;  4 USA-1869      2 Grant  1869-06-01          1  1869     6</span>
-<span class="co">#&gt;  5 USA-1869      2 Grant  1869-07-01          1  1869     7</span>
-<span class="co">#&gt;  6 USA-1869      2 Grant  1869-08-01          1  1869     8</span>
-<span class="co">#&gt;  7 USA-1869      2 Grant  1869-09-01          1  1869     9</span>
-<span class="co">#&gt;  8 USA-1869      2 Grant  1869-10-01          1  1869    10</span>
-<span class="co">#&gt;  9 USA-1869      2 Grant  1869-11-01          1  1869    11</span>
-<span class="co">#&gt; 10 USA-1869      2 Grant  1869-12-01          1  1869    12</span>
-<span class="co">#&gt; # … with 177,118 more rows</span></code></pre></div>
-<p>And here are leader-years, which is pre-packaged as a <a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> function. The package also adds some information about leader gender, an approximation of the leader’s age that year (i.e. <code>year - yrborn</code>), and a running count (starting a 1) for the leader’s tenure (in years).</p>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> USA-1869      2 Grant  1869-03-04          1  <span style="text-decoration: underline;">1</span>869     3</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> USA-1869      2 Grant  1869-04-01          1  <span style="text-decoration: underline;">1</span>869     4</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> USA-1869      2 Grant  1869-05-01          1  <span style="text-decoration: underline;">1</span>869     5</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> USA-1869      2 Grant  1869-06-01          1  <span style="text-decoration: underline;">1</span>869     6</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> USA-1869      2 Grant  1869-07-01          1  <span style="text-decoration: underline;">1</span>869     7</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> USA-1869      2 Grant  1869-08-01          1  <span style="text-decoration: underline;">1</span>869     8</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> USA-1869      2 Grant  1869-09-01          1  <span style="text-decoration: underline;">1</span>869     9</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> USA-1869      2 Grant  1869-10-01          1  <span style="text-decoration: underline;">1</span>869    10</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> USA-1869      2 Grant  1869-11-01          1  <span style="text-decoration: underline;">1</span>869    11</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> USA-1869      2 Grant  1869-12-01          1  <span style="text-decoration: underline;">1</span>869    12</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 177,118 more rows</span></span></code></pre></div>
+<p>And here are leader-years, which is pre-packaged as a <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> function. The package also adds some information about leader gender, an approximation of the leader’s age that year (i.e. <code>year - yrborn</code>), and a running count (starting a 1) for the leader’s tenure (in years).</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_leaderyears.html">create_leaderyears</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 17,686 × 7</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 17,686 × 7</span></span>
 <span class="co">#&gt;    obsid    gwcode leader gender  year yrinoffice leaderage</span>
-<span class="co">#&gt;    &lt;chr&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;      &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 USA-1869      2 Grant  M       1869          1        47</span>
-<span class="co">#&gt;  2 USA-1869      2 Grant  M       1870          2        48</span>
-<span class="co">#&gt;  3 USA-1869      2 Grant  M       1871          3        49</span>
-<span class="co">#&gt;  4 USA-1869      2 Grant  M       1872          4        50</span>
-<span class="co">#&gt;  5 USA-1869      2 Grant  M       1873          5        51</span>
-<span class="co">#&gt;  6 USA-1869      2 Grant  M       1874          6        52</span>
-<span class="co">#&gt;  7 USA-1869      2 Grant  M       1875          7        53</span>
-<span class="co">#&gt;  8 USA-1869      2 Grant  M       1876          8        54</span>
-<span class="co">#&gt;  9 USA-1869      2 Grant  M       1877          9        55</span>
-<span class="co">#&gt; 10 USA-1877      2 Hayes  M       1877          1        55</span>
-<span class="co">#&gt; # … with 17,676 more rows</span></code></pre></div>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>869          1        47</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>870          2        48</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>871          3        49</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>872          4        50</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>873          5        51</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>874          6        52</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>875          7        53</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>876          8        54</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span> USA-1869      2 Grant  M       <span style="text-decoration: underline;">1</span>877          9        55</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span> USA-1877      2 Hayes  M       <span style="text-decoration: underline;">1</span>877          1        55</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 17,676 more rows</span></span></code></pre></div>
 </div>
-<div id="leader-dyad-year-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#leader-dyad-year-data" class="anchor"></a>Leader Dyad-Year Data</h2>
-<p><a href="https://github.com/svmiller/peacesciencer/">peacesciencer</a> can also create leader dyad-year data by way of <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>. You can see <a href="https://github.com/svmiller/peacesciencer/blob/master/data-raw/cow_dir_leader_dyad_years.R">some of the underlying code that is creating these data</a>. It’s a lot of code, it would take a lot of time to run from scratch, and the ensuing output is too large to store as an R data object in the package because CRAN hard-caps package size at 5 MB. Instead, users who want these data should first run <code><a href="../reference/download_extdata.html">download_extdata()</a></code> when they <em>first</em> install or update the package. Therein, they can run <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code> to create the full universe of leader dyad-year data.</p>
+<div class="section level2">
+<h2 id="leader-dyad-year-data">Leader Dyad-Year Data<a class="anchor" aria-label="anchor" href="#leader-dyad-year-data"></a>
+</h2>
+<p><a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> can also create leader dyad-year data by way of <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code>. You can see <a href="https://github.com/svmiller/peacesciencer/blob/master/data-raw/cow_dir_leader_dyad_years.R" class="external-link">some of the underlying code that is creating these data</a>. It’s a lot of code, it would take a lot of time to run from scratch, and the ensuing output is too large to store as an R data object in the package because CRAN hard-caps package size at 5 MB. Instead, users who want these data should first run <code><a href="../reference/download_extdata.html">download_extdata()</a></code> when they <em>first</em> install or update the package. Therein, they can run <code><a href="../reference/create_leaderdyadyears.html">create_leaderdyadyears()</a></code> to create the full universe of leader dyad-year data.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># create_leaderdyadyears() is effectively doing this.</span>
 <span class="co"># Let's do the G-W leader dyad-year data for illustration's sake.</span>
@@ -564,53 +528,50 @@
 <span class="co"># Thus, it is *not* downloading the data fresh each time.</span>
 
 <span class="va">the_url</span> <span class="op">&lt;-</span> <span class="st">"http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span><span class="va">the_url</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="va">the_url</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="../reference/declare_attributes.html">declare_attributes</a></span><span class="op">(</span>data_type <span class="op">=</span> <span class="st">"leader_dyad_year"</span>, system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2,336,990 × 11</span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,336,990 × 11</span></span>
 <span class="co">#&gt;     year obsid1   obsid2   gwcode1 gwcode2 gender1 gender2 leaderage1 leaderage2</span>
-<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;      &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;        &lt;dbl&gt;      &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1870 AFG-1868 AUH-1848     700     300 M       M               45         40</span>
-<span class="co">#&gt;  2  1870 AFG-1868 BAV-1864     700     245 M       M               45         39</span>
-<span class="co">#&gt;  3  1870 AFG-1868 BRA-1840     700     140 M       M               45         45</span>
-<span class="co">#&gt;  4  1870 AFG-1868 CHN-1861     700     710 M       M               45         35</span>
-<span class="co">#&gt;  5  1870 AFG-1868 COS-1870     700      94 M       M               45         39</span>
-<span class="co">#&gt;  6  1870 AFG-1868 ECU-1869     700     130 M       M               45         49</span>
-<span class="co">#&gt;  7  1870 AFG-1868 GMY-1858     700     255 M       M               45         73</span>
-<span class="co">#&gt;  8  1870 AFG-1868 GRC-1863     700     350 M       M               45         25</span>
-<span class="co">#&gt;  9  1870 AFG-1868 IRN-1848     700     630 M       M               45         39</span>
-<span class="co">#&gt; 10  1870 AFG-1868 JPN-1868     700     740 M       M               45         18</span>
-<span class="co">#&gt; # … with 2,336,980 more rows, and 2 more variables: yrinoffice1 &lt;dbl&gt;,</span>
-<span class="co">#&gt; #   yrinoffice2 &lt;dbl&gt;</span>
+<span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 AUH-1848     700     300 M       M               45         40</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 BAV-1864     700     245 M       M               45         39</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 BRA-1840     700     140 M       M               45         45</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 CHN-1861     700     710 M       M               45         35</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 COS-1870     700      94 M       M               45         39</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 ECU-1869     700     130 M       M               45         49</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 GMY-1858     700     255 M       M               45         73</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 GRC-1863     700     350 M       M               45         25</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 IRN-1848     700     630 M       M               45         39</span>
+<span class="co">#&gt; <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>870 AFG-1868 JPN-1868     700     740 M       M               45         18</span>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,336,980 more rows, and 2 more variables: yrinoffice1 &lt;dbl&gt;,</span></span>
+<span class="co">#&gt; <span style="color: #949494;">#   yrinoffice2 &lt;dbl&gt;</span></span>
 
 <span class="co"># ^ compare with:</span>
 <span class="co"># download_extdata()</span>
 <span class="co"># create_leaderdyadyears()</span></code></pre></div>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p>Developed by Steve Miller.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p></p>
+<p>Developed by Steve Miller.</p>
 </div>
 
-<div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+<div class="pkgdown-footer-right">
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.0.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
 
+  
 
   </body>
 </html>

@@ -1,7 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://svmiller.com/404.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/coerce-dispute-year-dyad-year.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/create-different-kinds-of-data-in-peacesciencer.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/democracy.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/different-data-types.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/joins.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/parlor-tricks.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/peacesciencer.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/state-systems.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/times.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/articles/versions.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/authors.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/index.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/ms.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/news/index.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/LEAD.html</loc>
@@ -29,6 +77,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/add_cow_mids.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/add_cow_to_gwcode.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/add_cow_trade.html</loc>
@@ -59,6 +110,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/add_lwuf.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/add_mids.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/add_minimum_distance.html</loc>
@@ -94,7 +148,13 @@
     <loc>http://svmiller.com/reference/atop_alliance.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/capitals.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/ccode_democracy.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/citations.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_alliance.html</loc>
@@ -140,6 +200,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_states.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/cow_trade_ndy.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/cow_trade_sy.html</loc>
@@ -205,6 +268,9 @@
     <loc>http://svmiller.com/reference/gml_part.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/gml_part_leaders.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/gw_capitals.html</loc>
   </url>
   <url>
@@ -227,6 +293,9 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/hief.html</loc>
+  </url>
+  <url>
+    <loc>http://svmiller.com/reference/index.html</loc>
   </url>
   <url>
     <loc>http://svmiller.com/reference/leader_codes.html</loc>
@@ -265,6 +334,9 @@
     <loc>http://svmiller.com/reference/ucdp_onsets.html</loc>
   </url>
   <url>
+    <loc>http://svmiller.com/reference/whittle_conflict_onsets.html</loc>
+  </url>
+  <url>
     <loc>http://svmiller.com/reference/whittle_conflicts_duration.html</loc>
   </url>
   <url>
@@ -284,26 +356,5 @@
   </url>
   <url>
     <loc>http://svmiller.com/reference/whittle_conflicts_startmonth.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/coerce-dispute-year-dyad-year.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/democracy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/different-data-types.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/joins.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/parlor-tricks.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/state-systems.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/versions.html</loc>
   </url>
 </urlset>
