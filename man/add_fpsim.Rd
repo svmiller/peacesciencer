@@ -58,7 +58,7 @@ any further.
 An evaluation of the data, the article, and an email exchange
 with the author leads to the following points the user should
 consider. What follows is a rationale for why users should think of
-kappa a default measure for dyadic foreign policy similarity, though
+kappa as a default measure for dyadic foreign policy similarity, though
 why the "valued" equivalent for the alliance data is an inadvisable
 default. The example at the end of the document offers the operational
 "nudge" for what the user should want from this function.

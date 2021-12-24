@@ -1,6 +1,6 @@
 Package: peacesciencer
 Type: Package
-Title: Various Tools and Data for Quantitative Peace Science
+Title: Tools and Data for Quantitative Peace Science Research
 Version: 0.9.9
 Depends: R (>= 3.5.0)
 Authors@R: person("Steve", "Miller",

@@ -54,13 +54,13 @@ look up the "whittle" class of functions also provided in this
 package.
 
 Determining "initiation" for state-year summaries of inter-state disputes
-since there is an implied directionality of "initiation." In about half
-of all cases, this is straightforward. You can use the participant
-summaries and determine that if the dispute was bilateral and the dispute
-did not escalate beyond an attack, the state on Side A initiated the
-dispute. For multilateral MIDs, these conditions still hold at least
-for originators. However, there is \emph{considerable} difficulty for cases
-where 1) participant-level summaries suggested actions at the level of
+is possible since there is an implied directionality of "initiation."
+In about half of all cases, this is straightforward. You can use the
+participant summaries and determine that if the dispute was bilateral
+and the dispute did not escalate beyond an attack, the state on Side A
+initiated the dispute. For multilateral MIDs, these conditions still hold
+at least for originators. However, there is \emph{considerable} difficulty for
+cases where 1) participant-level summaries suggested actions at the level of
 clash or higher, 2) the participant was a joiner and not an originator.
 The effort required to flesh this out is enormous, and perhaps
 forthcoming in a future update.

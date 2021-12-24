@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-This tutorial is a companion to [the user guide](https://github.com/svmiller/peacesciencer/blob/master/user-guide/doc/ms.pdf), which shows how to create different kinds of data in `{peacesciencer}`. However, space considerations (for ideal publication in a peer-reviewed journal) preclude the full "knitting" experience (i.e. giving the user a preview of what the data look like). What follows is a brief guide that expands on the tutorial section of that user guide for creating different kinds of data in `{peacesciencer}`.
+This tutorial is a companion to [the manuscript](http://svmiller.com/peacesciencer/ms.pdf), which shows how to create different kinds of data in `{peacesciencer}`. However, space considerations (for ideal publication in a peer-reviewed journal) preclude the full "knitting" experience (i.e. giving the user a preview of what the data look like). What follows is a brief guide that expands on the tutorial section of the manuscript for creating different kinds of data in `{peacesciencer}`.
 
 This vignette will lean on the `{tidyverse}` package, which will be included in almost anything you should do (optimally) with `{peacesciencer}`. I will also load `{lubridate}`. Internal functions in `{peacesciencer}` use `{lubridate}`---it is a formal dependency of `{peacesciencer}`---but users may want to load it for doing some additional stuff outside of `{peacesciencer}`.
 
@@ -21,7 +21,7 @@ library(lubridate)
 
 ## State-Year Data
 
-The most basic form of data `{peacesciencer}` creates is state-year, by way of `create_stateyears()`. `create_stateyears()` has two arguments: `system` and `mry`. `system` takes either "cow" or "gw", depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to "cow" in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. `mry` takes a logical (`TRUE` or `FALSE`), depending on whether the user wants the function to extend to the most recently concluded calendar year (`r year(Sys.Date())-1`). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition to the state system since these data sets were last updated. `mry` defaults to `TRUE` in the absence of a user-specified override.
+The most basic form of data `{peacesciencer}` creates is state-year, by way of `create_stateyears()`. `create_stateyears()` has two arguments: `system` and `mry`. `system` takes either "cow" or "gw", depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to "cow" in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. `mry` takes a logical (`TRUE` or `FALSE`), depending on whether the user wants the function to extend to the most recently concluded calendar year (`r year(Sys.Date())-1`). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition changes to the state system since these data sets were last updated. `mry` defaults to `TRUE` in the absence of a user-specified override.
 
 This will create Correlates of War state-year data from 1816 to `r year(Sys.Date())-1`.
 
@@ -37,7 +37,7 @@ create_stateyears(system = "gw", mry = FALSE)
 
 ## Dyad-Year Data
 
-`create_dyadyears()` is one of the most useful functions in `{peacesciencer}`, transforming the raw Correlates of War state system data (`cow_states` in `{peacesciencer}`) or Gleditsch-Ward state system data (`gw_states`) into all possible dyad-years. It has three arguments. `system` and `mry` operate the same as they do in `create_stateyears()`. There is an additional argument---`directed`---that also takes a logical (`TRUE` or `FALSE`). The default here is `TRUE`, returning *directed* dyad-year data (useful for dyadic conflict analyses where the initiator/target distinction matters). `FALSE` returns *non-directed* dyad-year data, useful for cases where the initiator/target distinction does not matter and the researcher cares more about the presence or absence of a conflict. The convention for non-directed dyad-year data is that `ccode2 > ccode1` and the underlying code of `create_dyadyears()` simply takes the directed dyad-year data and lops it in half with that rule.
+`create_dyadyears()` is one of the most useful functions in `{peacesciencer}`, transforming the raw Correlates of War state system data (`cow_states` in `{peacesciencer}`) or Gleditsch-Ward state system data (`gw_states`) into all possible dyad-years. It has three arguments. `system` and `mry` operate the same as they do in `create_stateyears()`. There is an additional argument---`directed`---that also takes a logical (`TRUE` or `FALSE`). The default here is `TRUE`, returning *directed* dyad-year data (useful for dyadic conflict analyses where the initiator/target distinction matters). `FALSE` returns *non-directed* dyad-year data, useful for cases where the initiator/target distinction does not matter and the researcher cares more about the presence or absence of a conflict. The convention for non-directed dyad-year data is that `ccode2 > ccode1` and the underlying code of `create_dyadyears()` simply takes the directed dyad-year data and chops it in half with that rule.
 
 Here are all Correlates of War dyad-years from 1816 to `r year(Sys.Date())-1`.
 
@@ -135,7 +135,7 @@ create_statedays(system = "gw") %>%
 
 ## State-Quarter Data
 
-There is some assumption about what a "quarter" would look like in a more general context, but it might look something like this. Again, this is an aggregation of `create_statedays()`.
+There is some assumption worth belaboring about what a "quarter" would look like in a more general context, but it might look something like this. Again, this is an aggregation of `create_statedays()`.
 
 ```{r}
 create_statedays(system = "gw") %>%
@@ -167,7 +167,7 @@ archigos
 create_leaderdays()
 ```
 
-I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently `create_stateyears()` and `create_dyadyears()`), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. Moreover, the leader data isn't exactly tethered to the Gleditsch-Ward state system for dates either (e.g. there are leader entries for Gleditsch-Ward states that aren't in the system yet). In a case like this, you can standardize these leader data to either the Correlates of War system or the Gleditsch-Ward system with the `standardize` argument. By default, the option here is "none" (i.e. return all available leader days recorded in the Archigos data). "cow" or "gw" standardizes the leader data to Correlates of War state system membership or Gleditsch-Ward state system membership, respectively.
+I do want to note one thing about the leader-level functions in this package. Whereas Correlates of War state system membership is often the default system for a lot of functions (prominently `create_stateyears()` and `create_dyadyears()`), the Gleditsch-Ward system is the default system because that is the state system around which the Archigos project created its leader data. Moreover, the leader data aren't exactly tethered to the Gleditsch-Ward state system for dates either (e.g. there are leader entries for Gleditsch-Ward states that aren't in the system yet). In a case like this, you can standardize these leader data to either the Correlates of War system or the Gleditsch-Ward system with the `standardize` argument. By default, the option here is "none" (i.e. return all available leader days recorded in the Archigos data). "cow" or "gw" standardizes the leader data to Correlates of War state system membership or Gleditsch-Ward state system membership, respectively.
 
 ```{r}
 create_leaderdays(standardize = "cow")
@@ -184,7 +184,7 @@ create_leaderdays() %>%
   slice(1)
 ```
 
-And here are leader-years, which is pre-packaged as a `{peacesciencer}` function. The package also adds some information about leader gender, an approximation of the leader's age that year (i.e. `year - yrborn`), and a running count (starting a 1) for the leader's tenure (in years).
+And here are leader-years, which are pre-packaged as a `{peacesciencer}` function. The package also adds some information about leader gender, an approximation of the leader's age that year (i.e. `year - yrborn`), and a running count (starting a 1) for the leader's tenure (in years).
 
 ```{r}
 create_leaderyears()
