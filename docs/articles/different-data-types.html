@@ -113,11 +113,11 @@
 <div class="section level2">
 <h2 id="state-year-data">State-Year Data<a class="anchor" aria-label="anchor" href="#state-year-data"></a>
 </h2>
-<p>The most basic form of data <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> creates is state-year, by way of <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> has two arguments: <code>system</code> and <code>mry</code>. <code>system</code> takes either “cow” or “gw”, depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to “cow” in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. <code>mry</code> takes a logical (<code>TRUE</code> or <code>FALSE</code>), depending on whether the user wants the function to extend to the most recently concluded calendar year (2020). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition changes to the state system since these data sets were last updated. <code>mry</code> defaults to <code>TRUE</code> in the absence of a user-specified override.</p>
-<p>This will create Correlates of War state-year data from 1816 to 2020.</p>
+<p>The most basic form of data <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> creates is state-year, by way of <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code> has two arguments: <code>system</code> and <code>mry</code>. <code>system</code> takes either “cow” or “gw”, depending on whether the user wants Correlates of War state years or Gleditsch-Ward state-years. It defaults to “cow” in the absence of a user-specified override given the prominence of Correlates of War data in the peace science ecosystem. <code>mry</code> takes a logical (<code>TRUE</code> or <code>FALSE</code>), depending on whether the user wants the function to extend to the most recently concluded calendar year (2021). The Correlates of War state system data extend to the end of 2016 while the Gleditsch-Ward state system extend to the end of the 2017. This argument will allow the researcher to extend the data a few years, under the (reasonable) assumption there have been no fundamental composition changes to the state system since these data sets were last updated. <code>mry</code> defaults to <code>TRUE</code> in the absence of a user-specified override.</p>
+<p>This will create Correlates of War state-year data from 1816 to 2021.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_stateyears.html">create_stateyears</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 16,731 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 16,926 × 3</span></span>
 <span class="co">#&gt;    ccode statenme                  year</span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     2 United States of America  <span style="text-decoration: underline;">1</span>816</span>
@@ -130,7 +130,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2 United States of America  <span style="text-decoration: underline;">1</span>823</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     2 United States of America  <span style="text-decoration: underline;">1</span>824</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 United States of America  <span style="text-decoration: underline;">1</span>825</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 16,721 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 16,916 more rows</span></span></code></pre></div>
 <p>This will create Gleditsch-Ward state-year data from 1816 to 2017.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_stateyears.html">create_stateyears</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span>, mry <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
@@ -153,11 +153,11 @@
 <h2 id="dyad-year-data">Dyad-Year Data<a class="anchor" aria-label="anchor" href="#dyad-year-data"></a>
 </h2>
 <p><code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> is one of the most useful functions in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>, transforming the raw Correlates of War state system data (<code>cow_states</code> in <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a>) or Gleditsch-Ward state system data (<code>gw_states</code>) into all possible dyad-years. It has three arguments. <code>system</code> and <code>mry</code> operate the same as they do in <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>. There is an additional argument—<code>directed</code>—that also takes a logical (<code>TRUE</code> or <code>FALSE</code>). The default here is <code>TRUE</code>, returning <em>directed</em> dyad-year data (useful for dyadic conflict analyses where the initiator/target distinction matters). <code>FALSE</code> returns <em>non-directed</em> dyad-year data, useful for cases where the initiator/target distinction does not matter and the researcher cares more about the presence or absence of a conflict. The convention for non-directed dyad-year data is that <code>ccode2 &gt; ccode1</code> and the underlying code of <code><a href="../reference/create_dyadyears.html">create_dyadyears()</a></code> simply takes the directed dyad-year data and chops it in half with that rule.</p>
-<p>Here are all Correlates of War dyad-years from 1816 to 2020.</p>
+<p>Here are all Correlates of War dyad-years from 1816 to 2021.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("ccode1", "ccode2", "year")</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,063,610 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,101,440 × 3</span></span>
 <span class="co">#&gt;    ccode1 ccode2  year</span>
 <span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920</span>
@@ -170,12 +170,12 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 2,063,600 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,101,430 more rows</span></span></code></pre></div>
 <p>Here are all Gleditsch-Ward dyad-years with the same temporal domain.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_dyadyears.html">create_dyadyears</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
 <span class="co">#&gt; Joining, by = c("gwcode1", "gwcode2", "year")</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,029,622 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 2,059,724 × 3</span></span>
 <span class="co">#&gt;    gwcode1 gwcode2  year</span>
 <span class="co">#&gt;      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>       2      20  <span style="text-decoration: underline;">1</span>867</span>
@@ -188,7 +188,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>       2      20  <span style="text-decoration: underline;">1</span>874</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>       2      20  <span style="text-decoration: underline;">1</span>875</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>       2      20  <span style="text-decoration: underline;">1</span>876</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 2,029,612 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 2,059,714 more rows</span></span></code></pre></div>
 <div class="section level3">
 <h3 id="major-vs--major-dyad-years">Major vs. Major Dyad-Years<a class="anchor" aria-label="anchor" href="#major-vs--major-dyad-years"></a>
 </h3>
@@ -313,10 +313,10 @@
 <h2 id="state-day-data">State-Day Data<a class="anchor" aria-label="anchor" href="#state-day-data"></a>
 </h2>
 <p><a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> comes with a <code><a href="../reference/create_statedays.html">create_statedays()</a></code> function. This is admittedly more proof of concept as it is <em>really</em> difficult to conjure too many <em>daily</em> data sets in peace science, certainly with coverage into the 19th century. No matter, <code><a href="../reference/create_statedays.html">create_statedays()</a></code> will create these data. It too has the same <code>system</code> and <code>mry</code> arguments (and same defaults) as <code><a href="../reference/create_stateyears.html">create_stateyears()</a></code>.</p>
-<p>Here are all Correlates of War state-days from 1816 to 2020.</p>
+<p>Here are all Correlates of War state-days from 1816 to 2021.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,061,091 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,132,266 × 3</span></span>
 <span class="co">#&gt;    ccode statenme                 date      </span>
 <span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     2 United States of America 1816-01-01</span>
@@ -329,11 +329,11 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2 United States of America 1816-01-08</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     2 United States of America 1816-01-09</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2 United States of America 1816-01-10</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 6,061,081 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 6,132,256 more rows</span></span></code></pre></div>
 <p>Here are all Gleditsch-Ward state-days with the same temporal domain.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,638,781 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 6,702,291 × 3</span></span>
 <span class="co">#&gt;    gwcode statename                date      </span>
 <span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America 1816-01-01</span>
@@ -346,12 +346,12 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America 1816-01-08</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America 1816-01-09</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America 1816-01-10</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 6,638,771 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 6,702,281 more rows</span></span></code></pre></div>
 <p>I can conjure an application where a user may want to think of daily conflict episodes within the Gleditsch-Ward domain. The UCDP armed conflict data have more precise dates than, say, the Correlates of War MID data, making such an analysis possible. However, there are no conflict data before 1946 and you should reflect that with <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> with something like this. This will require <a href="https://lubridate.tidyverse.org" class="external-link">lubridate</a>.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/create_statedays.html">create_statedays</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span> <span class="op">&gt;=</span> <span class="fl">1946</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,870,980 × 3</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 3,934,490 × 3</span></span>
 <span class="co">#&gt;    gwcode statename                date      </span>
 <span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;date&gt;</span>    </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America 1946-01-01</span>
@@ -364,7 +364,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America 1946-01-08</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America 1946-01-09</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America 1946-01-10</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 3,870,970 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 3,934,480 more rows</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="state-month-data">State-Month Data<a class="anchor" aria-label="anchor" href="#state-month-data"></a>
@@ -375,7 +375,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>year <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/year.html" class="external-link">year</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span>,
          month <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/month.html" class="external-link">month</a></span><span class="op">(</span><span class="va">date</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">month</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 218,194 × 4</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 220,282 × 4</span></span>
 <span class="co">#&gt;    gwcode statename                 year month</span>
 <span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     1</span>
@@ -388,7 +388,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     8</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816     9</span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816    10</span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 218,184 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 220,272 more rows</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="state-quarter-data">State-Quarter Data<a class="anchor" aria-label="anchor" href="#state-quarter-data"></a>
@@ -406,7 +406,7 @@
     <span class="va">month</span> <span class="op">==</span> <span class="fl">10</span> <span class="op">~</span> <span class="st">"Q4"</span>
   <span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">gwcode</span>, <span class="va">statename</span>, <span class="va">year</span>, <span class="va">quarter</span><span class="op">)</span>
-<span class="co">#&gt; <span style="color: #949494;"># A tibble: 72,687 × 4</span></span>
+<span class="co">#&gt; <span style="color: #949494;"># A tibble: 73,383 × 4</span></span>
 <span class="co">#&gt;    gwcode statename                 year quarter</span>
 <span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816 Q1     </span>
@@ -419,7 +419,7 @@
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>817 Q4     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>818 Q1     </span>
 <span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>818 Q2     </span>
-<span class="co">#&gt; <span style="color: #949494;"># … with 72,677 more rows</span></span></code></pre></div>
+<span class="co">#&gt; <span style="color: #949494;"># … with 73,373 more rows</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="leader-day-leader-month-leader-year-data">Leader-Day (Leader-Month, Leader-Year) Data<a class="anchor" aria-label="anchor" href="#leader-day-leader-month-leader-year-data"></a>

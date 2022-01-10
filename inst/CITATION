@@ -1,14 +1,16 @@
 citHeader("Please cite {peacesciencer} in publications that use it. It helps out my meager h-index. Please cite as:")
 
-citEntry(entry = "Manual",
+citEntry(entry = "Article",
          title        = "{peacesciencer}: An R Package for Quantitative Peace Science Research",
          author       = person("Steven V. Miller"),
+         journal      = "Conflict Management and Peace Science",
          year         = "2021",
          key          = "peacesciencer-package",
          url          = "http://svmiller.com/peacesciencer/",
 
          textVersion  =
-           paste("Miller, Steven V. 2021.",
+           paste("Miller, Steven V. Forthcoming.",
                  "{peacesciencer}: An R Package for Quantitative Peace Science Research",
+                 "Conflict Management and Peace Science",
                  "http://svmiller.com/peacesciencer/")
 )

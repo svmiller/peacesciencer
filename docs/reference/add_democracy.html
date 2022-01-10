@@ -142,7 +142,7 @@ Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_democracy</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,063,610 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,101,440 × 9</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ccode1 ccode2  year v2x_polyarchy1 polity21 xm_qudsest1 v2x_polyarchy2</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920          0.446       10        1.19          0.442</span>
@@ -155,12 +155,12 @@ Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927          0.53        10        1.20          0.672</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928          0.533       10        1.25          0.672</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929          0.549       10        1.25          0.672</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2,063,600 more rows, and 2 more variables: polity22 &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2,101,430 more rows, and 2 more variables: polity22 &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   xm_qudsest2 &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="create_stateyears.html">create_stateyears</a></span><span class="op">(</span>system<span class="op">=</span><span class="st">"gw"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_democracy</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining, by = c("gwcode", "year")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18,289 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18,463 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    gwcode statename                 year v2x_polyarchy polity2 xm_qudsest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816         0.367       9      0.707</span>
@@ -173,10 +173,10 @@ Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>823         0.345       9      0.707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>824         0.345       9      0.707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>825         0.341       9      0.707</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 18,279 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 18,453 more rows</span></span>
 <span class="r-in"><span class="fu"><a href="create_stateyears.html">create_stateyears</a></span><span class="op">(</span>system<span class="op">=</span><span class="st">"cow"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_democracy</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining, by = c("ccode", "year")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16,731 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16,926 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ccode statenme                  year v2x_polyarchy polity2 xm_qudsest</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     2 United States of America  <span style="text-decoration: underline;">1</span>816         0.367       9      0.707</span>
@@ -189,7 +189,7 @@ Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     2 United States of America  <span style="text-decoration: underline;">1</span>823         0.345       9      0.707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     2 United States of America  <span style="text-decoration: underline;">1</span>824         0.345       9      0.707</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     2 United States of America  <span style="text-decoration: underline;">1</span>825         0.341       9      0.707</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 16,721 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 16,916 more rows</span></span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

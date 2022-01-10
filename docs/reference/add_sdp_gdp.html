@@ -137,7 +137,7 @@ a given state-year.</p>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://magrittr.tidyverse.org" class="external-link">magrittr</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_sdp_gdp</span><span class="op">(</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,063,610 × 11</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,101,440 × 11</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ccode1 ccode2  year wbgdp2011est1 wbpopest1 sdpest1 wbgdppc2011est1</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920          27.6      18.4    27.5            9.19</span>
@@ -150,12 +150,12 @@ a given state-year.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927          27.9      18.6    27.8            9.35</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928          27.9      18.6    27.8            9.36</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929          27.9      18.6    27.8            9.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2,063,600 more rows, and 4 more variables: wbgdp2011est2 &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 2,101,430 more rows, and 4 more variables: wbgdp2011est2 &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   wbpopest2 &lt;dbl&gt;, sdpest2 &lt;dbl&gt;, wbgdppc2011est2 &lt;dbl&gt;</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="create_stateyears.html">create_stateyears</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_sdp_gdp</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining, by = c("ccode", "year")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16,731 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 16,926 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ccode statenme                  year wbgdp2011est wbpopest sdpest wbgdppc2011est</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     2 United States of America  <span style="text-decoration: underline;">1</span>816         23.6     15.9   22.9           7.66</span>
@@ -168,11 +168,11 @@ a given state-year.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     2 United States of America  <span style="text-decoration: underline;">1</span>823         23.8     16.1   23.1           7.69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     2 United States of America  <span style="text-decoration: underline;">1</span>824         23.9     16.2   23.2           7.69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     2 United States of America  <span style="text-decoration: underline;">1</span>825         23.9     16.2   23.3           7.72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 16,721 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 16,916 more rows</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="fu"><a href="create_stateyears.html">create_stateyears</a></span><span class="op">(</span>system <span class="op">=</span> <span class="st">"gw"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_sdp_gdp</span><span class="op">(</span><span class="op">)</span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining, by = c("gwcode", "year")</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18,289 × 7</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 18,463 × 7</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    gwcode statename                 year wbgdp2011est wbpopest sdpest wbgdppc2011est</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2 United States of America  <span style="text-decoration: underline;">1</span>816         23.6     15.9   22.8           7.66</span>
@@ -185,7 +185,7 @@ a given state-year.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2 United States of America  <span style="text-decoration: underline;">1</span>823         23.8     16.1   23.1           7.69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2 United States of America  <span style="text-decoration: underline;">1</span>824         23.9     16.2   23.2           7.69</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      2 United States of America  <span style="text-decoration: underline;">1</span>825         23.9     16.2   23.2           7.72</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 18,279 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 18,453 more rows</span></span>
 <span class="r-in"></span>
 <span class="r-in"></span>
 </code></pre></div>
