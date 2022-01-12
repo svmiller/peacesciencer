@@ -82,3 +82,5 @@ navbar:
         href: ms.html
       - text: PDF
         href: ms.pdf
+      - text: Appendix (PDF)
+        href: appendix.pdf

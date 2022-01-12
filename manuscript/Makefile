@@ -1,6 +1,6 @@
 # Specify a few variables to avoid repetition downstream
 
-OUTPUTS= ../docs/ms.pdf doc/ms-anon.pdf ../docs/ms.html doc/abstract.pdf inst/refs.bib doc/appendix.pdf
+OUTPUTS= ../docs/ms.pdf doc/ms-anon.pdf ../docs/ms.html doc/abstract.pdf inst/refs.bib ../docs/appendix.pdf
 RDS=  data/modDD.rds data/modCW.rds data/modLY.rds
 
 # Specify the primary targets: the outputs
@@ -17,7 +17,7 @@ clean:
 
 # Specialty sourcing for each output
 
-doc/appendix.pdf: appendix.Rmd
+../docs/appendix.pdf: appendix.Rmd
 	Rscript -e 'source("src/render_appendix.R")'
 
 doc/appendix-anon.pdf: appendix.Rmd
