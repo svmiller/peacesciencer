@@ -11,6 +11,7 @@ keywords: "software, statistical analysis, peace science, reproducibility"
 geometry: margin=1in
 csl: inst/jpr.csl
 mainfont: cochineal
+monofont: Fira Code
 #sansfont: Linux Biolinum O 
 fontsize: 11pt
 endnote: no
