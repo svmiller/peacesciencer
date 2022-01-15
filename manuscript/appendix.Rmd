@@ -1,9 +1,9 @@
 ---
 title: "APPENDIX: `{peacesciencer}`: An R Package for Quantitative Peace Science Research"
-# author:
-# - name: Steven V. Miller
-#   affiliation: Clemson University
-#   email: svmille@clemson.edu
+author:
+- name: Steven V. Miller
+  affiliation: Clemson University
+  email: svmille@clemson.edu
 # thanks: "This is a work in progress. Feedback welcome: svmille@clemson.edu."
 bibliography: "`r paste0(Sys.getenv('HOME'),'/Dropbox/master.bib')`"
 biblio-style: apsr
@@ -15,6 +15,7 @@ endnotes: FALSE
 csl: inst/jpr.csl
 mainfont: cochineal
 sansfont: Linux Biolinum O
+monofont: Fira Code
 sansitup: FALSE
 params:
   anonymous: ""
