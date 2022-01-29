@@ -84,3 +84,5 @@ navbar:
         href: ms.pdf
       - text: Appendix (PDF)
         href: appendix.pdf
+      - text: (Peer Review) Memo (PDF)
+        href: memo.pdf
