@@ -1765,3 +1765,31 @@ NULL
 #' associated with these leaders change in the LEAD data, which is why I assume they were duplicates.
 
 "leader_codes"
+
+
+#' Conventional Arms Races During Periods of Rivalry
+#'
+#' This is a simple data set of 71 arms races reported by Gibler et al. in their 2005 article in \emph{Journal of Peace Research}.
+#'
+#'
+#' @format A data frame the following five variables.
+#' \describe{
+#' \item{\code{race_id}}{the arms race identifier}
+#' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
+#' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
+#' \item{\code{styear}}{the start year for the arms race}
+#' \item{\code{endyear}}{the end year for the arms race}
+#' }
+#'
+#' @details
+#'
+#' Data are taken from the appendix of Gibler, Rider, and Hutchison's 2005 article in *Journal of Peace Research*. Read the
+#' article and appendix for more information about coding procedures.
+#'
+#' @references
+#'
+#' Gibler, Douglas M., Toby J. Rider, and Marc L. Hutchison. 2005. "Taking Arms Against
+#' a Sea of Troubles: Conventional Arms Races during Periods of Rivalry"
+#' *Journal of Peace Research* 42(2): 131--47.
+
+"grh_arms_races"
