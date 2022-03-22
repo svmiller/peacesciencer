@@ -22,33 +22,65 @@
 #'
 #' @examples
 #'
-#' # You can cite the package
+#' # Cite the package
 #' ps_cite("peacesciencer")
 #'
-#' # You can do partial matching
-#' ps_cite("democracy")
-#'
-#' # Or more partial matching
-#' ps_cite("alliance")
-#'
-#' # You can also get all citations for a particular function
-#' ps_cite("add_archigos()")
-#'
-#' # If you know some of the `BibTeX` keys, you can search there as well.
-#' ps_cite("gibler", column = "bibtexkey")
 #'
 
 ps_cite <- function(x, column = "keywords") {
 
   if (column == "keywords") {
 
-    ps_bib %>% filter(grepl(x, .data$KEYWORDS)) %>% df2bib()
+    #ps_bib %>% filter(grepl(x, .data$KEYWORDS)) %>% df2bib()
+    ps_bib %>% filter(grepl(x, .data$KEYWORDS)) -> cites_i_want
 
   } else if (column == "bibtexkey") {
 
-    ps_bib %>% filter(grepl(x, .data$BIBTEXKEY)) %>% df2bib()
+    # ps_bib %>% filter(grepl(x, .data$BIBTEXKEY)) %>% df2bib()
+    ps_bib %>% filter(grepl(x, .data$BIBTEXKEY)) -> cites_i_want
 
 
+  }
+
+  not_all_na <- function(x) any(!is.na(x))
+
+  cites_i_want %>%
+    group_split(.data$BIBTEXKEY) %>%
+    map(~select_if(., not_all_na)) -> group_split_cites
+
+  suppressWarnings(
+  for(i in 1:length(group_split_cites)) {
+    group_split_cites[[i]]$AUTHOR <- group_split_cites[[i]]$AUTHOR %>% unlist(.data$AUTHOR) %>% paste(., collapse = " and ")
+    group_split_cites[[i]]$EDITOR <- group_split_cites[[i]]$EDITOR %>% unlist(.data$EDITOR) %>% paste(., collapse = " and ")
+  }
+  )
+
+
+  group_split_cites %>%
+    map(~mutate(., EDITOR = ifelse(.data$EDITOR == "", NA, .data$EDITOR))) %>%
+    map(~select_if(., not_all_na)) -> group_split_cites
+
+
+  for(i in 1:length(group_split_cites)) {
+    tibble(x = names(unlist(group_split_cites[[i]])),
+           y = unlist(group_split_cites[[i]])) -> hold_this
+
+    hold_this %>% filter((x %in% c("BIBTEXKEY", "CATEGORY"))) -> hold_this_a
+    hold_this %>% filter(!(x %in% c("BIBTEXKEY", "CATEGORY"))) -> hold_this_b
+
+    print_the_thing_already <- cat(paste0("@", hold_this_a$y[1],
+                       "{", hold_this_a$y[2],",\n",
+                       paste0("  ",
+                              hold_this_b$x,
+                              " = {",
+                              hold_this_b$y,
+                              "}",
+                              collapse = ",\n"),"}"),
+                collapse = "\n\n",
+                #fill=TRUE,
+                file = "",
+                append = TRUE)
+    invisible(file)
   }
 
 }

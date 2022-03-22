@@ -12,7 +12,7 @@ should include in their papers that incorporate the functions and data in this p
     
     <a class="navbar-brand me-2" href="../index.html">peacesciencer</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.9.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -108,130 +108,17 @@ simple pattern-matching is in base R. I assume the user has some familiarity wit
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="co"># You can cite the package</span></span>
+<span class="r-in"><span class="co"># Cite the package</span></span>
 <span class="r-in"><span class="fu">ps_cite</span><span class="op">(</span><span class="st">"peacesciencer"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Manual{peacesciencer-package,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Steven V. Miller},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {peacesciencer}: A User's Guide for Quantitative Peace Science in R},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2021},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw(), add_gwcode_to_cow(), capitals},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Url = {http://svmiller.com/peacesciencer/}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> @ARTICLE{peacesciencer-package,</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   AUTHOR = {Steven V. Miller},</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   JOURNAL = {Conflict Management and Peace Science},</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   TITLE = {peacesciencer}: An R Package for Quantitative Peace Science Research},</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   YEAR = {2022},</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   KEYWORDS = {peacesciencer, add_capital_distance(), add_ccode_to_gw(), add_gwcode_to_cow(), capitals},</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   URL = {http://svmiller.com/peacesciencer/}} </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"></span>
-<span class="r-in"><span class="co"># You can do partial matching</span></span>
-<span class="r-in"><span class="fu">ps_cite</span><span class="op">(</span><span class="st">"democracy"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Unpublished{coppedgeetal2020vdem,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Michael Coppedge and John Gerring and Carl Henrik Knutsen and Staffan I. Lindberg and Jan Teorell and David Altman and Michael Bernhard and M. Steven Fish and Adam Glynn and Allen Hicken and Anna Luhrmann and Kyle L. Marquardt and Kelly McMann and Pamela Paxton and Daniel Pemstein and Brigitte Seim and Rachel Sigman and Svend-Erik Skaaning and Jeffrey Staton and Agnes Cornell and Lisa Gastaldi and Haakon Gjerl{\o}w and Valeriya Mechkova and Johannes von R{\"o}mer and Aksel Sundtr{\"o}m and Eitan Tzelgov and Luca Uberti and Yi-ting Wang and Tore Wig and Daniel Ziblatt},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Note = {Varieties of Democracy ({V}-{D}em) Project},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {V-Dem Codebook v10},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2020},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_democracy(), v-dem, varieties of democracy}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Unpublished{marshalletal2017p,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Monty G. Marshall and Ted Robert Gurr and Keith Jaggers},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Note = {University of Maryland, Center for International Development and Conflict Management},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {Polity {IV} Project: Political Regime Characteristics and Transitions, 1800-2016},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2017},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_democracy(), polity}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Unpublished{marquez2016qme,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Xavier Marquez},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Note = {Available at SSRN: http://ssrn.com/abstract=2753830},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {A Quick Method for Extending the {U}nified {D}emocracy {S}cores},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2016},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_democracy(), UDS, Unified Democracy Scores},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Url = {http://dx.doi.org/10.2139/ssrn.2753830}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Article{pemsteinetal2010dc,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Pemstein, Daniel and Stephen A. Meserve and James Melton},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Journal = {Political Analysis},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Number = {4},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Pages = {426--449},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Volume = {18},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2010},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_democracy(), UDS, Unified Democracy Scores},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Owner = {steve},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Timestamp = {2011.01.30}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Or more partial matching</span></span>
-<span class="r-in"><span class="fu">ps_cite</span><span class="op">(</span><span class="st">"alliance"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Article{leedsetal2002atop,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Bretty Ashley Leeds and Jeffrey M. Ritter and Sara McLaughlin Mitchell and Andrew G. Long},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Journal = {International Interactions},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Pages = {237--260},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {Alliance Treaty Obligations and Provisions, 1815-1944},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Volume = {28},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2002},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_atop_alliance()}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Book{gibler2009ima,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Douglas M. Gibler},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Publisher = {Washington DC: CQ Press},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {International Military Alliances, 1648-2008},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2009},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_cow_alliance()}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># You can also get all citations for a particular function</span></span>
-<span class="r-in"><span class="fu">ps_cite</span><span class="op">(</span><span class="st">"add_archigos()"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Article{goemansetal2009ia,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Henk E. Goemans and Kristian Skrede Gleditsch and Giacomo Chiozza},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Journal = {Journal of Peace Research},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Number = {2},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Pages = {269--83},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {Introducing {A}rchigos: A Dataset on Political Leaders},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Volume = {46},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2009},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_archigos()}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># If you know some of the `BibTeX` keys, you can search there as well.</span></span>
-<span class="r-in"><span class="fu">ps_cite</span><span class="op">(</span><span class="st">"gibler"</span>, column <span class="op">=</span> <span class="st">"bibtexkey"</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Book{gibler2009ima,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Douglas M. Gibler},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Publisher = {Washington DC: CQ Press},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {International Military Alliances, 1648-2008},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2009},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_cow_alliance()}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Article{gibleretal2016amid,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Douglas M. Gibler and Steven V. Miller and Erin K. Little},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Journal = {International Studies Quarterly},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Number = {4},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Pages = {719--730},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {An Analysis of the {M}ilitarized {I}nterstate {D}ispute {(MID)} Dataset, 1816-2001},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Volume = {60},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2016},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_gml_mids()},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Owner = {steve},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Timestamp = {2016.04.20}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> @Article{giblermiller2014etts,</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Author = {Gibler, Douglas M. and Steven V. Miller},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Journal = {Journal of Peace Research},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Number = {5},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Pages = {634--646},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Title = {External Territorial Threat, State Capacity, and Civil War},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Volume = {51},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Year = {2014},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Keywords = {add_rugged_terrain()},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Owner = {steve},</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Timestamp = {2014.09.04}</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> }</span>
 <span class="r-in"></span>
 </code></pre></div>
     </div>

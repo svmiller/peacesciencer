@@ -30,20 +30,9 @@ simple pattern-matching is in base R. I assume the user has some familiarity wit
 }
 \examples{
 
-# You can cite the package
+# Cite the package
 ps_cite("peacesciencer")
 
-# You can do partial matching
-ps_cite("democracy")
-
-# Or more partial matching
-ps_cite("alliance")
-
-# You can also get all citations for a particular function
-ps_cite("add_archigos()")
-
-# If you know some of the `BibTeX` keys, you can search there as well.
-ps_cite("gibler", column = "bibtexkey")
 
 }
 \author{

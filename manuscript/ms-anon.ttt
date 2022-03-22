@@ -31,9 +31,9 @@
 \ttfamily{add\_creg\_fractionalization()} & D, L, LD, S & Add fractionalization/polarization estimates from CREG to a data frame\\
 \ttfamily{add\_democracy()} & D, L, LD, S & Add democracy information to a data frame\\
 \ttfamily{add\_fpsim()} & D, LD & Add dyadic foreign policy similarity measures to a data frame\\
-\ttfamily{add\_gml\_mids()} & D, L, LD, S & Add GML MID data to a data frame\\
+\ttfamily{add\_gml\_mids()} & D, L, LD, S & Add Gibler-Miller-Little (GML) MID data to a data frame\\
 \ttfamily{add\_gwcode\_to\_cow()} & D, L, LD, S & Match G-W state codes to CoW state codes\\
-\ttfamily{add\_igos()} & D, S & Add CoW IGO data to a data frame\\
+\ttfamily{add\_igos()} & D, S & Add CoW intergovernmental organizations (IGO) data to a data frame\\
 \ttfamily{add\_lead()} & L, LD & Add leader experience/attributes (LEAD) to data\\
 \ttfamily{add\_lwuf()} & L, LD & Add leader willingness to use force estimates to data\\
 \ttfamily{add\_minimum\_distance()} & D, L, LD, S & Add minimum distance data to data frame\\
@@ -43,7 +43,7 @@
 \ttfamily{add\_sdp\_gdp()} & D, L, LD, S & Add (surplus, gross) domestic product data to a data frame\\
 \ttfamily{add\_spells()} & D, L, LD, S & Add duration 'spells' to a data frame\\
 \ttfamily{add\_strategic\_rivalries()} & D, S & Add strategic rivalry information to a data frame\\
-\ttfamily{add\_ucdp\_acd()} & S & Add UCDP Armed Conflict Data to state-year data frame\\
+\ttfamily{add\_ucdp\_acd()} & S & Add Uppsala Conflict Data Program (UCDP) Armed Conflict Data to state-year data frame\\
 \ttfamily{add\_ucdp\_onsets} & S & Add UCDP onsets to state-year data\\
 \ttfamily{filter\_prd()} & D, LD & Filter dyad-year data to just politically relevant dyads\\
 \ttfamily{wc\_duration()} & C & Whittle Duplicate Conflict-Years by (Minimum or Maximum) Conflict Duration\\
@@ -107,9 +107,9 @@ GDP per Capita (Lagged) & \num{-0.285}* & \num{-0.343}*\\
  & (\num{0.110}) & (\num{0.172})\\
 Population Size (Lagged) & \num{0.229}* & \num{0.272}*\\
  & (\num{0.067}) & (\num{0.106})\\
-Extended UDS Democracy Score (Lagged) & \num{0.257} & \num{-0.085}\\
+Extended UDS (Lagged) & \num{0.257} & \num{-0.085}\\
  & (\num{0.181}) & (\num{0.270})\\
-Extended UDS Democracy Score\textasciicircum2 (Lagged) & \num{-0.726}* & \num{-0.761}*\\
+Extended UDS\textasciicircum2 (Lagged) & \num{-0.726}* & \num{-0.761}*\\
  & (\num{0.211}) & (\num{0.352})\\
 \% Mountainous Terrain (Logged) & \num{0.055} & \num{0.342}*\\
  & (\num{0.067}) & (\num{0.112})\\
