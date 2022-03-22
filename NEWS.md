@@ -1,4 +1,4 @@
-# peacesciencer 1.0 [in development]
+# peacesciencer 1.0
 
 This version has a few odds and ends and a version accelerated to 1.0 to coincide with the acceptance of [a manuscript describing this package](http://svmiller.com/peacesciencer/ms.pdf) in *Conflict Management and Peace Science*.
 
