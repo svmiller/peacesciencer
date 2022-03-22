@@ -9,7 +9,7 @@ This version has a few odds and ends and a version accelerated to 1.0 to coincid
 - Update `cow_ddy` and `gw_ddy`, since it's 2022 now.
 - Add `grh_arms_races` for arms race data.
 - Amend/update a few items in `ps_bib`.
-- Change `ps_cite()` to no longer depend on `{bib2df}`. With it, add `{purrr}` as a package dependency and remove `{bib2df}` as a package dependency.
+- Change `ps_cite()` to no longer depend on `{bib2df}`. With it, remove `{bib2df}` as a package dependency.
 
 
 

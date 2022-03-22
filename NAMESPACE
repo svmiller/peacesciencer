@@ -6,8 +6,8 @@ import(geosphere)
 import(stringr)
 # import(lubridate) # changed on 5 October 2021
 import(tidyr)
-# import(bib2df)
-import(purrr)
+# import(bib2df) # changed on 22 March 2022
+# import(purrr) # thought about requiring this, but don't need to.
 
 importFrom(magrittr,"%>%")
 importFrom(rlang, .data)

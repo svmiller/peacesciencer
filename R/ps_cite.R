@@ -45,8 +45,10 @@ ps_cite <- function(x, column = "keywords") {
   not_all_na <- function(x) any(!is.na(x))
 
   cites_i_want %>%
-    group_split(.data$BIBTEXKEY) %>%
-    map(~select_if(., not_all_na)) -> group_split_cites
+    group_split(.data$BIBTEXKEY) -> group_split_cites
+
+  lapply(group_split_cites, function(x) select_if(x, not_all_na)) -> group_split_cites
+
 
   suppressWarnings(
   for(i in 1:length(group_split_cites)) {
@@ -56,9 +58,8 @@ ps_cite <- function(x, column = "keywords") {
   )
 
 
-  group_split_cites %>%
-    map(~mutate(., EDITOR = ifelse(.data$EDITOR == "", NA, .data$EDITOR))) %>%
-    map(~select_if(., not_all_na)) -> group_split_cites
+  lapply(group_split_cites, function(x) mutate(x,  EDITOR = ifelse(.data$EDITOR == "", NA, .data$EDITOR))) -> group_split_cites
+  lapply(group_split_cites, function(x) select_if(x, not_all_na)) -> group_split_cites
 
 
   for(i in 1:length(group_split_cites)) {

@@ -31,8 +31,7 @@ Imports:
     stringr,
     rlang,
     stevemisc (>= 1.3.0),
-    lifecycle,
-    purrr
+    lifecycle
 Suggests: 
     countrycode,
     tibble,
