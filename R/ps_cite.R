@@ -52,8 +52,8 @@ ps_cite <- function(x, column = "keywords") {
 
   suppressWarnings(
   for(i in 1:length(group_split_cites)) {
-    group_split_cites[[i]]$AUTHOR <- group_split_cites[[i]]$AUTHOR %>% unlist(.data$AUTHOR) %>% paste(., collapse = " and ")
-    group_split_cites[[i]]$EDITOR <- group_split_cites[[i]]$EDITOR %>% unlist(.data$EDITOR) %>% paste(., collapse = " and ")
+    group_split_cites[[i]]$AUTHOR <- paste(unlist(group_split_cites[[i]]$AUTHOR), collapse=" and ")
+    group_split_cites[[i]]$EDITOR <- paste(unlist(group_split_cites[[i]]$EDITOR), collapse=" and ")
   }
   )
 
