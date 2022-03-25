@@ -21,19 +21,13 @@ These are non-directed dyad-year data for the minimum distance between states in
 1886 to 2019. The data are generated from the \pkg{cshapes} package.
 }
 \details{
-The data are generated from the \pkg{cshapes} package. The package authors purport that the data
-are generated to be compatible with Correlates of War system codes, but a review I did several years ago for
-an unrelated project (published in 2017 in \emph{Conflict Management & Peace Science}, which you should cite for
-all your articles if you're reading this) suggested the output does not seem to perfectly meet that billing. These
-included oddball cases like Zanzibar, United Arab Republic, Comoros, East Germany, and a few others. Those appear to
-be fixed in this version.
-
-Data are automatically generated (by default) as directed dyad-years. I elect to make them non-directed for space
-considerations. Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
+The data are generated from the \pkg{cshapes} package. Data are automatically generated
+(by default) as directed dyad-years. I elect to make them non-directed for space considerations.
+Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
 looks weird to see the code that does it.
 
 Previous versions of these data were for the minimum distance as of Dec. 31 of the referent year. These are now Jan. 1.
-Most of the data I prove elsewhere in this package are  to be understood as the data as they were at the \emph{start} of
+Most of the data I provide elsewhere in this package are  to be understood as the data as they were at the \emph{start} of
 the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
 function. However, the script that generates these data are set at Jan. 1 of the year and not Dec. 31. Right now, the \pkg{cshapes}
 does not appear to work on my system and I do not know why. Fortunately, the package authors made these data available.
