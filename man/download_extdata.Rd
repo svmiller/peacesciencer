@@ -134,6 +134,88 @@ for the \code{taub} column. That was generated separately, by me.\tabular{ll}{
 }
 
 }
+
+\subsection{(Non-Directed) Dyadic Minimum Distance Data \emph{Plus} (CoW States)}{
+
+These are \emph{non-directed} dyadic minimum distance data from Schvitz et al.
+(2022) for all Correlates of War states from the start of 1886 to the
+end of 2019. Note that I call these "data \emph{plus}", with the idea of
+informally branding these as a kind of augmentation of what you might
+otherwise do with the \pkg{cshapes} package. This data set has over
+4.4 million rows for each dyadic minimum distance for all available
+years. Within each year, there is a recorded minimum distance for Jan. 1,
+June 30, Dec. 31 and, in addition, any day within the year where the
+composition of the international system (or shape of a state) changed, as
+recorded in \pkg{cshapes}. Sometimes these changes concern the dyadic
+minimum distance; sometimes they don't. For example, the League of Nations
+is responsible for a lot shape changes (i.e. system entry) in the CoW state
+system data in the year 1920. That obviously won't change the dyadic minimum
+distance between the U.S. and Canada, which will always be zero. Sometimes the
+start of the year (Jan. 1), the midpoint of the year (June 30), or the end of
+the year (Dec. 31) coincides with a system change. Often it doesn't. Note that
+a referent day (Jan. 1, June 30, Dec. 31) may not appear in a given year for
+a given dyad if that date exists outside CoW state system membership. For
+example, Canada doesn't appear as a state system member until Jan. 10, 1920.
+The goal of this data set is allow you to more quickly generate dyadic
+minimum distances within \pkg{peacesciencer}'s functionality if you are
+proficient in \pkg{tidyverse} verbs. You could also use it to highlight
+how often the dyadic minimum distance may vary within a year for a given
+dyad.
+
+Despite the dimensions of the data set, it's not too big of a download. The
+data are about 1.7 MB in size.\tabular{ll}{
+   COLUMN \tab DESCRIPTION \cr
+   \code{ccode1} \tab the Correlates of War state code for the first state \cr
+   \code{ccode2} \tab the Correlates of War state code for the second state \cr
+   \code{year} \tab the year \cr
+   \code{date} \tab a date, coinciding with either a system change date or a referent day (i.e. Jan. 1, June 30, Dec. 31) \cr
+   \code{change_date} \tab a date that, when present, indicates the shape of the system changed on that day \cr
+   \code{mindist} \tab the dyadic minimum distance (in kilometers) \cr
+}
+
+}
+
+\subsection{(Non-Directed) Dyadic Minimum Distance Data \emph{Plus} (G-W States)}{
+
+These are \emph{non-directed} dyadic minimum distance data from Schvitz et al.
+(2022) for all Gleditsch-Ward states from the start of 1886 to the
+end of 2019. Note that I call these "data \emph{plus}", with the idea of
+informally branding these as a kind of augmentation of what you might
+otherwise do with the \pkg{cshapes} package. This data set has over
+3.7 million rows for each dyadic minimum distance for all available
+years. Within each year, there is a recorded minimum distance for Jan. 1,
+June 30, Dec. 31 and, in addition, any day within the year where the
+composition of the international system (or shape of a state) changed, as
+recorded in \pkg{cshapes}. Sometimes these changes concern the dyadic
+minimum distance; sometimes they don't. For example, the dissolution of
+the Soviet Union is responsible for a lot shape changes (i.e. system entry) in
+1991. That obviously won't change the dyadic minimum
+distance between the U.S. and Canada, which will always be zero. Sometimes the
+start of the year (Jan. 1), the midpoint of the year (June 30), or the end of
+the year (Dec. 31) coincides with a system change. Often it doesn't. Note that
+a referent day (Jan. 1, June 30, Dec. 31) may not appear in a given year for
+a given dyad if that date exists outside G-W state system membership. For
+example, Haiti disappears from the state system on July 4, 1915 and
+reappears on Aug. 15, 1934. That means there won't be any dyadic minimum
+distance observations with the U.S., for example, on Dec. 31, 1915 or June
+30, 1934. The goal of this data set is allow you to more quickly generate dyadic
+minimum distances within \pkg{peacesciencer}'s functionality if you are
+proficient in \pkg{tidyverse} verbs. You could also use it to highlight
+how often the dyadic minimum distance may vary within a year for a given
+dyad.
+
+Despite the dimensions of the data set, it's not too big of a download. The
+data are about 1.4 MB in size.\tabular{ll}{
+   COLUMN \tab DESCRIPTION \cr
+   \code{gwcode1} \tab the Gleditsch-Ward state code for the first state \cr
+   \code{gwcode2} \tab the Gleditsch-Ward state code for the second state \cr
+   \code{year} \tab the year \cr
+   \code{date} \tab a date, coinciding with either a system change date or a referent day (i.e. Jan. 1, June 30, Dec. 31) \cr
+   \code{change_date} \tab a date that, when present, indicates the shape of the system changed on that day \cr
+   \code{mindist} \tab the dyadic minimum distance (in kilometers) \cr
+}
+
+}
 }
 
 \examples{
@@ -154,6 +236,13 @@ Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introdu
 
 Haege, Frank. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
 \emph{Political Analysis} 19(3): 287-305.
+
+Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
+and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
+The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
+
+Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package."
+\emph{The R Journal} 2(1): 18-24.
 }
 \author{
 Steven V. Miller

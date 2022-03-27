@@ -113,6 +113,86 @@
 #' | `kappavv` | Kappa (squared distances, valued UN voting data) |
 #' | `pivv` | Pi (squared distances, valued UN voting data) |
 #'
+#' ## (Non-Directed) Dyadic Minimum Distance Data *Plus* (CoW States)
+#'
+#' These are *non-directed* dyadic minimum distance data from Schvitz et al.
+#' (2022) for all Correlates of War states from the start of 1886 to the
+#' end of 2019. Note that I call these "data *plus*", with the idea of
+#' informally branding these as a kind of augmentation of what you might
+#' otherwise do with the \pkg{cshapes} package. This data set has over
+#' 4.4 million rows for each dyadic minimum distance for all available
+#' years. Within each year, there is a recorded minimum distance for Jan. 1,
+#' June 30, Dec. 31 and, in addition, any day within the year where the
+#' composition of the international system (or shape of a state) changed, as
+#' recorded in \pkg{cshapes}. Sometimes these changes concern the dyadic
+#' minimum distance; sometimes they don't. For example, the League of Nations
+#' is responsible for a lot shape changes (i.e. system entry) in the CoW state
+#' system data in the year 1920. That obviously won't change the dyadic minimum
+#' distance between the U.S. and Canada, which will always be zero. Sometimes the
+#' start of the year (Jan. 1), the midpoint of the year (June 30), or the end of
+#' the year (Dec. 31) coincides with a system change. Often it doesn't. Note that
+#' a referent day (Jan. 1, June 30, Dec. 31) may not appear in a given year for
+#' a given dyad if that date exists outside CoW state system membership. For
+#' example, Canada doesn't appear as a state system member until Jan. 10, 1920.
+#' The goal of this data set is allow you to more quickly generate dyadic
+#' minimum distances within \pkg{peacesciencer}'s functionality if you are
+#' proficient in \pkg{tidyverse} verbs. You could also use it to highlight
+#' how often the dyadic minimum distance may vary within a year for a given
+#' dyad.
+#'
+#' Despite the dimensions of the data set, it's not too big of a download. The
+#' data are about 1.7 MB in size.
+#'
+#' | COLUMN | DESCRIPTION |
+#' | -------| ------------|
+#' | `ccode1` | the Correlates of War state code for the first state |
+#' | `ccode2` | the Correlates of War state code for the second state |
+#' | `year` | the year |
+#' | `date` | a date, coinciding with either a system change date or a referent day (i.e. Jan. 1, June 30, Dec. 31) |
+#' | `change_date` | a date that, when present, indicates the shape of the system changed on that day |
+#' | `mindist` | the dyadic minimum distance (in kilometers) |
+#'
+#' ## (Non-Directed) Dyadic Minimum Distance Data *Plus* (G-W States)
+#'
+#' These are *non-directed* dyadic minimum distance data from Schvitz et al.
+#' (2022) for all Gleditsch-Ward states from the start of 1886 to the
+#' end of 2019. Note that I call these "data *plus*", with the idea of
+#' informally branding these as a kind of augmentation of what you might
+#' otherwise do with the \pkg{cshapes} package. This data set has over
+#' 3.7 million rows for each dyadic minimum distance for all available
+#' years. Within each year, there is a recorded minimum distance for Jan. 1,
+#' June 30, Dec. 31 and, in addition, any day within the year where the
+#' composition of the international system (or shape of a state) changed, as
+#' recorded in \pkg{cshapes}. Sometimes these changes concern the dyadic
+#' minimum distance; sometimes they don't. For example, the dissolution of
+#' the Soviet Union is responsible for a lot shape changes (i.e. system entry) in
+#' 1991. That obviously won't change the dyadic minimum
+#' distance between the U.S. and Canada, which will always be zero. Sometimes the
+#' start of the year (Jan. 1), the midpoint of the year (June 30), or the end of
+#' the year (Dec. 31) coincides with a system change. Often it doesn't. Note that
+#' a referent day (Jan. 1, June 30, Dec. 31) may not appear in a given year for
+#' a given dyad if that date exists outside G-W state system membership. For
+#' example, Haiti disappears from the state system on July 4, 1915 and
+#' reappears on Aug. 15, 1934. That means there won't be any dyadic minimum
+#' distance observations with the U.S., for example, on Dec. 31, 1915 or June
+#' 30, 1934. The goal of this data set is allow you to more quickly generate dyadic
+#' minimum distances within \pkg{peacesciencer}'s functionality if you are
+#' proficient in \pkg{tidyverse} verbs. You could also use it to highlight
+#' how often the dyadic minimum distance may vary within a year for a given
+#' dyad.
+#'
+#' Despite the dimensions of the data set, it's not too big of a download. The
+#' data are about 1.4 MB in size.
+#'
+#' | COLUMN | DESCRIPTION |
+#' | -------| ------------|
+#' | `gwcode1` | the Gleditsch-Ward state code for the first state |
+#' | `gwcode2` | the Gleditsch-Ward state code for the second state |
+#' | `year` | the year |
+#' | `date` | a date, coinciding with either a system change date or a referent day (i.e. Jan. 1, June 30, Dec. 31) |
+#' | `change_date` | a date that, when present, indicates the shape of the system changed on that day |
+#' | `mindist` | the dyadic minimum distance (in kilometers) |
+#'
 #'
 #' @description \code{download_extdata()} leverages R's \code{inst} directory
 #' flexibility to allow you to download some extra data and store it in
@@ -139,6 +219,13 @@
 #'
 #' Haege, Frank. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
 #' \emph{Political Analysis} 19(3): 287-305.
+#'
+#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
+#' and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
+#' The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
+#'
+#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package."
+#' \emph{The R Journal} 2(1): 18-24.
 #'
 #' @examples
 #'
@@ -192,6 +279,37 @@ download_extdata <- function(overwrite = FALSE) {
       message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
     }
 
+    # dyadic foreign policy similarity data now...
+    if(file.exists(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))) {
+      message("dyadic_fp_similarity.rds is in /extdata in the package directory.")
+    } else {
+      message("Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.")
+      dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
+      saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
+      message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
+    }
+
+    # CoW mindist-plus now...
+    if(file.exists(system.file("extdata", "cow_mindist_plus.rds", package="peacesciencer"))) {
+      message("cow_mindist_plus.rds is in /extdata in the package directory.")
+    } else {
+      message("Downloading cow_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
+      cow_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_mindist_plus.rds"))
+      saveRDS(cow_mindist_plus, paste0(extdata_dir,"/cow_mindist_plus.rds"))
+      message("cow_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
+    }
+
+    # G-W mindist-plus now...
+    if(file.exists(system.file("extdata", "gw_mindist_plus.rds", package="peacesciencer"))) {
+      message("gw_mindist_plus.rds is in /extdata in the package directory.")
+    } else {
+      message("Downloading gw_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
+      gw_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_mindist_plus.rds"))
+      saveRDS(gw_mindist_plus, paste0(extdata_dir,"/gw_mindist_plus.rds"))
+      message("gw_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
+    }
+
+
 
   } else if (overwrite == TRUE){
     message("Downloading cow_trade_ddy.rds from http://svmiller.com/R/peacesciencer.")
@@ -213,6 +331,16 @@ download_extdata <- function(overwrite = FALSE) {
     dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
     saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
     message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
+
+    message("Downloading cow_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
+    cow_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_mindist_plus.rds"))
+    saveRDS(cow_mindist_plus, paste0(extdata_dir,"/cow_mindist_plus.rds"))
+    message("cow_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
+
+    message("Downloading gw_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
+    gw_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_mindist_plus.rds"))
+    saveRDS(gw_mindist_plus, paste0(extdata_dir,"/gw_mindist_plus.rds"))
+    message("gw_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
 
 
   } else {

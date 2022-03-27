@@ -4,7 +4,7 @@ citEntry(entry = "Article",
          title        = "{peacesciencer}: An R Package for Quantitative Peace Science Research",
          author       = person("Steven V. Miller"),
          journal      = "Conflict Management and Peace Science",
-         year         = "2021",
+         year         = "2022",
          key          = "peacesciencer-package",
          url          = "http://svmiller.com/peacesciencer/",
 

@@ -1,3 +1,11 @@
+# peacesciencer 1.1.0
+
+Other changes include:
+
+- Changes to documentation for clarity/presentation.
+- Changes to file compression, where appropriate.
+- `download_extdata()` will download some augmented dyadic minimum distance data for CoW and G-W states from 1886 to 2019.
+
 # peacesciencer 1.0.0
 
 This version has a few odds and ends and a version accelerated to 1.0.0 to coincide with the acceptance of [a manuscript describing this package](http://svmiller.com/peacesciencer/ms.pdf) in *Conflict Management and Peace Science*.

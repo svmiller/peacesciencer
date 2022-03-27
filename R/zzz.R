@@ -19,7 +19,8 @@ if(getRversion() >= "2.15.1")
 
 .onAttach <- function(libname, pkgname) {
 
-  remote_files <- c("cow_trade_ddy", "cow_dir_leader_dyad_years", "gw_dir_leader_dyad_years", "dyadic_fp_similarity")
+  remote_files <- c("cow_trade_ddy", "cow_dir_leader_dyad_years", "gw_dir_leader_dyad_years", "dyadic_fp_similarity",
+                    "cow_mindist_plus", "gw_mindist_plus")
   extdata_dir <- system.file("extdata", package="peacesciencer")
 
   the_files <- paste0(extdata_dir, "/", remote_files, ".rds")
