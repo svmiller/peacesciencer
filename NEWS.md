@@ -5,6 +5,7 @@ Other changes include:
 - Changes to documentation for clarity/presentation.
 - Changes to file compression, where appropriate.
 - `download_extdata()` will download some augmented dyadic minimum distance data for CoW and G-W states from 1886 to 2019.
+- Add `tss_rivalries` as updated rivalry data from 1494 to 2020.
 
 # peacesciencer 1.0.0
 
