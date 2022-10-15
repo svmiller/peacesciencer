@@ -44,7 +44,7 @@ add_cow_alliance <- function(data) {
     } else {
     cow_alliance %>%
       left_join(data, .) %>%
-      mutate_at(vars("cow_defense", "cow_neutral", "cow_nonagg", "cow_entente"), ~ifelse(is.na(.), 0, .)) -> data
+      mutate_at(vars("cow_defense", "cow_neutral", "cow_nonagg", "cow_entente"), ~ifelse(is.na(.) & .data$year <= 2012, 0, .)) -> data
 
     }
 
