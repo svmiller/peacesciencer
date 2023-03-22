@@ -31,7 +31,12 @@ conflict IDs that year.
 \code{add_ucdp_acd()} allows you to add UCDP Armed Conflict data to a state-year data frame
 }
 \details{
-Right now, only state-year data are supported. Function is in true pilot mode.
+Right now, only state-year data are supported. It's worth saying
+that "both" in the \code{issue} argument should not be understood as
+equivalent to \code{c("territory","government")}. The former is a kind of
+"AND" (in boolean speak) and is an explicit category in the data. The latter
+is an "OR" (in boolean speak) and is in all likelihood what you want if you
+are tempted to specify "both" in the \code{issue} argument.
 }
 \examples{
 

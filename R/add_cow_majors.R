@@ -27,7 +27,7 @@
 #' @references
 #'
 #' Correlates of War Project. 2017. "State System Membership List, v2016."
-#' Online, \url{https://correlatesofwar.org/data-sets/state-system-membership}
+#' Online, \url{https://correlatesofwar.org/data-sets/state-system-membership/}
 #'
 #' @examples
 #'

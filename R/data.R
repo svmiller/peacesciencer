@@ -211,9 +211,11 @@ NULL
 #' This is a complete directed dyad-year data frame of Correlates of War
 #' state system members. I offer it here as a shortcut for various other functions when
 #' I am working on new additions and don't want to invest time in waiting for
-#' \code{create_dyadyears()} to run.
+#' \code{create_dyadyears()} to run. As a general rule, this data frame is
+#' updated after every calendar year to include the most recently concluded
+#' calendar year.
 #'
-#' @format A data frame with 2063670 observations on the following 3 variables.
+#' @format A data frame with the following 3 variables.
 #' \describe{
 #' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 #' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
@@ -267,7 +269,7 @@ NULL
 #'
 #' @details Data are provided "as-is" with no additional re-cleaning before inclusion into this data set (beyond eliminating the state abbreviation).
 #'
-#' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership}
+#' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership/}
 #'
 "cow_majors"
 
@@ -292,7 +294,7 @@ NULL
 #'
 #' @details Data are provided "as-is" with no additional re-cleaning before inclusion into this data set.
 #'
-#' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership}
+#' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership/}
 #'
 "cow_states"
 
@@ -362,9 +364,11 @@ NULL
 #' A directed dyad-year data frame of Gleditsch-Ward state system members
 #'
 #' This is a complete directed dyad-year data frame of Gleditsch-Ward
-#' state system members. I offer it here as a shortcut for various other functions.
+#' state system members. I offer it here as a shortcut for various other
+#' functions. As a general rule, this data frame is updated after every
+#' calendar year to include the most recently concluded calendar year.
 #'
-#' @format A data frame with 1999558 observations on the following 4 variables.
+#' @format A data frame with the following 3 variables.
 #' \describe{
 #' \item{\code{gwcode1}}{a numeric vector for the Correlates of War state code for the first state}
 #' \item{\code{gwcode2}}{a numeric vector for the Correlates of War state code for the second state}

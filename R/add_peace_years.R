@@ -53,8 +53,6 @@
 #' @param pad an optional parameter, defaults to FALSE. If TRUE, the peace-year calculations fill in cases where panels are
 #' unbalanced/have gaps. Think of a state like Germany disappearing for 45 years as illustrative of this.
 #'
-#' @references
-#'
 #' @references Armstrong, Dave. 2016. ``\pkg{DAMisc}: Dave Armstrong's Miscellaneous Functions.''
 #' \emph{R package version 1.4-3}.
 #'

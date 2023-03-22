@@ -5,7 +5,7 @@
 \alias{gw_ddy}
 \title{A directed dyad-year data frame of Gleditsch-Ward state system members}
 \format{
-A data frame with 1999558 observations on the following 4 variables.
+A data frame with the following 3 variables.
 \describe{
 \item{\code{gwcode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{gwcode2}}{a numeric vector for the Correlates of War state code for the second state}
@@ -17,7 +17,9 @@ gw_ddy
 }
 \description{
 This is a complete directed dyad-year data frame of Gleditsch-Ward
-state system members. I offer it here as a shortcut for various other functions.
+state system members. I offer it here as a shortcut for various other
+functions. As a general rule, this data frame is updated after every
+calendar year to include the most recently concluded calendar year.
 }
 \details{
 Data are a quick generation from the \code{create_dyadyears(system="gw")} function in this package.

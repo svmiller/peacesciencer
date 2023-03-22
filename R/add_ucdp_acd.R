@@ -8,7 +8,12 @@
 #' intensity observed that year (if an armed conflict was observed), and a character vector of the associated
 #' conflict IDs that year.
 #'
-#' @details Right now, only state-year data are supported. Function is in true pilot mode.
+#' @details Right now, only state-year data are supported. It's worth saying
+#' that "both" in the \code{issue} argument should not be understood as
+#' equivalent to \code{c("territory","government")}. The former is a kind of
+#' "AND" (in boolean speak) and is an explicit category in the data. The latter
+#' is an "OR" (in boolean speak) and is in all likelihood what you want if you
+#' are tempted to specify "both" in the \code{issue} argument.
 #'
 #' @author Steven V. Miller
 #'

@@ -77,8 +77,6 @@ add_peace_years()
 
 }
 \references{
-
-
 Armstrong, Dave. 2016. ``\pkg{DAMisc}: Dave Armstrong's Miscellaneous Functions.''
 \emph{R package version 1.4-3}.
 
