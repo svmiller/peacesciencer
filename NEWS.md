@@ -1,11 +1,14 @@
 # peacesciencer 1.1.0
 
-Other changes include:
+Changes include:
 
+- Package now depends on version 1.6.0 of `{stevemisc}`. This comes as later versions of R balk at the use of `order()` on data frames.
 - Changes to documentation for clarity/presentation.
 - Changes to file compression, where appropriate.
 - `download_extdata()` will download some augmented dyadic minimum distance data for CoW and G-W states from 1886 to 2019.
 - Add `tss_rivalries` as updated rivalry data from 1494 to 2020.
+- Fixed a bug in `atop_alliance` and `cow_alliance`. It's less of a `{peacesciencer}` bug, per se, but the raw data that were presented as directed were actually not directed at all. They are now.
+- Fixed a bug in `add_cow_alliance()` that did not honor the temporal bound of the alliance data (i.e. 1816-2012). My b.
 
 # peacesciencer 1.0.0
 

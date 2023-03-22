@@ -1,7 +1,7 @@
 Package: peacesciencer
 Type: Package
 Title: Tools and Data for Quantitative Peace Science Research
-Version: 1.0.9
+Version: 1.1.0
 Depends: R (>= 3.5.0)
 Authors@R: person("Steve", "Miller",
                   email = "steven.v.miller@gmail.com", 
@@ -20,7 +20,7 @@ License: GPL-2
 Encoding: UTF-8
 LazyData: true
 LazyDataCompression: xz
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3
 URL: https://github.com/svmiller/peacesciencer/
 BugReports: https://github.com/svmiller/peacesciencer/issues/
 Imports:
@@ -30,7 +30,7 @@ Imports:
     tidyr,
     stringr,
     rlang,
-    stevemisc (>= 1.3.0),
+    stevemisc (>= 1.6.0),
     lifecycle
 Suggests: 
     countrycode,

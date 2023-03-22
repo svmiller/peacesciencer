@@ -15,3 +15,5 @@ importFrom(stevemisc, ps_btscs)
 importFrom(stevemisc, "%nin%")
 importFrom(stevemisc, ps_spells)
 importFrom(stats, "sd")
+
+importFrom(lifecycle, "badge")
