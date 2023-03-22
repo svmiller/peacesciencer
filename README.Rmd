@@ -32,7 +32,7 @@ cat(
 
 <img src="http://svmiller.com/images/peacesciencer-hexlogo.png" alt="peacesciencer  hexlogo" align="right" width="200" style="padding: 0 15px; float: right;"/>
 
-`peacesciencer` is an R package including various functions and data sets to allow easier analyses in the field of quantitative peace science. The goal is to provide an R package that reasonably approximates what made [EUGene](https://journals.sagepub.com/doi/abs/10.1177/0738894211413055) so attractive to scholars working in the field of quantitative peace science in the early 2000s. EUGene shined because it encouraged replications of conflict models while having the user also generate data from scratch. Likewise, this R package will offer tools to approximate what EUGene did within the R environment (i.e. not requiring Windows for installation).
+`peacesciencer` is an R package including various functions and data sets to allow easier analyses in the field of quantitative peace science. The goal is to provide an R package that reasonably approximates what made [EUGene](https://doi.org/10.1177/0738894211413055) so attractive to scholars working in the field of quantitative peace science in the early 2000s. EUGene shined because it encouraged replications of conflict models while having the user also generate data from scratch. Likewise, this R package will offer tools to approximate what EUGene did within the R environment (i.e. not requiring Windows for installation).
 
 # Installation
 

@@ -12,13 +12,12 @@
 sets to allow easier analyses in the field of quantitative peace
 science. The goal is to provide an R package that reasonably
 approximates what made
-[EUGene](https://journals.sagepub.com/doi/abs/10.1177/0738894211413055)
-so attractive to scholars working in the field of quantitative peace
-science in the early 2000s. EUGene shined because it encouraged
-replications of conflict models while having the user also generate data
-from scratch. Likewise, this R package will offer tools to approximate
-what EUGene did within the R environment (i.e. not requiring Windows for
-installation).
+[EUGene](https://doi.org/10.1177/0738894211413055) so attractive to
+scholars working in the field of quantitative peace science in the early
+2000s. EUGene shined because it encouraged replications of conflict
+models while having the user also generate data from scratch. Likewise,
+this R package will offer tools to approximate what EUGene did within
+the R environment (i.e. not requiring Windows for installation).
 
 # Installation
 
@@ -80,12 +79,12 @@ data-generating process into a few manageable “chunks” (e.g. first
 generating dyad-year data and saving to an object, adding to it piece by
 piece).
 
-All told, the process will look something like this. Assume you want to
-create some data for something analogous to a “dangerous dyads” design
-for all non-directed dyad-years. Here’s how you’d do it in
-`{peacesciencer}`, which is going to be lifted from the source R scripts
-for the user’s guide. The first part of this code chunk will lean on
-core `{peacesciencer}` functionality whereas the other stuff is some
+Here’s what this will look like in operation. Assume you want to create
+some data for something analogous to a “dangerous dyads” design for all
+non-directed dyad-years. Here’s how you’d do it in `{peacesciencer}`,
+which is going to be lifted from the source R scripts for the user’s
+guide. The first part of this code chunk will lean on core
+`{peacesciencer}` functionality whereas the other stuff is some
 post-processing and, as a bonus, some modeling.
 
 ``` r
@@ -138,19 +137,19 @@ broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_
 #> # A tibble: 11 × 5
 #>    term               estimate   std.error statistic   p.value
 #>    <chr>                 <dbl>       <dbl>     <dbl>     <dbl>
-#>  1 (Intercept)      -3.05      0.0635         -48.1  0        
-#>  2 landcontig        1.06      0.0568          18.7  4.09e- 78
-#>  3 cincprop          0.453     0.0362          12.5  7.16e- 36
-#>  4 cowmajdyad        0.144     0.0575           2.51 1.21e-  2
-#>  5 cow_defense      -0.118     0.0580          -2.04 4.10e-  2
-#>  6 mindemest        -0.499     0.0525          -9.51 1.92e- 21
+#>  1 (Intercept)      -3.06      0.0635         -48.2  0        
+#>  2 landcontig        1.06      0.0568          18.7  4.21e- 78
+#>  3 cincprop          0.455     0.0363          12.5  6.63e- 36
+#>  4 cowmajdyad        0.144     0.0575           2.51 1.20e-  2
+#>  5 cow_defense      -0.119     0.0580          -2.04 4.09e-  2
+#>  6 mindemest        -0.499     0.0525          -9.51 1.93e- 21
 #>  7 minwbgdppc        0.293     0.0511           5.72 1.06e-  8
-#>  8 minmilit          0.260     0.0231          11.3  2.13e- 29
-#>  9 gmlmidspell      -0.146     0.00505        -29.0  7.61e-185
-#> 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  3.16e- 75
-#> 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.24e- 38
+#>  8 minmilit          0.255     0.0226          11.3  2.02e- 29
+#>  9 gmlmidspell      -0.147     0.00505        -29.0  5.33e-185
+#> 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  2.74e- 75
+#> 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.16e- 38
 toc()
-#> 9.817 sec elapsed
+#> 7.559 sec elapsed
 ```
 
 Here is how you might do a standard civil conflict analysis using
@@ -192,9 +191,9 @@ broom::tidy(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_wbgdppc2011est + l1
 #> # A tibble: 11 × 5
 #>    term                 estimate std.error statistic  p.value
 #>    <chr>                   <dbl>     <dbl>     <dbl>    <dbl>
-#>  1 (Intercept)        -5.10      1.35         -3.77  0.000161
-#>  2 l1_wbgdppc2011est  -0.285     0.110        -2.59  0.00952 
-#>  3 l1_wbpopest         0.229     0.0672        3.41  0.000645
+#>  1 (Intercept)        -5.10      1.35         -3.77  0.000160
+#>  2 l1_wbgdppc2011est  -0.285     0.110        -2.59  0.00953 
+#>  3 l1_wbpopest         0.229     0.0672        3.41  0.000644
 #>  4 l1_xm_qudsest       0.257     0.181         1.43  0.154   
 #>  5 I(l1_xm_qudsest^2) -0.726     0.211        -3.44  0.000574
 #>  6 newlmtnest          0.0549    0.0666        0.824 0.410   
@@ -212,10 +211,10 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> # A tibble: 11 × 5
 #>    term                 estimate std.error statistic p.value
 #>    <chr>                   <dbl>     <dbl>     <dbl>   <dbl>
-#>  1 (Intercept)        -6.59      2.08         -3.16  0.00157
+#>  1 (Intercept)        -6.59      2.08         -3.16  0.00156
 #>  2 l1_wbgdppc2011est  -0.343     0.172        -1.99  0.0463 
 #>  3 l1_wbpopest         0.272     0.106         2.56  0.0105 
-#>  4 l1_xm_qudsest      -0.0846    0.270        -0.313 0.754  
+#>  4 l1_xm_qudsest      -0.0847    0.270        -0.313 0.754  
 #>  5 I(l1_xm_qudsest^2) -0.761     0.352        -2.16  0.0307 
 #>  6 newlmtnest          0.342     0.112         3.05  0.00226
 #>  7 ethfrac             0.333     0.554         0.601 0.548  
@@ -225,7 +224,7 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
 toc()
-#> 3.899 sec elapsed
+#> 2.444 sec elapsed
 ```
 
 # Citing What You Do in `{peacesciencer}`
@@ -240,13 +239,13 @@ you can (and should) cite the package itself.
 
 ``` r
 ps_cite("peacesciencer")
-#> @Manual{peacesciencer-package,
-#>   Author = {Steven V. Miller},
-#>   Title = {peacesciencer}: A User's Guide for Quantitative Peace Science in R},
-#>   Year = {2021},
-#>   Keywords = {peacesciencer, add_capital_distance(), add_ccode_to_gw(), add_gwcode_to_cow(), capitals},
-#>   Url = {http://svmiller.com/peacesciencer/}
-#> }
+#> @ARTICLE{peacesciencer-package,
+#>   AUTHOR = {Steven V. Miller},
+#>   JOURNAL = {Conflict Management and Peace Science},
+#>   TITLE = {peacesciencer}: An R Package for Quantitative Peace Science Research},
+#>   YEAR = {2022},
+#>   KEYWORDS = {peacesciencer, add_capital_distance(), add_ccode_to_gw(), add_gwcode_to_cow(), capitals},
+#>   URL = {http://svmiller.com/peacesciencer/}}
 ```
 
 You can see what are the relevant citations to consider using for the
@@ -254,46 +253,39 @@ data returned by `add_democracy()`
 
 ``` r
 ps_cite("add_democracy()")
-#> @Unpublished{coppedgeetal2020vdem,
-#>   Author = {Michael Coppedge and John Gerring and Carl Henrik Knutsen and Staffan I. Lindberg and Jan Teorell and David Altman and Michael Bernhard and M. Steven Fish and Adam Glynn and Allen Hicken and Anna Luhrmann and Kyle L. Marquardt and Kelly McMann and Pamela Paxton and Daniel Pemstein and Brigitte Seim and Rachel Sigman and Svend-Erik Skaaning and Jeffrey Staton and Agnes Cornell and Lisa Gastaldi and Haakon Gjerl{\o}w and Valeriya Mechkova and Johannes von R{\"o}mer and Aksel Sundtr{\"o}m and Eitan Tzelgov and Luca Uberti and Yi-ting Wang and Tore Wig and Daniel Ziblatt},
-#>   Note = {Varieties of Democracy ({V}-{D}em) Project},
-#>   Title = {V-Dem Codebook v10},
-#>   Year = {2020},
-#>   Keywords = {add_democracy(), v-dem, varieties of democracy}
-#> }
+#> @UNPUBLISHED{coppedgeetal2020vdem,
+#>   AUTHOR = {Michael Coppedge and John Gerring and Carl Henrik Knutsen and Staffan I. Lindberg and Jan Teorell and David Altman and Michael Bernhard and M. Steven Fish and Adam Glynn and Allen Hicken and Anna Luhrmann and Kyle L. Marquardt and Kelly McMann and Pamela Paxton and Daniel Pemstein and Brigitte Seim and Rachel Sigman and Svend-Erik Skaaning and Jeffrey Staton and Agnes Cornell and Lisa Gastaldi and Haakon Gjerl{\o}w and Valeriya Mechkova and Johannes von R{\"o}mer and Aksel Sundtr{\"o}m and Eitan Tzelgov and Luca Uberti and Yi-ting Wang and Tore Wig and Daniel Ziblatt},
+#>   NOTE = {Varieties of Democracy ({V}-{D}em) Project},
+#>   TITLE = {V-Dem Codebook v10},
+#>   YEAR = {2020},
+#>   KEYWORDS = {add_democracy(), v-dem, varieties of democracy}} 
 #> 
+#> @UNPUBLISHED{marquez2016qme,
+#>   AUTHOR = {Xavier Marquez},
+#>   NOTE = {Available at SSRN: http://ssrn.com/abstract=2753830},
+#>   TITLE = {A Quick Method for Extending the {U}nified {D}emocracy {S}cores},
+#>   YEAR = {2016},
+#>   KEYWORDS = {add_democracy(), UDS, Unified Democracy Scores},
+#>   URL = {http://dx.doi.org/10.2139/ssrn.2753830}} 
 #> 
-#> @Unpublished{marshalletal2017p,
-#>   Author = {Monty G. Marshall and Ted Robert Gurr and Keith Jaggers},
-#>   Note = {University of Maryland, Center for International Development and Conflict Management},
-#>   Title = {Polity {IV} Project: Political Regime Characteristics and Transitions, 1800-2016},
-#>   Year = {2017},
-#>   Keywords = {add_democracy(), polity}
-#> }
+#> @UNPUBLISHED{marshalletal2017p,
+#>   AUTHOR = {Monty G. Marshall and Ted Robert Gurr and Keith Jaggers},
+#>   NOTE = {University of Maryland, Center for International Development and Conflict Management},
+#>   TITLE = {Polity {IV} Project: Political Regime Characteristics and Transitions, 1800-2016},
+#>   YEAR = {2017},
+#>   KEYWORDS = {add_democracy(), polity}} 
 #> 
-#> 
-#> @Unpublished{marquez2016qme,
-#>   Author = {Xavier Marquez},
-#>   Note = {Available at SSRN: http://ssrn.com/abstract=2753830},
-#>   Title = {A Quick Method for Extending the {U}nified {D}emocracy {S}cores},
-#>   Year = {2016},
-#>   Keywords = {add_democracy(), UDS, Unified Democracy Scores},
-#>   Url = {http://dx.doi.org/10.2139/ssrn.2753830}
-#> }
-#> 
-#> 
-#> @Article{pemsteinetal2010dc,
-#>   Author = {Pemstein, Daniel and Stephen A. Meserve and James Melton},
-#>   Journal = {Political Analysis},
-#>   Number = {4},
-#>   Pages = {426--449},
-#>   Title = {Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type},
-#>   Volume = {18},
-#>   Year = {2010},
-#>   Keywords = {add_democracy(), UDS, Unified Democracy Scores},
-#>   Owner = {steve},
-#>   Timestamp = {2011.01.30}
-#> }
+#> @ARTICLE{pemsteinetal2010dc,
+#>   AUTHOR = {Pemstein, Daniel and Stephen A. Meserve and James Melton},
+#>   JOURNAL = {Political Analysis},
+#>   NUMBER = {4},
+#>   PAGES = {426--449},
+#>   TITLE = {Democratic Compromise: A Latent Variable Analysis of Ten Measures of Regime Type},
+#>   VOLUME = {18},
+#>   YEAR = {2010},
+#>   KEYWORDS = {add_democracy(), UDS, Unified Democracy Scores},
+#>   OWNER = {steve},
+#>   TIMESTAMP = {2011.01.30}}
 ```
 
 You can also return partial matches to see what citations are associated
@@ -301,24 +293,21 @@ with, say, alliance data in this package.
 
 ``` r
 ps_cite("alliance")
-#> @Article{leedsetal2002atop,
-#>   Author = {Bretty Ashley Leeds and Jeffrey M. Ritter and Sara McLaughlin Mitchell and Andrew G. Long},
-#>   Journal = {International Interactions},
-#>   Pages = {237--260},
-#>   Title = {Alliance Treaty Obligations and Provisions, 1815-1944},
-#>   Volume = {28},
-#>   Year = {2002},
-#>   Keywords = {add_atop_alliance()}
-#> }
+#> @BOOK{gibler2009ima,
+#>   AUTHOR = {Douglas M. Gibler},
+#>   PUBLISHER = {Washington DC: CQ Press},
+#>   TITLE = {International Military Alliances, 1648-2008},
+#>   YEAR = {2009},
+#>   KEYWORDS = {add_cow_alliance()}} 
 #> 
-#> 
-#> @Book{gibler2009ima,
-#>   Author = {Douglas M. Gibler},
-#>   Publisher = {Washington DC: CQ Press},
-#>   Title = {International Military Alliances, 1648-2008},
-#>   Year = {2009},
-#>   Keywords = {add_cow_alliance()}
-#> }
+#> @ARTICLE{leedsetal2002atop,
+#>   AUTHOR = {Bretty Ashley Leeds and Jeffrey M. Ritter and Sara McLaughlin Mitchell and Andrew G. Long},
+#>   JOURNAL = {International Interactions},
+#>   PAGES = {237--260},
+#>   TITLE = {Alliance Treaty Obligations and Provisions, 1815-1944},
+#>   VOLUME = {28},
+#>   YEAR = {2002},
+#>   KEYWORDS = {add_atop_alliance()}}
 ```
 
 This function might expand in complexity in future releases, but you can
