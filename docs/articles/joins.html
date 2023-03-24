@@ -482,10 +482,11 @@ observations.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="va">data.frame</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(ccode)`</span></span>
-<span><span class="co">#&gt; Warning in left_join(x, y2): Each row in `x` is expected to match at most 1 row in `y`.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 11 of `x` matches multiple rows.</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> If multiple matches are expected, set `multiple = "all"` to silence this</span></span>
-<span><span class="co">#&gt;   warning.</span></span>
+<span><span class="co">#&gt; Warning in left_join(x, y2): Detected an unexpected many-to-many relationship between `x` and `y`.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 11 of `x` matches multiple rows in `y`.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Row 1 of `y` matches multiple rows in `x`.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> If a many-to-many relationship is expected, set `relationship =</span></span>
+<span><span class="co">#&gt;   "many-to-many"` to silence this warning.</span></span>
 <span><span class="co">#&gt;    ccode year ranking</span></span>
 <span><span class="co">#&gt; 1      2 2016     low</span></span>
 <span><span class="co">#&gt; 2      2 2017     low</span></span>
