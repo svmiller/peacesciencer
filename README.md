@@ -11,13 +11,14 @@
 `peacesciencer` is an R package including various functions and data
 sets to allow easier analyses in the field of quantitative peace
 science. The goal is to provide an R package that reasonably
-approximates what made
-[EUGene](https://doi.org/10.1177/0738894211413055) so attractive to
-scholars working in the field of quantitative peace science in the early
-2000s. EUGene shined because it encouraged replications of conflict
-models while having the user also generate data from scratch. Likewise,
-this R package will offer tools to approximate what EUGene did within
-the R environment (i.e. not requiring Windows for installation).
+approximates what made EUGene so attractive to scholars working in the
+field of quantitative peace science in the early 2000s. EUGene shined
+because it encouraged replications of conflict models while having the
+user also generate data from scratch. Likewise, this R package will
+offer tools to approximate what EUGene did within the R environment
+(i.e. not requiring Windows for installation).
+
+<!-- [EUGene](https://journals.sagepub.com/doi/10.1177/0738894211413055) -->
 
 # Installation
 
@@ -149,7 +150,7 @@ broom::tidy(modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + cow_
 #> 10 I(gmlmidspell^2)  0.00247   0.000135        18.4  2.74e- 75
 #> 11 I(gmlmidspell^3) -0.0000116 0.000000891    -13.0  1.16e- 38
 toc()
-#> 7.559 sec elapsed
+#> 7.35 sec elapsed
 ```
 
 Here is how you might do a standard civil conflict analysis using
@@ -224,7 +225,7 @@ broom::tidy(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_wbgdppc2011est + l1_wbp
 #> 11 I(war_ucdpspell^3) -0.0000499 0.0000302    -1.65  0.0982
 
 toc()
-#> 2.444 sec elapsed
+#> 2.315 sec elapsed
 ```
 
 # Citing What You Do in `{peacesciencer}`
