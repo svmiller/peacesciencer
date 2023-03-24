@@ -16,3 +16,4 @@ vignettes
 LICENSE*
 ^.*\.rds
 ^manuscript$
+^CRAN-SUBMISSION$
