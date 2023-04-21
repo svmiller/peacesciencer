@@ -9,5 +9,5 @@ bibentry(bibtype = "Article",
   number       = "6",
   pages        = "755--779",
   doi          = "10.1177/07388942221077926",
-  header       = "Please cite {peacesciencer} in publications that use it. It helps out my meager h-index. Please cite as:"
+  header       = "Please cite {peacesciencer} in publications that use it in addition to the actual data you're using. Please cite as:"
 )

@@ -1,3 +1,11 @@
+# peacesciencer 1.2.0
+
+Changes include:
+
+- `add_cow_alliance()` is deprecated and slated for removal at the request of the data set's maintainer. The function right now returns a stop communicating this information, also at the request of the data set's maintainer.
+- `add_gml_mids()` is deprecated and slated for removal at the request of one of the data set's maintainers. The function right now returns a stop communicating this information, also at the request of the data set's maintainer.
+- `cow_alliance`, `gml_dirdisp`, `gml_mid_ddydisps`, `gml_mid_disps`, `gml_part`, `gml_mid_ddlydisps`, and `gml_mid_dirleaderdisps` are deprecated and slated for removal.
+
 # peacesciencer 1.1.0
 
 Changes include:

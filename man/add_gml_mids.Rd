@@ -2,41 +2,62 @@
 % Please edit documentation in R/add_gml_mids.R
 \name{add_gml_mids}
 \alias{add_gml_mids}
-\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to a data frame}
+\title{Add Gibler-Miller-Little (GML) Militarized Interstate Dispute (MID) data to a
+data frame}
 \usage{
 add_gml_mids(data, keep, init = "sidea-all-joiners")
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 
-\item{keep}{an optional parameter, specified as a character vector, applicable to just the dyad-year data, and
-passed to the function in a \code{select(one_of(.))} wrapper. This
-allows the user to discard unwanted columns from the directed dispute data so that the output does not consume
-too much space in memory. Note: the Correlates of War system codes (\code{ccode1}, \code{ccode2}), the observation year
-(\code{year}), the presence or absence of an ongoing MID (\code{gmlmidongoing}), and the presence or absence of a unique
-MID onset (\code{gmlmidonset}) are \emph{always} returned. It would be foolish and self-defeating to eliminate those observations.
-The user is free to keep or discard anything else they see fit.
+\item{keep}{an optional parameter, specified as a character vector,
+applicable to just the dyad-year data, and passed to the function in a
+\code{select(one_of(.))} wrapper. This allows the user to discard unwanted
+columns from the directed dispute data so that the output does not consume
+too much space in memory. Note: the Correlates of War system codes
+(\code{ccode1}, \code{ccode2}), the observation year (\code{year}), the
+presence or absence of an ongoing MID (\code{gmlmidongoing}), and the
+presence or absence of a unique MID onset (\code{gmlmidonset}) are \emph{always}
+returned. It would be foolish and self-defeating to eliminate those
+observations. The user is free to keep or discard anything else they see fit.
 
-If \code{keep} is not specified in the function, the ensuing output returns everything.}
+If \code{keep} is not specified in the function, the ensuing output returns
+everything.}
 
-\item{init}{how should initiators be coded? Applicable only to state-year, leader-dyad-year, and leader-year data. This parameter accepts one of
-three possible values (\code{"sidea-orig"}, \code{"sidea-with-joiners"}, \code{"sidea-all-joiners"}). \code{"sidea-orig"} = a state initiates a MID (which
-appears as a summary return in the output) if the state was on Side A at the onset of the dispute. \code{"sidea-with-joiners"} = a state
-initiates a MID (which appears as a summary return in the output) if the state was on Side A at the onset of the dispute or if the
-state joined the MID on Side A. \code{"sidea-all-joiners"} = a state initiates a MID (which appears as a summary return in the output) if the
-state was on Side A at the onset of the dispute or if it joined at any point thereafter. See details section for more discussion. The
-default is  \code{"sidea-all-joiners"}.}
+\item{init}{how should initiators be coded? Applicable only to state-year,
+leader-dyad-year, and leader-year data. This parameter accepts one of
+three possible values (\code{"sidea-orig"}, \code{"sidea-with-joiners"},
+\code{"sidea-all-joiners"}). \code{"sidea-orig"} = a state initiates a MID
+(which appears as a summary return in the output) if the state was on Side A
+at the onset of the dispute. \code{"sidea-with-joiners"} = a state initiates
+a MID (which appears as a summary return in the output) if the state was on
+Side A at the onset of the dispute or if the state joined the MID on Side A.
+\code{"sidea-all-joiners"} = a state initiates a MID (which appears as a
+summary return in the output) if the state was on Side A at the onset of
+the dispute or if it joined at any point thereafter. See details section for
+more discussion. The default is  \code{"sidea-all-joiners"}.}
 }
 \value{
-\code{add_gml_mids()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds
-dispute information from the GML MID data. If the data are dyad-year, the return is a laundry list of information about onsets, ongoing conflicts,
-and assorted participant- and dispute-level summaries. If the data are leader-dyad-year, these are carefully matched to leaders as well.
-If the data are state-year or leader-year, the function returns information about ongoing disputes (and onsets) and
-whether there were any ongoing disputes (and onsets) the state (or leader) initiated.
+\code{add_gml_mids()} now returns a stop communicating one of the maintainer's
+requests to reject all software that facilitates the use of the data in this
+fashion. Before, it took a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame and adds dispute information from the GML MID data.
+If the data are dyad-year, the return is a laundry list of information about
+onsets, ongoing conflicts, and assorted participant- and dispute-level
+summaries. If the data are leader-dyad-year, these are carefully matched to
+leaders as well. If the data are state-year or leader-year, the function
+returns information about ongoing disputes (and onsets) and whether there
+were any ongoing disputes (and onsets) the state (or leader) initiated.
 }
 \description{
-\code{add_gml_mids()} merges in GML's MID data to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The current version
-of the GML MID data is 2.2.1.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\code{add_gml_mids()} merged in GML's MID data to a (dyad-year, leader-year,
+leader-dyad-year, state-year) data frame. The current version of the GML MID
+data is 2.2.1. However, this function is deprecated at the request of one of
+the data set's maintainers, insisting that the use of the data be done
+manually with design decisions made 100\% at the discretion of the researcher.
+The function now returns a stop communicating this development.
 }
 \details{
 Dyads are capable of having multiple disputes in a given year, which can
@@ -87,7 +108,7 @@ confrontations after World War II.
 }
 \examples{
 
-\donttest{
+\dontrun{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 cow_ddy \%>\% add_gml_mids()

@@ -1,7 +1,7 @@
 Package: peacesciencer
 Type: Package
 Title: Tools and Data for Quantitative Peace Science Research
-Version: 1.1.0
+Version: 1.1.9
 Depends: R (>= 3.5.0)
 Authors@R: person("Steve", "Miller",
                   email = "steven.v.miller@gmail.com", 

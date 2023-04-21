@@ -170,7 +170,7 @@ NULL
 #'
 #' Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}. Congressional Quarterly Press.
 #'
-"cow_alliance"
+NULL
 
 
 #' Correlates of War Direct Contiguity Data (v. 3.2)
@@ -358,7 +358,7 @@ NULL
 #' Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
 #' Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
 #'
-"gml_dirdisp"
+NULL
 
 
 #' A directed dyad-year data frame of Gleditsch-Ward state system members
@@ -1025,7 +1025,7 @@ NULL
 #' Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
 #' Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
 
-"gml_mid_ddydisps"
+NULL
 
 
 
@@ -1430,7 +1430,7 @@ NULL
 #' Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
 #'
 
-"gml_mid_disps"
+NULL
 
 
 #' Leader Willingness to Use Force
@@ -1522,7 +1522,7 @@ NULL
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
-"gml_part"
+NULL
 
 #' (An Abbreviation of) The LEAD Data Set
 #'
@@ -1611,7 +1611,7 @@ NULL
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
-"gml_mid_ddlydisps"
+NULL
 
 
 
@@ -1664,7 +1664,7 @@ NULL
 #' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
 #' \emph{Journal of Peace Research} 46(2): 269--83.
 
-"gml_mid_dirleaderdisps"
+NULL
 
 
 

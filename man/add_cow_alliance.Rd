@@ -7,38 +7,53 @@
 add_cow_alliance(data)
 }
 \arguments{
-\item{data}{a dyad-year or leader-dyad-year data frame (either "directed" or "non-directed")}
+\item{data}{a dyad-year or leader-dyad-year data frame (either "directed" or
+"non-directed")}
 }
 \value{
-\code{add_cow_alliance()} takes a dyad-year data frame and adds information about
-the alliance pledge in that given dyad-year. These include whether there was an alliance
-with a defense pledge, neutrality pledge, non-aggression pledge, or pledge for consultation
-in time of crisis (entente).
+\code{add_cow_alliance()} now returns a stop communicating the maintainer's
+request to reject all software that facilitates the use of the data in this
+fashion. \code{add_cow_alliance()} previously took a dyad-year data frame and
+added information about the alliance pledge in that given dyad-year. These
+include whether there was an alliance with a defense pledge, neutrality
+pledge, non-aggression pledge, or pledge for consultation in time of crisis
+(entente).
 }
 \description{
-\code{add_cow_alliance()} allows you to add Correlates of War alliance
-data to a dyad-year data frame
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\code{add_cow_alliance()} allowed you to add Correlates of War alliance
+data to a dyad-year data frame. However, this function is deprecated at the
+request of the data set's maintainer and any use of the Correlates of War's
+alliance data will have to be done manually. The function now returns a stop
+communicating this development.
 }
 \details{
-Duplicates in the original directed dyad-year alliance data were pre-processed. Check
-\code{cow_alliance} in the package's \code{data-raw} directory on Github for more information.
+Duplicates in the original directed dyad-year alliance data were
+pre-processed. Check \code{cow_alliance} in the package's \code{data-raw}
+directory on Github for more information.
 
-This function will also work with leader-dyad-years, though users should be careful with leader-level
-applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
-likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular
-leader-dyad. The Correlates of War's alliance data are not communicated with time measurements more granular than
-the year. Apply these data to leader-level analyses with that in mind.
+This function will also work with leader-dyad-years, though users should be
+careful with leader-level applications of alliance data. Alliance data are
+primarily communicated yearly, making it possible---even likely---that at
+least one leader-dyad in a given year is credited with an alliance that was
+not active in the particular leader-dyad. The Correlates of War's alliance
+data are not communicated with time measurements more granular than the year.
+Apply these data to leader-level analyses with that in mind.
 }
 \examples{
 
+
+\dontrun{
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 
 cow_ddy \%>\% add_cow_alliance()
-
+}
 }
 \references{
-Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}. Congressional Quarterly Press.
+Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}.
+Congressional Quarterly Press.
 }
 \author{
 Steven V. Miller
