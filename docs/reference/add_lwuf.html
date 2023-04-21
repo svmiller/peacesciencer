@@ -12,7 +12,7 @@ willingness to use force to leader-year data or leader-dyad-year data."><!-- mat
     
     <a class="navbar-brand me-2" href="../index.html">peacesciencer</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,22 +135,21 @@ to Use Force." <em>American Political Science Review</em> 114(4): 1352--1358.</p
 <span class="r-in"><span><span class="fu"><a href="create_leaderyears.html">create_leaderyears</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_lwuf</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(obsid)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17,686 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    obsid    leader gwcode gender leaderage  year yrino…¹ theta…² theta…³ theta…⁴</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> USA-1869 Grant       2 M             47  <span style="text-decoration: underline;">1</span>869       1   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> USA-1869 Grant       2 M             48  <span style="text-decoration: underline;">1</span>870       2   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> USA-1869 Grant       2 M             49  <span style="text-decoration: underline;">1</span>871       3   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> USA-1869 Grant       2 M             50  <span style="text-decoration: underline;">1</span>872       4   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> USA-1869 Grant       2 M             51  <span style="text-decoration: underline;">1</span>873       5   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> USA-1869 Grant       2 M             52  <span style="text-decoration: underline;">1</span>874       6   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> USA-1869 Grant       2 M             53  <span style="text-decoration: underline;">1</span>875       7   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> USA-1869 Grant       2 M             54  <span style="text-decoration: underline;">1</span>876       8   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> USA-1869 Grant       2 M             55  <span style="text-decoration: underline;">1</span>877       9   1.01    0.509   1.04 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> USA-1877 Hayes       2 M             55  <span style="text-decoration: underline;">1</span>877       1   0.464   0.545   0.472</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 17,676 more rows, 5 more variables: theta2_sd &lt;dbl&gt;,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   theta3_mean &lt;dbl&gt;, theta3_sd &lt;dbl&gt;, theta4_mean &lt;dbl&gt;, theta4_sd &lt;dbl&gt;, and</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   abbreviated variable names ¹​yrinoffice, ²​theta1_mean, ³​theta1_sd,</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ⁴​theta2_mean</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    obsid   leader gwcode gender leaderage  year yrinoffice theta1_mean theta1_sd</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> USA-18… Grant       2 M             47  <span style="text-decoration: underline;">1</span>869          1       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> USA-18… Grant       2 M             48  <span style="text-decoration: underline;">1</span>870          2       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> USA-18… Grant       2 M             49  <span style="text-decoration: underline;">1</span>871          3       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> USA-18… Grant       2 M             50  <span style="text-decoration: underline;">1</span>872          4       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> USA-18… Grant       2 M             51  <span style="text-decoration: underline;">1</span>873          5       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> USA-18… Grant       2 M             52  <span style="text-decoration: underline;">1</span>874          6       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> USA-18… Grant       2 M             53  <span style="text-decoration: underline;">1</span>875          7       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> USA-18… Grant       2 M             54  <span style="text-decoration: underline;">1</span>876          8       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> USA-18… Grant       2 M             55  <span style="text-decoration: underline;">1</span>877          9       1.01      0.509</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> USA-18… Hayes       2 M             55  <span style="text-decoration: underline;">1</span>877          1       0.464     0.545</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 17,676 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 6 more variables: theta2_mean &lt;dbl&gt;, theta2_sd &lt;dbl&gt;, theta3_mean &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   theta3_sd &lt;dbl&gt;, theta4_mean &lt;dbl&gt;, theta4_sd &lt;dbl&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

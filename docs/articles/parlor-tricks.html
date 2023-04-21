@@ -27,7 +27,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">peacesciencer</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.9</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -146,38 +146,38 @@ of the data.</p>
 <span><span class="co"># Proof of concept: Here's India</span></span>
 <span><span class="va">Data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">gwcode</span> <span class="op">==</span> <span class="fl">750</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 73 × 9</span></span></span>
-<span><span class="co">#&gt;    gwcode statename  year ucdpongoing ucdponset newstate maxin…¹ confl…² ucdps…³</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>    750 India      <span style="text-decoration: underline;">1</span>947           0         0        1      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>    750 India      <span style="text-decoration: underline;">1</span>948           1         1        1       2 227           1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    750 India      <span style="text-decoration: underline;">1</span>949           1         0        0       2 227           0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    750 India      <span style="text-decoration: underline;">1</span>950           1         0        0       2 227           0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    750 India      <span style="text-decoration: underline;">1</span>951           1         0        0       2 227           0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>    750 India      <span style="text-decoration: underline;">1</span>952           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    750 India      <span style="text-decoration: underline;">1</span>953           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    750 India      <span style="text-decoration: underline;">1</span>954           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    750 India      <span style="text-decoration: underline;">1</span>955           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    750 India      <span style="text-decoration: underline;">1</span>956           1         1        0       1 251           4</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 63 more rows, and abbreviated variable names ¹​maxintensity,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ²​conflict_ids, ³​ucdpspell</span></span></span>
+<span><span class="co">#&gt;    gwcode statename  year ucdpongoing ucdponset newstate maxintensity</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>    750 India      <span style="text-decoration: underline;">1</span>947           0         0        1           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>    750 India      <span style="text-decoration: underline;">1</span>948           1         1        1            2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    750 India      <span style="text-decoration: underline;">1</span>949           1         0        0            2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    750 India      <span style="text-decoration: underline;">1</span>950           1         0        0            2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    750 India      <span style="text-decoration: underline;">1</span>951           1         0        0            2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>    750 India      <span style="text-decoration: underline;">1</span>952           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    750 India      <span style="text-decoration: underline;">1</span>953           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    750 India      <span style="text-decoration: underline;">1</span>954           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    750 India      <span style="text-decoration: underline;">1</span>955           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    750 India      <span style="text-decoration: underline;">1</span>956           1         1        0            1</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 63 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: conflict_ids &lt;chr&gt;, ucdpspell &lt;dbl&gt;</span></span></span>
 <span></span>
 <span><span class="co"># And here's Belize</span></span>
 <span><span class="va">Data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">gwcode</span> <span class="op">==</span> <span class="fl">80</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 39 × 9</span></span></span>
-<span><span class="co">#&gt;    gwcode statename  year ucdpongoing ucdponset newstate maxin…¹ confl…² ucdps…³</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     80 Belize     <span style="text-decoration: underline;">1</span>981           0         0        1      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     80 Belize     <span style="text-decoration: underline;">1</span>982           0         0        1      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            1</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     80 Belize     <span style="text-decoration: underline;">1</span>983           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            2</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     80 Belize     <span style="text-decoration: underline;">1</span>984           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     80 Belize     <span style="text-decoration: underline;">1</span>985           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     80 Belize     <span style="text-decoration: underline;">1</span>986           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            5</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     80 Belize     <span style="text-decoration: underline;">1</span>987           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            6</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     80 Belize     <span style="text-decoration: underline;">1</span>988           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     80 Belize     <span style="text-decoration: underline;">1</span>989           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            8</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     80 Belize     <span style="text-decoration: underline;">1</span>990           0         0        0      <span style="color: #BB0000;">NA</span> <span style="color: #BB0000;">NA</span>            9</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 29 more rows, and abbreviated variable names ¹​maxintensity,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ²​conflict_ids, ³​ucdpspell</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    gwcode statename  year ucdpongoing ucdponset newstate maxintensity</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     80 Belize     <span style="text-decoration: underline;">1</span>981           0         0        1           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     80 Belize     <span style="text-decoration: underline;">1</span>982           0         0        1           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     80 Belize     <span style="text-decoration: underline;">1</span>983           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     80 Belize     <span style="text-decoration: underline;">1</span>984           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     80 Belize     <span style="text-decoration: underline;">1</span>985           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     80 Belize     <span style="text-decoration: underline;">1</span>986           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     80 Belize     <span style="text-decoration: underline;">1</span>987           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     80 Belize     <span style="text-decoration: underline;">1</span>988           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     80 Belize     <span style="text-decoration: underline;">1</span>989           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     80 Belize     <span style="text-decoration: underline;">1</span>990           0         0        0           <span style="color: #BB0000;">NA</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 29 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: conflict_ids &lt;chr&gt;, ucdpspell &lt;dbl&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="code-capabilitiesdevelopmentmilitarization-as-bremer-1992-did">Code Capabilities/Development/Militarization as Bremer (1992)
@@ -275,7 +275,7 @@ identify which side in a non-directed dyad-year is more powerful.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2    200  <span style="text-decoration: underline;">1</span>903 0.210 0.143      0 ccode1 &gt; ccode2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2    200  <span style="text-decoration: underline;">1</span>904 0.205 0.135      0 ccode1 &gt; ccode2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2    200  <span style="text-decoration: underline;">1</span>905 0.214 0.121      0 ccode1 &gt; ccode2</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 132,629 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 132,629 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 114,225 × 7</span></span></span>
@@ -291,7 +291,7 @@ identify which side in a non-directed dyad-year is more powerful.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     70  <span style="text-decoration: underline;">1</span>838 0.053<span style="text-decoration: underline;">3</span> 0.009<span style="text-decoration: underline;">66</span>      1 ccode1 &gt; ccode2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     70  <span style="text-decoration: underline;">1</span>839 0.050<span style="text-decoration: underline;">8</span> 0.009<span style="text-decoration: underline;">48</span>      1 ccode1 &gt; ccode2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     70  <span style="text-decoration: underline;">1</span>840 0.049<span style="text-decoration: underline;">5</span> 0.008<span style="text-decoration: underline;">98</span>      1 ccode1 &gt; ccode2</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 114,215 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 114,215 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 198,867 × 7</span></span></span>
@@ -307,7 +307,7 @@ identify which side in a non-directed dyad-year is more powerful.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927 0.239 0.009<span style="text-decoration: underline;">37</span>      2 ccode1 &gt; ccode2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928 0.240 0.009<span style="text-decoration: underline;">70</span>      2 ccode1 &gt; ccode2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929 0.240 0.009<span style="text-decoration: underline;">80</span>      2 ccode1 &gt; ccode2</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 198,857 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 198,857 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[4]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 141,100 × 7</span></span></span>
@@ -323,7 +323,7 @@ identify which side in a non-directed dyad-year is more powerful.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2    200  <span style="text-decoration: underline;">1</span>868 0.107  0.253      0 ccode2 &gt;= ccode1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2    200  <span style="text-decoration: underline;">1</span>869 0.108  0.246      0 ccode2 &gt;= ccode1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2    200  <span style="text-decoration: underline;">1</span>870 0.099<span style="text-decoration: underline;">0</span> 0.242      0 ccode2 &gt;= ccode1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 141,090 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 141,090 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[5]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 133,564 × 7</span></span></span>
@@ -339,7 +339,7 @@ identify which side in a non-directed dyad-year is more powerful.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2    200  <span style="text-decoration: underline;">1</span>823 0.033<span style="text-decoration: underline;">1</span> 0.318      1 ccode2 &gt;= ccode1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2    200  <span style="text-decoration: underline;">1</span>824 0.033<span style="text-decoration: underline;">0</span> 0.330      1 ccode2 &gt;= ccode1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2    200  <span style="text-decoration: underline;">1</span>825 0.034<span style="text-decoration: underline;">2</span> 0.331      1 ccode2 &gt;= ccode1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 133,554 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 133,554 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[6]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 235,749 × 7</span></span></span>
@@ -355,7 +355,7 @@ identify which side in a non-directed dyad-year is more powerful.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     20    255  <span style="text-decoration: underline;">1</span>935 0.008<span style="text-decoration: underline;">74</span> 0.103       2 ccode2 &gt;= ccode1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     20    255  <span style="text-decoration: underline;">1</span>936 0.008<span style="text-decoration: underline;">65</span> 0.115       2 ccode2 &gt;= ccode1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     20    255  <span style="text-decoration: underline;">1</span>937 0.008<span style="text-decoration: underline;">93</span> 0.118       2 ccode2 &gt;= ccode1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 235,739 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 235,739 more rows</span></span></span></code></pre></div>
 <p>Next, the manuscript codes Bremer’s (1992) development/“advanced
 economies” measure using the weak-link of the lower GDP per capita in
 the dyad using <a href="https://academic.oup.com/isq/article-abstract/64/2/392/5824855" class="external-link">the
@@ -421,7 +421,7 @@ would look something like this.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2  <span style="text-decoration: underline;">1</span>823    0.043<span style="text-decoration: underline;">9</span>    0.093<span style="text-decoration: underline;">3</span>  0.011<span style="text-decoration: underline;">1</span>   0.052<span style="text-decoration: underline;">2</span>        1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     2  <span style="text-decoration: underline;">1</span>824    0.044<span style="text-decoration: underline;">7</span>    0.086<span style="text-decoration: underline;">1</span>  0.012<span style="text-decoration: underline;">2</span>   0.049<span style="text-decoration: underline;">1</span>        1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2  <span style="text-decoration: underline;">1</span>825    0.045<span style="text-decoration: underline;">3</span>    0.089<span style="text-decoration: underline;">1</span>  0.012<span style="text-decoration: underline;">9</span>   0.051<span style="text-decoration: underline;">0</span>        1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15,941 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15,941 more rows</span></span></span></code></pre></div>
 <p>Now, let’s merge this into the <code>Bremer</code> data frame we
 created. I’ll make this an ordinal variable as well with the same 2, 1,
 0 ordering scheme.</p>
@@ -468,7 +468,7 @@ created. I’ll make this an ordinal variable as well with the same 2, 1,
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     31     40  <span style="text-decoration: underline;">1</span>993 0.000<span style="text-decoration: underline;">047</span>9 0.002<span style="text-decoration: underline;">65</span>         0         0           0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     31     40  <span style="text-decoration: underline;">1</span>994 0.000<span style="text-decoration: underline;">036</span>5 0.001<span style="text-decoration: underline;">98</span>         0         0           0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     31     40  <span style="text-decoration: underline;">1</span>995 0.000<span style="text-decoration: underline;">035</span>5 0.001<span style="text-decoration: underline;">61</span>         0         0           0</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 538,697 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 538,697 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 344,483 × 8</span></span></span>
@@ -484,7 +484,7 @@ created. I’ll make this an ordinal variable as well with the same 2, 1,
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     31  <span style="text-decoration: underline;">1</span>993 0.153 0.000<span style="text-decoration: underline;">047</span>9         1         0           1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     31  <span style="text-decoration: underline;">1</span>994 0.146 0.000<span style="text-decoration: underline;">036</span>5         1         0           1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     31  <span style="text-decoration: underline;">1</span>995 0.140 0.000<span style="text-decoration: underline;">035</span>5         1         0           1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 344,473 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 344,473 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 54,945 × 8</span></span></span>
@@ -500,7 +500,7 @@ created. I’ll make this an ordinal variable as well with the same 2, 1,
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927 0.239 0.009<span style="text-decoration: underline;">37</span>         1         1           2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928 0.240 0.009<span style="text-decoration: underline;">70</span>         1         1           2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929 0.240 0.009<span style="text-decoration: underline;">80</span>         1         1           2</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 54,935 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 54,935 more rows</span></span></span></code></pre></div>
 <p>Finally, the manuscript creates a militarization measure that is a
 weak-link that uses the data on military personnel and total population.
 Bremer opts for an approach similar to the development indicator he
@@ -545,7 +545,7 @@ I’m assuming he’s using just the total population variable to measure
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     2  <span style="text-decoration: underline;">1</span>823    0.043<span style="text-decoration: underline;">9</span>     0.024<span style="text-decoration: underline;">9</span>     0.005<span style="text-decoration: underline;">34</span>   0.015<span style="text-decoration: underline;">1</span>           0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     2  <span style="text-decoration: underline;">1</span>824    0.044<span style="text-decoration: underline;">7</span>     0.029<span style="text-decoration: underline;">5</span>     0.004<span style="text-decoration: underline;">74</span>   0.017<span style="text-decoration: underline;">1</span>           0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>     2  <span style="text-decoration: underline;">1</span>825    0.045<span style="text-decoration: underline;">3</span>     0.032<span style="text-decoration: underline;">1</span>     0.005<span style="text-decoration: underline;">11</span>   0.018<span style="text-decoration: underline;">6</span>           0</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 15,941 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 15,941 more rows</span></span></span></code></pre></div>
 <p>Let’s merge this into the <code>Bremer</code> data we created and
 inspect the output.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
@@ -590,7 +590,7 @@ inspect the output.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>931            0            0        0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>932            0            0        0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>933            0            0        0</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 303,358 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 303,358 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[2]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 340,196 × 6</span></span></span>
@@ -606,7 +606,7 @@ inspect the output.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>950            1            0        1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>971            1            0        1</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>973            1            0        1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 340,186 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 340,186 more rows</span></span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; [[3]]</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 112,758 × 6</span></span></span>
@@ -622,7 +622,7 @@ inspect the output.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>953            1            1        2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>954            1            1        2</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>955            1            1        2</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 112,748 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 112,748 more rows</span></span></span></code></pre></div>
 <p>If we wanted to perfectly recreate the data as Bremer (1992) did it
 almost 30 years ago, here’s how you’d do it in
 <a href="https://github.com/svmiller/peacesciencer/" class="external-link">peacesciencer</a> (albeit with newer data). Still, I think
@@ -691,7 +691,7 @@ conflict data. Just add both in the pipe and ask for peace-years.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>      2     40  <span style="text-decoration: underline;">1</span>987             1             1           3           0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>      2     40  <span style="text-decoration: underline;">1</span>988             0             0           0           0</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>      2     40  <span style="text-decoration: underline;">1</span>989             0             0           1           1</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 27 more rows</span></span></span></code></pre></div>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 27 more rows</span></span></span></code></pre></div>
 <p>You can do this with state-year data as well. For example, you can
 compare how CoW and UCDP code civil wars differently since 1946. Do
 note, however, that <a href="http://svmiller.com/peacesciencer/articles/state-systems.html">the
@@ -718,20 +718,20 @@ we’ll treat one as a master and merge other codes into it.</p>
 <span><span class="co">#&gt; Joining with `by = join_by(gwcode, year)`</span></span>
 <span><span class="co">#&gt; Joining with `by = join_by(ccode, year)`</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 73 × 10</span></span></span>
-<span><span class="co">#&gt;    gwcode ccode  year statename ucdpsp…¹ cowin…² ucdpo…³ ucdpo…⁴ cowin…⁵ cowin…⁶</span></span>
-<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>    750   750  <span style="text-decoration: underline;">1</span>947 India            0       0       0       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>    750   750  <span style="text-decoration: underline;">1</span>948 India            1       1       1       1       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    750   750  <span style="text-decoration: underline;">1</span>949 India            0       2       1       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    750   750  <span style="text-decoration: underline;">1</span>950 India            0       3       1       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    750   750  <span style="text-decoration: underline;">1</span>951 India            0       4       1       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>    750   750  <span style="text-decoration: underline;">1</span>952 India            0       5       0       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    750   750  <span style="text-decoration: underline;">1</span>953 India            1       6       0       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    750   750  <span style="text-decoration: underline;">1</span>954 India            2       7       0       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    750   750  <span style="text-decoration: underline;">1</span>955 India            3       8       0       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    750   750  <span style="text-decoration: underline;">1</span>956 India            4       9       0       0       0       0</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with 63 more rows, and abbreviated variable names ¹​ucdpspell,</span></span></span>
-<span><span class="co">#&gt; <span style="color: #949494;">#   ²​cowintraspell, ³​ucdpongoing, ⁴​ucdponset, ⁵​cowintraongoing, ⁶​cowintraonset</span></span></span></code></pre></div>
+<span><span class="co">#&gt;    gwcode ccode  year statename ucdpspell cowintraspell ucdpongoing ucdponset</span></span>
+<span><span class="co">#&gt;     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>    750   750  <span style="text-decoration: underline;">1</span>947 India             0             0           0         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>    750   750  <span style="text-decoration: underline;">1</span>948 India             1             1           1         1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>    750   750  <span style="text-decoration: underline;">1</span>949 India             0             2           1         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>    750   750  <span style="text-decoration: underline;">1</span>950 India             0             3           1         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>    750   750  <span style="text-decoration: underline;">1</span>951 India             0             4           1         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>    750   750  <span style="text-decoration: underline;">1</span>952 India             0             5           0         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>    750   750  <span style="text-decoration: underline;">1</span>953 India             1             6           0         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>    750   750  <span style="text-decoration: underline;">1</span>954 India             2             7           0         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>    750   750  <span style="text-decoration: underline;">1</span>955 India             3             8           0         0</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    750   750  <span style="text-decoration: underline;">1</span>956 India             4             9           0         0</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 63 more rows</span></span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 2 more variables: cowintraongoing &lt;dbl&gt;, cowintraonset &lt;dbl&gt;</span></span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="measure-leader-tenure-in-days">Measure Leader Tenure in Days<a class="anchor" aria-label="anchor" href="#measure-leader-tenure-in-days"></a>
@@ -800,14 +800,14 @@ year.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">leader_years</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">obsid</span> <span class="op">==</span> <span class="st">"USA-1977"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 5 × 9</span></span></span>
-<span><span class="co">#&gt;   obsid    leader ccode gender leaderage  year yrinoffice min_daysoffice max_d…¹</span></span>
-<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> USA-1977 Carter     2 M             53  <span style="text-decoration: underline;">1</span>977          1              1     346</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> USA-1977 Carter     2 M             54  <span style="text-decoration: underline;">1</span>978          2            347     711</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> USA-1977 Carter     2 M             55  <span style="text-decoration: underline;">1</span>979          3            712    <span style="text-decoration: underline;">1</span>076</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> USA-1977 Carter     2 M             56  <span style="text-decoration: underline;">1</span>980          4           <span style="text-decoration: underline;">1</span>077    <span style="text-decoration: underline;">1</span>442</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> USA-1977 Carter     2 M             57  <span style="text-decoration: underline;">1</span>981          5           <span style="text-decoration: underline;">1</span>443    <span style="text-decoration: underline;">1</span>462</span></span>
-<span><span class="co">#&gt; <span style="color: #949494;"># … with abbreviated variable name ¹​max_dayoffice</span></span></span></code></pre></div>
+<span><span class="co">#&gt;   obsid    leader ccode gender leaderage  year yrinoffice min_daysoffice</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> USA-1977 Carter     2 M             53  <span style="text-decoration: underline;">1</span>977          1              1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> USA-1977 Carter     2 M             54  <span style="text-decoration: underline;">1</span>978          2            347</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> USA-1977 Carter     2 M             55  <span style="text-decoration: underline;">1</span>979          3            712</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> USA-1977 Carter     2 M             56  <span style="text-decoration: underline;">1</span>980          4           <span style="text-decoration: underline;">1</span>077</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> USA-1977 Carter     2 M             57  <span style="text-decoration: underline;">1</span>981          5           <span style="text-decoration: underline;">1</span>443</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: max_dayoffice &lt;int&gt;</span></span></span></code></pre></div>
 <p>This measure might be more useful. Basically, Jimmy Carter was a new
 leader in 1977 (<code>min_daysoffice = 1</code>). By 1978, he had almost
 a year under his belt (i.e. Jan. 1, 1978 was his 347th day in office).
