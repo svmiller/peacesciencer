@@ -49,8 +49,9 @@ gml_mid_dirleaderdisps
 \description{
 These are data sets that have been deprecated and scheduled for
 removal, or data that have since been removed after deprecation. Data sets
-may be deprecated either by insistence of the data set's author, or because
-the data themselves are legacy data no longer in active demand or use in the
+may be deprecated either by insistence of the data set's author, because they
+will be relocated to another package for future development, or because the
+data themselves are legacy data no longer in active demand or use in the
 community. Deprecation and removal have the effect of also freeing up disk
 space given CRAN's 5 MB limitation for R packages.
 }
