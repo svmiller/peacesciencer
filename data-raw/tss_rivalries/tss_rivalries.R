@@ -53,7 +53,9 @@ tss_rivalries %>%
          ccode2 = ifelse(ccode_a > ccode_b, ccode_a, ccode_b)) %>%
   mutate(tssr_id = 1:n()) %>%
   select(tssr_id, rivalry, ccode1, ccode2, start:aprin) -> tss_rivalries
-
-tss_rivalries
+  
+# This is by way of Thompson et al. (p. 36), but this is assuredly what they meant.
+tss_rivalries %>%
+  mutate(end = ifelse(tssr_id == 61, 1955, end)) -> tss_rivalries 
 
 save(tss_rivalries, file="data/tss_rivalries.rda")
