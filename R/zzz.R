@@ -13,7 +13,7 @@ if(getRversion() >= "2.15.1")
       "gml_mid_ddydisps", "td_rivalries", "gw_cow_years", "rugged", "creg",
       "hief", "gwcode_democracy", "cow_war_intra", "cow_war_inter", "cow_trade_ndy",
       "ps_bib", "gml_mid_disps", "lwuf", "gml_part", "LEAD", "gml_mid_ddlydisps", "gml_mid_dirleaderdisps",
-      "false_cow_dyads", "false_gw_dyads", "ps_data_version", "leader_codes")
+      "false_cow_dyads", "false_gw_dyads", "ps_data_version", "leader_codes", "archigossums")
   )
 
 
