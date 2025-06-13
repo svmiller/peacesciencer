@@ -1,7 +1,8 @@
 #' Add Correlates of War major power information to a data frame
 #'
-#' @description \code{add_cow_majors()} allows you to add Correlates of War major power variables
-#' to a dyad-year, leader-year, leader dyad-year, or state-year data frame.
+#' @description \code{add_cow_majors()} allows you to add Correlates of War major
+#' power variables to a dyad-year, leader-year, leader dyad-year, or state-year
+#' data frame.
 #'
 #'
 #' @return \code{add_cow_majors()} takes a data frame and adds information
@@ -17,12 +18,22 @@
 #'
 #' @details
 #'
-#' Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
-#' as approximations for leaders in a given state-year.
+#' Be mindful that the data are fundamentally state-year and that extensions to
+#' leader-level data should be understood as approximations for leaders in a
+#' given state-year.
+#'
+#' The `mry` argument works on an informal assumption that the composition of
+#' the major powers are unchanged since the most recent data update. It simply
+#' carries forward the most recent observation from the end of the data and
+#' assumes there are no new major powers to note.
 #'
 #' @author Steven V. Miller
 #'
 #' @param data a data frame with appropriate \pkg{peacesciencer} attributes
+#' @param mry logical, defaults to `TRUE`. If `TRUE`, the data carry forward the
+#' identity of the major powers to the most recently concluded calendar year. If
+#' `FALSE`, the panel honors the right bound of the data's temporal domain and
+#' creates NAs for observations past it.
 #'
 #' @references
 #'
@@ -40,15 +51,30 @@
 #' @importFrom rlang .data
 #' @importFrom rlang .env
 
-add_cow_majors <- function(data) {
+add_cow_majors <- function(data, mry = TRUE) {
 
-
+if(mry == FALSE) {
   cow_majors %>%
     select(.data$ccode, .data$styear, .data$endyear) %>%
     rowwise() %>%
     mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
     select(-.data$styear, -.data$endyear) %>%
     mutate(cowmaj = 1) -> major_years
+} else {
+
+    mrcy <- as.numeric(format(Sys.Date(), "%Y")) - 1
+
+    cow_majors %>%
+      mutate(endyear = ifelse((.data$endyear == max(.data$endyear) &
+                                .data$endmonth == 12 &
+                                .data$endday == 31), mrcy, .data$endyear)) %>%
+      select(.data$ccode, .data$styear, .data$endyear) %>%
+      rowwise() %>%
+      mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
+      select(-.data$styear, -.data$endyear) %>%
+      mutate(cowmaj = 1) -> major_years
+  }
+
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 
@@ -62,8 +88,15 @@ add_cow_majors <- function(data) {
   data %>% left_join(., major_years, by=c("ccode1"="ccode","year"="year")) %>%
     rename(cowmaj1 = .data$cowmaj) %>%
     left_join(., major_years, by=c("ccode2"="ccode","year"="year")) %>%
-    rename(cowmaj2 = .data$cowmaj) %>%
-    mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= 2016, 0, .)) -> data
+    rename(cowmaj2 = .data$cowmaj) -> hold_this
+
+      if(mry == FALSE) {
+        hold_this %>%
+          mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= 2016, 0, .)) -> data
+      } else {
+        hold_this %>%
+          mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= mrcy, 0, .)) -> data
+      }
 
   return(data)
 
@@ -77,9 +110,19 @@ add_cow_majors <- function(data) {
 
 
     } else {
+
     data %>%
-      left_join(., major_years) %>%
-      mutate(cowmaj = ifelse(is.na(.data$cowmaj)  & .data$year <= 2016, 0, 1)) -> data
+      left_join(., major_years) -> hold_this
+
+      if(mry == FALSE) {
+        hold_this %>%
+          mutate(cowmaj = ifelse(is.na(.data$cowmaj)  &
+                                   .data$year <= 2016, 0, .data$cowmaj)) -> data
+      } else {
+        hold_this %>%
+          mutate(cowmaj = ifelse(is.na(.data$cowmaj)  &
+                                   .data$year <= mrcy, 0, .data$cowmaj)) -> data
+      }
 
     return(data)
 
