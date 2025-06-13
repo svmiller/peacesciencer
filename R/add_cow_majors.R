@@ -50,87 +50,199 @@
 #'
 #' @importFrom rlang .data
 #' @importFrom rlang .env
-
+#'
+#' @export
+#'
 add_cow_majors <- function(data, mry = TRUE) {
 
-if(mry == FALSE) {
-  cow_majors %>%
-    select(.data$ccode, .data$styear, .data$endyear) %>%
-    rowwise() %>%
-    mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
-    select(-.data$styear, -.data$endyear) %>%
-    mutate(cowmaj = 1) -> major_years
-} else {
+  ps_type <- attr(data, "ps_data_type")
+
+  major_years <- .majyears(mry)
+
+  dispatch <- list(
+    state_year = .add_cow_majors_state_year,
+    dyad_year = .add_cow_majors_dyad_year,
+    leader_year = .add_cow_majors_state_year,
+    leader_dyad_year = .add_cow_majors_dyad_year
+  )
+
+  if (is.null(ps_type) || !ps_type %in% names(dispatch)) {
+    stop("Unexpected or unsupported ps_data_type. Expected dyad_year, leader_dyad_year, state_year, or leader_year.")
+  }
+
+  data <- dispatch[[ps_type]](data, major_years, mry)
+
+  return(data)
+
+}
+
+#' @keywords internal
+#' @noRd
+.majyears <- function(mry = TRUE) {
+
+  if(mry == FALSE) {
+    cow_majors %>%
+      select(.data$ccode, .data$styear, .data$endyear) %>%
+      rowwise() %>%
+      mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
+      select(-.data$styear, -.data$endyear) %>%
+      mutate(cowmaj = 1) -> x
+
+  } else {
 
     mrcy <- as.numeric(format(Sys.Date(), "%Y")) - 1
 
     cow_majors %>%
       mutate(endyear = ifelse((.data$endyear == max(.data$endyear) &
-                                .data$endmonth == 12 &
-                                .data$endday == 31), mrcy, .data$endyear)) %>%
+                                 .data$endmonth == 12 &
+                                 .data$endday == 31), mrcy, .data$endyear)) %>%
       select(.data$ccode, .data$styear, .data$endyear) %>%
       rowwise() %>%
-      mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
+      mutate(year = list(seq(.data$styear, .data$endyear))) %>%
+      unnest(.data$year) %>%
       select(-.data$styear, -.data$endyear) %>%
-      mutate(cowmaj = 1) -> major_years
+      mutate(cowmaj = 1) -> x
   }
 
+  return(x)
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
-
-    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
-
-      stop("add_cow_majors() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
-
-
-    } else {
-
-  data %>% left_join(., major_years, by=c("ccode1"="ccode","year"="year")) %>%
-    rename(cowmaj1 = .data$cowmaj) %>%
-    left_join(., major_years, by=c("ccode2"="ccode","year"="year")) %>%
-    rename(cowmaj2 = .data$cowmaj) -> hold_this
-
-      if(mry == FALSE) {
-        hold_this %>%
-          mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= 2016, 0, .)) -> data
-      } else {
-        hold_this %>%
-          mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= mrcy, 0, .)) -> data
-      }
-
-  return(data)
-
-    }
-
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
-
-    if (!all(i <- c("ccode") %in% colnames(data))) {
-
-      stop("add_cow_majors() merges on the Correlates of War code (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
-
-
-    } else {
-
-    data %>%
-      left_join(., major_years) -> hold_this
-
-      if(mry == FALSE) {
-        hold_this %>%
-          mutate(cowmaj = ifelse(is.na(.data$cowmaj)  &
-                                   .data$year <= 2016, 0, .data$cowmaj)) -> data
-      } else {
-        hold_this %>%
-          mutate(cowmaj = ifelse(is.na(.data$cowmaj)  &
-                                   .data$year <= mrcy, 0, .data$cowmaj)) -> data
-      }
-
-    return(data)
-
-    }
-
-  } else  {
-      stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, or dyad_year. Try running create_dyadyears(), create_leaderyears(), or create_stateyears() at the start of the pipe.")
-    }
-
-  return(data)
 }
+
+#' @keywords internal
+#' @noRd
+.add_cow_majors_state_year <- function(data, major_years, mry) {
+
+  if(mry == TRUE) {
+    mrcy <- .pshf_year(Sys.Date()) - 1
+  } else {
+    mrcy <- max(cow_majors$endyear)
+  }
+
+  if (!"ccode" %in% colnames(data)) {
+    stop("add_cow_majors() merges on the Correlates of War code (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+  }
+
+  data %>%
+    left_join(major_years, by = c("ccode", "year")) %>%
+    mutate(cowmaj = ifelse(is.na(cowmaj) & year <= mrcy, 0, cowmaj))
+}
+
+#' @keywords internal
+#' @noRd
+.add_cow_majors_dyad_year <- function(data, major_years, mry) {
+
+  if(mry == TRUE) {
+    mrcy <- .pshf_year(Sys.Date()) - 1
+  } else {
+    mrcy <- max(cow_majors$endyear)
+  }
+
+  if (!all(c("ccode1", "ccode2") %in% colnames(data))) {
+    stop("add_cow_majors() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+  }
+
+  data %>%
+    left_join(major_years, by = c("ccode1" = "ccode", "year")) %>%
+    rename(cowmaj1 = .data$cowmaj) %>%
+    left_join(major_years, by = c("ccode2" = "ccode", "year")) %>%
+    rename(cowmaj2 = .data$cowmaj) %>%
+    mutate(
+      cowmaj1 = ifelse(is.na(.data$cowmaj1) & year <= mrcy, 0, .data$cowmaj1),
+      cowmaj2 = ifelse(is.na(.data$cowmaj2) & year <= mrcy, 0, .data$cowmaj2)
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+# add_cow_majors <- function(data, mry = TRUE) {
+#
+# if(mry == FALSE) {
+#   cow_majors %>%
+#     select(.data$ccode, .data$styear, .data$endyear) %>%
+#     rowwise() %>%
+#     mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
+#     select(-.data$styear, -.data$endyear) %>%
+#     mutate(cowmaj = 1) -> major_years
+# } else {
+#
+#     mrcy <- as.numeric(format(Sys.Date(), "%Y")) - 1
+#
+#     cow_majors %>%
+#       mutate(endyear = ifelse((.data$endyear == max(.data$endyear) &
+#                                 .data$endmonth == 12 &
+#                                 .data$endday == 31), mrcy, .data$endyear)) %>%
+#       select(.data$ccode, .data$styear, .data$endyear) %>%
+#       rowwise() %>%
+#       mutate(year = list(seq(.data$styear, .data$endyear))) %>% unnest(.data$year) %>%
+#       select(-.data$styear, -.data$endyear) %>%
+#       mutate(cowmaj = 1) -> major_years
+#   }
+#
+#
+#   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+#
+#     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+#
+#       stop("add_cow_majors() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+#
+#
+#     } else {
+#
+#   data %>% left_join(., major_years, by=c("ccode1"="ccode","year"="year")) %>%
+#     rename(cowmaj1 = .data$cowmaj) %>%
+#     left_join(., major_years, by=c("ccode2"="ccode","year"="year")) %>%
+#     rename(cowmaj2 = .data$cowmaj) -> hold_this
+#
+#       if(mry == FALSE) {
+#         hold_this %>%
+#           mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= 2016, 0, .)) -> data
+#       } else {
+#         hold_this %>%
+#           mutate_at(vars("cowmaj1", "cowmaj2"), ~ifelse(is.na(.) & .data$year <= mrcy, 0, .)) -> data
+#       }
+#
+#   return(data)
+#
+#     }
+#
+#   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
+#
+#     if (!all(i <- c("ccode") %in% colnames(data))) {
+#
+#       stop("add_cow_majors() merges on the Correlates of War code (ccode), which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+#
+#
+#     } else {
+#
+#     data %>%
+#       left_join(., major_years) -> hold_this
+#
+#       if(mry == FALSE) {
+#         hold_this %>%
+#           mutate(cowmaj = ifelse(is.na(.data$cowmaj)  &
+#                                    .data$year <= 2016, 0, .data$cowmaj)) -> data
+#       } else {
+#         hold_this %>%
+#           mutate(cowmaj = ifelse(is.na(.data$cowmaj)  &
+#                                    .data$year <= mrcy, 0, .data$cowmaj)) -> data
+#       }
+#
+#     return(data)
+#
+#     }
+#
+#   } else  {
+#       stop("add_cow_majors() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, or dyad_year. Try running create_dyadyears(), create_leaderyears(), or create_stateyears() at the start of the pipe.")
+#     }
+#
+#   return(data)
+# }
