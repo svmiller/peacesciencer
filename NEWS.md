@@ -7,6 +7,7 @@ Changes include:
 - `cow_alliance`, `gml_dirdisp`, `gml_mid_ddydisps`, `gml_mid_disps`, `gml_part`, `gml_mid_ddlydisps`, and `gml_mid_dirleaderdisps` are deprecated and slated for removal.
 - Fix error in `cow_capitals` data that did not adequately record Burundi's capital change in 2018. This concerns the data generated for `cow_capitals`.
 - Fix error in `tss_rivalries` for `tssr_id = 61`. This was in the book but the change in the data-raw directory shows what they assuredly meant. 
+- Add `mry` argument to `add_cow_majors()`, fix bug identified by @rochelleterman in [17](https://github.com/svmiller/peacesciencer/issues/17)
 
 # peacesciencer 1.1.0
 
