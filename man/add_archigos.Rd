@@ -10,20 +10,23 @@ add_archigos(data)
 \item{data}{a dyad-year data frame (either "directed" or "non-directed") or state-year data frame}
 }
 \value{
-\code{add_archigos()} takes a dyad-year or state-year data frame and adds a few summary
-variables based off the leader-level data. These include whether there was a leader transition in the
-state-year (or first/second state in the dyad-year), whether there was an "irregular" leader transition,
-the number of leaders in the state-year, the unique leader ID for Jan. 1 of the year, and the unique leader
-ID for Dec. 31 of the year.
+\code{add_archigos()} takes a dyad-year or state-year data frame and
+adds a few summary variables based off the leader-level data. These include
+whether there was a leader transition in the state-year (or first/second
+state in the dyad-year), whether there was an "irregular" leader transition,
+the number of leaders in the state-year, the unique leader ID for Jan. 1 of
+the year, and the unique leader ID for Dec. 31 of the year.
 }
 \description{
-\code{add_archigos()} allows you to add some information about leaders to dyad-year
-or state-year data. The function leans on an abbreviated version of the data, which also comes in this package.
+\code{add_archigos()} allows you to add some information about
+leaders to dyad-year or state-year data. The function leans on an abbreviated
+version of the data, which also comes in this package.
 }
 \details{
-The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-\code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-of the proverbial pipe.
+The function leans on attributes of the data that are provided by
+the \code{create_dyadyear()} or \code{create_stateyear()} function. Make sure
+that function (or data created by that function) appear at the top of the
+proverbial pipe.
 }
 \examples{
 \donttest{
