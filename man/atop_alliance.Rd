@@ -3,9 +3,9 @@
 \docType{data}
 \name{atop_alliance}
 \alias{atop_alliance}
-\title{Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.0)}
+\title{Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.1)}
 \format{
-A data frame with 272,046 observations on the following eight variables.
+A data frame with 273,296 observations on the following eight variables.
 \describe{
 \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
@@ -21,13 +21,16 @@ A data frame with 272,046 observations on the following eight variables.
 atop_alliance
 }
 \description{
-These are directed dyad-year-level data for alliance obligations and provisions from the ATOP project
+These are directed dyad-year-level data for alliance obligations and
+provisions from the ATOP project.
 }
 \details{
-The \code{data-raw} directory on the project's Github shows how the data were processed.
+The \code{data-raw} directory on the project's Github shows how the data
+were processed.
 }
 \references{
-Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and Andrew G. Long. 2002.
-Alliance Treaty Obligations and Provisions, 1815-1944. \emph{International Interactions} 28: 237-60.
+Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and Andrew
+G. Long. 2002. "Alliance Treaty Obligations and Provisions, 1815-1944."
+\emph{International Interactions} 28: 237-60.
 }
 \keyword{datasets}

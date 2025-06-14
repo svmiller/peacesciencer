@@ -4,7 +4,7 @@
 \alias{add_atop_alliance}
 \title{Add Alliance Treaty Obligations and Provisions (ATOP) alliance data to a dyad-year data frame}
 \usage{
-add_atop_alliance(data)
+add_atop_alliance(data, ndir = TRUE)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
