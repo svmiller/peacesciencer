@@ -8,29 +8,78 @@ add_atop_alliance(data)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{ndir}{logical, defaults to \code{TRUE}. This argument specifies the behavior
+of function whether the dyad-year data in the \code{data} argument is non-directed.
+See Details section for more.}
 }
 \value{
-\code{add_atop_alliance()} takes a (dyad-year, leader-dyad-year) data frame and adds information about
-the alliance pledge in that given dyad-year from the ATOP data. These include whether there was an alliance
-with a defense pledge, an offense pledge, neutrality pledge, non-aggression pledge, or pledge for consultation
-in time of crisis.
+\code{add_atop_alliance()} takes a (dyad-year, leader-dyad-year) data
+frame and adds information about the alliance pledge in that given dyad-year
+from the ATOP data. These include whether there was an alliance with a
+defense pledge, an offense pledge, neutrality pledge, non-aggression pledge,
+or pledge for consultation in time of crisis.
 }
 \description{
-\code{add_atop_alliance()} allows you to add Alliance Treaty Obligations and Provisions (ATOP)
-data to a (dyad-year, leader-dyad-year) data frame.
+\code{add_atop_alliance()} allows you to add Alliance Treaty
+Obligations and Provisions (ATOP) data to a (dyad-year, leader-dyad-year)
+data frame.
 }
 \details{
-Data are from version 5.0 of ATOP.
+Data are from version 5.1 of ATOP.
 
-This function will also work with leader-dyad-years, though users should be careful with leader-level
-applications of alliance data. Alliance data are primarily communicated yearly, making it possible---even
-likely---that at least one leader-dyad in a given year is credited with an alliance that was not active in the particular
-leader-dyad. The ATOP alliance data are not communicated with time measurements more granular than
-the year, at least for dyad-years. The alliance-level data provided by ATOP do have termination dates, but I am unaware
-how well these start and termination dates coincide with particular members joining after the fact or exiting early. The alliance
-phase data appear to communicate that "phases" are understood as beginning/ending when the underlying document is amended in such a
-way that it affects one of their variable codings, but this may or may not be because of a signatory joining after the fact or exiting
-early. More guidance will be useful going forward, but use these data for leader-level analyses with that in mind.
+This function will also work with leader-dyad-years, though users should be
+careful with leader-level applications of alliance data. Alliance data are
+primarily communicated yearly, making it possible---even likely---that at
+least one leader-dyad in a given year is credited with an alliance that was
+not active in the particular leader-dyad. The ATOP alliance data are not
+communicated with time measurements more granular than the year, at least for
+dyad-years. The alliance-level data provided by ATOP do have termination
+dates, but I am unaware how well these start and termination dates coincide
+with particular members joining after the fact or exiting early. The alliance
+phase data appear to communicate that "phases" are understood as beginning or
+ending when the underlying document is amended in such a way that it affects
+one of their variable codings, but this may or may not be because of a
+signatory joining after the fact or exiting early. More guidance will be
+useful going forward, but use these data for leader-level analyses with that
+in mind.
+\subsection{On the \code{ndir} Argument}{
+
+Consider this Belgium-France directed dyad-year from 1832 as illustrative of
+what you'll want to consider in the \code{ndir} argument.\tabular{cccccccc}{
+   \strong{ccode1} \tab \strong{ccode2} \tab \strong{year} \tab \strong{atop_defense} \tab \strong{atop_offense} \tab \strong{atop_neutral} \tab \strong{atop_nonagg} \tab \strong{atop_consul} \cr
+   211 \tab 220 \tab 1832 \tab 0 \tab 0 \tab 0 \tab 0 \tab 0 \cr
+   220 \tab 211 \tab 1832 \tab 1 \tab 0 \tab 0 \tab 0 \tab 0 \cr
+}
+
+
+A lot of \pkg{peacesciencer} functionality prior to version 1.2 had leaned on
+collapsing directed dyad-year data to non-directed dyad-year data through
+simple subsets of the data where \code{ccode2} is larger than \code{ccode1}. Here,
+that is a questionable decision absent clarification from the user. In this
+case, Belgium (211) has made no pledge to defend France (220), though France
+has made a pledge to defend Belgium in the event of an attack.
+
+If the data supplied in the \code{data} argument in this function are directed
+dyad-years, there is no issue for merging. \code{add_atop_alliance()} performs a
+quick assessment of whether there is any instance in which \code{ccode1} is greater
+than \code{ccode2}. If there are such observations, the data are assumed to be
+directed dyad-year and the merging proceeds without further consideration. If
+there are no instances in which \code{ccode1} is greater than \code{ccode2}, the data
+are assumed to be non-directed dyad-years and the behavior of this function
+hinges on the logical condition supplied to the \code{ndir} argument. If \code{ndir} is
+\code{TRUE} (default), the function assumes you are aware the data you have are
+non-directed while the alliance data are directed. It will then summarize the
+directed dyad-year data looking for the highest observed value in the
+dyad-year in either direction. In the above illustration, it would mean that
+the Belgium-France dyad would have a defense pledge in 1832 no matter how the
+non-directed dyad is entered in the data. If \code{ndir} is \code{FALSE}, the function
+performs a simple merge on matching dyad-year keys. In the above illustration,
+it would mean a Belgium-France dyad in 1832 would have no defense pledge
+because it was incidentally the case that the defense pledge that does appear
+in that dyad is made by the state with the higher state code. Use this
+argument with that in mind if you're data are non-directed.
+}
 }
 \examples{
 
@@ -41,8 +90,9 @@ cow_ddy \%>\% add_atop_alliance()
 
 }
 \references{
-Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and Andrew G. Long. 2002.
-Alliance Treaty Obligations and Provisions, 1815-1944. \emph{International Interactions} 28: 237-60.
+Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and
+Andrew G. Long. 2002. "Alliance Treaty Obligations and Provisions, 1815-1944."
+\emph{International Interactions} 28: 237-60.
 }
 \author{
 Steven V. Miller
