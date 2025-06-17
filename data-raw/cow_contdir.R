@@ -1,6 +1,6 @@
 library(tidyverse)
 
-haven::read_dta("~/Dropbox/data/cow/contiguity/3.2/contdir.dta") %>%
+haven::read_dta("~/Koofr/data/cow/contiguity/3.2/contdir.dta") %>%
   select(statelno, statehno, conttype, begin, end) %>%
   rename(ccode1 = statelno,
          ccode2 = statehno) -> cow_contdir
@@ -9,6 +9,11 @@ cow_contdir %>%
   rename(ccode1 = ccode2,
          ccode2 = ccode1) %>%
   bind_rows(cow_contdir, .) -> cow_contdir
+
+cow_contdir %>%
+  mutate(stdate = as.Date(paste0(str_sub(.data$begin, 1, 4),"-", str_sub(.data$begin, 5, 6), "-01")),
+         enddate = as.Date(paste0(str_sub(.data$end, 1, 4),"-", str_sub(.data$end, 5, 6), "-01"))) %>%
+  select(-begin, -end) -> cow_contdir
 
 save(cow_contdir, file="data/cow_contdir.rda")
 
