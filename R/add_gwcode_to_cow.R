@@ -53,16 +53,23 @@ add_gwcode_to_cow <- function(data) {
   }
 
   if (length(attributes(data)$ps_system) == 0 | attributes(data)$ps_system != "cow") {
+
     warning("The state system data here do not appear to be Correlates of War, or at least not declared as such. The function will still run, but you may want to inspect the output.")
 
   }
 
-  cow_gw_years %>%
-    filter(!is.na(.data$ccode)) %>%
-    group_by(.data$ccode, .data$year) %>%
-    filter(.data$gwcode == max(.data$gwcode)) %>%
-    ungroup() %>%
-    select(.data$gwcode, .data$ccode, .data$year) -> hold_this
+  # state-year panel; G-W is master and we want CoW codes. ----
+
+  syp <- isard::cw_gw_panel
+
+  syp %>% select(.data$ccode, .data$gwcode, .data$year) -> hold_this
+
+  # isard::cw_gw_panel %>%
+  #   filter(!is.na(.data$ccode)) %>%
+  #   group_by(.data$ccode, .data$year) %>%
+  #   filter(.data$gwcode == max(.data$gwcode)) %>%
+  #   ungroup() %>%
+  #   select(.data$gwcode, .data$ccode, .data$year) -> hold_this
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 

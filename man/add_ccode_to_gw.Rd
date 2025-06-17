@@ -4,18 +4,19 @@
 \alias{add_ccode_to_gw}
 \title{Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.}
 \usage{
-add_ccode_to_gw(data)
+add_ccode_to_gw(data, fillmiss)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_ccode_to_gw()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame that already has Gleditsch-Ward
-state system codes and adds their corollary Correlates of War codes.
+\code{add_ccode_to_gw()} takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame that already has Gleditsch-Ward state system codes and
+adds their corollary Correlates of War codes.
 }
 \description{
-\code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates of War system membership data
-with Gleditsch-Ward system data.
+\code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates
+of War system membership data with Gleditsch-Ward system data.
 }
 \details{
 The \code{data-raw} directory on the project's Github contains

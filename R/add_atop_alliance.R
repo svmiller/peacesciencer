@@ -132,24 +132,24 @@ add_atop_alliance <- function(data, ndir = TRUE) {
       left_join(data, .) %>%
       mutate_at(vars("atop_defense", "atop_offense", "atop_neutral",
                      "atop_nonagg", "atop_consul"),
-                ~ifelse(is.na(.) & between(year, 1815, 2018), 0, .)) -> data
+                ~ifelse(is.na(.) & between(.data$year, 1815, 2018), 0, .)) -> data
   } else { # the data are non-directed and now require a consideration of the `ndir` argument
 
     if(ndir == TRUE) { # the default, which assumes you want a summary of the dyad in either direction.
 
       atop_alliance %>%
-        mutate(ccodel = ifelse(ccode1 > ccode2, ccode2, ccode1),
-               ccodeh = ifelse(ccode1 > ccode2, ccode1, ccode2)) -> hold_this
+        mutate(ccodel = ifelse(.data$ccode1 > .data$ccode2, .data$ccode2, .data$ccode1),
+               ccodeh = ifelse(.data$ccode1 > .data$ccode2, .data$ccode1, .data$ccode2)) -> hold_this
 
       hold_this %>%
-        mutate(across(starts_with("atop_"), max), .by=c(ccodel, ccodeh, year)) %>%
+        mutate(across(starts_with("atop_"), max), .by=c(.data$ccodel, .data$ccodeh, .data$year)) %>%
         #filter(ccodel == 211 & ccodeh == 220 & year == 1832)
-        filter(ccode2 > ccode1) %>%
-        select(-ccodel, -ccodeh) %>%
+        filter(.data$ccode2 > .data$ccode1) %>%
+        select(-.data$ccodel, -.data$ccodeh) %>%
         left_join(data, .) %>%
         mutate_at(vars("atop_defense", "atop_offense", "atop_neutral",
                        "atop_nonagg", "atop_consul"),
-                  ~ifelse(is.na(.) & between(year, 1815, 2018), 0, .)) -> data
+                  ~ifelse(is.na(.) & between(.data$year, 1815, 2018), 0, .)) -> data
 
 
     } else { # ndir = FALSE
@@ -158,7 +158,7 @@ add_atop_alliance <- function(data, ndir = TRUE) {
         left_join(data, .) %>%
         mutate_at(vars("atop_defense", "atop_offense", "atop_neutral",
                        "atop_nonagg", "atop_consul"),
-                  ~ifelse(is.na(.) & between(year, 1815, 2018), 0, .)) -> data
+                  ~ifelse(is.na(.) & between(.data$year, 1815, 2018), 0, .)) -> data
 
 
     }

@@ -4,10 +4,15 @@
 \alias{add_contiguity}
 \title{Add Correlates of War direct contiguity information to a data frame}
 \usage{
-add_contiguity(data)
+add_contiguity(data, mry = FALSE)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{mry}{logical, defaults to \code{FALSE}. If \code{TRUE}, the data carry forward the
+identity of the major powers to the most recently concluded calendar year. If
+\code{FALSE}, the panel honors the right bound of the data's temporal domain and
+creates NAs for observations past it.}
 }
 \value{
 \code{add_contiguity()} takes a data frame and adds information
@@ -19,8 +24,9 @@ are state-year (or leader-year), the data return the total number of
 land and sea borders calculated from these master records.
 }
 \description{
-\code{add_contiguity()} allows you to add Correlates of War contiguity
-data to a dyad-year, leader-year, or leader-dyad-year, or state-year data frame.
+\code{add_contiguity()} allows you to add Correlates of War
+contiguity data to a dyad-year, leader-year, or leader-dyad-year, or
+state-year data frame.
 }
 \details{
 The contiguity codes in the dyad-year data range from 0 to 5.
@@ -30,23 +36,32 @@ fewer (but more than 12 miles). 4 = separated by 150 miles
 of water or fewer (but more than 24 miles). 5 = separated by 400 miles
 of water or fewer (but more than 150 miles).
 
-Importantly, 0 are the dyads that are not contiguous at all in the CoW contiguity data.
-This is a conscious decision on my part as I do not think of the CoW's contiguity data
-as exactly ordinal. Cross-reference CoW's contiguity data with the minimum distance
-data in this exact package to see how some dyads that CoW codes as not contiguous are
-in fact very close to each other, sometimes even land-contiguous. For example, Zimbabwe and
-Namibia are separated by only about a few hundred feet of water at that peculiar intersection of
-the Zambezi River where the borders of Zambia, Botswana, Namibia, and Zimbabwe meet. There is
-no contiguity record for this in the CoW data. There are other cases where contiguity records
-are situationally missing (e.g. India-Bangladesh, and Bangladesh-Myanmar in 1971) or other cases where
-states are much closer than CoW's contiguity data imply (e.g. Pakistan and the Soviet Union were separated by
-under 30 kilometers of Afghani territory). The researcher is free to recode these 0s to be, say, 6s, but this
-is why \pkg{peacesciencer} does not do this.
+Importantly, 0 are the dyads that are not contiguous at all in the CoW
+contiguity data. This is a conscious decision on my part as I do not think of
+the CoW's contiguity data as exactly ordinal. Cross-reference CoW's contiguity
+data with the minimum distance data in this exact package to see how some
+dyads that CoW codes as not contiguous are in fact very close to each other,
+sometimes even land-contiguous. For example, Zimbabwe and Namibia are separated
+by only about a few hundred feet of water at that peculiar intersection of the
+Zambezi River where the borders of Zambia, Botswana, Namibia, and Zimbabwe
+meet. There is no contiguity record for this in the CoW data. There are other
+cases where contiguity records are situationally missing (e.g.
+India-Bangladesh, and Bangladesh-Myanmar in 1971) or other cases where states
+are much closer than CoW's contiguity data imply (e.g. Pakistan and the Soviet
+Union were separated by under 30 kilometers of Afghani territory). The
+researcher is free to recode these 0s to be, say, 6s, but this is why
+\pkg{peacesciencer} does not do this.
 
 For additional clarity, the "master records" produce duplicates for cases when
 the contiguity relationship changed in a given year. This function returns the
 \emph{minimum} contiguity relationship observed in that given year. There should be no
 duplicates in the returned output.
+
+The \code{mry} argument works on an informal assumption that what CoW understands
+as contiguity relationships is unchanged since the last data update on record.
+This assumption is not problematic for composition/membership data, but it is
+questionable in light of current events past the temporal reach of the project.
+It is why the default is \code{FALSE} for this particular argument.
 
 Be mindful that the data are fundamentally state-year and that extensions to
 leader-level data should be understood as approximations for leaders in a
@@ -65,9 +80,9 @@ create_stateyears() \%>\% add_contiguity()
 
 }
 \references{
-Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
-(2002). "The Correlates of War Project Direct Contiguity Data, Version 3." Conflict
-Management and Peace Science 19 (2):58-66.
+Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and
+Charles Gochman (2002). "The Correlates of War Project Direct Contiguity Data,
+Version 3." Conflict Management and Peace Science 19 (2):58-66.
 }
 \author{
 Steven V. Miller

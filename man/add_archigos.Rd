@@ -24,7 +24,7 @@ version of the data, which also comes in this package.
 }
 \details{
 The function leans on attributes of the data that are provided by
-the \code{create_dyadyear()} or \code{create_stateyear()} function. Make sure
+the \code{create_dyadyears()} or \code{create_stateyears()} function. Make sure
 that function (or data created by that function) appear at the top of the
 proverbial pipe.
 }
@@ -41,8 +41,9 @@ create_stateyears() \%>\% add_archigos()
 
 }
 \references{
-Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-\emph{Journal of Peace Research} 46(2): 269--83.
+Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009.
+"Introducing Archigos: A Dataset of Political Leaders" \emph{Journal of Peace
+Research} 46(2): 269--83.
 }
 \author{
 Steven V. Miller

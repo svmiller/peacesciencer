@@ -124,7 +124,7 @@ add_cow_majors <- function(data, mry = TRUE) {
 
   data %>%
     left_join(major_years, by = c("ccode", "year")) %>%
-    mutate(cowmaj = ifelse(is.na(cowmaj) & year <= mrcy, 0, cowmaj))
+    mutate(cowmaj = ifelse(is.na(.data$cowmaj) & .data$year <= mrcy, 0, .data$cowmaj))
 }
 
 #' @keywords internal
@@ -147,8 +147,8 @@ add_cow_majors <- function(data, mry = TRUE) {
     left_join(major_years, by = c("ccode2" = "ccode", "year")) %>%
     rename(cowmaj2 = .data$cowmaj) %>%
     mutate(
-      cowmaj1 = ifelse(is.na(.data$cowmaj1) & year <= mrcy, 0, .data$cowmaj1),
-      cowmaj2 = ifelse(is.na(.data$cowmaj2) & year <= mrcy, 0, .data$cowmaj2)
+      cowmaj1 = ifelse(is.na(.data$cowmaj1) & .data$year <= mrcy, 0, .data$cowmaj1),
+      cowmaj2 = ifelse(is.na(.data$cowmaj2) & .data$year <= mrcy, 0, .data$cowmaj2)
     )
 }
 

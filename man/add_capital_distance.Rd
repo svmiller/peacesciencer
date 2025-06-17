@@ -2,33 +2,46 @@
 % Please edit documentation in R/add_capital_distance.R
 \name{add_capital_distance}
 \alias{add_capital_distance}
+\alias{add_cap_dist}
 \title{Add capital-to-capital distance to a data frame}
 \usage{
-add_capital_distance(data)
+add_capital_distance(data, transsum = "first")
+
+add_cap_dist(...)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{transsum}{a character vector with one of the following acceptable
+inputs: "first" ("jan1") or "last" ("dec31"). Determines what to do for a
+yearly summary in the case of a capital transition. "first" ("jan1") selects
+the first capital coordinate observed in a given year while "last" ("dec31")
+selects the last capital coordinate observed in a given year. Default is
+"first" ("jan1"). See details section for more.}
+
+\item{...}{optional, only to make the shortcut (\code{add_cap_dist()}) work}
 }
 \value{
-\code{add_capital_distance()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds the
-capital-to-capital distance between the first state and the second state (in dyad-year data) or the minimum
-capital-to-capital distance for a given state in a given year. A minor
-note about this function: cases of capital transition are recorded in the
-underlying data but, in the conversion to capital-years (and eventual
-merging into a dyad-year data frame), the Jan. 1 capital is used for calculating
-distances.
+\code{add_capital_distance()} takes a (dyad-year, state-year) data frame and
+adds the capital-to-capital distance between the first state and the second
+state (in dyad-year data) or the minimum capital-to-capital distance for a
+given state in a given year.
 }
 \description{
 \code{add_capital_distance()} allows you to add capital-to-capital
-distance to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. The capitals are coded in the
-\code{cow_capitals} and \code{gw_capitals}
-data frames, along with their latitudes and longitudes. The distance variable that
-emerges \code{capdist} is calculated using the "Vincenty" method (i.e. "as the crow
+distance to a (dyad-year, state-year) data frame. The distance variable that
+emerges (\code{capdist}) is calculated using the "Vincenty" method (i.e. "as the crow
 flies") and is expressed in kilometers.
 }
 \details{
-The function leans on attributes of the data that are provided by one of the "create" functions
-in this package (e.g. \code{create_dyadyear()} or \code{create_stateyear()}).
+The function leans on attributes of the data that are provided by one of the
+"create" functions in this package (e.g. \code{create_dyadyear()} or \code{create_stateyear()}).
+
+Be advised that "jan1" and "dec31" are alternate specifications for
+"first" and "last" respectively and exist as kind of a nudge for what you
+want to conceptualize the inputs for your year to be what is observed at its
+start or at its end. Obviously, there was no Jan. 1, 1954 or Dec. 31, 1875
+for the Republic of Vietnam.
 }
 \examples{
 

@@ -2,7 +2,18 @@ library(tidyverse)
 library(tidygeocoder)
 
 
-capitals <- read_csv("data-raw/capitals/capitals.csv")
+# capitals <- read_csv("data-raw/capitals/capitals.csv")
+#
+# # This might require a periodic update...
+# capitals %>%
+#   mutate(endyear = ifelse(endyear == 2020, 2024, endyear)) -> capitals
+
+readxl::read_excel("data-raw/capitals/capitals.xlsx", sheet = 1) %>%
+#  select(styear, stmon, stday) %>%
+  mutate(stdate = ymd(paste0(styear,"-",stmon,"-",stday)),
+         enddate = ymd(paste0(endyear,"-",endmon,"-",endday))) %>%
+  select(ccode:capital, stdate, enddate) -> capitals
+
 
 # Up first: CoW
 capitals %>%
@@ -12,10 +23,13 @@ capitals %>%
   # It also won't know Czechoslovakia and won't care about the Yemen distinctions.
   mutate(alt_name = case_when(
     between(ccode, 240, 280) ~ "Germany",
+    ccode == 300 ~ "Austria", # boo...
+    ccode == 235 & capital == "Rio de Janeiro" ~ "Brazil", # wow...
     ccode %in% c(325, 327, 329, 332, 335, 337) ~ "Italy",
     ccode == 315 ~ "Czechia",
     ccode %in% c(678, 680) ~ "Yemen",
     ccode == 781 ~ "Maldives",
+    ccode == 817 ~ "Vietnam",
     TRUE ~ statenme
   )) %>%
   mutate(cap_state = paste0(capital, ", ", alt_name)) %>%
@@ -34,16 +48,19 @@ capitals %>%
   # It also won't know Czechoslovakia and won't care about the Yemen distinctions.
   mutate(alt_name = case_when(
     between(gwcode, 240, 280) ~ "Germany",
+    gwcode == 300 ~ "Austria", # boo...
+    gwcode == 235 & capital == "Rio de Janeiro" ~ "Brazil", # wow...
     gwcode %in% c(325, 327, 329, 332, 335, 337) ~ "Italy",
     gwcode == 315 ~ "Czechia",
     gwcode %in% c(678, 680) ~ "Yemen",
     gwcode %in% c(563, 564) ~ "South Africa",
-    gwcode == 89 & styear == 1816 ~ "Guatemala",
-    gwcode == 89 & styear == 1834 ~ "El Salvador",
+    gwcode == 89 & year(stdate) == 1823 ~ "Guatemala",
+    gwcode == 89 & year(stdate) == 1833 ~ "El Salvador",
+    gwcode == 89 & year(stdate) == 1834 ~ "El Salvador",
     gwcode == 99 ~ "Colombia",
     gwcode %in% c(563, 564) ~ "South Africa",
     gwcode == 711 ~ "China",
-    gwcode == 815 ~ "Vietnam",
+    gwcode %in% c(815, 817) ~ "Vietnam",
     gwcode == 781 ~ "Maldives",
     TRUE ~ statenme
   )) %>%

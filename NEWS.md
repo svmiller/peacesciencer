@@ -10,6 +10,9 @@ Changes include:
 - Add `mry` argument to `add_cow_majors()`, fix bug identified by @rochelleterman in [17](https://github.com/svmiller/peacesciencer/issues/17)
 - `atop_alliance` updated to version 5.1.
 - `add_atop_alliance` has an extra argument (`ndir`) for how it should perform on non-directed dyad-year or leader-dyad-year data.
+- `cow_capitals` and `gw_capitals` formally current through 2024. Indonesia is the most likely candidate to require an update in these data, though that change has not happened yet. `cow_capitals` and `gw_capitals` further include some corrections and the introduction of start and end dates for capitals.
+- `gw_ddy` and `cow_ddy` current through 2024.
+- `add_capital_distance()` includes an argument (`"transsum"`) for what observation to privilege for yearly summaries in which there was a capital transition. Support for leader-level data momentarily dropped.
 
 Additions include:
 

@@ -1,11 +1,16 @@
 #' Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.
 #'
-#' @description \code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates of War system membership data
-#' with Gleditsch-Ward system data.
+#' @description
+#'
+#' \code{add_ccode_to_gw()} allows you to match, as well as one can, Correlates
+#' of War system membership data with Gleditsch-Ward system data.
 #'
 #'
-#' @return \code{add_ccode_to_gw()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame that already has Gleditsch-Ward
-#' state system codes and adds their corollary Correlates of War codes.
+#' @return
+#'
+#' \code{add_ccode_to_gw()} takes a (dyad-year, leader-year, leader-dyad-year,
+#' state-year) data frame that already has Gleditsch-Ward state system codes and
+#' adds their corollary Correlates of War codes.
 #'
 #' @details The \code{data-raw} directory on the project's Github contains
 #' more information about the underlying data that assists in merging in
@@ -44,7 +49,9 @@
 #' create_stateyears(system = 'gw') %>% add_ccode_to_gw()
 #' }
 #'
-add_ccode_to_gw <- function(data) {
+
+
+add_ccode_to_gw <- function(data, fillmiss) {
 
   if (any(i <- c("ccode1", "ccode2", "ccode") %in% colnames(data))) {
 
@@ -57,7 +64,11 @@ add_ccode_to_gw <- function(data) {
 
   }
 
-  gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year) -> hold_this
+  # state-year panel; G-W is master and we want CoW codes. ----
+
+  syp <- isard::gw_cw_panel
+
+  syp %>% select(.data$gwcode, .data$ccode, .data$year) -> hold_this
 
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
 

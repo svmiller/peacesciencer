@@ -4,10 +4,15 @@
 \alias{add_cow_majors}
 \title{Add Correlates of War major power information to a data frame}
 \usage{
-add_cow_majors(data)
+add_cow_majors(data, mry = TRUE)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{mry}{logical, defaults to \code{TRUE}. If \code{TRUE}, the data carry forward the
+identity of the major powers to the most recently concluded calendar year. If
+\code{FALSE}, the panel honors the right bound of the data's temporal domain and
+creates NAs for observations past it.}
 }
 \value{
 \code{add_cow_majors()} takes a data frame and adds information
@@ -21,12 +26,19 @@ returns just one column (\code{cowmaj}) for whether the
 state was a major power in a given state-year.
 }
 \description{
-\code{add_cow_majors()} allows you to add Correlates of War major power variables
-to a dyad-year, leader-year, leader dyad-year, or state-year data frame.
+\code{add_cow_majors()} allows you to add Correlates of War major
+power variables to a dyad-year, leader-year, leader dyad-year, or state-year
+data frame.
 }
 \details{
-Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
-as approximations for leaders in a given state-year.
+Be mindful that the data are fundamentally state-year and that extensions to
+leader-level data should be understood as approximations for leaders in a
+given state-year.
+
+The \code{mry} argument works on an informal assumption that the composition of
+the major powers are unchanged since the most recent data update. It simply
+carries forward the most recent observation from the end of the data and
+assumes there are no new major powers to note.
 }
 \examples{
 
