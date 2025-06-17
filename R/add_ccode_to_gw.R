@@ -51,7 +51,7 @@
 #'
 
 
-add_ccode_to_gw <- function(data, fillmiss) {
+add_ccode_to_gw <- function(data) {
 
   if (any(i <- c("ccode1", "ccode2", "ccode") %in% colnames(data))) {
 
