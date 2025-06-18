@@ -4,10 +4,15 @@
 \alias{add_contiguity}
 \title{Add Correlates of War direct contiguity information to a data frame}
 \usage{
-add_contiguity(data, mry = FALSE)
+add_contiguity(data, slice = "first", mry = FALSE)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{slice}{takes one of 'first' or 'last', determines behavior for when
+there is a change in a contiguity relationship in a given dyad in a given year.
+If 'first', the earlier contiguity relationship is recorded. If 'last', the
+latest contiguity relationship is recorded.}
 
 \item{mry}{logical, defaults to \code{FALSE}. If \code{TRUE}, the data carry forward the
 identity of the major powers to the most recently concluded calendar year. If
@@ -52,20 +57,22 @@ Union were separated by under 30 kilometers of Afghani territory). The
 researcher is free to recode these 0s to be, say, 6s, but this is why
 \pkg{peacesciencer} does not do this.
 
-For additional clarity, the "master records" produce duplicates for cases when
-the contiguity relationship changed in a given year. This function returns the
-\emph{minimum} contiguity relationship observed in that given year. There should be no
-duplicates in the returned output.
-
 The \code{mry} argument works on an informal assumption that what CoW understands
-as contiguity relationships is unchanged since the last data update on record.
+as contiguity relationships are unchanged since the last data update on record.
 This assumption is not problematic for composition/membership data, but it is
 questionable in light of current events past the temporal reach of the project.
-It is why the default is \code{FALSE} for this particular argument.
+It is why the default is \code{FALSE} for this particular argument. Please use
+with caution.
 
 Be mindful that the data are fundamentally state-year and that extensions to
 leader-level data should be understood as approximations for leaders in a
-given state-year.
+given state-year. Future updates aspire to fine-tune this behavior, but be
+mindful of its current limitations.
+
+There are contiguity relationship observed in the data that precede state
+system entry in some cases (see: Palau-Federated States of Micronesia). The
+functions I employ still fundamentally respect the state system data and will
+not create observations in instances like these.
 }
 \examples{
 

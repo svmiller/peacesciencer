@@ -5,7 +5,7 @@
 \alias{cow_contdir}
 \title{Correlates of War Direct Contiguity Data (v. 3.2)}
 \format{
-A data frame with 1,694 observations on the following 5 variables.
+A data frame with 1,874 observations on the following 5 variables.
 \describe{
 \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
@@ -31,14 +31,34 @@ separated by 12 miles of water or fewer (a la Stannis Baratheon). 3 = separated 
 24 miles of water or fewer (but more than 12 miles). 4 = separated by 150 miles
 of water or fewer (but more than 24 miles). 5 = separated by 400 miles of water
 or fewer (but more than 150 miles). Cases of separation by more than 400 miles
-of water are not included in the master record (but are easily discerned based on
-complete dyad-year data).
+of water are here as 0. The documentation for \code{add_contiguity()} belabors why
+you should not consider the contiguity variable as ordinal.
 
 \code{stdate} and \code{enddate} are simple date formats of the original \code{begin} and
 \code{end} columns in the raw data. Correlates of War communicates contiguity
 periods in a basic year-month format (\code{YYYYMM}). It's just easier to process
 an actual date, provided you're careful and know that the day I communicate
 in these columns means absolutely nothing.
+
+The master record contains no entry for a non-continguous relationship, leaving
+the user to figure that out for themselves. The data I provide here includes
+information for non-contiguous relationships for all states that had, at least
+at one point, a contiguous relationship. For example, there is just the one
+entry a contiguous USA-Russia relationship (from Jan. 1959 to the end of the
+data), but I also provide manual clarification of a non-contiguous relationship
+before that. You can check the \code{data-raw} directory for how I do this. This
+is necessary for a case like Myanmar-Philippines, in which a contiguity
+relationship enters the data in 1963 (but only for September of that year).
+It would be important to note that the data say there was no contiguity
+relationship in that dyad at the start of the year.
+
+Be mindful that the data are fundamentally year-month. Sometimes the end date
+for one contiguity relationship overlaps with the start date for another
+contiguity relationship. Sometimes it doesn't. Since no day information is
+available in the data, the contiguity entries I impute for non-contiguous
+relationships cannot know whether, for example, the contiguity relationship
+that starts in Jan. 1959 started on the first of the month or sometime in
+the middle of the month.
 }
 \references{
 Stinnett, Douglas M., Jaroslav Tir, Philip Schafer, Paul F. Diehl, and Charles Gochman
