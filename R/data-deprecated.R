@@ -74,3 +74,17 @@ NULL
 #' data manually, without assistance of any convenience functions or software
 #' that ultimately suggest design decisions on behalf of the researcher.
 "gml_mid_dirleaderdisps"
+
+
+#' @rdname data-deprecated
+#' @name ccode_democracy
+#' @details \code{ccode_democracy} is defunct. The data are now maintained in
+#' the \pkg{isard} package as \code{cw_democracy}.
+"ccode_democracy"
+
+
+#' @rdname data-deprecated
+#' @name gwcode_democracy
+#' @details \code{gwcode_democracy} is defunct. The data are now maintained in
+#' the \pkg{isard} package as \code{gw_democracy}.
+"gwcode_democracy"

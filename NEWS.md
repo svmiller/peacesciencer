@@ -15,6 +15,9 @@ Changes include:
 - `add_capital_distance()` includes an argument (`"transsum"`) for what observation to privilege for yearly summaries in which there was a capital transition. Support for leader-level data momentarily dropped.
 - `cow_contdir` replaces columns `begin` and `end` with `stdate` and `enddate` communicating the same information, but in date form.
 - `add_contiguity()` has an argument (`"slice"`) that determines its behavior for when there is a change in a contiguity relationship in a given year. The `mry` argument actually does something now.
+- `ccode_democracy` and `gwcode_democracy` are deprecated and slated for removal. Democracy data are now maintained in the `{isard}` package.
+- `add_democracy()` now leans on `{isard}` for democracy data.
+- `add_democracy()` has a `keep` argument now.
 - Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`
 
 Additions include:

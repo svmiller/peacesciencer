@@ -10,6 +10,8 @@
 \alias{gml_part}
 \alias{gml_mid_ddlydisps}
 \alias{gml_mid_dirleaderdisps}
+\alias{ccode_democracy}
+\alias{gwcode_democracy}
 \title{Data sets that have been deprecated}
 \format{
 Users interested in the data referenced here can check the Github
@@ -30,6 +32,10 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10708 rows and 16 columns.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 11686 rows and 16 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 16731 rows and 5 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 18289 rows and 5 columns.
 }
 \usage{
 cow_alliance
@@ -45,6 +51,10 @@ gml_part
 gml_mid_ddlydisps
 
 gml_mid_dirleaderdisps
+
+ccode_democracy
+
+gwcode_democracy
 }
 \description{
 These are data sets that have been deprecated and scheduled for
@@ -90,6 +100,12 @@ that ultimately suggest design decisions on behalf of the researcher.
 requests that users who want to use the data should download and process the
 data manually, without assistance of any convenience functions or software
 that ultimately suggest design decisions on behalf of the researcher.
+
+\code{ccode_democracy} is defunct. The data are now maintained in
+the \pkg{isard} package as \code{cw_democracy}.
+
+\code{gwcode_democracy} is defunct. The data are now maintained in
+the \pkg{isard} package as \code{gw_democracy}.
 }
 \keyword{datasets}
 \keyword{deprecated}

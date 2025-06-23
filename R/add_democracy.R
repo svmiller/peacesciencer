@@ -1,6 +1,8 @@
 #' Add democracy information to a data frame
 #'
-#' @description \code{add_democracy()} allows you to add estimates of democracy to your data.
+#' @description
+#'
+#' \code{add_democracy()} allows you to add estimates of democracy to your data.
 #'
 #'
 #' @return
@@ -19,9 +21,28 @@
 #'
 #' @details
 #'
+#' As of version 1.2, this function leans on the information made available in
+#' the \pkg{isard} package. This is a spin-off package I maintain for data that
+#' require periodic updates for the functionality in this package. As of writing,
+#' \pkg{peacesciencer} only requires that you have the \pkg{isard} package
+#' installed. It does not require you to have any particular version of the
+#' package installed. Thus, what exactly this function returns may depend on the
+#' particular version of \pkg{isard} you have installed. This will assuredly
+#' concern the right-bound of the temporal domain of data you get.
+#'
+#' You can read more about the data in the documentation for \pkg{isard}.
+#'
+#' - [https://svmiller.com/isard/reference/cw_democracy.html](https://svmiller.com/isard/reference/cw_democracy.html)
+#' - [https://svmiller.com/isard/reference/gw_democracy.html](https://svmiller.com/isard/reference/gw_democracy.html)
+#'
 #' Be mindful that the data are fundamentally state-year and that extensions to
 #' leader-level data should be understood as approximations for leaders in a
 #' given state-year.
+#'
+#" The `keep` argument must include one or more of the democracy estimates
+#' included in the `cw_democracy` or `gw_democracy` data in the \pkg{isard}
+#' data. Otherwise, it will return an error that it cannot subset columns that
+#' do not exist.
 #'
 #' A vignette on the package's website talks about how these data are here
 #' primarily to encourage you to maximize the number of observations in the
@@ -41,28 +62,15 @@
 #' @author Steven V. Miller
 #'
 #' @param data a data frame with appropriate \pkg{peacesciencer} attributes
+#' @param keep an optional parameter, specified as a character vector, about
+#' what democracy estimates the user wants to return from this function. If not
+#' specified, everything from the underlying democracy data is returned.
 #'
 #' @references
 #'
-#' Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
-#' Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-#' Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
-#' Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
-#' Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
-#' Valeriya Mechkova, Johannes von Romer, Aksel Sundtrom, Eitan Tzelgov,
-#' Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
-#' "V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
-#'
-#' Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017.
-#' "Polity IV Project: Political Regime Characteristics and Transitions,
-#' 1800-2017." Center for Systemic Peace.
-#'
-#' Marquez, Xavier, "A Quick Method for Extending the Unified Democracy
-#' Scores" (March 23, 2016).  \doi{10.2139/ssrn.2753830}
-#'
-#' Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. "Democratic
-#' Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
-#' *Political Analysis* 18(4): 426-449.
+#' Please cite Miller (2022) for \pkg{peacesciencer}. Beyond that, consult the
+#' documentation in \pkg{isard} for additional citations (contingent on which
+#' democracy estimate you are using).
 #'
 #' @examples
 #'
@@ -75,62 +83,211 @@
 #' create_stateyears(system="cow") %>% add_democracy()
 #'
 
-add_democracy <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+add_democracy <- function(data, keep) {
 
-    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
+  ps_system <- attr(data, "ps_system")
+  ps_type <- attr(data, "ps_data_type")
 
-      data %>% left_join(., ccode_democracy, by=c("ccode1"="ccode","year"="year")) %>%
-        rename(v2x_polyarchy1 = .data$v2x_polyarchy,
-               polity21 = .data$polity2,
-               xm_qudsest1 = .data$xm_qudsest) %>%
-        left_join(., ccode_democracy, by=c("ccode2"="ccode","year"="year")) %>%
-        rename(v2x_polyarchy2 = .data$v2x_polyarchy,
-               polity22 = .data$polity2,
-               xm_qudsest2 = .data$xm_qudsest) -> data
+  system_type <- paste0(ps_system, "_", ps_type)
 
-      return(data)
+  dispatch <- list(
+    cow_state_year = .add_democracy_cow_state_year,
+    cow_leader_year = .add_democracy_cow_state_year,
+    gw_state_year = .add_democracy_gw_state_year,
+    gw_leader_year = .add_democracy_gw_state_year,
+    cow_dyad_year = .add_democracy_cow_dyad_year,
+    cow_leader_dyad_year = .add_democracy_cow_dyad_year,
+    gw_dyad_year = .add_democracy_gw_dyad_year,
+    gw_leader_dyad_year = .add_democracy_gw_dyad_year
+  )
 
-    } else { # assuming it's G-W
+  if (!system_type %in% names(dispatch)) {
 
-      data %>% left_join(., gwcode_democracy, by=c("gwcode1"="gwcode","year"="year")) %>%
-        rename(v2x_polyarchy1 = .data$v2x_polyarchy,
-               polity21 = .data$polity2,
-               xm_qudsest1 = .data$xm_qudsest) %>%
-        left_join(., gwcode_democracy, by=c("gwcode2"="gwcode","year"="year")) %>%
-        rename(v2x_polyarchy2 = .data$v2x_polyarchy,
-               polity22 = .data$polity2,
-               xm_qudsest2 = .data$xm_qudsest) -> data
+    stop("Unsupported combination of ps_system and ps_data_type. System must be 'cow' or 'gw' and the data type must be 'dyad_year', `leader_dyad_year`, or 'state_year'.")
 
-      return(data)
-
-
-
-    }
-
-
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
-
-    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
-
-      data %>%
-        left_join(., ccode_democracy) -> data
-
-      return(data)
-
-    } else { # assuming it's G-W
-
-      data %>%
-        left_join(., gwcode_democracy) -> data
-
-      return(data)
-
-    }
-
-  } else  {
-    stop("add_democracy() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
   }
 
+  data <- dispatch[[system_type]](data, keep)
+
   return(data)
+
 }
+
+
+
+#' @keywords internal
+#' @noRd
+.add_democracy_cow_state_year <- function(data, keep) {
+
+  syp <- isard::cw_democracy
+
+  if (!missing(keep)) {
+    syp <- subset(syp, select = c("ccode", "year", keep))
+  } else {
+    syp <- syp
+  }
+
+  data %>%
+    left_join(., syp) -> data
+
+
+}
+
+#' @keywords internal
+#' @noRd
+.add_democracy_gw_state_year <- function(data, keep) {
+
+  syp <- isard::gw_democracy
+
+  if (!missing(keep)) {
+    syp <- subset(syp, select = c("gwcode", "year", keep))
+  } else {
+    syp <- syp
+  }
+
+  data %>%
+    left_join(., syp) -> data
+
+
+}
+
+
+#' @keywords internal
+#' @noRd
+.add_democracy_cow_dyad_year <- function(data, keep) {
+
+  syp <- isard::cw_democracy
+
+  if (!missing(keep)) {
+    syp <- subset(syp, select = c("ccode", "year", keep))
+
+    syp %>%
+      rename_with(~paste0(.x, "1", recycle0 = TRUE), keep) %>%
+      left_join(data, ., by=c("ccode1"="ccode",
+                              "year"="year")) %>%
+      left_join(.,   syp %>%
+                  rename_with(~paste0(.x, "2", recycle0 = TRUE), keep),
+                by=c("ccode2"="ccode", "year"="year")) -> data
+
+  } else {
+
+    syp <- syp
+
+    data %>% left_join(., syp, by=c("ccode1"="ccode","year"="year")) %>%
+      rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+             polity21 = .data$polity2,
+             euds1 = .data$euds,
+             aeuds1 = .data$aeuds) %>%
+      left_join(., syp, by=c("ccode2"="ccode","year"="year")) %>%
+      rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+             polity22 = .data$polity2,
+             euds2 = .data$euds,
+             aeuds2 = .data$aeuds) -> data
+
+  }
+
+
+
+
+
+
+
+
+}
+
+#' @keywords internal
+#' @noRd
+.add_democracy_gw_dyad_year <- function(data, keep) {
+
+  syp <- isard::gw_democracy
+
+  if (!missing(keep)) {
+    syp <- subset(syp, select = c("gwcode", "year", keep))
+
+    syp %>%
+      rename_with(~paste0(.x, "1", recycle0 = TRUE), keep) %>%
+      left_join(data, ., by=c("gwcode1"="gwcode",
+                              "year"="year")) %>%
+      left_join(.,   syp %>%
+                  rename_with(~paste0(.x, "2", recycle0 = TRUE), keep),
+                by=c("gwcode2"="gwcode", "year"="year")) -> data
+
+  } else {
+    syp <- syp
+
+    data %>% left_join(., syp, by=c("gwcode1"="gwcode","year"="year")) %>%
+      rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+             polity21 = .data$polity2,
+             euds1 = .data$euds,
+             aeuds1 = .data$aeuds) %>%
+      left_join(., syp, by=c("gwcode2"="gwcode","year"="year")) %>%
+      rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+             polity22 = .data$polity2,
+             euds2 = .data$euds,
+             aeuds2 = .data$aeuds) -> data
+  }
+
+}
+
+
+
+# add_democracy <- function(data) {
+#
+#   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+#
+#     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
+#
+#       data %>% left_join(., ccode_democracy, by=c("ccode1"="ccode","year"="year")) %>%
+#         rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+#                polity21 = .data$polity2,
+#                xm_qudsest1 = .data$xm_qudsest) %>%
+#         left_join(., ccode_democracy, by=c("ccode2"="ccode","year"="year")) %>%
+#         rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+#                polity22 = .data$polity2,
+#                xm_qudsest2 = .data$xm_qudsest) -> data
+#
+#       return(data)
+#
+#     } else { # assuming it's G-W
+#
+#       data %>% left_join(., gwcode_democracy, by=c("gwcode1"="gwcode","year"="year")) %>%
+#         rename(v2x_polyarchy1 = .data$v2x_polyarchy,
+#                polity21 = .data$polity2,
+#                xm_qudsest1 = .data$xm_qudsest) %>%
+#         left_join(., gwcode_democracy, by=c("gwcode2"="gwcode","year"="year")) %>%
+#         rename(v2x_polyarchy2 = .data$v2x_polyarchy,
+#                polity22 = .data$polity2,
+#                xm_qudsest2 = .data$xm_qudsest) -> data
+#
+#       return(data)
+#
+#
+#
+#     }
+#
+#
+#   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
+#
+#     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
+#
+#       data %>%
+#         left_join(., ccode_democracy) -> data
+#
+#       return(data)
+#
+#     } else { # assuming it's G-W
+#
+#       data %>%
+#         left_join(., gwcode_democracy) -> data
+#
+#       return(data)
+#
+#     }
+#
+#   } else  {
+#     stop("add_democracy() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+#   }
+#
+#   return(data)
+# }
