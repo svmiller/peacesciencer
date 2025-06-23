@@ -474,29 +474,6 @@ NULL
 
 "gw_mindist"
 
-#' Correlates of War National Trade Data Set (v. 4.0)
-#'
-#' These are state-year-level data for national trade from the Correlates of War project.
-#'
-#'
-#' @format A data frame with 14410 observations on the following four variables.
-#' \describe{
-#' \item{\code{ccode}}{the Correlates of War state system code}
-#' \item{\code{year}}{the year}
-#' \item{\code{imports}}{total imports of the state in current million USD}
-#' \item{\code{exports}}{total exports of the state in current million USD}
-#' }
-#'
-#' @details The \code{data-raw} directory on the project's Github shows how the data were processed.
-#'
-#' @references
-#'
-#' Barbieri, Katherine and Omar M.G. Keshk. 2016. Correlates of War Project Trade Data Set Codebook, Version 4.0. Online: \url{https://correlatesofwar.org}
-#'
-#' Barbieri, Katherine, Omar M.G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating Our Assumptions and Coding Rules." \emph{Conflict Management and Peace Science}, 26(5): 471-491.
-#'
-"cow_trade_sy"
-
 #' Alliance Treaty Obligations and Provisions (ATOP) Project Data (v. 5.1)
 #'
 #' These are directed dyad-year-level data for alliance obligations and
@@ -527,9 +504,6 @@ NULL
 #' *International Interactions* 28: 237-60.
 
 "atop_alliance"
-
-
-
 
 
 #' (Surplus and Gross) Domestic Product for Correlates of War States
@@ -670,140 +644,13 @@ NULL
 
 
 
-#' Directed Dyadic Dispute-Year Data (CoW-MID, v. 5.0)
-#'
-#' These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
-#'  Dispute (MID) project. Data are from version 5.0.
-#'
-#'
-#' @format A data frame with 11390 observations on the following 18 variables.
-#' \describe{
-#' \item{\code{dispnum}}{a numeric vector for the CoW-MID dispute number}
-#' \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}
-#' \item{\code{ccode2}}{a numeric vector for the target state in the dyad}
-#' \item{\code{year}}{a numeric vector for the dispute-year}
-#' \item{\code{dispongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
-#' \item{\code{disponset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}
-#' \item{\code{sidea1}}{is \code{ccode1} on side A of the dispute?}
-#' \item{\code{sidea2}}{is \code{ccode2} on side A of the dispute?}
-#' \item{\code{fatality1}}{a numeric vector for the overall fatality level of \code{ccode1} in the dispute}
-#' \item{\code{fatality2}}{a numeric vector for the overall fatality level of \code{ccode2} in the dispute}
-#' \item{\code{fatalpre1}}{a numeric vector for the known fatalities (with precision) for \code{ccode1} in the dispute}
-#' \item{\code{fatalpre2}}{a numeric vector for the known fatalities (with precision) for \code{ccode2} in the dispute}
-#' \item{\code{hiact1}}{a numeric vector for the highest action of \code{ccode1} in the dispute}
-#' \item{\code{hiact2}}{a numeric vector for the highest action of \code{ccode2} in the dispute}
-#' \item{\code{hostlev1}}{a numeric vector for the hostility level of \code{ccode1} in the dispute}
-#' \item{\code{hostlev2}}{a numeric vector for the hostility level of \code{ccode2} in the dispute}
-#' \item{\code{orig1}}{is \code{ccode1} an originator of the dispute?}
-#' \item{\code{orig2}}{is \code{ccode2} an originator of the dispute?}
-#' }
-#'
-#' @details The process of creating these is described at one of the references below. Importantly, these data are somewhat
-#' "naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
-#' Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
-#' action for both was a war. The data are thus similar to what the \code{EUGene} program would create for users back in the day. Use these
-#' data with that limitation in mind.
-#'
-#' @references
-#'
-#' Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
-#' URL: \url{http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/}
-#'
-#' Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens
-#' and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J. Soules. 2021.
-#' "The MID5 Dataset, 2011–2014: Procedures, coding rules, and description" \emph{Conflict Management and Peace Science}.
-#'
-
-"cow_mid_dirdisps"
-
-
-#' Abbreviated CoW-MID Dispute-level Data (v. 5.0)
-#'
-#' This is an abbreviated version of the dispute-level CoW-MID data.
-#'
-#'
-#' @format A data frame with 2436 observations on the following 7 variables.
-#' \describe{
-#' \item{\code{dispnum}}{a numeric vector for the CoW-MID dispute number}
-#' \item{\code{outcome}}{a numeric vector for the outcome of the MID}
-#' \item{\code{styear}}{a numeric vector for the start year of the MID}
-#' \item{\code{stmon}}{a numeric vector for the start month of the MID}
-#' \item{\code{settle}}{a numeric vector for the how dispute was settled}
-#' \item{\code{fatality}}{a numeric vector for the fatality level of the dispute}
-#' \item{\code{mindur}}{a numeric vector for the minimum duration of the MID}
-#' \item{\code{maxdur}}{a numeric vector for the maximum duration of the MID}
-#' \item{\code{hiact}}{a numeric vector for the highest action of the MID}
-#' \item{\code{hostlev}}{a numeric vector for the hostility level of the MID}
-#'  \item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
-#' }
-#'
-#' @details These data are purposely light on information; they're not intended to be used for dispute-level analyses, per se.
-#' They're intended to augment the directed dyadic dispute-year data by adding in variables that serve as exclusion rules to whittle
-#' the data from dyadic dispute-year to just dyad-year data.
-#'
-#' @references
-#'
-#' Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens
-#' and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J. Soules. 2021.
-#' "The MID5 Dataset, 2011–2014: Procedures, coding rules, and description" \emph{Conflict Management and Peace Science}.
-#'
-
-"cow_mid_disps"
 
 
 
-#' Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (CoW-MID, v. 5.0)
-#'
-#' These are directed dyadic dispute year data derived from the Correlates of War (CoW) Militarized Interstate
-#'  Dispute (MID) project. Data are from version 5.0. These were whittled to where there is no duplicate dyad-years.
-#'  Its primary aim here is merging into a dyad-year data frame.
-#'
-#'
-#' @format A data frame with 10234 observations on the following 25 variables.
-#' \describe{
-#' \item{\code{dispnum}}{a numeric vector for the CoW-MID dispute number}
-#' \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}
-#' \item{\code{ccode2}}{a numeric vector for the target state in the dyad}
-#' \item{\code{year}}{a numeric vector for the dispute-year}
-#' \item{\code{cowmidongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
-#' \item{\code{cowmidonset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}
-#' \item{\code{sidea1}}{is \code{ccode1} on side A of the dispute?}
-#' \item{\code{sidea2}}{is \code{ccode2} on side A of the dispute?}
-#' \item{\code{fatality1}}{a numeric vector for the overall fatality level of \code{ccode1} in the dispute}
-#' \item{\code{fatality2}}{a numeric vector for the overall fatality level of \code{ccode2} in the dispute}
-#' \item{\code{fatalpre1}}{a numeric vector for the known fatalities (with precision) for \code{ccode1} in the dispute}
-#' \item{\code{fatalpre2}}{a numeric vector for the known fatalities (with precision) for \code{ccode2} in the dispute}
-#' \item{\code{hiact1}}{a numeric vector for the highest action of \code{ccode1} in the dispute}
-#' \item{\code{hiact2}}{a numeric vector for the highest action of \code{ccode2} in the dispute}
-#' \item{\code{hostlev1}}{a numeric vector for the hostility level of \code{ccode1} in the dispute}
-#' \item{\code{hostlev2}}{a numeric vector for the hostility level of \code{ccode2} in the dispute}
-#' \item{\code{orig1}}{is \code{ccode1} an originator of the dispute?}
-#' \item{\code{orig2}}{is \code{ccode2} an originator of the dispute?}
-#' \item{\code{fatality}}{a numeric vector for the fatality level of the dispute}
-#' \item{\code{hostlev}}{a numeric vector for the hostility level of the MID}
-#' \item{\code{mindur}}{a numeric vector for the minimum duration of the MID}
-#' \item{\code{maxdur}}{a numeric vector for the maximum duration of the MID}
-#'  \item{\code{recip}}{a numeric vector for whether a MID was reciprocated}
-#'  \item{\code{stmon}}{a numeric vector for the start month of the MID}
-#' }
-#'
-#' @details The process of creating these is described at one of the references below. Importantly, these data are somewhat
-#' "naive." That is: they won't tell you, for example, that Brazil and Japan never directly fought each other during World War II.
-#' Instead, it will tell you that there were two years of overlap for the two on different sides of the conflict and that the highest
-#' action for both was a war. The data are thus similar to what the \code{EUGene} program would create for users back in the day. Use these
-#' data with that limitation in mind.
-#'
-#' @references
-#'
-#' Miller, Steven V. 2021. "How to (Meticulously) Convert Participant-Level Dispute Data to Dyadic Dispute-Year Data in R."
-#' URL: \url{http://svmiller.com/blog/2021/05/convert-cow-mid-data-to-dispute-year/}
-#'
-#' Palmer, Glenn, and Roseanne W. McManus and Vito D'Orazio and Michael R. Kenwick and Mikaela Karstens
-#' and Chase Bloch and Nick Dietrich and Kayla Kahn and Kellan Ritter and Michael J. Soules. 2021.
-#' "The MID5 Dataset, 2011–2014: Procedures, coding rules, and description" \emph{Conflict Management and Peace Science}.
-#'
 
-"cow_mid_ddydisps"
+
+
+
 
 
 #' Directed Dyadic Dispute-Year Data with No Duplicate Dyad-Years (GML, v. 2.2.1)
@@ -970,13 +817,16 @@ NULL
 #' \item{\code{efindex}}{a numeric vector for the estimate of ethnic fractionalization}
 #' }
 #'
-#' @details The \code{data-raw} directory on the project's Github contains more information about how these data were
-#' created.
+#' @details
+#'
+#' The \code{data-raw} directory on the project's Github contains more
+#' information about how these data were created.
 #'
 #' @references
 #'
-#' Drazanova, Lenka. 2020. "Introducing the Historical Index of Ethnic Fractionalization (HIEF) Dataset: Accounting
-#' for Longitudinal Changes in Ethnic Diversity." \emph{Journal of Open Humanities Data} 6:6
+#' Drazanova, Lenka. 2020. "Introducing the Historical Index of Ethnic
+#' Fractionalization (HIEF) Dataset: Accounting for Longitudinal Changes in
+#' Ethnic Diversity." \emph{Journal of Open Humanities Data} 6:6
 #' \doi{10.5334/johd.16}
 #'
 "hief"
@@ -984,9 +834,9 @@ NULL
 
 #' Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates
 #'
-#' This is a data set with state-year estimates for ethnic and religious fractionalization/polarization,
-#' by way of the Composition of Religious and Ethnic Groups (CREG) project at the
-#' University of Illinois. I-L-L.
+#' This is a data set with state-year estimates for ethnic and religious
+#' fractionalization/polarization, by way of the Composition of Religious and
+#' Ethnic Groups (CREG) project at the University of Illinois. I-L-L.
 #'
 #' @format A data frame with 11523 observations on the following 9 variables.
 #' \describe{
@@ -1000,48 +850,64 @@ NULL
 #' \item{\code{relpol}}{an estimate of the religious polarization index. See details for more.}
 #' }
 #'
-#' @details The \code{data-raw} directory on the project's Github contains more information about how these data were
-#' created. Pay careful attention to how I assigned CoW/G-W codes. The underlying data are version 1.02.
+#' @details
 #'
-#' The state codes provided by the CREG project are mostly Correlates of War codes, but with some differences.
-#' Summarizing these differences: the state code for Serbia from 1992 to 2013 is actually the Gleditsch-Ward code (340).
-#' Russia after the dissolution of the Soviet Union (1991-onward) is 393 and not 365. The Soviet Union has the 365 code.
-#' Yugoslavia has the 345 code. The code for Yemen (678) is effectively the Gleditsch-Ward code because it spans the entire
-#' post-World War II temporal domain. Likewise, the code for post-unification Germany is the Gleditsch-Ward code (260) as well.
-#' The codebook actually says it's 265 (which would be East Germany's code), but this is assuredly a typo based on the data.
+#' The \code{data-raw} directory on the project's Github contains more
+#' information about how these data were created. Pay careful attention to how I
+#' assigned CoW/G-W codes. The underlying data are version 1.02.
 #'
-#' The codebook cautions there are insufficient data for ethnic group estimates for Cameroon, France, India,
-#' Kosovo, Montenegro, Mozambique, and Papua New Guinea. The French case is particularly disappointing but the
-#' missing data there are a function of both France's constitution and modelling issues for CREG (per the
-#' codebook). There are insufficient data to make religious group estimates for China, North Korea, and the
-#' short-lived Republic of Vietnam.
+#' The state codes provided by the CREG project are mostly Correlates of War
+#' codes, but with some differences. Summarizing these differences: the state
+#' code for Serbia from 1992 to 2013 is actually the Gleditsch-Ward code (340).
+#' Russia after the dissolution of the Soviet Union (1991-onward) is 393 and not
+#' 365. The Soviet Union has the 365 code. Yugoslavia has the 345 code. The code
+#' for Yemen (678) is effectively the Gleditsch-Ward code because it spans the
+#' entire post-World War II temporal domain. Likewise, the code for
+#' post-unification Germany is the Gleditsch-Ward code (260) as well. The
+#' codebook actually says it's 265 (which would be East Germany's code), but
+#' this is assuredly a typo based on the data.
 #'
-#' The fractionalization estimates are the familiar Herfindahl-Hirschman concentration index. The polarization
-#' formula comes by way of Montalvo and Reynal-Querol (2000), though this book does not appear to be published
-#' beyond its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
+#' The codebook cautions there are insufficient data for ethnic group estimates
+#' for Cameroon, France, India, Kosovo, Montenegro, Mozambique, and Papua New
+#' Guinea. The French case is particularly disappointing but the missing data
+#' there are a function of both France's constitution and modelling issues for
+#' CREG (per the codebook). There are insufficient data to make religious group
+#' estimates for China, North Korea, and the short-lived Republic of Vietnam.
+#'
+#' The fractionalization estimates are the familiar Herfindahl-Hirschman
+#' concentration index. The polarization formula comes by way of  Montalvo and
+#' Reynal-Querol (2000), though this book does not appear to be published beyond
+#' its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
 #' You can cite Alesina (2003) for the fractionalization measure if you'd like.
 #'
-#' In the most literal sense of "1", the group proportions may not sum to exactly 1 because of rounding in the
-#' data. There were only two problem cases in these data worth mentioning. First, in both data sets, there would
-#' be the occasional duplicates of group names by state-year (for example: Afghanistan in 1951 in the ethnic group
-#' data and the United States in 1948 in the religious group data). In those cases, the script I make available
-#' in the \code{data-raw} directory just select distinct values and that effectively fixes the problem of duplicates,
-#' where they do appear. Finally, Costa Rica had a curious problem for most years in the religious group data. All
-#' Costa Rica years have group data for Protestants, Roman Catholics, and "others." Up until 1964 or so, the "others"
-#' are zero. Afterward, there is some small proportion of "others". However, the sum of Protestants, Roman Catholics, and
-#' "others" exceeds 1 (pretty clearly) and the difference between the sum and 1 is entirely the "others." So, I drop
-#' the "others" for all years. I don't think that's terribly problematic, but it's worth saying that's what I did.
+#' In the most literal sense of "1", the group proportions may not sum to
+#' exactly 1 because of rounding in the data. There were only two problem cases
+#' in these data worth mentioning. First, in both data sets, there would be the
+#' occasional duplicates of group names by state-year (for example: Afghanistan
+#' in 1951 in the ethnic group data and the United States in 1948 in the
+#' religious group data). In those cases, the script I make available in the
+#' `data-raw` directory just select distinct values and that effectively fixes
+#' the problem of duplicates, where they do appear. Finally, Costa Rica had a
+#' curious problem for most years in the religious group data. All Costa Rica
+#' years have group data for Protestants, Roman Catholics, and "others." Up
+#' until 1964 or so, the "others" are zero. Afterward, there is some small
+#' proportion of "others". However, the sum of Protestants, Roman Catholics, and
+#' "others" exceeds 1 (pretty clearly) and the difference between the sum and 1
+#' is entirely the "others." So, I drop the "others" for all years. I don't
+#' think that's terribly problematic, but it's worth saying that's what I did.
 #'
 #' @references
 #'
-#' Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and Romain Wacziarg. 2003.
-#' "Fractionalization". \emph{Journal of Economic Growth} 8: 155-194.
+#' Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and
+#' Romain Wacziarg. 2003. "Fractionalization". *Journal of Economic Growth* 8: 155-194.
 #'
-#' Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization, Potential Conflict, and Civil Wars"
-#' \emph{American Economic Review} 95(3): 796--816.
+#' Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization,
+#' Potential Conflict, and Civil Wars." *American Economic Review* 95(3):
+#' 796--816.
 #'
-#' Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph Bajjalieh. 2012.
-#' \emph{The Composition of Religious and Ethnic Groups (CREG) Project}. Cline Center for Democracy.
+#' Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph
+#' Bajjalieh. 2012. *The Composition of Religious and Ethnic Groups (CREG)
+#' Project*. Cline Center for Democracy.
 #'
 "creg"
 

@@ -20,12 +20,13 @@ hief
 This is a data set with state-year estimates for ethnic fractionalization.
 }
 \details{
-The \code{data-raw} directory on the project's Github contains more information about how these data were
-created.
+The \code{data-raw} directory on the project's Github contains more
+information about how these data were created.
 }
 \references{
-Drazanova, Lenka. 2020. "Introducing the Historical Index of Ethnic Fractionalization (HIEF) Dataset: Accounting
-for Longitudinal Changes in Ethnic Diversity." \emph{Journal of Open Humanities Data} 6:6
+Drazanova, Lenka. 2020. "Introducing the Historical Index of Ethnic
+Fractionalization (HIEF) Dataset: Accounting for Longitudinal Changes in
+Ethnic Diversity." \emph{Journal of Open Humanities Data} 6:6
 \doi{10.5334/johd.16}
 }
 \keyword{datasets}

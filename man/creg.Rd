@@ -21,51 +21,65 @@ A data frame with 11523 observations on the following 9 variables.
 creg
 }
 \description{
-This is a data set with state-year estimates for ethnic and religious fractionalization/polarization,
-by way of the Composition of Religious and Ethnic Groups (CREG) project at the
-University of Illinois. I-L-L.
+This is a data set with state-year estimates for ethnic and religious
+fractionalization/polarization, by way of the Composition of Religious and
+Ethnic Groups (CREG) project at the University of Illinois. I-L-L.
 }
 \details{
-The \code{data-raw} directory on the project's Github contains more information about how these data were
-created. Pay careful attention to how I assigned CoW/G-W codes. The underlying data are version 1.02.
+The \code{data-raw} directory on the project's Github contains more
+information about how these data were created. Pay careful attention to how I
+assigned CoW/G-W codes. The underlying data are version 1.02.
 
-The state codes provided by the CREG project are mostly Correlates of War codes, but with some differences.
-Summarizing these differences: the state code for Serbia from 1992 to 2013 is actually the Gleditsch-Ward code (340).
-Russia after the dissolution of the Soviet Union (1991-onward) is 393 and not 365. The Soviet Union has the 365 code.
-Yugoslavia has the 345 code. The code for Yemen (678) is effectively the Gleditsch-Ward code because it spans the entire
-post-World War II temporal domain. Likewise, the code for post-unification Germany is the Gleditsch-Ward code (260) as well.
-The codebook actually says it's 265 (which would be East Germany's code), but this is assuredly a typo based on the data.
+The state codes provided by the CREG project are mostly Correlates of War
+codes, but with some differences. Summarizing these differences: the state
+code for Serbia from 1992 to 2013 is actually the Gleditsch-Ward code (340).
+Russia after the dissolution of the Soviet Union (1991-onward) is 393 and not
+365. The Soviet Union has the 365 code. Yugoslavia has the 345 code. The code
+for Yemen (678) is effectively the Gleditsch-Ward code because it spans the
+entire post-World War II temporal domain. Likewise, the code for
+post-unification Germany is the Gleditsch-Ward code (260) as well. The
+codebook actually says it's 265 (which would be East Germany's code), but
+this is assuredly a typo based on the data.
 
-The codebook cautions there are insufficient data for ethnic group estimates for Cameroon, France, India,
-Kosovo, Montenegro, Mozambique, and Papua New Guinea. The French case is particularly disappointing but the
-missing data there are a function of both France's constitution and modelling issues for CREG (per the
-codebook). There are insufficient data to make religious group estimates for China, North Korea, and the
-short-lived Republic of Vietnam.
+The codebook cautions there are insufficient data for ethnic group estimates
+for Cameroon, France, India, Kosovo, Montenegro, Mozambique, and Papua New
+Guinea. The French case is particularly disappointing but the missing data
+there are a function of both France's constitution and modelling issues for
+CREG (per the codebook). There are insufficient data to make religious group
+estimates for China, North Korea, and the short-lived Republic of Vietnam.
 
-The fractionalization estimates are the familiar Herfindahl-Hirschman concentration index. The polarization
-formula comes by way of Montalvo and Reynal-Querol (2000), though this book does not appear to be published
-beyond its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
+The fractionalization estimates are the familiar Herfindahl-Hirschman
+concentration index. The polarization formula comes by way of  Montalvo and
+Reynal-Querol (2000), though this book does not appear to be published beyond
+its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
 You can cite Alesina (2003) for the fractionalization measure if you'd like.
 
-In the most literal sense of "1", the group proportions may not sum to exactly 1 because of rounding in the
-data. There were only two problem cases in these data worth mentioning. First, in both data sets, there would
-be the occasional duplicates of group names by state-year (for example: Afghanistan in 1951 in the ethnic group
-data and the United States in 1948 in the religious group data). In those cases, the script I make available
-in the \code{data-raw} directory just select distinct values and that effectively fixes the problem of duplicates,
-where they do appear. Finally, Costa Rica had a curious problem for most years in the religious group data. All
-Costa Rica years have group data for Protestants, Roman Catholics, and "others." Up until 1964 or so, the "others"
-are zero. Afterward, there is some small proportion of "others". However, the sum of Protestants, Roman Catholics, and
-"others" exceeds 1 (pretty clearly) and the difference between the sum and 1 is entirely the "others." So, I drop
-the "others" for all years. I don't think that's terribly problematic, but it's worth saying that's what I did.
+In the most literal sense of "1", the group proportions may not sum to
+exactly 1 because of rounding in the data. There were only two problem cases
+in these data worth mentioning. First, in both data sets, there would be the
+occasional duplicates of group names by state-year (for example: Afghanistan
+in 1951 in the ethnic group data and the United States in 1948 in the
+religious group data). In those cases, the script I make available in the
+\code{data-raw} directory just select distinct values and that effectively fixes
+the problem of duplicates, where they do appear. Finally, Costa Rica had a
+curious problem for most years in the religious group data. All Costa Rica
+years have group data for Protestants, Roman Catholics, and "others." Up
+until 1964 or so, the "others" are zero. Afterward, there is some small
+proportion of "others". However, the sum of Protestants, Roman Catholics, and
+"others" exceeds 1 (pretty clearly) and the difference between the sum and 1
+is entirely the "others." So, I drop the "others" for all years. I don't
+think that's terribly problematic, but it's worth saying that's what I did.
 }
 \references{
-Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and Romain Wacziarg. 2003.
-"Fractionalization". \emph{Journal of Economic Growth} 8: 155-194.
+Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and
+Romain Wacziarg. 2003. "Fractionalization". \emph{Journal of Economic Growth} 8: 155-194.
 
-Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization, Potential Conflict, and Civil Wars"
-\emph{American Economic Review} 95(3): 796--816.
+Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization,
+Potential Conflict, and Civil Wars." \emph{American Economic Review} 95(3):
+796--816.
 
-Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph Bajjalieh. 2012.
-\emph{The Composition of Religious and Ethnic Groups (CREG) Project}. Cline Center for Democracy.
+Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph
+Bajjalieh. 2012. \emph{The Composition of Religious and Ethnic Groups (CREG)
+Project}. Cline Center for Democracy.
 }
 \keyword{datasets}

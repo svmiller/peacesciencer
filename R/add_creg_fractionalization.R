@@ -49,17 +49,21 @@
 #' @author Steven V. Miller
 #'
 #' @param data a data frame with appropriate \pkg{peacesciencer} attributes
+#' @param ... does nothing, called to make the shortcut (`add_creg_frac`) work
 #'
 #' @references
 #'
-#' Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and Romain Wacziarg. 2003.
-#' "Fractionalization". \emph{Journal of Economic Growth} 8: 155-194.
+#' Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and
+#' Romain Wacziarg. 2003. "Fractionalization". *Journal of Economic Growth* 8:
+#' 155-194.
 #'
-#' Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization, Potential Conflict, and Civil Wars"
-#' \emph{American Economic Review} 95(3): 796--816.
+#' Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization,
+#' Potential Conflict, and Civil Wars" *American Economic Review* 95(3):
+#' 796--816.
 #'
-#' Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph Bajjalieh. 2012.
-#' \emph{The Composition of Religious and Ethnic Groups (CREG) Project}. Cline Center for Democracy.
+#' Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph
+#' Bajjalieh. 2012. *The Composition of Religious and Ethnic Groups (CREG) Project*.
+#' Cline Center for Democracy.
 #'
 #' @examples
 #'
@@ -80,111 +84,259 @@
 
 add_creg_fractionalization <- function(data) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+  ps_system <- attr(data, "ps_system")
+  ps_type <- attr(data, "ps_data_type")
 
-    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
+  system_type <- paste0(ps_system, "_", ps_type)
 
-      creg %>%
-        select(.data$ccode, .data$year, .data$ethfrac:.data$relpol) %>%
-        group_by(.data$ccode, .data$year) %>%
-        #filter(n() > 1) %>%
-        arrange(.data$ccode, .data$year) %>%
-        mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
-        distinct() %>%
-        group_by(.data$ccode, .data$year) %>%
-        # filter(n() > 1) %>%
-        arrange(.data$ccode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
-        slice(1) -> hold_this
+  dispatch <- list(
+    cow_state_year = .add_creg_frac_cow_state_year,
+    cow_leader_year = .add_creg_frac_cow_state_year,
+    gw_state_year = .add_creg_frac_gw_state_year,
+    gw_leader_year = .add_creg_frac_gw_state_year,
+    cow_dyad_year = .add_creg_frac_cow_dyad_year,
+    cow_leader_dyad_year = .add_creg_frac_cow_dyad_year,
+    gw_dyad_year = .add_creg_frac_gw_dyad_year,
+    gw_leader_dyad_year = .add_creg_frac_gw_dyad_year
+  )
 
-      hold_this %>%
-        left_join(data, ., by=c("ccode1"="ccode","year"="year")) %>%
-        rename(ethfrac1 = .data$ethfrac,
-               ethpol1 = .data$ethpol,
-               relfrac1 = .data$relfrac,
-               relpol1 = .data$relpol) %>%
-        left_join(., hold_this, by=c("ccode2"="ccode","year"="year"))  %>%
-        rename(ethfrac2 = .data$ethfrac,
-               ethpol2 = .data$ethpol,
-               relfrac2 = .data$relfrac,
-               relpol2 = .data$relpol) -> data
+  if (!system_type %in% names(dispatch)) {
 
-      return(data)
-
-    } else { # Assuming it's G-W system
-
-      creg %>%
-        select(.data$gwcode, .data$year, .data$ethfrac:.data$relpol) %>%
-        group_by(.data$gwcode, .data$year) %>%
-        #filter(n() > 1) %>%
-        arrange(.data$gwcode, .data$year) %>%
-        mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
-        distinct() %>%
-        group_by(.data$gwcode, .data$year) %>%
-        # filter(n() > 1) %>%
-        arrange(.data$gwcode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
-        slice(1) -> hold_this
-
-      hold_this %>%
-        left_join(data, ., by=c("gwcode1"="gwcode","year"="year")) %>%
-        rename(ethfrac1 = .data$ethfrac,
-               ethpol1 = .data$ethpol,
-               relfrac1 = .data$relfrac,
-               relpol1 = .data$relpol) %>%
-        left_join(., hold_this, by=c("gwcode2"="gwcode","year"="year"))  %>%
-        rename(ethfrac2 = .data$ethfrac,
-               ethpol2 = .data$ethpol,
-               relfrac2 = .data$relfrac,
-               relpol2 = .data$relpol) -> data
-
-      return(data)
-
-    }
-
-
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
-
-    if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
-
-      creg %>%
-        select(.data$ccode, .data$year, .data$ethfrac:.data$relpol) %>%
-        group_by(.data$ccode, .data$year) %>%
-        #filter(n() > 1) %>%
-        arrange(.data$ccode, .data$year) %>%
-        mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
-        distinct() %>%
-        group_by(.data$ccode, .data$year) %>%
-        # filter(n() > 1) %>%
-        arrange(.data$ccode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
-        slice(1) %>%
-        left_join(data, .) -> data
-
-      return(data)
-
-
-    } else { # Assuming it's G-W system
-
-      creg %>%
-        select(.data$gwcode, .data$year, .data$ethfrac:.data$relpol) %>%
-        group_by(.data$gwcode, .data$year) %>%
-        #filter(n() > 1) %>%
-        arrange(.data$gwcode, .data$year) %>%
-        mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
-        distinct() %>%
-        group_by(.data$gwcode, .data$year) %>%
-        # filter(n() > 1) %>%
-        arrange(.data$gwcode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
-        slice(1) %>%
-        left_join(data, .) -> data
-
-      return(data)
-
-
-    }
-  }
-  else  {
-    stop("add_creg_fractionalization() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, leader_dyad_year, or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+    stop("Unsupported combination of ps_system and ps_data_type. System must be 'cow' or 'gw' and the data type must be 'dyad_year', `leader_dyad_year`, or 'state_year'.")
 
   }
+
+  data <- dispatch[[system_type]](data)
+
+  return(data)
+
 }
+
+
+#' @keywords internal
+#' @noRd
+.add_creg_frac_cow_state_year <- function(data) {
+
+  creg %>%
+    select(.data$ccode, .data$year, .data$ethfrac:.data$relpol) %>%
+    group_by(.data$ccode, .data$year) %>%
+    #filter(n() > 1) %>%
+    arrange(.data$ccode, .data$year) %>%
+    mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+    distinct() %>%
+    group_by(.data$ccode, .data$year) %>%
+    # filter(n() > 1) %>%
+    arrange(.data$ccode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+    slice(1) %>%
+    left_join(data, .) -> data
+
+}
+
+#' @keywords internal
+#' @noRd
+.add_creg_frac_gw_state_year <- function(data) {
+
+  creg %>%
+    select(.data$gwcode, .data$year, .data$ethfrac:.data$relpol) %>%
+    group_by(.data$gwcode, .data$year) %>%
+    #filter(n() > 1) %>%
+    arrange(.data$gwcode, .data$year) %>%
+    mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+    distinct() %>%
+    group_by(.data$gwcode, .data$year) %>%
+    # filter(n() > 1) %>%
+    arrange(.data$gwcode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+    slice(1) %>%
+    left_join(data, .) -> data
+
+}
+
+#' @keywords internal
+#' @noRd
+.add_creg_frac_cow_dyad_year <- function(data) {
+
+  creg %>%
+    select(.data$ccode, .data$year, .data$ethfrac:.data$relpol) %>%
+    group_by(.data$ccode, .data$year) %>%
+    #filter(n() > 1) %>%
+    arrange(.data$ccode, .data$year) %>%
+    mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+    distinct() %>%
+    group_by(.data$ccode, .data$year) %>%
+    # filter(n() > 1) %>%
+    arrange(.data$ccode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+    slice(1) -> hold_this
+
+  hold_this %>%
+    left_join(data, ., by=c("ccode1"="ccode","year"="year")) %>%
+    rename(ethfrac1 = .data$ethfrac,
+           ethpol1 = .data$ethpol,
+           relfrac1 = .data$relfrac,
+           relpol1 = .data$relpol) %>%
+    left_join(., hold_this, by=c("ccode2"="ccode","year"="year"))  %>%
+    rename(ethfrac2 = .data$ethfrac,
+           ethpol2 = .data$ethpol,
+           relfrac2 = .data$relfrac,
+           relpol2 = .data$relpol) -> data
+}
+
+
+#' @keywords internal
+#' @noRd
+.add_creg_frac_gw_dyad_year <- function(data) {
+
+  creg %>%
+    select(.data$gwcode, .data$year, .data$ethfrac:.data$relpol) %>%
+    group_by(.data$gwcode, .data$year) %>%
+    #filter(n() > 1) %>%
+    arrange(.data$gwcode, .data$year) %>%
+    mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+    distinct() %>%
+    group_by(.data$gwcode, .data$year) %>%
+    # filter(n() > 1) %>%
+    arrange(.data$gwcode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+    slice(1) -> hold_this
+
+  hold_this %>%
+    left_join(data, ., by=c("gwcode1"="gwcode","year"="year")) %>%
+    rename(ethfrac1 = .data$ethfrac,
+           ethpol1 = .data$ethpol,
+           relfrac1 = .data$relfrac,
+           relpol1 = .data$relpol) %>%
+    left_join(., hold_this, by=c("gwcode2"="gwcode","year"="year"))  %>%
+    rename(ethfrac2 = .data$ethfrac,
+           ethpol2 = .data$ethpol,
+           relfrac2 = .data$relfrac,
+           relpol2 = .data$relpol) -> data
+
+
+}
+
+
+
+#' @rdname add_creg_fractionalization
+#' @export
+
+add_creg_frac <- function(...) peacesciencer::add_creg_fractionalization(...)
+
+
+
+
+
+
+
+
+
+
+
+
+# add_creg_fractionalization <- function(data) {
+#
+#   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+#
+#     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
+#
+#       creg %>%
+#         select(.data$ccode, .data$year, .data$ethfrac:.data$relpol) %>%
+#         group_by(.data$ccode, .data$year) %>%
+#         #filter(n() > 1) %>%
+#         arrange(.data$ccode, .data$year) %>%
+#         mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+#         distinct() %>%
+#         group_by(.data$ccode, .data$year) %>%
+#         # filter(n() > 1) %>%
+#         arrange(.data$ccode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+#         slice(1) -> hold_this
+#
+#       hold_this %>%
+#         left_join(data, ., by=c("ccode1"="ccode","year"="year")) %>%
+#         rename(ethfrac1 = .data$ethfrac,
+#                ethpol1 = .data$ethpol,
+#                relfrac1 = .data$relfrac,
+#                relpol1 = .data$relpol) %>%
+#         left_join(., hold_this, by=c("ccode2"="ccode","year"="year"))  %>%
+#         rename(ethfrac2 = .data$ethfrac,
+#                ethpol2 = .data$ethpol,
+#                relfrac2 = .data$relfrac,
+#                relpol2 = .data$relpol) -> data
+#
+#       return(data)
+#
+#     } else { # Assuming it's G-W system
+#
+#       creg %>%
+#         select(.data$gwcode, .data$year, .data$ethfrac:.data$relpol) %>%
+#         group_by(.data$gwcode, .data$year) %>%
+#         #filter(n() > 1) %>%
+#         arrange(.data$gwcode, .data$year) %>%
+#         mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+#         distinct() %>%
+#         group_by(.data$gwcode, .data$year) %>%
+#         # filter(n() > 1) %>%
+#         arrange(.data$gwcode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+#         slice(1) -> hold_this
+#
+#       hold_this %>%
+#         left_join(data, ., by=c("gwcode1"="gwcode","year"="year")) %>%
+#         rename(ethfrac1 = .data$ethfrac,
+#                ethpol1 = .data$ethpol,
+#                relfrac1 = .data$relfrac,
+#                relpol1 = .data$relpol) %>%
+#         left_join(., hold_this, by=c("gwcode2"="gwcode","year"="year"))  %>%
+#         rename(ethfrac2 = .data$ethfrac,
+#                ethpol2 = .data$ethpol,
+#                relfrac2 = .data$relfrac,
+#                relpol2 = .data$relpol) -> data
+#
+#       return(data)
+#
+#     }
+#
+#
+#   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
+#
+#     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {
+#
+#       creg %>%
+#         select(.data$ccode, .data$year, .data$ethfrac:.data$relpol) %>%
+#         group_by(.data$ccode, .data$year) %>%
+#         #filter(n() > 1) %>%
+#         arrange(.data$ccode, .data$year) %>%
+#         mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+#         distinct() %>%
+#         group_by(.data$ccode, .data$year) %>%
+#         # filter(n() > 1) %>%
+#         arrange(.data$ccode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+#         slice(1) %>%
+#         left_join(data, .) -> data
+#
+#       return(data)
+#
+#
+#     } else { # Assuming it's G-W system
+#
+#       creg %>%
+#         select(.data$gwcode, .data$year, .data$ethfrac:.data$relpol) %>%
+#         group_by(.data$gwcode, .data$year) %>%
+#         #filter(n() > 1) %>%
+#         arrange(.data$gwcode, .data$year) %>%
+#         mutate_at(vars("ethfrac", "ethpol", "relfrac", "relpol"), ~ifelse(is.na(.) & n() > 1, max(., na.rm=T), .)) %>%
+#         distinct() %>%
+#         group_by(.data$gwcode, .data$year) %>%
+#         # filter(n() > 1) %>%
+#         arrange(.data$gwcode, .data$year, -.data$ethfrac, -.data$relfrac) %>%
+#         slice(1) %>%
+#         left_join(data, .) -> data
+#
+#       return(data)
+#
+#
+#     }
+#   }
+#   else  {
+#     stop("add_creg_fractionalization() requires a data/tibble with attributes$ps_data_type of state_year, leader_year, leader_dyad_year, or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+#
+#   }
+# }
 
 

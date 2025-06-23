@@ -2,12 +2,17 @@
 % Please edit documentation in R/add_creg_fractionalization.R
 \name{add_creg_fractionalization}
 \alias{add_creg_fractionalization}
+\alias{add_creg_frac}
 \title{Add fractionalization/polarization estimates from CREG to a data frame}
 \usage{
 add_creg_fractionalization(data)
+
+add_creg_frac(...)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{...}{does nothing, called to make the shortcut (\code{add_creg_frac}) work}
 }
 \value{
 \code{add_creg_fractionalization()} takes a dyad-year, leader-year,
@@ -71,14 +76,17 @@ create_stateyears(system = "gw") \%>\% add_creg_fractionalization()
 
 }
 \references{
-Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and Romain Wacziarg. 2003.
-"Fractionalization". \emph{Journal of Economic Growth} 8: 155-194.
+Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and
+Romain Wacziarg. 2003. "Fractionalization". \emph{Journal of Economic Growth} 8:
+155-194.
 
-Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization, Potential Conflict, and Civil Wars"
-\emph{American Economic Review} 95(3): 796--816.
+Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization,
+Potential Conflict, and Civil Wars" \emph{American Economic Review} 95(3):
+796--816.
 
-Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph Bajjalieh. 2012.
-\emph{The Composition of Religious and Ethnic Groups (CREG) Project}. Cline Center for Democracy.
+Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph
+Bajjalieh. 2012. \emph{The Composition of Religious and Ethnic Groups (CREG) Project}.
+Cline Center for Democracy.
 }
 \author{
 Steven V. Miller

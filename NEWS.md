@@ -13,8 +13,9 @@ Changes include:
 - `cow_capitals` and `gw_capitals` formally current through 2024. Indonesia is the most likely candidate to require an update in these data, though that change has not happened yet. `cow_capitals` and `gw_capitals` further include some corrections and the introduction of start and end dates for capitals.
 - `gw_ddy` and `cow_ddy` current through 2024.
 - `add_capital_distance()` includes an argument (`"transsum"`) for what observation to privilege for yearly summaries in which there was a capital transition. Support for leader-level data momentarily dropped.
-- `cow_contdir` replaces columns `begin` and `end` with `stdate` and `enddate` communicating the same information, but in date form. It also includes manual entries communicating instances where dyads (like USA-Russia) had a non-contiguous relationship. This is for optimum performance in `add_contiguity()`.
+- `cow_contdir` replaces columns `begin` and `end` with `stdate` and `enddate` communicating the same information, but in date form.
 - `add_contiguity()` has an argument (`"slice"`) that determines its behavior for when there is a change in a contiguity relationship in a given year. The `mry` argument actually does something now.
+- Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`
 
 Additions include:
 
