@@ -1,369 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>http://svmiller.com/404.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/coerce-dispute-year-dyad-year.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/create-different-kinds-of-data-in-peacesciencer.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/democracy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/different-data-types.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/joins.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/parlor-tricks.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/peacesciencer.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/state-systems.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/times.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/articles/versions.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/authors.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/index.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/ms.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/news/index.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/LEAD.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_archigos.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_atop_alliance.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_capital_distance.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_ccode_to_gw.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_contiguity.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_alliance.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_majors.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_mids.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_to_gwcode.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_trade.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_cow_wars.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_creg_fractionalization.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_democracy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_fpsim.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_gml_mids.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_gwcode_to_cow.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_igos.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_lead.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_lwuf.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_mids.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_minimum_distance.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_nmc.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_peace_years.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_rugged_terrain.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_sdp_gdp.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_spells.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_strategic_rivalries.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_ucdp_acd.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/add_ucdp_onsets.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/archigos.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/atop_alliance.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/capitals.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ccode_democracy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/citations.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_alliance.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_capitals.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_contdir.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_ddy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_gw_years.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_igo_ndy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_igo_sy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_majors.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_mid_ddydisps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_mid_dirdisps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_mid_disps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_mindist.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_nmc.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_sdp_gdp.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_states.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_trade_ndy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_trade_sy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_war_inter.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/cow_war_intra.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/create_dyadyears.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/create_leaderdays.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/create_leaderdyadyears.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/create_leaderyears.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/create_statedays.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/create_stateyears.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/creg.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/data-deprecated.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/declare_attributes.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/download_extdata.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/false_cow_dyads.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/false_gw_dyads.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/filter_prd.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_dirdisp.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_mid_ddlydisps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_mid_ddydisps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_mid_dirleaderdisps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_mid_disps.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_part.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gml_part_leaders.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/grh_arms_races.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gw_capitals.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gw_cow_years.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gw_ddy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gw_mindist.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gw_sdp_gdp.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gw_states.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/gwcode_democracy.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/hief.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/leader_codes.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/lwuf.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/maoz_powers.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ps_bib.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ps_cite.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ps_data_version.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ps_version.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/rugged.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/show_duplicates.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/td_rivalries.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/tss_rivalries.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ucdp_acd.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/ucdp_onsets.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflict_onsets.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_duration.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_fatality.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_hostility.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_jds.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_onsets.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_reciprocation.html</loc>
-  </url>
-  <url>
-    <loc>http://svmiller.com/reference/whittle_conflicts_startmonth.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>http://svmiller.com/404.html</loc></url>
+<url><loc>http://svmiller.com/LICENSE-text.html</loc></url>
+<url><loc>http://svmiller.com/articles/coerce-dispute-year-dyad-year.html</loc></url>
+<url><loc>http://svmiller.com/articles/create-different-kinds-of-data-in-peacesciencer.html</loc></url>
+<url><loc>http://svmiller.com/articles/democracy.html</loc></url>
+<url><loc>http://svmiller.com/articles/different-data-types.html</loc></url>
+<url><loc>http://svmiller.com/articles/index.html</loc></url>
+<url><loc>http://svmiller.com/articles/joins.html</loc></url>
+<url><loc>http://svmiller.com/articles/parlor-tricks.html</loc></url>
+<url><loc>http://svmiller.com/articles/peacesciencer.html</loc></url>
+<url><loc>http://svmiller.com/articles/state-systems.html</loc></url>
+<url><loc>http://svmiller.com/articles/times.html</loc></url>
+<url><loc>http://svmiller.com/articles/versions.html</loc></url>
+<url><loc>http://svmiller.com/authors.html</loc></url>
+<url><loc>http://svmiller.com/index.html</loc></url>
+<url><loc>http://svmiller.com/ms.html</loc></url>
+<url><loc>http://svmiller.com/news/index.html</loc></url>
+<url><loc>http://svmiller.com/reference/LEAD.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_archigos.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_atop_alliance.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_capital_distance.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_ccode_to_gw.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_contiguity.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_cow_alliance.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_cow_majors.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_cow_mids.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_cow_to_gwcode.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_cow_trade.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_cow_wars.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_creg_fractionalization.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_democracy.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_fpsim.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_gml_mids.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_gwcode_to_cow.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_igos.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_lead.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_lwuf.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_mids.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_minimum_distance.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_nmc.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_peace_years.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_rugged_terrain.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_sdp_gdp.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_spells.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_strategic_rivalries.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_ucdp_acd.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_ucdp_onsets.html</loc></url>
+<url><loc>http://svmiller.com/reference/archigos.html</loc></url>
+<url><loc>http://svmiller.com/reference/archigossums.html</loc></url>
+<url><loc>http://svmiller.com/reference/atop_alliance.html</loc></url>
+<url><loc>http://svmiller.com/reference/capitals.html</loc></url>
+<url><loc>http://svmiller.com/reference/citations.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_capitals.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_contdir.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_ddy.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_gw_years.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_igo_ndy.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_igo_sy.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_majors.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_mid_ddydisps.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_mid_dirdisps.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_mid_disps.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_mindist.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_nmc.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_sdp_gdp.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_states.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_trade_ndy.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_trade_sy.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_war_inter.html</loc></url>
+<url><loc>http://svmiller.com/reference/cow_war_intra.html</loc></url>
+<url><loc>http://svmiller.com/reference/create_dyadyears.html</loc></url>
+<url><loc>http://svmiller.com/reference/create_leaderdays.html</loc></url>
+<url><loc>http://svmiller.com/reference/create_leaderdyadyears.html</loc></url>
+<url><loc>http://svmiller.com/reference/create_leaderyears.html</loc></url>
+<url><loc>http://svmiller.com/reference/create_statedays.html</loc></url>
+<url><loc>http://svmiller.com/reference/create_stateyears.html</loc></url>
+<url><loc>http://svmiller.com/reference/creg.html</loc></url>
+<url><loc>http://svmiller.com/reference/data-deprecated.html</loc></url>
+<url><loc>http://svmiller.com/reference/declare_attributes.html</loc></url>
+<url><loc>http://svmiller.com/reference/download_extdata.html</loc></url>
+<url><loc>http://svmiller.com/reference/false_cow_dyads.html</loc></url>
+<url><loc>http://svmiller.com/reference/false_gw_dyads.html</loc></url>
+<url><loc>http://svmiller.com/reference/filter_prd.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_dirdisp.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_mid_ddlydisps.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_mid_ddydisps.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_mid_dirleaderdisps.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_mid_disps.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_part.html</loc></url>
+<url><loc>http://svmiller.com/reference/gml_part_leaders.html</loc></url>
+<url><loc>http://svmiller.com/reference/grh_arms_races.html</loc></url>
+<url><loc>http://svmiller.com/reference/gw_capitals.html</loc></url>
+<url><loc>http://svmiller.com/reference/gw_cow_years.html</loc></url>
+<url><loc>http://svmiller.com/reference/gw_ddy.html</loc></url>
+<url><loc>http://svmiller.com/reference/gw_mindist.html</loc></url>
+<url><loc>http://svmiller.com/reference/gw_sdp_gdp.html</loc></url>
+<url><loc>http://svmiller.com/reference/gw_states.html</loc></url>
+<url><loc>http://svmiller.com/reference/hief.html</loc></url>
+<url><loc>http://svmiller.com/reference/index.html</loc></url>
+<url><loc>http://svmiller.com/reference/leader_codes.html</loc></url>
+<url><loc>http://svmiller.com/reference/lwuf.html</loc></url>
+<url><loc>http://svmiller.com/reference/maoz_powers.html</loc></url>
+<url><loc>http://svmiller.com/reference/ps_bib.html</loc></url>
+<url><loc>http://svmiller.com/reference/ps_cite.html</loc></url>
+<url><loc>http://svmiller.com/reference/ps_data_version.html</loc></url>
+<url><loc>http://svmiller.com/reference/ps_version.html</loc></url>
+<url><loc>http://svmiller.com/reference/rugged.html</loc></url>
+<url><loc>http://svmiller.com/reference/show_duplicates.html</loc></url>
+<url><loc>http://svmiller.com/reference/td_rivalries.html</loc></url>
+<url><loc>http://svmiller.com/reference/tss_rivalries.html</loc></url>
+<url><loc>http://svmiller.com/reference/ucdp_acd.html</loc></url>
+<url><loc>http://svmiller.com/reference/ucdp_onsets.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflict_onsets.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_duration.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_fatality.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_hostility.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_jds.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_onsets.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_reciprocation.html</loc></url>
+<url><loc>http://svmiller.com/reference/whittle_conflicts_startmonth.html</loc></url>
 </urlset>
+

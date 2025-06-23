@@ -20,7 +20,7 @@ Dyad-year models---whether directed or non-directed---seek to explain variation 
 Here is my favorite case in point: the Italy-France dyad in 1860. This dyad not only had three unique disputes occurring in 1860, they also had three unique *onsets* that year. Two were even wars even as France was a passive participant in those. Heck, they even all started effectively at the same time, but concerned different components of the wars of Italian unification happening at that time. A researcher should be mindful about this: their unit of analysis is supposed to be the dyad-year, not the dispute-year. Not knowing the difference is the difference of having three Italy-France observations for 1860 or just one. The researcher who has a dyad-year design wants the latter, not the former.
 
 ```{r}
-haven::read_dta("~/Dropbox/data/cow/mid/5/MIDB 5.0.dta") %>%
+haven::read_dta("~/Koofr/data/cow/mid/5/MIDB 5.0.dta") %>%
   filter(dispnum %in% c(112, 113, 306)) %>%
   select(dispnum:sidea, fatality, hiact, hostlev)
 ```
@@ -194,7 +194,7 @@ hold_this %>%
 At this point, we still have duplicate dyad-years remaining in these data, but we've selected on cases that are fairly similar to each other (at least given the dispute- and participant-level data that are available). The duplicates that remain will be unique onsets with the same fatality levels and hostility levels. The next available measure that approximates dispute severity is duration. Consider this duplicate observation of Colombia-Peru in 1852 and the corresponding MIDs (MID#1506 and MID#1523).
 
 ```{r}
-haven::read_dta("~/Dropbox/data/cow/mid/5/MIDB 5.0.dta") %>%
+haven::read_dta("~/Koofr/data/cow/mid/5/MIDB 5.0.dta") %>%
   filter(dispnum %in% c(1506, 1523)) %>%
   select(dispnum:sidea, fatality, hiact, hostlev)
 ```
