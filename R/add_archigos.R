@@ -70,32 +70,32 @@ add_archigos <- function(data) {
 
 }
 
-#' #' @keywords internal
-#' #' @noRd
-#'
-#' .archigossummary <- function() {
-#'
-#'   archigos %>%
-#'     rowwise() %>%
-#'     mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
-#'     unnest(date) %>%
-#'     mutate(year = .pshf_year(date)) %>%
-#'     filter(.data$year >= 1870) %>%
-#'     arrange(date) %>%
-#'     group_by(.data$gwcode, .data$year) %>%
-#'     mutate(jan1obsid = first(.data$obsid),
-#'            dec31obsid = last(.data$obsid),
-#'            leadertransition = ifelse(.data$jan1obsid != .data$dec31obsid, 1, 0),
-#'            n_leaders = n_distinct(.data$leadid),
-#'            irregular = ifelse(.data$leadertransition == 1 & any(.data$exit == "Irregular"), 1, 0)) %>%
-#'     group_by(.data$gwcode, .data$year) %>%
-#'     select(.data$gwcode, .data$year, .data$leadertransition, .data$irregular, .data$n_leaders, .data$jan1obsid, .data$dec31obsid) %>%
-#'     group_by(.data$gwcode, .data$year) %>%
-#'     slice(1) %>% ungroup() -> x
-#'
-#'   return(x)
-#'
-#' }
+# #' @keywords internal
+# #' @noRd
+#
+# .archigossummary <- function() {
+#
+#   archigos %>%
+#     rowwise() %>%
+#     mutate(date = list(seq(.data$startdate, .data$enddate, by="1 day"))) %>%
+#     unnest(date) %>%
+#     mutate(year = .pshf_year(date)) %>%
+#     filter(.data$year >= 1870) %>%
+#     arrange(date) %>%
+#     group_by(.data$gwcode, .data$year) %>%
+#     mutate(jan1obsid = first(.data$obsid),
+#            dec31obsid = last(.data$obsid),
+#            leadertransition = ifelse(.data$jan1obsid != .data$dec31obsid, 1, 0),
+#            n_leaders = n_distinct(.data$leadid),
+#            irregular = ifelse(.data$leadertransition == 1 & any(.data$exit == "Irregular"), 1, 0)) %>%
+#     group_by(.data$gwcode, .data$year) %>%
+#     select(.data$gwcode, .data$year, .data$leadertransition, .data$irregular, .data$n_leaders, .data$jan1obsid, .data$dec31obsid) %>%
+#     group_by(.data$gwcode, .data$year) %>%
+#     slice(1) %>% ungroup() -> x
+#
+#   return(x)
+#
+# }
 
 #' @keywords internal
 #' @noRd

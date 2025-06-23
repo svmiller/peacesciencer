@@ -34,8 +34,9 @@
 #'
 #' @references
 #'
-#' Carter, Jeff and Charles E. Smith, Jr. 2020. "A Framework for Measuring Leaders' Willingness
-#' to Use Force." \emph{American Political Science Review} 114(4): 1352--1358.
+#' Carter, Jeff and Charles E. Smith, Jr. 2020. "A Framework for Measuring
+#' Leaders' Willingness to Use Force." *American Political Science Review*
+#' 114(4): 1352--1358.
 #'
 #' @examples
 #'

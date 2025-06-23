@@ -1,20 +1,30 @@
 #' Add Correlates of War international governmental organizations (IGOs) data to dyad-year or state-year data.
 #'
-#' @description \code{add_igos()} allows you to add information from the Correlates of War International
-#' Governmental Organizations data to dyad-year or state-year data, matching on Correlates of War system codes.
+#' @description \code{add_igos()} allows you to add information from the
+#' Correlates of War International Governmental Organizations data to dyad-year
+#' or state-year data, matching on Correlates of War system codes.
 #'
 #'
-#' @return \code{add_igos()} takes a dyad-year data frame or state-year data frame and adds information available from
-#' the Correlates of War International Governmental Organizations data. If the data are dyad-year, the function returns
-#' the original data with just one additional column for the total number of mutual IGOs for which both members of the dyad
-#' are full members. If the data are state-year, the function returns the original data with four additional columns. These are
-#' the number of IGOs for which the state is a full member, the number of IGOs for which the state is an associate member, the
-#' number of IGOs for which the state is an observer, and the number of IGOs for which the state is involved in any way (i.e. the
-#' sum of the other three columns).
+#' @return
 #'
-#' @details The function leans on attributes of the data that are provided by the \code{create_dyadyear()} or
-#' \code{create_stateyear()} function. Make sure that function (or data created by that function) appear at the top
-#' of the proverbial pipe.
+#' \code{add_igos()} takes a dyad-year data frame or state-year data frame and
+#' adds information available from the Correlates of War International
+#' Governmental Organizations data. If the data are dyad-year, the function
+#' returns the original data with just one additional column for the total
+#' number of mutual IGOs for which both members of the dyad are full members. If
+#' the data are state-year, the function returns the original data with four
+#' additional columns. These are the number of IGOs for which the state is a
+#' full member, the number of IGOs for which the state is an associate member,
+#' the number of IGOs for which the state is an observer, and the number of IGOs
+#' for which the state is involved in any way (i.e. the sum of the other three
+#' columns).
+#'
+#' @details
+#'
+#' The function leans on attributes of the data that are provided by the
+#' \code{create_dyadyear()} or \code{create_stateyear()} function. Make sure
+#' that function (or data created by that function) appear at the top of the
+#' proverbial pipe.
 #'
 #' @author Steven V. Miller
 #'
@@ -22,12 +32,13 @@
 #'
 #' @references
 #'
-#' Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, and Anne Spencer Jamison. 2020.
-#' "Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets."
-#' *Journal of Peace Research* 57(3): 492-503.
+#' Pevehouse, Jon C.W., Timothy Nordstron, Roseanne W McManus, and Anne Spencer
+#' Jamison. 2020. "Tracking Organizations in the World: The Correlates of War
+#' IGO Version 3.0 datasets." *Journal of Peace Research* 57(3): 492-503.
 #'
-#' Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization
-#' in the Global System, 1815-1964." *International Organization* 24: 239-87.
+#' Wallace, Michael, and J. David Singer. 1970. "International Governmental
+#' Organization in the Global System, 1815-1964." *International Organization*
+#' 24: 239-87.
 #'
 #' @examples
 #'

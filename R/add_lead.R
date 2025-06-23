@@ -1,10 +1,16 @@
 #' Add (Select) Leader Experience and Attribute Descriptions (LEAD) Data to Leader-Year or Leader-Dyad-Year Data
 #'
-#' @description \code{add_lead()} allows you to add some data recorded in the LEAD data to your leader-year or leader-dyad-year data.
+#' @description
 #'
-#' @return \code{add_lead()} takes a leader-year or leader-dyad-year data frame and adds some data recorded in the LEAD data to it.
-#' For leader-dyad-year data, suffices of "1" and "2" are added to the data to indicate attributes of the first leader (`obsid1`)
-#' or the second leader (`obsid2`), respectively.
+#' \code{add_lead()} allows you to add some data recorded in the LEAD data to
+#' your leader-year or leader-dyad-year data.
+#'
+#' @return
+#'
+#' \code{add_lead()} takes a leader-year or leader-dyad-year data frame and adds
+#' some data recorded in the LEAD data to it. For leader-dyad-year data, suffices
+#' of "1" and "2" are added to the data to indicate attributes of the first
+#' leader (`obsid1`) or the second leader (`obsid2`), respectively.
 #'
 #' @author Steven V. Miller
 #'
@@ -17,8 +23,8 @@
 #'
 #' @references
 #'
-#' Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015. "Introducing the
-#' LEAD Data Set." \emph{International Interactions} 41(4): 718--741.
+#' Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015.
+#' "Introducing the LEAD Data Set." *International Interactions* 41(4): 718--741.
 #'
 #' @examples
 #'

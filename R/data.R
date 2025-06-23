@@ -555,12 +555,12 @@ NULL
 #' @details Information gathered from the appendix of Thompson and Dreyer (2012). Ongoing rivalries are
 #' right-bound at 2010, the date of publication for Thompson and Dreyer's handbook. Users are free to change this if they like. Data are effectively
 #' identical to \code{strategic_rivalries} in \pkg{stevemisc}, but include some behind-the-scenes processing (described in a blog post on
-#' \url{http://svmiller.com}) that is available to see on the project's Github repository. The data object is also renamed to avoid a conflict.
+#' \url{https://svmiller.com}) that is available to see on the project's Github repository. The data object is also renamed to avoid a conflict.
 #'
 #' @references
 #'
 #' Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
-#' URL: \url{http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
+#' URL: \url{https://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
 #'
 #' Thompson, William R. and David Dreyer. 2012. \emph{Handbook of International Rivalries}. CQ Press.
 #'
@@ -1124,7 +1124,7 @@ NULL
 #' @references
 #'
 #' Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
-#' URL: \url{http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
+#' URL: \url{https://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
 #'
 #' Thompson, William R., Kentaro Sakuwa, and Prashant Hosur Suhas. 2021.
 #' *Analyzing Strategic Rivalries in World Politics: Types of Rivalry,

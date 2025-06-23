@@ -10,8 +10,8 @@ A data frame with 10,708 observations on the following 16 variables.
 \item{\code{dispnum}}{a numeric vector for the dispute number}
 \item{\code{ccode1}}{a numeric vector for the focal state in the dyad}
 \item{\code{ccode2}}{a numeric vector for the target state in the dyad}
-\item{\code{obsid1}}{a character vector for the leader of the focal state in the dyad, if avialable}
-\item{\code{obsid2}}{a character vector for the leader of the target state in the dyad, if avialable}
+\item{\code{obsid1}}{a character vector for the leader of the focal state in the dyad, if available}
+\item{\code{obsid2}}{a character vector for the leader of the target state in the dyad, if available}
 \item{\code{year}}{a numeric vector for the dispute-year}
 \item{\code{gmlmidongoing}}{a numeric vector for whether there was a dispute ongoing in that year}
 \item{\code{gmlmidonset}}{a numeric vector for whether it was the onset of a new dispute (or new participant-entry into a recurring dispute)}

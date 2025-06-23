@@ -58,7 +58,7 @@ add_gwcode_to_cow <- function(data) {
 
   }
 
-  # state-year panel; G-W is master and we want CoW codes. ----
+  # state-year panel; CoW is master and we want G-W codes. ----
 
   syp <- isard::cw_gw_panel
 
