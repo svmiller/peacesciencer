@@ -1,12 +1,21 @@
 #' Add Correlates of War (CoW) Militarized Interstate Dispute (MID) data to dyad-year data frame
 #'
-#' @description \code{add_cow_mids()} merges in CoW's MID data to a dyad-year data frame.
+#' @description
+#'
+#'  `r lifecycle::badge("superseded")`
+#'
+#' \code{add_cow_mids()} merges in CoW's MID data to a dyad-year data frame.
 #' The version of the CoW-MID data in this package is version 5.0.
 #'
-#' @return \code{add_cow_mids()} takes a dyad-year data frame and adds dyad-year dispute information
-#' from the CoW-MID data.
+#' @return
+#'
+#' \code{add_cow_mids()} takes a dyad-year data frame and adds dyad-year dispute
+#' information from the CoW-MID data.
 #'
 #' @details
+#'
+#' I've planted various flags in the ground about the use of these data versus
+#' assorted alternatives.
 #'
 #' Dyads are capable of having multiple disputes in a given year, which can
 #' create a problem for merging into a complete dyad-year data frame.

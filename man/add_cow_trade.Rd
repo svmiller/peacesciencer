@@ -10,25 +10,31 @@ add_cow_trade(data)
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_cow_trade()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and
-adds information about the volume of trade in that given dyad-year or state-year. For the state-year (leader-year)
-data, these are minimally the sum of all imports and the sum of all exports. For dyad-year (leader-dyad-year) data,
-this function returns the value of imports in current million USD in the first country from
-the second country (and vice-versa) along with their "smooth" equivalents.
+\code{add_cow_trade()} takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame and adds information about the volume of trade in
+that given dyad-year or state-year. For the state-year (leader-year) data,
+these are minimally the sum of all imports and the sum of all exports. For
+dyad-year (leader-dyad-year) data, this function returns the value of
+imports in current million USD in the first country from the second country
+(and vice-versa) along with their "smooth" equivalents.
 }
 \description{
 \code{add_cow_trade()} allows you to add Correlates of War trade data to your
 (dyad-year, leader-year, leader-dyad-year, state-year) data frame
 }
 \details{
-For the dyad-year (and leader-dyad-year) data, there must be some kind of information loss in order to work within the
-limited space available to this package. This package loads a truncated version of the data in which the trade
-values are rounded to three decimal points in order to greatly reduce the disk space for this package. I do not think this
-to be terribly problematic, though I admit I do not like it. If this is a problem for your research question,
-you may want to consider not using this function for dyad-year or leader-dyad-year data.
+For the dyad-year (and leader-dyad-year) data, there must be some kind of
+information loss in order to work within the limited space available to this
+package. This package loads a truncated version of the data in which the trade
+values are rounded to three decimal points in order to greatly reduce the
+disk space for this package. I do not think this to be terribly problematic,
+though I admit I do not like it. If this is a problem for your research
+question, you may want to consider not using this function for dyad-year or
+leader-dyad-year data.
 
-Be mindful that the data are fundamentally state-year or dyad-year and that extensions to leader-level data should be understood
-as approximations for leaders (leader-dyads) in a given state-year (dyad-year).
+Be mindful that the data are fundamentally state-year or dyad-year and that
+extensions to leader-level data should be understood as approximations for
+leaders (leader-dyads) in a given state-year (dyad-year).
 }
 \examples{
 # just call `library(tidyverse)` at the top of the your script
@@ -39,8 +45,9 @@ library(magrittr)
 create_stateyears() \%>\% add_cow_trade()
 }
 \references{
-Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."
-\emph{Conflict Management and Peace Science}. 26(5): 471-491.
+Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING
+DATA: Evaluating our Assumptions and Coding Rules." \emph{Conflict Management and
+Peace Science}. 26(5): 471-491.
 }
 \author{
 Steven V. Miller

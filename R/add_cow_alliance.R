@@ -54,7 +54,7 @@
 
 add_cow_alliance <- function(data) {
 
-  .Deprecated(msg = "This function is deprecated and will be removed as a core function in a future release and its documentation will be moved to the extdata/ directory in the package.")
+  .Deprecated(msg = "This function is deprecated and will be removed as a core function in a future release and its documentation will be moved to the extdata/ directory in the package. Use `add_atop_alliance()` instead for analyses that need alliance data.")
 
   if(!is.null(data)) {
 
@@ -69,6 +69,7 @@ add_cow_alliance <- function(data) {
 
 
     } else {
+
     cow_alliance %>%
       left_join(data, .) %>%
       mutate_at(vars("cow_defense", "cow_neutral", "cow_nonagg", "cow_entente"), ~ifelse(is.na(.) & .data$year <= 2012, 0, .)) -> data

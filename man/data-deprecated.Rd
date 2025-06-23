@@ -4,12 +4,6 @@
 \name{data-deprecated}
 \alias{data-deprecated}
 \alias{cow_alliance}
-\alias{gml_dirdisp}
-\alias{gml_mid_ddydisps}
-\alias{gml_mid_disps}
-\alias{gml_part}
-\alias{gml_mid_ddlydisps}
-\alias{gml_mid_dirleaderdisps}
 \alias{ccode_democracy}
 \alias{gwcode_democracy}
 \title{Data sets that have been deprecated}
@@ -21,36 +15,12 @@ available in CRAN archives as well.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 120784 rows and 7 columns.
 
-An object of class \code{spec_tbl_df} (inherits from \code{tbl_df}, \code{tbl}, \code{data.frame}) with 10276 rows and 39 columns.
-
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 9284 rows and 24 columns.
-
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 2174 rows and 11 columns.
-
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 5217 rows and 19 columns.
-
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 10708 rows and 16 columns.
-
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 11686 rows and 16 columns.
-
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 16731 rows and 5 columns.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 18289 rows and 5 columns.
 }
 \usage{
 cow_alliance
-
-gml_dirdisp
-
-gml_mid_ddydisps
-
-gml_mid_disps
-
-gml_part
-
-gml_mid_ddlydisps
-
-gml_mid_dirleaderdisps
 
 ccode_democracy
 
@@ -70,36 +40,6 @@ space given CRAN's 5 MB limitation for R packages.
 that users who want the Correlates of War alliance data in their analyses
 should download and process the data manually, without assistance of any
 convenience functions.
-
-\code{gml_dirdisp} is defunct. One of the data set's maintainers
-requests that users who want to use the data should download and process the
-data manually, without assistance of any convenience functions or software
-that ultimately suggest design decisions on behalf of the researcher.
-
-\code{gml_mid_ddydisps} is defunct. One of the data set's maintainers
-requests that users who want to use the data should download and process the
-data manually, without assistance of any convenience functions or software
-that ultimately suggest design decisions on behalf of the researcher.
-
-\code{gml_mid_disps} is defunct. One of the data set's maintainers
-requests that users who want to use the data should download and process the
-data manually, without assistance of any convenience functions or software
-that ultimately suggest design decisions on behalf of the researcher.
-
-\code{gml_part} is defunct. One of the data set's maintainers
-requests that users who want to use the data should download and process the
-data manually, without assistance of any convenience functions or software
-that ultimately suggest design decisions on behalf of the researcher.
-
-\code{gml_mid_ddlydisps} is defunct. One of the data set's maintainers
-requests that users who want to use the data should download and process the
-data manually, without assistance of any convenience functions or software
-that ultimately suggest design decisions on behalf of the researcher.
-
-\code{gml_mid_dirleaderdisps} is defunct. One of the data set's maintainers
-requests that users who want to use the data should download and process the
-data manually, without assistance of any convenience functions or software
-that ultimately suggest design decisions on behalf of the researcher.
 
 \code{ccode_democracy} is defunct. The data are now maintained in
 the \pkg{isard} package as \code{cw_democracy}.

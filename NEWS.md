@@ -4,7 +4,7 @@ Changes include:
 
 - `add_cow_alliance()` is deprecated and slated for removal at the request of the data set's maintainer. The function right now returns a stop communicating this information, also at the request of the data set's maintainer.
 - `add_gml_mids()` is deprecated and slated for removal at the request of one of the data set's maintainers. The function right now returns a stop communicating this information, also at the request of the data set's maintainer.
-- `cow_alliance`, `gml_dirdisp`, `gml_mid_ddydisps`, `gml_mid_disps`, `gml_part`, `gml_mid_ddlydisps`, and `gml_mid_dirleaderdisps` are deprecated and slated for removal.
+- `cow_alliance`, `ccode_democracy`, and `gwcode_democracy` are deprecated and slated for removal.
 - Fix error in `cow_capitals` data that did not adequately record Burundi's capital change in 2018. This concerns the data generated for `cow_capitals`.
 - Fix error in `tss_rivalries` for `tssr_id = 61`. This was in the book but the change in the data-raw directory shows what they assuredly meant. 
 - Add `mry` argument to `add_cow_majors()`, fix bug identified by @rochelleterman in [17](https://github.com/svmiller/peacesciencer/issues/17)

@@ -25,56 +25,6 @@ NULL
 #' convenience functions.
 "cow_alliance"
 
-#' @rdname data-deprecated
-#' @name gml_dirdisp
-#' @details \code{gml_dirdisp} is defunct. One of the data set's maintainers
-#' requests that users who want to use the data should download and process the
-#' data manually, without assistance of any convenience functions or software
-#' that ultimately suggest design decisions on behalf of the researcher.
-"gml_dirdisp"
-
-#' @rdname data-deprecated
-#' @name gml_mid_ddydisps
-#' @details \code{gml_mid_ddydisps} is defunct. One of the data set's maintainers
-#' requests that users who want to use the data should download and process the
-#' data manually, without assistance of any convenience functions or software
-#' that ultimately suggest design decisions on behalf of the researcher.
-"gml_mid_ddydisps"
-
-
-#' @rdname data-deprecated
-#' @name gml_mid_disps
-#' @details \code{gml_mid_disps} is defunct. One of the data set's maintainers
-#' requests that users who want to use the data should download and process the
-#' data manually, without assistance of any convenience functions or software
-#' that ultimately suggest design decisions on behalf of the researcher.
-"gml_mid_disps"
-
-#' @rdname data-deprecated
-#' @name gml_part
-#' @details \code{gml_part} is defunct. One of the data set's maintainers
-#' requests that users who want to use the data should download and process the
-#' data manually, without assistance of any convenience functions or software
-#' that ultimately suggest design decisions on behalf of the researcher.
-"gml_part"
-
-
-#' @rdname data-deprecated
-#' @name gml_mid_ddlydisps
-#' @details \code{gml_mid_ddlydisps} is defunct. One of the data set's maintainers
-#' requests that users who want to use the data should download and process the
-#' data manually, without assistance of any convenience functions or software
-#' that ultimately suggest design decisions on behalf of the researcher.
-"gml_mid_ddlydisps"
-
-#' @rdname data-deprecated
-#' @name gml_mid_dirleaderdisps
-#' @details \code{gml_mid_dirleaderdisps} is defunct. One of the data set's maintainers
-#' requests that users who want to use the data should download and process the
-#' data manually, without assistance of any convenience functions or software
-#' that ultimately suggest design decisions on behalf of the researcher.
-"gml_mid_dirleaderdisps"
-
 
 #' @rdname data-deprecated
 #' @name ccode_democracy

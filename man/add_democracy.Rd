@@ -4,10 +4,14 @@
 \alias{add_democracy}
 \title{Add democracy information to a data frame}
 \usage{
-add_democracy(data)
+add_democracy(data, keep)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{keep}{an optional parameter, specified as a character vector, about
+what democracy estimates the user wants to return from this function. If not
+specified, everything from the underlying democracy data is returned.}
 }
 \value{
 \code{add_democracy()} takes a (dyad-year, leader-year, leader-dyad-year,
@@ -26,9 +30,28 @@ state in a given year.
 \code{add_democracy()} allows you to add estimates of democracy to your data.
 }
 \details{
+As of version 1.2, this function leans on the information made available in
+the \pkg{isard} package. This is a spin-off package I maintain for data that
+require periodic updates for the functionality in this package. As of writing,
+\pkg{peacesciencer} only requires that you have the \pkg{isard} package
+installed. It does not require you to have any particular version of the
+package installed. Thus, what exactly this function returns may depend on the
+particular version of \pkg{isard} you have installed. This will assuredly
+concern the right-bound of the temporal domain of data you get.
+
+You can read more about the data in the documentation for \pkg{isard}.
+\itemize{
+\item \url{https://svmiller.com/isard/reference/cw_democracy.html}
+\item \url{https://svmiller.com/isard/reference/gw_democracy.html}
+}
+
 Be mindful that the data are fundamentally state-year and that extensions to
 leader-level data should be understood as approximations for leaders in a
 given state-year.
+
+included in the \code{cw_democracy} or \code{gw_democracy} data in the \pkg{isard}
+data. Otherwise, it will return an error that it cannot subset columns that
+do not exist.
 
 A vignette on the package's website talks about how these data are here
 primarily to encourage you to maximize the number of observations in the
@@ -56,25 +79,9 @@ create_stateyears(system="cow") \%>\% add_democracy()
 
 }
 \references{
-Coppedge, Michael, John Gerring, Carl Henrik Knutsen, Staffan I. Lindberg,
-Jan Teorell, David Altman, Michael Bernhard, M. Steven Fish, Adam Glynn,
-Allen Hicken, Anna Luhrmann, Kyle L. Marquardt, Kelly McMann, Pamela
-Paxton, Daniel Pemstein, Brigitte Seim, Rachel Sigman, Svend-Erik
-Skaaning, Jeffrey Staton, Agnes Cornell, Lisa Gastaldi, Haakon Gjerlow,
-Valeriya Mechkova, Johannes von Romer, Aksel Sundtrom, Eitan Tzelgov,
-Luca Uberti, Yi-ting Wang, Tore Wig, and Daniel Ziblatt. 2020.
-"V-Dem Codebook v10" Varieties of Democracy (V-Dem) Project.
-
-Marshall, Monty G., Ted Robert Gurr, and Keith Jaggers. 2017.
-"Polity IV Project: Political Regime Characteristics and Transitions,
-1800-2017." Center for Systemic Peace.
-
-Marquez, Xavier, "A Quick Method for Extending the Unified Democracy
-Scores" (March 23, 2016).  \doi{10.2139/ssrn.2753830}
-
-Pemstein, Daniel, Stephen Meserve, and James Melton. 2010. "Democratic
-Compromise: A Latent Variable Analysis of Ten Measures of Regime Type."
-\emph{Political Analysis} 18(4): 426-449.
+Please cite Miller (2022) for \pkg{peacesciencer}. Beyond that, consult the
+documentation in \pkg{isard} for additional citations (contingent on which
+democracy estimate you are using).
 }
 \author{
 Steven V. Miller

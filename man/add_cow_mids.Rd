@@ -19,14 +19,19 @@ The user is free to keep or discard anything else they see fit.
 If \code{keep} is not specified in the function, the ensuing output returns everything.}
 }
 \value{
-\code{add_cow_mids()} takes a dyad-year data frame and adds dyad-year dispute information
-from the CoW-MID data.
+\code{add_cow_mids()} takes a dyad-year data frame and adds dyad-year dispute
+information from the CoW-MID data.
 }
 \description{
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
+
 \code{add_cow_mids()} merges in CoW's MID data to a dyad-year data frame.
 The version of the CoW-MID data in this package is version 5.0.
 }
 \details{
+I've planted various flags in the ground about the use of these data versus
+assorted alternatives.
+
 Dyads are capable of having multiple disputes in a given year, which can
 create a problem for merging into a complete dyad-year data frame.
 Consider the case of France and Italy in 1860, which

@@ -38,9 +38,7 @@ the dispute or if it joined at any point thereafter. See details section for
 more discussion. The default is  \code{"sidea-all-joiners"}.}
 }
 \value{
-\code{add_gml_mids()} now returns a stop communicating one of the maintainer's
-requests to reject all software that facilitates the use of the data in this
-fashion. Before, it took a (dyad-year, leader-year, leader-dyad-year,
+\code{add_gml_mids()} takes a (dyad-year, leader-year, leader-dyad-year,
 state-year) data frame and adds dispute information from the GML MID data.
 If the data are dyad-year, the return is a laundry list of information about
 onsets, ongoing conflicts, and assorted participant- and dispute-level
@@ -50,14 +48,16 @@ returns information about ongoing disputes (and onsets) and whether there
 were any ongoing disputes (and onsets) the state (or leader) initiated.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}}
 
-\code{add_gml_mids()} merged in GML's MID data to a (dyad-year, leader-year,
-leader-dyad-year, state-year) data frame. The current version of the GML MID
-data is 2.2.1. However, this function is deprecated at the request of one of
-the data set's maintainers, insisting that the use of the data be done
-manually with design decisions made 100\% at the discretion of the researcher.
-The function now returns a stop communicating this development.
+\code{add_gml_mids()} merges in GML's MID data to a (dyad-year, leader-year,
+leader-dyad-year, state-year) data frame. The last version of the GML MID
+data is 2.2.1 preceding the release of the Militarized Interstate Confrontation
+(MIC) data set. This function is superseded. It will remain in the package for
+sake of comparison with the CoW-MID data. However, users interested in better
+developed inter-state conflict data should consult the MIC data set. Its
+available formats are tailor-made for the kind of analyses that
+\pkg{peacesciencer} can help you conduct.
 }
 \details{
 Dyads are capable of having multiple disputes in a given year, which can
@@ -119,8 +119,9 @@ cow_ddy \%>\% add_gml_mids(keep=c("dispnum","sidea1", "sidea2"))
 
 }
 \references{
-Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis of the Militarized
-Interstate Dispute (MID) Dataset, 1816-2001.” International Studies Quarterly 60(4): 719-730.
+Gibler, Douglas M., Steven V. Miller, and Erin K. Little. 2016. “An Analysis
+of the Militarized Interstate Dispute (MID) Dataset, 1816-2001.”
+\emph{International Studies Quarterly} 60(4): 719-730.
 }
 \author{
 Steven V. Miller

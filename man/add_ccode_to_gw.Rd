@@ -4,7 +4,7 @@
 \alias{add_ccode_to_gw}
 \title{Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.}
 \usage{
-add_ccode_to_gw(data, fillmiss)
+add_ccode_to_gw(data)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
