@@ -1,17 +1,22 @@
 #' Add minimum distance data to your data frame
 #'
 #' @description \code{add_minimum_distance()} allows you to add the minimum
-#' distance (in kilometers) to a (dyad-year, leader-year, leader-dyad-year, state-year) data frame. These estimates
-#' are recorded in the \code{cow_mindist} and \code{gw_mindist} data that come with this package. The
-#' data are current as of the end of 2019.
+#' distance (in kilometers) to a (dyad-year, leader-year, leader-dyad-year,
+#' state-year) data frame. These estimates are recorded in the
+#' \code{cow_mindist} and \code{gw_mindist} data that come with this package.
+#' The data are current as of the end of 2019.
 #'
 #'
-#' @return \code{add_minimum_distance()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds the
-#' minimum distance between the first state and the second state (in dyad-year data) or the minimum
-#' minimum (sic) distance for a given state in a given year.
+#' @return
 #'
-#' @details The function leans on attributes of the data that are provided by one of the "create" functions
-#' in this package (e.g. \code{create_dyadyear()} or \code{create_stateyear()}).
+#' \code{add_minimum_distance()} takes a (dyad-year, leader-year,
+#' leader-dyad-year, state-year) data frame and adds the minimum distance
+#' between the first state and the second state (in dyad-year data) or the
+#' minimum minimum (sic) distance for a given state in a given year.
+#'
+#' @details The function leans on attributes of the data that are provided by
+#' one of the "create" functions in this package (e.g. \code{create_dyadyear()}
+#' or \code{create_stateyear()}).
 #'
 #' @author Steven V. Miller
 #'
@@ -19,12 +24,13 @@
 #'
 #' @references
 #'
-#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
-#' and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
-#' The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
+#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik
+#' Cederman, and Kristian Skrede Gleditsch. 2022. "Mapping The International
+#' System, 1886-2017: The \code{CShapes} 2.0 Dataset." *Journal of Conflict
+#' Resolution*. 66(1): 144-161.
 #'
-#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package."
-#' \emph{The R Journal} 2(1): 18-24.
+#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring
+#' Country Shapes: The \code{cshapes} Package." *The R Journal* 2(1): 18-24.
 #'
 #' @examples
 #'

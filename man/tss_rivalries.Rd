@@ -78,7 +78,7 @@ as its primary rival but the U.S. does not see Russia the same way.
 }
 \references{
 Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
-URL: \url{http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
+URL: \url{https://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
 
 Thompson, William R., Kentaro Sakuwa, and Prashant Hosur Suhas. 2021.
 \emph{Analyzing Strategic Rivalries in World Politics: Types of Rivalry,

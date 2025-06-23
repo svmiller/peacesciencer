@@ -17,7 +17,7 @@ Changes include:
 - `add_contiguity()` has an argument (`"slice"`) that determines its behavior for when there is a change in a contiguity relationship in a given year. The `mry` argument actually does something now.
 - `ccode_democracy` and `gwcode_democracy` are deprecated and slated for removal. Democracy data are now maintained in the `{isard}` package.
 - `add_democracy()` now leans on `{isard}` for democracy data.
-- `add_democracy()` has a `keep` argument now.
+- `add_democracy()` and `add_nmc()` have a `keep` argument now, allowing the user to select particular estimates from the democracy/capabilities data rather than get everything (including stuff they don't want).
 - Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`
 
 Additions include:

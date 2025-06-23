@@ -4,27 +4,38 @@
 \alias{add_nmc}
 \title{Add Correlates of War National Military Capabilities Data}
 \usage{
-add_nmc(data)
+add_nmc(data, keep)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{keep}{an optional parameter, specified as a character vector, about
+what capability estimates the user wants to return from this function. If not
+specified, everything from the underlying capabilities data is returned.}
 }
 \value{
-\code{add_nmc()} takes a (dyad-year, leader-year, leader-dyad-year, state-year) data frame and adds information
-about the national material capabilities for the state or two states in the dyad in a given year.
-If the data are dyad-year (or leader-dyad-year),
-the function adds 12 total columns for the first state (i.e. \code{ccode1}) and the
-second state (i.e. \code{ccode2}) for all estimates of national
-military capabilities provided by the Correlates of War project. If the data are
-state-year (or leader-year), the function returns six additional columns
-to the original data that contain that same information for a given state in a given year.
+\code{add_nmc()} takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame and adds information about the national material
+capabilities for the state or two states in the dyad in a given year. If the
+data are dyad-year (or leader-dyad-year), the function adds 12 total columns
+for the first state (i.e. \code{ccode1}) and the second state (i.e.
+\code{ccode2}) for all estimates of national military capabilities provided
+by the Correlates of War project. If the data are state-year (or leader-year),
+the function returns six additional columns to the original data that contain
+that same information for a given state in a given year.
 }
 \description{
-\code{add_nmc()} allows you to add the Correlates of War National Material Capabilities data to your data.
+\code{add_nmc()} allows you to add the Correlates of War National Material
+Capabilities data to your data.
 }
 \details{
-Be mindful that the data are fundamentally state-year and that extensions to leader-level data should be understood
-as approximations for leaders in a given state-year.
+Be mindful that the data are fundamentally state-year and that extensions to
+leader-level data should be understood as approximations for leaders in a
+given state-year.
+
+The \code{keep} argument must include one or more of the capabilities estimates
+included in \code{cow_nmc}. Otherwise, it will return an error that it cannot
+subset columns that do not exist.
 }
 \examples{
 
