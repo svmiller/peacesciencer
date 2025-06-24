@@ -380,74 +380,6 @@ NULL
 
 "atop_alliance"
 
-
-#' (Surplus and Gross) Domestic Product for Correlates of War States
-#'
-#' These are state-year level data for surplus and gross domestic product for Correlates of War state system members. Data also
-#' include population estimates for per capita standardization.
-#'
-#'
-#' @format A data frame with 27753 observations on the following five variables.
-#' \describe{
-#' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
-#' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
-#' \item{\code{wbpopest}}{a numeric vector for the estimated population size (log-transformed)}
-#' \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
-#'  \item{\code{wbgdppc2011est}}{a numeric vector for the estimated GDP per capita (log-transformed)}
-#' }
-#' @details These were extracted from the actual replication files from \emph{International Studies Quarterly}. Because these
-#' data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
-#' (which Anders et al. published) and the Gleditsch-Ward version of these data (which appear to be the one the authors will more
-#' vigorously support going forward).
-#'
-#' Space considerations compel me to round these data to three decimal points.  These "economic" data are routinely
-#' the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated
-#' anyways and the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than
-#' 25% of its original size. The original simulations are available for remote download if you'd like. Type \code{?download_extdata()} for
-#' more information.
-#'
-#' @references
-#'
-#' Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)"
-#' \emph{International Studies Quarterly} 64(2): 392--405.
-
-"cow_sdp_gdp"
-
-
-#' (Surplus and Gross) Domestic Product for Gleditsch-Ward States
-#'
-#' These are state-year level data for surplus and gross domestic product for Correlates of War state system members. Data also
-#' include population estimates for per capita standardization.
-#'
-#'
-#' @format A data frame with 27387 observations on the following five variables.
-#' \describe{
-#' \item{\code{gwcode}}{a numeric vector for the Gleditsch-Ward state code}
-#' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{wbgdp2011est}}{a numeric vector for the estimated natural log of GDP in 2011 USD (log-transformed)}
-#' \item{\code{wbpopest}}{a numeric vector for the estimated population size (log-transformed)}
-#' \item{\code{sdpest}}{a numeric vector for the estimated surplus domestic product (log-transformed)}
-#' \item{\code{wbgdppc2011est}}{a numeric vector for the estimated GDP per capita (log-transformed)}
-#' }
-#' @details These were provided by Anders on a separate Github repository for this project. Because these
-#' data are ultimately being simulated, a user can expect some slight differences between the Correlates of War version of these data
-#' (which Anders et al. published) and the Gleditsch-Ward version of these data (which appear to be the one the authors will more
-#' vigorously support going forward).
-#'
-#' Space considerations compel me to round these data to three decimal points.  These "economic" data are routinely
-#' the biggest in the package, and it's because of the decimal points. The justification for this is these data are estimated/simulated
-#' anyways and the information loss is at the 1/1000th decimal point. This procedure basically cuts the size of the data to be less than
-#' 25% of its original size. The original simulations are available for remote download if you'd like. Type \code{?download_extdata()} for
-#' more information.
-#'
-#' @references
-#'
-#' Anders, Therese, Christopher J. Fariss, and Jonathan N. Markowitz. 2020. "Bread Before Guns or Butter: Introducing Surplus Domestic Product (SDP)"
-#' \emph{International Studies Quarterly} 64(2): 392--405.
-
-"gw_sdp_gdp"
-
 #' UCDP Onset Data (v. 19.1)
 #'
 #' These are state-year level data for armed conflict onsets provided by the Uppsala Conflict Data Program (UCDP).
@@ -593,42 +525,7 @@ NULL
 "gw_cow_years"
 
 
-#' Rugged/Mountainous Terrain Data
-#'
-#' This is a data set on state-level estimates for the "ruggedness" of a state's terrain.
-#'
-#' @format A data frame with 192 observations on the following 6 variables.
-#' \describe{
-#' \item{\code{ccode}}{a Correlates of War state code}
-#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
-#' \item{\code{rugged}}{the terrain ruggedness index}
-#' \item{\code{newlmtnest}}{the (natural log) percentage estimate of the state's terrain that is mountainous}
-#' }
-#'
-#' @details The \code{data-raw} directory on the project's Github contains more information about how these data were
-#' created. It goes without saying that these data move *slowly* so the data are really only applicable for making state-to-state
-#' comparisons and not states-in-time comparisons. The terrain ruggedness index is originally introduced by Riley et al. (1999) but
-#' is amended by Nunn and Puga (2012). The mountain terrain data was originally created by Fearon and Laitin (2003) but extended and
-#' amended by Gibler and Miller (2014). The data are functionally time-agnostic---use with caution in your state-year analyses---but all
-#' data sets seem to benchmark around 1999-2000. I'm not sure it matters  *that* much, but it matters a little at the margins, I suppose,
-#' if you suspect there are major differences in interpretation of how much more "rugged" the Soviet Union was than Russia, or Yugoslavia
-#' than Serbia.
-#'
-#' @references
-#'
-#' Fearon, James D., and David Laitin, "Ethnicity, Insurgency, and Civil War"
-#' \emph{American Political Science Review} 97: 75–90.
-#'
-#' Gibler, Douglas M. and Steven V. Miller. 2014. "External Territorial Threat, State Capacity, and Civil War."
-#' \emph{Journal of Peace Research} 51(5): 634-646.
-#'
-#' Nunn, Nathan and Diego Puga. 2012. "Ruggedness: The Blessing of Bad Geography in Africa."
-#' \emph{Review of Economics and Statistics}. 94(1): 20-36.
-#'
-#' Riley, Shawn J., Stephen D. DeGloria, and Robert Elliot. 1999. "A Terrain Ruggedness
-#' Index That Quantifies Topographic Heterogeneity,” \emph{Intermountain Journal of Sciences} 5: 23–27.
-#'
-"rugged"
+
 
 
 #' Historical Index of Ethnic Fractionalization data

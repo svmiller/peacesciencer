@@ -10,34 +10,41 @@ add_rugged_terrain(data)
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_rugged_terrain()} takes a (dyad-year, leader-year, leader-dyad-year, state-year)
-data frame, whether the primary state identifiers are from the Correlates of War
-system or the Gleditsch-Ward system, and returns information about the
-"ruggedness" of the state's terrain. The two indicators returned are the
-"terrain ruggedness index" calculated by Nunn and Puga (2012) and a logarithmic
-transformation of how mountainous the state is (as calculated by Gibler and Miller, 2014).
-The dyad-year (leader-dyad-year) data get four additional columns (i.e. both indicators for both states
-in the dyad) whereas the state-year data get just the two additional columns.
+\code{add_rugged_terrain()} takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame, whether the primary state identifiers are from the
+Correlates of War system or the Gleditsch-Ward system, and returns
+information about the "ruggedness" of the state's terrain. The two indicators
+returned are the "terrain ruggedness index" calculated by Nunn and Puga
+(2012) and a logarithmic transformation of how mountainous the state is
+(as calculated by Gibler and Miller, 2014). The dyad-year (leader-dyad-year)
+data get four additional columns (i.e. both indicators for both states in the
+dyad) whereas the state-year data get just the two additional columns.
 }
 \description{
 \code{add_rugged_terrain()} allows you to add information, however crude,
-about the "ruggedness" of a state's terrain to your (dyad-year, leader-year, leader-dyad-year, state-year) data.
+about the "ruggedness" of a state's terrain to your (dyad-year, leader-year,
+leader-dyad-year, state-year) data.
 }
 \details{
 Please see the information for the underlying data \code{rugged}, and the
-associated R script in the \code{data-raw} directory, to see how these data are generated.
-Importantly, these data are time-agnostic and move \emph{slowly}. We're talking about geography here.
-Both data sets benchmark around 1999-2000 and it's a leap of faith to use these data for comparisons
-across the entirety of the Correlates of War or Gleditsch-Ward system membership. Every use of data
-of these types have been either cross-sectional snapshots or for making state-to-state comparisons
-after World War II (think of your prominent civil war studies here). Be mindful about what you expect
-to get from these data.
+associated R script in the \code{data-raw} directory, to see how these data
+are generated. Importantly, these data are time-agnostic and move \emph{slowly}.
+We're talking about geography here. Both data sets benchmark around
+1999-2000 and it's a leap of faith to use these data for comparisons across
+the entirety of the Correlates of War or Gleditsch-Ward system membership.
+Every use of data of these types have been either cross-sectional snapshots
+or for making state-to-state comparisons after World War II (think of your
+prominent civil war studies here). Be mindful about what you expect to get
+from these data.
 
-The underlying data have both Gleditsch-Ward codes and Correlates of War codes. The merge it makes depends
-on what you declare as the "master" system at the top of the pipe (e.g.. in \code{create_dyadyears()} or
-\code{create_stateyears()}). If, for example, you run \code{create_stateyears(system="cow")} and follow
-it with \code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes and not the Gleditsch-Ward
-codes. You can see the script mechanics to see how this is achieved.
+The data have both Gleditsch-Ward codes and Correlates of War codes. The
+merge it makes depends on what you declare as the "master" system at the top
+of the pipe (e.g.. in \code{create_dyadyears()} or
+\code{create_stateyears()}). If, for example, you run
+\code{create_stateyears(system="cow")} and follow it with
+\code{add_gwcode_to_cow()}, the merge will be on the Correlates of War codes
+and not the Gleditsch-Ward codes. You can see the script mechanics to see how
+this is achieved.
 }
 \examples{
 
@@ -57,14 +64,15 @@ create_stateyears(system = "gw") \%>\% add_rugged_terrain()
 Fearon, James D., and David Laitin, "Ethnicity, Insurgency, and Civil War"
 \emph{American Political Science Review} 97: 75–90.
 
-Gibler, Douglas M. and Steven V. Miller. 2014. "External Territorial Threat, State Capacity, and Civil War."
-\emph{Journal of Peace Research} 51(5): 634-646.
+Gibler, Douglas M. and Steven V. Miller. 2014. "External Territorial Threat,
+State Capacity, and Civil War." \emph{Journal of Peace Research} 51(5): 634-646.
 
-Nunn, Nathan and Diego Puga. 2012. "Ruggedness: The Blessing of Bad Geography in Africa."
-\emph{Review of Economics and Statistics}. 94(1): 20-36.
+Nunn, Nathan and Diego Puga. 2012. "Ruggedness: The Blessing of Bad Geography
+in Africa." \emph{Review of Economics and Statistics}. 94(1): 20-36.
 
-Riley, Shawn J., Stephen D. DeGloria, and Robert Elliot. 1999. "A Terrain Ruggedness
-Index That Quantifies Topographic Heterogeneity,” \emph{Intermountain Journal of Sciences} 5: 23–27.
+Riley, Shawn J., Stephen D. DeGloria, and Robert Elliot. 1999. "A Terrain
+Ruggedness Index That Quantifies Topographic Heterogeneity,” \emph{Intermountain
+Journal of Sciences} 5: 23–27.
 }
 \author{
 Steven V. Miller

@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_sdp_gdp.R
 \name{add_sdp_gdp}
 \alias{add_sdp_gdp}
-\title{Add (Surplus and Gross) Domestic Product Data}
+\title{Add (Surplus and Gross) Domestic Product Data \link{DEPRECATED}}
 \usage{
 add_sdp_gdp(data)
 }
@@ -23,9 +23,14 @@ original data that contain that same information for a given state in
 a given year.
 }
 \description{
-\code{add_sdp_gdp()} allows you to add estimated GDP and "surplus"
-domestic product data from a 2020 analysis published in
-\emph{International Studies Quarterly} by Anders, Fariss, and Markowitz.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
+
+\code{add_sdp_gdp()} allowed you to add estimated GDP and "surplus"
+domestic product data from a 2020 analysis published in \emph{International
+Studies Quarterly} by Anders, Fariss, and Markowitz. The data that allow you
+to do this have since been updated and is now in \pkg{isard}.
+\code{add_sim_gdp_pop()} will allow users to add the kind of data provided
+by Anders et al. by way of their revised simulations.
 }
 \details{
 The function leans on attributes of the data that are provided by one of

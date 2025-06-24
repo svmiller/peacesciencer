@@ -38,3 +38,17 @@ NULL
 #' @details \code{gwcode_democracy} is defunct. The data are now maintained in
 #' the \pkg{isard} package as \code{gw_democracy}.
 "gwcode_democracy"
+
+
+#' @rdname data-deprecated
+#' @name cow_sdp_gdp
+#' @details \code{cow_sdp_gdp} is defunct. The data are now maintained in
+#' the \pkg{isard} package as \code{cw_gdppop}.
+"cow_sdp_gdp"
+
+
+#' @rdname data-deprecated
+#' @name gw_sdp_gdp
+#' @details \code{gw_sdp_gdp} is defunct. The data are now maintained in
+#' the \pkg{isard} package as \code{gw_gdppop}.
+"gw_sdp_gdp"

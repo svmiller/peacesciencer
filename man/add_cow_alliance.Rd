@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_cow_alliance.R
 \name{add_cow_alliance}
 \alias{add_cow_alliance}
-\title{Add Correlates of War alliance data to a data frame}
+\title{Add Correlates of War alliance data to a data frame \link{DEPRECATED}}
 \usage{
 add_cow_alliance(data)
 }

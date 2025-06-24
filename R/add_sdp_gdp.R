@@ -1,10 +1,15 @@
-#' Add (Surplus and Gross) Domestic Product Data
+#' Add (Surplus and Gross) Domestic Product Data [DEPRECATED]
 #'
 #' @description
 #'
-#' \code{add_sdp_gdp()} allows you to add estimated GDP and "surplus"
-#' domestic product data from a 2020 analysis published in
-#' *International Studies Quarterly* by Anders, Fariss, and Markowitz.
+#' `r lifecycle::badge("deprecated")`
+#'
+#' \code{add_sdp_gdp()} allowed you to add estimated GDP and "surplus"
+#' domestic product data from a 2020 analysis published in *International
+#' Studies Quarterly* by Anders, Fariss, and Markowitz. The data that allow you
+#' to do this have since been updated and is now in \pkg{isard}.
+#' \code{add_sim_gdp_pop()} will allow users to add the kind of data provided
+#' by Anders et al. by way of their revised simulations.
 #'
 #'
 #' @return
