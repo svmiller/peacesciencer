@@ -265,3 +265,59 @@ NULL
 #' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership/}
 #'
 "cow_majors"
+
+
+#'  Correlates of War National Military Capabilities Data
+#'
+#' These are version 6.0 of the Correlates of War National Military Capabilities
+#' data. Data omit the state abbreviation and version identifier for
+#' consideration.
+#'
+#' @format A data frame with 15951 observations on the following 9 variables.
+#' \describe{
+#' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
+#' \item{\code{year}}{the year}
+#' \item{\code{milex}}{an estimate of military expenditures (in thousands). See details section for more.}
+#' \item{\code{milper}}{an estimate of the size of military personnel (in thousands) for the state}
+#' \item{\code{irst}}{an estimate of iron and steel production (in thousands of tons)}
+#' \item{\code{pec}}{an estimate of primary energy consumption (thousands of coal-ton equivalents)}
+#' \item{\code{tpop}}{an estimate of the total population size of the state (in thousands)}
+#' \item{\code{upop}}{an estimate of the urban population size of the state (in thousands). See details section for more.}
+#' \item{\code{cinc}}{The Composite Index of National Capability ("CINC") score. See details section for more.}
+#' }
+#'
+#' @details
+#'
+#' The user will want to be a little careful with how some of these data are
+#' used, beyond the typical caveat about how difficult it is to pin-point how
+#' many thousands of coal-tons a state like Baden was producing in the 19th
+#' century.
+#'
+#' First, military expenditures are denominated in British pounds sterling for
+#' observations between 1816 and 1913. The observations from 1914 and beyond are
+#' denominated in current United States dollars. This is according to the manual.
+#'
+#' Second, urban population size is an estimate based on, well, an estimate of
+#' the size of the population living in an area with 100,000 or more people.
+#'
+#' Third, the Composite Index of National Capability score is calculated as each
+#' state's world share of each of the six composite indicators also included in
+#' the data in a given year. It theoretically is bound between 0 and 1. A state
+#' with a 1 is 100% responsible for 1) all of the military expenditures in the
+#' world, 2) is the only state with a military, 3) does all the iron and steel
+#' production, 4) all the world's primary energy consumption, and 5) is the only
+#' state in the world with a population and an urban population. Incidentally,
+#' the maximum scores observed in the data belong to the United States in 1945.
+#'
+#'
+#' @references
+#'
+#' Singer, J. David, Stuart Bremer, and John Stuckey. (1972). "Capability
+#' Distribution, Uncertainty, and Major Power War, 1820-1965." in
+#' Bruce Russett (ed) Peace, War, and Numbers, Beverly Hills: Sage, 19-48.
+#'
+#' Singer, J. David. 1987. "Reconstructing the Correlates of War Dataset on
+#' Material Capabilities of States, 1816-1985" *International Interactions*
+#' 14: 115-32.
+#'
+"cow_nmc"

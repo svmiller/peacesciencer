@@ -6,7 +6,7 @@ Changes include:
 - `add_sdp_gdp()` is deprecated and slated for removal. Its functionality is replaced by `add_sim_gdp_pop()`.
 - `add_gml_mids()` is superseded in light of the release of the MIC data.
 - `add_cow_mids()` is superseded.
-- `cow_alliance`, `ccode_democracy`, `gwcode_democracy`, `cow_sdp_gdp`, and `gw_sdp_gdp` are deprecated and slated for removal.
+- `cow_alliance`, `ccode_democracy`, `gwcode_democracy`, `cow_sdp_gdp`, `gw_sdp_gdp`, `cow_gw_years`, and `gw_cow_years` are deprecated and slated for removal.
 - Fix error in `cow_capitals` data that did not adequately record Burundi's capital change in 2018. This concerns the data generated for `cow_capitals`.
 - Fix error in `tss_rivalries` for `tssr_id = 61`. This was in the book but the change in the data-raw directory shows what they assuredly meant. 
 - Add `mry` argument to `add_cow_majors()`, fix bug identified by @rochelleterman in [17](https://github.com/svmiller/peacesciencer/issues/17)
@@ -14,6 +14,7 @@ Changes include:
 - `add_atop_alliance` has an extra argument (`ndir`) for how it should perform on non-directed dyad-year or leader-dyad-year data.
 - `cow_capitals` and `gw_capitals` formally current through 2024. Indonesia is the most likely candidate to require an update in these data, though that change has not happened yet. `cow_capitals` and `gw_capitals` further include some corrections and the introduction of start and end dates for capitals.
 - `gw_ddy` and `cow_ddy` current through 2024.
+- `add_ccode_to_gw()` and `add_gwcode_to_cow()` now lean on data in `{isard}`.
 - `add_capital_distance()` includes an argument (`"transsum"`) for what observation to privilege for yearly summaries in which there was a capital transition. Support for leader-level data momentarily dropped.
 - `cow_contdir` replaces columns `begin` and `end` with `stdate` and `enddate` communicating the same information, but in date form.
 - `add_contiguity()` has an argument (`"slice"`) that determines its behavior for when there is a change in a contiguity relationship in a given year. The `mry` argument actually does something now.

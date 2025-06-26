@@ -114,3 +114,66 @@ NULL
 #' to Use Force." \emph{American Political Science Review} 114(4): 1352--1358.
 
 "lwuf"
+
+#' (An Abbreviation of) The LEAD Data Set
+#'
+#' These are an abbreviated version of the LEAD Data Set, incorporating
+#' variables that I think are most interesting or potentially useful from these
+#' data.
+#'
+#'
+#' @format A data frame with 3409 observations on the following 12 variables.
+#' \describe{
+#' \item{\code{obsid}}{an observational ID from \code{archigos}}
+#' \item{\code{leveledu}}{0 = primary, 1 = secondary, 2 = university, 3 = graduate}
+#' \item{\code{milservice}}{did leader have prior military service?}
+#' \item{\code{combat}}{did leader have prior combat experience in military service?}
+#' \item{\code{rebel}}{was leader previously part of a rebel group?}
+#' \item{\code{warwin}}{was leader previously part of a winning war effort as part of military service?}
+#' \item{\code{warloss}}{was leader previously part of a losing war effort as part of military service?}
+#' \item{\code{rebelwin}}{was leader previously part of a winning war effort as part of a rebel group?}
+#' \item{\code{rebelloss}}{was leader previously part of a losing war effort as part of a rebel group?}
+#' \item{\code{yrsexper}}{previous years of experience in politics before becoming a leader}
+#' \item{\code{physhealth}}{does leader have physical health issues?}
+#' \item{\code{mentalhealth}}{does leader have mental health issues?}
+#' }
+#'
+#' @details
+#'
+#' Data are ported from Ellis et al. (2015). Users who want more of these
+#' variables included in \pkg{peacesciencer} should raise an issue on Github.
+#'
+#' @references
+#'
+#' Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015.
+#' "Introducing the LEAD Data Set." *International Interactions* 41(4): 718--741.
+
+"LEAD"
+
+#' A Data Set of Leader Codes Across Archigos 4.1, Archigos 2.9, and the LEAD Data
+#'
+#' This is a simple data set that matches, as well as one can, leader codes
+#' across Archigos 4.1, Archigos 2.9, and the LEAD data set.
+#'
+#'
+#' @format A data frame the following four variables.
+#' \describe{
+#' \item{\code{obsid}}{the observation ID in the Archigos data}
+#' \item{\code{leadid}}{the leader ID in version 4.1 of the Archigos data}
+#' \item{\code{leadid29}}{the leader ID in version 2.9 of the Archigos data}
+#' \item{\code{leaderid}}{the leader ID in the LEAD data}
+#' }
+#'
+#' @details
+#'
+#' These data treat version 4.1 of the Archigos data as the gospel leader data
+#' (if you will) for which  the observation ID (`obsid`) is the master code
+#' indicating a leader tenure period. It also builds in an assumption that
+#' various observations that duplicate in the LEAD data should not have
+#' duplicated. This concerns Francisco Aguilar Barquer (who appears twice),
+#' Emile Reuter (who appears twice), and Gunnar Thoroddsen (who appears three
+#' times) in the LEAD data despite having uninterrupted tenures in office. None
+#' of the covariates associated with these leaders change in the LEAD data,
+#' which is why I assume they were duplicates.
+
+"leader_codes"

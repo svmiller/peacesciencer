@@ -8,6 +8,8 @@
 \alias{gwcode_democracy}
 \alias{cow_sdp_gdp}
 \alias{gw_sdp_gdp}
+\alias{cow_gw_years}
+\alias{gw_cow_years}
 \title{Data sets that have been deprecated}
 \format{
 Users interested in the data referenced here can check the Github
@@ -24,6 +26,10 @@ An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) w
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 27753 rows and 6 columns.
 
 An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 27387 rows and 6 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 16936 rows and 6 columns.
+
+An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 18425 rows and 6 columns.
 }
 \usage{
 cow_alliance
@@ -35,6 +41,10 @@ gwcode_democracy
 cow_sdp_gdp
 
 gw_sdp_gdp
+
+cow_gw_years
+
+gw_cow_years
 }
 \description{
 These are data sets that have been deprecated and scheduled for
@@ -62,6 +72,12 @@ the \pkg{isard} package as \code{cw_gdppop}.
 
 \code{gw_sdp_gdp} is defunct. The data are now maintained in
 the \pkg{isard} package as \code{gw_gdppop}.
+
+\code{cow_gw_years} is defunct. The data are now maintained in
+the \pkg{isard} package as \code{cw_gw_panel}.
+
+\code{gw_sdp_gdp} is defunct. The data are now maintained in
+the \pkg{isard} package as \code{gw_cw_panel}.
 }
 \keyword{datasets}
 \keyword{deprecated}

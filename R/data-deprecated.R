@@ -52,3 +52,16 @@ NULL
 #' @details \code{gw_sdp_gdp} is defunct. The data are now maintained in
 #' the \pkg{isard} package as \code{gw_gdppop}.
 "gw_sdp_gdp"
+
+#' @rdname data-deprecated
+#' @name cow_gw_years
+#' @details \code{cow_gw_years} is defunct. The data are now maintained in
+#' the \pkg{isard} package as \code{cw_gw_panel}.
+"cow_gw_years"
+
+
+#' @rdname data-deprecated
+#' @name gw_cow_years
+#' @details \code{gw_sdp_gdp} is defunct. The data are now maintained in
+#' the \pkg{isard} package as \code{gw_cw_panel}.
+"gw_cow_years"

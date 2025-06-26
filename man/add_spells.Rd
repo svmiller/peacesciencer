@@ -94,14 +94,16 @@ add_spells()
 
 }
 \references{
-Beger, Andreas, Daina Chiba, Daniel W. Hill, Jr, Nils W. Metternich, Shahryar Minhas and Michael D. Ward. 2018.
-``\pkg{spduration}: Split-Population and Duration (Cure) Regression.'' \emph{R package version 0.17.1}.
+Beger, Andreas, Daina Chiba, Daniel W. Hill, Jr, Nils W. Metternich, Shahryar
+Minhas and Michael D. Ward. 2018. ``\pkg{spduration}: Split-Population and
+Duration (Cure) Regression.'' \emph{R package version 0.17.1}.
 
-Beck, Nathaniel, Jonathan N. Katz, and Richard Tucker. 1998. "Taking Time Seriously: Time-Series-Cross-Section
-Analysis with a Binary Dependent Variable." \emph{American Journal of Political Science} 42(4): 1260--1288.
+Beck, Nathaniel, Jonathan N. Katz, and Richard Tucker. 1998. "Taking Time
+Seriously: Time-Series-Cross-Section Analysis with a Binary Dependent
+Variable." \emph{American Journal of Political Science} 42(4): 1260--1288.
 
-Carter, David B. and Curtis S. Signorino. 2010. "Back to the Future: Modeling Time Dependence in Binary Data."
-\emph{Political Analysis} 18(3): 271--292.
+Carter, David B. and Curtis S. Signorino. 2010. "Back to the Future: Modeling
+Time Dependence in Binary Data." \emph{Political Analysis} 18(3): 271--292.
 }
 \author{
 Steven V. Miller

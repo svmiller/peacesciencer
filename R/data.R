@@ -1,39 +1,6 @@
 #' @importFrom tibble tibble
 NULL
 
-
-#' Correlates of War directed dyad-year alliance data
-#'
-#' These are version 4.1 of the Correlates of War directed dyad-year alliance data.
-#'
-#' @format A data frame with 120784 observations on the following 7 variables.
-#' \describe{
-#' \item{\code{ccode1}}{a numeric vector for the Correlates of War state code for the first state}
-#' \item{\code{ccode2}}{a numeric vector for the Correlates of War state code for the second state}
-#' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{cow_defense}}{a numeric vector that equals 1 if the alliance included a defense pledge}
-#' \item{\code{cow_neutral}}{a numeric vector that equals 1 if the alliance included a neutrality pledge}
-#' \item{\code{cow_nonagg}}{a numeric vector that equals 1 if the alliance included a non-aggression pledge}
-#' \item{\code{cow_entente}}{a numeric vector that equals 1 if the alliance included a pledge to consult if a crisis occurred}
-#' }
-#'
-#' @details The directed dyad-year alliance data are for alliance initiations, not straight dyad-years, "per se." This suggests
-#' the presence of duplicate directed dyad-years. For computing ease, given the intended use, I take care of these duplicate
-#' dyad-years behind the scenes. Consider the case of the U.S. and Canada in 1958. Therein, there were apparently two separate
-#' alliance initiations  that included defense pledges. My behind-the-scenes cleaning process groups by \code{ccode1},
-#' \code{ccode2}, and \code{year} and summarizes those alliance pledge variables. I then replace any value greater than 1
-#' with 1. This indicates the presence or absence of a defense pledge in a given directed dyad-year.
-#'
-#' @references
-#'
-#' Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}. Congressional Quarterly Press.
-#'
-NULL
-
-
-
-
-
 #' A directed dyad-year data frame of Correlates of War state system members
 #'
 #' This is a complete directed dyad-year data frame of Correlates of War
@@ -53,30 +20,6 @@ NULL
 #' @details Data are a quick generation from the \code{create_dyadyears()} function in this package.
 #'
 "cow_ddy"
-
-
-#' Correlates of War and Gleditsch-Ward states, by year
-#'
-#' This is a complete (I believe) data set on Correlates of War states and Gleditsch-Ward states, a byproduct
-#' of a \code{full_join()} between \code{gw_states} and \code{cow_states} that leans largely on the
-#' state abbreviation variable.
-#'
-#' @format A data frame with 16936 observations on the following 6 variables.
-#' \describe{
-#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
-#' \item{\code{stateabb}}{the state abbreviation, which was the greatest source of agreement between both data sets}
-#' \item{\code{gw_statename}}{the state name as it appears in the Gleditsch-Ward data}
-#' \item{\code{ccode}}{a Correlates of War state code}
-#' \item{\code{cow_statename}}{the state name as it appears in the Correlates of War data}
-#' \item{\code{year}}{a numeric vector for the year}
-#' }
-#'
-#' @details The \code{data-raw} directory on the project's Github contains more information about how these data were
-#' created. I'm going to use it for internal stuff. The workflow is going to treat the Correlates of War state system
-#' membership codes as more of the "master" codes, for which the user can add Gleditsch-Ward identifiers as they see
-#' fit. Data are extended to 2020, assuming no changes to state system membership for either data set.
-#'
-"cow_gw_years"
 
 
 
@@ -184,46 +127,7 @@ NULL
 #'
 "maoz_powers"
 
-#'  Correlates of War National Military Capabilities Data
-#'
-#' These are version 6.0 of the Correlates of War National Military Capabilities data. Data omit
-#' the state abbreviation and version identifier for consideration.
-#'
-#' @format A data frame with 15171 observations on the following 9 variables.
-#' \describe{
-#' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
-#' \item{\code{year}}{the year}
-#' \item{\code{milex}}{an estimate of military expenditures (in thousands). See details section for more.}
-#' \item{\code{milper}}{an estimate of the size of military personnel (in thousands) for the state}
-#' \item{\code{irst}}{an estimate of iron and steel production (in thousands of tons)}
-#' \item{\code{pec}}{an estimate of primary energy consumption (thousands of coal-ton equivalents)}
-#' \item{\code{tpop}}{an estimate of the total population size of the state (in thousands)}
-#' \item{\code{upop}}{an estimate of the urban population size of the state (in thousands). See details section for more.}
-#' \item{\code{cinc}}{The Composite Index of National Capability ("CINC") score. See details section for more.}
-#' }
-#'
-#' @details The user will want to be a little careful with how some of these data are used, beyond the typical caveat
-#' about how difficult it is to pin-point how many thousands of coal-tons a state like Baden was producing in the 19th century.
-#'
-#' First, military expenditures are denominated in British pounds sterling for observations between 1816 and 1913. The observations
-#' from 1914 and beyond are denominated in current United States dollars. This is according to the manual.
-#'
-#' Second, urban population size is an estimate based on, well, an estimate of the size of the population living in an area with 100,000
-#' or more people.
-#'
-#' Third, the Composite Index of National Capability score is calculated as each state's world share of each of the six composite indicators
-#' also included in the data in a given year. It theoretically is bound between 0 and 1. A state with a 1 is 100% responsible for 1) all of the military expenditures
-#' in the world, 2) is the only state with a military, 3) does all the iron and steel production, 4) all the world's primary energy consumption, and 5)
-#' is the only state in the world with a population and an urban population. Incidentally, the maximum scores observed in the data belong to the United States in 1945.
-#'
-#'
-#' @references
-#'
-#' Singer, J. David, Stuart Bremer, and John Stuckey. (1972). "Capability Distribution, Uncertainty, and Major Power War, 1820-1965." in Bruce Russett (ed) Peace, War, and Numbers, Beverly Hills: Sage, 19-48.
-#'
-#' Singer, J. David. 1987. "Reconstructing the Correlates of War Dataset on Material Capabilities of States, 1816-1985" International Interactions, 14: 115-32.
-#'
-"cow_nmc"
+
 
 
 #' Correlates of War Non-Directed Dyad-Year International Governmental Organizations (IGOs) Data
@@ -501,31 +405,6 @@ NULL
 
 
 
-#' Gleditsch-Ward states and Correlates of War, by year
-#'
-#' This is a complete (I believe) data set on Gleditsch-Ward states and Correlates of War states, a byproduct
-#' of a \code{full_join()} between \code{gw_states} and \code{cow_states} that leans largely on the
-#' state abbreviation variable.
-#'
-#' @format A data frame with 18425 observations on the following 6 variables.
-#' \describe{
-#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
-#' \item{\code{stateabb}}{the state abbreviation, which was the greatest source of agreement between both data sets}
-#' \item{\code{gw_statename}}{the state name as it appears in the Gleditsch-Ward data}
-#' \item{\code{ccode}}{a Correlates of War state code}
-#' \item{\code{cow_statename}}{the state name as it appears in the Correlates of War data}
-#' \item{\code{year}}{a numeric vector for the year}
-#' }
-#'
-#' @details The \code{data-raw} directory on the project's Github contains more information about how these data were
-#' created. I'm going to use it for internal stuff. The workflow is going to treat the Gleditsch-Ward state system
-#' membership codes as more of the "master" codes, for which the user can add Correlates of War identifiers as they see
-#' fit. Data are extended to 2020, assuming no changes to state system membership for either data set.
-#'
-"gw_cow_years"
-
-
-
 
 
 #' Historical Index of Ethnic Fractionalization data
@@ -780,37 +659,7 @@ NULL
 
 
 
-#' (An Abbreviation of) The LEAD Data Set
-#'
-#' These are an abbreviated version of the LEAD Data Set, incorporating variables that I think are most interesting
-#' or potentially useful from these data.
-#'
-#'
-#' @format A data frame with 3409 observations on the following 12 variables.
-#' \describe{
-#' \item{\code{obsid}}{an observational ID from \code{archigos}}
-#' \item{\code{leveledu}}{0 = primary, 1 = secondary, 2 = university, 3 = graduate}
-#' \item{\code{milservice}}{did leader have prior military service?}
-#' \item{\code{combat}}{did leader have prior combat experience in military service?}
-#' \item{\code{rebel}}{was leader previously part of a rebel group?}
-#' \item{\code{warwin}}{was leader previously part of a winning war effort as part of military service?}
-#' \item{\code{warloss}}{was leader previously part of a losing war effort as part of military service?}
-#' \item{\code{rebelwin}}{was leader previously part of a winning war effort as part of a rebel group?}
-#' \item{\code{rebelloss}}{was leader previously part of a losing war effort as part of a rebel group?}
-#' \item{\code{yrsexper}}{previous years of experience in politics before becoming a leader}
-#' \item{\code{physhealth}}{does leader have physical health issues?}
-#' \item{\code{mentalhealth}}{does leader have mental health issues?}
-#' }
-#'
-#' @details Data are ported from Ellis et al. (2015). Users who want more of these variables included in \pkg{peacesciencer} should
-#' raise an issue on Github.
-#'
-#' @references
-#'
-#' Ellis, Carli Mortenson, Michael C. Horowitz, and Allan C. Stam. 2015. "Introducing the
-#' LEAD Data Set." \emph{International Interactions} 41(4): 718--741.
 
-"LEAD"
 
 
 
@@ -898,28 +747,7 @@ NULL
 
 
 
-#' A Data Set of Leader Codes Across Archigos 4.1, Archigos 2.9, and the LEAD Data
-#'
-#' This is a simple data set that matches, as well as one can, leader codes across Archigos 4.1, Archigos 2.9, and the LEAD data set.
-#'
-#'
-#' @format A data frame the following four variables.
-#' \describe{
-#' \item{\code{obsid}}{the observation ID in the Archigos data}
-#' \item{\code{leadid}}{the leader ID in version 4.1 of the Archigos data}
-#' \item{\code{leadid29}}{the leader ID in version 2.9 of the Archigos data}
-#' \item{\code{leaderid}}{the leader ID in the LEAD data}
-#' }
-#'
-#' @details
-#'
-#' These data treat version 4.1 of the Archigos data as the gospel leader data (if you will) for which  the observation ID (`obsid`)
-#' is the master code indicating a leader tenure period. It also builds in an assumption that various observations that duplicate in the
-#' LEAD data should not have duplicated. This concerns Francisco Aguilar Barquer (who appears twice), Emile Reuter (who appears twice),
-#' and Gunnar Thoroddsen (who appears three times) in the LEAD data despite having uninterrupted tenures in office. None of the covariates
-#' associated with these leaders change in the LEAD data, which is why I assume they were duplicates.
 
-"leader_codes"
 
 
 #' Conventional Arms Races During Periods of Rivalry
@@ -989,7 +817,7 @@ NULL
 #' Venice never appears in any data set in the Correlates of War ecosystem
 #' of data, but I gave it a country code of 324 for the sake of these data
 #' (and the previous Thompson and Dreyer (2012) version of it). You'll never
-#' use this, but it's worth saying out loud that's what I did.
+#' use this, but it's worth saying that's what I did.
 #'
 #' Thompson et al. (2021) dedicate their book to expanding on the various
 #' types of rivalry. Users who know the Thompson and Dreyer (2012) version
@@ -1012,7 +840,7 @@ NULL
 #' rivals elevate this rivalry as their primary rivalry among other rivalries.
 #' Asymmetric principal rivalries are when only one of the two rivals sees the
 #' other as its primary rival. Consider two U.S.-Russian rivalries as
-#' illustrative. Tge rivalry with the Soviet Union (`tssr_id = 100`) was
+#' illustrative. The rivalry with the Soviet Union (`tssr_id = 100`) was
 #' the primary rivalry for the U.S. (and the Soviet Union). However, the U.S.
 #' presently sees China as its main rival (`tssr_id = 211`). The ongoing
 #' rivalry with Russia (`tssr_id = 246`) is one where Russia sees the U.S.

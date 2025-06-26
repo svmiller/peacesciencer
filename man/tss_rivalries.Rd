@@ -47,7 +47,7 @@ a start year of 1960 in the second case. This is fixed in this version.
 Venice never appears in any data set in the Correlates of War ecosystem
 of data, but I gave it a country code of 324 for the sake of these data
 (and the previous Thompson and Dreyer (2012) version of it). You'll never
-use this, but it's worth saying out loud that's what I did.
+use this, but it's worth saying that's what I did.
 
 Thompson et al. (2021) dedicate their book to expanding on the various
 types of rivalry. Users who know the Thompson and Dreyer (2012) version
@@ -70,7 +70,7 @@ rivalries exist where 1) the two rivals have no other rivalry or 2) the two
 rivals elevate this rivalry as their primary rivalry among other rivalries.
 Asymmetric principal rivalries are when only one of the two rivals sees the
 other as its primary rival. Consider two U.S.-Russian rivalries as
-illustrative. Tge rivalry with the Soviet Union (\code{tssr_id = 100}) was
+illustrative. The rivalry with the Soviet Union (\code{tssr_id = 100}) was
 the primary rivalry for the U.S. (and the Soviet Union). However, the U.S.
 presently sees China as its main rival (\code{tssr_id = 211}). The ongoing
 rivalry with Russia (\code{tssr_id = 246}) is one where Russia sees the U.S.
