@@ -808,16 +808,18 @@ NULL
 #' spreadsheet included in the "data-raw" directory, though this is adjusted
 #' in this finished data product.
 #'
-#' This file adjusts for what is assuredly two print errors in Thompson et al.
-#' (2021). In print, Thompson et al. (2021) say the Italy-Turkey rivalry
-#' extends from 1884-1843 and say the Mauritania-Morocco rivalry extends
-#' from 1060-1969. They had meant an end year of 1943 in the first case and
-#' a start year of 1960 in the second case. This is fixed in this version.
+#' This file adjusts for what are (assuredly) three print errors in Thompson et
+#' al. (2021). In print, Thompson et al. (2021) say the Italy-Turkey rivalry
+#' extends from 1884-1843, the Mauritania-Morocco rivalry extends from 1060-1969,
+#' and the Bulgaria-Yugoslavia rivalry extends from 1878 to 1855. They had meant
+#' an end year of 1943 in the first case, a start year of 1960 in the second case,
+#' and an end year of 1955 in the third case. This is fixed in this version.
 #'
-#' Venice never appears in any data set in the Correlates of War ecosystem
-#' of data, but I gave it a country code of 324 for the sake of these data
-#' (and the previous Thompson and Dreyer (2012) version of it). You'll never
-#' use this, but it's worth saying that's what I did.
+#' Venice never appears in any data set in the Correlates of War ecosystem of
+#' data and thus never has any semblance of state code (of which I'm aware) that
+#' I could assign it. I gave it a country code of 324 for the sake of these data
+#' (and the previous Thompson and Dreyer (2012) version of it). You'll never use
+#' this, but it's worth saying that's what I did.
 #'
 #' Thompson et al. (2021) dedicate their book to expanding on the various
 #' types of rivalry. Users who know the Thompson and Dreyer (2012) version
