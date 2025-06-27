@@ -21,6 +21,7 @@ Changes include:
 - `ccode_democracy` and `gwcode_democracy` are deprecated and slated for removal. Democracy data are now maintained in the `{isard}` package.
 - `add_democracy()` now leans on `{isard}` for democracy data.
 - `add_democracy()` and `add_nmc()` have a `keep` argument now, allowing the user to select particular estimates from the democracy/capabilities data rather than get everything (including stuff they don't want).
+- `add_strategic_rivalries()` uses `tss_rivalries` now and no longer has additional arguments prioritizing rivalry type.
 - Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`
 
 Additions include:
