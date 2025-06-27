@@ -2,38 +2,57 @@
 % Please edit documentation in R/add_strategic_rivalries.R
 \name{add_strategic_rivalries}
 \alias{add_strategic_rivalries}
-\title{Add Thompson and Dreyer's (2012) strategic rivalry data to dyad-year data frame}
+\title{Add Thompson et al. (2021) strategic rivalry data to state-year or dyad-year data frame}
 \usage{
-add_strategic_rivalries(data, across_types = 1)
+add_strategic_rivalries(data)
 }
 \arguments{
 \item{data}{a dyad-year data frame (either "directed" or "non-directed")}
-
-\item{across_types}{optional, relevant for state-year, takes a value of 1, 2, or 3 to look for
-whether one of three types fits criteria for ideological, interventionary, positional, spatial
-rivalry. Defaults to 1.}
 }
 \value{
-\code{add_strategic_rivalries()} takes a dyad-year data frame and adds information about ongoing strategic rivalries. It
-will also include a simple dummy variable for whether there was an ongoing rivalry in the year or not.
-For state-year data, it returns the count of ongoing strategic rivalries for the state in the year meeting a certain criteria (i.e.
-whether the state has an interventionary, ideological, positional, or spatial rivalry in an ongoing year, and how many).
+\code{add_strategic_rivalries()} takes a state-year or dyad-year data frame
+and adds information about ongoing strategic rivalries. It will also include
+a simple dummy variable for whether there was an ongoing rivalry in the year
+or not in the dyad-year data. For state-year data, it returns the count of
+ongoing strategic rivalries for the state in the year meeting a certain
+criteria (i.e. whether the state has an interventionary, ideological,
+positional, or spatial rivalry in an ongoing year, and how many).
 }
 \description{
-\code{add_strategic_rivalries()} merges in Thompson and Dreyer's (2012) strategic rivalry data
-to a dyad-year data frame. The right-bound, as of right now, are bound at 2010.
+\code{add_strategic_rivalries()} merges in Thompson et al. (2021) strategic
+rivalry data to a dyad-year or state-year data frame. The right-bound, as of
+right now, are bound at 2020.
 }
 \details{
-\code{add_strategic_rivalries()} will include some other information derived from the rivalry data that the
-user may not want (e.g. start year of the rivalry). Feel free to select those out after the fact. Function includes
-an on-the-fly adjustment for Austria for rivalry #79. In this case, the Austria-Serbia rivalry continues for two years
-after Austria-Hungary (\code{ccode: 300}) became Austria (\code{ccode: 305}).
+\code{add_strategic_rivalries()} will include some other information derived
+from the rivalry data that the user may not want (e.g. start year of the
+rivalry). Feel free to select those out after the fact.
 
-The \code{across_types} argument is optional and observed for only state-year calls. It defaults to 1. At the default,
-the function looks into the rivalry data (in \code{td_rivalries}) and focuses on the \code{type1} column. If, say, a state has
-an ongoing rivalry and it is primarily spatial, it codes that as a spatial rivalry. Assume you input \code{across_types = 2}, the
-function then looks across both the \code{type1} and \code{type2} columns to see if there is a spatial component to the rivalry as
-either its primary or secondary dimension. If so, it codes that as a 1. \code{across_types} must be 1, 2, or 3.
+Underneath the hood, the function subsets data to just all rivalry-year
+observations on or after 1816. This will be in place as long as the
+Correlates of War state system has a left-bound of 1816 on its temporal
+domain.
+
+This function includes an on-the-fly adjustment for the Austria-Serbia
+rivalry (\code{tssr_id = 76}). In this case, the last two years of that rivalry
+are afforded to Austria (\code{ccode = 305}) when the bulk of the rivalry pertained
+to the larger Austria-Hungary (\code{ccode = 300}). Previous versions of this
+function that used the Thompson and Dreyer (2012) strategic rivalry data did
+the same thing. It was rivalry #79 in that case.
+
+I could technically make such an adjustment on the fly for the France-Germany
+rivalry as well in these data (\code{tssr_id = 22}). If the rivalry concludes in
+1955, per the data, it's conceivable that this rivalry should apply to the
+first two years of statehood for West/East Germany. However, I lean on an
+earlier version of the data in which this rivalry was classified as a
+European great power rivalry (see: \code{rivalryno = 22} in \code{td_rivalries}). Thus,
+it makes sense to square the actual rivalry end date with Germany's time as
+a great power (and its elimination from the international system following
+the second world war).
+
+I elect to not support the information on principal and asymmetric principal
+rivalries for the time being. This is subject to change in future versions
+of the package.
 }
 \examples{
 \donttest{
@@ -41,15 +60,17 @@ either its primary or secondary dimension. If so, it codes that as a 1. \code{ac
 library(magrittr)
 cow_ddy \%>\% add_strategic_rivalries()
 
-# across_types defaults to 1
 create_stateyears() \%>\% add_strategic_rivalries()
 }
 }
 \references{
-Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry Data in R".
-URL: \url{http://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
+Miller, Steven V. 2019. "Create and Extend Strategic (International) Rivalry
+Data in R". URL:
+\url{https://svmiller.com/blog/2019/10/create-extend-strategic-rivalry-data-r/}
 
-Thompson, William R. and David Dreyer. 2012. \emph{Handbook of International Rivalries}. CQ Press.
+Thompson, William R., Kentaro Sakuwa, and Prashant Hosur Suhas. 2021.
+\emph{Analyzing Strategic Rivalries in World Politics: Types of Rivalry,
+Regional Variation, and Escalation/De-escalation}. Springer.
 }
 \author{
 Steven V. Miller

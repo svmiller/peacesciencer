@@ -45,7 +45,7 @@
 #' Fariss et al. (2022) provide multiple variations of GDP and GDP per capita
 #' in their simulations, but the data I provide follow their suggested defaults.
 #' The GDP per capita is demarcated in constant 2011 international dollars
-#' (purchasing power parity [PPP]), GDP is expenditure-side real GDP in millions
+#' (purchasing power parity (PPP)), GDP is expenditure-side real GDP in millions
 #' of 2017 international dollars (PPP). The simulated population estimate is in
 #' millions of people. The Maddison Project Database is the source of
 #' simulations for GDP per capita while Penn World Table is the source of

@@ -2,7 +2,7 @@
 % Please edit documentation in R/add_sdp_gdp.R
 \name{add_sdp_gdp}
 \alias{add_sdp_gdp}
-\title{Add (Surplus and Gross) Domestic Product Data \link{DEPRECATED}}
+\title{Add (Surplus and Gross) Domestic Product Data (DEPRECATED)}
 \usage{
 add_sdp_gdp(data)
 }

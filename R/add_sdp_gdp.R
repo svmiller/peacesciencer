@@ -1,4 +1,4 @@
-#' Add (Surplus and Gross) Domestic Product Data [DEPRECATED]
+#' Add (Surplus and Gross) Domestic Product Data (DEPRECATED)
 #'
 #' @description
 #'

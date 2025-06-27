@@ -806,7 +806,8 @@ NULL
 #' of 1494 and 1816 originally had a "P" attached to them, indicating they
 #' were ongoing before that particular year. This is captured in the "raw"
 #' spreadsheet included in the "data-raw" directory, though this is adjusted
-#' in this finished data product.
+#' in this finished data product. It should not materially matter for any
+#' applied use, given the overall ecosystem of data.
 #'
 #' This file adjusts for what are (assuredly) three print errors in Thompson et
 #' al. (2021). In print, Thompson et al. (2021) say the Italy-Turkey rivalry
@@ -847,6 +848,24 @@ NULL
 #' presently sees China as its main rival (`tssr_id = 211`). The ongoing
 #' rivalry with Russia (`tssr_id = 246`) is one where Russia sees the U.S.
 #' as its primary rival but the U.S. does not see Russia the same way.
+#'
+#' There is an apparent discrepancy in this understanding of "principal" and
+#' "asymmetric principal" regarding the India-Pakistan rivalry (`tssr_id = 107`).
+#' Per the authors (Table 2.1, p. 39), this is the only case in the data where
+#' both indicators are 1. Per their conceptual definitions of "principal" and
+#' "asymmetric" principal, this wouldn't make sense. However, I'm reluctant to
+#' impute design decisions on behalf of the user and the authors without being
+#' 100% sure about the correct course of action. For context: India has one
+#' other rivalry (`tssr_id = 109`, with China) and Pakistan has one other
+#' rivalry (`tssr_id = 106`, with Afghanistan). My hunch is this suggests that
+#' the `aprin` column for the India-Pakistan rivalry should be blank and but
+#' the `principal` column should still be 1. Whereas Afghanistan has no other
+#' rivalry in the data during this time prior to the start of the second
+#' iteration of its rivalry with Iran (`tssr_id = 210`), it may imply that
+#' `aprin` should be 1 for for the Afghanistan-Pakistan rivalry. It was the
+#' main one for Afghanistan, but not for Pakistan. I can at least think that
+#' out loud, but I'm disinclined to impute that coding on behalf of the authors
+#' or the user.
 #'
 #' @references
 #'

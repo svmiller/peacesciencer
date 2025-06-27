@@ -62,6 +62,12 @@ tss_rivalries %>%
 
 tss_rivalries %>%
   mutate(ccode1 = ifelse(tssr_id == 117, 260, ccode1),
-         ccode2 = ifelse(tssr_id == 117, 265, ccode2)) -> tss_rivalries #%>% #filter(tssr_id == 117)
+         ccode2 = ifelse(tssr_id == 117, 265, ccode2),
+         ccode1 = ifelse(tssr_id == 122, 816, ccode1),
+         ccode2 = ifelse(tssr_id == 122, 817, ccode2),
+         ccode2 = ifelse(tssr_id == 161, 816, ccode2),
+         ccode2 = ifelse(tssr_id == 126, 817, ccode2),
+         ccode1 = ifelse(tssr_id == 159, 678, ccode1),
+         ccode2 = ifelse(tssr_id == 159, 680, ccode2)) -> tss_rivalries #%>% #filter(tssr_id == 117)
 
 save(tss_rivalries, file="data/tss_rivalries.rda")

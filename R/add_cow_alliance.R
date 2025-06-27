@@ -1,4 +1,4 @@
-#' Add Correlates of War alliance data to a data frame [DEPRECATED]
+#' Add Correlates of War alliance data to a data frame (DEPRECATED)
 #'
 #' @description
 #'
