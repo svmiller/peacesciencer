@@ -53,9 +53,13 @@
 <ul><li>
 <code><a href="../reference/add_cow_alliance.html">add_cow_alliance()</a></code> is deprecated and slated for removal at the request of the data set’s maintainer. The function right now returns a stop communicating this information, also at the request of the data set’s maintainer.</li>
 <li>
-<code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> is deprecated and slated for removal at the request of one of the data set’s maintainers. The function right now returns a stop communicating this information, also at the request of the data set’s maintainer.</li>
+<code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code> is deprecated and slated for removal. Its functionality is replaced by <code><a href="../reference/add_sim_gdp_pop.html">add_sim_gdp_pop()</a></code>.</li>
 <li>
-<code>cow_alliance</code>, <code>ccode_democracy</code>, and <code>gwcode_democracy</code> are deprecated and slated for removal.</li>
+<code><a href="../reference/add_gml_mids.html">add_gml_mids()</a></code> is superseded in light of the release of the MIC data.</li>
+<li>
+<code><a href="../reference/add_cow_mids.html">add_cow_mids()</a></code> is superseded.</li>
+<li>
+<code>cow_alliance</code>, <code>ccode_democracy</code>, <code>gwcode_democracy</code>, <code>cow_sdp_gdp</code>, <code>gw_sdp_gdp</code>, <code>cow_gw_years</code>, and <code>gw_cow_years</code> are deprecated and slated for removal.</li>
 <li>Fix error in <code>cow_capitals</code> data that did not adequately record Burundi’s capital change in 2018. This concerns the data generated for <code>cow_capitals</code>.</li>
 <li>Fix error in <code>tss_rivalries</code> for <code>tssr_id = 61</code>. This was in the book but the change in the data-raw directory shows what they assuredly meant.</li>
 <li>Add <code>mry</code> argument to <code><a href="../reference/add_cow_majors.html">add_cow_majors()</a></code>, fix bug identified by <a href="https://github.com/rochelleterman" class="external-link">@rochelleterman</a> in <a href="https://github.com/svmiller/peacesciencer/issues/17" class="external-link">17</a>
@@ -69,6 +73,8 @@
 <li>
 <code>gw_ddy</code> and <code>cow_ddy</code> current through 2024.</li>
 <li>
+<code><a href="../reference/add_ccode_to_gw.html">add_ccode_to_gw()</a></code> and <code><a href="../reference/add_gwcode_to_cow.html">add_gwcode_to_cow()</a></code> now lean on data in <code>{isard}</code>.</li>
+<li>
 <code><a href="../reference/add_capital_distance.html">add_capital_distance()</a></code> includes an argument (<code>"transsum"</code>) for what observation to privilege for yearly summaries in which there was a capital transition. Support for leader-level data momentarily dropped.</li>
 <li>
 <code>cow_contdir</code> replaces columns <code>begin</code> and <code>end</code> with <code>stdate</code> and <code>enddate</code> communicating the same information, but in date form.</li>
@@ -80,11 +86,16 @@
 <code><a href="../reference/add_democracy.html">add_democracy()</a></code> now leans on <code>{isard}</code> for democracy data.</li>
 <li>
 <code><a href="../reference/add_democracy.html">add_democracy()</a></code> and <code><a href="../reference/add_nmc.html">add_nmc()</a></code> have a <code>keep</code> argument now, allowing the user to select particular estimates from the democracy/capabilities data rather than get everything (including stuff they don’t want).</li>
+<li>
+<code><a href="../reference/add_strategic_rivalries.html">add_strategic_rivalries()</a></code> uses <code>tss_rivalries</code> now and no longer has additional arguments prioritizing rivalry type.</li>
 <li>Shortcuts added: <code><a href="../reference/add_capital_distance.html">add_cap_dist()</a></code> for <code><a href="../reference/add_capital_distance.html">add_capital_distance()</a></code>, <code><a href="../reference/add_creg_fractionalization.html">add_creg_frac()</a></code> for <code><a href="../reference/add_creg_fractionalization.html">add_creg_fractionalization()</a></code>
 </li>
 </ul><p>Additions include:</p>
 <ul><li>
 <code>archigossums</code> is a basic yearly summary of leader turnover in the <code>archigos</code> data. It will make <code><a href="../reference/add_archigos.html">add_archigos()</a></code> much faster by cutting down on computation time.</li>
+<li>
+<code><a href="../reference/add_sim_gdp_pop.html">add_sim_gdp_pop()</a></code> replaces <code><a href="../reference/add_sdp_gdp.html">add_sdp_gdp()</a></code>, using data from <code>{isard}</code>
+</li>
 </ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.1.0" id="peacesciencer-110">peacesciencer 1.1.0<a class="anchor" aria-label="anchor" href="#peacesciencer-110"></a></h2><p class="text-muted">CRAN release: 2023-03-24</p>
@@ -260,7 +271,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
