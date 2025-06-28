@@ -18,7 +18,8 @@ See Details section for more.}
 frame and adds information about the alliance pledge in that given dyad-year
 from the ATOP data. These include whether there was an alliance with a
 defense pledge, an offense pledge, neutrality pledge, non-aggression pledge,
-or pledge for consultation in time of crisis.
+or pledge for consultation in time of crisis. It also includes a simple
+indicator communicating whether there was an alliance of any kind whatsoever.
 }
 \description{
 \code{add_atop_alliance()} allows you to add Alliance Treaty
@@ -43,10 +44,15 @@ one of their variable codings, but this may or may not be because of a
 signatory joining after the fact or exiting early. More guidance will be
 useful going forward, but use these data for leader-level analyses with that
 in mind.
+
+It's conceivable that the simple alliance dummy can be 1 but all the
+provisions can be 0. See the section below for a case when this happens.
 \subsection{On the \code{ndir} Argument}{
 
 Consider this Belgium-France directed dyad-year from 1832 as illustrative of
-what you'll want to consider in the \code{ndir} argument.\tabular{cccccccc}{
+what you'll want to consider in the \code{ndir} argument. This is an interesting
+case (for Belgium) where it's an alliance where it's making no pledge of any
+kind to France. France, instead, is making a defensive pledge to Belgium.\tabular{cccccccc}{
    \strong{ccode1} \tab \strong{ccode2} \tab \strong{year} \tab \strong{atop_defense} \tab \strong{atop_offense} \tab \strong{atop_neutral} \tab \strong{atop_nonagg} \tab \strong{atop_consul} \cr
    211 \tab 220 \tab 1832 \tab 0 \tab 0 \tab 0 \tab 0 \tab 0 \cr
    220 \tab 211 \tab 1832 \tab 1 \tab 0 \tab 0 \tab 0 \tab 0 \cr

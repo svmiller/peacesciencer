@@ -10,6 +10,7 @@ Changes include:
 - Fix error in `cow_capitals` data that did not adequately record Burundi's capital change in 2018. This concerns the data generated for `cow_capitals`.
 - Fix error in `tss_rivalries` for `tssr_id = 61`. This was in the book but the change in the data-raw directory shows what they assuredly meant. 
 - Add `mry` argument to `add_cow_majors()`, fix bug identified by @rochelleterman in [17](https://github.com/svmiller/peacesciencer/issues/17)
+- Fix issue of imputing 0s outside temporal domain of contiguity data for `add_contiguity()`. Brought to my attention by @jandresgannon in [19](https://github.com/svmiller/peacesciencer/issues/19).
 - `atop_alliance` updated to version 5.1.
 - `add_atop_alliance` has an extra argument (`ndir`) for how it should perform on non-directed dyad-year or leader-dyad-year data.
 - `cow_capitals` and `gw_capitals` formally current through 2024. Indonesia is the most likely candidate to require an update in these data, though that change has not happened yet. `cow_capitals` and `gw_capitals` further include some corrections and the introduction of start and end dates for capitals.
