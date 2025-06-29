@@ -25,7 +25,13 @@
 #' The `mry` argument works on an informal assumption that the composition of
 #' the major powers are unchanged since the most recent data update. It simply
 #' carries forward the most recent observation from the end of the data and
-#' assumes there are no new major powers to note.
+#' assumes there are no new major powers to note. Perhaps this is one way of
+#' thinking about the absence of yearly updates from Correlates of War for its
+#' composition data sets (i.e. state system, major powers). If there was a need
+#' to update it in light of current events (e.g. the elimination or creation of
+#' a new state, or the arrival/elimination of great power status), there would be
+#' an immediate update to acknowledge it. The absence of an update means you can
+#' just carry forward the most recent observations.
 #'
 #' @author Steven V. Miller
 #'
