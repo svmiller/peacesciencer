@@ -13,7 +13,7 @@ have, it does nothing. If TRUE, the function redownloads the data.}
 }
 \value{
 \code{download_extdata()} downloads some extra data stored on
-my website (\url{http://svmiller.com}) and sticks them in the \emph{extdata}
+my website (\url{https://svmiller.com}) and sticks them in the \emph{extdata}
 directory in the package.
 }
 \description{
@@ -150,13 +150,13 @@ recorded in \pkg{cshapes}. Sometimes these changes concern the dyadic
 minimum distance; sometimes they don't. For example, the League of Nations
 is responsible for a lot shape changes (i.e. system entry) in the CoW state
 system data in the year 1920. That obviously won't change the dyadic minimum
-distance between the U.S. and Canada, which will always be zero. Sometimes the
-start of the year (Jan. 1), the midpoint of the year (June 30), or the end of
-the year (Dec. 31) coincides with a system change. Often it doesn't. Note that
-a referent day (Jan. 1, June 30, Dec. 31) may not appear in a given year for
-a given dyad if that date exists outside CoW state system membership. For
-example, Canada doesn't appear as a state system member until Jan. 10, 1920.
-The goal of this data set is allow you to more quickly generate dyadic
+distance between the U.S. and Canada, which will always be zero. Sometimes
+the start of the year (Jan. 1), the midpoint of the year (June 30), or the
+end of the year (Dec. 31) coincides with a system change. Often it doesn't.
+Note that a referent day (Jan. 1, June 30, Dec. 31) may not appear in a given
+year for a given dyad if that date exists outside CoW state system membership.
+For example, Canada doesn't appear as a state system member until Jan. 10,
+1920. The goal of this data set is allow you to more quickly generate dyadic
 minimum distances within \pkg{peacesciencer}'s functionality if you are
 proficient in \pkg{tidyverse} verbs. You could also use it to highlight
 how often the dyadic minimum distance may vary within a year for a given
@@ -228,21 +228,23 @@ download_extdata()
 }
 }
 \references{
-Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA: Evaluating our Assumptions and Coding Rules."
-\emph{Conflict Management and Peace Science}. 26(5): 471-491.
+Barbieri, Katherine, Omar M. G. Keshk, and Brian Pollins. 2009. "TRADING DATA:
+Evaluating our Assumptions and Coding Rules." \emph{Conflict Management and
+Peace Science}. 26(5): 471-491.
 
-Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-\emph{Journal of Peace Research} 46(2): 269--83.
+Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009.
+"Introducing Archigos: A Dataset of Political Leaders" \emph{Journal of Peace
+Research} 46(2): 269--83.
 
-Haege, Frank. 2011. "Choice or Circumstance? Adjusting Measures of Foreign Policy Similarity for Chance Agreement."
-\emph{Political Analysis} 19(3): 287-305.
+Haege, Frank. 2011. "Choice or Circumstance? Adjusting Measures of Foreign
+Policy Similarity for Chance Agreement." \emph{Political Analysis} 19(3): 287-305.
 
 Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
 and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
 The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
 
-Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package."
-\emph{The R Journal} 2(1): 18-24.
+Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring
+Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24.
 }
 \author{
 Steven V. Miller

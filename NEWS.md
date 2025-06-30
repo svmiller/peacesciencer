@@ -24,6 +24,8 @@ Changes include:
 - `add_democracy()` and `add_nmc()` have a `keep` argument now, allowing the user to select particular estimates from the democracy/capabilities data rather than get everything (including stuff they don't want).
 - `add_strategic_rivalries()` uses `tss_rivalries` now and no longer has additional arguments prioritizing rivalry type.
 - `add_minimum_distance()` optionally (and by default) incorporates extended data available in `download_extdata()`.
+- The "create" functions lean on the state system data maintained in `{isard}`. This also means micro-states in the G-W system are included.
+- `false_gw_dyads` now includes information about whether the first or second state is/was a micro-state. Two directed entries for Sao Tome and Principe and the Republic of Vietnam were added as well.
 - Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`, `add_min_dist()` for `add_minimum_distance()`.
 
 Additions include:

@@ -1,34 +1,44 @@
 #' Create leader-dyad-years from the Archigos data
 #'
-#' @description \code{create_leaderdyadyears()} allows you to created leader dyad-year data from the
-#' Archigos data first introduced and described by Goemans et al. (2009).
+#' @description
 #'
-#' @return \code{create_leaderdyadyears()} takes remote data available for separate download
-#' and returns a complete leader dyad-year data frame for all leaders, and all possible dyads,
-#' from 1870 to 2015.
+#' \code{create_leaderdyadyears()} allows you to created leader dyad-year data
+#' from the Archigos data first introduced and described by Goemans et al. (2009).
 #'
-#' @details This is a *complete* and *universal* leader dyad-year data frame for all possible dyadic
-#' leader pairings from 1870 to 2015. This has several implications. First: these data are enormous. The
-#' output is over 2 million rows long! Second: the time required to create these data from scratch would
-#' take too long for a normal function call. This amounts to an unholy combination of data that are too large
-#' for CRAN's disk space restrictions (5 MB) and too time-consuming to do from scratch every time. Thus, the
-#' data are pre-generated and stored remotely. Check \code{download_extdata()} for more information.
+#' @return
+#'
+#' \code{create_leaderdyadyears()} takes remote data available for separate
+#' download and returns a complete leader dyad-year data frame for all leaders,
+#' and all possible dyads, from 1870 to 2015.
+#'
+#' @details
+#'
+#' This is a *complete* and *universal* leader dyad-year data frame for all
+#' possible dyadic leader pairings from 1870 to 2015. This has several
+#' implications. First: these data are enormous. The output is over 2 million
+#' rows long! Second: the time required to create these data from scratch would
+#' take too long for a normal function call. This amounts to an unholy
+#' combination of data that are too large for CRAN's disk space restrictions
+#' (5 MB) and too time-consuming to do from scratch every time. Thus, the
+#' data are pre-generated and stored remotely. Check \code{download_extdata()} for
+#' more information.
 #'
 #' @author Steven V. Miller
 #'
 #' @references
 #'
-#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-#' \emph{Journal of Peace Research} 46(2): 269--83.
+#' Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009.
+#' "Introducing Archigos: A Dataset of Political Leaders"
+#' *Journal of Peace Research* 46(2): 269--83.
 #'
 #'
 #' @param system a character specifying whether the user wants Correlates of War
 #' state-years ("cow") or Gleditsch-Ward ("gw") state-years. Gleditsch-Ward is the
 #' default.
-#' @param directed optional, defaults to TRUE. If TRUE, the function returns so-called
-#' "directed" leader dyad-year data. If FALSE, the function returns
-#' non-directed data where the state codes for the second leader are all greater than
-#' the state codes for the second leader.
+#' @param directed optional, defaults to TRUE. If TRUE, the function returns
+#' so-called "directed" leader dyad-year data. If FALSE, the function returns
+#' non-directed data where the state codes for the second leader are all greater
+#' than the state codes for the second leader.
 #'
 #' @examples
 #' \dontrun{

@@ -724,23 +724,34 @@ NULL
 
 #' False Gleditsch-Ward Directed Dyad-Years
 #'
-#' This is a simple data set that communicates directed dyads in the Gleditsch-Ward data that appear in the same year,
-#' but not in any particular day in the year. They are used in an anti-join in the \code{create_dyadyears()} function in this package.
+#' This is a simple data set that communicates directed dyads in the
+#' Gleditsch-Ward system that appear in the same year, but not in any particular
+#' day in the year. They are used in an anti-join in the
+#' [create_dyadyears()] function in this package.
 #'
 #'
-#' @format A data frame the following four variables.
+#' @format A data frame with the following six variables.
 #' \describe{
 #' \item{\code{gwcode1}}{a numeric vector for the Gleditsch-Ward state code for the first state}
 #' \item{\code{gwcode2}}{a numeric vector for the Gleditsch-Ward state code for the second state}
 #' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{in_ps}}{a constant that equals 1 if these data would appear in \code{create_dyadyears()} if you were not careful to remove them.}
+#' \item{\code{microstate1}}{a numeric vector that equals 1 if the first state in the dyad is a micro-state. 0 if otherwise.}
+#' \item{\code{microstate2}}{a numeric vector that equals 1 if the second state in the dyad is a micro-state. 0 if otherwise.}
+#' \item{\code{in_ps}}{a constant that equals 1 if these data would appear in [create_dyadyears()] if you were not careful to remove them.}
 #' }
 #'
 #' @details
 #'
-#' Think of the directed Suriname and Republic of Vietnam dyad here as illustrative here. The Republic of Vietnam exits the
-#' Correlates of War state system on April 30, 1975 whereas Suriname enters the state system on November 25, 1975. Both appear in the same
-#' year, but not at the same time.
+#' Think of the directed Serbia and Yugoslavia dyad from 2006 as illustrative
+#' here. The Gleditsch-Ward system ends Yugoslavia June 4, 2006 and re-enters
+#' Serbia (its rump state) on June 5, 2006. How to treat Serbia/Yugoslavia is
+#' one of the clearest differences between the Correlates of War system and the
+#' Gleditsch-Ward system, and understanding how the Gleditsch-Ward system treats
+#' this case matters a great deal in creating dyad-year data. There should
+#' obviously be no Serbia-Yugoslavia dyad when Serbia is the rump state of
+#' Yugoslavia that Gleditsch-Ward re-enter into their system when Montenegro
+#' split from it and enters the state system on June 3, 2006. Both Serbia and
+#' Yugoslavia existed in 2006, but not on the same day in the same year.
 #'
 
 "false_gw_dyads"

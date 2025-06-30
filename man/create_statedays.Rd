@@ -8,15 +8,15 @@ create_statedays(system = "cow", mry = TRUE)
 }
 \arguments{
 \item{system}{a character specifying whether the user wants Correlates of War
-state-years ("cow") or Gleditsch-Ward ("gw") state-years. Correlates of War is the
-default.}
+state-years ("cow") or Gleditsch-Ward ("gw") state-years. Correlates of War
+is the default.}
 
-\item{mry}{optional, defaults to TRUE. If TRUE, the function extends the script
-beyond the most recent system membership updates to include observation to the
-most recently concluded calendar year. For example, the Gleditsch-Ward data extend
-to the end of 2017. When \code{mry == TRUE}, the function returns more recent years
-(e.g. 2018, 2019) under the assumption that states alive at the end of 2017 are still alive
-today. Use with some care.}
+\item{mry}{optional, defaults to TRUE. If TRUE, the function extends the
+script beyond the most recent system membership updates to include observation
+to the most recently concluded calendar year. For example, the Gleditsch-Ward
+data extend to the end of 2017. When \code{mry == TRUE}, the function returns
+more recent years (e.g. 2018, 2019) under the assumption that states alive
+at the end of 2017 are still alive today. Use with some care.}
 }
 \value{
 \code{create_statedays()} takes state system membership data provided
@@ -25,8 +25,8 @@ data frame.
 }
 \description{
 \code{create_statedays()} allows you to create state-day data from
-either the Correlates of War (\code{CoW}) state system membership data or the
-Gleditsch-Ward (\code{gw}) system membership data. The function leans on internal
+either the Correlates of War (CoW) state system membership data or the
+Gleditsch-Ward (gw) system membership data. The function leans on internal
 data provided in the package.
 }
 \examples{
@@ -45,8 +45,9 @@ create_statedays(system="gw", mry=FALSE)
 
 }
 \references{
-Miller, Steven V. 2019. ``Create Country-Year and (Non)-Directed Dyad-Year Data With Just a Few Lines in R''
-\url{http://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
+Miller, Steven V. 2019. ``Create Country-Year and (Non)-Directed Dyad-Year
+Data With Just a Few Lines in R''
+\url{https://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
 }
 \author{
 Steven V. Miller
