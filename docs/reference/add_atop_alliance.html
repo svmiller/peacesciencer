@@ -83,7 +83,8 @@ See Details section for more.</p></dd>
 frame and adds information about the alliance pledge in that given dyad-year
 from the ATOP data. These include whether there was an alliance with a
 defense pledge, an offense pledge, neutrality pledge, non-aggression pledge,
-or pledge for consultation in time of crisis.</p>
+or pledge for consultation in time of crisis. It also includes a simple
+indicator communicating whether there was an alliance of any kind whatsoever.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
@@ -102,12 +103,16 @@ ending when the underlying document is amended in such a way that it affects
 one of their variable codings, but this may or may not be because of a
 signatory joining after the fact or exiting early. More guidance will be
 useful going forward, but use these data for leader-level analyses with that
-in mind.</p><div class="section">
+in mind.</p>
+<p>It's conceivable that the simple alliance dummy can be 1 but all the
+provisions can be 0. See the section below for a case when this happens.</p><div class="section">
 <h3 id="on-the-ndir-argument">On the <code>ndir</code> Argument<a class="anchor" aria-label="anchor" href="#on-the-ndir-argument"></a></h3>
 
 
 <p>Consider this Belgium-France directed dyad-year from 1832 as illustrative of
-what you'll want to consider in the <code>ndir</code> argument.</p><table class="table table"><tr><td><strong>ccode1</strong></td><td><strong>ccode2</strong></td><td><strong>year</strong></td><td><strong>atop_defense</strong></td><td><strong>atop_offense</strong></td><td><strong>atop_neutral</strong></td><td><strong>atop_nonagg</strong></td><td><strong>atop_consul</strong></td></tr><tr><td>211</td><td>220</td><td>1832</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>220</td><td>211</td><td>1832</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table><p>A lot of <span class="pkg">peacesciencer</span> functionality prior to version 1.2 had leaned on
+what you'll want to consider in the <code>ndir</code> argument. This is an interesting
+case (for Belgium) where it's an alliance where it's making no pledge of any
+kind to France. France, instead, is making a defensive pledge to Belgium.</p><table class="table table"><tr><td><strong>ccode1</strong></td><td><strong>ccode2</strong></td><td><strong>year</strong></td><td><strong>atop_defense</strong></td><td><strong>atop_offense</strong></td><td><strong>atop_neutral</strong></td><td><strong>atop_nonagg</strong></td><td><strong>atop_consul</strong></td></tr><tr><td>211</td><td>220</td><td>1832</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><td>220</td><td>211</td><td>1832</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></table><p>A lot of <span class="pkg">peacesciencer</span> functionality prior to version 1.2 had leaned on
 collapsing directed dyad-year data to non-directed dyad-year data through
 simple subsets of the data where <code>ccode2</code> is larger than <code>ccode1</code>. Here,
 that is a questionable decision absent clarification from the user. In this
@@ -154,21 +159,21 @@ Andrew G. Long. 2002. "Alliance Treaty Obligations and Provisions, 1815-1944."
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">cow_ddy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_atop_alliance</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(ccode1, ccode2, year)`</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,214,930 × 8</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    ccode1 ccode2  year atop_defense atop_offense atop_neutral atop_nonagg</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      2     20  <span style="text-decoration: underline;">1</span>921            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      2     20  <span style="text-decoration: underline;">1</span>922            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      2     20  <span style="text-decoration: underline;">1</span>923            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      2     20  <span style="text-decoration: underline;">1</span>924            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      2     20  <span style="text-decoration: underline;">1</span>925            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      2     20  <span style="text-decoration: underline;">1</span>926            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928            0            0            0           0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929            0            0            0           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2,214,930 × 9</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    ccode1 ccode2  year atop_alliance atop_defense atop_offense atop_neutral</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>      2     20  <span style="text-decoration: underline;">1</span>920             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>      2     20  <span style="text-decoration: underline;">1</span>921             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>      2     20  <span style="text-decoration: underline;">1</span>922             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>      2     20  <span style="text-decoration: underline;">1</span>923             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>      2     20  <span style="text-decoration: underline;">1</span>924             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>      2     20  <span style="text-decoration: underline;">1</span>925             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>      2     20  <span style="text-decoration: underline;">1</span>926             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>      2     20  <span style="text-decoration: underline;">1</span>927             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>      2     20  <span style="text-decoration: underline;">1</span>928             0            0            0            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>      2     20  <span style="text-decoration: underline;">1</span>929             0            0            0            0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,214,920 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: atop_consul &lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2 more variables: atop_nonagg &lt;dbl&gt;, atop_consul &lt;dbl&gt;</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

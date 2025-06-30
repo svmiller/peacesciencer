@@ -23,7 +23,8 @@ Changes include:
 - `add_democracy()` now leans on `{isard}` for democracy data.
 - `add_democracy()` and `add_nmc()` have a `keep` argument now, allowing the user to select particular estimates from the democracy/capabilities data rather than get everything (including stuff they don't want).
 - `add_strategic_rivalries()` uses `tss_rivalries` now and no longer has additional arguments prioritizing rivalry type.
-- Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`
+- `add_minimum_distance()` optionally (and by default) incorporates extended data available in `download_extdata()`.
+- Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`, `add_min_dist()` for `add_minimum_distance()`.
 
 Additions include:
 
