@@ -6,7 +6,7 @@ NULL
 #' This is a complete directed dyad-year data frame of Correlates of War
 #' state system members. I offer it here as a shortcut for various other functions when
 #' I am working on new additions and don't want to invest time in waiting for
-#' \code{create_dyadyears()} to run. As a general rule, this data frame is
+#' [create_dyadyears()] to run. As a general rule, this data frame is
 #' updated after every calendar year to include the most recently concluded
 #' calendar year.
 #'
@@ -17,7 +17,8 @@ NULL
 #' \item{\code{year}}{a numeric vector for the year}
 #' }
 #'
-#' @details Data are a quick generation from the \code{create_dyadyears()} function in this package.
+#' @details Data are a quick generation from the [create_dyadyears()] function
+#' in this package.
 #'
 "cow_ddy"
 
@@ -43,9 +44,18 @@ NULL
 #' \item{\code{version}}{a version identifier}
 #' }
 #'
-#' @details Data are provided "as-is" with no additional re-cleaning before inclusion into this data set.
+#' @details
 #'
-#' @references Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership/}
+#' Data are provided "as-is" with no additional re-cleaning before inclusion
+#' into this data set.
+#'
+#' The functions that previously used these data no longer use these data.
+#' They instead use a copy of the data in the \pkg{isard} package I also
+#' maintain.
+#'
+#' @references Correlates of War Project. 2017. "State System Membership
+#' List, v2016." Online,
+#' \url{https://correlatesofwar.org/data-sets/state-system-membership/}
 #'
 "cow_states"
 
@@ -59,14 +69,19 @@ NULL
 #' functions. As a general rule, this data frame is updated after every
 #' calendar year to include the most recently concluded calendar year.
 #'
-#' @format A data frame with the following 3 variables.
+#' @format A data frame with the following 5 variables.
 #' \describe{
 #' \item{\code{gwcode1}}{a numeric vector for the Correlates of War state code for the first state}
 #' \item{\code{gwcode2}}{a numeric vector for the Correlates of War state code for the second state}
 #' \item{\code{year}}{a numeric vector for the year}
+#' \item{\code{microstate1}}{a numeric vector that equals 1 if the first state in the dyad is a micro-state. 0 if otherwise.}
+#' \item{\code{microstate2}}{a numeric vector that equals 1 if the second state in the dyad is a micro-state. 0 if otherwise.}
 #' }
 #'
-#' @details Data are a quick generation from the \code{create_dyadyears(system="gw")} function in this package.
+#' @details
+#'
+#' Data are a quick generation from the [create_dyadyears(system="gw")] function
+#' in this package.
 #'
 "gw_ddy"
 
@@ -94,6 +109,9 @@ NULL
 #' to be problematic at all and, after all, state names should never be
 #' a basis for something like a match or merge you would do in
 #' \pkg{countrycode}.
+#'
+#' The functions that previously used these data no longer use these data. They
+#' instead use a copy of the data in the \pkg{isard} package I also maintain.
 #'
 #' @references
 #'
@@ -128,59 +146,6 @@ NULL
 "maoz_powers"
 
 
-
-
-#' Correlates of War Non-Directed Dyad-Year International Governmental Organizations (IGOs) Data
-#'
-#' This is a non-directed dyad-year version of the Correlates of War IGOs data. I use it internally for merging IGOs data into dyad-year data.
-#'
-#' @format A data frame with 917695 observations on the following 4 variables.
-#' \describe{
-#' \item{\code{ccode1}}{the Correlates of War state system code for the first state}
-#' \item{\code{ccode2}}{the Correlates of War state system code for the second state}
-#' \item{\code{year}}{the year}
-#' \item{\code{dyadigos}}{the sum of mutual IGOs for which each state appears as a full member in a given year}
-#' }
-#'
-#' @details The \code{data-raw} directory on the project's Github contains additional information about how these data were generated from the otherwise
-#' enormous dyad-year IGOs data provided by the Correlates of War project. Given the size of that data, and the size limitations of R packages for CRAN,
-#' the data I provide here can only be simpler summaries. If you want specifics, you'll need to consult the underlying raw data provided on the Correlates
-#' of War project.
-#'
-#' @references
-#'
-#' Pevehouse, Jon C.W., Timothy Nordstrom, Roseanne W McManus, Anne Spencer Jamison, 2020. “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
-#'
-#' Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.
-#'
-"cow_igo_ndy"
-
-#' Correlates of War State-Year International Governmental Organizations (IGOs) Data
-#'
-#' This is a state-year version of the Correlates of War IGOs data. I use it internally for merging IGOs data into state-year data.
-#'
-#' @format A data frame with 1557 observations on the following 5 variables.
-#' \describe{
-#' \item{\code{ccode}}{the Correlates of War state system code for the state}
-#' \item{\code{year}}{the year}
-#' \item{\code{sum_igo_full}}{the sum of IGOs for which the state is a full member in a given year}
-#' \item{\code{sum_igo_associate}}{the sum of IGOs for which the state is just an associate member in a given year}
-#' \item{\code{sum_igo_observer}}{the sum of IGOs for which the state is just an observer in a given year}
-#' \item{\code{sum_igo_anytype}}{the sum of IGOs for which the state is a member of any kind in a given year.}
-#' }
-#'
-#' @details The \code{data-raw} directory on the project's Github contains additional information about how these data were generated from the otherwise
-#' enormous dyad-year IGOs data provided by the Correlates of War project. Given the size of that data, and the size limitations of R packages for CRAN,
-#' the data I provide here can only be simpler summaries. If you want specifics, you'll need to consult the underlying raw data provided on the Correlates
-#' of War project.
-#'
-#' @references
-#'
-#' Pevehouse, Jon C.W., Timothy Nordstrom, Roseanne W McManus, Anne Spencer Jamison. 2020. “Tracking Organizations in the World: The Correlates of War IGO Version 3.0 datasets”, Journal of Peace Research 57(3): 492-503.
-#'
-#' Wallace, Michael, and J. David Singer. 1970. "International Governmental Organization in the Global System, 1815-1964." International Organization 24: 239-87.
-#'
-"cow_igo_sy"
 
 #' The Minimum Distance Between States in the Correlates of War System, 1886-2019
 #'

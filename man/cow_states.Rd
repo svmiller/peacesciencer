@@ -26,9 +26,16 @@ cow_states
 These are the Correlates of War state system membership data.
 }
 \details{
-Data are provided "as-is" with no additional re-cleaning before inclusion into this data set.
+Data are provided "as-is" with no additional re-cleaning before inclusion
+into this data set.
+
+The functions that previously used these data no longer use these data.
+They instead use a copy of the data in the \pkg{isard} package I also
+maintain.
 }
 \references{
-Correlates of War Project. 2017. "State System Membership List, v2016." Online, \url{https://correlatesofwar.org/data-sets/state-system-membership/}
+Correlates of War Project. 2017. "State System Membership
+List, v2016." Online,
+\url{https://correlatesofwar.org/data-sets/state-system-membership/}
 }
 \keyword{datasets}

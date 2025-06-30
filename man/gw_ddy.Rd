@@ -5,11 +5,13 @@
 \alias{gw_ddy}
 \title{A directed dyad-year data frame of Gleditsch-Ward state system members}
 \format{
-A data frame with the following 3 variables.
+A data frame with the following 5 variables.
 \describe{
 \item{\code{gwcode1}}{a numeric vector for the Correlates of War state code for the first state}
 \item{\code{gwcode2}}{a numeric vector for the Correlates of War state code for the second state}
 \item{\code{year}}{a numeric vector for the year}
+\item{\code{microstate1}}{a numeric vector that equals 1 if the first state in the dyad is a micro-state. 0 if otherwise.}
+\item{\code{microstate2}}{a numeric vector that equals 1 if the second state in the dyad is a micro-state. 0 if otherwise.}
 }
 }
 \usage{
@@ -22,6 +24,7 @@ functions. As a general rule, this data frame is updated after every
 calendar year to include the most recently concluded calendar year.
 }
 \details{
-Data are a quick generation from the \code{create_dyadyears(system="gw")} function in this package.
+Data are a quick generation from the \link{create_dyadyears(system="gw")} function
+in this package.
 }
 \keyword{datasets}

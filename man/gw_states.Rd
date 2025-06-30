@@ -29,6 +29,9 @@ every non-ASCII character that appears in its package. I do not think this
 to be problematic at all and, after all, state names should never be
 a basis for something like a match or merge you would do in
 \pkg{countrycode}.
+
+The functions that previously used these data no longer use these data. They
+instead use a copy of the data in the \pkg{isard} package I also maintain.
 }
 \references{
 Gleditsch, Kristian S. and Michael D. Ward. 1999. "A Revised List of

@@ -19,11 +19,12 @@ cow_ddy
 This is a complete directed dyad-year data frame of Correlates of War
 state system members. I offer it here as a shortcut for various other functions when
 I am working on new additions and don't want to invest time in waiting for
-\code{create_dyadyears()} to run. As a general rule, this data frame is
+\code{\link[=create_dyadyears]{create_dyadyears()}} to run. As a general rule, this data frame is
 updated after every calendar year to include the most recently concluded
 calendar year.
 }
 \details{
-Data are a quick generation from the \code{create_dyadyears()} function in this package.
+Data are a quick generation from the \code{\link[=create_dyadyears]{create_dyadyears()}} function
+in this package.
 }
 \keyword{datasets}
