@@ -68,7 +68,7 @@ calendar year to include the most recently concluded calendar year.</p>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A data frame with the following 3 variables.</p><dl><dt><code>gwcode1</code></dt>
+    <p>A data frame with the following 5 variables.</p><dl><dt><code>gwcode1</code></dt>
 <dd><p>a numeric vector for the Correlates of War state code for the first state</p></dd>
 
 <dt><code>gwcode2</code></dt>
@@ -77,11 +77,18 @@ calendar year to include the most recently concluded calendar year.</p>
 <dt><code>year</code></dt>
 <dd><p>a numeric vector for the year</p></dd>
 
+<dt><code>microstate1</code></dt>
+<dd><p>a numeric vector that equals 1 if the first state in the dyad is a micro-state. 0 if otherwise.</p></dd>
+
+<dt><code>microstate2</code></dt>
+<dd><p>a numeric vector that equals 1 if the second state in the dyad is a micro-state. 0 if otherwise.</p></dd>
+
 
 </dl></div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Data are a quick generation from the <code>create_dyadyears(system="gw")</code> function in this package.</p>
+    <p>Data are a quick generation from the create_dyadyears(system="gw") function
+in this package.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

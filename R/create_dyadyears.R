@@ -35,7 +35,7 @@
 #' Data With Just a Few Lines in R''
 #' \url{https://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
 #'
-#' Miller, Steven V. 2025. \pgk{isard}: Overflow Data for Quantitative Peace
+#' Miller, Steven V. 2025. \pkg{isard}: Overflow Data for Quantitative Peace
 #' Science Research. \url{https://CRAN.R-project.org/package=isard}
 #'
 #' @param system a character specifying whether the user wants Correlates of War

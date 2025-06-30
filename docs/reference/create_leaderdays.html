@@ -65,32 +65,39 @@ leader-level data provided in <span class="pkg">peacesciencer</span>.</p>
 
 
 <dl><dt id="arg-system">system<a class="anchor" aria-label="anchor" href="#arg-system"></a></dt>
-<dd><p>a leader system with which to create leader-days. Right now, only "archigos" is supported.</p></dd>
+<dd><p>a leader system with which to create leader-days. Right now,
+only "archigos" is supported.</p></dd>
 
 
 <dt id="arg-standardize">standardize<a class="anchor" aria-label="anchor" href="#arg-standardize"></a></dt>
-<dd><p>a character vector of length one: "cow", "gw", or "none". If "cow", the function standardizes the leader-days to
-just those that overlap  with state system membership in the Correlates of War state system (see: <code>cow_states</code>). If "gw", the function
-standardizes the leader-days to just those that overlap with the state system dates of the Gleditsch-Ward date (see: <code>gw_states</code>). If
-"none", the function returns all leader-days as presented in Archigos (which is nominally denominated in Gleditsch-Ward state system codes,
-if not necessarily Gleditsch-Ward state system dates). Default is "none".</p></dd>
+<dd><p>a character vector of length one: "cow", "gw", or "none".
+If "cow", the function standardizes the leader-days to just those that overlap
+with state system membership in the Correlates of War state system (see:
+<a href="cow_states.html">cow_states</a>). If "gw", the function standardizes the leader-days to just
+those that overlap with the state system dates of the Gleditsch-Ward date
+(see: <a href="gw_states.html">gw_states</a>). If "none", the function returns all leader-days as
+presented in Archigos (which is nominally denominated in Gleditsch-Ward
+state system codes, if not necessarily Gleditsch-Ward state system dates).
+Default is "none".</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>create_leaderdays()</code> takes leader-level data available in <span class="pkg">peacesciencer</span>
-and returns a leader-day-level data frame.</p>
+    <p><code>create_leaderdays()</code> takes leader-level data available in
+<span class="pkg">peacesciencer</span> and returns a leader-day-level data frame.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p><code>create_leaderdays()</code>, as of writing, only supports the Archigos data set of leaders. I envision this function
-being mostly for internal uses. Basically, <code><a href="create_leaderyears.html">create_leaderyears()</a></code> effectively starts by first running a version of
+    <p><code>create_leaderdays()</code>, as of writing, only supports the Archigos data
+set of leaders. I envision this function being mostly for internal uses.
+Basically, <code><a href="create_leaderyears.html">create_leaderyears()</a></code> effectively starts by first running a version of
 <code>create_leaderdays()</code>. So, why not have this function too?</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
-    <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009. "Introducing Archigos: A Dataset of Political Leaders"
-<em>Journal of Peace Research</em> 46(2): 269–83.</p>
+    <p>Goemans, Henk E., Kristian Skrede Gleditsch, and Giacomo Chiozza. 2009.
+"Introducing Archigos: A Dataset of Political Leaders" <em>Journal of Peace
+Research</em> 46(2): 269–83.</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>

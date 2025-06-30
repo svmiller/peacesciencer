@@ -200,7 +200,7 @@ create_leaderyears()
 # `download_extdata()` will download these data into the package directory.
 # Thus, it is *not* downloading the data fresh each time.
 
-the_url <- "http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"
+the_url <- "https://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"
 readRDS(url(the_url)) %>%
   declare_attributes(data_type = "leader_dyad_year", system = "gw")
 
