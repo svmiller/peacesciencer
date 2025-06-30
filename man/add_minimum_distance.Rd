@@ -2,30 +2,110 @@
 % Please edit documentation in R/add_minimum_distance.R
 \name{add_minimum_distance}
 \alias{add_minimum_distance}
+\alias{add_min_dist}
 \title{Add minimum distance data to your data frame}
 \usage{
-add_minimum_distance(data)
+add_minimum_distance(data, use_extdata = TRUE, slice = "first")
+
+add_min_dist(...)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
+
+\item{use_extdata}{logical, defaults to TRUE. If TRUE, the function uses the
+augmented version of the minimum distance data made available by way of the
+\code{\link[=download_extdata]{download_extdata()}} function. If FALSE, the function uses either
+\code{cow_mindist} or \code{gw_mindist} in the package.}
+
+\item{slice}{concerns data subset behavior when \code{use_extdata} is TRUE. Can
+be either "first" (the default option), "jan1", "june30", "last", or "dec31".
+See details section for more.}
+
+\item{...}{optional, only to make the shortcut (\code{add_min_dist()}) work}
 }
 \value{
 \code{add_minimum_distance()} takes a (dyad-year, leader-year,
 leader-dyad-year, state-year) data frame and adds the minimum distance
-between the first state and the second state (in dyad-year data) or the
-minimum minimum (sic) distance for a given state in a given year.
+between the first state and the second state (in dyad-year or leader-dyad-year
+data) or the minimum minimum (sic) distance for a given state in a given year
+for data that are state-year or leader-year.
 }
 \description{
 \code{add_minimum_distance()} allows you to add the minimum
-distance (in kilometers) to a (dyad-year, leader-year, leader-dyad-year,
-state-year) data frame. These estimates are recorded in the
-\code{cow_mindist} and \code{gw_mindist} data that come with this package.
-The data are current as of the end of 2019.
+distance (in kilometers) to a dyad-year, state-year, leader-year, or
+leader-dyad-year data. These estimates span the temporal domain of 1886 to
+2019.
 }
 \details{
-The function leans on attributes of the data that are provided by
-one of the "create" functions in this package (e.g. \code{create_dyadyear()}
-or \code{create_stateyear()}).
+The function leans on attributes of the data that are provided by one of the
+"create" functions in this package (e.g. \code{\link[=create_dyadyears]{create_dyadyears()}} or
+\code{\link[=create_stateyears]{create_stateyears()}}).
+
+This function will add estimates to leader-level data (like the kind created
+\code{\link[=create_leaderyears]{create_leaderyears()}} or \code{\link[=create_leaderdyadyears]{create_leaderdyadyears()}}), but the standard
+caveat applies that the minimum distance data merged into these kinds of
+data should be understood as approximations.
+
+The function will create an on-the-fly directed version of the non-directed
+data prior to merging, even if your data are non-directed. It's just easier
+to do it that way and the concern for computation time is minimal.
+
+Underneath the hood, a grouped summarize function returning a minimum estimate
+generates the value for state-year or leader-year data. If there is a given
+year where there is no minimum distance recorded whatsoever, this value is
+infinity. The function quietly corrects this underneath the hood, but the
+summarize function that calculates this still returns this warning.
+
+The \code{use_extdata} argument checks for whether you have the "plus" version of
+the data in the package's extdata directory. If you don't have it, the
+function issues a stop suggesting that you should run \code{\link[=download_extdata]{download_extdata()}} to
+get a copy of these data or to set \code{use_extdata} to be FALSE.
+
+\code{\link[=download_extdata]{download_extdata()}} has additional information about the data sets that
+\code{use_extdata} would incorporate into your data. Check for "minimum distance"
+in the documentation there, and be mindful of your state system that
+\pkg{peacesciencer} is treating as your master system.
+\subsection{On the \code{slice} Argument}{
+
+The \code{slice} argument is applicable only when \code{use_extdata} is TRUE and
+determines how the minimum distance data are sliced prior to merging into
+your data set. The "plussed up" version of the minimum distance data that you
+can retrieve from \code{\link[=download_extdata]{download_extdata()}} and optionally use in this function
+has every dyadic minimum distance from 1886 to 2019, by year, on Jan. 1,
+June 30, Dec. 31, and at any point in a given year where the dyadic minimum
+distance changed for one reason or another. A quick explanation follows.
+
+\emph{"first"}: this is the default option. It will return the earliest observed
+minimum distance in a given dyad-year. In most cases, this is Jan. 1 of a
+given year. However, it need not be. For example, the minimum distance in
+the Correlates of War version of the data for the United States and Canada is
+on Jan. 10, 1920.
+
+\emph{"jan1"}: entering this as the value in the \code{slice} argument returns the
+minimum distance observed on Jan. 1 of the referent year. Using the above
+case of Canada and the United States in 1920, this observation would be
+missing for the year because the dyad did not exist on Jan. 1, 1920 in the
+Correlates of War system. This incidentally the only option available to you
+if \code{use_extdata} is set to FALSE. \link{cow_mindist} and \link{gw_mindist} are
+benchmarked to Jan. 1 of a given year.
+
+\emph{"june30"}: this is the recorded minimum distance, if one exists, for a dyad
+on June 30 of a given year. This is a basic midway point of a calendar year.
+Selecting this means there would be no minimum distance inserted for Germany
+and Austria in 1938 in the Correlates of War system. Austria momentarily exits
+the system on March 13, 1938.
+
+\emph{"dec31"}: this is the recorded minimum distance, if one exists, for a dyad
+on Dec. 31 of a given year. Selecting this means there would be no minimum
+distance between the Republic of Vietnam and China in 1975 in the Correlates
+of War system. The Republic of Vietnam was eliminated from the international
+system on April 30 of that year.
+
+\emph{"last"}: this will return the last observed minimum distance in a given
+dyad-year. In most cases, this is Dec. 31 of a given year. However, it need
+not be. In the above cases concerning some manner of system exit, the last
+observed minimum distance would be used.
+}
 }
 \examples{
 
@@ -33,8 +113,6 @@ or \code{create_stateyear()}).
 # just call `library(tidyverse)` at the top of the your script
 library(magrittr)
 cow_ddy \%>\% add_minimum_distance()
-
-create_dyadyears(system = "gw") \%>\% add_minimum_distance()
 
 create_stateyears(system ="gw") \%>\% add_minimum_distance()
 }
