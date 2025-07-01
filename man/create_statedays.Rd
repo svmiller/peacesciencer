@@ -14,20 +14,24 @@ is the default.}
 \item{mry}{optional, defaults to TRUE. If TRUE, the function extends the
 script beyond the most recent system membership updates to include observation
 to the most recently concluded calendar year. For example, the Gleditsch-Ward
-data extend to the end of 2017. When \code{mry == TRUE}, the function returns
+data extend to the end of 2020. When \code{mry == TRUE}, the function returns
 more recent years (e.g. 2018, 2019) under the assumption that states alive
-at the end of 2017 are still alive today. Use with some care.}
+at the end of 2016 or 2020 are still alive today. Use with some care.}
 }
 \value{
 \code{create_statedays()} takes state system membership data provided
 by either Correlates of War or Gleditsch-Ward and returns a simple state-day
-data frame.
+data frame. The Gleditsch-Ward state days include the indicator communicating
+whether the state is a microstate.
 }
 \description{
 \code{create_statedays()} allows you to create state-day data from
 either the Correlates of War (CoW) state system membership data or the
 Gleditsch-Ward (gw) system membership data. The function leans on internal
 data provided in the package.
+}
+\details{
+The function leans on data made available in the \pkg{isard} package.
 }
 \examples{
 \donttest{
@@ -38,8 +42,6 @@ create_statedays()
 # Gleditsch-Ward, include most recent years
 create_statedays(system="gw")
 
-# Gleditsch-Ward, don't include most recent years
-create_statedays(system="gw", mry=FALSE)
 }
 
 

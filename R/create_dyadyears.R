@@ -44,10 +44,10 @@
 #' @param mry optional, defaults to TRUE. If TRUE, the function extends the
 #' script beyond the most recent system membership updates to include
 #' observation to the most recently concluded calendar year. For example, the
-#' Gleditsch-Ward data extend to the end of 2017. When \code{mry == TRUE}, the
+#' Gleditsch-Ward data extend to the end of 2020. When \code{mry == TRUE}, the
 #' function returns more recent years (e.g. 2018, 2019) under the assumption
-#' that states alive at the end of 2017 are still alive today. Use with some
-#' care.
+#' that states alive at the end of 2016 or 2020 are still alive today. Use with
+#' some care.
 #' @param directed optional, defaults to TRUE. If TRUE, the function returns
 #' so-called "directed" dyad-year data. In directed dyad-year data,
 #' France-Germany (220-255) and Germany-France (255-220) are observationally

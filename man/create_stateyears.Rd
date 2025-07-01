@@ -11,12 +11,12 @@ create_stateyears(system = "cow", mry = TRUE, subset_years)
 state-years ("cow") or Gleditsch-Ward ("gw") state-years. Correlates of War is the
 default.}
 
-\item{mry}{optional, defaults to TRUE. If TRUE, the function extends the script
-beyond the most recent system membership updates to include observation to the
-most recently concluded calendar year. For example, the Gleditsch-Ward data extend
-to the end of 2017. When \code{mry == TRUE}, the function returns more recent years
-(e.g. 2018, 2019) under the assumption that states alive at the end of 2017 are still alive
-today. Use with some care.}
+\item{mry}{optional, defaults to TRUE. If TRUE, the function extends the
+script beyond the most recent system membership updates to include observation
+to the most recently concluded calendar year. For example, the Gleditsch-Ward
+data extend to the end of 2017. When \code{mry == TRUE}, the function returns
+more recent years (e.g. 2018, 2019) under the assumption that states alive at
+the end of 2016 or 2020 are still alive today. Use with some care.}
 
 \item{subset_years}{and optional character vector for subsetting the years
 returned to just some temporal domain of interest to the user. For example,
@@ -30,13 +30,16 @@ into state-year data.}
 \value{
 \code{create_stateyears()} takes state system membership data provided
 by either Correlates of War or Gleditsch-Ward and returns a simple state-year
-data frame.
+data frame. The Gleditsch-Ward state-years also include an indicator for
+whether the state is a microstate.
 }
 \description{
-\code{create_stateyears()} allows you to generate state-year data from
-either the Correlates of War (\code{CoW}) state system membership data or the
-Gleditsch-Ward (\code{gw}) system membership data. The function leans on internal
-data provided in the package.
+\code{create_stateyears()} allows you to generate state-year data from either
+the Correlates of War (CoW) state system membership data or the Gleditsch-Ward
+(gw) system membership data.
+}
+\details{
+The function leans on data made available in the \pkg{isard} package.
 }
 \examples{
 
@@ -46,13 +49,11 @@ create_stateyears()
 # Gleditsch-Ward, include most recent years
 create_stateyears(system="gw")
 
-# Gleditsch-Ward, don't include most recent years
-create_stateyears(system="gw", mry=FALSE)
-
 
 }
 \references{
-Miller, Steven V. 2019. ``Create Country-Year and (Non)-Directed Dyad-Year Data With Just a Few Lines in R''
+Miller, Steven V. 2019. ``Create Country-Year and (Non)-Directed
+Dyad-Year Data With Just a Few Lines in R''
 \url{http://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
 }
 \author{

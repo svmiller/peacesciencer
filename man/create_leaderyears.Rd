@@ -72,6 +72,10 @@ with those limitations in mind. If the user is interested in leader tenure
 in a leader-year analysis, this variable should be fine. If the user is
 interested in something like the effect of a fifth year on some kind of
 leader behavior, they will want to figure out something else.
+
+The Archigos data are anchored in the Gleditsch-Ward system of states, which
+now includes (in this package by way of \pkg{isard}) the microstates. However,
+the Archigos data do not include information for the leaders of microstates.
 }
 \examples{
 \donttest{

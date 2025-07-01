@@ -43,6 +43,10 @@
 #' interested in something like the effect of a fifth year on some kind of
 #' leader behavior, they will want to figure out something else.
 #'
+#' The Archigos data are anchored in the Gleditsch-Ward system of states, which
+#' now includes (in this package by way of \pkg{isard}) the microstates. However,
+#' the Archigos data do not include information for the leaders of microstates.
+#'
 #' @author Steven V. Miller
 #'
 #' @references
@@ -98,7 +102,9 @@ create_leaderyears <- function(system = "archigos", standardize = "none", subset
       gw_statedays <- create_statedays(system = 'gw')
 
       leaderdays %>%
-        semi_join(., gw_statedays) %>%
+        semi_join(., gw_statedays,
+                  by = c("gwcode"="gwcode",
+                         "date"="date")) %>%
         mutate(leaderage = .data$year - .data$yrborn) %>%
         distinct(.data$obsid,  .data$leader, .data$gwcode, .data$gender, .data$leaderage, .data$year, .data$yrinoffice) -> data
 

@@ -7,7 +7,8 @@
 add_archigos(data)
 }
 \arguments{
-\item{data}{a dyad-year data frame (either "directed" or "non-directed") or state-year data frame}
+\item{data}{a dyad-year data frame (either "directed" or "non-directed") or
+state-year data frame}
 }
 \value{
 \code{add_archigos()} takes a dyad-year or state-year data frame and

@@ -19,7 +19,8 @@
 #'
 #' @author Steven V. Miller
 #'
-#' @param data a dyad-year data frame (either "directed" or "non-directed") or state-year data frame
+#' @param data a dyad-year data frame (either "directed" or "non-directed") or
+#' state-year data frame
 #'
 #' @references
 #'
@@ -103,14 +104,15 @@ add_archigos <- function(data) {
 .add_archigos_cow_state_year <- function(data, archigossums) {
 
   archigossums %>%
-    left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) -> hold_this
+    left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode,
+                                         .data$year)) -> hold_this
 
   # Naturally, the different ways of handling Serbia screw things up here.
   # On June 4, 2006, archigos records a leader transition and a state transition,
   # from YUG-2003 to SER-2006. CoW would see this as just a leader transition, not
-  # a state transition as well. We can use some rudimentary filter/case_when to fix this
-  # and then remove gwcode later. In this case, CoW's Serbia starts the year with YUG-2003 and
-  # ends it with SER-2006.
+  # a state transition as well. We can use some rudimentary filter/case_when to
+  # fix this and then remove gwcode later. In this case, CoW's Serbia starts the
+  # year with YUG-2003 and ends it with SER-2006.
 
   hold_this %>%
     filter(!(.data$gwcode == 340 & .data$year == 2006)) %>%
@@ -137,9 +139,9 @@ add_archigos <- function(data) {
   # Naturally, the different ways of handling Serbia screw things up here.
   # On June 4, 2006, archigos records a leader transition and a state transition,
   # from YUG-2003 to SER-2006. CoW would see this as just a leader transition, not
-  # a state transition as well. We can use some rudimentary filter/case_when to fix this
-  # and then remove gwcode later. In this case, CoW's Serbia starts the year with YUG-2003 and
-  # ends it with SER-2006.
+  # a state transition as well. We can use some rudimentary filter/case_when to
+  # fix this and then remove gwcode later. In this case, CoW's Serbia starts the
+  # year with YUG-2003 and ends it with SER-2006.
 
   hold_this %>%
     filter(!(.data$gwcode == 340 & .data$year == 2006)) %>%
@@ -157,7 +159,8 @@ add_archigos <- function(data) {
     rename_at(vars(-.data$year), ~paste0(.,"1")) %>%
     left_join(data, .,  by=c("ccode1"="ccode1", "year"="year")) %>%
     left_join(., hold_this  %>%
-                rename_at(vars(-.data$year), ~paste0(.,"2")), by=c("ccode2"="ccode2", "year"="year")) -> data
+                rename_at(vars(-.data$year), ~paste0(.,"2")),
+              by=c("ccode2"="ccode2", "year"="year")) -> data
 
 }
 

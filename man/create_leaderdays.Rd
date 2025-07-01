@@ -31,8 +31,12 @@ leader-level data provided in \pkg{peacesciencer}.
 \details{
 \code{create_leaderdays()}, as of writing, only supports the Archigos data
 set of leaders. I envision this function being mostly for internal uses.
-Basically, \code{create_leaderyears()} effectively starts by first running a version of
-\code{create_leaderdays()}. So, why not have this function too?
+Basically, \code{create_leaderyears()} effectively starts by first running a
+version of \code{create_leaderdays()}. So, why not have this function too?
+
+The Archigos data are anchored in the Gleditsch-Ward system of states, which
+now includes (in this package by way of \pkg{isard}) the microstates. However,
+the Archigos data do not include information for the leaders of microstates.
 }
 \examples{
 \donttest{
