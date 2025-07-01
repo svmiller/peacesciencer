@@ -21,13 +21,17 @@ A data frame with 10142 observations on the following eight variables.
 ucdp_onsets
 }
 \description{
-These are state-year level data for armed conflict onsets provided by the Uppsala Conflict Data Program (UCDP).
+These are state-year level data for armed conflict onsets provided by the
+Uppsala Conflict Data Program (UCDP).
 }
 \details{
-The user will want to note that the data provided by UCDP are technically not country-year observations. They instead duplicate observations for cases of new conflicts
-or new conflict episodes. Further, the original data do not provide any information about the conflict-dyad in question to which those duplicates pertain. That means the most
-these data can do for the package's mission is provide summary information. The user should probably recode these variables into something else they may want for a
-particular application
+The user will want to note that the data provided by UCDP are technically not
+country-year observations. They instead duplicate observations for cases of
+new conflicts or new conflict episodes. Further, the original data do not
+provide any information about the conflict-dyad in question to which those
+duplicates pertain. That means the most these data can do for the package's
+mission is provide summary information. The user should probably recode these
+variables into something else they may want for a particular application.
 }
 \references{
 Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Havard Strand (2002)

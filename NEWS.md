@@ -32,6 +32,7 @@ Additions include:
 
 - `archigossums` is a basic yearly summary of leader turnover in the `archigos` data. It will make `add_archigos()` much faster by cutting down on computation time.
 - `add_sim_gdp_pop()` replaces `add_sdp_gdp()`, using data from `{isard}`
+- `terrthreat` is a state-year data set on latent territorial threat. `add_latent_territorial_threat()` will add it to your data frames.
 
 # peacesciencer 1.1.0
 

@@ -10,6 +10,6 @@ TTIm %>% rename(lterrthreat = value) %>%
   left_join(TTI, .) -> terrthreat
 
 terrthreat %>%
-  rename(lterrthreat = value)
+  rename(lterrthreat = value) -> terrthreat
 
 save(terrthreat, file="data/terrthreat.rda")
