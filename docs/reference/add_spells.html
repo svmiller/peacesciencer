@@ -71,19 +71,22 @@ unit (e.g. a state or dyad).</p>
 
 
 <dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
-<dd><p>an applicable data frame (e.g. leader-year, dyad-year, state-year, as created in <span class="pkg">peacesciencer</span>)</p></dd>
+<dd><p>an applicable data frame (e.g. leader-year, dyad-year, state-year,
+as created in <span class="pkg">peacesciencer</span>)</p></dd>
 
 
 <dt id="arg-conflict-event-type">conflict_event_type<a class="anchor" aria-label="anchor" href="#arg-conflict-event-type"></a></dt>
-<dd><p>type of event for which spells should be calculated, either "ongoing" or "onset".
-Default is "ongoing". If "ongoing", the spells are calculated on the presence of an ongoing event.
-If "onset", spells are calculated on the onset of a conflict event with successive zeros (if observed) calculated as "peace".
-See Details section for more.</p></dd>
+<dd><p>type of event for which spells should be
+calculated, either "ongoing" or "onset". Default is "ongoing". If "ongoing",
+the spells are calculated on the presence of an ongoing event. If "onset",
+spells are calculated on the onset of a conflict event with successive zeros
+(if observed) calculated as "peace". See Details section for more.</p></dd>
 
 
 <dt id="arg-ongo">ongo<a class="anchor" aria-label="anchor" href="#arg-ongo"></a></dt>
-<dd><p>If TRUE, successive 1s are considered ongoing events and treated as NA after the first 1. If FALSE, successive 1s
-are all treated as failures. Defaults to FALSE.</p></dd>
+<dd><p>If TRUE, successive 1s are considered ongoing events and treated
+as NA after the first 1. If FALSE, successive 1s are all treated as failures.
+Defaults to FALSE.</p></dd>
 
 </dl></div>
     <div class="section level2">
