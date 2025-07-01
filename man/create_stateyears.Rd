@@ -54,7 +54,7 @@ create_stateyears(system="gw")
 \references{
 Miller, Steven V. 2019. ``Create Country-Year and (Non)-Directed
 Dyad-Year Data With Just a Few Lines in R''
-\url{http://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
+\url{https://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
 }
 \author{
 Steven V. Miller

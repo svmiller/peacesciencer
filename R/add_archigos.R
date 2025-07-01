@@ -103,9 +103,15 @@ add_archigos <- function(data) {
 
 .add_archigos_cow_state_year <- function(data, archigossums) {
 
-  archigossums %>%
-    left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode,
-                                         .data$year)) -> hold_this
+  gw_cw_years <- isard::gw_cw_panel
+  gw_cw_years <- gw_cw_years[, c("gwcode", "ccode", "year")]
+
+  left_join(archigossums, gw_cw_years,
+            by = c("gwcode" = "gwcode",
+                   "year" = "year")) -> hold_this
+  # archigossums %>%
+  #   left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode,
+  #                                        .data$year)) -> hold_this
 
   # Naturally, the different ways of handling Serbia screw things up here.
   # On June 4, 2006, archigos records a leader transition and a state transition,
@@ -133,8 +139,16 @@ add_archigos <- function(data) {
 #' @noRd
 .add_archigos_cow_dyad_year <- function(data, archigossums) {
 
-  archigossums %>%
-    left_join(., gw_cow_years %>% select(.data$gwcode, .data$ccode, .data$year)) -> hold_this
+  gw_cw_years <- isard::gw_cw_panel
+  gw_cw_years <- gw_cw_years[, c("gwcode", "ccode", "year")]
+
+  left_join(archigossums, gw_cw_years,
+            by = c("gwcode" = "gwcode",
+                   "year" = "year")) -> hold_this
+
+  # archigossums %>%
+  #   left_join(., gw_cow_years %>%
+  #               select(.data$gwcode, .data$ccode, .data$year)) -> hold_this
 
   # Naturally, the different ways of handling Serbia screw things up here.
   # On June 4, 2006, archigos records a leader transition and a state transition,

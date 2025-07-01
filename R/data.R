@@ -124,11 +124,13 @@ NULL
 
 #' Zeev Maoz' Regional/Global Power Data
 #'
-#' These are Zeev Maoz' data for what states are regional or global powers at a given point time. They are
-#' extensions of the Correlates of War major power data, which only codes "major" power without consideration
-#' of regional or global distinctions. Think of Austria-Hungary as intuitive of the issue here. Austria-Hungary
-#' is a major power in the Correlates of War data, but there is good reason to treat Austria-Hungary as a major
-#' power only within Europe. That is what Zeev Maoz tries to do here.
+#' These are Zeev Maoz' data for what states are regional or global powers at a
+#' given point time. They are extensions of the Correlates of War major power
+#' data, which only codes "major" power without consideration of regional or
+#' global distinctions. Think of Austria-Hungary as intuitive of the issue here.
+#' Austria-Hungary is a major power in the Correlates of War data, but there is
+#' good reason to treat Austria-Hungary as a major power only within Europe.
+#' That is what Zeev Maoz tries to do here.
 #'
 #' @format A data frame with 20 observations on the following 5 variables.
 #' \describe{
@@ -140,7 +142,8 @@ NULL
 #' }
 #'
 #'
-#' @references Maoz, Zeev. 2010. Network of Nations: The Evolution, Structure, and Impact of International Networks, 1816-2001. Cambridge University Press.
+#' @references Maoz, Zeev. 2010. *Network of Nations: The Evolution, Structure,
+#' and Impact of International Networks, 1816-2001*. Cambridge University Press.
 #'
 #'
 "maoz_powers"
@@ -149,8 +152,9 @@ NULL
 
 #' The Minimum Distance Between States in the Correlates of War System, 1886-2019
 #'
-#' These are non-directed dyad-year data for the minimum distance between states in the Correlates of War state system from
-#' 1886 to 2019. The data are generated from the \pkg{cshapes} package.
+#' These are non-directed dyad-year data for the minimum distance between states
+#' in the Correlates of War state system from 1886 to 2019. The data are
+#' generated from the \pkg{cshapes} package.
 #'
 #' @format A data frame with 817053 observations on the following 4 variables.
 #' \describe{
@@ -160,31 +164,36 @@ NULL
 #' \item{\code{mindist}}{the minimum distance between states on Jan. 1 of the year, in kilometers}
 #' }
 #'
-#' @details The data are generated from the \pkg{cshapes} package. Data are automatically generated
-#' (by default) as directed dyad-years. I elect to make them non-directed for space considerations.
-#' Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
-#' looks weird to see the code that does it.
+#' @details The data are generated from the \pkg{cshapes} package. Data are
+#' automatically generated (by default) as directed dyad-years. I elect to make
+#' them non-directed for space considerations. Making non-directed dyad-year
+#' data into directed dyad-year data isn't too difficult in R. It just looks
+#' weird to see the code that does it.
 #'
-#' Previous versions of these data were for the minimum distance as of Dec. 31 of the referent year. These are now Jan. 1.
-#' Most of the data I provide elsewhere in this package are  to be understood as the data as they were at the *start* of
-#' the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
-#' function. However, the script that generates these data are set at Jan. 1 of the year and not Dec. 31. Right now, the \pkg{cshapes}
-#' does not appear to work on my system and I do not know why. Fortunately, the package authors made these data available.
+#' Previous versions of these data were for the minimum distance as of Dec. 31
+#' of the referent year. These are now Jan. 1. Most of the data I provide
+#' elsewhere in this package are to be understood as the data as they were at
+#' the *start* of the year. [add_minimum_distance()] permits greater flexibility
+#' with this option, but only for the remote and augmented version of the data.
+#' Check the documentation of that function for more.
 #'
 #' @references
 #'
-#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
-#' and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
-#' The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
+#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik
+#' Cederman,and Kristian Skrede Gleditsch. 2022. "Mapping The International
+#' System, 1886-2017: The \code{CShapes} 2.0 Dataset." *Journal of Conflict
+#' Resolution*. 66(1): 144-161.
 #'
-#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
+#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring
+#' Country Shapes: The \code{cshapes} Package." *The R Journal* 2(1): 18-24
 
 "cow_mindist"
 
 #' The Minimum Distance Between States in the Gleditsch-Ward System, 1886-2019
 #'
-#' These are non-directed dyad-year data for the minimum distance between states in the Gleditsch-Ward state system from
-#' 1886 to 2018. The data are generated from the \pkg{cshapes} package.
+#' These are non-directed dyad-year data for the minimum distance between states
+#' in the Gleditsch-Ward state system from 1886 to 2019. The data are generated
+#' from the \pkg{cshapes} package.
 #'
 #' @format A data frame with 868813 observations on the following 4 variables.
 #' \describe{
@@ -194,27 +203,29 @@ NULL
 #' \item{\code{mindist}}{the minimum distance between states on Jan. 1 of the year, in kilometers}
 #' }
 #'
-#' @details The data are generated from the \pkg{cshapes} package. The package authors purport that the data
-#' are generated to be compatible with the Gleditsch-Ward system. I trust them on this; indeed, Gleditsch is one of the
-#' authors of the \pkg{cshapes} package.
+#' @details
 #'
-#' Data are automatically generated (by default) as directed dyad-years. I elect to make them non-directed for space
-#' considerations. Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
+#' Data are automatically generated (by default) as directed dyad-years. I elect
+#' to make them non-directed for space considerations. Making non-directed
+#' dyad-year data into directed dyad-year data isn't too difficult in R. It just
 #' looks weird to see the code that does it.
 #'
-#' Previous versions of these data were for the minimum distance as of Dec. 31 of the referent year. These are now Jan. 1.
-#' Most of the data I prove elsewhere in this package are  to be understood as the data as they were at the *start* of
-#' the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
-#' function. However, the script that generates these data are set at Jan. 1 of the year and not Dec. 31. Right now, the \pkg{cshapes}
-#' does not appear to work on my system and I do not know why. Fortunately, the package authors made these data available.
+#' Previous versions of these data were for the minimum distance as of Dec. 31
+#' of the referent year. These are now Jan. 1. Most of the data I provide
+#' elsewhere in this package are to be understood as the data as they were at
+#' the *start* of the year. [add_minimum_distance()] permits greater flexibility
+#' with this option, but only for the remote and augmented version of the data.
+#' Check the documentation of that function for more.
 #'
 #' @references
 #'
-#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
-#' and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
-#' The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
+#' Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik
+#' Cederman,and Kristian Skrede Gleditsch. 2022. "Mapping The International
+#' System, 1886-2017: The \code{CShapes} 2.0 Dataset." *Journal of Conflict
+#' Resolution*. 66(1): 144-161.
 #'
-#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
+#' Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring
+#' Country Shapes: The \code{cshapes} Package." *The R Journal* 2(1): 18-24
 
 "gw_mindist"
 
@@ -251,7 +262,8 @@ NULL
 
 #' UCDP Onset Data (v. 19.1)
 #'
-#' These are state-year level data for armed conflict onsets provided by the Uppsala Conflict Data Program (UCDP).
+#' These are state-year level data for armed conflict onsets provided by the
+#' Uppsala Conflict Data Program (UCDP).
 #'
 #'
 #' @format A data frame with 10142 observations on the following eight variables.
@@ -265,10 +277,15 @@ NULL
 #' \item{\code{sumonset5}}{a numeric vector for the sum of new conflict episodes, whether because this is a new conflict or because there is more than five years since last conflict episode}
 #' \item{\code{sumonset10}}{a numeric vector for the sum of new conflict episodes, whether because this is a new conflict or because there is more than 10 years since last conflict episode}
 #' }
-#' @details The user will want to note that the data provided by UCDP are technically not country-year observations. They instead duplicate observations for cases of new conflicts
-#' or new conflict episodes. Further, the original data do not provide any information about the conflict-dyad in question to which those duplicates pertain. That means the most
-#' these data can do for the package's mission is provide summary information. The user should probably recode these variables into something else they may want for a
-#' particular application
+#' @details
+#'
+#' The user will want to note that the data provided by UCDP are technically not
+#' country-year observations. They instead duplicate observations for cases of
+#' new conflicts or new conflict episodes. Further, the original data do not
+#' provide any information about the conflict-dyad in question to which those
+#' duplicates pertain. That means the most these data can do for the package's
+#' mission is provide summary information. The user should probably recode these
+#' variables into something else they may want for a particular application.
 #'
 #'
 #' @references

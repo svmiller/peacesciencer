@@ -7,15 +7,18 @@
 add_spells(data, conflict_event_type = "ongoing", ongo = FALSE)
 }
 \arguments{
-\item{data}{an applicable data frame (e.g. leader-year, dyad-year, state-year, as created in \pkg{peacesciencer})}
+\item{data}{an applicable data frame (e.g. leader-year, dyad-year, state-year,
+as created in \pkg{peacesciencer})}
 
-\item{conflict_event_type}{type of event for which spells should be calculated, either "ongoing" or "onset".
-Default is "ongoing". If "ongoing", the spells are calculated on the presence of an ongoing event.
-If "onset", spells are calculated on the onset of a conflict event with successive zeros (if observed) calculated as "peace".
-See Details section for more.}
+\item{conflict_event_type}{type of event for which spells should be
+calculated, either "ongoing" or "onset". Default is "ongoing". If "ongoing",
+the spells are calculated on the presence of an ongoing event. If "onset",
+spells are calculated on the onset of a conflict event with successive zeros
+(if observed) calculated as "peace". See Details section for more.}
 
-\item{ongo}{If TRUE, successive 1s are considered ongoing events and treated as NA after the first 1. If FALSE, successive 1s
-are all treated as failures. Defaults to FALSE.}
+\item{ongo}{If TRUE, successive 1s are considered ongoing events and treated
+as NA after the first 1. If FALSE, successive 1s are all treated as failures.
+Defaults to FALSE.}
 }
 \value{
 \code{add_spells()} takes a dyad-year, leader-year, or  state-year data
@@ -61,7 +64,7 @@ incidents between Iran-Iraq independent of the war, per Correlates of War
 coding rules. If peace years are calculated at the "onset" of the event,
 it would list peace-years between the two countries from 1981 to 1988.
 I've never understood that to make sense, but still I've seen others insist
-this is the correct way to do it. \code{add_peace_years()} would force the
+this is the correct way to do it. \code{\link[=add_peace_years]{add_peace_years()}} would force the
 calculation on the ongoing event, which I still maintain is correct.
 \code{add_spells()} will allow you to calculate on onsets, even if
 ongoing events are the default.

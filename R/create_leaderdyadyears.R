@@ -3,7 +3,8 @@
 #' @description
 #'
 #' \code{create_leaderdyadyears()} allows you to created leader dyad-year data
-#' from the Archigos data first introduced and described by Goemans et al. (2009).
+#' from the Archigos data first introduced and described by Goemans et al.
+#' (2009).
 #'
 #' @return
 #'
@@ -20,7 +21,7 @@
 #' take too long for a normal function call. This amounts to an unholy
 #' combination of data that are too large for CRAN's disk space restrictions
 #' (5 MB) and too time-consuming to do from scratch every time. Thus, the
-#' data are pre-generated and stored remotely. Check \code{download_extdata()} for
+#' data are pre-generated and stored remotely. Check [download_extdata()] for
 #' more information.
 #'
 #' @author Steven V. Miller

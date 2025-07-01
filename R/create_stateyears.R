@@ -19,7 +19,7 @@
 #'
 #' @references Miller, Steven V. 2019. ``Create Country-Year and (Non)-Directed
 #' Dyad-Year Data With Just a Few Lines in R''
-#' \url{http://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
+#' \url{https://svmiller.com/blog/2019/01/create-country-year-dyad-year-from-country-data/}
 #'
 #' @param system a character specifying whether the user wants Correlates of War
 #' state-years ("cow") or Gleditsch-Ward ("gw") state-years. Correlates of War is the

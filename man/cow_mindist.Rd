@@ -17,26 +17,31 @@ A data frame with 817053 observations on the following 4 variables.
 cow_mindist
 }
 \description{
-These are non-directed dyad-year data for the minimum distance between states in the Correlates of War state system from
-1886 to 2019. The data are generated from the \pkg{cshapes} package.
+These are non-directed dyad-year data for the minimum distance between states
+in the Correlates of War state system from 1886 to 2019. The data are
+generated from the \pkg{cshapes} package.
 }
 \details{
-The data are generated from the \pkg{cshapes} package. Data are automatically generated
-(by default) as directed dyad-years. I elect to make them non-directed for space considerations.
-Making non-directed dyad-year data into directed dyad-year data isn't too difficult in R. It just
-looks weird to see the code that does it.
+The data are generated from the \pkg{cshapes} package. Data are
+automatically generated (by default) as directed dyad-years. I elect to make
+them non-directed for space considerations. Making non-directed dyad-year
+data into directed dyad-year data isn't too difficult in R. It just looks
+weird to see the code that does it.
 
-Previous versions of these data were for the minimum distance as of Dec. 31 of the referent year. These are now Jan. 1.
-Most of the data I provide elsewhere in this package are  to be understood as the data as they were at the \emph{start} of
-the year. This is how I process, for example, the \code{capitals} data as they get merged in the \code{add_capital_distance()}
-function. However, the script that generates these data are set at Jan. 1 of the year and not Dec. 31. Right now, the \pkg{cshapes}
-does not appear to work on my system and I do not know why. Fortunately, the package authors made these data available.
+Previous versions of these data were for the minimum distance as of Dec. 31
+of the referent year. These are now Jan. 1. Most of the data I provide
+elsewhere in this package are to be understood as the data as they were at
+the \emph{start} of the year. \code{\link[=add_minimum_distance]{add_minimum_distance()}} permits greater flexibility
+with this option, but only for the remote and augmented version of the data.
+Check the documentation of that function for more.
 }
 \references{
-Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik Cederman,
-and Kristian Skrede Gleditsch. 2022. "Mapping The International System, 1886-2017:
-The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict Resolution}. 66(1): 144-161.
+Schvitz, Guy, Luc Girardin, Seraina Ruegger, Nils B. Weidmann, Lars-Erik
+Cederman,and Kristian Skrede Gleditsch. 2022. "Mapping The International
+System, 1886-2017: The \code{CShapes} 2.0 Dataset." \emph{Journal of Conflict
+Resolution}. 66(1): 144-161.
 
-Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
+Weidmann, Nils B. and Kristian Skrede Gleditsch. 2010. "Mapping and Measuring
+Country Shapes: The \code{cshapes} Package." \emph{The R Journal} 2(1): 18-24
 }
 \keyword{datasets}
