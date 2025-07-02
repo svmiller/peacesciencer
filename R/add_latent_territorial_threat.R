@@ -28,6 +28,11 @@
 #' from what Wilhelm II would've experienced in the same year. However, the data
 #' would have no way of knowing that (as they are).
 #'
+#' The state-year nature of the data also carry implications for its use in
+#' dyad-year analyses. The function returns estimates of state-year levels of
+#' territorial threat for the first state and second state in the dyad, and not
+#' the level of territorial threat between each state in the dyad for the given
+#' year.
 #'
 #'
 #' @author Steven V. Miller
@@ -51,11 +56,7 @@
 #'
 #' \donttest{
 #' # just call `library(tidyverse)` at the top of the your script
-#' library(magrittr)
-#'
-#' cow_ddy %>% add_latent_territorial_threat()
-#'
-#' create_stateyears() %>% add_latent_territorial_threat()
+#' create_stateyears() |> add_latent_territorial_threat(keep=c('lterrthreat'))
 #' }
 #'
 #' @importFrom rlang .data

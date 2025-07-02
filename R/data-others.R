@@ -234,7 +234,7 @@ NULL
 #' @format A data frame with 14781 observations on the following 10 variables.
 #' \describe{
 #' \item{\code{ccode}}{a Correlates of War state code}
-#' \item{\code{year}}{a Gleditsch-Ward state code}
+#' \item{\code{year}}{a year}
 #' \item{\code{lterrthreat}}{an estimate of latent external territorial threat for the state in a given year}
 #' \item{\code{sd}}{the standard deviation of simulated, latent external territorial threat}
 #' \item{\code{lwr}}{a lower bound estimate of simulated, latent external territorial threat}
