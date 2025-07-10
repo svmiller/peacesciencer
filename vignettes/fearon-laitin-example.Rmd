@@ -1,0 +1,89 @@
+---
+title: "State-Year Example: A Basic Replication/Extension of Fearon and Laitin (2003)"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r ss-setup, message=F}
+library(tidyverse)
+library(peacesciencer)
+library(lubridate)
+library(stevemisc)
+library(modelsummary)
+
+packageVersion("peacesciencer")
+Sys.Date()
+```
+
+[Fearon and Laitin (2003)](https://doi.org/10.1017/S0003055403000534) have one of the most influential state-year analyses of civil war onset to date and their research design serves as a basic template for what such a state-year analysis would resemble. What follows is not a perfect reproduction of their exact design, but an easy extension and replication of it in `{peacesciencer}`. [The package's manuscript](https://svmiller.com/peacesciencer/ms.pdf) offers a bit more detail than I include here. You might also find [Gibler and Miller (2014)](https://doi.org/10.1177/0022343314531003) interesting since some of the package's functionality is derived from what went into that particular extension of Fearon and Laitin (2003).
+
+```{r}
+create_stateyears(system = 'gw', subset_years = c(1946:2024)) %>%
+  add_ucdp_acd(type= "intrastate", only_wars = FALSE) %>%
+  select(-maxintensity, -conflict_ids) %>%
+  add_spells() %>%
+  add_democracy(keep = "aeuds") %>% 
+  # ^ changed from the manuscript version
+  add_creg_fractionalization() %>%
+  add_sim_gdp_pop(keep = c("mrgdppc", "pwtpop"))  %>%
+  # ^ replaced add_sdp_gdp()
+  add_rugged_terrain() %>%
+  add_ccode_to_gw() %>% 
+  add_latent_territorial_threat(keep = "lterrthreat") -> Data
+
+create_stateyears(system = 'gw', subset_years = c(1946:2024)) %>%
+  add_ucdp_acd(type= "intrastate", only_wars = TRUE) %>%
+  select(-maxintensity, -conflict_ids) %>%
+  add_spells(ongo = TRUE, conflict_event_type = "onset") %>%
+  rename_at(vars(ucdpongoing:ucdpspell), ~paste0("war_", .)) %>%
+  left_join(Data, .) -> Data
+
+Data %>%
+  arrange(gwcode, year) %>%
+  log_at(c("mrgdppc", "pwtpop")) %>%
+  lag_at(c("aeuds", "ln_mrgdppc", "ln_pwtpop"),
+         .by = "gwcode") -> Data
+
+
+modCW <- list()
+summary(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop  +
+                    l1_aeuds + I(l1_aeuds^2) +
+                    newlmtnest + ethfrac + relfrac +
+                    ucdpspell + I(ucdpspell^2) + I(ucdpspell^3), data=subset(Data),
+                  family = binomial(link="logit")))
+
+summary(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop  +
+                    l1_aeuds + I(l1_aeuds^2) +
+                    newlmtnest + ethfrac + relfrac +
+                    war_ucdpspell + I(war_ucdpspell^2) + I(war_ucdpspell^3), data=subset(Data),
+                  family = binomial(link="logit")))
+```
+
+
+In table form:
+
+```{r}
+modelsummary(modCW, 
+             title = 'A Civil Conflict Analysis of Gleditsch-Ward State-Years in {peacesciencer}',
+             stars = c('*' = .05, '+' = .1), gof_omit = "IC|F|Log.|R2$",
+             coef_map = c("l1_ln_mrgdppc" = "GDP per Capita (Lagged)", 
+                          "l1_ln_pwtpop" = "Population Size (Lagged)", 
+                          "l1_aeuds" = "Extended UDS (Lagged)",
+                          "I(l1_aeuds^2)" = "Extended UDS^2 (Lagged)", 
+                          "newlmtnest" = "% Mountainous Terrain (Logged)", 
+                          "ethfrac" = "Ethnic Fractionalization", 
+                          "relfrac" = "Religious Fractionalization",
+                          "ucdpspell" = "t",
+                          "I(ucdpspell^2)" = "t^2",
+                          "I(ucdpspell^3)" = "t^3",
+                          "war_ucdpspell" = "t",
+                          "I(war_ucdpspell^2)" = "t^2",
+                          "I(war_ucdpspell^3)" = "t^3",
+                          "(Intercept)" = "Intercept"),
+             align=c("lcc"))
+```

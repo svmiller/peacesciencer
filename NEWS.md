@@ -27,6 +27,7 @@ Changes include:
 - The "create" functions lean on the state system data maintained in `{isard}`. This also means micro-states in the G-W system are included.
 - `false_gw_dyads` now includes information about whether the first or second state is/was a micro-state. Two directed entries for Sao Tome and Principe and the Republic of Vietnam were added as well.
 - Shortcuts added: `add_cap_dist()` for `add_capital_distance()`, `add_creg_frac()` for `add_creg_fractionalization()`, `add_min_dist()` for `add_minimum_distance()`.
+- `ucdp_acd` updated to 25.1. `add_ucdp_acd()` incorporates these newer versions of the data to allow for armed conflict analyses through 2024.
 
 Additions include:
 

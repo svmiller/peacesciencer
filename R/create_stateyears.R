@@ -99,6 +99,12 @@ create_stateyears <- function(system = "cow", mry = TRUE, subset_years) {
 
     data <- data[order(data$ccode, data$year), ]
 
+    if (!missing(subset_years)) {
+      data <- subset(data, data$year %in% subset_years)
+    } else {
+      data <- data
+    }
+
     attr(data, "ps_data_type") = "state_year"
     attr(data, "ps_system") = "cow"
 
@@ -153,16 +159,15 @@ create_stateyears <- function(system = "cow", mry = TRUE, subset_years) {
 
     data <- data[order(data$gwcode, data$year), ]
 
+    if (!missing(subset_years)) {
+      data <- subset(data, data$year %in% subset_years)
+    } else {
+      data <- data
+    }
+
     attr(data, "ps_data_type") = "state_year"
     attr(data, "ps_system") = "gw"
 
-  }
-
-
-  if (!missing(subset_years)) {
-    data <- subset(data, data$year %in% subset_years)
-  } else {
-    data <- data
   }
 
 

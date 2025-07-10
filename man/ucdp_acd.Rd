@@ -3,9 +3,9 @@
 \docType{data}
 \name{ucdp_acd}
 \alias{ucdp_acd}
-\title{UCDP Armed Conflict Data (ACD) (v. 20.1)}
+\title{UCDP Armed Conflict Data (ACD) (v. 25.1)}
 \format{
-A data frame with 4164 observations on the following 15 variables.
+A data frame with 5652 observations on the following 15 variables.
 \describe{
 \item{\code{conflict_id}}{a conflict identifier, not to be confused with an episode identifier (which I don't think UCDP offers)}
 \item{\code{year}}{a numeric vector for the year}
@@ -28,16 +28,20 @@ A data frame with 4164 observations on the following 15 variables.
 ucdp_acd
 }
 \description{
-These are (kind of) dyadic, but mostly state-level data, used internally for doing stuff with the UCDP armed conflict data
+These are (kind of) dyadic, but mostly state-level data, used internally for
+doing stuff with the UCDP armed conflict data
 }
 \details{
-The \code{data-raw} directory on the project's Github will show how I processed the multiple strings for when there are multiple states on a given side.
+The \code{data-raw} directory on the project's Github will show how I processed
+the multiple strings for when there are multiple states on a given side.
 }
 \references{
-Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta Sollenberg & Havard Strand (2002)
-Armed Conflict 1946–2001: A New Dataset. \emph{Journal of Peace Research} 39(5): 615–637.
+Gleditsch, Nils Petter; Peter Wallensteen, Mikael Eriksson, Margareta
+Sollenberg, and Havard Strand. 2002. "Armed Conflict 1946–2001: A New
+Dataset." \emph{Journal of Peace Research} 39(5): 615–637.
 
-Pettersson, Therese; Stina Hogbladh & Magnus Oberg (2019). Organized violence, 1989-2018 and peace
-agreements. Journal of Peace Research 56(4): 589-603.
+Davies, Shawn, Therése PEttersson, Margareta Sollenberg, and Magnus Öberg.
+2025. "Organized violence 1989–2024, and the challenges of identifying
+civilian victims." \emph{Journal of Peace Research} 62(4): 1223--1240.
 }
 \keyword{datasets}

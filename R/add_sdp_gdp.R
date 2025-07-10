@@ -75,6 +75,8 @@
 #'
 add_sdp_gdp <- function(data) {
 
+  .Deprecated("add_sim_gdp_pop", msg = "This function appears in the manuscript, but is deprecated as of version 1.2 and is slated for removal in the near future. Use add_sim_gdp_pop() instead and be mindful of any differences in the arguments.")
+
   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c('dyad_year', 'leader_dyad_year')) {
 
     if (length(attributes(data)$ps_system) > 0 && attributes(data)$ps_system == "cow") {

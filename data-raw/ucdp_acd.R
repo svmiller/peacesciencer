@@ -1,17 +1,23 @@
 library(tidyverse)
 
-ucdp_acd <- readxl::read_excel("~/Dropbox/data/ucdpprio/acd/ucdp-prio-acd-201.xlsx")
+#ucdp_acd <- readxl::read_excel("~/Dropbox/data/ucdpprio/acd/ucdp-prio-acd-201.xlsx")
+# ^ commenting out the above; was last updated on Jun. 1 2021 on my end.
+ucdp_acd <- readxl::read_excel("~/Koofr/data/ucdpprio/25.1/UcdpPrioConflict_v25_1.xlsx")
+names(ucdp_acd)
 
 # I'mma select just what I want
-
 ucdp_acd %>%
   select(conflict_id, year, gwno_a, gwno_a_2nd, gwno_b, gwno_b_2nd,
          incompatibility, intensity_level, type_of_conflict:ep_end_date) -> ucdp_acd
+
 
 # Oof, I hate how UCDP does this. Alas, let's do it. I'd think this work.
 # conflict_id == 420, 252, and 412 should be a nice trial balloon to how well this works.
 # conflict_id == 218 = Kashmir. Also a good trial balloon for how well I'm capturing recurring conflicts and conflicts that span years.
 # conflict_id == 11345 = South Sudan, which has no end date. Also a good trial balloon.
+
+ucdp_acd %>% filter(conflict_id %in% c(420, 252, 412))
+ucdp_acd %>% filter(conflict_id %in% c(11345, 218))
 
 ucdp_acd %>%
   mutate(gwno_a = strsplit(as.character(gwno_a), ",")) %>%
