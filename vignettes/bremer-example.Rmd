@@ -1,0 +1,87 @@
+---
+title: "Dyad-Year Example: A Basic Replication/Extension of Bremer (1992)"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r ss-setup, message=F}
+library(tidyverse)
+library(peacesciencer)
+library(lubridate)
+library(stevemisc)
+library(modelsummary)
+
+packageVersion("peacesciencer")
+Sys.Date()
+```
+
+[Bremer's (1992)](https://doi.org/10.1177/0022002792036002005) "dangerous dyads" design is not necessarily the seminal analysis of inter-state conflict in the Correlates of War tradition, but it's arguably the seminal template by which one could analyze conflict between states. [The package's manuscript](https://svmiller.com/peacesciencer/ms.pdf) offers a basic extension/replication of this form of analyze, the skeleton of which is ubiquitous in every dyad-year analysis.
+
+```{r}
+create_dyadyears(directed = FALSE, subset_years = c(1816:2010)) %>%
+  filter_prd() %>%
+  # add conflict information from GML-MID data, pipe to next function
+  add_gml_mids(keep = NULL) %>%
+  add_spells() %>%
+  add_nmc() %>%
+  add_democracy(keep="aeuds") %>%
+  add_atop_alliance() %>% # change from manuscript version
+  # likewise, this function below replaces add_sdp_gdp() since version 1.2
+  add_sim_gdp_pop(keep="mrgdppc") -> Data
+
+# Some recoding
+Data %>%
+  mutate(landcontig = ifelse(conttype == 1, 1, 0)) %>%
+  mutate(cowmajdyad = ifelse(cowmaj1 == 1 | cowmaj2 == 1, 1, 0)) %>%
+  # Create estimate of militarization as milper/tpop
+  # Then make a weak-link
+  mutate(milit1 = milper1/tpop1,
+         milit2 = milper2/tpop2,
+         minmilit = ifelse(milit1 > milit2,
+                           milit2, milit1)) %>%
+  # create CINC proportion (lower over higher)
+  mutate(cincprop = ifelse(cinc1 > cinc2,
+                           cinc2/cinc1, cinc1/cinc2)) %>%
+  # create weak-link specification using Quick UDS data
+  mutate(mindemest = ifelse(aeuds1 > aeuds2,
+                            aeuds2, aeuds1)) %>%
+  # Create "weak-link" measure of jointly advanced economies
+  mutate(minmgdppc = ifelse(mrgdppc1 > mrgdppc2,
+                             mrgdppc2, mrgdppc1)) -> Data
+
+Data %>%
+  r2sd_at(c("cincprop", "mindemest", "minmgdppc", "minmilit")) -> Data
+
+modDD <- glm(gmlmidonset ~ landcontig + cincprop + cowmajdyad + atop_defense +
+               mindemest + minmgdppc + minmilit +
+               gmlmidspell + I(gmlmidspell^2) + I(gmlmidspell^3), data= Data,
+             family=binomial(link="logit"))
+
+```
+
+
+In table form:
+
+```{r}
+modelsummary(list("Model 1" = modDD), 
+             title = 'A "Dangerous Dyads" Analysis of Non-Directed Dyad-Years from {peacesciencer}',
+             stars = c('*' = .05, '+' = .1), 
+             gof_map = c("nobs"),
+             coef_map = c("landcontig" = "Land Contiguity", 
+                          "cincprop" = "Dyadic CINC Proportion (Lower/Higher)", 
+                          "cowmajdyad" = "CoW Major Power in Dyad",
+                          "atop_defense" = "Defense Pact", 
+                          "mindemest" = "Dyadic Democracy (Weak-Link)", 
+                          "minmgdppc" = "Dyadic GDP per Capita (Weak-Link)", 
+                          "minmilit" = "Dyadic Militarization (Minimum)",
+                          "gmlmidspell" = "t",
+                          "I(gmlmidspell^2)" = "t^2",
+                          "I(gmlmidspell^3)" = "t^3",
+                          "(Intercept)" = "Intercept"),
+             align=c("lc")) 
+```
