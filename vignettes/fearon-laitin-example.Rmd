@@ -32,9 +32,7 @@ create_stateyears(system = 'gw', subset_years = c(1946:2024)) %>%
   add_creg_fractionalization() %>%
   add_sim_gdp_pop(keep = c("mrgdppc", "pwtpop"))  %>%
   # ^ replaced add_sdp_gdp()
-  add_rugged_terrain() %>%
-  add_ccode_to_gw() %>% 
-  add_latent_territorial_threat(keep = "lterrthreat") -> Data
+  add_rugged_terrain() -> Data
 
 create_stateyears(system = 'gw', subset_years = c(1946:2024)) %>%
   add_ucdp_acd(type= "intrastate", only_wars = TRUE) %>%

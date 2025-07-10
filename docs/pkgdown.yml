@@ -5,11 +5,12 @@ articles:
   coerce-dispute-year-dyad-year: coerce-dispute-year-dyad-year.html
   democracy: democracy.html
   different-data-types: different-data-types.html
+  fearon-laitin-example: fearon-laitin-example.html
   joins: joins.html
   parlor-tricks: parlor-tricks.html
   state-systems: state-systems.html
   versions: versions.html
-last_built: 2025-07-01T17:04Z
+last_built: 2025-07-10T09:57Z
 urls:
   reference: http://svmiller.com/reference
   article: http://svmiller.com/articles
