@@ -137,87 +137,17 @@ Laitin (2003).</p>
 <span></span>
 <span></span>
 <span><span class="va">modCW</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">modCW</span><span class="op">$</span><span class="st">"All UCDP Conflicts"</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">ucdponset</span> <span class="op">~</span> <span class="va">l1_ln_mrgdppc</span> <span class="op">+</span> <span class="va">l1_ln_pwtpop</span>  <span class="op">+</span></span>
+<span><span class="va">modCW</span><span class="op">$</span><span class="st">"All UCDP Conflicts"</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">ucdponset</span> <span class="op">~</span> <span class="va">l1_ln_mrgdppc</span> <span class="op">+</span> <span class="va">l1_ln_pwtpop</span>  <span class="op">+</span></span>
 <span>                    <span class="va">l1_aeuds</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">l1_aeuds</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>                    <span class="va">newlmtnest</span> <span class="op">+</span> <span class="va">ethfrac</span> <span class="op">+</span> <span class="va">relfrac</span> <span class="op">+</span></span>
 <span>                    <span class="va">ucdpspell</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">ucdpspell</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">ucdpspell</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span>,</span>
-<span>                  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; glm(formula = ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop + l1_aeuds + </span></span>
-<span><span class="co">#&gt;     I(l1_aeuds^2) + newlmtnest + ethfrac + relfrac + ucdpspell + </span></span>
-<span><span class="co">#&gt;     I(ucdpspell^2) + I(ucdpspell^3), family = binomial(link = "logit"), </span></span>
-<span><span class="co">#&gt;     data = subset(Data))</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Deviance Residuals: </span></span>
-<span><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></span>
-<span><span class="co">#&gt; -0.4067  -0.2143  -0.1658  -0.0946   3.3628  </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;                  Estimate Std. Error z value Pr(&gt;|z|)    </span></span>
-<span><span class="co">#&gt; (Intercept)    -2.124e+00  9.948e-01  -2.136 0.032710 *  </span></span>
-<span><span class="co">#&gt; l1_ln_mrgdppc  -2.900e-01  1.126e-01  -2.576 0.009994 ** </span></span>
-<span><span class="co">#&gt; l1_ln_pwtpop    2.421e-01  6.806e-02   3.558 0.000374 ***</span></span>
-<span><span class="co">#&gt; l1_aeuds       -8.018e-01  2.387e-01  -3.359 0.000783 ***</span></span>
-<span><span class="co">#&gt; I(l1_aeuds^2)  -8.825e-01  2.332e-01  -3.784 0.000154 ***</span></span>
-<span><span class="co">#&gt; newlmtnest      6.692e-02  6.696e-02   0.999 0.317610    </span></span>
-<span><span class="co">#&gt; ethfrac         3.715e-01  3.572e-01   1.040 0.298453    </span></span>
-<span><span class="co">#&gt; relfrac        -2.830e-01  3.999e-01  -0.708 0.479180    </span></span>
-<span><span class="co">#&gt; ucdpspell      -6.479e-02  3.857e-02  -1.680 0.092987 .  </span></span>
-<span><span class="co">#&gt; I(ucdpspell^2)  3.834e-03  1.978e-03   1.939 0.052530 .  </span></span>
-<span><span class="co">#&gt; I(ucdpspell^3) -5.105e-05  2.660e-05  -1.920 0.054910 .  </span></span>
-<span><span class="co">#&gt; ---</span></span>
-<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Null deviance: 1351.7  on 8191  degrees of freedom</span></span>
-<span><span class="co">#&gt; Residual deviance: 1264.0  on 8181  degrees of freedom</span></span>
-<span><span class="co">#&gt;   (4315 observations deleted due to missingness)</span></span>
-<span><span class="co">#&gt; AIC: 1286</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Number of Fisher Scoring iterations: 9</span></span>
+<span>                  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">modCW</span><span class="op">$</span><span class="st">"Wars Only"</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">war_ucdponset</span> <span class="op">~</span> <span class="va">l1_ln_mrgdppc</span> <span class="op">+</span> <span class="va">l1_ln_pwtpop</span>  <span class="op">+</span></span>
+<span><span class="va">modCW</span><span class="op">$</span><span class="st">"Wars Only"</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">war_ucdponset</span> <span class="op">~</span> <span class="va">l1_ln_mrgdppc</span> <span class="op">+</span> <span class="va">l1_ln_pwtpop</span>  <span class="op">+</span></span>
 <span>                    <span class="va">l1_aeuds</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">l1_aeuds</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
 <span>                    <span class="va">newlmtnest</span> <span class="op">+</span> <span class="va">ethfrac</span> <span class="op">+</span> <span class="va">relfrac</span> <span class="op">+</span></span>
 <span>                    <span class="va">war_ucdpspell</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">war_ucdpspell</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/AsIs.html" class="external-link">I</a></span><span class="op">(</span><span class="va">war_ucdpspell</span><span class="op">^</span><span class="fl">3</span><span class="op">)</span>, data<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">Data</span><span class="op">)</span>,</span>
-<span>                  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Call:</span></span>
-<span><span class="co">#&gt; glm(formula = war_ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop + </span></span>
-<span><span class="co">#&gt;     l1_aeuds + I(l1_aeuds^2) + newlmtnest + ethfrac + relfrac + </span></span>
-<span><span class="co">#&gt;     war_ucdpspell + I(war_ucdpspell^2) + I(war_ucdpspell^3), </span></span>
-<span><span class="co">#&gt;     family = binomial(link = "logit"), data = subset(Data))</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Deviance Residuals: </span></span>
-<span><span class="co">#&gt;     Min       1Q   Median       3Q      Max  </span></span>
-<span><span class="co">#&gt; -0.3585  -0.1360  -0.0971  -0.0530   3.7876  </span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Coefficients:</span></span>
-<span><span class="co">#&gt;                      Estimate Std. Error z value Pr(&gt;|z|)   </span></span>
-<span><span class="co">#&gt; (Intercept)        -3.860e+00  1.555e+00  -2.483  0.01304 * </span></span>
-<span><span class="co">#&gt; l1_ln_mrgdppc      -2.195e-01  1.740e-01  -1.261  0.20715   </span></span>
-<span><span class="co">#&gt; l1_ln_pwtpop        2.635e-01  1.064e-01   2.475  0.01332 * </span></span>
-<span><span class="co">#&gt; l1_aeuds           -1.085e+00  4.198e-01  -2.585  0.00974 **</span></span>
-<span><span class="co">#&gt; I(l1_aeuds^2)      -8.308e-01  3.703e-01  -2.244  0.02486 * </span></span>
-<span><span class="co">#&gt; newlmtnest          2.971e-01  1.114e-01   2.668  0.00764 **</span></span>
-<span><span class="co">#&gt; ethfrac             3.488e-01  5.587e-01   0.624  0.53240   </span></span>
-<span><span class="co">#&gt; relfrac            -6.079e-02  5.978e-01  -0.102  0.91900   </span></span>
-<span><span class="co">#&gt; war_ucdpspell      -1.488e-01  6.420e-02  -2.318  0.02046 * </span></span>
-<span><span class="co">#&gt; I(war_ucdpspell^2)  5.979e-03  2.782e-03   2.149  0.03160 * </span></span>
-<span><span class="co">#&gt; I(war_ucdpspell^3) -6.410e-05  3.305e-05  -1.940  0.05241 . </span></span>
-<span><span class="co">#&gt; ---</span></span>
-<span><span class="co">#&gt; Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; (Dispersion parameter for binomial family taken to be 1)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     Null deviance: 659.98  on 8188  degrees of freedom</span></span>
-<span><span class="co">#&gt; Residual deviance: 608.82  on 8178  degrees of freedom</span></span>
-<span><span class="co">#&gt;   (4318 observations deleted due to missingness)</span></span>
-<span><span class="co">#&gt; AIC: 630.82</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Number of Fisher Scoring iterations: 9</span></span></code></pre></div>
+<span>                  family <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/family.html" class="external-link">binomial</a></span><span class="op">(</span>link<span class="op">=</span><span class="st">"logit"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>In table form:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://modelsummary.com/man/modelsummary.html" class="external-link">modelsummary</a></span><span class="op">(</span><span class="va">modCW</span>, </span>

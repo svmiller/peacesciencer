@@ -49,17 +49,17 @@ Data %>%
 
 
 modCW <- list()
-summary(modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop  +
+modCW$"All UCDP Conflicts" <- glm(ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop  +
                     l1_aeuds + I(l1_aeuds^2) +
                     newlmtnest + ethfrac + relfrac +
                     ucdpspell + I(ucdpspell^2) + I(ucdpspell^3), data=subset(Data),
-                  family = binomial(link="logit")))
+                  family = binomial(link="logit"))
 
-summary(modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop  +
+modCW$"Wars Only"  <- glm(war_ucdponset ~ l1_ln_mrgdppc + l1_ln_pwtpop  +
                     l1_aeuds + I(l1_aeuds^2) +
                     newlmtnest + ethfrac + relfrac +
                     war_ucdpspell + I(war_ucdpspell^2) + I(war_ucdpspell^3), data=subset(Data),
-                  family = binomial(link="logit")))
+                  family = binomial(link="logit"))
 ```
 
 
