@@ -15,8 +15,3 @@ I want to highlight two other things with this release, both minor in scale. For
 ## Downstream dependencies
 
 There are no downstream dependencies to note.
-
-
-## Feedback to CRAN Upon Initial Rejection
-
-I was unaware of the issue of the CITATION file and didn't know that `citEntry()` is now out of style. I've fixed that in this release.

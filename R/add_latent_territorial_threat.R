@@ -34,18 +34,17 @@
 #' the level of territorial threat between each state in the dyad for the given
 #' year.
 #'
+#' The `keep` argument must include one or more of the capabilities estimates
+#' included in `terrthreat`. Otherwise, it will return an error that it cannot
+#' subset columns that do not exist.
+#'
 #'
 #' @author Steven V. Miller
 #'
 #' @param data a data frame with appropriate \pkg{peacesciencer} attributes
-#' @param slice takes one of 'first' or 'last', determines behavior for when
-#' there is a change in a contiguity relationship in a given dyad in a given year.
-#' If 'first', the earlier contiguity relationship is recorded. If 'last', the
-#' latest contiguity relationship is recorded.
-#' @param mry logical, defaults to `FALSE`. If `TRUE`, the data carry forward the
-#' identity of the major powers to the most recently concluded calendar year. If
-#' `FALSE`, the panel honors the right bound of the data's temporal domain and
-#' creates NAs for observations past it.
+#' @param keep an optional parameter, specified as a character vector, about
+#' what capability estimates the user wants to return from this function. If not
+#' specified, everything from the underlying capabilities data is returned.
 #'
 #' @references
 #'

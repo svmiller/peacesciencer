@@ -24,7 +24,7 @@ functions. As a general rule, this data frame is updated after every
 calendar year to include the most recently concluded calendar year.
 }
 \details{
-Data are a quick generation from the \link{create_dyadyears(system="gw")} function
+Data are a quick generation from the \code{create_dyadyears(system="gw")} function
 in this package.
 }
 \keyword{datasets}

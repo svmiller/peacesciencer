@@ -11,7 +11,7 @@ or state-year data frame. The estimates come by way of Miller (2022)."></head><b
 
     <a class="navbar-brand me-2" href="../index.html">peacesciencer</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.1.9</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,18 +73,10 @@ or state-year data frame. The estimates come by way of Miller (2022).</p>
 <dd><p>a data frame with appropriate <span class="pkg">peacesciencer</span> attributes</p></dd>
 
 
-<dt id="arg-slice">slice<a class="anchor" aria-label="anchor" href="#arg-slice"></a></dt>
-<dd><p>takes one of 'first' or 'last', determines behavior for when
-there is a change in a contiguity relationship in a given dyad in a given year.
-If 'first', the earlier contiguity relationship is recorded. If 'last', the
-latest contiguity relationship is recorded.</p></dd>
-
-
-<dt id="arg-mry">mry<a class="anchor" aria-label="anchor" href="#arg-mry"></a></dt>
-<dd><p>logical, defaults to <code>FALSE</code>. If <code>TRUE</code>, the data carry forward the
-identity of the major powers to the most recently concluded calendar year. If
-<code>FALSE</code>, the panel honors the right bound of the data's temporal domain and
-creates NAs for observations past it.</p></dd>
+<dt id="arg-keep">keep<a class="anchor" aria-label="anchor" href="#arg-keep"></a></dt>
+<dd><p>an optional parameter, specified as a character vector, about
+what capability estimates the user wants to return from this function. If not
+specified, everything from the underlying capabilities data is returned.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -110,6 +102,9 @@ dyad-year analyses. The function returns estimates of state-year levels of
 territorial threat for the first state and second state in the dyad, and not
 the level of territorial threat between each state in the dyad for the given
 year.</p>
+<p>The <code>keep</code> argument must include one or more of the capabilities estimates
+included in <code>terrthreat</code>. Otherwise, it will return an error that it cannot
+subset columns that do not exist.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>

@@ -80,7 +80,7 @@ NULL
 #'
 #' @details
 #'
-#' Data are a quick generation from the [create_dyadyears(system="gw")] function
+#' Data are a quick generation from the `create_dyadyears(system="gw")` function
 #' in this package.
 #'
 "gw_ddy"

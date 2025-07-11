@@ -9,15 +9,9 @@ add_latent_territorial_threat(data, keep)
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 
-\item{slice}{takes one of 'first' or 'last', determines behavior for when
-there is a change in a contiguity relationship in a given dyad in a given year.
-If 'first', the earlier contiguity relationship is recorded. If 'last', the
-latest contiguity relationship is recorded.}
-
-\item{mry}{logical, defaults to \code{FALSE}. If \code{TRUE}, the data carry forward the
-identity of the major powers to the most recently concluded calendar year. If
-\code{FALSE}, the panel honors the right bound of the data's temporal domain and
-creates NAs for observations past it.}
+\item{keep}{an optional parameter, specified as a character vector, about
+what capability estimates the user wants to return from this function. If not
+specified, everything from the underlying capabilities data is returned.}
 }
 \value{
 \code{add_latent_territorial_threat()} takes a data frame and adds
@@ -47,6 +41,10 @@ dyad-year analyses. The function returns estimates of state-year levels of
 territorial threat for the first state and second state in the dyad, and not
 the level of territorial threat between each state in the dyad for the given
 year.
+
+The \code{keep} argument must include one or more of the capabilities estimates
+included in \code{terrthreat}. Otherwise, it will return an error that it cannot
+subset columns that do not exist.
 }
 \examples{
 
