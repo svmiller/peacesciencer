@@ -1,184 +1,6 @@
 #' @importFrom tibble tibble
 NULL
 
-#' A complete list of capitals and capital transitions for Correlates of War state system members
-#'
-#' This is a complete list of capitals and capital transitions for Correlates of
-#' War state system members. I use it internally for calculating
-#' capital-to-capital distances in the \code{add_capital_distances()} function.
-#'
-#' @format A data frame with the following 7 variables.
-#' \describe{
-#' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
-#' \item{\code{statenme}}{a character vector for the state}
-#' \item{\code{capital}}{a character vector for the name of the capital}
-#' \item{\code{stdate}}{a start date for the capital. See details section for more information.}
-#' \item{\code{enddate}}{an end date for the capital. See details section for more information.}
-#' \item{\code{lat}}{a numeric vector of the latitude coordinates for the capital}
-#' \item{\code{lng}}{a numeric vector of the longitude coordinates for the capital}
-#' }
-#'
-#' @details
-#'
-#' For convenience, the dates for most of these entries allows for some generous
-#' coverage prior to its actual emergence in the state system or after its
-#' actual exit from it. This is largely in consideration of the other state
-#' system and its extension to potential daily format. However, the functions
-#' that use the `cow_capitals` data will not create observations for states that
-#' did not exist at a given point in time.
-#'
-#' Sometimes, a city is entered in these data to correspond with what makes it
-#' easy for the geocoder, not necessarily what the name of the city was or what
-#' it might be commonly called. I say this because I know it's heresy to call
-#' Ho Chi Minh City the capital of the Republic of Vietnam. I'm aware.
-#'
-#' The data should be current as of the end of 2024. Indonesia is the most
-#' likely candidate to require an update to these data and I am just having to
-#' remind myself of this to make sure I don't forget.
-#'
-#' Cases where a start year is not 1816 indicate a capital transition. For
-#' example, Brazil's capital moved from Rio de Janeiro to Brasilia (a planned
-#' capital) in 1960. Only 25 states in the data experienced a capital transition.
-#' The most recent was Burundi in 2018.
-#'
-#' Kazakhstan renamed its capital for the state leader in 2019. These data
-#' retain the name of Astana and successfully outlived the short-lived name of
-#' "Nur-Sultan". The city returned to its original name in 2022.
-#'
-#' The capitals data are not without some peculiarities. Prominently, Portugal
-#' transferred the Portuguese court from Lisbon to Rio de Janeiro from 1808 to
-#' 1821. *This is recorded in the data.* A knowledge of the inter-state conflict
-#' data will note there was no war or dispute between, say, Portugal and Spain
-#' (or Portugal and any other country) at any point during this time, but it
-#' does create some weirdness that would suggest a massive distance between two
-#' countries, like Portugal and Spain, that are otherwise land-contiguous.
-#'
-#' On Spain: the republican government moved the capital at the start of the
-#' civil war (in 1936) to Valencia. However, it abandoned this capital by 1937.
-#' I elect to not record this capital transition.
-#'
-#' The data also do some (I think) reasonable back-dating of capitals to
-#' coincide with states in transition without necessarily formal capitals by the
-#' first appearance in the state system membership data. These concern Lithuania,
-#' Kazakhstan, and the Philippines. Kaunas is the initial post-independence
-#' capital of Lithuania. Almaty is the initial post-independence capital of
-#' Kazakhstan. Quezon City is the initial post-independence capital of the
-#' Philippines. This concerns, at the most, one or two years for each of these
-#' three countries.
-#'
-#' The `data-raw` directory have a raw spreadsheet with these data in their raw
-#' form, along with comments I make about the transitions in question. Dates
-#' where this is a transition are coded as the start and the end date for the
-#' previous capital is the day before. I will confess that some decision rules
-#' for what constitutes the transfer of the capital can be understood as ad hoc.
-#' In modern instances, I generally privilege the legal documentation. For
-#' example, Ivory Coast's transfer was declared in 1983 even if much of the
-#' transfer wasn't completed until 2011. In this case, I prioritize 1983 as
-#' the legal transfer of the capital. In the case of Australia, Canberra was
-#' such a planned experiment that its announcement in 1908 coincided with no
-#' name for the new location and the need for the government to buy up states
-#' to build infrastructure. Even if it was announced with its name in 1913, I
-#' don't record the transition until 1927 (when it opened the provisional
-#' house for parliament). Much like the case above in Spain, I elect to ignore
-#' cases where governments were declared in absentia or during an active conflict.
-#' You can check the comments section of the raw spreadsheet for some of my
-#' rationale.
-#'
-#'
-"cow_capitals"
-
-#' A complete list of capitals and capital transitions for Gleditsch-Ward state system members
-#'
-#' This is a complete list of capitals and capital transitions for
-#' Gleditsch-Ward state system members. I use it internally for calculating
-#' capital-to-capital distances in the \code{add_capital_distances()} function.
-#'
-#' @format A data frame with the following 7 variables.
-#' \describe{
-#' \item{\code{gwcode}}{a numeric vector for the Gleditsch-Ward state code}
-#' \item{\code{statenme}}{a character vector for the state}
-#' \item{\code{capital}}{a character vector for the name of the capital}
-#' \item{\code{stdate}}{a start date for the capital. See details section for more information.}
-#' \item{\code{enddate}}{an end date for the capital. See details section for more information.}
-#' \item{\code{lat}}{a numeric vector of the latitude coordinates for the capital}
-#' \item{\code{lng}}{a numeric vector of the longitude coordinates for the capital}
-#' }
-#'
-#' @details
-#'
-#' For convenience, the dates for most of these entries allows for some generous
-#' coverage prior to its actual emergence in the state system or after its
-#' actual exit from it. This is largely in consideration of the other state
-#' system and its extension to potential daily format. However, the functions
-#' that use the `gw_capitals` data will not create observations for states that
-#' did not exist at a given point in time.
-#'
-#' Sometimes, a city is entered in these data to correspond with what makes it
-#' easy for the geocoder, not necessarily what the name of the city was or what
-#' it might be commonly called. I say this because I know it's heresy to call
-#' Ho Chi Minh City the capital of the Republic of Vietnam. I'm aware.
-#'
-#' The data should be current as of the end of 2024. Indonesia is the most
-#' likely candidate to require an update to these data and I am just having to
-#' remind myself of this to make sure I don't forget.
-#'
-#' Cases where a start year is not 1816 indicate a capital transition. For
-#' example, Brazil's capital moved from Rio de Janeiro to Brasilia (a planned
-#' capital) in 1960. Only 25 states in the data experienced a capital transition.
-#' The most recent was Burundi in 2018. Indonesia, as of writing, is planning on
-#' a capital transition, but this has not been completed yet.
-#'
-#' Kazakhstan renamed its capital for the state leader in 2019. These data
-#' retain the name of Astana and successfully outlived the short-lived name of
-#' "Nur-Sultan". The city returned to its original name in 2022.
-#'
-#' The capitals data are not without some peculiarities. Prominently, Portugal
-#' transferred the Portuguese court from Lisbon to Rio de Janeiro from 1808 to
-#' 1821. *This is recorded in the data.* A knowledge of the inter-state conflict
-#' data will note there was no war or dispute between, say, Portugal and Spain
-#' (or Portugal and any other country) at any point during this time, but it
-#' does create some weirdness that would suggest a massive distance between two
-#' countries, like Portugal and Spain, that are otherwise land-contiguous.
-#'
-#' On Spain: the republican government moved the capital at the start of the
-#' civil war (in 1936) to Valencia. However, it abandoned this capital by 1937.
-#' I elect to not record this capital transition.
-#'
-#' On Myanmar: the Gleditsch-Ward system stands out as having Myanmar entered
-#' for the bulk of the 19th century. The capitals recorded for Myanmar (Burma)
-#' coincide with capitals of the Konbaung dynasty.
-#'
-#' The data also do some (I think) reasonable back-dating of capitals to
-#' coincide with states in transition without necessarily formal capitals by the
-#' first appearance in the state system membership data. These concern Lithuania,
-#' Kazakhstan, and the Philippines. Kaunas is the initial post-independence
-#' capital of Lithuania. Almaty is the initial post-independence capital of
-#' Kazakhstan. Quezon City is the initial post-independence capital of the
-#' Philippines. This concerns, at the most, one or two years for each of these
-#' three countries.
-#'
-#' The `data-raw` directory have a raw spreadsheet with these data in their raw
-#' form, along with comments I make about the transitions in question. Dates
-#' where this is a transition are coded as the start and the end date for the
-#' previous capital is the day before. I will confess that some decision rules
-#' for what constitutes the transfer of the capital can be understood as ad hoc.
-#' In modern instances, I generally privilege the legal documentation. For
-#' example, Ivory Coast's transfer was declared in 1983 even if much of the
-#' transfer wasn't completed until 2011. In this case, I prioritize 1983 as
-#' the legal transfer of the capital. In the case of Australia, Canberra was
-#' such a planned experiment that its announcement in 1908 coincided with no
-#' name for the new location and the need for the government to buy up states
-#' to build infrastructure. Even if it was announced with its name in 1913, I
-#' don't record the transition until 1927 (when it opened the provisional
-#' house for parliament). Much like the case above in Spain, I elect to ignore
-#' cases where governments were declared in absentia or during an active conflict.
-#' You can check the comments section of the raw spreadsheet for some of my
-#' rationale.
-#'
-#'
-#'
-"gw_capitals"
-
 #' Rugged/Mountainous Terrain Data
 #'
 #' This is a data set on state-level estimates for the "ruggedness" of a state's terrain.
@@ -264,3 +86,136 @@ NULL
 #' Threat, 1816-2010" *Journal of Global Security Studies* 7(4): ogac012.
 #'
 "terrthreat"
+
+#' Zeev Maoz' Regional/Global Power Data
+#'
+#' These are Zeev Maoz' data for what states are regional or global powers at a
+#' given point time. They are extensions of the Correlates of War major power
+#' data, which only codes "major" power without consideration of regional or
+#' global distinctions. Think of Austria-Hungary as intuitive of the issue here.
+#' Austria-Hungary is a major power in the Correlates of War data, but there is
+#' good reason to treat Austria-Hungary as a major power only within Europe.
+#' That is what Zeev Maoz tries to do here.
+#'
+#' @format A data frame with 20 observations on the following 5 variables.
+#' \describe{
+#' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
+#' \item{\code{regstdate}}{the start date for regional power status}
+#' \item{\code{regenddate}}{the end date for regional power status}
+#' \item{\code{globstdate}}{the start date for global power status}
+#' \item{\code{globenddate}}{the end date for global power status}
+#' }
+#'
+#'
+#' @references Maoz, Zeev. 2010. *Network of Nations: The Evolution, Structure,
+#' and Impact of International Networks, 1816-2001*. Cambridge University Press.
+#'
+#'
+"maoz_powers"
+
+
+#' Historical Index of Ethnic Fractionalization data
+#'
+#' This is a data set with state-year estimates for ethnic fractionalization.
+#'
+#' @format A data frame with 8808 observations on the following 5 variables.
+#' \describe{
+#' \item{\code{ccode}}{a Correlates of War state code}
+#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
+#' \item{\code{year}}{the year}
+#' \item{\code{efindex}}{a numeric vector for the estimate of ethnic fractionalization}
+#' }
+#'
+#' @details
+#'
+#' The \code{data-raw} directory on the project's Github contains more
+#' information about how these data were created.
+#'
+#' @references
+#'
+#' Drazanova, Lenka. 2020. "Introducing the Historical Index of Ethnic
+#' Fractionalization (HIEF) Dataset: Accounting for Longitudinal Changes in
+#' Ethnic Diversity." \emph{Journal of Open Humanities Data} 6:6
+#' \doi{10.5334/johd.16}
+#'
+"hief"
+
+
+#' Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates
+#'
+#' This is a data set with state-year estimates for ethnic and religious
+#' fractionalization/polarization, by way of the Composition of Religious and
+#' Ethnic Groups (CREG) project at the University of Illinois. I-L-L.
+#'
+#' @format A data frame with 11523 observations on the following 9 variables.
+#' \describe{
+#' \item{\code{ccode}}{a Correlates of War state code}
+#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
+#' \item{\code{creg_ccode}}{a numeric code for the state, mostly patterned off Correlates of War codes but with important differences. See details section for more.}
+#' \item{\code{year}}{the year}
+#' \item{\code{ethfrac}}{an estimate of the ethnic fractionalization index. See details for more.}
+#' \item{\code{ethpol}}{an estimate of the ethnic polarization index. See details for more.}
+#' \item{\code{relfrac}}{an estimate of the religious fractionalization index. See details for more.}
+#' \item{\code{relpol}}{an estimate of the religious polarization index. See details for more.}
+#' }
+#'
+#' @details
+#'
+#' The \code{data-raw} directory on the project's Github contains more
+#' information about how these data were created. Pay careful attention to how I
+#' assigned CoW/G-W codes. The underlying data are version 1.02.
+#'
+#' The state codes provided by the CREG project are mostly Correlates of War
+#' codes, but with some differences. Summarizing these differences: the state
+#' code for Serbia from 1992 to 2013 is actually the Gleditsch-Ward code (340).
+#' Russia after the dissolution of the Soviet Union (1991-onward) is 393 and not
+#' 365. The Soviet Union has the 365 code. Yugoslavia has the 345 code. The code
+#' for Yemen (678) is effectively the Gleditsch-Ward code because it spans the
+#' entire post-World War II temporal domain. Likewise, the code for
+#' post-unification Germany is the Gleditsch-Ward code (260) as well. The
+#' codebook actually says it's 265 (which would be East Germany's code), but
+#' this is assuredly a typo based on the data.
+#'
+#' The codebook cautions there are insufficient data for ethnic group estimates
+#' for Cameroon, France, India, Kosovo, Montenegro, Mozambique, and Papua New
+#' Guinea. The French case is particularly disappointing but the missing data
+#' there are a function of both France's constitution and modelling issues for
+#' CREG (per the codebook). There are insufficient data to make religious group
+#' estimates for China, North Korea, and the short-lived Republic of Vietnam.
+#'
+#' The fractionalization estimates are the familiar Herfindahl-Hirschman
+#' concentration index. The polarization formula comes by way of  Montalvo and
+#' Reynal-Querol (2000), though this book does not appear to be published beyond
+#' its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
+#' You can cite Alesina (2003) for the fractionalization measure if you'd like.
+#'
+#' In the most literal sense of "1", the group proportions may not sum to
+#' exactly 1 because of rounding in the data. There were only two problem cases
+#' in these data worth mentioning. First, in both data sets, there would be the
+#' occasional duplicates of group names by state-year (for example: Afghanistan
+#' in 1951 in the ethnic group data and the United States in 1948 in the
+#' religious group data). In those cases, the script I make available in the
+#' `data-raw` directory just select distinct values and that effectively fixes
+#' the problem of duplicates, where they do appear. Finally, Costa Rica had a
+#' curious problem for most years in the religious group data. All Costa Rica
+#' years have group data for Protestants, Roman Catholics, and "others." Up
+#' until 1964 or so, the "others" are zero. Afterward, there is some small
+#' proportion of "others". However, the sum of Protestants, Roman Catholics, and
+#' "others" exceeds 1 (pretty clearly) and the difference between the sum and 1
+#' is entirely the "others." So, I drop the "others" for all years. I don't
+#' think that's terribly problematic, but it's worth saying that's what I did.
+#'
+#' @references
+#'
+#' Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and
+#' Romain Wacziarg. 2003. "Fractionalization". *Journal of Economic Growth* 8: 155-194.
+#'
+#' Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization,
+#' Potential Conflict, and Civil Wars." *American Economic Review* 95(3):
+#' 796--816.
+#'
+#' Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph
+#' Bajjalieh. 2012. *The Composition of Religious and Ethnic Groups (CREG)
+#' Project*. Cline Center for Democracy.
+#'
+"creg"

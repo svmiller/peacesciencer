@@ -17,6 +17,10 @@ This vignette will lean on the `{tidyverse}` package, which will be included in 
 library(tidyverse)
 library(peacesciencer)
 library(lubridate)
+
+packageVersion("peacesciencer")
+packageVersion("isard") # a dependency, but not formally required.
+Sys.Date()
 ```
 
 ## State-Year Data
@@ -83,7 +87,9 @@ cow_ddy %>% add_contiguity() %>%
 These are all dyad-years with a minimum distance of some user-specified threshold (in kilometers). This function will lean on `add_minimum_distance()`, which does have the side effect of truncating the left bound of the temporal domain to---as of right now---1886. These are all Correlates of War dyad-years from 1886 to 2019 separated by 1,000 kilometers or fewer.
 
 ```{r}
-cow_ddy %>% add_minimum_distance() %>%
+cow_ddy %>% 
+  # I recommend `use_extdata = TRUE`, but this is quicker.
+  add_minimum_distance(use_extdata = FALSE) %>%
   filter(mindist <= 1000)
 ```
 
@@ -128,7 +134,7 @@ State-months are simple aggregations of state-days. You can accomplish this with
 create_statedays(system = "gw") %>%
   mutate(year = year(date),
          month = month(date)) %>%
-  distinct(gwcode, statename, year, month)
+  distinct(gwcode, gw_name, year, month)
 
 ```
 
@@ -148,7 +154,7 @@ create_statedays(system = "gw") %>%
     month == 7 ~ "Q3",
     month == 10 ~ "Q4"
   )) %>%
-  distinct(gwcode, statename, year, quarter)
+  distinct(gwcode, gw_name, year, quarter)
 
 ```
 

@@ -12,6 +12,10 @@ knitr::opts_chunk$set(
 ```{r parlor-tricks-setup, message=F}
 library(tidyverse)
 library(peacesciencer)
+
+packageVersion("peacesciencer")
+packageVersion("isard") # a dependency, but not formally required.
+Sys.Date()
 ```
 
 This is a running list of various parlor tricks that you can do with the data and functions in `{peacesciencer}`. Space and time considerations, along with some rigidity imposed by CRAN guidelines, preclude me from including these as outright functions or belaboring them in greater detail in the manuscript. Again, `{peacesciencer}` can do a lot, but it can't do everything. Yet, some of its functionality may not also be obvious from the manuscript or documentation files because they're not necessarily core functions. Thus "parlor trick" is an appropriate descriptor here.
@@ -208,10 +212,10 @@ create_stateyears(system = 'gw') %>%
   add_ucdp_acd(type = "intrastate", only_wars = TRUE) %>%
   add_cow_wars(type = "intra") %>%
   # select just a few things
-  select(gwcode, ccode, year, statename, ucdpongoing, ucdponset,
+  select(gwcode, ccode, year, gw_name, ucdpongoing, ucdponset,
          cowintraongoing, cowintraonset) %>%
   add_peace_years() %>%
-  select(gwcode:statename, ucdpspell, cowintraspell, everything()) %>%
+  select(gwcode:gw_name, ucdpspell, cowintraspell, everything()) %>%
   # India is illustrative of how the two differ.
   # UCDP has an intra-state conflict to the level of war early 
   #  into its existence. CoW does not.

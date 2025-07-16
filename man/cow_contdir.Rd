@@ -23,16 +23,17 @@ Correlates of War direct contiguity data. Data contain a few cosmetic changes
 to assist with some functions downstream from it.
 }
 \details{
-The "master record" provided by the Correlates of War is "non-directed." I make
-these data "directed" for convenience.
+The "master record" provided by the Correlates of War is "non-directed." I
+make these data "directed" for convenience.
 
-For clarity, the contiguity codes range from 1 to 5. 1 = direct land contiguity. 2 =
-separated by 12 miles of water or fewer (a la Stannis Baratheon). 3 = separated by
-24 miles of water or fewer (but more than 12 miles). 4 = separated by 150 miles
-of water or fewer (but more than 24 miles). 5 = separated by 400 miles of water
-or fewer (but more than 150 miles). Cases of separation by more than 400 miles
-of water are here as 0. The documentation for \code{add_contiguity()} belabors why
-you should not consider the contiguity variable as ordinal.
+For clarity, the contiguity codes range from 1 to 5. 1 = direct land
+contiguity. 2 = separated by 12 miles of water or fewer (a la Stannis
+Baratheon). 3 = separated by 24 miles of water or fewer (but more than 12
+miles). 4 = separated by 150 miles of water or fewer (but more than 24 miles).
+5 = separated by 400 miles of water or fewer (but more than 150 miles). Cases
+of separation by more than 400 miles of water are here as 0. The documentation
+for \code{\link[=add_contiguity]{add_contiguity()}} belabors why you should not consider the contiguity
+variable as ordinal.
 
 \code{stdate} and \code{enddate} are simple date formats of the original \code{begin} and
 \code{end} columns in the raw data. Correlates of War communicates contiguity
@@ -40,12 +41,12 @@ periods in a basic year-month format (\code{YYYYMM}). It's just easier to proces
 an actual date, provided you're careful and know that the day I communicate
 in these columns means absolutely nothing.
 
-The master record contains no entry for a non-continguous relationship, leaving
+The master record contains no entry for a non-continuous relationship, leaving
 the user to figure that out for themselves. The data I provide here includes
 information for non-contiguous relationships for all states that had, at least
 at one point, a contiguous relationship. For example, there is just the one
 entry a contiguous USA-Russia relationship (from Jan. 1959 to the end of the
-data), but I also provide manual clarification of a non-contiguous relationship
+data), but I also provide manual clarification of a non-continuous relationship
 before that. You can check the \code{data-raw} directory for how I do this. This
 is necessary for a case like Myanmar-Philippines, in which a contiguity
 relationship enters the data in 1963 (but only for September of that year).

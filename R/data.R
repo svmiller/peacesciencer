@@ -22,46 +22,6 @@ NULL
 #'
 "cow_ddy"
 
-
-
-
-
-#' Correlates of War State System Membership Data (1816-2016)
-#'
-#' These are the Correlates of War state system membership data.
-#'
-#' @format A data frame with 243 observations on the following 10 variables.
-#' \describe{
-#' \item{\code{stateabb}}{a character vector for the state abbreviation}
-#' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
-#' \item{\code{statenme}}{a character vector for the state name}
-#' \item{\code{styear}}{the start year in the system}
-#' \item{\code{stmonth}}{the start month in the system}
-#' \item{\code{stday}}{the start day in the system}
-#' \item{\code{endyear}}{the end year in the system}
-#' \item{\code{endmonth}}{the end month in the system}
-#' \item{\code{endday}}{the end day in the system}
-#' \item{\code{version}}{a version identifier}
-#' }
-#'
-#' @details
-#'
-#' Data are provided "as-is" with no additional re-cleaning before inclusion
-#' into this data set.
-#'
-#' The functions that previously used these data no longer use these data.
-#' They instead use a copy of the data in the \pkg{isard} package I also
-#' maintain.
-#'
-#' @references Correlates of War Project. 2017. "State System Membership
-#' List, v2016." Online,
-#' \url{https://correlatesofwar.org/data-sets/state-system-membership/}
-#'
-"cow_states"
-
-
-
-
 #' A directed dyad-year data frame of Gleditsch-Ward state system members
 #'
 #' This is a complete directed dyad-year data frame of Gleditsch-Ward
@@ -120,35 +80,6 @@ NULL
 #' *International Interactions* 25(4): 393--413.
 #'
 "gw_states"
-
-
-#' Zeev Maoz' Regional/Global Power Data
-#'
-#' These are Zeev Maoz' data for what states are regional or global powers at a
-#' given point time. They are extensions of the Correlates of War major power
-#' data, which only codes "major" power without consideration of regional or
-#' global distinctions. Think of Austria-Hungary as intuitive of the issue here.
-#' Austria-Hungary is a major power in the Correlates of War data, but there is
-#' good reason to treat Austria-Hungary as a major power only within Europe.
-#' That is what Zeev Maoz tries to do here.
-#'
-#' @format A data frame with 20 observations on the following 5 variables.
-#' \describe{
-#' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
-#' \item{\code{regstdate}}{the start date for regional power status}
-#' \item{\code{regenddate}}{the end date for regional power status}
-#' \item{\code{globstdate}}{the start date for global power status}
-#' \item{\code{globenddate}}{the end date for global power status}
-#' }
-#'
-#'
-#' @references Maoz, Zeev. 2010. *Network of Nations: The Evolution, Structure,
-#' and Impact of International Networks, 1816-2001*. Cambridge University Press.
-#'
-#'
-"maoz_powers"
-
-
 
 #' The Minimum Distance Between States in the Correlates of War System, 1886-2019
 #'
@@ -347,18 +278,6 @@ NULL
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 #' Thompson and Dreyer's (2012) Strategic Rivalries, 1494-2010
 #'
 #' A simple summary of all strategic (inter-state) rivalries from Thompson and Dreyer (2012).
@@ -391,203 +310,6 @@ NULL
 #'
 "td_rivalries"
 
-
-
-
-
-
-#' Historical Index of Ethnic Fractionalization data
-#'
-#' This is a data set with state-year estimates for ethnic fractionalization.
-#'
-#' @format A data frame with 8808 observations on the following 5 variables.
-#' \describe{
-#' \item{\code{ccode}}{a Correlates of War state code}
-#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
-#' \item{\code{year}}{the year}
-#' \item{\code{efindex}}{a numeric vector for the estimate of ethnic fractionalization}
-#' }
-#'
-#' @details
-#'
-#' The \code{data-raw} directory on the project's Github contains more
-#' information about how these data were created.
-#'
-#' @references
-#'
-#' Drazanova, Lenka. 2020. "Introducing the Historical Index of Ethnic
-#' Fractionalization (HIEF) Dataset: Accounting for Longitudinal Changes in
-#' Ethnic Diversity." \emph{Journal of Open Humanities Data} 6:6
-#' \doi{10.5334/johd.16}
-#'
-"hief"
-
-
-#' Composition of Religious and Ethnic Groups (CREG) Fractionalization/Polarization Estimates
-#'
-#' This is a data set with state-year estimates for ethnic and religious
-#' fractionalization/polarization, by way of the Composition of Religious and
-#' Ethnic Groups (CREG) project at the University of Illinois. I-L-L.
-#'
-#' @format A data frame with 11523 observations on the following 9 variables.
-#' \describe{
-#' \item{\code{ccode}}{a Correlates of War state code}
-#' \item{\code{gwcode}}{a Gleditsch-Ward state code}
-#' \item{\code{creg_ccode}}{a numeric code for the state, mostly patterned off Correlates of War codes but with important differences. See details section for more.}
-#' \item{\code{year}}{the year}
-#' \item{\code{ethfrac}}{an estimate of the ethnic fractionalization index. See details for more.}
-#' \item{\code{ethpol}}{an estimate of the ethnic polarization index. See details for more.}
-#' \item{\code{relfrac}}{an estimate of the religious fractionalization index. See details for more.}
-#' \item{\code{relpol}}{an estimate of the religious polarization index. See details for more.}
-#' }
-#'
-#' @details
-#'
-#' The \code{data-raw} directory on the project's Github contains more
-#' information about how these data were created. Pay careful attention to how I
-#' assigned CoW/G-W codes. The underlying data are version 1.02.
-#'
-#' The state codes provided by the CREG project are mostly Correlates of War
-#' codes, but with some differences. Summarizing these differences: the state
-#' code for Serbia from 1992 to 2013 is actually the Gleditsch-Ward code (340).
-#' Russia after the dissolution of the Soviet Union (1991-onward) is 393 and not
-#' 365. The Soviet Union has the 365 code. Yugoslavia has the 345 code. The code
-#' for Yemen (678) is effectively the Gleditsch-Ward code because it spans the
-#' entire post-World War II temporal domain. Likewise, the code for
-#' post-unification Germany is the Gleditsch-Ward code (260) as well. The
-#' codebook actually says it's 265 (which would be East Germany's code), but
-#' this is assuredly a typo based on the data.
-#'
-#' The codebook cautions there are insufficient data for ethnic group estimates
-#' for Cameroon, France, India, Kosovo, Montenegro, Mozambique, and Papua New
-#' Guinea. The French case is particularly disappointing but the missing data
-#' there are a function of both France's constitution and modelling issues for
-#' CREG (per the codebook). There are insufficient data to make religious group
-#' estimates for China, North Korea, and the short-lived Republic of Vietnam.
-#'
-#' The fractionalization estimates are the familiar Herfindahl-Hirschman
-#' concentration index. The polarization formula comes by way of  Montalvo and
-#' Reynal-Querol (2000), though this book does not appear to be published beyond
-#' its placement online. I recommend Montalvo and Reynal-Querol (2005) instead.
-#' You can cite Alesina (2003) for the fractionalization measure if you'd like.
-#'
-#' In the most literal sense of "1", the group proportions may not sum to
-#' exactly 1 because of rounding in the data. There were only two problem cases
-#' in these data worth mentioning. First, in both data sets, there would be the
-#' occasional duplicates of group names by state-year (for example: Afghanistan
-#' in 1951 in the ethnic group data and the United States in 1948 in the
-#' religious group data). In those cases, the script I make available in the
-#' `data-raw` directory just select distinct values and that effectively fixes
-#' the problem of duplicates, where they do appear. Finally, Costa Rica had a
-#' curious problem for most years in the religious group data. All Costa Rica
-#' years have group data for Protestants, Roman Catholics, and "others." Up
-#' until 1964 or so, the "others" are zero. Afterward, there is some small
-#' proportion of "others". However, the sum of Protestants, Roman Catholics, and
-#' "others" exceeds 1 (pretty clearly) and the difference between the sum and 1
-#' is entirely the "others." So, I drop the "others" for all years. I don't
-#' think that's terribly problematic, but it's worth saying that's what I did.
-#'
-#' @references
-#'
-#' Alesina, Alberto, Arnaud Devleeschauwer, William Easterly, Sergio Kurlat and
-#' Romain Wacziarg. 2003. "Fractionalization". *Journal of Economic Growth* 8: 155-194.
-#'
-#' Montalvo, Jose G. and Marta Reynal-Querol. 2005. "Ethnic Polarization,
-#' Potential Conflict, and Civil Wars." *American Economic Review* 95(3):
-#' 796--816.
-#'
-#' Nardulli, Peter F., Cara J. Wong, Ajay Singh, Buddy Petyon, and Joseph
-#' Bajjalieh. 2012. *The Composition of Religious and Ethnic Groups (CREG)
-#' Project*. Cline Center for Democracy.
-#'
-"creg"
-
-
-#' Correlates of War Intra-State War Data (v. 4.1)
-#'
-#' These are a modified version of the intra-state war data from the Correlates of War project. Data are version 4.1. The temporal domain is
-#' 1816-2007.
-#'
-#' @format A data frame with 1361 observations on the following 17 variables.
-#' \describe{
-#' \item{\code{warnum}}{the Correlates of War war number}
-#' \item{\code{warname}}{the Correlates of War war name}
-#' \item{\code{wartype}}{a character vector for the type of war, either "local issues" or "central control"}
-#' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{cowintraonset}}{a dummy variable for whether this is a civil war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
-#' \item{\code{cowintraongoing}}{a numeric constant of 1}
-#' \item{\code{resume_combat}}{a dummy variable for whether this is a resumption of a conflict (i.e. \code{StartYear2} is not -8)}
-#' \item{\code{primary_state}}{a dummy variable for whether the state is the primary state having the civil war}
-#' \item{\code{ccodea}}{the Correlates of War state code for the participant on Side A. -8 = not applicable (participant is not a state)}
-#' \item{\code{sidea}}{the name of the participant on Side A. -8 = not applicable (no additional party on this side)}
-#' \item{\code{ccodeb}}{the Correlates of War state code for the participant on Side B. -8 = not applicable (participant is not a state)}
-#' \item{\code{sideb}}{the name of the participant on Side B. -8 = not applicable (no additional party on this side)}
-#' \item{\code{intnl}}{a dummy variable for if this is an internationalized civil war}
-#' \item{\code{outcome}}{an unordered-categorical variable for the outcome of the civil war. Values include 1 (Side A wins),
-#' 2 (Side B wins), 3 (Compromise), 4 (war transformed into another type of war), 5 (war is ongoing at the end of 2007),
-#' 6 (stalemate), 7 (conflict continues below severity of war)}
-#' \item{\code{sideadeaths}}{the estimated deaths for the Side A participant (-9 = unknown, -8 = not applicable)}
-#' \item{\code{sidebdeaths}}{the estimated deaths for the Side B participant (-9 = unknown, -8 = not applicable)}
-#' \item{\code{ongo2007}}{a dummy variable for if this war is ongoing as of the end of 2007}
-#' }
-#'
-#' @details See \code{data-raw} directory for how these data were generated. In the Guinnea-Bissau Civil War (1998, 1999),
-#' the "Mane Junta" have the accented-e scrubbed to coincide with CRAN's character requirements.
-#'
-#' @references
-#'
-#' Dixon, Jeffrey, and Meredith Sarkees. 2016. A Guide to Intra-State Wars: An Examination of Civil Wars, 1816-2014. Thousand Oaks, CA: Sage.
-#'
-#' Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
-#' Washington DC: CQ Press.
-#'
-
-"cow_war_intra"
-
-
-#' Correlates of War Inter-State War Data (v. 4.0)
-#'
-#' These are a modified version of the inter-state war data from the Correlates of War project. Data are version 4.0. The temporal domain is
-#' 1816-2007. Data are functionally directed dyadic war-year.
-#'
-#' @format A data frame with 1932 observations on the following 15 variables.
-#' \describe{
-#' \item{\code{warnum}}{the Correlates of War war number}
-#' \item{\code{ccode1}}{the Correlates of War state code for side1}
-#'  \item{\code{ccode2}}{the Correlates of War state code for side2}
-#' \item{\code{year}}{a numeric vector for the year}
-#' \item{\code{cowinteronset}}{a dummy variable for whether this is an inter-state war onset (i.e. either the year in \code{StartYear1} or \code{StartYear2} in the raw data)}
-#' \item{\code{cowinterongoing}}{a numeric constant of 1}
-#' \item{\code{sidea1}}{a numeric vector for the side in the war for \code{ccode1}, either 1 or 2}
-#' \item{\code{sidea2}}{a numeric vector for the side in the war for \code{ccode2}, either 1 or 2}
-#' \item{\code{initiator1}}{a dummy variable that equals 1 if \code{ccode1} initiated the war}
-#' \item{\code{initiator2}}{a dummy variable that equals 1 if \code{ccode2} initiated the war}
-#' \item{\code{outcome1}}{the outcome for \code{ccode1} as numeric vector. Outcomes are 1 (winner), 2 (loser), 3 (compromise/tied),
-#' 4 (transformed into another type of war), 5 (ongoing at end of 2007, which is not observed in these data), 6 (stalemate),
-#' 7 (conflict continues below severity of war), and 8 (changed sides)}
-#' \item{\code{outcome2}}{the outcome for \code{ccode2} as numeric vector. Outcomes are 1 (winner), 2 (loser), 3 (compromise/tied),
-#' 4 (transformed into another type of war), 5 (ongoing at end of 2007, which is not observed in these data), 6 (stalemate),
-#' 7 (conflict continues below severity of war), and 8 (changed sides)}
-#' \item{\code{batdeath1}}{the estimated deaths for \code{ccode1} (-9 = unknown)}
-#' \item{\code{batdeath2}}{the estimated deaths for \code{ccode2} (-9 = unknown)}
-#' \item{\code{resume}}{a dummy variable that equals 1 if this is a conflict resumption episode}
-#' }
-#'
-#' @details See \code{data-raw} directory for how these data were generated. These data are here if you want it, but I caution against using them
-#' as gospel. There are a few problems here. One: -9s proliferate the data for battle deaths on either side, which is unhelpful. There are 10 cases where the sum
-#' of battle deaths is exactly 1,000 or 1,001. This is suspicious. The "side" variables are not well-explained---in fact they're not explained at all in the codebook---
-#' and this can lead a user astray if they want to interpret them analogous to the \code{sidea} variables in the Correlates of War Militarized Interstate Dispute
-#' data. You probably want to use the initiator variables for this. Further, the war data routinely betray the MID data and the two do not speak well to each other. The language Sarkees and Wayman (2010) use in their book
-#' talk about how MIDs "precede" a war or are "associated" with a war, which forgets the war data are supposed to be a subset of the MID data. In one case (Gulf War),
-#' they get the associated dispute number wrong and, in one prominent case (War of Bosnian Independence), they argue no MID exists at all (it's actually MID#3557).
-#'
-#' @references
-#'
-#' Sarkees, Meredith Reid, and Frank Wheldon Wayman. 2010. Resort to War: A Data Guide to Inter-State, Extra-State, Intra-State, and Non-State Wars, 1816-2007.
-#' Washington DC: CQ Press.
-#'
-
-"cow_war_inter"
 
 
 #' A \code{BibTeX} Data Frame of Citations
@@ -641,25 +363,6 @@ NULL
 #'
 
 "ps_bib"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #' The Version Numbers for Data Included in \pkg{peacesciencer}
 #'
@@ -752,7 +455,8 @@ NULL
 
 #' Conventional Arms Races During Periods of Rivalry
 #'
-#' This is a simple data set of 71 arms races reported by Gibler et al. in their 2005 article in \emph{Journal of Peace Research}.
+#' This is a simple data set of 71 arms races reported by Gibler et al. in their
+#' 2005 article in *Journal of Peace Research*.
 #'
 #'
 #' @format A data frame the following five variables.
@@ -766,8 +470,9 @@ NULL
 #'
 #' @details
 #'
-#' Data are taken from the appendix of Gibler, Rider, and Hutchison's 2005 article in *Journal of Peace Research*. Read the
-#' article and appendix for more information about coding procedures.
+#' Data are taken from the appendix of Gibler, Rider, and Hutchison's (2005)
+#' article in *Journal of Peace Research*. Read the article and appendix for
+#' more information about coding procedures.
 #'
 #' @references
 #'
@@ -877,3 +582,182 @@ NULL
 #' Regional Variation, and Escalation/De-escalation*. Springer.
 #'
 "tss_rivalries"
+
+
+#' A complete list of capitals and capital transitions for Correlates of War state system members
+#'
+#' This is a complete list of capitals and capital transitions for Correlates of
+#' War state system members. I use it internally for calculating
+#' capital-to-capital distances in the \code{add_capital_distances()} function.
+#'
+#' @format A data frame with the following 7 variables.
+#' \describe{
+#' \item{\code{ccode}}{a numeric vector for the Correlates of War state code}
+#' \item{\code{statenme}}{a character vector for the state}
+#' \item{\code{capital}}{a character vector for the name of the capital}
+#' \item{\code{stdate}}{a start date for the capital. See details section for more information.}
+#' \item{\code{enddate}}{an end date for the capital. See details section for more information.}
+#' \item{\code{lat}}{a numeric vector of the latitude coordinates for the capital}
+#' \item{\code{lng}}{a numeric vector of the longitude coordinates for the capital}
+#' }
+#'
+#' @details
+#'
+#' For convenience, the dates for most of these entries allows for some generous
+#' coverage prior to its actual emergence in the state system or after its
+#' actual exit from it. This is largely in consideration of the other state
+#' system and its extension to potential daily format. However, the functions
+#' that use the `cow_capitals` data will not create observations for states that
+#' did not exist at a given point in time.
+#'
+#' Sometimes, a city is entered in these data to correspond with what makes it
+#' easy for the geocoder, not necessarily what the name of the city was or what
+#' it might be commonly called. I say this because I know it's heresy to call
+#' Ho Chi Minh City the capital of the Republic of Vietnam. I'm aware.
+#'
+#' The data should be current as of the end of 2024. Indonesia is the most
+#' likely candidate to require an update to these data and I am just having to
+#' remind myself of this to make sure I don't forget.
+#'
+#' Cases where a start year is not 1816 indicate a capital transition. For
+#' example, Brazil's capital moved from Rio de Janeiro to Brasilia (a planned
+#' capital) in 1960. Only 25 states in the data experienced a capital transition.
+#' The most recent was Burundi in 2018.
+#'
+#' Kazakhstan renamed its capital for the state leader in 2019. These data
+#' retain the name of Astana and successfully outlived the short-lived name of
+#' "Nur-Sultan". The city returned to its original name in 2022.
+#'
+#' The capitals data are not without some peculiarities. Prominently, Portugal
+#' transferred the Portuguese court from Lisbon to Rio de Janeiro from 1808 to
+#' 1821. *This is recorded in the data.* A knowledge of the inter-state conflict
+#' data will note there was no war or dispute between, say, Portugal and Spain
+#' (or Portugal and any other country) at any point during this time, but it
+#' does create some weirdness that would suggest a massive distance between two
+#' countries, like Portugal and Spain, that are otherwise land-contiguous.
+#'
+#' On Spain: the republican government moved the capital at the start of the
+#' civil war (in 1936) to Valencia. However, it abandoned this capital by 1937.
+#' I elect to not record this capital transition.
+#'
+#' The data also do some (I think) reasonable back-dating of capitals to
+#' coincide with states in transition without necessarily formal capitals by the
+#' first appearance in the state system membership data. These concern Lithuania,
+#' Kazakhstan, and the Philippines. Kaunas is the initial post-independence
+#' capital of Lithuania. Almaty is the initial post-independence capital of
+#' Kazakhstan. Quezon City is the initial post-independence capital of the
+#' Philippines. This concerns, at the most, one or two years for each of these
+#' three countries.
+#'
+#' The `data-raw` directory have a raw spreadsheet with these data in their raw
+#' form, along with comments I make about the transitions in question. Dates
+#' where this is a transition are coded as the start and the end date for the
+#' previous capital is the day before. I will confess that some decision rules
+#' for what constitutes the transfer of the capital can be understood as ad hoc.
+#' In modern instances, I generally privilege the legal documentation. For
+#' example, Ivory Coast's transfer was declared in 1983 even if much of the
+#' transfer wasn't completed until 2011. In this case, I prioritize 1983 as
+#' the legal transfer of the capital. In the case of Australia, Canberra was
+#' such a planned experiment that its announcement in 1908 coincided with no
+#' name for the new location and the need for the government to buy up states
+#' to build infrastructure. Even if it was announced with its name in 1913, I
+#' don't record the transition until 1927 (when it opened the provisional
+#' house for parliament). Much like the case above in Spain, I elect to ignore
+#' cases where governments were declared in absentia or during an active conflict.
+#' You can check the comments section of the raw spreadsheet for some of my
+#' rationale.
+#'
+#'
+"cow_capitals"
+
+#' A complete list of capitals and capital transitions for Gleditsch-Ward state system members
+#'
+#' This is a complete list of capitals and capital transitions for
+#' Gleditsch-Ward state system members. I use it internally for calculating
+#' capital-to-capital distances in the \code{add_capital_distances()} function.
+#'
+#' @format A data frame with the following 7 variables.
+#' \describe{
+#' \item{\code{gwcode}}{a numeric vector for the Gleditsch-Ward state code}
+#' \item{\code{statenme}}{a character vector for the state}
+#' \item{\code{capital}}{a character vector for the name of the capital}
+#' \item{\code{stdate}}{a start date for the capital. See details section for more information.}
+#' \item{\code{enddate}}{an end date for the capital. See details section for more information.}
+#' \item{\code{lat}}{a numeric vector of the latitude coordinates for the capital}
+#' \item{\code{lng}}{a numeric vector of the longitude coordinates for the capital}
+#' }
+#'
+#' @details
+#'
+#' For convenience, the dates for most of these entries allows for some generous
+#' coverage prior to its actual emergence in the state system or after its
+#' actual exit from it. This is largely in consideration of the other state
+#' system and its extension to potential daily format. However, the functions
+#' that use the `gw_capitals` data will not create observations for states that
+#' did not exist at a given point in time.
+#'
+#' Sometimes, a city is entered in these data to correspond with what makes it
+#' easy for the geocoder, not necessarily what the name of the city was or what
+#' it might be commonly called. I say this because I know it's heresy to call
+#' Ho Chi Minh City the capital of the Republic of Vietnam. I'm aware.
+#'
+#' The data should be current as of the end of 2024. Indonesia is the most
+#' likely candidate to require an update to these data and I am just having to
+#' remind myself of this to make sure I don't forget.
+#'
+#' Cases where a start year is not 1816 indicate a capital transition. For
+#' example, Brazil's capital moved from Rio de Janeiro to Brasilia (a planned
+#' capital) in 1960. Only 25 states in the data experienced a capital transition.
+#' The most recent was Burundi in 2018. Indonesia, as of writing, is planning on
+#' a capital transition, but this has not been completed yet.
+#'
+#' Kazakhstan renamed its capital for the state leader in 2019. These data
+#' retain the name of Astana and successfully outlived the short-lived name of
+#' "Nur-Sultan". The city returned to its original name in 2022.
+#'
+#' The capitals data are not without some peculiarities. Prominently, Portugal
+#' transferred the Portuguese court from Lisbon to Rio de Janeiro from 1808 to
+#' 1821. *This is recorded in the data.* A knowledge of the inter-state conflict
+#' data will note there was no war or dispute between, say, Portugal and Spain
+#' (or Portugal and any other country) at any point during this time, but it
+#' does create some weirdness that would suggest a massive distance between two
+#' countries, like Portugal and Spain, that are otherwise land-contiguous.
+#'
+#' On Spain: the republican government moved the capital at the start of the
+#' civil war (in 1936) to Valencia. However, it abandoned this capital by 1937.
+#' I elect to not record this capital transition.
+#'
+#' On Myanmar: the Gleditsch-Ward system stands out as having Myanmar entered
+#' for the bulk of the 19th century. The capitals recorded for Myanmar (Burma)
+#' coincide with capitals of the Konbaung dynasty.
+#'
+#' The data also do some (I think) reasonable back-dating of capitals to
+#' coincide with states in transition without necessarily formal capitals by the
+#' first appearance in the state system membership data. These concern Lithuania,
+#' Kazakhstan, and the Philippines. Kaunas is the initial post-independence
+#' capital of Lithuania. Almaty is the initial post-independence capital of
+#' Kazakhstan. Quezon City is the initial post-independence capital of the
+#' Philippines. This concerns, at the most, one or two years for each of these
+#' three countries.
+#'
+#' The `data-raw` directory have a raw spreadsheet with these data in their raw
+#' form, along with comments I make about the transitions in question. Dates
+#' where this is a transition are coded as the start and the end date for the
+#' previous capital is the day before. I will confess that some decision rules
+#' for what constitutes the transfer of the capital can be understood as ad hoc.
+#' In modern instances, I generally privilege the legal documentation. For
+#' example, Ivory Coast's transfer was declared in 1983 even if much of the
+#' transfer wasn't completed until 2011. In this case, I prioritize 1983 as
+#' the legal transfer of the capital. In the case of Australia, Canberra was
+#' such a planned experiment that its announcement in 1908 coincided with no
+#' name for the new location and the need for the government to buy up states
+#' to build infrastructure. Even if it was announced with its name in 1913, I
+#' don't record the transition until 1927 (when it opened the provisional
+#' house for parliament). Much like the case above in Spain, I elect to ignore
+#' cases where governments were declared in absentia or during an active conflict.
+#' You can check the comments section of the raw spreadsheet for some of my
+#' rationale.
+#'
+#'
+#'
+"gw_capitals"

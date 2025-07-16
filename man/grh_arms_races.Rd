@@ -18,11 +18,13 @@ A data frame the following five variables.
 grh_arms_races
 }
 \description{
-This is a simple data set of 71 arms races reported by Gibler et al. in their 2005 article in \emph{Journal of Peace Research}.
+This is a simple data set of 71 arms races reported by Gibler et al. in their
+2005 article in \emph{Journal of Peace Research}.
 }
 \details{
-Data are taken from the appendix of Gibler, Rider, and Hutchison's 2005 article in \emph{Journal of Peace Research}. Read the
-article and appendix for more information about coding procedures.
+Data are taken from the appendix of Gibler, Rider, and Hutchison's (2005)
+article in \emph{Journal of Peace Research}. Read the article and appendix for
+more information about coding procedures.
 }
 \references{
 Gibler, Douglas M., Toby J. Rider, and Marc L. Hutchison. 2005. "Taking Arms Against
