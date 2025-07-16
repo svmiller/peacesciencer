@@ -48,17 +48,21 @@ code {
 
 /* Updates with boot 5 */
 
-.navbar-light .navbar-brand {
+.navbar-brand {
   font-family: 'Titillium Web', serif;
   font-weight: bold;
   padding: 0.2em 0.3em 0.3em;
   color: #fff;
 }
 
-.navbar-light .navbar-nav .nav-link {
+.navbar-brand:hover {
     color: #fff;
+    background: rgba(0,0,0,0.1);
 }
 
+.nav-item > .nav-link {
+  color: #fff;
+}
 
 nav .text-muted {
     color: #ffffff !important;
@@ -68,12 +72,7 @@ nav .text-muted {
     border-radius: 5px;
 }
 
-.navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
-    color: #fff;
-    background: rgba(0,0,0,0.1);
-}
-
-.navbar-light .navbar-nav .nav-item > .nav-link:hover {
+.nav-item > .nav-link:hover {
     color: #fff;
     background: rgba(0,0,0,0.1);
 }

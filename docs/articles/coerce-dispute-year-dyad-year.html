@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data • peacesciencer</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="How `{peacesciencer}` Coerces Dispute-Year Data into Dyad-Year Data">
@@ -85,9 +85,9 @@
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">dplyr    </span> 1.1.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">readr    </span> 2.1.4</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">forcats  </span> 1.0.0     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">stringr  </span> 1.5.0</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.5.1     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.2.1</span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">ggplot2  </span> 3.5.1     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tibble   </span> 3.3.0</span></span>
 <span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">lubridate</span> 1.9.4     <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">tidyr    </span> 1.3.0</span></span>
-<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.0.2     </span></span>
+<span><span class="co">#&gt; <span style="color: #00BB00;">✔</span> <span style="color: #0000BB;">purrr    </span> 1.1.0     </span></span>
 <span><span class="co">#&gt; ── <span style="font-weight: bold;">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">filter()</span> masks <span style="color: #0000BB;">stats</span>::filter()</span></span>
 <span><span class="co">#&gt; <span style="color: #BB0000;">✖</span> <span style="color: #0000BB;">dplyr</span>::<span style="color: #00BB00;">lag()</span>    masks <span style="color: #0000BB;">stats</span>::lag()</span></span>
@@ -213,7 +213,10 @@ MID3301.</p>
 <span>      caption <span class="op">=</span> <span class="st">"United States-United Kingdom Dyadic Dispute-Years in 1903"</span>,</span>
 <span>      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span></code></pre></div>
+<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
+<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
+<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 United States-United Kingdom Dyadic Dispute-Years in 1903
@@ -348,7 +351,10 @@ all three dispute-years were onsets that year.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"France-Italy Dyadic Dispute-Years in 1903"</span>,</span>
 <span>      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span></code></pre></div>
+<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
+<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
+<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 France-Italy Dyadic Dispute-Years in 1903
@@ -459,7 +465,10 @@ fatalities.</p>
 <span>      caption <span class="op">=</span> <span class="st">"Russia-Ottoman Empire Dyadic Dispute-Years in 1853"</span>,</span>
 <span>      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, </span>
-<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span></code></pre></div>
+<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
+<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
+<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Russia-Ottoman Empire Dyadic Dispute-Years in 1853
@@ -627,7 +636,10 @@ and Pakistan in 1963.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"India-Pakistan Dyadic Dispute-Years in 1963"</span>,</span>
 <span>      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span></code></pre></div>
+<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
+<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
+<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 India-Pakistan Dyadic Dispute-Years in 1963
@@ -843,7 +855,10 @@ between Cyprus and Turkey in 1965.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Duplicate Non-Directed Dyad-Years Still Remaining"</span>,</span>
 <span>      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>,</span>
-<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span></code></pre></div>
+<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
+<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
+<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Duplicate Non-Directed Dyad-Years Still Remaining
@@ -1394,7 +1409,10 @@ incident for Side B in the dispute. This is a CoW-MID issue and not a
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kbl.html" class="external-link">kbl</a></span><span class="op">(</span><span class="va">.</span>, caption <span class="op">=</span> <span class="st">"Duplicate Non-Directed Dyad-Years Still Remaining"</span>,</span>
 <span>      booktabs <span class="op">=</span> <span class="cn">TRUE</span>, longtable <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/kableExtra/man/kable_styling.html" class="external-link">kable_styling</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"center"</span>, full_width <span class="op">=</span> <span class="cn">F</span>, </span>
-<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span></code></pre></div>
+<span>                bootstrap_options <span class="op">=</span> <span class="st">"striped"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: 'xfun::attr()' is deprecated.</span></span>
+<span><span class="co">#&gt; Use 'xfun::attr2()' instead.</span></span>
+<span><span class="co">#&gt; See help("Deprecated")</span></span></code></pre></div>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Duplicate Non-Directed Dyad-Years Still Remaining
