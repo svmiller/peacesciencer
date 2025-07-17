@@ -63,7 +63,7 @@
 #'
 
 
-add_ccode_to_gw <- function(data, keep) {
+add_ccode_to_gw <- function(data) {
 
   if (any(i <- c("ccode1", "ccode2", "ccode") %in% colnames(data))) {
 

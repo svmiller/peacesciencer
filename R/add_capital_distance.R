@@ -16,7 +16,7 @@
 #'
 #' The function leans on attributes of the data that are provided by one of the
 #' "create" functions in this package (e.g. [create_dyadyears()] or
-#' [create_stateyear()]).
+#' [create_stateyears()]).
 #'
 #' Be advised that "jan1" and "dec31" are alternate specifications for
 #' "first" and "last" respectively and exist as kind of a nudge for what you
