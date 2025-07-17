@@ -2,9 +2,10 @@
 % Please edit documentation in R/add_ccode_to_gw.R
 \name{add_ccode_to_gw}
 \alias{add_ccode_to_gw}
-\title{Add Correlates of War state system codes to your data with Gleditsch-Ward state codes.}
+\title{Add Correlates of War state system codes to your data with Gleditsch-Ward
+state codes.}
 \usage{
-add_ccode_to_gw(data)
+add_ccode_to_gw(data, keep)
 }
 \arguments{
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
@@ -19,26 +20,36 @@ adds their corollary Correlates of War codes.
 of War system membership data with Gleditsch-Ward system data.
 }
 \details{
-The \code{data-raw} directory on the project's Github contains
-more information about the underlying data that assists in merging in
-these codes.
+As of version 1.2, this function leans on the information made available in
+the \pkg{isard} package. This is a spin-off package I maintain for data that
+require periodic updates for the functionality in this package. As of writing,
+\pkg{peacesciencer} only requires that you have the \pkg{isard} package
+installed. It does not require you to have any particular version of the
+package installed. Thus, what exactly this function returns may depend on the
+particular version of \pkg{isard} you have installed. This will assuredly
+concern the right-bound of the temporal domain of data you get.
 
-The user will invariably need to be careful and ask why they want these
-data included. The issue here is that both have a different composition
-and the merging process will not (and cannot) be perfect. We can note
-that a case like Gran Colombia is not too difficult to handle (i.e.
-CoW does not have this entity and none of the splinter states conflict
-with CoW's coding). However, there is greater weirdness with a case like
-the unification of West Germany and East Germany. Herein, Correlates of
-War treats the unification as the reappearance of the original Germany
-whereas Gleditsch-Ward treat the unification as an incorporation of
-East Germany into West Germany. The script will \emph{not} create state-year
-or dyad-year duplicates for the Gleditsch-Ward codes. The size of the
-original data remain unchanged. However, there will be some year
-duplicates for various Correlates of War codes (prominently Serbia
-and Yugoslavia in 2006). Use with care. You can also use the
-\pkg{countrycode} package. Whether you use this function or the
-\pkg{countrycode} package, do \emph{not} do this kind of merging without
+You can read more about the data in the documentation for \pkg{isard}.
+\itemize{
+\item \url{https://svmiller.com/isard/reference/gw_cw_panel.html}
+}
+
+The user will invariably need to be careful and ask why they want these data
+included. The issue here is that both have a different composition and the
+merging process will not (and cannot) be perfect. We can note that a case
+like Gran Colombia is not too difficult to handle (i.e. CoW does not have
+this entity and none of the splinter states conflict with CoW's coding).
+However, there is greater weirdness with a case like the unification of West
+Germany and East Germany. Herein, Correlates of War treats the unification as
+the reappearance of the original Germany whereas Gleditsch-Ward treat the
+unification as an incorporation of East Germany into West Germany. The script
+will \emph{not} create state-year or dyad-year duplicates for the Gleditsch-Ward
+codes. The size of the original data remain unchanged. However, there will be
+some year duplicates for various Correlates of War codes (prominently Serbia
+and Yugoslavia in 2006). Use with care.
+
+You can also use the \pkg{countrycode} package. Whether you use this function
+or the \pkg{countrycode} package, do \emph{not} do this kind of merging without
 assessing the output.
 }
 \examples{

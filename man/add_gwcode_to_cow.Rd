@@ -10,18 +10,28 @@ add_gwcode_to_cow(data)
 \item{data}{a data frame with appropriate \pkg{peacesciencer} attributes}
 }
 \value{
-\code{add_gwcode_to_cow()} takes a (dyad-year, leader-year, leader-dyad-year, state-year)
-data frame that already has Correlates of War
-state system codes and adds their corollary Gleditsch-Ward codes.
+\code{add_gwcode_to_cow()} takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame that already has Correlates of War state system codes
+and adds their corollary Gleditsch-Ward codes.
 }
 \description{
 \code{add_gwcode_to_cow()} allows you to match, as well as one can, Gleditsch-Ward system membership data
 with Correlates of War state system membership data.
 }
 \details{
-The \code{data-raw} directory on the project's Github contains more
-information about the underlying data that assists in merging in these
-codes.
+As of version 1.2, this function leans on the information made available in
+the \pkg{isard} package. This is a spin-off package I maintain for data that
+require periodic updates for the functionality in this package. As of writing,
+\pkg{peacesciencer} only requires that you have the \pkg{isard} package
+installed. It does not require you to have any particular version of the
+package installed. Thus, what exactly this function returns may depend on the
+particular version of \pkg{isard} you have installed. This will assuredly
+concern the right-bound of the temporal domain of data you get.
+
+You can read more about the data in the documentation for \pkg{isard}.
+\itemize{
+\item \url{https://svmiller.com/isard/reference/cw_gw_panel.html}
+}
 
 The user will invariably need to be careful and ask why they want
 these data included. The issue here is that both have a different

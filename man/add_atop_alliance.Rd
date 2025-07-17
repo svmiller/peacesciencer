@@ -51,8 +51,8 @@ provisions can be 0. See the section below for a case when this happens.
 
 Consider this Belgium-France directed dyad-year from 1832 as illustrative of
 what you'll want to consider in the \code{ndir} argument. This is an interesting
-case (for Belgium) where it's an alliance where it's making no pledge of any
-kind to France. France, instead, is making a defensive pledge to Belgium.\tabular{cccccccc}{
+case where it's an alliance with Belgium making no pledge of any kind to
+France. France, instead, is making a defensive pledge to Belgium.\tabular{cccccccc}{
    \strong{ccode1} \tab \strong{ccode2} \tab \strong{year} \tab \strong{atop_defense} \tab \strong{atop_offense} \tab \strong{atop_neutral} \tab \strong{atop_nonagg} \tab \strong{atop_consul} \cr
    211 \tab 220 \tab 1832 \tab 0 \tab 0 \tab 0 \tab 0 \tab 0 \cr
    220 \tab 211 \tab 1832 \tab 1 \tab 0 \tab 0 \tab 0 \tab 0 \cr
@@ -84,7 +84,7 @@ performs a simple merge on matching dyad-year keys. In the above illustration,
 it would mean a Belgium-France dyad in 1832 would have no defense pledge
 because it was incidentally the case that the defense pledge that does appear
 in that dyad is made by the state with the higher state code. Use this
-argument with that in mind if you're data are non-directed.
+argument with that in mind if your data are non-directed.
 }
 }
 \examples{
