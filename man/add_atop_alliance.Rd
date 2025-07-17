@@ -73,18 +73,26 @@ than \code{ccode2}. If there are such observations, the data are assumed to be
 directed dyad-year and the merging proceeds without further consideration. If
 there are no instances in which \code{ccode1} is greater than \code{ccode2}, the data
 are assumed to be non-directed dyad-years and the behavior of this function
-hinges on the logical condition supplied to the \code{ndir} argument. If \code{ndir} is
-\code{TRUE} (default), the function assumes you are aware the data you have are
-non-directed while the alliance data are directed. It will then summarize the
-directed dyad-year data looking for the highest observed value in the
-dyad-year in either direction. In the above illustration, it would mean that
-the Belgium-France dyad would have a defense pledge in 1832 no matter how the
-non-directed dyad is entered in the data. If \code{ndir} is \code{FALSE}, the function
-performs a simple merge on matching dyad-year keys. In the above illustration,
-it would mean a Belgium-France dyad in 1832 would have no defense pledge
-because it was incidentally the case that the defense pledge that does appear
-in that dyad is made by the state with the higher state code. Use this
-argument with that in mind if your data are non-directed.
+hinges on the logical condition supplied to the \code{ndir} argument.
+\itemize{
+\item If \code{ndir} is \code{TRUE} (default): the function assumes you are aware the data
+you have are non-directed while the alliance data are directed. It will then
+summarize the directed dyad-year data looking for the highest observed value
+in the dyad-year in either direction. In the above illustration, it would mean
+that the Belgium-France dyad would have a defense pledge in 1832 no matter how
+the non-directed dyad is entered in the data. Belgium may not be pledging to
+defend France, but that is immaterial because the non-directed version of the
+directed dyad has a defense pledge in it.
+\item If \code{ndir} is \code{FALSE}, the function performs a simple merge on matching
+dyad-year keys. In the above illustration, it would mean a Belgium-France
+dyad in 1832 would have no defense pledge because it was incidentally the
+case that the defense pledge that does appear in that dyad is made by the
+state with the higher state code. Use this argument with that in mind if your
+data are non-directed.
+}
+
+The impetus behind this argument comes by way of an issue raised by Kevin
+Galambos and J. Andrés Gannon. You can \href{https://github.com/svmiller/peacesciencer/issues/13}{read about it here}.
 }
 }
 \examples{
