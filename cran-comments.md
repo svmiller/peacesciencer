@@ -13,3 +13,7 @@ R CMD check done via `devtools::check()`, resulting in 0 errors, 0 warnings, and
 ## Downstream dependencies
 
 There are no downstream dependencies to note.
+
+## Reverse Dependencies
+
+`{isard}` suggests `{peacesciencer}` and does not formally depend on it. It's also a package I maintain. `{peacesciencer}` now depends on the data contained in this package for some functions. `{isard}` only suggests the use of `{peasciencer}` and does not do anything that makes `{peacesciencer}` a requirement.
