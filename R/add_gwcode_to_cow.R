@@ -4,15 +4,26 @@
 #' with Correlates of War state system membership data.
 #'
 #'
-#' @return \code{add_gwcode_to_cow()} takes a (dyad-year, leader-year, leader-dyad-year, state-year)
-#' data frame that already has Correlates of War
-#' state system codes and adds their corollary Gleditsch-Ward codes.
+#' @return
+#'
+#' \code{add_gwcode_to_cow()} takes a (dyad-year, leader-year, leader-dyad-year,
+#' state-year) data frame that already has Correlates of War state system codes
+#' and adds their corollary Gleditsch-Ward codes.
 #'
 #' @details
 #'
-#' The \code{data-raw} directory on the project's Github contains more
-#' information about the underlying data that assists in merging in these
-#' codes.
+#' As of version 1.2, this function leans on the information made available in
+#' the \pkg{isard} package. This is a spin-off package I maintain for data that
+#' require periodic updates for the functionality in this package. As of writing,
+#' \pkg{peacesciencer} only requires that you have the \pkg{isard} package
+#' installed. It does not require you to have any particular version of the
+#' package installed. Thus, what exactly this function returns may depend on the
+#' particular version of \pkg{isard} you have installed. This will assuredly
+#' concern the right-bound of the temporal domain of data you get.
+#'
+#' You can read more about the data in the documentation for \pkg{isard}.
+#'
+#' - [https://svmiller.com/isard/reference/cw_gw_panel.html](https://svmiller.com/isard/reference/cw_gw_panel.html)
 #'
 #' The user will invariably need to be careful and ask why they want
 #' these data included. The issue here is that both have a different
@@ -44,6 +55,8 @@
 #' create_stateyears() %>% add_gwcode_to_cow()
 #'
 #'
+
+
 add_gwcode_to_cow <- function(data) {
 
   if (any(i <- c("gwcode1", "gwcode2", "gwcode") %in% colnames(data))) {
@@ -58,27 +71,74 @@ add_gwcode_to_cow <- function(data) {
 
   }
 
+
+  ps_type <- attr(data, "ps_data_type")
+
+  dispatch <- list(
+    state_year = .add_gwcode_to_cow_state_year,
+    leader_year = .add_gwcode_to_cow_state_year,
+    dyad_year = .add_gwcode_to_cow_dyad_year,
+    leader_dyad_year = .add_gwcode_to_cow_dyad_year
+  )
+
+  if (!ps_type %in% names(dispatch)) {
+
+    stop("Unsupported ps_data_type. Data type must be 'dyad_year', `leader_dyad_year`, 'leader_year', or 'state_year'.")
+
+  }
+
+  data <- dispatch[[ps_type]](data)
+
+  return(data)
+
+
+}
+
+
+#' @keywords internal
+#' @noRd
+.add_gwcode_to_cow_state_year <- function(data) {
+
   # state-year panel; CoW is master and we want G-W codes. ----
 
   syp <- isard::cw_gw_panel
 
   syp %>% select(.data$ccode, .data$gwcode, .data$year) -> hold_this
 
-  # isard::cw_gw_panel %>%
-  #   filter(!is.na(.data$ccode)) %>%
-  #   group_by(.data$ccode, .data$year) %>%
-  #   filter(.data$gwcode == max(.data$gwcode)) %>%
-  #   ungroup() %>%
-  #   select(.data$gwcode, .data$ccode, .data$year) -> hold_this
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+  if (!all(i <- c("ccode") %in% colnames(data))) {
 
-    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
-
-      stop("add_gwcode_to_cow() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+    stop("add_gwcode_to_cow() merges on the Correlates of War code, which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
 
 
-    } else {
+  } else {
+
+    data %>%
+      left_join(., hold_this,
+                by = c("ccode" = "ccode",
+                       "year" = "year")) -> data
+
+  }
+
+}
+
+#' @keywords internal
+#' @noRd
+.add_gwcode_to_cow_dyad_year <- function(data) {
+
+  # state-year panel; CoW is master and we want G-W codes. ----
+
+  syp <- isard::cw_gw_panel
+
+  syp %>% select(.data$ccode, .data$gwcode, .data$year) -> hold_this
+
+
+  if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+
+    stop("add_gwcode_to_cow() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+
+
+  } else {
 
     data %>%
       left_join(., hold_this, by=c("ccode1"="ccode","year"="year")) %>%
@@ -86,31 +146,81 @@ add_gwcode_to_cow <- function(data) {
       left_join(., hold_this, by=c("ccode2"="ccode","year"="year")) %>%
       rename(gwcode2 = .data$gwcode) -> data
 
-    return(data)
 
   }
 
 
-
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
-
-    if (!all(i <- c("ccode") %in% colnames(data))) {
-
-      stop("add_gwcode_to_cow() merges on the Correlates of War code, which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
-
-
-    } else {
-
-    data %>%
-      left_join(., hold_this) -> data
-
-      return(data)
-
-    }
-
-  } else  {
-    stop("add_gwcode_to_cow() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
-  }
-
-  return(data)
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#   # state-year panel; CoW is master and we want G-W codes. ----
+#
+#   syp <- isard::cw_gw_panel
+#
+#   syp %>% select(.data$ccode, .data$gwcode, .data$year) -> hold_this
+#
+#   # isard::cw_gw_panel %>%
+#   #   filter(!is.na(.data$ccode)) %>%
+#   #   group_by(.data$ccode, .data$year) %>%
+#   #   filter(.data$gwcode == max(.data$gwcode)) %>%
+#   #   ungroup() %>%
+#   #   select(.data$gwcode, .data$ccode, .data$year) -> hold_this
+#
+#   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+#
+#     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+#
+#       stop("add_gwcode_to_cow() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+#
+#
+#     } else {
+#
+#     data %>%
+#       left_join(., hold_this, by=c("ccode1"="ccode","year"="year")) %>%
+#       rename(gwcode1 = .data$gwcode) %>%
+#       left_join(., hold_this, by=c("ccode2"="ccode","year"="year")) %>%
+#       rename(gwcode2 = .data$gwcode) -> data
+#
+#     return(data)
+#
+#   }
+#
+#
+#
+#   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
+#
+#     if (!all(i <- c("ccode") %in% colnames(data))) {
+#
+#       stop("add_gwcode_to_cow() merges on the Correlates of War code, which your data don't have right now. Make sure to run create_stateyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+#
+#
+#     } else {
+#
+#     data %>%
+#       left_join(., hold_this) -> data
+#
+#       return(data)
+#
+#     }
+#
+#   } else  {
+#     stop("add_gwcode_to_cow() requires a data/tibble with attributes$ps_data_type of state_year or dyad_year. Try running create_dyadyears() or create_stateyears() at the start of the pipe.")
+#   }
+#
+#   return(data)
+# }

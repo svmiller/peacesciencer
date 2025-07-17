@@ -36,8 +36,8 @@
 #'
 #' Consider this Belgium-France directed dyad-year from 1832 as illustrative of
 #' what you'll want to consider in the `ndir` argument. This is an interesting
-#' case (for Belgium) where it's an alliance where it's making no pledge of any
-#' kind to France. France, instead, is making a defensive pledge to Belgium.
+#' case where it's an alliance with Belgium making no pledge of any kind to
+#' France. France, instead, is making a defensive pledge to Belgium.
 #'
 #' | **ccode1** | **ccode2** | **year** | **atop_defense** | **atop_offense** | **atop_neutral** | **atop_nonagg** | **atop_consul** |
 #' |:----------:|:----------:|:--------:|:----------------:|:----------------:|:----------------:|:---------------:|:---------------:|
@@ -69,7 +69,7 @@
 #' it would mean a Belgium-France dyad in 1832 would have no defense pledge
 #' because it was incidentally the case that the defense pledge that does appear
 #' in that dyad is made by the state with the higher state code. Use this
-#' argument with that in mind if you're data are non-directed.
+#' argument with that in mind if your data are non-directed.
 #'
 #' @author Steven V. Miller
 #'

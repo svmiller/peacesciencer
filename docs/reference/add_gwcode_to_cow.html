@@ -72,16 +72,22 @@ with Correlates of War state system membership data.</p>
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p><code>add_gwcode_to_cow()</code> takes a (dyad-year, leader-year, leader-dyad-year, state-year)
-data frame that already has Correlates of War
-state system codes and adds their corollary Gleditsch-Ward codes.</p>
+    <p><code>add_gwcode_to_cow()</code> takes a (dyad-year, leader-year, leader-dyad-year,
+state-year) data frame that already has Correlates of War state system codes
+and adds their corollary Gleditsch-Ward codes.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The <code>data-raw</code> directory on the project's Github contains more
-information about the underlying data that assists in merging in these
-codes.</p>
-<p>The user will invariably need to be careful and ask why they want
+    <p>As of version 1.2, this function leans on the information made available in
+the <span class="pkg">isard</span> package. This is a spin-off package I maintain for data that
+require periodic updates for the functionality in this package. As of writing,
+<span class="pkg">peacesciencer</span> only requires that you have the <span class="pkg">isard</span> package
+installed. It does not require you to have any particular version of the
+package installed. Thus, what exactly this function returns may depend on the
+particular version of <span class="pkg">isard</span> you have installed. This will assuredly
+concern the right-bound of the temporal domain of data you get.</p>
+<p>You can read more about the data in the documentation for <span class="pkg">isard</span>.</p><ul><li><p><a href="https://svmiller.com/isard/reference/cw_gw_panel.html" class="external-link">https://svmiller.com/isard/reference/cw_gw_panel.html</a></p></li>
+</ul><p>The user will invariably need to be careful and ask why they want
 these data included. The issue here is that both have a different
 composition and the merging process will not (and cannot) be perfect.
 We can note that a case like Serbia/Yugoslavia is not too difficult
@@ -124,7 +130,6 @@ assessing the output.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 2,214,920 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="create_stateyears.html">create_stateyears</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu">add_gwcode_to_cow</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Joining with `by = join_by(ccode, year)`</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 17,511 × 4</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ccode cw_name                   year gwcode</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>

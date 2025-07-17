@@ -2,6 +2,7 @@
 
 Changes include:
 
+- Package now assumes a version of R greater than 4.1.0. `{isard}` introduced as dependency.
 - `add_cow_alliance()` is deprecated and slated for removal at the request of the data set's maintainer. The function right now returns a stop communicating this information, also at the request of the data set's maintainer.
 - `add_sdp_gdp()` is deprecated and slated for removal. Its functionality is replaced by `add_sim_gdp_pop()`.
 - `add_gml_mids()` is superseded in light of the release of the MIC data.

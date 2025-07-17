@@ -1,10 +1,12 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>http://svmiller.com/404.html</loc></url>
 <url><loc>http://svmiller.com/LICENSE-text.html</loc></url>
+<url><loc>http://svmiller.com/articles/bremer-example.html</loc></url>
 <url><loc>http://svmiller.com/articles/coerce-dispute-year-dyad-year.html</loc></url>
 <url><loc>http://svmiller.com/articles/create-different-kinds-of-data-in-peacesciencer.html</loc></url>
 <url><loc>http://svmiller.com/articles/democracy.html</loc></url>
 <url><loc>http://svmiller.com/articles/different-data-types.html</loc></url>
+<url><loc>http://svmiller.com/articles/fearon-laitin-example.html</loc></url>
 <url><loc>http://svmiller.com/articles/index.html</loc></url>
 <url><loc>http://svmiller.com/articles/joins.html</loc></url>
 <url><loc>http://svmiller.com/articles/parlor-tricks.html</loc></url>
@@ -34,6 +36,7 @@
 <url><loc>http://svmiller.com/reference/add_gml_mids.html</loc></url>
 <url><loc>http://svmiller.com/reference/add_gwcode_to_cow.html</loc></url>
 <url><loc>http://svmiller.com/reference/add_igos.html</loc></url>
+<url><loc>http://svmiller.com/reference/add_latent_territorial_threat.html</loc></url>
 <url><loc>http://svmiller.com/reference/add_lead.html</loc></url>
 <url><loc>http://svmiller.com/reference/add_lwuf.html</loc></url>
 <url><loc>http://svmiller.com/reference/add_mids.html</loc></url>
@@ -105,6 +108,7 @@
 <url><loc>http://svmiller.com/reference/rugged.html</loc></url>
 <url><loc>http://svmiller.com/reference/show_duplicates.html</loc></url>
 <url><loc>http://svmiller.com/reference/td_rivalries.html</loc></url>
+<url><loc>http://svmiller.com/reference/terrthreat.html</loc></url>
 <url><loc>http://svmiller.com/reference/tss_rivalries.html</loc></url>
 <url><loc>http://svmiller.com/reference/ucdp_acd.html</loc></url>
 <url><loc>http://svmiller.com/reference/ucdp_onsets.html</loc></url>
