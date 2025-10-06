@@ -175,7 +175,7 @@ add_atop_alliance <- function(data, ndir = TRUE) {
         filter(.data$ccode2 > .data$ccode1) %>%
         select(-.data$ccodel, -.data$ccodeh) %>%
         left_join(data, .) %>%
-        mutate_at(vars("atop_defense", "atop_offense", "atop_neutral",
+        mutate_at(vars("atop_alliance", "atop_defense", "atop_offense", "atop_neutral",
                        "atop_nonagg", "atop_consul"),
                   ~ifelse(is.na(.) & between(.data$year, 1815, 2018), 0, .)) -> data
 

@@ -1,3 +1,9 @@
+# peacesciencer 1.3.0
+
+Changes include:
+
+- `add_atop_alliance()` fix for the `ndir` argument. The previous version included this argument but forgot to fill 0s for the absence of an alliance.
+
 # peacesciencer 1.2.0
 
 Changes include:
