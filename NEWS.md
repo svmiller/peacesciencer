@@ -4,6 +4,7 @@ Changes include:
 
 - `add_atop_alliance()` fix for the `ndir` argument. The previous version included this argument but forgot to fill 0s for the absence of an alliance.
 - `cow_nmc` updated to version 7.0, with coverage through 2022.
+- `cow_alliance`, `ccode_democracy`, `gwcode_democracy`, `cow_sdp_gdp`, `gw_sdp_gdp`, `cow_gw_years`, and `gw_cow_years` have been deprecated as of version 1.2 and are now removed from the data. Use `atop_alliance` instead of `cow_alliance`. `{isard}`, a package dependency, provides the data used by the other deprecated data sets.
 
 # peacesciencer 1.2.0
 
