@@ -17,3 +17,5 @@ LICENSE*
 ^.*\.rds
 ^manuscript$
 ^CRAN-SUBMISSION$
+^\.positai$
+^\.claude$

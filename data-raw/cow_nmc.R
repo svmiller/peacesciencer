@@ -1,6 +1,6 @@
 library(tidyverse)
 
-cow_nmc <- read_csv("/home/steve/Dropbox/data/cow/nmc/6.0/NMC-60-abridged.csv") %>%
+cow_nmc <- read_csv("~/Koofr/data/cow/nmc/7.0/NMC-70-abridged.csv") %>%
   select(-version, -stateabb) %>%
   mutate_at(vars(-ccode, -year), ~ifelse(. == -9, NA, .)) %>% print()
 

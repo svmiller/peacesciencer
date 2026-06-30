@@ -270,11 +270,11 @@ NULL
 
 #'  Correlates of War National Military Capabilities Data
 #'
-#' These are version 6.0 of the Correlates of War National Military Capabilities
+#' These are version 7.0 of the Correlates of War National Military Capabilities
 #' data. Data omit the state abbreviation and version identifier for
 #' consideration.
 #'
-#' @format A data frame with 15951 observations on the following 9 variables.
+#' @format A data frame with 17121 observations on the following 9 variables.
 #' \describe{
 #' \item{\code{ccode}}{a numeric vector for the Correlates of War country code}
 #' \item{\code{year}}{the year}
@@ -309,6 +309,11 @@ NULL
 #' production, 4) all the world's primary energy consumption, and 5) is the only
 #' state in the world with a population and an urban population. Incidentally,
 #' the maximum scores observed in the data belong to the United States in 1945.
+#'
+#' Be mindful that there are only four years in the data (1961-1964) in which
+#' the CINC score sums to 1, no matter its on-paper formula. Some of these
+#' discrepancies (e.g. 1.074 in 1860) don't look like rounding errors either.
+#' Do with that information what you will.
 #'
 #'
 #' @references

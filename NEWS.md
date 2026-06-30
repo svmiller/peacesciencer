@@ -3,6 +3,7 @@
 Changes include:
 
 - `add_atop_alliance()` fix for the `ndir` argument. The previous version included this argument but forgot to fill 0s for the absence of an alliance.
+- `cow_nmc` updated to version 7.0, with coverage through 2022.
 
 # peacesciencer 1.2.0
 

@@ -15,3 +15,4 @@ data-raw/bib/ps_bib.bib.bak
 
 # just in case this starts becoming too much of a chore, especially for informal testing.
 inst/extdata/*.rds
+.positai
