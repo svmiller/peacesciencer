@@ -4,12 +4,20 @@
 \alias{download_extdata}
 \title{Download Some Extra Data for Peace Science Research}
 \usage{
-download_extdata(overwrite = FALSE)
+download_extdata(overwrite = FALSE, confirm = FALSE, warning = TRUE)
 }
 \arguments{
 \item{overwrite}{logical, defaults to FALSE. If FALSE, the function
 checks to see if you've already downloaded the data and, if you already
 have, it does nothing. If TRUE, the function redownloads the data.}
+
+\item{confirm}{logical, defaults to FALSE. If FALSE, the function
+does not actually download the data. Set this to TRUE to confirm your
+intentions to download the data.}
+
+\item{warning}{logical, defaults to TRUE. If TRUE, the function returns a
+message advising you about the total size of the files you'll be downloading.
+If FALSE, no message is returned about the total file sizes.}
 }
 \value{
 \code{download_extdata()} downloads some extra data stored on
@@ -89,48 +97,38 @@ are about 2.2 megabytes in size.\tabular{ll}{
 
 }
 
-\subsection{Chance-Corrected Measures of Foreign Policy Similarity (FPSIM, v. 2)}{
+\subsection{Measures of Dyadic Foreign Policy Similarity (FPSIM)}{
 
 The FPSIM data set provides measures of foreign policy similarity of dyads
-based on alliance ties (Correlates of War, version 4.1) and UN General
-Assembly voting (Voeten, version 17) for all members of the Correlates of
-War state system. The alliance data cover the time period from 1816 to 2012,
-and the UN voting data from 1946 to 2015. The similarity measures include
+based on alliance ties (ATOP, version 5.1) and UN General
+Assembly voting (through 2022) for all members of the Correlates of
+War state system. The alliance data cover the time period from 1816 to 2018,
+and the UN voting data from 1946 to 2022. The similarity measures include
 various versions of Ritter and Signorino's \emph{S} (weighted/non-weighted by
 material capabilities; squared/absolute distance metrics) as well as the
-chance-corrected measures Cohen's (1960) kappa and Scott's (1955) pi. The
+chance-corrected measures Cohen's (1960, 1968) kappa and Scott's (1955) pi. The
 measures based on alliance data come in two versions: one is based on valued
-alliance ties and the other is based on binary alliance ties. Data were
-last updated on December 7, 2017, and this description was effectively
-plagiarized (with his blessing) from Frank Haege's Dataverse.
-
-These data are directed dyad-years with 17 columns and 1,872,198
+alliance ties and the other is based on binary alliance ties.
+These data are directed dyad-years with 16 columns and  2,061,776
 observations. They will almost certainly be the largest data set
-I nudge/ask you to download remotely. The file containing this
-information is 18.6 MB in size. To reduce size further, these
-decimal points have also been rounded to three spots.
-
-Haege generated all estimates of dyadic foreign policy similarity, except
-for the \code{taub} column. That was generated separately, by me.\tabular{ll}{
+I nudge/ask you to download remotely.\tabular{ll}{
    COLUMN \tab DESCRIPTION \cr
-   \code{year} \tab the year \cr
    \code{ccode1} \tab the Correlates of War state code for the first state \cr
    \code{ccode2} \tab the Correlates of War state code for the second state \cr
-   \code{taub} \tab Tau-b (valued alliance data) \cr
-   \code{srsvas} \tab unweighted \emph{S} (squared distances, valued alliance data) \cr
-   \code{srswvas} \tab weighted \emph{S} (squared distances, valued alliance data) \cr
-   \code{srsvaa} \tab unweighted \emph{S} (absolute distances, valued alliance data) \cr
-   \code{srswvaa} \tab weighted \emph{S} (absolute distances, valued alliance data) \cr
-   \code{kappava} \tab Kappa (squared distances, valued alliance data) \cr
-   \code{piva} \tab Pi (squared distances, valued alliance data) \cr
-   \code{srsba} \tab Unweighted \emph{S} (binary alliance data) \cr
-   \code{srswba} \tab Weighted \emph{S} (binary alliance data) \cr
-   \code{kappaba} \tab Kappa (binary alliance data) \cr
-   \code{piba} \tab Pi denominator (binary alliance data) \cr
-   \code{srsvvs} \tab Unweighted \emph{S} (squared distances, valued UN voting data) \cr
-   \code{srsvva} \tab Unweighted \emph{S} (absolute distances, valued UN voting data) \cr
-   \code{kappavv} \tab Kappa (squared distances, valued UN voting data) \cr
-   \code{pivv} \tab Pi (squared distances, valued UN voting data) \cr
+   \code{year} \tab the year \cr
+   \code{sallyvus} \tab Signorino and Ritter's (s) for alliance (ally) data -- (v)alued, (u)nweighted, (s)quared distances \cr
+   \code{sallyvua} \tab Signorino and Ritter's (s) for alliance (ally) data -- (v)alued, (u)nweighted, (a)bsolute distances \cr
+   \code{sallybus} \tab Signorino and Ritter's (s) for alliance (ally) data -- (b)inary, (u)nweighted, (s)quared distances \cr
+   \code{sallybua} \tab Signorino and Ritter's (s) for alliance (ally) data -- (b)inary, (u)nweighted, (a)bsolute distances \cr
+   \code{sallyvwa} \tab Signorino and Ritter's (s) for alliance (ally) data -- (v)alued, (w)eighted, (a)bsolute distances \cr
+   \code{sallybwa} \tab Signorino and Ritter's (s) for alliance (ally) data -- (b)inary, (w)eighted, (a)bsolute distances \cr
+   \code{pallyv} \tab Scott's (p)i for alliance (ally) data -- (v)alued \cr
+   \code{pallyb} \tab Scott's (p)i for alliance (ally) data -- (b)inary \cr
+   \code{kallyv} \tab Cohen's (k)appa for alliance (ally) data -- (v)alued \cr
+   \code{kallyb} \tab Cohen's (k)appa for alliance (ally) data -- (b)inary \cr
+   \code{taub} \tab Kendall's tau-b for alliance data -- valued \cr
+   \code{kvotev} \tab Cohen's (k)appa for UN voting (vote) data -- (v)alued \cr
+   \code{pvotev} \tab Scott's (p)i for UN voting (vote) data -- (v)alued \cr
 }
 
 }

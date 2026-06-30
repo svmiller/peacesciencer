@@ -68,50 +68,43 @@
 #' | `yrinoffice1` | a running count for the tenure of `obsid1`, starting at 1. |
 #' | `yrinoffice2` | a running count for the tenure of `obsid2`, starting at 1. |
 #'
-#' ## Chance-Corrected Measures of Foreign Policy Similarity (FPSIM, v. 2)
+#' ## Measures of Dyadic Foreign Policy Similarity (FPSIM)
 #'
 #' The FPSIM data set provides measures of foreign policy similarity of dyads
-#' based on alliance ties (Correlates of War, version 4.1) and UN General
-#' Assembly voting (Voeten, version 17) for all members of the Correlates of
-#' War state system. The alliance data cover the time period from 1816 to 2012,
-#' and the UN voting data from 1946 to 2015. The similarity measures include
+#' based on alliance ties (ATOP, version 5.1) and UN General
+#' Assembly voting (through 2022) for all members of the Correlates of
+#' War state system. The alliance data cover the time period from 1816 to 2018,
+#' and the UN voting data from 1946 to 2022. The similarity measures include
 #' various versions of Ritter and Signorino's *S* (weighted/non-weighted by
 #' material capabilities; squared/absolute distance metrics) as well as the
-#' chance-corrected measures Cohen's (1960) kappa and Scott's (1955) pi. The
+#' chance-corrected measures Cohen's (1960, 1968) kappa and Scott's (1955) pi. The
 #' measures based on alliance data come in two versions: one is based on valued
-#' alliance ties and the other is based on binary alliance ties. Data were
-#' last updated on December 7, 2017, and this description was effectively
-#' plagiarized (with his blessing) from Frank Haege's Dataverse.
-#'
-#' These data are directed dyad-years with 17 columns and 1,872,198
+#' alliance ties and the other is based on binary alliance ties.
+
+#' These data are directed dyad-years with 16 columns and  2,061,776
 #' observations. They will almost certainly be the largest data set
-#' I nudge/ask you to download remotely. The file containing this
-#' information is 18.6 MB in size. To reduce size further, these
-#' decimal points have also been rounded to three spots.
+#' I nudge/ask you to download remotely.
 #'
-#' Haege generated all estimates of dyadic foreign policy similarity, except
-#' for the `taub` column. That was generated separately, by me.
 #'
 #' | COLUMN | DESCRIPTION |
 #' | -------| ------------|
-#' | `year` | the year |
 #' | `ccode1` | the Correlates of War state code for the first state |
 #' | `ccode2` | the Correlates of War state code for the second state |
-#' | `taub` | Tau-b (valued alliance data) |
-#' | `srsvas` | unweighted *S* (squared distances, valued alliance data) |
-#' | `srswvas` | weighted *S* (squared distances, valued alliance data) |
-#' | `srsvaa` | unweighted *S* (absolute distances, valued alliance data) |
-#' | `srswvaa` | weighted *S* (absolute distances, valued alliance data) |
-#' | `kappava` | Kappa (squared distances, valued alliance data) |
-#' | `piva` | Pi (squared distances, valued alliance data) |
-#' | `srsba` | Unweighted *S* (binary alliance data) |
-#' | `srswba` | Weighted *S* (binary alliance data) |
-#' | `kappaba` | Kappa (binary alliance data) |
-#' | `piba` | Pi denominator (binary alliance data) |
-#' | `srsvvs` | Unweighted *S* (squared distances, valued UN voting data) |
-#' | `srsvva` | Unweighted *S* (absolute distances, valued UN voting data) |
-#' | `kappavv` | Kappa (squared distances, valued UN voting data) |
-#' | `pivv` | Pi (squared distances, valued UN voting data) |
+#' | `year` | the year |
+#' | `sallyvus` | Signorino and Ritter's (s) for alliance (ally) data -- (v)alued, (u)nweighted, (s)quared distances |
+#' | `sallyvua` | Signorino and Ritter's (s) for alliance (ally) data -- (v)alued, (u)nweighted, (a)bsolute distances |
+#' | `sallybus` |  Signorino and Ritter's (s) for alliance (ally) data -- (b)inary, (u)nweighted, (s)quared distances |
+#' | `sallybua` | Signorino and Ritter's (s) for alliance (ally) data -- (b)inary, (u)nweighted, (a)bsolute distances |
+#' | `sallyvwa` | Signorino and Ritter's (s) for alliance (ally) data -- (v)alued, (w)eighted, (a)bsolute distances |
+#' | `sallybwa` | Signorino and Ritter's (s) for alliance (ally) data -- (b)inary, (w)eighted, (a)bsolute distances |
+#' | `pallyv` | Scott's (p)i for alliance (ally) data -- (v)alued |
+#' | `pallyb` | Scott's (p)i for alliance (ally) data -- (b)inary |
+#' | `kallyv` | Cohen's (k)appa for alliance (ally) data -- (v)alued |
+#' | `kallyb` | Cohen's (k)appa for alliance (ally) data -- (b)inary |
+#' | `taub` | Kendall's tau-b for alliance data -- valued |
+#' | `kvotev` | Cohen's (k)appa for UN voting (vote) data -- (v)alued |
+#' | `pvotev` | Scott's (p)i for UN voting (vote) data -- (v)alued |
+
 #'
 #' ## (Non-Directed) Dyadic Minimum Distance Data *Plus* (CoW States)
 #'
@@ -207,6 +200,12 @@
 #' @param overwrite logical, defaults to FALSE. If FALSE, the function
 #' checks to see if you've already downloaded the data and, if you already
 #' have, it does nothing. If TRUE, the function redownloads the data.
+#' @param confirm logical, defaults to FALSE. If FALSE, the function
+#' does not actually download the data. Set this to TRUE to confirm your
+#' intentions to download the data.
+#' @param warning logical, defaults to TRUE. If TRUE, the function returns a
+#' message advising you about the total size of the files you'll be downloading.
+#' If FALSE, no message is returned about the total file sizes.
 #' @md
 #'
 #' @references
@@ -238,109 +237,112 @@
 #' download_extdata()
 #' }
 
-download_extdata <- function(overwrite = FALSE) {
+download_extdata <- function(overwrite = FALSE, confirm = FALSE, warning = TRUE) {
+
   extdata_dir <- system.file("extdata", package="peacesciencer")
+
+  if(warning == TRUE) {
+    message("Please be advised the sum total of external data will take up about 48.2 MB of disk space. The biggest offender here is easily the dyadic foreign policy similarity data (36.8 MB). You must set warning = FALSE to disable this message. This is more a point of information for you, the user.\n")
+  }
+
+  if(confirm == FALSE) {
+    stop("CRAN generally frowns on functions that foist non-interactive execution on the user or assume a console session. Please set confirm = TRUE to actually get the data.")
+  } else {
+
+
 
   if(overwrite == FALSE) {
     if(file.exists(system.file("extdata", "cow_trade_ddy.rds", package="peacesciencer"))) {
-      message("cow_trade_ddy.rds is in /extdata in the package directory.")
+      message("cow_trade_ddy.rds is already in /extdata in the package directory.")
     } else {
-      message("Downloading cow_trade_ddy.rds from http://svmiller.com/R/peacesciencer.")
-      cow_trade_ddy <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
+      message("Downloading cow_trade_ddy.rds from https://svmiller.com/R/peacesciencer (file size: 4.1 MB).")
+      cow_trade_ddy <- readRDS(url("https://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
       saveRDS(cow_trade_ddy, paste0(extdata_dir,"/cow_trade_ddy.rds"))
       message("cow_trade_ddy.rds downloaded and moved to /extdata directory in the package.")
     }
 
     # directed leader dyad-year data now...
     if(file.exists(system.file("extdata", "cow_dir_leader_dyad_years.rds", package="peacesciencer"))) {
-      message("cow_dir_leader_dyad_years.rds is in /extdata in the package directory.")
+      message("cow_dir_leader_dyad_years.rds is already in /extdata in the package directory.")
     } else {
-      message("Downloading cow_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
-      cow_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_dir_leader_dyad_years.rds"))
+      message("Downloading cow_dir_leader_dyad_years.rds from https://svmiller.com/R/peacesciencer  (file size: 2.0 MB).")
+      cow_dir_leader_dyad_years <- readRDS(url("https://svmiller.com/R/peacesciencer/cow_dir_leader_dyad_years.rds"))
       saveRDS(cow_dir_leader_dyad_years, paste0(extdata_dir,"/cow_dir_leader_dyad_years.rds"))
       message("cow_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
     }
 
     # directed leader dyad-year data now...
     if(file.exists(system.file("extdata", "gw_dir_leader_dyad_years.rds", package="peacesciencer"))) {
-      message("gw_dir_leader_dyad_years.rds is in /extdata in the package directory.")
+      message("gw_dir_leader_dyad_years.rds is already in /extdata in the package directory.")
     } else {
-      message("Downloading gw_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
-      gw_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
+      message("Downloading gw_dir_leader_dyad_years.rds from https://svmiller.com/R/peacesciencer  (file size: 2.2 MB).")
+      gw_dir_leader_dyad_years <- readRDS(url("https://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
       saveRDS(gw_dir_leader_dyad_years, paste0(extdata_dir,"/gw_dir_leader_dyad_years.rds"))
       message("gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
     }
 
     # dyadic foreign policy similarity data now...
-    if(file.exists(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))) {
-      message("dyadic_fp_similarity.rds is in /extdata in the package directory.")
+    if(file.exists(system.file("extdata", "FPSIM.rds", package="peacesciencer"))) {
+      message("FPSIM.rds is already in /extdata in the package directory.")
     } else {
-      message("Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.")
-      dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
-      saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
-      message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
+      message("Downloading FPSIM.rds from https://svmiller.com/fpsim/data (file size: 36.8 MB).")
+      FPSIM <- readRDS(url("https://svmiller.com/fpsim/data/FPSIM.rds"))
+      saveRDS(FPSIM, paste0(extdata_dir,"/FPSIM.rds"))
+      message("FPSIM.rds downloaded and moved to /extdata directory in the package.")
     }
 
-    # dyadic foreign policy similarity data now...
-    if(file.exists(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))) {
-      message("dyadic_fp_similarity.rds is in /extdata in the package directory.")
-    } else {
-      message("Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.")
-      dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
-      saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
-      message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
-    }
 
     # CoW mindist-plus now...
     if(file.exists(system.file("extdata", "cow_mindist_plus.rds", package="peacesciencer"))) {
-      message("cow_mindist_plus.rds is in /extdata in the package directory.")
+      message("cow_mindist_plus.rds is already in /extdata in the package directory.")
     } else {
-      message("Downloading cow_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
-      cow_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_mindist_plus.rds"))
+      message("Downloading cow_mindist_plus.rds from https://svmiller.com/R/peacesciencer (file size: 1.7 MB).")
+      cow_mindist_plus <- readRDS(url("https://svmiller.com/R/peacesciencer/cow_mindist_plus.rds"))
       saveRDS(cow_mindist_plus, paste0(extdata_dir,"/cow_mindist_plus.rds"))
       message("cow_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
     }
 
     # G-W mindist-plus now...
     if(file.exists(system.file("extdata", "gw_mindist_plus.rds", package="peacesciencer"))) {
-      message("gw_mindist_plus.rds is in /extdata in the package directory.")
+      message("gw_mindist_plus.rds is already in /extdata in the package directory.")
     } else {
-      message("Downloading gw_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
-      gw_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_mindist_plus.rds"))
+      message("Downloading gw_mindist_plus.rds from https://svmiller.com/R/peacesciencer  (file size: 1.4 MB).")
+      gw_mindist_plus <- readRDS(url("https://svmiller.com/R/peacesciencer/gw_mindist_plus.rds"))
       saveRDS(gw_mindist_plus, paste0(extdata_dir,"/gw_mindist_plus.rds"))
       message("gw_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
     }
 
 
 
-  } else if (overwrite == TRUE){
-    message("Downloading cow_trade_ddy.rds from http://svmiller.com/R/peacesciencer.")
-    cow_trade_ddy <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
+  } else if (overwrite == TRUE) {
+
+    message("Downloading cow_trade_ddy.rds from https://svmiller.com/R/peacesciencer (file size: 4.1 MB).")
+    cow_trade_ddy <- readRDS(url("https://svmiller.com/R/peacesciencer/cow_trade_ddy.rds"))
     saveRDS(cow_trade_ddy, paste0(extdata_dir,"/cow_trade_ddy.rds"))
     message("cow_trade_ddy.rds downloaded and moved to /extdata directory in the package.")
 
-    message("Downloading cow_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
-    cow_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_dir_leader_dyad_years.rds"))
+    message("Downloading cow_dir_leader_dyad_years.rds from https://svmiller.com/R/peacesciencer (file size: 2.0 MB).")
+    cow_dir_leader_dyad_years <- readRDS(url("https://svmiller.com/R/peacesciencer/cow_dir_leader_dyad_years.rds"))
     saveRDS(cow_dir_leader_dyad_years, paste0(extdata_dir,"/cow_dir_leader_dyad_years.rds"))
     message("cow_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
 
-    message("Downloading gw_dir_leader_dyad_years.rds from http://svmiller.com/R/peacesciencer.")
-    gw_dir_leader_dyad_years <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
+    message("Downloading gw_dir_leader_dyad_years.rds from https://svmiller.com/R/peacesciencer (file size: 2.2 MB).")
+    gw_dir_leader_dyad_years <- readRDS(url("https://svmiller.com/R/peacesciencer/gw_dir_leader_dyad_years.rds"))
     saveRDS(gw_dir_leader_dyad_years, paste0(extdata_dir,"/gw_dir_leader_dyad_years.rds"))
     message("gw_dir_leader_dyad_years.rds downloaded and moved to /extdata directory in the package.")
 
-    message("Downloading dyadic_fp_similarity.rds from http://svmiller.com/R/peacesciencer.")
-    dyadic_fp_similarity <- readRDS(url("http://svmiller.com/R/peacesciencer/dyadic_fp_similarity.rds"))
-    saveRDS(dyadic_fp_similarity, paste0(extdata_dir,"/dyadic_fp_similarity.rds"))
-    message("dyadic_fp_similarity.rds downloaded and moved to /extdata directory in the package.")
+    message("Downloading FPSIM.rds from https://svmiller.com/fpsim/data (file size: 36.8 MB).")
+    FPSIM <- readRDS(url("https://svmiller.com/fpsim/data/FPSIM.rds"))
+    saveRDS(FPSIM, paste0(extdata_dir,"/FPSIM.rds"))
+    message("FPSIM.rds downloaded and moved to /extdata directory in the package.")
 
-    message("Downloading cow_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
-    cow_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/cow_mindist_plus.rds"))
+    message("Downloading cow_mindist_plus.rds from https://svmiller.com/R/peacesciencer (file size: 1.7 MB).")
+    cow_mindist_plus <- readRDS(url("https://svmiller.com/R/peacesciencer/cow_mindist_plus.rds"))
     saveRDS(cow_mindist_plus, paste0(extdata_dir,"/cow_mindist_plus.rds"))
     message("cow_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
 
-    message("Downloading gw_mindist_plus.rds from http://svmiller.com/R/peacesciencer.")
-    gw_mindist_plus <- readRDS(url("http://svmiller.com/R/peacesciencer/gw_mindist_plus.rds"))
+    message("Downloading gw_mindist_plus.rds from https://svmiller.com/R/peacesciencer (file size: 1.4 MB).")
+    gw_mindist_plus <- readRDS(url("https://svmiller.com/R/peacesciencer/gw_mindist_plus.rds"))
     saveRDS(gw_mindist_plus, paste0(extdata_dir,"/gw_mindist_plus.rds"))
     message("gw_mindist_plus.rds downloaded and moved to /extdata directory in the package.")
 
@@ -349,7 +351,11 @@ download_extdata <- function(overwrite = FALSE) {
     stop("overwrite must either be TRUE (T) or FALSE (F). Default is FALSE (F)")
   }
 
-  message(paste0("Check the contents of the /extdata directory below:\n", extdata_dir))
+    message(paste0("\n\nCheck the contents of the /extdata directory below:\n\n", extdata_dir))
+
+  } # end of confirm argument
+
+
 }
 
 # remote_files <- c("cow_trade_ddy")
