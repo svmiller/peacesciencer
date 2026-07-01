@@ -222,7 +222,7 @@ data are about 1.4 MB in size.\tabular{ll}{
 # Here's where the data are going to be downloaded.
 system.file("extdata", package="peacesciencer")
 # Now, let's download the data.
-download_extdata()
+download_extdata(confirm = TRUE)
 }
 }
 \references{

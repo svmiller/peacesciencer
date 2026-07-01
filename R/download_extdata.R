@@ -246,7 +246,7 @@ download_extdata <- function(overwrite = FALSE, confirm = FALSE, warning = TRUE)
   }
 
   if(confirm == FALSE) {
-    stop("CRAN generally frowns on functions that foist non-interactive execution on the user or assume a console session. Please set confirm = TRUE to actually get the data.")
+    stop("\nCRAN generally frowns on functions that foist non-interactive execution on the user or assume a console session. Please set confirm = TRUE to actually get the data.")
   } else {
 
 

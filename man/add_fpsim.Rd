@@ -26,13 +26,12 @@ several measures calculated and offered by Frank Haege.
 similarity measures to your (dyad-year, leader-dyad-year) data frame
 }
 \details{
-For the dyad-year (and leader-dyad-year) data, there must be some kind of
-information loss in order to reduce the disk space data like these command.
-In this case, all calculations are rounded to three decimal spots. I do
-not think this to be terribly problematic, though I admit I do not like it.
-If this is a problem for your research question (though I can't imagine it
-would be), you may want to consider not using this function for dyad-year
-or leader-dyad-year data.
+\pkg{fpsim} is a suggested package for \pkg{peacesciencer} users and is
+responsible for the calculation of these estimates of dyadic foreign policy
+similarity.
+
+Check the documentation for \code{download_extdata()} for more information
+about the data that this function uses.
 
 Be mindful that the data are fundamentally dyad-year and that extensions to
 leader-level data should be understood as approximations for leaders-dyads
@@ -42,26 +41,31 @@ The data this function uses are directed dyad-year and the merge is a
 left-join, making this function agnostic about whether your dyad-year
 (or leader-dyad-year) data are directed or non-directed.
 
-Haege's (2011) article reads at first glance as agnostic about which of
-these particular measures you should consider a "preferred" or "default"
-measure of dyadic foreign policy similarity. Indeed, the 2011
-publication in \emph{Political Analysis} mostly drives the point home that
-\emph{S} has important limitations and the multiple variants Haege calculates
-are not substitutable. This means a user interested in measuring
-dyadic foreign policy similarity might have to cycle through all
-of them to assess their varying effects whereas a user interested
-in this as just a control variable for the model can (probably)
-get by with picking just one and not belaboring the measure
-any further.
+The data offered here are my own extensions of dyadic foreign policy similarity
+based on information made available by the ATOP project and the UNGA-DM Database.
+However, it is deeply indebted to work done by Frank Haege. You should
+really cite Haege (2011) if you use these data.
+
+Haege's (2011) article reads at first glance as agnostic about which of these
+particular measures you should consider a "preferred" or "default" measure of
+dyadic foreign policy similarity. Indeed, the 2011 publication in
+\emph{Political Analysis} mostly drives the point home that \emph{S} has important
+limitations and the multiple variants Haege calculates are not substitutable.
+This means a user interested in measuring dyadic foreign policy similarity
+might have to cycle through all of them to assess their varying effects
+whereas a user interested in this as just a control variable for the model
+can (probably) get by with picking just one and not belaboring the measure
+any further. This information point may be overkill, but it's something you
+should take into consideration.
 \subsection{Suggested Defaults}{
 
-An evaluation of the data, the article, and an email exchange
-with the author leads to the following points the user should
-consider. What follows is a rationale for why users should think of
-kappa as a default measure for dyadic foreign policy similarity, though
-why the "valued" equivalent for the alliance data is an inadvisable
-default. The example at the end of the document offers the operational
-"nudge" for what the user should want from this function.
+An evaluation of the data, the article, and an email exchange with Frank Haege
+some years back leads to the following points the user should consider. What
+follows is a rationale for why users should think of kappa as a default
+measure for dyadic foreign policy similarity of the measures available, though
+why the "valued" equivalent for the alliance data is an inadvisable default.
+The example at the end of the document offers the operational "nudge" for
+what the user should want from this function.
 \itemize{
 \item The choice of measure will in part depend on the temporal
 domain. If the user has just a post-WWII sample, the UN voting measures
@@ -88,6 +92,13 @@ or ATOP typology. \emph{S} has traditionally done this by default, which is
 another reason its application in a lot of quantitative peace science
 research is suspect.
 }
+
+I offer further discussion on issues with treating alliances as a source of
+information about dyadic foreign policy similarity on my blog. I don't impugn
+its use, but just be mindful of what alliances ultimately are and what they
+ultimately do.
+
+\url{https://svmiller.com/blog/2026/06/alliances-weighting-foreign-policy-similarity/}
 }
 }
 \examples{
@@ -99,32 +110,25 @@ library(magrittr)
 cow_ddy \%>\% add_fpsim()
 
 # Select just the two kappa measures that are suggested defaults.
-# `kappaba`: kappa for binary alliance data if you have pre-WWII data.
-# `kappavv`: kappa for UN voting data if you just post-WWII data.
-cow_ddy \%>\% add_fpsim(keep=c("kappaba", "kappavv"))
+# `kallyb`: kappa for binary alliance data if you have pre-WWII data.
+# `kvotev`: kappa for UN voting data if you just post-WWII data.
+cow_ddy \%>\% add_fpsim(keep=c("kallyb", "kvotev"))
 
 }
 }
 \references{
-\subsection{The Main Source of the Data}{
-
 For any use of these data whatsoever (except for Tau-b), please cite
-Haege (2011). Data are version 2.0.
+Haege (2011).
 \itemize{
 \item Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of
 Foreign Policy Similarity for Chance Agreement."
 \emph{Political Analysis} 19(3): 287-305.
 }
-
-Tau-b is calculated by me and not Haege, and no additional citation (beyond
-citing the package) is necessary.
-}
-
 \subsection{Citations for the Particular Similarity Measure You Choose}{
 
 Additional citations depend on what particular measure of similarity you're
 using, whether Kendall's (1938) Tau-b, Signorino and Ritter's (1999) \emph{S},
-Cohen's (1960) kappa and Scott's (1955) pi. Haege (2011) is part of a chorus
+Cohen's (1960, 1968) kappa and Scott's (1955) pi. Haege (2011) is part of a chorus
 arguing against the use of \emph{S}, though \emph{S} measures are included in these
 data if you elect to ignore the chorus and use this measure. Likewise, Tau-b
 is in here, though it is not a good measure of dyadic foreign policy
@@ -134,6 +138,9 @@ similarity, either Cohen's (1960) kappa or Scott's (1955) pi.
 \itemize{
 \item Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales."
 \emph{Educational and Psychological Measurement} 20(1): 37-46.
+\item Cohen, Jacob. 1968. "Weighted Kappa: Nominal Scale Agreement with Provision
+for Scaled Disagreement or Partial Credit." \emph{Psychological Bulletin}
+70(4): 213–220.
 \item Kendall, M.G. 1938. "A New Measure of Rank Correlation."
 \emph{Biometrika} 30(1/2): 81--93.
 \item Scott, William A. 1955. "Reliability of Content Analysis: The Case of
@@ -146,18 +153,15 @@ the Similarity of Foreign Policy Positions." 43(1): 115--44.
 \subsection{Citations for the Underlying Data Informing the Similarity Measure}{
 
 Haege (2011) also suggests you cite the underlying data informing the
-similarity measure, whether it is UN voting or alliances. In his case,
-he recommended a Voeten citation from 2013 and the alliance data proper.
-In the case of the alliances, I know Gibler's (2009) book is recommended
-even if the alliance data have since been updated (and reflected in this
-measure). In the UN voting data, my understanding is the 2017 paper in
-\emph{Journal of Conflict Resolution} is also the preferred citation.
+similarity measure, whether it is UN voting or alliances.
 \itemize{
-\item Bailey, Michael A., Anton Strezhnev, and Erik Voeten. 2017.
-"Estimating the Dynamic State Preferences from United Nations Voting Data."
-\emph{Journal of Conflict Resolution} 61(2): 430--456.
-\item Gibler, Douglas M. 2009. \emph{International Military Alliances, 1648-2008}.
-Washington DC: CQ Press.
+\item Fjelstul, Joshua, Simon Hug, and Christopher Kilby. 2022. "Decision-Making
+in the United Nations General Assembly: A Comprehensive Database of
+Resolutions, Decisions, and Votes." \emph{Villanova School of Business Economics
+Working Paper} 56.
+\item Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and
+Andrew G. Long. 2002. "Alliance Treaty Obligations and Provisions, 1815-1944."
+\emph{International Interactions} 28: 237-60.
 }
 }
 }

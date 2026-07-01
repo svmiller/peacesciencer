@@ -13,13 +13,12 @@
 #'
 #' @details
 #'
-#' For the dyad-year (and leader-dyad-year) data, there must be some kind of
-#' information loss in order to reduce the disk space data like these command.
-#' In this case, all calculations are rounded to three decimal spots. I do
-#' not think this to be terribly problematic, though I admit I do not like it.
-#' If this is a problem for your research question (though I can't imagine it
-#' would be), you may want to consider not using this function for dyad-year
-#' or leader-dyad-year data.
+#' \pkg{fpsim} is a suggested package for \pkg{peacesciencer} users and is
+#' responsible for the calculation of these estimates of dyadic foreign policy
+#' similarity.
+#'
+#' Check the documentation for \code{download_extdata()} for more information
+#' about the data that this function uses.
 #'
 #' Be mindful that the data are fundamentally dyad-year and that extensions to
 #' leader-level data should be understood as approximations for leaders-dyads
@@ -29,27 +28,32 @@
 #' left-join, making this function agnostic about whether your dyad-year
 #' (or leader-dyad-year) data are directed or non-directed.
 #'
-#' Haege's (2011) article reads at first glance as agnostic about which of
-#' these particular measures you should consider a "preferred" or "default"
-#' measure of dyadic foreign policy similarity. Indeed, the 2011
-#' publication in *Political Analysis* mostly drives the point home that
-#' *S* has important limitations and the multiple variants Haege calculates
-#' are not substitutable. This means a user interested in measuring
-#' dyadic foreign policy similarity might have to cycle through all
-#' of them to assess their varying effects whereas a user interested
-#' in this as just a control variable for the model can (probably)
-#' get by with picking just one and not belaboring the measure
-#' any further.
+#' The data offered here are my own extensions of dyadic foreign policy similarity
+#' based on information made available by the ATOP project and the UNGA-DM Database.
+#' However, it is deeply indebted to work done by Frank Haege. You should
+#' really cite Haege (2011) if you use these data.
+#'
+#' Haege's (2011) article reads at first glance as agnostic about which of these
+#' particular measures you should consider a "preferred" or "default" measure of
+#' dyadic foreign policy similarity. Indeed, the 2011 publication in
+#' *Political Analysis* mostly drives the point home that *S* has important
+#' limitations and the multiple variants Haege calculates are not substitutable.
+#' This means a user interested in measuring dyadic foreign policy similarity
+#' might have to cycle through all of them to assess their varying effects
+#' whereas a user interested in this as just a control variable for the model
+#' can (probably) get by with picking just one and not belaboring the measure
+#' any further. This information point may be overkill, but it's something you
+#' should take into consideration.
 #'
 #' ## Suggested Defaults
 #'
-#' An evaluation of the data, the article, and an email exchange
-#' with the author leads to the following points the user should
-#' consider. What follows is a rationale for why users should think of
-#' kappa as a default measure for dyadic foreign policy similarity, though
-#' why the "valued" equivalent for the alliance data is an inadvisable
-#' default. The example at the end of the document offers the operational
-#' "nudge" for what the user should want from this function.
+#' An evaluation of the data, the article, and an email exchange with Frank Haege
+#' some years back leads to the following points the user should consider. What
+#' follows is a rationale for why users should think of kappa as a default
+#' measure for dyadic foreign policy similarity of the measures available, though
+#' why the "valued" equivalent for the alliance data is an inadvisable default.
+#' The example at the end of the document offers the operational "nudge" for
+#' what the user should want from this function.
 #'
 #' - The choice of measure will in part depend on the temporal
 #' domain. If the user has just a post-WWII sample, the UN voting measures
@@ -76,6 +80,13 @@
 #' another reason its application in a lot of quantitative peace science
 #' research is suspect.
 #'
+#' I offer further discussion on issues with treating alliances as a source of
+#' information about dyadic foreign policy similarity on my blog. I don't impugn
+#' its use, but just be mindful of what alliances ultimately are and what they
+#' ultimately do.
+#'
+#' \url{https://svmiller.com/blog/2026/06/alliances-weighting-foreign-policy-similarity/}
+#'
 #'
 #' @author Steven V. Miller
 #'
@@ -89,23 +100,19 @@
 #'
 #' @references
 #'
-#' ## The Main Source of the Data
-#'
 #' For any use of these data whatsoever (except for Tau-b), please cite
-#' Haege (2011). Data are version 2.0.
+#' Haege (2011).
 #'
 #' - Haege, Frank M. 2011. "Choice or Circumstance? Adjusting Measures of
 #' Foreign Policy Similarity for Chance Agreement."
 #' *Political Analysis* 19(3): 287-305.
 #'
-#' Tau-b is calculated by me and not Haege, and no additional citation (beyond
-#' citing the package) is necessary.
 #'
 #' ## Citations for the Particular Similarity Measure You Choose
 #'
 #' Additional citations depend on what particular measure of similarity you're
 #' using, whether Kendall's (1938) Tau-b, Signorino and Ritter's (1999) *S*,
-#' Cohen's (1960) kappa and Scott's (1955) pi. Haege (2011) is part of a chorus
+#' Cohen's (1960, 1968) kappa and Scott's (1955) pi. Haege (2011) is part of a chorus
 #' arguing against the use of *S*, though *S* measures are included in these
 #' data if you elect to ignore the chorus and use this measure. Likewise, Tau-b
 #' is in here, though it is not a good measure of dyadic foreign policy
@@ -115,6 +122,10 @@
 #'
 #' - Cohen, Jacob. 1960. "A Coefficient of Agreement for Nominal Scales."
 #' *Educational and Psychological Measurement* 20(1): 37-46.
+#'
+#' - Cohen, Jacob. 1968. "Weighted Kappa: Nominal Scale Agreement with Provision
+#' for Scaled Disagreement or Partial Credit." *Psychological Bulletin*
+#' 70(4): 213–220.
 #'
 #' - Kendall, M.G. 1938. "A New Measure of Rank Correlation."
 #' *Biometrika* 30(1/2): 81--93.
@@ -128,19 +139,18 @@
 #' ## Citations for the Underlying Data Informing the Similarity Measure
 #'
 #' Haege (2011) also suggests you cite the underlying data informing the
-#' similarity measure, whether it is UN voting or alliances. In his case,
-#' he recommended a Voeten citation from 2013 and the alliance data proper.
-#' In the case of the alliances, I know Gibler's (2009) book is recommended
-#' even if the alliance data have since been updated (and reflected in this
-#' measure). In the UN voting data, my understanding is the 2017 paper in
-#' *Journal of Conflict Resolution* is also the preferred citation.
+#' similarity measure, whether it is UN voting or alliances.
 #'
-#' - Bailey, Michael A., Anton Strezhnev, and Erik Voeten. 2017.
-#' "Estimating the Dynamic State Preferences from United Nations Voting Data."
-#' *Journal of Conflict Resolution* 61(2): 430--456.
+#' - Fjelstul, Joshua, Simon Hug, and Christopher Kilby. 2022. "Decision-Making
+#' in the United Nations General Assembly: A Comprehensive Database of
+#' Resolutions, Decisions, and Votes." *Villanova School of Business Economics
+#' Working Paper* 56.
 #'
-#' - Gibler, Douglas M. 2009. *International Military Alliances, 1648-2008*.
-#' Washington DC: CQ Press.
+#' - Leeds, Brett Ashley, Jeffrey M. Ritter, Sara McLaughlin Mitchell, and
+#' Andrew G. Long. 2002. "Alliance Treaty Obligations and Provisions, 1815-1944."
+#' *International Interactions* 28: 237-60.
+#'
+#'
 #'
 #' @examples
 #' \dontrun{
@@ -151,56 +161,125 @@
 #' cow_ddy %>% add_fpsim()
 #'
 #' # Select just the two kappa measures that are suggested defaults.
-#' # `kappaba`: kappa for binary alliance data if you have pre-WWII data.
-#' # `kappavv`: kappa for UN voting data if you just post-WWII data.
-#' cow_ddy %>% add_fpsim(keep=c("kappaba", "kappavv"))
+#' # `kallyb`: kappa for binary alliance data if you have pre-WWII data.
+#' # `kvotev`: kappa for UN voting data if you just post-WWII data.
+#' cow_ddy %>% add_fpsim(keep=c("kallyb", "kvotev"))
 #'
 #' }
 
+
+
 add_fpsim <- function(data, keep) {
 
-  if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+  if (!file.exists(system.file("extdata", "FPSIM.rds", package="peacesciencer"))) {
 
-    if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+    msg <- paste0(
+      # Note: I hate that this is the most legible way of doing it because it looks like a chatbot did it...
+      # Alas...
+      "\n\nDyadic foreign policy similarity data are stored remotely and must be downloaded separately. ",
+      "This error disappears after successfully running `download_extdata()`. ",
+      "Thereafter, the function works with no problem and the data (`FPSIM`) can be loaded for additional exploration. ",
+      "You can check to be sure you've downloaded the data by inspecting the extdata/ directory for this package, here:\n\n",
+      system.file("extdata", package="peacesciencer")
 
-      stop("add_fpsim() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+    )
 
-
-    } else {
-
-      if (!file.exists(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))) {
-
-        stop("Dyadic foreign policy similarity data are stored remotely and must be downloaded separately.\nThis error disappears after successfully running `download_extdata()`. Thereafter, the function works with no problem and the dyadic trade data (`cow_trade_ddy`) can be loaded for additional exploration.")
-
-      } else {
-
-        fpsim_data <- readRDS(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))
-
-
-        if (!missing(keep)) {
-          fpsim_data <- subset(fpsim_data, select = c("year", "ccode1", "ccode2", keep))
-        } else {
-          fpsim_data <- fpsim_data
-        }
-
-        fpsim_data %>%
-          left_join(data, .) -> data
-
-        return(data)
-
-      }
+    stop(msg, call. = FALSE)
 
     }
 
-  } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
+  ps_type <- attr(data, "ps_data_type")
 
-   stop("add_fpsim() right now only works with dyadic data (either dyad-year or leader-dyad-year).")
+  dispatch <- list(
+    dyad_year = .add_fpsim_dyad_year,
+    leader_dyad_year = .add_fpsim_dyad_year
+  )
 
+  if (is.null(ps_type) || !ps_type %in% names(dispatch)) {
 
+    stop("Unexpected or unsupported ps_data_type. Expected dyad_year or leader_dyad_year")
 
-  } else  {
-    stop("add_fpsim() requires a data/tibble with attributes$ps_data_type of leader_dyad_year or dyad_year. Try running create_dyadyears() or create_leaderdyadyears() at the start of the pipe.")
   }
 
+  data <- dispatch[[ps_type]](data, keep)
+
   return(data)
+
 }
+
+
+#' @keywords internal
+#' @noRd
+.add_fpsim_dyad_year <- function(data, keep) {
+
+  fpsim <- readRDS(system.file("extdata", "FPSIM.rds", package="peacesciencer"))
+
+  if (!missing(keep)) {
+
+    fpsim <- subset(fpsim, select = c("year", "ccode1", "ccode2", keep))
+
+    } else {
+
+      fpsim <- fpsim
+
+    }
+
+  fpsim %>% left_join(data, .) -> data
+
+  return(data)
+
+}
+
+
+
+
+
+
+
+# add_fpsim <- function(data, keep) {
+#
+#   if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("dyad_year", "leader_dyad_year")) {
+#
+#     if (!all(i <- c("ccode1", "ccode2") %in% colnames(data))) {
+#
+#       stop("add_fpsim() merges on two Correlates of War codes (ccode1, ccode2), which your data don't have right now. Make sure to run create_dyadyears() at the top of the pipe. You'll want the default option, which returns Correlates of War codes.")
+#
+#
+#     } else {
+#
+#       if (!file.exists(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))) {
+#
+#         stop("Dyadic foreign policy similarity data are stored remotely and must be downloaded separately.\nThis error disappears after successfully running `download_extdata()`. Thereafter, the function works with no problem and the dyadic trade data (`cow_trade_ddy`) can be loaded for additional exploration.")
+#
+#       } else {
+#
+#         fpsim_data <- readRDS(system.file("extdata", "dyadic_fp_similarity.rds", package="peacesciencer"))
+#
+#
+#         if (!missing(keep)) {
+#           fpsim_data <- subset(fpsim_data, select = c("year", "ccode1", "ccode2", keep))
+#         } else {
+#           fpsim_data <- fpsim_data
+#         }
+#
+#         fpsim_data %>%
+#           left_join(data, .) -> data
+#
+#         return(data)
+#
+#       }
+#
+#     }
+#
+#   } else if (length(attributes(data)$ps_data_type) > 0 && attributes(data)$ps_data_type %in% c("state_year", "leader_year")) {
+#
+#    stop("add_fpsim() right now only works with dyadic data (either dyad-year or leader-dyad-year).")
+#
+#
+#
+#   } else  {
+#     stop("add_fpsim() requires a data/tibble with attributes$ps_data_type of leader_dyad_year or dyad_year. Try running create_dyadyears() or create_leaderdyadyears() at the start of the pipe.")
+#   }
+#
+#   return(data)
+# }
