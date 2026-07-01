@@ -234,7 +234,7 @@
 #' # Here's where the data are going to be downloaded.
 #' system.file("extdata", package="peacesciencer")
 #' # Now, let's download the data.
-#' download_extdata()
+#' download_extdata(confirm = TRUE)
 #' }
 
 download_extdata <- function(overwrite = FALSE, confirm = FALSE, warning = TRUE) {

@@ -4,23 +4,24 @@
 if(getRversion() >= "2.15.1")
   utils::globalVariables(
     # underlying data used for behind-the-scenes handsomeness
-    c("cow_capitals", "gw_capitals", "ccode_democracy", "cow_alliance", "cow_contdir",
-      "cow_ddy", "cow_gw_years", "cow_majors", "cow_states",
+    c("cow_capitals", "gw_capitals",  "cow_contdir",
+      "cow_ddy",  "cow_majors", "cow_states",
       "gml_dirdisp", "gw_ddy", "gw_states", "maoz_powers", "cow_nmc",
       "cow_igo_ndy", "cow_igo_sy", "cow_trade_sy", "gw_mindist", "cow_mindist",
-      "archigos", "atop_alliance", "gw_sdp_gdp", "cow_sdp_gdp", "ucdp_onsets",
+      "archigos", "atop_alliance", "ucdp_onsets",
       "ucdp_acd", "cow_mid_dirdisps", "cow_mid_disps", "cow_mid_ddydisps",
-      "gml_mid_ddydisps", "td_rivalries", "gw_cow_years", "rugged", "creg",
-      "hief", "gwcode_democracy", "cow_war_intra", "cow_war_inter", "cow_trade_ndy",
+      "gml_mid_ddydisps", "td_rivalries", "rugged", "creg",
+      "hief",  "cow_war_intra", "cow_war_inter", "cow_trade_ndy",
       "ps_bib", "gml_mid_disps", "lwuf", "gml_part", "LEAD", "gml_mid_ddlydisps", "gml_mid_dirleaderdisps",
       "false_cow_dyads", "false_gw_dyads", "ps_data_version", "leader_codes", "archigossums",
       ".", "tss_rivalries", "terrthreat")
   )
 
+# "cow_alliance", "gw_sdp_gdp", "cow_sdp_gdp", "ccode_democracy", "gwcode_democracy", "cow_gw_years", "gw_cow_years",
 
 .onAttach <- function(libname, pkgname) {
 
-  remote_files <- c("cow_trade_ddy", "cow_dir_leader_dyad_years", "gw_dir_leader_dyad_years", "dyadic_fp_similarity",
+  remote_files <- c("cow_trade_ddy", "cow_dir_leader_dyad_years", "gw_dir_leader_dyad_years", "FPSIM",
                     "cow_mindist_plus", "gw_mindist_plus")
   extdata_dir <- system.file("extdata", package="peacesciencer")
 
